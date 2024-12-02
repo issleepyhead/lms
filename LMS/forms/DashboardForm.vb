@@ -26,22 +26,6 @@
         LBLGENREPREV.Text = GenreMaintenance.PPrev
     End Sub
 
-
-
-    Private Sub SelectAllToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SelectAllToolStripMenuItem.Click
-        For Each item As DataGridViewRow In DGGENRE.Rows
-            item.Cells("chckBoxGenre").Value = True
-        Next
-        DGGENRE.EndEdit()
-    End Sub
-
-    Private Sub UnselectAllToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UnselectAllToolStripMenuItem.Click
-        For Each item As DataGridViewRow In DGGENRE.Rows
-            item.Cells("chckBoxGenre").Value = False
-        Next
-        DGGENRE.EndEdit()
-    End Sub
-
     Private Sub BTNGENREPNEXT_Click(sender As Object, e As EventArgs) Handles BTNGENREPNEXT.Click
         If GenreMaintenance.PPrev < GenreMaintenance.PMAX Then
             GenreMaintenance.PPrev += 1
@@ -56,30 +40,6 @@
             LBLGENREPREV.Text = GenreMaintenance.PPrev
             DGGENRE.DataSource = GenreMaintenance.Fetch()
         End If
-    End Sub
-
-    Private Sub RemoveSelectedToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RemoveToolStripMenuItem.Click
-        DGGENRE.EndEdit()
-        Dim params As New List(Of Dictionary(Of String, String))
-        For Each data As DataGridViewRow In DGGENRE.Rows
-            If data.Cells("chckBoxGenre").Value Then
-                Dim temp As New Dictionary(Of String, String) From {
-                    {"@id", data.Cells("ColumnGenreID").Value.ToString}
-                }
-                params.Add(temp)
-            End If
-        Next
-
-        If MessageBox.Show("Are you sure you want to delete the selected item(s)?", "Delete Selected Items?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.No Then
-            Exit Sub
-        End If
-
-        If GenreMaintenance.Delete(params) Then
-            MessageBox.Show("Deleted Successfully!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        Else
-            MessageBox.Show("Cannot delete the selected genre(s). Some genres are currently assigned to one or more books. Please remove the genre from the books before deleting.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        End If
-        DGGENRE.DataSource = GenreMaintenance.Fetch()
     End Sub
 
     Private Sub DGGENRE_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGGENRE.CellMouseClick
@@ -161,4 +121,91 @@
         End If
     End Sub
 #End Region
+
+    Private Sub SelectAllToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SelectAllToolStripMenuItem.Click
+        Select Case True
+            Case MaintenancePanels.SelectedTab.Equals(GenresTab)
+                For Each item As DataGridViewRow In DGGENRE.Rows
+                    item.Cells("chckBoxGenre").Value = True
+                Next
+                DGGENRE.EndEdit()
+            Case MaintenancePanels.SelectedTab.Equals(AuthorTab)
+                For Each item As DataGridViewRow In DGAUTHORS.Rows
+                    item.Cells("chckBoxAuthor").Value = True
+                Next
+                DGAUTHORS.EndEdit()
+
+        End Select
+    End Sub
+
+    Private Sub UnselectAllToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UnselectAllToolStripMenuItem.Click
+        Select Case True
+            Case MaintenancePanels.SelectedTab.Equals(GenresTab)
+                For Each item As DataGridViewRow In DGGENRE.Rows
+                    item.Cells("chckBoxGenre").Value = False
+                Next
+                DGGENRE.EndEdit()
+            Case MaintenancePanels.SelectedTab.Equals(AuthorTab)
+                For Each item As DataGridViewRow In DGAUTHORS.Rows
+                    item.Cells("chckBoxAuthor").Value = False
+                Next
+                DGAUTHORS.EndEdit()
+        End Select
+    End Sub
+
+    Private Sub RemoveSelectedToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RemoveToolStripMenuItem.Click
+        ' TODO PERFORM A CHECK BEFORE DELETING THE DATA
+        If MessageBox.Show("Are you sure you want to delete the selected item(s)?", "Delete Selected Items?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.No Then
+            Exit Sub
+        End If
+
+        Select Case True
+            Case MaintenancePanels.SelectedTab.Equals(GenresTab)
+                DGGENRE.EndEdit()
+                Dim params As New List(Of Dictionary(Of String, String))
+                For Each data As DataGridViewRow In DGGENRE.Rows
+                    If data.Cells("chckBoxGenre").Value Then
+                        Dim temp As New Dictionary(Of String, String) From {
+                            {"@id", data.Cells("ColumnGenreID").Value.ToString}
+                        }
+                        params.Add(temp)
+                    End If
+                Next
+
+                If GenreMaintenance.Delete(params) Then
+                    MessageBox.Show("Deleted Successfully!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Else
+                    MessageBox.Show("Cannot delete the selected genre(s). Some genres are currently assigned to one or more books. Please remove the genre from the books before deleting.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                End If
+                DGGENRE.DataSource = GenreMaintenance.Fetch()
+
+            Case MaintenancePanels.SelectedTab.Equals(AuthorTab)
+                DGAUTHORS.EndEdit()
+                Dim params As New List(Of Dictionary(Of String, String))
+                For Each data As DataGridViewRow In DGAUTHORS.Rows
+                    If data.Cells("chckBoxAuthor").Value Then
+                        Dim temp As New Dictionary(Of String, String) From {
+                            {"@id", data.Cells("ColumnGenreID").Value.ToString}
+                        }
+                        params.Add(temp)
+                    End If
+                Next
+
+                If AuthorMaintenance.Delete(params) Then
+                    MessageBox.Show("Deleted Successfully!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Else
+                    MessageBox.Show("Cannot delete the selected author(s). Some authors are currently assigned to one or more books. Please remove the author from the books before deleting.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                End If
+                DGAUTHORS.DataSource = AuthorMaintenance.Fetch()
+        End Select
+    End Sub
+
+    Private Sub RemoveAllMenuItem_Click(sender As Object, e As EventArgs) Handles RemoveAllMenuItem.Click
+        Select Case True
+            Case MaintenancePanels.SelectedTab.Equals(GenresTab)
+
+            Case MaintenancePanels.SelectedTab.Equals(AuthorTab)
+
+        End Select
+    End Sub
 End Class

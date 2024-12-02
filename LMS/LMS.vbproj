@@ -165,6 +165,7 @@
       <DependentUpon>ServerForm.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="modules\ApplicationModule.vb" />
     <Compile Include="modules\Connection.vb" />
     <Compile Include="modules\Logger.vb" />
     <Compile Include="modules\maintenance\AuthorMaintenance.vb" />
