@@ -27,7 +27,7 @@ Public Class AuthorDialog
                 {"@id", If(IsNothing(_data), 0, _data.Item("id").ToString)}
         }
 
-        If GenreMaintenance.Exists(data) Then
+        If AuthorMaintenance.Exists(data) Then
             errProvider.SetError(TXTFIRSTNAME, "This author already exits.")
             errProvider.SetError(TXTLASTNAME, "This author already exits.")
             Exit Sub

@@ -134,16 +134,94 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="dialogs\AdministratorDialog.Designer.vb">
+      <DependentUpon>AdministratorDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="dialogs\AdministratorDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="dialogs\AuthorDialog.Designer.vb">
       <DependentUpon>AuthorDialog.vb</DependentUpon>
     </Compile>
     <Compile Include="dialogs\AuthorDialog.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="dialogs\BooksDialog.Designer.vb">
+      <DependentUpon>BooksDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="dialogs\BooksDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialogs\BorrowDialog.Designer.vb">
+      <DependentUpon>BorrowDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="dialogs\BorrowDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialogs\ClassificationDialog.Designer.vb">
+      <DependentUpon>ClassificationDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="dialogs\ClassificationDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialogs\DepartmentDialog.Designer.vb">
+      <DependentUpon>DepartmentDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="dialogs\DepartmentDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialogs\DonatorDialog.Designer.vb">
+      <DependentUpon>DonatorDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="dialogs\DonatorDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialogs\FacultyDialog.Designer.vb">
+      <DependentUpon>FacultyDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="dialogs\FacultyDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="dialogs\GenreDialog.Designer.vb">
       <DependentUpon>GenreDialog.vb</DependentUpon>
     </Compile>
     <Compile Include="dialogs\GenreDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialogs\PublisherDialog.Designer.vb">
+      <DependentUpon>PublisherDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="dialogs\PublisherDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialogs\ReturnDialog.Designer.vb">
+      <DependentUpon>ReturnDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="dialogs\ReturnDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialogs\SectionDialog.Designer.vb">
+      <DependentUpon>SectionDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="dialogs\SectionDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialogs\StudentDialog.Designer.vb">
+      <DependentUpon>StudentDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="dialogs\StudentDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialogs\SupplierDialog.Designer.vb">
+      <DependentUpon>SupplierDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="dialogs\SupplierDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialogs\YearLevelDialog.Designer.vb">
+      <DependentUpon>YearLevelDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="dialogs\YearLevelDialog.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="forms\DashboardForm.Designer.vb">

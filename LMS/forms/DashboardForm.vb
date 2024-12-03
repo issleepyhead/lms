@@ -185,7 +185,7 @@
                 For Each data As DataGridViewRow In DGAUTHORS.Rows
                     If data.Cells("chckBoxAuthor").Value Then
                         Dim temp As New Dictionary(Of String, String) From {
-                            {"@id", data.Cells("ColumnGenreID").Value.ToString}
+                            {"@id", data.Cells("ColumnAuthorID").Value.ToString}
                         }
                         params.Add(temp)
                     End If
