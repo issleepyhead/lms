@@ -165,6 +165,7 @@ Partial Class AuthorDialog
         Me.CMBGENDER.Location = New System.Drawing.Point(50, 225)
         Me.CMBGENDER.Name = "CMBGENDER"
         Me.CMBGENDER.Size = New System.Drawing.Size(306, 42)
+        Me.CMBGENDER.StartIndex = 0
         Me.CMBGENDER.TabIndex = 16
         '
         'BTNSAVE
