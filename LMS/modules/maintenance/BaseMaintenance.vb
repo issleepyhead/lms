@@ -9,7 +9,7 @@ Module BaseMaintenance
         ' The previous query executed no longer match the new query to be executed
         ' Reset the PPREV and PMAX because we are no longer in the same tab.
         If QueryType <> query_type Then
-            PPrev = PMAX = 1
+            PPrev = 1
             QueryType = query_type
         End If
         QueryTable = QueryTableFactory.QueryTableFactory(query_type)

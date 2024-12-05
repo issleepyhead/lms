@@ -18,6 +18,10 @@
         DGPUBLISHER.DataSource = BaseMaintenance.Fetch(QueryTableType.PUBLISHER_QUERY_TABLE)
         LBLPUBLISHERPREV.Text = BaseMaintenance.PPrev
         LBLPUBLISHERNEXT.Text = BaseMaintenance.PMAX
+
+        DGCLASSIFICATIONS.DataSource = BaseMaintenance.Fetch(QueryTableType.CLASSIFICATION_QUERY_TABLE)
+        LBLCLASSIFICATIONNEXT.Text = BaseMaintenance.PMAX
+        LBLCLASSIFICATIONPREV.Text = BaseMaintenance.PPrev
     End Sub
 
 #Region "Genre Module"
@@ -131,9 +135,21 @@
         Using dialog = PublisherDialog
             dialog.ShowDialog()
         End Using
+        DGPUBLISHER.DataSource = BaseMaintenance.Fetch(QueryTableType.PUBLISHER_QUERY_TABLE)
         LBLPUBLISHERNEXT.Text = BaseMaintenance.PMAX
         LBLPUBLISHERPREV.Text = BaseMaintenance.PPrev
-        DGPUBLISHER.DataSource = BaseMaintenance.Fetch(QueryTableType.PUBLISHER_QUERY_TABLE)
+    End Sub
+#End Region
+
+#Region "Classification Maintenance"
+    Private Sub BTNADDCLASSIFICATION_Click(sender As Object, e As EventArgs) Handles BTNADDCLASSIFICATION.Click
+        Using dialog = ClassificationDialog
+            dialog.ShowDialog()
+        End Using
+        DGCLASSIFICATIONS.DataSource = BaseMaintenance.Fetch(QueryTableType.CLASSIFICATION_QUERY_TABLE)
+        LBLCLASSIFICATIONNEXT.Text = BaseMaintenance.PMAX
+        LBLCLASSIFICATIONPREV.Text = BaseMaintenance.PPrev
+
     End Sub
 #End Region
 
@@ -223,6 +239,4 @@
 
         End Select
     End Sub
-
-
 End Class

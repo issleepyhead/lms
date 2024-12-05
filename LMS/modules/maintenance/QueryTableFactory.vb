@@ -39,6 +39,18 @@
                     .FETCH_LIMIT_QUERY_SEARCH = "SELET id, publisher_name, address FROM tblpublishers WHEHRE publisher_name LIKE @search ORDER BY publisher_name ASC LIMIT @page, 30",
                     .UPDATE_QUERY = "UPDATE tblpublishers SET publisher_name = @name, address = @address WHERE id = @id"
                 }
+            Case QueryTableType.CLASSIFICATION_QUERY_TABLE
+                Return New MaintenanceQueries With {
+                    .ADD_QUERY = "INSERT INTO tblclassifications (dewey_decimal, classification) VALUES (@dewey_no, @classification)",
+                    .DELETE_QUERY = "DELETE FROM tblclassifications WHERE id = @id",
+                    .EXISTS_QUERY_WITH_ID = "SELECT COUNT(*) FROM tblclassifications WHERE (LOWER(classification) = LOWER(@classification) OR LOWER(dewey_decimal) = LOWER(@dewey_no)) AND id != @id",
+                    .EXISTS_QUERY_NO_ID = "SELECT COUNT(*) FROM tblclassifications WHERE LOWER(classification) = LOWER(@classification) AND LOWER(dewey_decimal) = LOWER(@dewey_no)",
+                    .FETCH_TOTAL_COUNT_QUERY = "SELECT COUNT(*) FROM tblclassifications",
+                    .FETCH_LIMIT_QUERY = "SELECT id, classification, dewey_decimal FROM tblclassifications ORDER BY dewey_decimal ASC LIMIT @page, 30;",
+                    .FETCH_TOTAL_COUNT_QUERY_SEARCH = "SELECT COUNT(*) FROM tblclassifications WHERE dewey_decimal LIKE @search OR classification LIKE @search",
+                    .FETCH_LIMIT_QUERY_SEARCH = "SELET id, classification, dewey_decimal FROM tblclassifications WHEHRE dewey_decimal LIKE @search OR classification LIKE @search ORDER BY dewey_decimal ASC LIMIT @page, 30",
+                    .UPDATE_QUERY = "UPDATE tblclassifications SET classification = @classification, dewey_decimal = @dewey_no WHERE id = @id"
+                }
         End Select
         Return New MaintenanceQueries
     End Function

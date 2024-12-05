@@ -22,13 +22,16 @@ Partial Class ClassificationDialog
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.Guna2HtmlLabel3 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.TXTNAME = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.TXTDEWEYNUMBER = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2HtmlLabel1 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2HtmlLabel2 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.Guna2TextBox1 = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.TXTDEWEYNAME = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2HtmlLabel4 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.BTNSAVE = New Guna.UI2.WinForms.Guna2Button()
+        Me.errProvider = New System.Windows.Forms.ErrorProvider(Me.components)
+        CType(Me.errProvider, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Guna2HtmlLabel3
@@ -43,27 +46,27 @@ Partial Class ClassificationDialog
         Me.Guna2HtmlLabel3.TabIndex = 9
         Me.Guna2HtmlLabel3.Text = "*"
         '
-        'TXTNAME
+        'TXTDEWEYNUMBER
         '
-        Me.TXTNAME.BorderRadius = 4
-        Me.TXTNAME.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.TXTNAME.DefaultText = ""
-        Me.TXTNAME.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.TXTNAME.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.TXTNAME.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTNAME.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTNAME.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTNAME.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TXTNAME.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTNAME.Location = New System.Drawing.Point(50, 43)
-        Me.TXTNAME.Margin = New System.Windows.Forms.Padding(0)
-        Me.TXTNAME.MaxLength = 45
-        Me.TXTNAME.Name = "TXTNAME"
-        Me.TXTNAME.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXTNAME.PlaceholderText = "e.g., Novel"
-        Me.TXTNAME.SelectedText = ""
-        Me.TXTNAME.Size = New System.Drawing.Size(306, 48)
-        Me.TXTNAME.TabIndex = 8
+        Me.TXTDEWEYNUMBER.BorderRadius = 4
+        Me.TXTDEWEYNUMBER.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TXTDEWEYNUMBER.DefaultText = ""
+        Me.TXTDEWEYNUMBER.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TXTDEWEYNUMBER.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TXTDEWEYNUMBER.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTDEWEYNUMBER.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTDEWEYNUMBER.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTDEWEYNUMBER.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TXTDEWEYNUMBER.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTDEWEYNUMBER.Location = New System.Drawing.Point(50, 43)
+        Me.TXTDEWEYNUMBER.Margin = New System.Windows.Forms.Padding(0)
+        Me.TXTDEWEYNUMBER.MaxLength = 45
+        Me.TXTDEWEYNUMBER.Name = "TXTDEWEYNUMBER"
+        Me.TXTDEWEYNUMBER.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TXTDEWEYNUMBER.PlaceholderText = "e.g., Novel"
+        Me.TXTDEWEYNUMBER.SelectedText = ""
+        Me.TXTDEWEYNUMBER.Size = New System.Drawing.Size(306, 48)
+        Me.TXTDEWEYNUMBER.TabIndex = 8
         '
         'Guna2HtmlLabel1
         '
@@ -88,27 +91,27 @@ Partial Class ClassificationDialog
         Me.Guna2HtmlLabel2.TabIndex = 12
         Me.Guna2HtmlLabel2.Text = "*"
         '
-        'Guna2TextBox1
+        'TXTDEWEYNAME
         '
-        Me.Guna2TextBox1.BorderRadius = 4
-        Me.Guna2TextBox1.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.Guna2TextBox1.DefaultText = ""
-        Me.Guna2TextBox1.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.Guna2TextBox1.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.Guna2TextBox1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.Guna2TextBox1.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.Guna2TextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Guna2TextBox1.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Guna2TextBox1.Location = New System.Drawing.Point(50, 136)
-        Me.Guna2TextBox1.Margin = New System.Windows.Forms.Padding(0)
-        Me.Guna2TextBox1.MaxLength = 45
-        Me.Guna2TextBox1.Name = "Guna2TextBox1"
-        Me.Guna2TextBox1.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.Guna2TextBox1.PlaceholderText = "e.g., Novel"
-        Me.Guna2TextBox1.SelectedText = ""
-        Me.Guna2TextBox1.Size = New System.Drawing.Size(306, 48)
-        Me.Guna2TextBox1.TabIndex = 11
+        Me.TXTDEWEYNAME.BorderRadius = 4
+        Me.TXTDEWEYNAME.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TXTDEWEYNAME.DefaultText = ""
+        Me.TXTDEWEYNAME.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TXTDEWEYNAME.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TXTDEWEYNAME.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTDEWEYNAME.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTDEWEYNAME.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTDEWEYNAME.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TXTDEWEYNAME.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTDEWEYNAME.Location = New System.Drawing.Point(50, 136)
+        Me.TXTDEWEYNAME.Margin = New System.Windows.Forms.Padding(0)
+        Me.TXTDEWEYNAME.MaxLength = 45
+        Me.TXTDEWEYNAME.Name = "TXTDEWEYNAME"
+        Me.TXTDEWEYNAME.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TXTDEWEYNAME.PlaceholderText = "e.g., Novel"
+        Me.TXTDEWEYNAME.SelectedText = ""
+        Me.TXTDEWEYNAME.Size = New System.Drawing.Size(306, 48)
+        Me.TXTDEWEYNAME.TabIndex = 11
         '
         'Guna2HtmlLabel4
         '
@@ -136,6 +139,11 @@ Partial Class ClassificationDialog
         Me.BTNSAVE.TabIndex = 13
         Me.BTNSAVE.Text = "Save"
         '
+        'errProvider
+        '
+        Me.errProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink
+        Me.errProvider.ContainerControl = Me
+        '
         'ClassificationDialog
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -143,10 +151,10 @@ Partial Class ClassificationDialog
         Me.ClientSize = New System.Drawing.Size(407, 261)
         Me.Controls.Add(Me.BTNSAVE)
         Me.Controls.Add(Me.Guna2HtmlLabel2)
-        Me.Controls.Add(Me.Guna2TextBox1)
+        Me.Controls.Add(Me.TXTDEWEYNAME)
         Me.Controls.Add(Me.Guna2HtmlLabel4)
         Me.Controls.Add(Me.Guna2HtmlLabel3)
-        Me.Controls.Add(Me.TXTNAME)
+        Me.Controls.Add(Me.TXTDEWEYNUMBER)
         Me.Controls.Add(Me.Guna2HtmlLabel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.MaximizeBox = False
@@ -155,16 +163,18 @@ Partial Class ClassificationDialog
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Classification Form"
+        CType(Me.errProvider, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents Guna2HtmlLabel3 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents TXTNAME As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents TXTDEWEYNUMBER As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Guna2HtmlLabel1 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2HtmlLabel2 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents Guna2TextBox1 As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents TXTDEWEYNAME As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Guna2HtmlLabel4 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents BTNSAVE As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents errProvider As ErrorProvider
 End Class
