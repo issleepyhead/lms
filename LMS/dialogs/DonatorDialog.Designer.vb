@@ -22,10 +22,16 @@ Partial Class DonatorDialog
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.BTNSAVE = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2HtmlLabel3 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.TXTNAME = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2HtmlLabel1 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.TXTADDRESS = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.Guna2HtmlLabel4 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.errProvider = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.Guna2HtmlLabel2 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        CType(Me.errProvider, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'BTNSAVE
@@ -37,7 +43,7 @@ Partial Class DonatorDialog
         Me.BTNSAVE.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
         Me.BTNSAVE.Font = New System.Drawing.Font("Segoe UI", 12.0!)
         Me.BTNSAVE.ForeColor = System.Drawing.Color.White
-        Me.BTNSAVE.Location = New System.Drawing.Point(228, 106)
+        Me.BTNSAVE.Location = New System.Drawing.Point(228, 243)
         Me.BTNSAVE.Name = "BTNSAVE"
         Me.BTNSAVE.Size = New System.Drawing.Size(128, 48)
         Me.BTNSAVE.TabIndex = 8
@@ -88,11 +94,65 @@ Partial Class DonatorDialog
         Me.Guna2HtmlLabel1.TabIndex = 10
         Me.Guna2HtmlLabel1.Text = "Donator Name:"
         '
+        'TXTADDRESS
+        '
+        Me.TXTADDRESS.BorderRadius = 4
+        Me.TXTADDRESS.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TXTADDRESS.DefaultText = ""
+        Me.TXTADDRESS.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TXTADDRESS.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TXTADDRESS.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTADDRESS.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTADDRESS.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTADDRESS.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TXTADDRESS.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTADDRESS.Location = New System.Drawing.Point(50, 138)
+        Me.TXTADDRESS.Margin = New System.Windows.Forms.Padding(0)
+        Me.TXTADDRESS.MaxLength = 80
+        Me.TXTADDRESS.Multiline = True
+        Me.TXTADDRESS.Name = "TXTADDRESS"
+        Me.TXTADDRESS.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TXTADDRESS.PlaceholderText = "e.g., Novel"
+        Me.TXTADDRESS.SelectedText = ""
+        Me.TXTADDRESS.Size = New System.Drawing.Size(306, 84)
+        Me.TXTADDRESS.TabIndex = 20
+        '
+        'Guna2HtmlLabel4
+        '
+        Me.Guna2HtmlLabel4.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2HtmlLabel4.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Guna2HtmlLabel4.Location = New System.Drawing.Point(50, 112)
+        Me.Guna2HtmlLabel4.Margin = New System.Windows.Forms.Padding(0)
+        Me.Guna2HtmlLabel4.Name = "Guna2HtmlLabel4"
+        Me.Guna2HtmlLabel4.Size = New System.Drawing.Size(67, 23)
+        Me.Guna2HtmlLabel4.TabIndex = 19
+        Me.Guna2HtmlLabel4.Text = "Address:"
+        '
+        'errProvider
+        '
+        Me.errProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink
+        Me.errProvider.ContainerControl = Me
+        '
+        'Guna2HtmlLabel2
+        '
+        Me.Guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2HtmlLabel2.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Guna2HtmlLabel2.ForeColor = System.Drawing.Color.Red
+        Me.Guna2HtmlLabel2.Location = New System.Drawing.Point(117, 112)
+        Me.Guna2HtmlLabel2.Margin = New System.Windows.Forms.Padding(0)
+        Me.Guna2HtmlLabel2.Name = "Guna2HtmlLabel2"
+        Me.Guna2HtmlLabel2.Size = New System.Drawing.Size(10, 23)
+        Me.Guna2HtmlLabel2.TabIndex = 21
+        Me.Guna2HtmlLabel2.Text = "*"
+        '
         'DonatorDialog
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(407, 172)
+        Me.ClientSize = New System.Drawing.Size(407, 303)
+        Me.Controls.Add(Me.Guna2HtmlLabel2)
+        Me.Controls.Add(Me.TXTADDRESS)
+        Me.Controls.Add(Me.Guna2HtmlLabel4)
         Me.Controls.Add(Me.Guna2HtmlLabel3)
         Me.Controls.Add(Me.TXTNAME)
         Me.Controls.Add(Me.Guna2HtmlLabel1)
@@ -104,6 +164,7 @@ Partial Class DonatorDialog
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Donator Form"
+        CType(Me.errProvider, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -113,4 +174,8 @@ Partial Class DonatorDialog
     Friend WithEvents Guna2HtmlLabel3 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents TXTNAME As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Guna2HtmlLabel1 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents TXTADDRESS As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents Guna2HtmlLabel4 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents errProvider As ErrorProvider
+    Friend WithEvents Guna2HtmlLabel2 As Guna.UI2.WinForms.Guna2HtmlLabel
 End Class

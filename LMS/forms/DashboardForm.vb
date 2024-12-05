@@ -22,6 +22,14 @@
         DGCLASSIFICATIONS.DataSource = BaseMaintenance.Fetch(QueryTableType.CLASSIFICATION_QUERY_TABLE)
         LBLCLASSIFICATIONNEXT.Text = BaseMaintenance.PMAX
         LBLCLASSIFICATIONPREV.Text = BaseMaintenance.PPrev
+
+        DGDONATOR.DataSource = BaseMaintenance.Fetch(QueryTableType.DONATOR_QUERY_TABLE)
+        LBLDONATORNEXT.Text = BaseMaintenance.PMAX
+        LBLDONATORRPREV.Text = BaseMaintenance.PPrev
+
+        DGSUPPLIER.DataSource = BaseMaintenance.Fetch(QueryTableType.SUPPLIER_QUERY_TABLE)
+        LBLSUPPLIERNEXT.Text = BaseMaintenance.PMAX
+        LBLSUPPLIERPREV.Text = BaseMaintenance.PPrev
     End Sub
 
 #Region "Genre Module"
@@ -149,7 +157,28 @@
         DGCLASSIFICATIONS.DataSource = BaseMaintenance.Fetch(QueryTableType.CLASSIFICATION_QUERY_TABLE)
         LBLCLASSIFICATIONNEXT.Text = BaseMaintenance.PMAX
         LBLCLASSIFICATIONPREV.Text = BaseMaintenance.PPrev
+    End Sub
+#End Region
 
+#Region "Donator Maintenance"
+    Private Sub BTNADDDONATOR_Click(sender As Object, e As EventArgs) Handles BTNADDDONATOR.Click
+        Using dialog = DonatorDialog
+            dialog.ShowDialog()
+        End Using
+        DGDONATOR.DataSource = BaseMaintenance.Fetch(QueryTableType.DONATOR_QUERY_TABLE)
+        LBLDONATORNEXT.Text = BaseMaintenance.PMAX
+        LBLDONATORRPREV.Text = BaseMaintenance.PPrev
+    End Sub
+#End Region
+
+#Region "Supplier Maintenance"
+    Private Sub BTNADDSUPPLIER_Click(sender As Object, e As EventArgs) Handles BTNADDSUPPLIER.Click
+        Using dialog = SupplierDialog
+            dialog.ShowDialog()
+        End Using
+        DGSUPPLIER.DataSource = BaseMaintenance.Fetch(QueryTableType.SUPPLIER_QUERY_TABLE)
+        LBLSUPPLIERNEXT.Text = BaseMaintenance.PMAX
+        LBLSUPPLIERPREV.Text = BaseMaintenance.PPrev
     End Sub
 #End Region
 
@@ -239,4 +268,6 @@
 
         End Select
     End Sub
+
+
 End Class

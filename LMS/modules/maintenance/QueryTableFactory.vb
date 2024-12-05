@@ -51,6 +51,33 @@
                     .FETCH_LIMIT_QUERY_SEARCH = "SELET id, classification, dewey_decimal FROM tblclassifications WHEHRE dewey_decimal LIKE @search OR classification LIKE @search ORDER BY dewey_decimal ASC LIMIT @page, 30",
                     .UPDATE_QUERY = "UPDATE tblclassifications SET classification = @classification, dewey_decimal = @dewey_no WHERE id = @id"
                 }
+            Case QueryTableType.DONATOR_QUERY_TABLE
+                Return New MaintenanceQueries With {
+                    .ADD_QUERY = "INSERT INTO tbldonators (name, address) VALUES (@name, @address)",
+                    .DELETE_QUERY = "DELETE FROM tbldonators WHERE id = @id",
+                    .EXISTS_QUERY_WITH_ID = "SELECT COUNT(*) FROM tbldonators WHERE LOWER(name) = LOWER(@name) OR LOWER(address) = LOWER(@address) AND id != @id",
+                    .EXISTS_QUERY_NO_ID = "SELECT COUNT(*) FROM tbldonators WHERE LOWER(name) = LOWER(@name) AND LOWER(address) = LOWER(@address)",
+                    .FETCH_TOTAL_COUNT_QUERY = "SELECT COUNT(*) FROM tbldonators",
+                    .FETCH_LIMIT_QUERY = "SELECT id, name, address FROM tbldonators ORDER BY name ASC LIMIT @page, 30;",
+                    .FETCH_TOTAL_COUNT_QUERY_SEARCH = "SELECT COUNT(*) FROM tbldonators WHERE name LIKE @search",
+                    .FETCH_LIMIT_QUERY_SEARCH = "SELET id, name, address FROM tbldonators WHEHRE name LIKE @search ORDER BY name ASC LIMIT @page, 30",
+                    .UPDATE_QUERY = "UPDATE tbldonators SET name = @name, address = @address WHERE id = @id"
+                }
+            Case QueryTableType.SUPPLIER_QUERY_TABLE
+                Return New MaintenanceQueries With {
+                    .ADD_QUERY = "INSERT INTO tblsuppliers (name, address) VALUES (@name, @address)",
+                    .DELETE_QUERY = "DELETE FROM tblsuppliers WHERE id = @id",
+                    .EXISTS_QUERY_WITH_ID = "SELECT COUNT(*) FROM tblsuppliers WHERE LOWER(name) = LOWER(@name) OR LOWER(address) = LOWER(@address) AND id != @id",
+                    .EXISTS_QUERY_NO_ID = "SELECT COUNT(*) FROM tblsuppliers WHERE LOWER(name) = LOWER(@name) AND LOWER(address) = LOWER(@address)",
+                    .FETCH_TOTAL_COUNT_QUERY = "SELECT COUNT(*) FROM tblsuppliers",
+                    .FETCH_LIMIT_QUERY = "SELECT id, name, address FROM tblsuppliers ORDER BY name ASC LIMIT @page, 30;",
+                    .FETCH_TOTAL_COUNT_QUERY_SEARCH = "SELECT COUNT(*) FROM tblsuppliers WHERE name LIKE @search",
+                    .FETCH_LIMIT_QUERY_SEARCH = "SELET id, name, address FROM tblsuppliers WHEHRE name LIKE @search ORDER BY name ASC LIMIT @page, 30",
+                    .UPDATE_QUERY = "UPDATE tblsuppliers SET name = @name, address = @address WHERE id = @id"
+                }
+            Case QueryTableType.SECTION_QUERY_TABLE
+            Case QueryTableType.YEARLEVEL_QUERY_TABLE
+
         End Select
         Return New MaintenanceQueries
     End Function
