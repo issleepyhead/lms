@@ -1,0 +1,5 @@
+﻿Public Enum QueryTableType
+    GENRE_QUERY_TABLE
+    PUBLISHER_QUERY_TABLE
+    AUTHOR_QUERY_TABLE
+End Enum

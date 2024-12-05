@@ -246,9 +246,13 @@
     <Compile Include="modules\ApplicationModule.vb" />
     <Compile Include="modules\Connection.vb" />
     <Compile Include="modules\Logger.vb" />
-    <Compile Include="modules\maintenance\AuthorMaintenance.vb" />
+    <Compile Include="modules\maintenance\BaseMaintenance.vb" />
     <Compile Include="modules\maintenance\GenreMaintenance.vb" />
+    <Compile Include="modules\maintenance\MaintenanceQueries.vb" />
+    <Compile Include="modules\maintenance\QueryTableFactory.vb" />
+    <Compile Include="modules\maintenance\QueryTableType.vb" />
     <Compile Include="modules\Validator.vb" />
+    <Compile Include="modules\maintenance\AuthorMaintenance.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -270,8 +274,29 @@
     <EmbeddedResource Include="dialogs\AuthorDialog.resx">
       <DependentUpon>AuthorDialog.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="dialogs\ClassificationDialog.resx">
+      <DependentUpon>ClassificationDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dialogs\DepartmentDialog.resx">
+      <DependentUpon>DepartmentDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dialogs\DonatorDialog.resx">
+      <DependentUpon>DonatorDialog.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="dialogs\GenreDialog.resx">
       <DependentUpon>GenreDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dialogs\PublisherDialog.resx">
+      <DependentUpon>PublisherDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dialogs\SectionDialog.resx">
+      <DependentUpon>SectionDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dialogs\SupplierDialog.resx">
+      <DependentUpon>SupplierDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dialogs\YearLevelDialog.resx">
+      <DependentUpon>YearLevelDialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\DashboardForm.resx">
       <DependentUpon>DashboardForm.vb</DependentUpon>

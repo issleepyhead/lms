@@ -14,6 +14,10 @@
         DGAUTHORS.DataSource = AuthorMaintenance.Fetch()
         LBLAUTHORPREV.Text = AuthorMaintenance.PPrev
         LBLAUTHORNEXT.Text = AuthorMaintenance.PMAX
+
+        DGPUBLISHER.DataSource = BaseMaintenance.Fetch(QueryTableType.PUBLISHER_QUERY_TABLE)
+        LBLPUBLISHERPREV.Text = BaseMaintenance.PPrev
+        LBLPUBLISHERNEXT.Text = BaseMaintenance.PMAX
     End Sub
 
 #Region "Genre Module"
@@ -122,6 +126,17 @@
     End Sub
 #End Region
 
+#Region "Publisher Maintenance"
+    Private Sub BTNADDPUBLISHER_Click(sender As Object, e As EventArgs) Handles BTNADDPUBLISHER.Click
+        Using dialog = PublisherDialog
+            dialog.ShowDialog()
+        End Using
+        LBLPUBLISHERNEXT.Text = BaseMaintenance.PMAX
+        LBLPUBLISHERPREV.Text = BaseMaintenance.PPrev
+        DGPUBLISHER.DataSource = BaseMaintenance.Fetch(QueryTableType.PUBLISHER_QUERY_TABLE)
+    End Sub
+#End Region
+
     Private Sub SelectAllToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SelectAllToolStripMenuItem.Click
         Select Case True
             Case MaintenancePanels.SelectedTab.Equals(GenresTab)
@@ -208,4 +223,6 @@
 
         End Select
     End Sub
+
+
 End Class

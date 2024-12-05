@@ -131,7 +131,7 @@ Module Connection
                 End If
 
                 If isPaginate Then
-                    cmd.Parameters.AddWithValue("@page", paginate * MAX_PAGINATION)
+                    cmd.Parameters.AddWithValue("@page", If(paginate < 0, 0, paginate) * MAX_PAGINATION)
                 End If
                 Dim adapter As New MySqlDataAdapter(cmd)
                 adapter.Fill(dt)

@@ -26,20 +26,20 @@ Public Class GenreDialog
                 {"@id", If(IsNothing(_data), 0, _data.Item("id").ToString)}
         }
 
-        If GenreMaintenance.Exists(data) Then
+        If BaseMaintenance.Exists(QueryTableType.GENRE_QUERY_TABLE, data) Then
             errProvider.SetError(TXTNAME, "This genre already exits.")
             Exit Sub
         End If
 
         If IsNothing(_data) Then
-            If GenreMaintenance.Add(data) Then
+            If BaseMaintenance.Add(QueryTableType.GENRE_QUERY_TABLE, data) Then
                 MessageBox.Show("Genre has been added successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
                 MessageBox.Show("Failed adding the genre.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 Exit Sub
             End If
         Else
-            If GenreMaintenance.Update(data) Then
+            If BaseMaintenance.Update(QueryTableType.PUBLISHER_QUERY_TABLE, data) Then
                 MessageBox.Show("Genre has been updated successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
                 MessageBox.Show("Failed updating the genre.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
