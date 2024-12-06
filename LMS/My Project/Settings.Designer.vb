@@ -68,7 +68,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("admin")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("password")>  _
         Public Property server_password() As String
             Get
                 Return CType(Me("server_password"),String)
@@ -80,7 +80,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("password")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("root")>  _
         Public Property server_username() As String
             Get
                 Return CType(Me("server_username"),String)

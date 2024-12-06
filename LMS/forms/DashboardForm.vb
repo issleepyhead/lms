@@ -194,7 +194,26 @@
                     item.Cells("chckBoxAuthor").Value = True
                 Next
                 DGAUTHORS.EndEdit()
-
+            Case MaintenancePanels.SelectedTab.Equals(PublishhersTab)
+                For Each item As DataGridViewRow In DGPUBLISHER.Rows
+                    item.Cells("chckBoxPublisher").Value = True
+                Next
+                DGPUBLISHER.EndEdit()
+            Case MaintenancePanels.SelectedTab.Equals(DonatorsTab)
+                For Each item As DataGridViewRow In DGDONATOR.Rows
+                    item.Cells("chckBoxDonator").Value = True
+                Next
+                DGDONATOR.EndEdit()
+            Case MaintenancePanels.SelectedTab.Equals(SuppliersTab)
+                For Each item As DataGridViewRow In DGSUPPLIER.Rows
+                    item.Cells("chckBoxSupplier").Value = True
+                Next
+                DGSUPPLIER.EndEdit()
+            Case MaintenancePanels.SelectedTab.Equals(ClassificationTab)
+                For Each item As DataGridViewRow In DGCLASSIFICATIONS.Rows
+                    item.Cells("chckBoxClassification").Value = True
+                Next
+                DGCLASSIFICATIONS.EndEdit()
         End Select
     End Sub
 
@@ -210,6 +229,26 @@
                     item.Cells("chckBoxAuthor").Value = False
                 Next
                 DGAUTHORS.EndEdit()
+            Case MaintenancePanels.SelectedTab.Equals(PublishhersTab)
+                For Each item As DataGridViewRow In DGPUBLISHER.Rows
+                    item.Cells("chckBoxPublisher").Value = False
+                Next
+                DGPUBLISHER.EndEdit()
+            Case MaintenancePanels.SelectedTab.Equals(DonatorsTab)
+                For Each item As DataGridViewRow In DGDONATOR.Rows
+                    item.Cells("chckBoxDonator").Value = False
+                Next
+                DGDONATOR.EndEdit()
+            Case MaintenancePanels.SelectedTab.Equals(SuppliersTab)
+                For Each item As DataGridViewRow In DGSUPPLIER.Rows
+                    item.Cells("chckBoxSupplier").Value = False
+                Next
+                DGSUPPLIER.EndEdit()
+            Case MaintenancePanels.SelectedTab.Equals(ClassificationTab)
+                For Each item As DataGridViewRow In DGCLASSIFICATIONS.Rows
+                    item.Cells("chckBoxClassification").Value = False
+                Next
+                DGCLASSIFICATIONS.EndEdit()
         End Select
     End Sub
 
@@ -238,6 +277,8 @@
                     MessageBox.Show("Cannot delete the selected genre(s). Some genres are currently assigned to one or more books. Please remove the genre from the books before deleting.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 End If
                 DGGENRE.DataSource = GenreMaintenance.Fetch()
+
+
 
             Case MaintenancePanels.SelectedTab.Equals(AuthorTab)
                 DGAUTHORS.EndEdit()

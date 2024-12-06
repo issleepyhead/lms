@@ -6,10 +6,10 @@
       <Value Profile="(Default)">localhost</Value>
     </Setting>
     <Setting Name="server_password" Type="System.String" Scope="User">
-      <Value Profile="(Default)">admin</Value>
+      <Value Profile="(Default)">password</Value>
     </Setting>
     <Setting Name="server_username" Type="System.String" Scope="User">
-      <Value Profile="(Default)">password</Value>
+      <Value Profile="(Default)">root</Value>
     </Setting>
     <Setting Name="connection_string" Type="System.String" Scope="User">
       <Value Profile="(Default)" />

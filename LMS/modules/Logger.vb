@@ -2,7 +2,7 @@
 
 Module Logger
 
-    Private ReadOnly LogFileLocation As String = "C:\Users\jomar\Documents"
+    Private ReadOnly LogFileLocation As String = "C:\Users\jteno\OneDrive\Desktop"
     Public Enum LOGLEVEL
         INFO
         ERR
