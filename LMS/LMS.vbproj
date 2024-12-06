@@ -146,10 +146,10 @@
     <Compile Include="dialogs\AuthorDialog.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="dialogs\BooksDialog.Designer.vb">
-      <DependentUpon>BooksDialog.vb</DependentUpon>
+    <Compile Include="dialogs\BookDialog.Designer.vb">
+      <DependentUpon>BookDialog.vb</DependentUpon>
     </Compile>
-    <Compile Include="dialogs\BooksDialog.vb">
+    <Compile Include="dialogs\BookDialog.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="dialogs\BorrowDialog.Designer.vb">
@@ -218,6 +218,12 @@
     <Compile Include="dialogs\SupplierDialog.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="dialogs\UserDialog.Designer.vb">
+      <DependentUpon>UserDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="dialogs\UserDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="dialogs\YearLevelDialog.Designer.vb">
       <DependentUpon>YearLevelDialog.vb</DependentUpon>
     </Compile>
@@ -273,6 +279,9 @@
   <ItemGroup>
     <EmbeddedResource Include="dialogs\AuthorDialog.resx">
       <DependentUpon>AuthorDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dialogs\BookDialog.resx">
+      <DependentUpon>BookDialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="dialogs\ClassificationDialog.resx">
       <DependentUpon>ClassificationDialog.vb</DependentUpon>
