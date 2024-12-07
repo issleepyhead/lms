@@ -8,4 +8,5 @@
     Public Property FETCH_LIMIT_QUERY As String
     Public Property FETCH_TOTAL_COUNT_QUERY_SEARCH As String
     Public Property FETCH_LIMIT_QUERY_SEARCH As String
+    Public Property FETCH_ALL_QUERY As String
 End Class

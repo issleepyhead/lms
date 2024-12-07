@@ -22,10 +22,13 @@ Partial Class DepartmentDialog
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.BTNSAVE = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2HtmlLabel3 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.TXTNAME = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2HtmlLabel1 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.errProvider = New System.Windows.Forms.ErrorProvider(Me.components)
+        CType(Me.errProvider, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'BTNSAVE
@@ -72,7 +75,7 @@ Partial Class DepartmentDialog
         Me.TXTNAME.MaxLength = 45
         Me.TXTNAME.Name = "TXTNAME"
         Me.TXTNAME.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXTNAME.PlaceholderText = "e.g., Novel"
+        Me.TXTNAME.PlaceholderText = "e.g., Junior High School"
         Me.TXTNAME.SelectedText = ""
         Me.TXTNAME.Size = New System.Drawing.Size(306, 48)
         Me.TXTNAME.TabIndex = 28
@@ -87,6 +90,11 @@ Partial Class DepartmentDialog
         Me.Guna2HtmlLabel1.Size = New System.Drawing.Size(142, 23)
         Me.Guna2HtmlLabel1.TabIndex = 27
         Me.Guna2HtmlLabel1.Text = "Department Name:"
+        '
+        'errProvider
+        '
+        Me.errProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink
+        Me.errProvider.ContainerControl = Me
         '
         'DepartmentDialog
         '
@@ -104,6 +112,7 @@ Partial Class DepartmentDialog
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Department Form"
+        CType(Me.errProvider, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -113,4 +122,5 @@ Partial Class DepartmentDialog
     Friend WithEvents Guna2HtmlLabel3 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents TXTNAME As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Guna2HtmlLabel1 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents errProvider As ErrorProvider
 End Class

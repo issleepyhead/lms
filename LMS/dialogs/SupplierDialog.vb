@@ -27,7 +27,7 @@ Public Class SupplierDialog
         }
 
         If BaseMaintenance.Exists(QueryTableType.SUPPLIER_QUERY_TABLE, data) Then
-            errProvider.SetError(TXTNAME, "This supplier already exits.")
+            errProvider.SetError(TXTNAME, "This supplier already exists.")
             Exit Sub
         End If
 

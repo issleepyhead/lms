@@ -75,8 +75,33 @@
                     .FETCH_LIMIT_QUERY_SEARCH = "SELET id, name, address FROM tblsuppliers WHEHRE name LIKE @search ORDER BY name ASC LIMIT @page, 30",
                     .UPDATE_QUERY = "UPDATE tblsuppliers SET name = @name, address = @address WHERE id = @id"
                 }
+            Case QueryTableType.DEPARTMENT_QUERY_TABLE
+                Return New MaintenanceQueries With {
+                    .ADD_QUERY = "INSERT INTO tbldepartments (department_name) VALUES (@name)",
+                    .DELETE_QUERY = "DELETE FROM tbldepartments WHERE id = @id",
+                    .EXISTS_QUERY_WITH_ID = "SELECT COUNT(*) FROM tbldepartments WHERE LOWER(department_name) = LOWER(@name) AND id != @id",
+                    .EXISTS_QUERY_NO_ID = "SELECT COUNT(*) FROM tbldepartments WHERE LOWER(department_name) = LOWER(@name)",
+                    .FETCH_TOTAL_COUNT_QUERY = "SELECT COUNT(*) FROM tbldepartments",
+                    .FETCH_LIMIT_QUERY = "SELECT id, department_name FROM tbldepartments ORDER BY department_name ASC LIMIT @page, 30;",
+                    .FETCH_TOTAL_COUNT_QUERY_SEARCH = "SELECT COUNT(*) FROM tbldepartments WHERE department_name LIKE @search",
+                    .FETCH_LIMIT_QUERY_SEARCH = "SELET id, department_name FROM tbldepartments WHEHRE department_name LIKE @search ORDER BY department_name ASC LIMIT @page, 30",
+                    .UPDATE_QUERY = "UPDATE tbldepartments SET department_name = @name WHERE id = @id",
+                    .FETCH_ALL_QUERY = "SELECT id, department_name FROM tbldepartments"
+                }
             Case QueryTableType.SECTION_QUERY_TABLE
             Case QueryTableType.YEARLEVEL_QUERY_TABLE
+                Return New MaintenanceQueries With {
+                    .ADD_QUERY = "INSERT INTO tblyearlevels (year_level, department_id) VALUES (@name, @did)",
+                    .DELETE_QUERY = "DELETE FROM tblyearlevels WHERE id = @id",
+                    .EXISTS_QUERY_WITH_ID = "SELECT COUNT(*) FROM tblyearlevels WHERE LOWER(yearl_level) = LOWER(@name) AND id != @id",
+                    .EXISTS_QUERY_NO_ID = "SELECT COUNT(*) FROM tblyearlevels WHERE LOWER(year_level) = LOWER(@name)",
+                    .FETCH_TOTAL_COUNT_QUERY = "SELECT COUNT(*) FROM tblyearlevels",
+                    .FETCH_LIMIT_QUERY = "SELECT y.id, y.year_level, d.department_name FROM tblyearlevels y JOIN tbldepartments d ON y.department_id = d.id ORDER BY year_level ASC LIMIT @page, 30;",
+                    .FETCH_TOTAL_COUNT_QUERY_SEARCH = "SELECT COUNT(*) FROM tblyearlevels WHERE year_level LIKE @search",
+                    .FETCH_LIMIT_QUERY_SEARCH = "SELECT y.id, y.year_level, d.department_name FROM tblyearlevels y JOIN tbldepartments d ON y.department_id = d.id WHEHRE year_level LIKE @search ORDER BY year_level ASC LIMIT @page, 30",
+                    .UPDATE_QUERY = "UPDATE tblyearlevels SET year_level = @name, department_id = @did WHERE id = @id",
+                    .FETCH_ALL_QUERY = "SELECT id, year_level FROM tblyearlevels WHERE department_id = @did"
+                }
 
         End Select
         Return New MaintenanceQueries

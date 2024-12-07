@@ -182,74 +182,118 @@
     End Sub
 #End Region
 
+#Region "Department Maintenance"
+    Private Sub BTNADDDEPARTMENT_Click(sender As Object, e As EventArgs) Handles BTNADDDEPARTMENT.Click
+        Using dialog = DepartmentDialog
+            dialog.ShowDialog()
+        End Using
+        DGDEPARTMENT.DataSource = BaseMaintenance.Fetch(QueryTableType.DEPARTMENT_QUERY_TABLE)
+        LBLDEPARTMENTNEXT.Text = BaseMaintenance.PMAX
+        LBLDEPARTMENTPREV.Text = BaseMaintenance.PPrev
+    End Sub
+#End Region
+
+#Region "Year Level Maintenance"
+    Private Sub BTNADDYEARLEVEL_Click(sender As Object, e As EventArgs) Handles BTNADDYEARLEVEL.Click
+        Using dialog = YearLevelDialog
+            dialog.ShowDialog()
+        End Using
+        DGYEARLEVEL.DataSource = BaseMaintenance.Fetch(QueryTableType.YEARLEVEL_QUERY_TABLE)
+        LBLYEARLEVELNEXT.Text = BaseMaintenance.PMAX
+        LBLYEARLEVELPREV.Text = BaseMaintenance.PPrev
+    End Sub
+#End Region
+
     Private Sub SelectAllToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SelectAllToolStripMenuItem.Click
-        Select Case True
-            Case MaintenancePanels.SelectedTab.Equals(GenresTab)
-                For Each item As DataGridViewRow In DGGENRE.Rows
-                    item.Cells("chckBoxGenre").Value = True
-                Next
-                DGGENRE.EndEdit()
-            Case MaintenancePanels.SelectedTab.Equals(AuthorTab)
-                For Each item As DataGridViewRow In DGAUTHORS.Rows
-                    item.Cells("chckBoxAuthor").Value = True
-                Next
-                DGAUTHORS.EndEdit()
-            Case MaintenancePanels.SelectedTab.Equals(PublishhersTab)
-                For Each item As DataGridViewRow In DGPUBLISHER.Rows
-                    item.Cells("chckBoxPublisher").Value = True
-                Next
-                DGPUBLISHER.EndEdit()
-            Case MaintenancePanels.SelectedTab.Equals(DonatorsTab)
-                For Each item As DataGridViewRow In DGDONATOR.Rows
-                    item.Cells("chckBoxDonator").Value = True
-                Next
-                DGDONATOR.EndEdit()
-            Case MaintenancePanels.SelectedTab.Equals(SuppliersTab)
-                For Each item As DataGridViewRow In DGSUPPLIER.Rows
-                    item.Cells("chckBoxSupplier").Value = True
-                Next
-                DGSUPPLIER.EndEdit()
-            Case MaintenancePanels.SelectedTab.Equals(ClassificationTab)
-                For Each item As DataGridViewRow In DGCLASSIFICATIONS.Rows
-                    item.Cells("chckBoxClassification").Value = True
-                Next
-                DGCLASSIFICATIONS.EndEdit()
-        End Select
+        If MaintenancePanels.SelectedTab.Equals(MaintenanceTab) Then
+            Select Case True
+                Case MaintenancePanels.SelectedTab.Equals(GenresTab)
+                    For Each item As DataGridViewRow In DGGENRE.Rows
+                        item.Cells("chckBoxGenre").Value = True
+                    Next
+                    DGGENRE.EndEdit()
+                Case MaintenancePanels.SelectedTab.Equals(AuthorTab)
+                    For Each item As DataGridViewRow In DGAUTHORS.Rows
+                        item.Cells("chckBoxAuthor").Value = True
+                    Next
+                    DGAUTHORS.EndEdit()
+                Case MaintenancePanels.SelectedTab.Equals(PublishhersTab)
+                    For Each item As DataGridViewRow In DGPUBLISHER.Rows
+                        item.Cells("chckBoxPublisher").Value = True
+                    Next
+                    DGPUBLISHER.EndEdit()
+                Case MaintenancePanels.SelectedTab.Equals(DonatorsTab)
+                    For Each item As DataGridViewRow In DGDONATOR.Rows
+                        item.Cells("chckBoxDonator").Value = True
+                    Next
+                    DGDONATOR.EndEdit()
+                Case MaintenancePanels.SelectedTab.Equals(SuppliersTab)
+                    For Each item As DataGridViewRow In DGSUPPLIER.Rows
+                        item.Cells("chckBoxSupplier").Value = True
+                    Next
+                    DGSUPPLIER.EndEdit()
+                Case MaintenancePanels.SelectedTab.Equals(ClassificationTab)
+                    For Each item As DataGridViewRow In DGCLASSIFICATIONS.Rows
+                        item.Cells("chckBoxClassification").Value = True
+                    Next
+                    DGCLASSIFICATIONS.EndEdit()
+            End Select
+        Else
+            Select Case True
+                Case AccountsPanel.SelectedTab.Equals(DepartmentTab)
+                    For Each item As DataGridViewRow In DGDEPARTMENT.Rows
+                        item.Cells("chckBoxDepartment").Value = True
+                    Next
+                    DGDEPARTMENT.EndEdit()
+            End Select
+        End If
     End Sub
 
     Private Sub UnselectAllToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UnselectAllToolStripMenuItem.Click
-        Select Case True
-            Case MaintenancePanels.SelectedTab.Equals(GenresTab)
-                For Each item As DataGridViewRow In DGGENRE.Rows
-                    item.Cells("chckBoxGenre").Value = False
-                Next
-                DGGENRE.EndEdit()
-            Case MaintenancePanels.SelectedTab.Equals(AuthorTab)
-                For Each item As DataGridViewRow In DGAUTHORS.Rows
-                    item.Cells("chckBoxAuthor").Value = False
-                Next
-                DGAUTHORS.EndEdit()
-            Case MaintenancePanels.SelectedTab.Equals(PublishhersTab)
-                For Each item As DataGridViewRow In DGPUBLISHER.Rows
-                    item.Cells("chckBoxPublisher").Value = False
-                Next
-                DGPUBLISHER.EndEdit()
-            Case MaintenancePanels.SelectedTab.Equals(DonatorsTab)
-                For Each item As DataGridViewRow In DGDONATOR.Rows
-                    item.Cells("chckBoxDonator").Value = False
-                Next
-                DGDONATOR.EndEdit()
-            Case MaintenancePanels.SelectedTab.Equals(SuppliersTab)
-                For Each item As DataGridViewRow In DGSUPPLIER.Rows
-                    item.Cells("chckBoxSupplier").Value = False
-                Next
-                DGSUPPLIER.EndEdit()
-            Case MaintenancePanels.SelectedTab.Equals(ClassificationTab)
-                For Each item As DataGridViewRow In DGCLASSIFICATIONS.Rows
-                    item.Cells("chckBoxClassification").Value = False
-                Next
-                DGCLASSIFICATIONS.EndEdit()
-        End Select
+        If MainFormPanels.SelectedTab.Equals(MaintenanceTab) Then
+            Select Case True
+            ' Maintenance Panel Selection
+                Case MaintenancePanels.SelectedTab.Equals(GenresTab)
+                    For Each item As DataGridViewRow In DGGENRE.Rows
+                        item.Cells("chckBoxGenre").Value = False
+                    Next
+                    DGGENRE.EndEdit()
+                Case MaintenancePanels.SelectedTab.Equals(AuthorTab)
+                    For Each item As DataGridViewRow In DGAUTHORS.Rows
+                        item.Cells("chckBoxAuthor").Value = False
+                    Next
+                    DGAUTHORS.EndEdit()
+                Case MaintenancePanels.SelectedTab.Equals(PublishhersTab)
+                    For Each item As DataGridViewRow In DGPUBLISHER.Rows
+                        item.Cells("chckBoxPublisher").Value = False
+                    Next
+                    DGPUBLISHER.EndEdit()
+                Case MaintenancePanels.SelectedTab.Equals(DonatorsTab)
+                    For Each item As DataGridViewRow In DGDONATOR.Rows
+                        item.Cells("chckBoxDonator").Value = False
+                    Next
+                    DGDONATOR.EndEdit()
+                Case MaintenancePanels.SelectedTab.Equals(SuppliersTab)
+                    For Each item As DataGridViewRow In DGSUPPLIER.Rows
+                        item.Cells("chckBoxSupplier").Value = False
+                    Next
+                    DGSUPPLIER.EndEdit()
+                Case MaintenancePanels.SelectedTab.Equals(ClassificationTab)
+                    For Each item As DataGridViewRow In DGCLASSIFICATIONS.Rows
+                        item.Cells("chckBoxClassification").Value = False
+                    Next
+                    DGCLASSIFICATIONS.EndEdit()
+            End Select
+        Else
+            Select Case True
+                ' Accounts Panel Selection
+                Case AccountsPanel.SelectedTab.Equals(DepartmentTab)
+                    For Each item As DataGridViewRow In DGDEPARTMENT.Rows
+                        item.Cells("chckBoxDepartment").Value = False
+                    Next
+                    DGDEPARTMENT.EndEdit()
+            End Select
+        End If
     End Sub
 
     Private Sub RemoveSelectedToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RemoveToolStripMenuItem.Click

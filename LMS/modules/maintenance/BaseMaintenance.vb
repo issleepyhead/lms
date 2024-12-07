@@ -87,4 +87,13 @@ Module BaseMaintenance
         SetQueryTable(type)
         Return _Delete(params)
     End Function
+
+    Private Function _FetchAll(type As QueryTableType, Optional params As Dictionary(Of String, String) = Nothing) As DataTable
+        Return ExecFetch(QueryTable.FETCH_ALL_QUERY, params)
+    End Function
+
+    Public Function FetchAll(type As QueryTableType, Optional params As Dictionary(Of String, String) = Nothing) As DataTable
+        SetQueryTable(type)
+        Return _FetchAll(type, params)
+    End Function
 End Module

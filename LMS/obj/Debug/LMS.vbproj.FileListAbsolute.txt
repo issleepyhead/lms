@@ -168,3 +168,5 @@ C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.vbproj.CopyComplete
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.exe
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.xml
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.pdb
+C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.BookDialog.resources
+C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.LanguageDialog.resources

@@ -38,6 +38,10 @@ Partial Class DashboardForm
         Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle24 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -70,10 +74,6 @@ Partial Class DashboardForm
         Dim DataGridViewCellStyle50 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle52 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle51 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.MainFormPanels = New Guna.UI2.WinForms.Guna2TabControl()
         Me.DashboardTab = New System.Windows.Forms.TabPage()
@@ -97,7 +97,7 @@ Partial Class DashboardForm
         Me.chckBoxGenre = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DGGENRECONTEXTMENU = New Guna.UI2.WinForms.Guna2ContextMenuStrip()
+        Me.DGMAINTENANCECONTEXTMENU = New Guna.UI2.WinForms.Guna2ContextMenuStrip()
         Me.SelectAllToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UnselectAllToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RemoveAllMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -154,6 +154,23 @@ Partial Class DashboardForm
         Me.chckBoxClassification = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LanguagesTab = New System.Windows.Forms.TabPage()
+        Me.TableLayoutPanel16 = New System.Windows.Forms.TableLayoutPanel()
+        Me.Guna2Panel45 = New Guna.UI2.WinForms.Guna2Panel()
+        Me.TXTLANGUAGESEARCH = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.BTNADDLANGUAGE = New Guna.UI2.WinForms.Guna2Button()
+        Me.Guna2Panel46 = New Guna.UI2.WinForms.Guna2Panel()
+        Me.LBLLANGUAGENEXT = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.Guna2HtmlLabel11 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.LBLLANGUAGEPREV = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.BTNLANGUAGEPREV = New Guna.UI2.WinForms.Guna2Button()
+        Me.BTNLANGUAGENEXT = New Guna.UI2.WinForms.Guna2Button()
+        Me.Guna2Panel47 = New Guna.UI2.WinForms.Guna2Panel()
+        Me.DGLANGUAGE = New Guna.UI2.WinForms.Guna2DataGridView()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.BooksTab = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel6 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel16 = New Guna.UI2.WinForms.Guna2Panel()
@@ -221,9 +238,6 @@ Partial Class DashboardForm
         Me.BTNYEARLEVELNEXT = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Panel27 = New Guna.UI2.WinForms.Guna2Panel()
         Me.DGYEARLEVEL = New Guna.UI2.WinForms.Guna2DataGridView()
-        Me.DataGridViewTextBoxColumn24 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewCheckBoxColumn6 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.DataGridViewTextBoxColumn25 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.SectionTab = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel10 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel28 = New Guna.UI2.WinForms.Guna2Panel()
@@ -254,9 +268,6 @@ Partial Class DashboardForm
         Me.BTNDEPARTMENTNEXT = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Panel42 = New Guna.UI2.WinForms.Guna2Panel()
         Me.DGDEPARTMENT = New Guna.UI2.WinForms.Guna2DataGridView()
-        Me.DataGridViewTextBoxColumn43 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewCheckBoxColumn11 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.DataGridViewTextBoxColumn44 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.StudentsTab = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel11 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel31 = New Guna.UI2.WinForms.Guna2Panel()
@@ -348,23 +359,13 @@ Partial Class DashboardForm
         Me.Guna2HtmlLabel3 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.LBLPROFILEROLE = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.LBLPROFILENAME = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.LanguagesTab = New System.Windows.Forms.TabPage()
-        Me.TableLayoutPanel16 = New System.Windows.Forms.TableLayoutPanel()
-        Me.Guna2Panel45 = New Guna.UI2.WinForms.Guna2Panel()
-        Me.TXTLANGUAGESEARCH = New Guna.UI2.WinForms.Guna2TextBox()
-        Me.BTNADDLANGUAGE = New Guna.UI2.WinForms.Guna2Button()
-        Me.Guna2Panel46 = New Guna.UI2.WinForms.Guna2Panel()
-        Me.LBLLANGUAGENEXT = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.Guna2HtmlLabel11 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.LBLLANGUAGEPREV = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.BTNLANGUAGEPREV = New Guna.UI2.WinForms.Guna2Button()
-        Me.BTNLANGUAGENEXT = New Guna.UI2.WinForms.Guna2Button()
-        Me.Guna2Panel47 = New Guna.UI2.WinForms.Guna2Panel()
-        Me.DGLANGUAGE = New Guna.UI2.WinForms.Guna2DataGridView()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn43 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.chckBoxDepartment = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.DataGridViewTextBoxColumn44 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn24 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewCheckBoxColumn6 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.DataGridViewTextBoxColumn25 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.MainFormPanels.SuspendLayout()
         Me.DashboardTab.SuspendLayout()
@@ -376,7 +377,7 @@ Partial Class DashboardForm
         Me.Guna2Panel4.SuspendLayout()
         Me.Guna2Panel5.SuspendLayout()
         CType(Me.DGGENRE, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.DGGENRECONTEXTMENU.SuspendLayout()
+        Me.DGMAINTENANCECONTEXTMENU.SuspendLayout()
         Me.AuthorTab.SuspendLayout()
         Me.TableLayoutPanel3.SuspendLayout()
         Me.Guna2Panel7.SuspendLayout()
@@ -395,6 +396,12 @@ Partial Class DashboardForm
         Me.Guna2Panel14.SuspendLayout()
         Me.Guna2Panel15.SuspendLayout()
         CType(Me.DGCLASSIFICATIONS, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.LanguagesTab.SuspendLayout()
+        Me.TableLayoutPanel16.SuspendLayout()
+        Me.Guna2Panel45.SuspendLayout()
+        Me.Guna2Panel46.SuspendLayout()
+        Me.Guna2Panel47.SuspendLayout()
+        CType(Me.DGLANGUAGE, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.BooksTab.SuspendLayout()
         Me.TableLayoutPanel6.SuspendLayout()
         Me.Guna2Panel16.SuspendLayout()
@@ -465,12 +472,6 @@ Partial Class DashboardForm
         Me.AuditTrailPanels.SuspendLayout()
         Me.Guna2Panel1.SuspendLayout()
         Me.Guna2Panel2.SuspendLayout()
-        Me.LanguagesTab.SuspendLayout()
-        Me.TableLayoutPanel16.SuspendLayout()
-        Me.Guna2Panel45.SuspendLayout()
-        Me.Guna2Panel46.SuspendLayout()
-        Me.Guna2Panel47.SuspendLayout()
-        CType(Me.DGLANGUAGE, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TableLayoutPanel1
@@ -799,7 +800,7 @@ Partial Class DashboardForm
         Me.DGGENRE.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.DGGENRE.ColumnHeadersHeight = 48
         Me.DGGENRE.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ColumnGenreID, Me.chckBoxGenre, Me.Column1, Me.Column2})
-        Me.DGGENRE.ContextMenuStrip = Me.DGGENRECONTEXTMENU
+        Me.DGGENRE.ContextMenuStrip = Me.DGMAINTENANCECONTEXTMENU
         DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(239, Byte), Integer))
         DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -877,20 +878,20 @@ Partial Class DashboardForm
         Me.Column2.ReadOnly = True
         Me.Column2.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         '
-        'DGGENRECONTEXTMENU
+        'DGMAINTENANCECONTEXTMENU
         '
-        Me.DGGENRECONTEXTMENU.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SelectAllToolStripMenuItem, Me.UnselectAllToolStripMenuItem, Me.RemoveAllMenuItem, Me.RemoveToolStripMenuItem})
-        Me.DGGENRECONTEXTMENU.Name = "DGGENRECONTEXTMENU"
-        Me.DGGENRECONTEXTMENU.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(CType(CType(151, Byte), Integer), CType(CType(143, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.DGGENRECONTEXTMENU.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro
-        Me.DGGENRECONTEXTMENU.RenderStyle.ColorTable = Nothing
-        Me.DGGENRECONTEXTMENU.RenderStyle.RoundedEdges = True
-        Me.DGGENRECONTEXTMENU.RenderStyle.SelectionArrowColor = System.Drawing.Color.White
-        Me.DGGENRECONTEXTMENU.RenderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.DGGENRECONTEXTMENU.RenderStyle.SelectionForeColor = System.Drawing.Color.White
-        Me.DGGENRECONTEXTMENU.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro
-        Me.DGGENRECONTEXTMENU.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
-        Me.DGGENRECONTEXTMENU.Size = New System.Drawing.Size(165, 92)
+        Me.DGMAINTENANCECONTEXTMENU.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SelectAllToolStripMenuItem, Me.UnselectAllToolStripMenuItem, Me.RemoveAllMenuItem, Me.RemoveToolStripMenuItem})
+        Me.DGMAINTENANCECONTEXTMENU.Name = "DGGENRECONTEXTMENU"
+        Me.DGMAINTENANCECONTEXTMENU.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(CType(CType(151, Byte), Integer), CType(CType(143, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DGMAINTENANCECONTEXTMENU.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro
+        Me.DGMAINTENANCECONTEXTMENU.RenderStyle.ColorTable = Nothing
+        Me.DGMAINTENANCECONTEXTMENU.RenderStyle.RoundedEdges = True
+        Me.DGMAINTENANCECONTEXTMENU.RenderStyle.SelectionArrowColor = System.Drawing.Color.White
+        Me.DGMAINTENANCECONTEXTMENU.RenderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DGMAINTENANCECONTEXTMENU.RenderStyle.SelectionForeColor = System.Drawing.Color.White
+        Me.DGMAINTENANCECONTEXTMENU.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro
+        Me.DGMAINTENANCECONTEXTMENU.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
+        Me.DGMAINTENANCECONTEXTMENU.Size = New System.Drawing.Size(165, 92)
         '
         'SelectAllToolStripMenuItem
         '
@@ -1116,7 +1117,7 @@ Partial Class DashboardForm
         Me.DGAUTHORS.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
         Me.DGAUTHORS.ColumnHeadersHeight = 48
         Me.DGAUTHORS.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ColumnAuthorID, Me.chckBoxAuthor, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.Column3})
-        Me.DGAUTHORS.ContextMenuStrip = Me.DGGENRECONTEXTMENU
+        Me.DGAUTHORS.ContextMenuStrip = Me.DGMAINTENANCECONTEXTMENU
         DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(239, Byte), Integer))
         DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -1400,7 +1401,7 @@ Partial Class DashboardForm
         Me.DGPUBLISHER.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle10
         Me.DGPUBLISHER.ColumnHeadersHeight = 48
         Me.DGPUBLISHER.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn4, Me.chckBoxPublisher, Me.DataGridViewTextBoxColumn5, Me.Column5})
-        Me.DGPUBLISHER.ContextMenuStrip = Me.DGGENRECONTEXTMENU
+        Me.DGPUBLISHER.ContextMenuStrip = Me.DGMAINTENANCECONTEXTMENU
         DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(239, Byte), Integer))
         DataGridViewCellStyle12.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -1675,7 +1676,7 @@ Partial Class DashboardForm
         Me.DGCLASSIFICATIONS.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle14
         Me.DGCLASSIFICATIONS.ColumnHeadersHeight = 48
         Me.DGCLASSIFICATIONS.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn8, Me.chckBoxClassification, Me.DataGridViewTextBoxColumn9, Me.DataGridViewTextBoxColumn10})
-        Me.DGCLASSIFICATIONS.ContextMenuStrip = Me.DGGENRECONTEXTMENU
+        Me.DGCLASSIFICATIONS.ContextMenuStrip = Me.DGMAINTENANCECONTEXTMENU
         DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(239, Byte), Integer))
         DataGridViewCellStyle16.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -1752,6 +1753,284 @@ Partial Class DashboardForm
         Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
         Me.DataGridViewTextBoxColumn10.ReadOnly = True
         Me.DataGridViewTextBoxColumn10.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
+        'LanguagesTab
+        '
+        Me.LanguagesTab.Controls.Add(Me.TableLayoutPanel16)
+        Me.LanguagesTab.Location = New System.Drawing.Point(4, 52)
+        Me.LanguagesTab.Margin = New System.Windows.Forms.Padding(0)
+        Me.LanguagesTab.Name = "LanguagesTab"
+        Me.LanguagesTab.Size = New System.Drawing.Size(1445, 508)
+        Me.LanguagesTab.TabIndex = 7
+        Me.LanguagesTab.Text = "Languages"
+        Me.LanguagesTab.UseVisualStyleBackColor = True
+        '
+        'TableLayoutPanel16
+        '
+        Me.TableLayoutPanel16.ColumnCount = 1
+        Me.TableLayoutPanel16.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel16.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel16.Controls.Add(Me.Guna2Panel45, 0, 0)
+        Me.TableLayoutPanel16.Controls.Add(Me.Guna2Panel46, 0, 1)
+        Me.TableLayoutPanel16.Controls.Add(Me.Guna2Panel47, 0, 2)
+        Me.TableLayoutPanel16.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.TableLayoutPanel16.Location = New System.Drawing.Point(0, 0)
+        Me.TableLayoutPanel16.Margin = New System.Windows.Forms.Padding(0)
+        Me.TableLayoutPanel16.Name = "TableLayoutPanel16"
+        Me.TableLayoutPanel16.RowCount = 3
+        Me.TableLayoutPanel16.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60.0!))
+        Me.TableLayoutPanel16.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60.0!))
+        Me.TableLayoutPanel16.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel16.Size = New System.Drawing.Size(1445, 508)
+        Me.TableLayoutPanel16.TabIndex = 3
+        '
+        'Guna2Panel45
+        '
+        Me.Guna2Panel45.BackColor = System.Drawing.SystemColors.Window
+        Me.Guna2Panel45.Controls.Add(Me.TXTLANGUAGESEARCH)
+        Me.Guna2Panel45.Controls.Add(Me.BTNADDLANGUAGE)
+        Me.Guna2Panel45.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Guna2Panel45.Location = New System.Drawing.Point(0, 0)
+        Me.Guna2Panel45.Margin = New System.Windows.Forms.Padding(0)
+        Me.Guna2Panel45.Name = "Guna2Panel45"
+        Me.Guna2Panel45.Padding = New System.Windows.Forms.Padding(20, 0, 20, 0)
+        Me.Guna2Panel45.Size = New System.Drawing.Size(1445, 60)
+        Me.Guna2Panel45.TabIndex = 0
+        '
+        'TXTLANGUAGESEARCH
+        '
+        Me.TXTLANGUAGESEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TXTLANGUAGESEARCH.BorderRadius = 4
+        Me.TXTLANGUAGESEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TXTLANGUAGESEARCH.DefaultText = ""
+        Me.TXTLANGUAGESEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TXTLANGUAGESEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TXTLANGUAGESEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTLANGUAGESEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTLANGUAGESEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTLANGUAGESEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.TXTLANGUAGESEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTLANGUAGESEARCH.IconRight = Global.LMS.My.Resources.Resources.search
+        Me.TXTLANGUAGESEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
+        Me.TXTLANGUAGESEARCH.Location = New System.Drawing.Point(1152, 10)
+        Me.TXTLANGUAGESEARCH.Margin = New System.Windows.Forms.Padding(0)
+        Me.TXTLANGUAGESEARCH.MaxLength = 8
+        Me.TXTLANGUAGESEARCH.Name = "TXTLANGUAGESEARCH"
+        Me.TXTLANGUAGESEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TXTLANGUAGESEARCH.PlaceholderText = "Search Languages"
+        Me.TXTLANGUAGESEARCH.SelectedText = ""
+        Me.TXTLANGUAGESEARCH.Size = New System.Drawing.Size(273, 40)
+        Me.TXTLANGUAGESEARCH.TabIndex = 6
+        '
+        'BTNADDLANGUAGE
+        '
+        Me.BTNADDLANGUAGE.BorderRadius = 8
+        Me.BTNADDLANGUAGE.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.BTNADDLANGUAGE.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.BTNADDLANGUAGE.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.BTNADDLANGUAGE.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTNADDLANGUAGE.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.BTNADDLANGUAGE.ForeColor = System.Drawing.Color.White
+        Me.BTNADDLANGUAGE.Location = New System.Drawing.Point(20, 10)
+        Me.BTNADDLANGUAGE.Margin = New System.Windows.Forms.Padding(0)
+        Me.BTNADDLANGUAGE.Name = "BTNADDLANGUAGE"
+        Me.BTNADDLANGUAGE.Size = New System.Drawing.Size(141, 40)
+        Me.BTNADDLANGUAGE.TabIndex = 0
+        Me.BTNADDLANGUAGE.Text = "New Language"
+        '
+        'Guna2Panel46
+        '
+        Me.Guna2Panel46.BackColor = System.Drawing.SystemColors.Window
+        Me.Guna2Panel46.Controls.Add(Me.LBLLANGUAGENEXT)
+        Me.Guna2Panel46.Controls.Add(Me.Guna2HtmlLabel11)
+        Me.Guna2Panel46.Controls.Add(Me.LBLLANGUAGEPREV)
+        Me.Guna2Panel46.Controls.Add(Me.BTNLANGUAGEPREV)
+        Me.Guna2Panel46.Controls.Add(Me.BTNLANGUAGENEXT)
+        Me.Guna2Panel46.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Guna2Panel46.Location = New System.Drawing.Point(0, 60)
+        Me.Guna2Panel46.Margin = New System.Windows.Forms.Padding(0)
+        Me.Guna2Panel46.Name = "Guna2Panel46"
+        Me.Guna2Panel46.Size = New System.Drawing.Size(1445, 60)
+        Me.Guna2Panel46.TabIndex = 1
+        '
+        'LBLLANGUAGENEXT
+        '
+        Me.LBLLANGUAGENEXT.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LBLLANGUAGENEXT.BackColor = System.Drawing.Color.Transparent
+        Me.LBLLANGUAGENEXT.Font = New System.Drawing.Font("Segoe UI Semibold", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LBLLANGUAGENEXT.Location = New System.Drawing.Point(1316, 19)
+        Me.LBLLANGUAGENEXT.Margin = New System.Windows.Forms.Padding(0)
+        Me.LBLLANGUAGENEXT.Name = "LBLLANGUAGENEXT"
+        Me.LBLLANGUAGENEXT.Size = New System.Drawing.Size(17, 22)
+        Me.LBLLANGUAGENEXT.TabIndex = 5
+        Me.LBLLANGUAGENEXT.Text = "10"
+        '
+        'Guna2HtmlLabel11
+        '
+        Me.Guna2HtmlLabel11.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Guna2HtmlLabel11.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2HtmlLabel11.Font = New System.Drawing.Font("Segoe UI Semibold", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Guna2HtmlLabel11.Location = New System.Drawing.Point(1281, 19)
+        Me.Guna2HtmlLabel11.Margin = New System.Windows.Forms.Padding(0)
+        Me.Guna2HtmlLabel11.Name = "Guna2HtmlLabel11"
+        Me.Guna2HtmlLabel11.Size = New System.Drawing.Size(22, 22)
+        Me.Guna2HtmlLabel11.TabIndex = 4
+        Me.Guna2HtmlLabel11.Text = "OF"
+        '
+        'LBLLANGUAGEPREV
+        '
+        Me.LBLLANGUAGEPREV.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LBLLANGUAGEPREV.BackColor = System.Drawing.Color.Transparent
+        Me.LBLLANGUAGEPREV.Font = New System.Drawing.Font("Segoe UI Semibold", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LBLLANGUAGEPREV.Location = New System.Drawing.Point(1259, 19)
+        Me.LBLLANGUAGEPREV.Margin = New System.Windows.Forms.Padding(0)
+        Me.LBLLANGUAGEPREV.Name = "LBLLANGUAGEPREV"
+        Me.LBLLANGUAGEPREV.Size = New System.Drawing.Size(9, 22)
+        Me.LBLLANGUAGEPREV.TabIndex = 3
+        Me.LBLLANGUAGEPREV.Text = "1"
+        '
+        'BTNLANGUAGEPREV
+        '
+        Me.BTNLANGUAGEPREV.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.BTNLANGUAGEPREV.BorderRadius = 8
+        Me.BTNLANGUAGEPREV.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.BTNLANGUAGEPREV.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.BTNLANGUAGEPREV.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.BTNLANGUAGEPREV.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTNLANGUAGEPREV.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.BTNLANGUAGEPREV.ForeColor = System.Drawing.Color.White
+        Me.BTNLANGUAGEPREV.Location = New System.Drawing.Point(1167, 11)
+        Me.BTNLANGUAGEPREV.Margin = New System.Windows.Forms.Padding(0)
+        Me.BTNLANGUAGEPREV.Name = "BTNLANGUAGEPREV"
+        Me.BTNLANGUAGEPREV.Size = New System.Drawing.Size(79, 40)
+        Me.BTNLANGUAGEPREV.TabIndex = 2
+        Me.BTNLANGUAGEPREV.Text = "Previous"
+        '
+        'BTNLANGUAGENEXT
+        '
+        Me.BTNLANGUAGENEXT.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.BTNLANGUAGENEXT.BorderRadius = 8
+        Me.BTNLANGUAGENEXT.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.BTNLANGUAGENEXT.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.BTNLANGUAGENEXT.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.BTNLANGUAGENEXT.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTNLANGUAGENEXT.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.BTNLANGUAGENEXT.ForeColor = System.Drawing.Color.White
+        Me.BTNLANGUAGENEXT.Location = New System.Drawing.Point(1346, 11)
+        Me.BTNLANGUAGENEXT.Margin = New System.Windows.Forms.Padding(0)
+        Me.BTNLANGUAGENEXT.Name = "BTNLANGUAGENEXT"
+        Me.BTNLANGUAGENEXT.Size = New System.Drawing.Size(79, 40)
+        Me.BTNLANGUAGENEXT.TabIndex = 1
+        Me.BTNLANGUAGENEXT.Text = "Next"
+        '
+        'Guna2Panel47
+        '
+        Me.Guna2Panel47.BackColor = System.Drawing.SystemColors.Window
+        Me.Guna2Panel47.Controls.Add(Me.DGLANGUAGE)
+        Me.Guna2Panel47.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Guna2Panel47.Location = New System.Drawing.Point(0, 120)
+        Me.Guna2Panel47.Margin = New System.Windows.Forms.Padding(0)
+        Me.Guna2Panel47.Name = "Guna2Panel47"
+        Me.Guna2Panel47.Padding = New System.Windows.Forms.Padding(20, 0, 20, 20)
+        Me.Guna2Panel47.Size = New System.Drawing.Size(1445, 388)
+        Me.Guna2Panel47.TabIndex = 2
+        '
+        'DGLANGUAGE
+        '
+        Me.DGLANGUAGE.AllowUserToAddRows = False
+        Me.DGLANGUAGE.AllowUserToDeleteRows = False
+        Me.DGLANGUAGE.AllowUserToResizeColumns = False
+        Me.DGLANGUAGE.AllowUserToResizeRows = False
+        DataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(CType(CType(197, Byte), Integer), CType(CType(203, Byte), Integer), CType(CType(232, Byte), Integer))
+        Me.DGLANGUAGE.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle17
+        Me.DGLANGUAGE.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(CType(CType(63, Byte), Integer), CType(CType(81, Byte), Integer), CType(CType(181, Byte), Integer))
+        DataGridViewCellStyle18.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle18.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGLANGUAGE.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle18
+        Me.DGLANGUAGE.ColumnHeadersHeight = 48
+        Me.DGLANGUAGE.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewCheckBoxColumn1, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7})
+        Me.DGLANGUAGE.ContextMenuStrip = Me.DGMAINTENANCECONTEXTMENU
+        DataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle20.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(239, Byte), Integer))
+        DataGridViewCellStyle20.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle20.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(205, Byte), Integer))
+        DataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGLANGUAGE.DefaultCellStyle = DataGridViewCellStyle20
+        Me.DGLANGUAGE.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.DGLANGUAGE.GridColor = System.Drawing.Color.FromArgb(CType(CType(194, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(231, Byte), Integer))
+        Me.DGLANGUAGE.Location = New System.Drawing.Point(20, 0)
+        Me.DGLANGUAGE.Margin = New System.Windows.Forms.Padding(0)
+        Me.DGLANGUAGE.Name = "DGLANGUAGE"
+        Me.DGLANGUAGE.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        Me.DGLANGUAGE.RowHeadersVisible = False
+        Me.DGLANGUAGE.RowTemplate.Height = 48
+        Me.DGLANGUAGE.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGLANGUAGE.Size = New System.Drawing.Size(1405, 368)
+        Me.DGLANGUAGE.TabIndex = 0
+        Me.DGLANGUAGE.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Indigo
+        Me.DGLANGUAGE.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(197, Byte), Integer), CType(CType(203, Byte), Integer), CType(CType(232, Byte), Integer))
+        Me.DGLANGUAGE.ThemeStyle.AlternatingRowsStyle.Font = Nothing
+        Me.DGLANGUAGE.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty
+        Me.DGLANGUAGE.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty
+        Me.DGLANGUAGE.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty
+        Me.DGLANGUAGE.ThemeStyle.BackColor = System.Drawing.Color.White
+        Me.DGLANGUAGE.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(CType(CType(194, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(231, Byte), Integer))
+        Me.DGLANGUAGE.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(63, Byte), Integer), CType(CType(81, Byte), Integer), CType(CType(181, Byte), Integer))
+        Me.DGLANGUAGE.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        Me.DGLANGUAGE.ThemeStyle.HeaderStyle.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGLANGUAGE.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White
+        Me.DGLANGUAGE.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        Me.DGLANGUAGE.ThemeStyle.HeaderStyle.Height = 48
+        Me.DGLANGUAGE.ThemeStyle.ReadOnly = False
+        Me.DGLANGUAGE.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(239, Byte), Integer))
+        Me.DGLANGUAGE.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
+        Me.DGLANGUAGE.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGLANGUAGE.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Black
+        Me.DGLANGUAGE.ThemeStyle.RowsStyle.Height = 48
+        Me.DGLANGUAGE.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(205, Byte), Integer))
+        Me.DGLANGUAGE.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
+        '
+        'DataGridViewTextBoxColumn1
+        '
+        Me.DataGridViewTextBoxColumn1.DataPropertyName = "id"
+        Me.DataGridViewTextBoxColumn1.HeaderText = "id"
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.Visible = False
+        '
+        'DataGridViewCheckBoxColumn1
+        '
+        Me.DataGridViewCheckBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.DataGridViewCheckBoxColumn1.HeaderText = ""
+        Me.DataGridViewCheckBoxColumn1.Name = "DataGridViewCheckBoxColumn1"
+        Me.DataGridViewCheckBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewCheckBoxColumn1.Width = 40
+        '
+        'DataGridViewTextBoxColumn6
+        '
+        Me.DataGridViewTextBoxColumn6.DataPropertyName = "dewey_decimal"
+        Me.DataGridViewTextBoxColumn6.HeaderText = "Dewey Decimal"
+        Me.DataGridViewTextBoxColumn6.MaxInputLength = 50
+        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
+        Me.DataGridViewTextBoxColumn6.ReadOnly = True
+        Me.DataGridViewTextBoxColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
+        'DataGridViewTextBoxColumn7
+        '
+        Me.DataGridViewTextBoxColumn7.DataPropertyName = "classification"
+        DataGridViewCellStyle19.NullValue = "None"
+        Me.DataGridViewTextBoxColumn7.DefaultCellStyle = DataGridViewCellStyle19
+        Me.DataGridViewTextBoxColumn7.HeaderText = "Classification Name"
+        Me.DataGridViewTextBoxColumn7.MaxInputLength = 100
+        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
+        Me.DataGridViewTextBoxColumn7.ReadOnly = True
+        Me.DataGridViewTextBoxColumn7.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         '
         'BooksTab
         '
@@ -1971,7 +2250,7 @@ Partial Class DashboardForm
         Me.DGBOOKS.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle22
         Me.DGBOOKS.ColumnHeadersHeight = 48
         Me.DGBOOKS.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn12, Me.DataGridViewCheckBoxColumn3, Me.DataGridViewTextBoxColumn13, Me.DataGridViewTextBoxColumn14, Me.Column4, Me.DataGridViewTextBoxColumn15})
-        Me.DGBOOKS.ContextMenuStrip = Me.DGGENRECONTEXTMENU
+        Me.DGBOOKS.ContextMenuStrip = Me.DGMAINTENANCECONTEXTMENU
         DataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle24.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(239, Byte), Integer))
         DataGridViewCellStyle24.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -2261,7 +2540,7 @@ Partial Class DashboardForm
         Me.DGDONATOR.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle26
         Me.DGDONATOR.ColumnHeadersHeight = 48
         Me.DGDONATOR.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn16, Me.chckBoxDonator, Me.DataGridViewTextBoxColumn17})
-        Me.DGDONATOR.ContextMenuStrip = Me.DGGENRECONTEXTMENU
+        Me.DGDONATOR.ContextMenuStrip = Me.DGMAINTENANCECONTEXTMENU
         DataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle27.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(239, Byte), Integer))
         DataGridViewCellStyle27.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -2528,7 +2807,7 @@ Partial Class DashboardForm
         Me.DGSUPPLIER.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle29
         Me.DGSUPPLIER.ColumnHeadersHeight = 48
         Me.DGSUPPLIER.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn20, Me.chckBoxSupplier, Me.DataGridViewTextBoxColumn21})
-        Me.DGSUPPLIER.ContextMenuStrip = Me.DGGENRECONTEXTMENU
+        Me.DGSUPPLIER.ContextMenuStrip = Me.DGMAINTENANCECONTEXTMENU
         DataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle30.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(239, Byte), Integer))
         DataGridViewCellStyle30.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -2841,8 +3120,8 @@ Partial Class DashboardForm
         DataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DGYEARLEVEL.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle32
         Me.DGYEARLEVEL.ColumnHeadersHeight = 48
-        Me.DGYEARLEVEL.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn24, Me.DataGridViewCheckBoxColumn6, Me.DataGridViewTextBoxColumn25})
-        Me.DGYEARLEVEL.ContextMenuStrip = Me.DGGENRECONTEXTMENU
+        Me.DGYEARLEVEL.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn24, Me.DataGridViewCheckBoxColumn6, Me.DataGridViewTextBoxColumn25, Me.Column6})
+        Me.DGYEARLEVEL.ContextMenuStrip = Me.DGMAINTENANCECONTEXTMENU
         DataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle33.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(239, Byte), Integer))
         DataGridViewCellStyle33.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -2884,30 +3163,6 @@ Partial Class DashboardForm
         Me.DGYEARLEVEL.ThemeStyle.RowsStyle.Height = 48
         Me.DGYEARLEVEL.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(205, Byte), Integer))
         Me.DGYEARLEVEL.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
-        '
-        'DataGridViewTextBoxColumn24
-        '
-        Me.DataGridViewTextBoxColumn24.DataPropertyName = "id"
-        Me.DataGridViewTextBoxColumn24.HeaderText = "id"
-        Me.DataGridViewTextBoxColumn24.Name = "DataGridViewTextBoxColumn24"
-        Me.DataGridViewTextBoxColumn24.Visible = False
-        '
-        'DataGridViewCheckBoxColumn6
-        '
-        Me.DataGridViewCheckBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.DataGridViewCheckBoxColumn6.HeaderText = ""
-        Me.DataGridViewCheckBoxColumn6.Name = "DataGridViewCheckBoxColumn6"
-        Me.DataGridViewCheckBoxColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewCheckBoxColumn6.Width = 40
-        '
-        'DataGridViewTextBoxColumn25
-        '
-        Me.DataGridViewTextBoxColumn25.DataPropertyName = "name"
-        Me.DataGridViewTextBoxColumn25.HeaderText = "Year Level"
-        Me.DataGridViewTextBoxColumn25.MaxInputLength = 50
-        Me.DataGridViewTextBoxColumn25.Name = "DataGridViewTextBoxColumn25"
-        Me.DataGridViewTextBoxColumn25.ReadOnly = True
-        Me.DataGridViewTextBoxColumn25.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         '
         'SectionTab
         '
@@ -3109,7 +3364,7 @@ Partial Class DashboardForm
         Me.DGSECTIONS.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle35
         Me.DGSECTIONS.ColumnHeadersHeight = 48
         Me.DGSECTIONS.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn27, Me.DataGridViewCheckBoxColumn7, Me.DataGridViewTextBoxColumn28, Me.DataGridViewTextBoxColumn29})
-        Me.DGSECTIONS.ContextMenuStrip = Me.DGGENRECONTEXTMENU
+        Me.DGSECTIONS.ContextMenuStrip = Me.DGMAINTENANCECONTEXTMENU
         DataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle37.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(239, Byte), Integer))
         DataGridViewCellStyle37.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -3386,8 +3641,8 @@ Partial Class DashboardForm
         DataGridViewCellStyle39.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DGDEPARTMENT.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle39
         Me.DGDEPARTMENT.ColumnHeadersHeight = 48
-        Me.DGDEPARTMENT.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn43, Me.DataGridViewCheckBoxColumn11, Me.DataGridViewTextBoxColumn44})
-        Me.DGDEPARTMENT.ContextMenuStrip = Me.DGGENRECONTEXTMENU
+        Me.DGDEPARTMENT.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn43, Me.chckBoxDepartment, Me.DataGridViewTextBoxColumn44})
+        Me.DGDEPARTMENT.ContextMenuStrip = Me.DGMAINTENANCECONTEXTMENU
         DataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle40.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(239, Byte), Integer))
         DataGridViewCellStyle40.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -3429,30 +3684,6 @@ Partial Class DashboardForm
         Me.DGDEPARTMENT.ThemeStyle.RowsStyle.Height = 48
         Me.DGDEPARTMENT.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(205, Byte), Integer))
         Me.DGDEPARTMENT.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
-        '
-        'DataGridViewTextBoxColumn43
-        '
-        Me.DataGridViewTextBoxColumn43.DataPropertyName = "id"
-        Me.DataGridViewTextBoxColumn43.HeaderText = "id"
-        Me.DataGridViewTextBoxColumn43.Name = "DataGridViewTextBoxColumn43"
-        Me.DataGridViewTextBoxColumn43.Visible = False
-        '
-        'DataGridViewCheckBoxColumn11
-        '
-        Me.DataGridViewCheckBoxColumn11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.DataGridViewCheckBoxColumn11.HeaderText = ""
-        Me.DataGridViewCheckBoxColumn11.Name = "DataGridViewCheckBoxColumn11"
-        Me.DataGridViewCheckBoxColumn11.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewCheckBoxColumn11.Width = 40
-        '
-        'DataGridViewTextBoxColumn44
-        '
-        Me.DataGridViewTextBoxColumn44.DataPropertyName = "first_name"
-        Me.DataGridViewTextBoxColumn44.HeaderText = "Department Name"
-        Me.DataGridViewTextBoxColumn44.MaxInputLength = 50
-        Me.DataGridViewTextBoxColumn44.Name = "DataGridViewTextBoxColumn44"
-        Me.DataGridViewTextBoxColumn44.ReadOnly = True
-        Me.DataGridViewTextBoxColumn44.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         '
         'StudentsTab
         '
@@ -3672,7 +3903,7 @@ Partial Class DashboardForm
         Me.DGSTUDENT.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle42
         Me.DGSTUDENT.ColumnHeadersHeight = 48
         Me.DGSTUDENT.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn31, Me.DataGridViewCheckBoxColumn8, Me.DataGridViewTextBoxColumn34, Me.DataGridViewTextBoxColumn32, Me.DataGridViewTextBoxColumn33})
-        Me.DGSTUDENT.ContextMenuStrip = Me.DGGENRECONTEXTMENU
+        Me.DGSTUDENT.ContextMenuStrip = Me.DGMAINTENANCECONTEXTMENU
         DataGridViewCellStyle44.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle44.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(239, Byte), Integer))
         DataGridViewCellStyle44.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -3974,7 +4205,7 @@ Partial Class DashboardForm
         Me.DGFACULTY.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle46
         Me.DGFACULTY.ColumnHeadersHeight = 48
         Me.DGFACULTY.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn35, Me.DataGridViewCheckBoxColumn9, Me.DataGridViewTextBoxColumn37, Me.DataGridViewTextBoxColumn38})
-        Me.DGFACULTY.ContextMenuStrip = Me.DGGENRECONTEXTMENU
+        Me.DGFACULTY.ContextMenuStrip = Me.DGMAINTENANCECONTEXTMENU
         DataGridViewCellStyle48.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle48.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(239, Byte), Integer))
         DataGridViewCellStyle48.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -4249,7 +4480,7 @@ Partial Class DashboardForm
         Me.DGADMINISTRATOR.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle50
         Me.DGADMINISTRATOR.ColumnHeadersHeight = 48
         Me.DGADMINISTRATOR.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn39, Me.DataGridViewCheckBoxColumn10, Me.DataGridViewTextBoxColumn40, Me.DataGridViewTextBoxColumn41, Me.DataGridViewTextBoxColumn42})
-        Me.DGADMINISTRATOR.ContextMenuStrip = Me.DGGENRECONTEXTMENU
+        Me.DGADMINISTRATOR.ContextMenuStrip = Me.DGMAINTENANCECONTEXTMENU
         DataGridViewCellStyle52.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle52.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(239, Byte), Integer))
         DataGridViewCellStyle52.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -4846,283 +5077,59 @@ Partial Class DashboardForm
         Me.LBLPROFILENAME.TabIndex = 1
         Me.LBLPROFILENAME.Text = "Doe, John"
         '
-        'LanguagesTab
+        'DataGridViewTextBoxColumn43
         '
-        Me.LanguagesTab.Controls.Add(Me.TableLayoutPanel16)
-        Me.LanguagesTab.Location = New System.Drawing.Point(4, 52)
-        Me.LanguagesTab.Margin = New System.Windows.Forms.Padding(0)
-        Me.LanguagesTab.Name = "LanguagesTab"
-        Me.LanguagesTab.Size = New System.Drawing.Size(1445, 508)
-        Me.LanguagesTab.TabIndex = 7
-        Me.LanguagesTab.Text = "Languages"
-        Me.LanguagesTab.UseVisualStyleBackColor = True
+        Me.DataGridViewTextBoxColumn43.DataPropertyName = "id"
+        Me.DataGridViewTextBoxColumn43.HeaderText = "id"
+        Me.DataGridViewTextBoxColumn43.Name = "DataGridViewTextBoxColumn43"
+        Me.DataGridViewTextBoxColumn43.Visible = False
         '
-        'TableLayoutPanel16
+        'chckBoxDepartment
         '
-        Me.TableLayoutPanel16.ColumnCount = 1
-        Me.TableLayoutPanel16.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel16.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel16.Controls.Add(Me.Guna2Panel45, 0, 0)
-        Me.TableLayoutPanel16.Controls.Add(Me.Guna2Panel46, 0, 1)
-        Me.TableLayoutPanel16.Controls.Add(Me.Guna2Panel47, 0, 2)
-        Me.TableLayoutPanel16.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TableLayoutPanel16.Location = New System.Drawing.Point(0, 0)
-        Me.TableLayoutPanel16.Margin = New System.Windows.Forms.Padding(0)
-        Me.TableLayoutPanel16.Name = "TableLayoutPanel16"
-        Me.TableLayoutPanel16.RowCount = 3
-        Me.TableLayoutPanel16.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60.0!))
-        Me.TableLayoutPanel16.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60.0!))
-        Me.TableLayoutPanel16.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel16.Size = New System.Drawing.Size(1445, 508)
-        Me.TableLayoutPanel16.TabIndex = 3
+        Me.chckBoxDepartment.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.chckBoxDepartment.HeaderText = ""
+        Me.chckBoxDepartment.Name = "chckBoxDepartment"
+        Me.chckBoxDepartment.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.chckBoxDepartment.Width = 40
         '
-        'Guna2Panel45
+        'DataGridViewTextBoxColumn44
         '
-        Me.Guna2Panel45.BackColor = System.Drawing.SystemColors.Window
-        Me.Guna2Panel45.Controls.Add(Me.TXTLANGUAGESEARCH)
-        Me.Guna2Panel45.Controls.Add(Me.BTNADDLANGUAGE)
-        Me.Guna2Panel45.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Guna2Panel45.Location = New System.Drawing.Point(0, 0)
-        Me.Guna2Panel45.Margin = New System.Windows.Forms.Padding(0)
-        Me.Guna2Panel45.Name = "Guna2Panel45"
-        Me.Guna2Panel45.Padding = New System.Windows.Forms.Padding(20, 0, 20, 0)
-        Me.Guna2Panel45.Size = New System.Drawing.Size(1445, 60)
-        Me.Guna2Panel45.TabIndex = 0
+        Me.DataGridViewTextBoxColumn44.DataPropertyName = "department_name"
+        Me.DataGridViewTextBoxColumn44.HeaderText = "Department Name"
+        Me.DataGridViewTextBoxColumn44.MaxInputLength = 50
+        Me.DataGridViewTextBoxColumn44.Name = "DataGridViewTextBoxColumn44"
+        Me.DataGridViewTextBoxColumn44.ReadOnly = True
+        Me.DataGridViewTextBoxColumn44.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         '
-        'TXTLANGUAGESEARCH
+        'DataGridViewTextBoxColumn24
         '
-        Me.TXTLANGUAGESEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TXTLANGUAGESEARCH.BorderRadius = 4
-        Me.TXTLANGUAGESEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.TXTLANGUAGESEARCH.DefaultText = ""
-        Me.TXTLANGUAGESEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.TXTLANGUAGESEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.TXTLANGUAGESEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTLANGUAGESEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTLANGUAGESEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTLANGUAGESEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.TXTLANGUAGESEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTLANGUAGESEARCH.IconRight = Global.LMS.My.Resources.Resources.search
-        Me.TXTLANGUAGESEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
-        Me.TXTLANGUAGESEARCH.Location = New System.Drawing.Point(1152, 10)
-        Me.TXTLANGUAGESEARCH.Margin = New System.Windows.Forms.Padding(0)
-        Me.TXTLANGUAGESEARCH.MaxLength = 8
-        Me.TXTLANGUAGESEARCH.Name = "TXTLANGUAGESEARCH"
-        Me.TXTLANGUAGESEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXTLANGUAGESEARCH.PlaceholderText = "Search Languages"
-        Me.TXTLANGUAGESEARCH.SelectedText = ""
-        Me.TXTLANGUAGESEARCH.Size = New System.Drawing.Size(273, 40)
-        Me.TXTLANGUAGESEARCH.TabIndex = 6
+        Me.DataGridViewTextBoxColumn24.DataPropertyName = "id"
+        Me.DataGridViewTextBoxColumn24.HeaderText = "id"
+        Me.DataGridViewTextBoxColumn24.Name = "DataGridViewTextBoxColumn24"
+        Me.DataGridViewTextBoxColumn24.Visible = False
         '
-        'BTNADDLANGUAGE
+        'DataGridViewCheckBoxColumn6
         '
-        Me.BTNADDLANGUAGE.BorderRadius = 8
-        Me.BTNADDLANGUAGE.DisabledState.BorderColor = System.Drawing.Color.DarkGray
-        Me.BTNADDLANGUAGE.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
-        Me.BTNADDLANGUAGE.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
-        Me.BTNADDLANGUAGE.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.BTNADDLANGUAGE.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.BTNADDLANGUAGE.ForeColor = System.Drawing.Color.White
-        Me.BTNADDLANGUAGE.Location = New System.Drawing.Point(20, 10)
-        Me.BTNADDLANGUAGE.Margin = New System.Windows.Forms.Padding(0)
-        Me.BTNADDLANGUAGE.Name = "BTNADDLANGUAGE"
-        Me.BTNADDLANGUAGE.Size = New System.Drawing.Size(141, 40)
-        Me.BTNADDLANGUAGE.TabIndex = 0
-        Me.BTNADDLANGUAGE.Text = "New Language"
+        Me.DataGridViewCheckBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.DataGridViewCheckBoxColumn6.HeaderText = ""
+        Me.DataGridViewCheckBoxColumn6.Name = "DataGridViewCheckBoxColumn6"
+        Me.DataGridViewCheckBoxColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewCheckBoxColumn6.Width = 40
         '
-        'Guna2Panel46
+        'DataGridViewTextBoxColumn25
         '
-        Me.Guna2Panel46.BackColor = System.Drawing.SystemColors.Window
-        Me.Guna2Panel46.Controls.Add(Me.LBLLANGUAGENEXT)
-        Me.Guna2Panel46.Controls.Add(Me.Guna2HtmlLabel11)
-        Me.Guna2Panel46.Controls.Add(Me.LBLLANGUAGEPREV)
-        Me.Guna2Panel46.Controls.Add(Me.BTNLANGUAGEPREV)
-        Me.Guna2Panel46.Controls.Add(Me.BTNLANGUAGENEXT)
-        Me.Guna2Panel46.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Guna2Panel46.Location = New System.Drawing.Point(0, 60)
-        Me.Guna2Panel46.Margin = New System.Windows.Forms.Padding(0)
-        Me.Guna2Panel46.Name = "Guna2Panel46"
-        Me.Guna2Panel46.Size = New System.Drawing.Size(1445, 60)
-        Me.Guna2Panel46.TabIndex = 1
+        Me.DataGridViewTextBoxColumn25.DataPropertyName = "year_level"
+        Me.DataGridViewTextBoxColumn25.HeaderText = "Year Level"
+        Me.DataGridViewTextBoxColumn25.MaxInputLength = 50
+        Me.DataGridViewTextBoxColumn25.Name = "DataGridViewTextBoxColumn25"
+        Me.DataGridViewTextBoxColumn25.ReadOnly = True
+        Me.DataGridViewTextBoxColumn25.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         '
-        'LBLLANGUAGENEXT
+        'Column6
         '
-        Me.LBLLANGUAGENEXT.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.LBLLANGUAGENEXT.BackColor = System.Drawing.Color.Transparent
-        Me.LBLLANGUAGENEXT.Font = New System.Drawing.Font("Segoe UI Semibold", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LBLLANGUAGENEXT.Location = New System.Drawing.Point(1316, 19)
-        Me.LBLLANGUAGENEXT.Margin = New System.Windows.Forms.Padding(0)
-        Me.LBLLANGUAGENEXT.Name = "LBLLANGUAGENEXT"
-        Me.LBLLANGUAGENEXT.Size = New System.Drawing.Size(17, 22)
-        Me.LBLLANGUAGENEXT.TabIndex = 5
-        Me.LBLLANGUAGENEXT.Text = "10"
-        '
-        'Guna2HtmlLabel11
-        '
-        Me.Guna2HtmlLabel11.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Guna2HtmlLabel11.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2HtmlLabel11.Font = New System.Drawing.Font("Segoe UI Semibold", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Guna2HtmlLabel11.Location = New System.Drawing.Point(1281, 19)
-        Me.Guna2HtmlLabel11.Margin = New System.Windows.Forms.Padding(0)
-        Me.Guna2HtmlLabel11.Name = "Guna2HtmlLabel11"
-        Me.Guna2HtmlLabel11.Size = New System.Drawing.Size(22, 22)
-        Me.Guna2HtmlLabel11.TabIndex = 4
-        Me.Guna2HtmlLabel11.Text = "OF"
-        '
-        'LBLLANGUAGEPREV
-        '
-        Me.LBLLANGUAGEPREV.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.LBLLANGUAGEPREV.BackColor = System.Drawing.Color.Transparent
-        Me.LBLLANGUAGEPREV.Font = New System.Drawing.Font("Segoe UI Semibold", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LBLLANGUAGEPREV.Location = New System.Drawing.Point(1259, 19)
-        Me.LBLLANGUAGEPREV.Margin = New System.Windows.Forms.Padding(0)
-        Me.LBLLANGUAGEPREV.Name = "LBLLANGUAGEPREV"
-        Me.LBLLANGUAGEPREV.Size = New System.Drawing.Size(9, 22)
-        Me.LBLLANGUAGEPREV.TabIndex = 3
-        Me.LBLLANGUAGEPREV.Text = "1"
-        '
-        'BTNLANGUAGEPREV
-        '
-        Me.BTNLANGUAGEPREV.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BTNLANGUAGEPREV.BorderRadius = 8
-        Me.BTNLANGUAGEPREV.DisabledState.BorderColor = System.Drawing.Color.DarkGray
-        Me.BTNLANGUAGEPREV.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
-        Me.BTNLANGUAGEPREV.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
-        Me.BTNLANGUAGEPREV.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.BTNLANGUAGEPREV.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.BTNLANGUAGEPREV.ForeColor = System.Drawing.Color.White
-        Me.BTNLANGUAGEPREV.Location = New System.Drawing.Point(1167, 11)
-        Me.BTNLANGUAGEPREV.Margin = New System.Windows.Forms.Padding(0)
-        Me.BTNLANGUAGEPREV.Name = "BTNLANGUAGEPREV"
-        Me.BTNLANGUAGEPREV.Size = New System.Drawing.Size(79, 40)
-        Me.BTNLANGUAGEPREV.TabIndex = 2
-        Me.BTNLANGUAGEPREV.Text = "Previous"
-        '
-        'BTNLANGUAGENEXT
-        '
-        Me.BTNLANGUAGENEXT.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BTNLANGUAGENEXT.BorderRadius = 8
-        Me.BTNLANGUAGENEXT.DisabledState.BorderColor = System.Drawing.Color.DarkGray
-        Me.BTNLANGUAGENEXT.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
-        Me.BTNLANGUAGENEXT.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
-        Me.BTNLANGUAGENEXT.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.BTNLANGUAGENEXT.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.BTNLANGUAGENEXT.ForeColor = System.Drawing.Color.White
-        Me.BTNLANGUAGENEXT.Location = New System.Drawing.Point(1346, 11)
-        Me.BTNLANGUAGENEXT.Margin = New System.Windows.Forms.Padding(0)
-        Me.BTNLANGUAGENEXT.Name = "BTNLANGUAGENEXT"
-        Me.BTNLANGUAGENEXT.Size = New System.Drawing.Size(79, 40)
-        Me.BTNLANGUAGENEXT.TabIndex = 1
-        Me.BTNLANGUAGENEXT.Text = "Next"
-        '
-        'Guna2Panel47
-        '
-        Me.Guna2Panel47.BackColor = System.Drawing.SystemColors.Window
-        Me.Guna2Panel47.Controls.Add(Me.DGLANGUAGE)
-        Me.Guna2Panel47.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Guna2Panel47.Location = New System.Drawing.Point(0, 120)
-        Me.Guna2Panel47.Margin = New System.Windows.Forms.Padding(0)
-        Me.Guna2Panel47.Name = "Guna2Panel47"
-        Me.Guna2Panel47.Padding = New System.Windows.Forms.Padding(20, 0, 20, 20)
-        Me.Guna2Panel47.Size = New System.Drawing.Size(1445, 388)
-        Me.Guna2Panel47.TabIndex = 2
-        '
-        'DGLANGUAGE
-        '
-        Me.DGLANGUAGE.AllowUserToAddRows = False
-        Me.DGLANGUAGE.AllowUserToDeleteRows = False
-        Me.DGLANGUAGE.AllowUserToResizeColumns = False
-        Me.DGLANGUAGE.AllowUserToResizeRows = False
-        DataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(CType(CType(197, Byte), Integer), CType(CType(203, Byte), Integer), CType(CType(232, Byte), Integer))
-        Me.DGLANGUAGE.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle17
-        Me.DGLANGUAGE.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(CType(CType(63, Byte), Integer), CType(CType(81, Byte), Integer), CType(CType(181, Byte), Integer))
-        DataGridViewCellStyle18.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle18.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DGLANGUAGE.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle18
-        Me.DGLANGUAGE.ColumnHeadersHeight = 48
-        Me.DGLANGUAGE.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewCheckBoxColumn1, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7})
-        Me.DGLANGUAGE.ContextMenuStrip = Me.DGGENRECONTEXTMENU
-        DataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle20.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(239, Byte), Integer))
-        DataGridViewCellStyle20.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle20.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(205, Byte), Integer))
-        DataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DGLANGUAGE.DefaultCellStyle = DataGridViewCellStyle20
-        Me.DGLANGUAGE.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.DGLANGUAGE.GridColor = System.Drawing.Color.FromArgb(CType(CType(194, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(231, Byte), Integer))
-        Me.DGLANGUAGE.Location = New System.Drawing.Point(20, 0)
-        Me.DGLANGUAGE.Margin = New System.Windows.Forms.Padding(0)
-        Me.DGLANGUAGE.Name = "DGLANGUAGE"
-        Me.DGLANGUAGE.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        Me.DGLANGUAGE.RowHeadersVisible = False
-        Me.DGLANGUAGE.RowTemplate.Height = 48
-        Me.DGLANGUAGE.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DGLANGUAGE.Size = New System.Drawing.Size(1405, 368)
-        Me.DGLANGUAGE.TabIndex = 0
-        Me.DGLANGUAGE.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Indigo
-        Me.DGLANGUAGE.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(197, Byte), Integer), CType(CType(203, Byte), Integer), CType(CType(232, Byte), Integer))
-        Me.DGLANGUAGE.ThemeStyle.AlternatingRowsStyle.Font = Nothing
-        Me.DGLANGUAGE.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty
-        Me.DGLANGUAGE.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty
-        Me.DGLANGUAGE.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty
-        Me.DGLANGUAGE.ThemeStyle.BackColor = System.Drawing.Color.White
-        Me.DGLANGUAGE.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(CType(CType(194, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(231, Byte), Integer))
-        Me.DGLANGUAGE.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(63, Byte), Integer), CType(CType(81, Byte), Integer), CType(CType(181, Byte), Integer))
-        Me.DGLANGUAGE.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        Me.DGLANGUAGE.ThemeStyle.HeaderStyle.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DGLANGUAGE.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White
-        Me.DGLANGUAGE.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.DGLANGUAGE.ThemeStyle.HeaderStyle.Height = 48
-        Me.DGLANGUAGE.ThemeStyle.ReadOnly = False
-        Me.DGLANGUAGE.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(239, Byte), Integer))
-        Me.DGLANGUAGE.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
-        Me.DGLANGUAGE.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DGLANGUAGE.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Black
-        Me.DGLANGUAGE.ThemeStyle.RowsStyle.Height = 48
-        Me.DGLANGUAGE.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(205, Byte), Integer))
-        Me.DGLANGUAGE.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
-        '
-        'DataGridViewTextBoxColumn1
-        '
-        Me.DataGridViewTextBoxColumn1.DataPropertyName = "id"
-        Me.DataGridViewTextBoxColumn1.HeaderText = "id"
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.Visible = False
-        '
-        'DataGridViewCheckBoxColumn1
-        '
-        Me.DataGridViewCheckBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.DataGridViewCheckBoxColumn1.HeaderText = ""
-        Me.DataGridViewCheckBoxColumn1.Name = "DataGridViewCheckBoxColumn1"
-        Me.DataGridViewCheckBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewCheckBoxColumn1.Width = 40
-        '
-        'DataGridViewTextBoxColumn6
-        '
-        Me.DataGridViewTextBoxColumn6.DataPropertyName = "dewey_decimal"
-        Me.DataGridViewTextBoxColumn6.HeaderText = "Dewey Decimal"
-        Me.DataGridViewTextBoxColumn6.MaxInputLength = 50
-        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
-        Me.DataGridViewTextBoxColumn6.ReadOnly = True
-        Me.DataGridViewTextBoxColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        '
-        'DataGridViewTextBoxColumn7
-        '
-        Me.DataGridViewTextBoxColumn7.DataPropertyName = "classification"
-        DataGridViewCellStyle19.NullValue = "None"
-        Me.DataGridViewTextBoxColumn7.DefaultCellStyle = DataGridViewCellStyle19
-        Me.DataGridViewTextBoxColumn7.HeaderText = "Classification Name"
-        Me.DataGridViewTextBoxColumn7.MaxInputLength = 100
-        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
-        Me.DataGridViewTextBoxColumn7.ReadOnly = True
-        Me.DataGridViewTextBoxColumn7.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.Column6.DataPropertyName = "department_name"
+        Me.Column6.HeaderText = "Department"
+        Me.Column6.Name = "Column6"
         '
         'DashboardForm
         '
@@ -5149,7 +5156,7 @@ Partial Class DashboardForm
         Me.Guna2Panel4.PerformLayout()
         Me.Guna2Panel5.ResumeLayout(False)
         CType(Me.DGGENRE, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.DGGENRECONTEXTMENU.ResumeLayout(False)
+        Me.DGMAINTENANCECONTEXTMENU.ResumeLayout(False)
         Me.AuthorTab.ResumeLayout(False)
         Me.TableLayoutPanel3.ResumeLayout(False)
         Me.Guna2Panel7.ResumeLayout(False)
@@ -5171,6 +5178,13 @@ Partial Class DashboardForm
         Me.Guna2Panel14.PerformLayout()
         Me.Guna2Panel15.ResumeLayout(False)
         CType(Me.DGCLASSIFICATIONS, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.LanguagesTab.ResumeLayout(False)
+        Me.TableLayoutPanel16.ResumeLayout(False)
+        Me.Guna2Panel45.ResumeLayout(False)
+        Me.Guna2Panel46.ResumeLayout(False)
+        Me.Guna2Panel46.PerformLayout()
+        Me.Guna2Panel47.ResumeLayout(False)
+        CType(Me.DGLANGUAGE, System.ComponentModel.ISupportInitialize).EndInit()
         Me.BooksTab.ResumeLayout(False)
         Me.TableLayoutPanel6.ResumeLayout(False)
         Me.Guna2Panel16.ResumeLayout(False)
@@ -5251,13 +5265,6 @@ Partial Class DashboardForm
         Me.Guna2Panel1.ResumeLayout(False)
         Me.Guna2Panel2.ResumeLayout(False)
         Me.Guna2Panel2.PerformLayout()
-        Me.LanguagesTab.ResumeLayout(False)
-        Me.TableLayoutPanel16.ResumeLayout(False)
-        Me.Guna2Panel45.ResumeLayout(False)
-        Me.Guna2Panel46.ResumeLayout(False)
-        Me.Guna2Panel46.PerformLayout()
-        Me.Guna2Panel47.ResumeLayout(False)
-        CType(Me.DGLANGUAGE, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -5292,7 +5299,7 @@ Partial Class DashboardForm
     Friend WithEvents LBLGENREPREV As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents BTNGENREPPREV As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents BTNGENREPNEXT As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents DGGENRECONTEXTMENU As Guna.UI2.WinForms.Guna2ContextMenuStrip
+    Friend WithEvents DGMAINTENANCECONTEXTMENU As Guna.UI2.WinForms.Guna2ContextMenuStrip
     Friend WithEvents SelectAllToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents RemoveToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents RemoveAllMenuItem As ToolStripMenuItem
@@ -5483,16 +5490,10 @@ Partial Class DashboardForm
     Friend WithEvents DataGridViewTextBoxColumn14 As DataGridViewTextBoxColumn
     Friend WithEvents Column4 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn15 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn24 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewCheckBoxColumn6 As DataGridViewCheckBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn25 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn27 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewCheckBoxColumn7 As DataGridViewCheckBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn28 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn29 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn43 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewCheckBoxColumn11 As DataGridViewCheckBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn44 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn39 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewCheckBoxColumn10 As DataGridViewCheckBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn40 As DataGridViewTextBoxColumn
@@ -5553,4 +5554,11 @@ Partial Class DashboardForm
     Friend WithEvents DataGridViewCheckBoxColumn1 As DataGridViewCheckBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn43 As DataGridViewTextBoxColumn
+    Friend WithEvents chckBoxDepartment As DataGridViewCheckBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn44 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn24 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewCheckBoxColumn6 As DataGridViewCheckBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn25 As DataGridViewTextBoxColumn
+    Friend WithEvents Column6 As DataGridViewTextBoxColumn
 End Class
