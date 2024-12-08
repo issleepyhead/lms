@@ -22,6 +22,7 @@ Partial Class LanguageDialog
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.Guna2HtmlLabel2 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.TXTLANGUAGE = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2HtmlLabel4 = New Guna.UI2.WinForms.Guna2HtmlLabel()
@@ -29,6 +30,8 @@ Partial Class LanguageDialog
         Me.TXTLANGUAGECODE = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2HtmlLabel3 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.BTNSAVE = New Guna.UI2.WinForms.Guna2Button()
+        Me.errProvider = New System.Windows.Forms.ErrorProvider(Me.components)
+        CType(Me.errProvider, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Guna2HtmlLabel2
@@ -36,7 +39,7 @@ Partial Class LanguageDialog
         Me.Guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent
         Me.Guna2HtmlLabel2.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Guna2HtmlLabel2.ForeColor = System.Drawing.Color.Red
-        Me.Guna2HtmlLabel2.Location = New System.Drawing.Point(98, 20)
+        Me.Guna2HtmlLabel2.Location = New System.Drawing.Point(98, 17)
         Me.Guna2HtmlLabel2.Margin = New System.Windows.Forms.Padding(0)
         Me.Guna2HtmlLabel2.Name = "Guna2HtmlLabel2"
         Me.Guna2HtmlLabel2.Size = New System.Drawing.Size(10, 23)
@@ -69,7 +72,7 @@ Partial Class LanguageDialog
         '
         Me.Guna2HtmlLabel4.BackColor = System.Drawing.Color.Transparent
         Me.Guna2HtmlLabel4.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Guna2HtmlLabel4.Location = New System.Drawing.Point(20, 20)
+        Me.Guna2HtmlLabel4.Location = New System.Drawing.Point(20, 17)
         Me.Guna2HtmlLabel4.Margin = New System.Windows.Forms.Padding(0)
         Me.Guna2HtmlLabel4.Name = "Guna2HtmlLabel4"
         Me.Guna2HtmlLabel4.Size = New System.Drawing.Size(78, 23)
@@ -81,7 +84,7 @@ Partial Class LanguageDialog
         Me.Guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent
         Me.Guna2HtmlLabel1.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Guna2HtmlLabel1.ForeColor = System.Drawing.Color.Red
-        Me.Guna2HtmlLabel1.Location = New System.Drawing.Point(141, 106)
+        Me.Guna2HtmlLabel1.Location = New System.Drawing.Point(141, 102)
         Me.Guna2HtmlLabel1.Margin = New System.Windows.Forms.Padding(0)
         Me.Guna2HtmlLabel1.Name = "Guna2HtmlLabel1"
         Me.Guna2HtmlLabel1.Size = New System.Drawing.Size(10, 23)
@@ -114,7 +117,7 @@ Partial Class LanguageDialog
         '
         Me.Guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent
         Me.Guna2HtmlLabel3.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Guna2HtmlLabel3.Location = New System.Drawing.Point(20, 106)
+        Me.Guna2HtmlLabel3.Location = New System.Drawing.Point(20, 102)
         Me.Guna2HtmlLabel3.Margin = New System.Windows.Forms.Padding(0)
         Me.Guna2HtmlLabel3.Name = "Guna2HtmlLabel3"
         Me.Guna2HtmlLabel3.Size = New System.Drawing.Size(121, 23)
@@ -131,17 +134,22 @@ Partial Class LanguageDialog
         Me.BTNSAVE.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
         Me.BTNSAVE.Font = New System.Drawing.Font("Segoe UI", 12.0!)
         Me.BTNSAVE.ForeColor = System.Drawing.Color.White
-        Me.BTNSAVE.Location = New System.Drawing.Point(195, 199)
+        Me.BTNSAVE.Location = New System.Drawing.Point(195, 195)
         Me.BTNSAVE.Name = "BTNSAVE"
         Me.BTNSAVE.Size = New System.Drawing.Size(128, 48)
         Me.BTNSAVE.TabIndex = 22
         Me.BTNSAVE.Text = "Save"
         '
+        'errProvider
+        '
+        Me.errProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink
+        Me.errProvider.ContainerControl = Me
+        '
         'LanguageDialog
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(348, 270)
+        Me.ClientSize = New System.Drawing.Size(348, 266)
         Me.Controls.Add(Me.BTNSAVE)
         Me.Controls.Add(Me.Guna2HtmlLabel1)
         Me.Controls.Add(Me.TXTLANGUAGECODE)
@@ -157,6 +165,7 @@ Partial Class LanguageDialog
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Language Form"
+        CType(Me.errProvider, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -169,4 +178,5 @@ Partial Class LanguageDialog
     Friend WithEvents TXTLANGUAGECODE As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Guna2HtmlLabel3 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents BTNSAVE As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents errProvider As ErrorProvider
 End Class

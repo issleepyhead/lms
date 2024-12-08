@@ -49,7 +49,7 @@ Public Class SupplierDialog
         Close()
     End Sub
 
-    Private Sub GenreDialog_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub SupplierDialog_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If Not IsNothing(_data) Then
             TXTNAME.Text = _data.Item("name")
             TXTADDRESS.Text = If(IsDBNull(_data.Item("address")), Nothing, _data.Item("address"))

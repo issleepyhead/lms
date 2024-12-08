@@ -39,7 +39,7 @@ Public Class GenreDialog
                 Exit Sub
             End If
         Else
-            If BaseMaintenance.Update(QueryTableType.PUBLISHER_QUERY_TABLE, data) Then
+            If BaseMaintenance.Update(QueryTableType.GENRE_QUERY_TABLE, data) Then
                 MessageBox.Show("Genre has been updated successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
                 MessageBox.Show("Failed updating the genre.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)

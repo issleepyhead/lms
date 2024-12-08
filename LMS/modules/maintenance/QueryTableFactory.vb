@@ -29,15 +29,15 @@
                 }
             Case QueryTableType.PUBLISHER_QUERY_TABLE
                 Return New MaintenanceQueries With {
-                    .ADD_QUERY = "INSERT INTO tblpublishers (publisher_name, address) VALUES (@name, @address)",
+                    .ADD_QUERY = "INSERT INTO tblpublishers (publisher_name) VALUES (@name)",
                     .DELETE_QUERY = "DELETE FROM tblpublishers WHERE id = @id",
-                    .EXISTS_QUERY_WITH_ID = "SELECT COUNT(*) FROM tblpublishers WHERE LOWER(publisher_name) = LOWER(@name) AND LOWER(address) = LOWER(@address) AND id != @id",
-                    .EXISTS_QUERY_NO_ID = "SELECT COUNT(*) FROM tblpublishers WHERE LOWER(publisher_name) = LOWER(@name) AND LOWER(address) = LOWER(@address)",
+                    .EXISTS_QUERY_WITH_ID = "SELECT COUNT(*) FROM tblpublishers WHERE LOWER(publisher_name) = LOWER(@name) AND id != @id",
+                    .EXISTS_QUERY_NO_ID = "SELECT COUNT(*) FROM tblpublishers WHERE LOWER(publisher_name) = LOWER(@name)",
                     .FETCH_TOTAL_COUNT_QUERY = "SELECT COUNT(*) FROM tblpublishers",
-                    .FETCH_LIMIT_QUERY = "SELECT id, publisher_name, address FROM tblpublishers ORDER BY publisher_name ASC LIMIT @page, 30;",
+                    .FETCH_LIMIT_QUERY = "SELECT id, publisher_name FROM tblpublishers ORDER BY publisher_name ASC LIMIT @page, 30;",
                     .FETCH_TOTAL_COUNT_QUERY_SEARCH = "SELECT COUNT(*) FROM tblpublishers WHERE publisher_name LIKE @search",
-                    .FETCH_LIMIT_QUERY_SEARCH = "SELET id, publisher_name, address FROM tblpublishers WHEHRE publisher_name LIKE @search ORDER BY publisher_name ASC LIMIT @page, 30",
-                    .UPDATE_QUERY = "UPDATE tblpublishers SET publisher_name = @name, address = @address WHERE id = @id"
+                    .FETCH_LIMIT_QUERY_SEARCH = "SELECT id, publisher_name FROM tblpublishers WHERE publisher_name LIKE @search ORDER BY publisher_name ASC LIMIT @page, 30",
+                    .UPDATE_QUERY = "UPDATE tblpublishers SET publisher_name = @name WHERE id = @id"
                 }
             Case QueryTableType.CLASSIFICATION_QUERY_TABLE
                 Return New MaintenanceQueries With {
@@ -48,19 +48,19 @@
                     .FETCH_TOTAL_COUNT_QUERY = "SELECT COUNT(*) FROM tblclassifications",
                     .FETCH_LIMIT_QUERY = "SELECT id, classification, dewey_decimal FROM tblclassifications ORDER BY dewey_decimal ASC LIMIT @page, 30;",
                     .FETCH_TOTAL_COUNT_QUERY_SEARCH = "SELECT COUNT(*) FROM tblclassifications WHERE dewey_decimal LIKE @search OR classification LIKE @search",
-                    .FETCH_LIMIT_QUERY_SEARCH = "SELET id, classification, dewey_decimal FROM tblclassifications WHEHRE dewey_decimal LIKE @search OR classification LIKE @search ORDER BY dewey_decimal ASC LIMIT @page, 30",
+                    .FETCH_LIMIT_QUERY_SEARCH = "SELECT id, classification, dewey_decimal FROM tblclassifications WHERE dewey_decimal LIKE @search OR classification LIKE @search ORDER BY dewey_decimal ASC LIMIT @page, 30",
                     .UPDATE_QUERY = "UPDATE tblclassifications SET classification = @classification, dewey_decimal = @dewey_no WHERE id = @id"
                 }
             Case QueryTableType.DONATOR_QUERY_TABLE
                 Return New MaintenanceQueries With {
                     .ADD_QUERY = "INSERT INTO tbldonators (name, address) VALUES (@name, @address)",
                     .DELETE_QUERY = "DELETE FROM tbldonators WHERE id = @id",
-                    .EXISTS_QUERY_WITH_ID = "SELECT COUNT(*) FROM tbldonators WHERE LOWER(name) = LOWER(@name) OR LOWER(address) = LOWER(@address) AND id != @id",
+                    .EXISTS_QUERY_WITH_ID = "SELECT COUNT(*) FROM tbldonators WHERE LOWER(name) = LOWER(@name) AND LOWER(address) = LOWER(@address) AND id != @id",
                     .EXISTS_QUERY_NO_ID = "SELECT COUNT(*) FROM tbldonators WHERE LOWER(name) = LOWER(@name) AND LOWER(address) = LOWER(@address)",
                     .FETCH_TOTAL_COUNT_QUERY = "SELECT COUNT(*) FROM tbldonators",
                     .FETCH_LIMIT_QUERY = "SELECT id, name, address FROM tbldonators ORDER BY name ASC LIMIT @page, 30;",
                     .FETCH_TOTAL_COUNT_QUERY_SEARCH = "SELECT COUNT(*) FROM tbldonators WHERE name LIKE @search",
-                    .FETCH_LIMIT_QUERY_SEARCH = "SELET id, name, address FROM tbldonators WHEHRE name LIKE @search ORDER BY name ASC LIMIT @page, 30",
+                    .FETCH_LIMIT_QUERY_SEARCH = "SELECT id, name, address FROM tbldonators WHERE name LIKE @search ORDER BY name ASC LIMIT @page, 30",
                     .UPDATE_QUERY = "UPDATE tbldonators SET name = @name, address = @address WHERE id = @id"
                 }
             Case QueryTableType.SUPPLIER_QUERY_TABLE
@@ -72,7 +72,7 @@
                     .FETCH_TOTAL_COUNT_QUERY = "SELECT COUNT(*) FROM tblsuppliers",
                     .FETCH_LIMIT_QUERY = "SELECT id, name, address FROM tblsuppliers ORDER BY name ASC LIMIT @page, 30;",
                     .FETCH_TOTAL_COUNT_QUERY_SEARCH = "SELECT COUNT(*) FROM tblsuppliers WHERE name LIKE @search",
-                    .FETCH_LIMIT_QUERY_SEARCH = "SELET id, name, address FROM tblsuppliers WHEHRE name LIKE @search ORDER BY name ASC LIMIT @page, 30",
+                    .FETCH_LIMIT_QUERY_SEARCH = "SELECT id, name, address FROM tblsuppliers WHERE name LIKE @search ORDER BY name ASC LIMIT @page, 30",
                     .UPDATE_QUERY = "UPDATE tblsuppliers SET name = @name, address = @address WHERE id = @id"
                 }
             Case QueryTableType.DEPARTMENT_QUERY_TABLE
@@ -84,11 +84,23 @@
                     .FETCH_TOTAL_COUNT_QUERY = "SELECT COUNT(*) FROM tbldepartments",
                     .FETCH_LIMIT_QUERY = "SELECT id, department_name FROM tbldepartments ORDER BY department_name ASC LIMIT @page, 30;",
                     .FETCH_TOTAL_COUNT_QUERY_SEARCH = "SELECT COUNT(*) FROM tbldepartments WHERE department_name LIKE @search",
-                    .FETCH_LIMIT_QUERY_SEARCH = "SELET id, department_name FROM tbldepartments WHEHRE department_name LIKE @search ORDER BY department_name ASC LIMIT @page, 30",
+                    .FETCH_LIMIT_QUERY_SEARCH = "SELECT id, department_name FROM tbldepartments WHERE department_name LIKE @search ORDER BY department_name ASC LIMIT @page, 30",
                     .UPDATE_QUERY = "UPDATE tbldepartments SET department_name = @name WHERE id = @id",
                     .FETCH_ALL_QUERY = "SELECT id, department_name FROM tbldepartments"
                 }
             Case QueryTableType.SECTION_QUERY_TABLE
+                Return New MaintenanceQueries With {
+                    .ADD_QUERY = "INSERT INTO tblsections (name, year_id) VALUES (@name, @yid)",
+                    .DELETE_QUERY = "DELETE FROM tblsections WHERE id = @id",
+                    .EXISTS_QUERY_WITH_ID = "SELECT COUNT(*) FROM tblsections WHERE LOWER(name) = LOWER(@name) AND id != @id",
+                    .EXISTS_QUERY_NO_ID = "SELECT COUNT(*) FROM tblsections WHERE LOWER(name) = LOWER(@name)",
+                    .FETCH_TOTAL_COUNT_QUERY = "SELECT COUNT(*) FROM tblsections",
+                    .FETCH_LIMIT_QUERY = "SELECT s.id, s.name, s.year_id, y.year_level FROM tblsections s JOIN tblyearlevels y ON s.year_id = y.id ORDER BY name ASC LIMIT @page, 30;",
+                    .FETCH_TOTAL_COUNT_QUERY_SEARCH = "SELECT COUNT(*) FROM tblsections WHERE name LIKE @search",
+                    .FETCH_LIMIT_QUERY_SEARCH = "SELECT s.id, s.name, s.year_id, y.year_level FROM tblsections s JOIN tblyearlevels y ON s.year_id = y.id WHERE name LIKE @search ORDER BY name ASC LIMIT @page, 30",
+                    .UPDATE_QUERY = "UPDATE tblsections SET name = @name, year_id = @yid WHERE id = @id",
+                    .FETCH_ALL_QUERY = "SELECT s.id, s.name, s.year_id, y.year_level FROM tblsections s JOIN tblyearlevel y ON s.year_id = y.id WHERE year_id = @yid"
+                }
             Case QueryTableType.YEARLEVEL_QUERY_TABLE
                 Return New MaintenanceQueries With {
                     .ADD_QUERY = "INSERT INTO tblyearlevels (year_level, department_id) VALUES (@name, @did)",
@@ -98,11 +110,22 @@
                     .FETCH_TOTAL_COUNT_QUERY = "SELECT COUNT(*) FROM tblyearlevels",
                     .FETCH_LIMIT_QUERY = "SELECT y.id, y.year_level, d.department_name FROM tblyearlevels y JOIN tbldepartments d ON y.department_id = d.id ORDER BY year_level ASC LIMIT @page, 30;",
                     .FETCH_TOTAL_COUNT_QUERY_SEARCH = "SELECT COUNT(*) FROM tblyearlevels WHERE year_level LIKE @search",
-                    .FETCH_LIMIT_QUERY_SEARCH = "SELECT y.id, y.year_level, d.department_name FROM tblyearlevels y JOIN tbldepartments d ON y.department_id = d.id WHEHRE year_level LIKE @search ORDER BY year_level ASC LIMIT @page, 30",
+                    .FETCH_LIMIT_QUERY_SEARCH = "SELECT y.id, y.year_level, d.department_name FROM tblyearlevels y JOIN tbldepartments d ON y.department_id = d.id WHERE year_level LIKE @search ORDER BY year_level ASC LIMIT @page, 30",
                     .UPDATE_QUERY = "UPDATE tblyearlevels SET year_level = @name, department_id = @did WHERE id = @id",
                     .FETCH_ALL_QUERY = "SELECT id, year_level FROM tblyearlevels WHERE department_id = @did"
                 }
-
+            Case QueryTableType.LANGUAGES_QUERY_TABLE
+                Return New MaintenanceQueries With {
+                    .ADD_QUERY = "INSERT INTO tbllanguages (language, code) VALUES (@language, @code)",
+                    .DELETE_QUERY = "DELETE FROM tbllanguages WHERE id = @id",
+                    .EXISTS_QUERY_WITH_ID = "SELECT COUNT(*) FROM tbllanguages WHERE LOWER(language) = LOWER(@language) AND code = @code AND id != @id",
+                    .EXISTS_QUERY_NO_ID = "SELECT COUNT(*) FROM tbllanguages WHERE LOWER(language) = LOWER(@language) AND code = @code",
+                    .FETCH_TOTAL_COUNT_QUERY = "SELECT COUNT(*) FROM tbllanguages",
+                    .FETCH_LIMIT_QUERY = "SELECT language, code, id FROM tbllanguages ORDER BY language ASC LIMIT @page, 30;",
+                    .FETCH_LIMIT_QUERY_SEARCH = "SELECT language, code, id FROM tbllanguages WHERE language LIKE @search OR code LIKE @search ORDER BY name ASC LIMIT @page, 30;",
+                    .FETCH_TOTAL_COUNT_QUERY_SEARCH = "SELECT COUNT(*) FROM tbllanguages WHERE language LIKE @search OR code LIKE @search",
+                    .UPDATE_QUERY = "UPDATE tbllanguages SET language = @language, code = @code WHERE id = @id"
+                }
         End Select
         Return New MaintenanceQueries
     End Function

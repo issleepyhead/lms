@@ -78,7 +78,7 @@ Module Connection
                         cmd.Parameters.Clear()
                         With cmd.Parameters
                             For Each kv As KeyValuePair(Of String, String) In param
-                                .AddWithValue(kv.Key, kv.Value)
+                                .AddWithValue(kv.Key, If(String.IsNullOrEmpty(kv.Value), DBNull.Value, kv.Value))
                             Next
                         End With
                         cmd.ExecuteNonQuery()
@@ -106,7 +106,7 @@ Module Connection
                 If Not IsNothing(params) Then
                     For Each item In params
                         With cmd.Parameters
-                            .AddWithValue(item.Key, item.Value)
+                            .AddWithValue(item.Key, If(String.IsNullOrEmpty(item.Value), DBNull.Value, item.Value))
                         End With
                     Next
                 End If
@@ -125,7 +125,7 @@ Module Connection
                 If Not IsNothing(params) Then
                     For Each item In params
                         With cmd.Parameters
-                            .AddWithValue(item.Key, item.Value)
+                            .AddWithValue(item.Key, If(String.IsNullOrEmpty(item.Value), DBNull.Value, item.Value))
                         End With
                     Next
                 End If

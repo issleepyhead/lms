@@ -1,35 +1,11 @@
 ﻿Public Class DashboardForm
     Private Sub BTNLOGOUT_Click(sender As Object, e As EventArgs) Handles BTNLOGOUT.Click
+        ' TODO FIX THIS
         My.Settings.user_id = 0
         My.Settings.Save()
         Using Me
             LogInForm.Show()
         End Using
-    End Sub
-    Private Sub DashboardForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        DGGENRE.DataSource = GenreMaintenance.Fetch()
-        LBLGENREPREV.Text = GenreMaintenance.PPrev
-        LBLGENRENEXT.Text = GenreMaintenance.PMAX
-
-        DGAUTHORS.DataSource = AuthorMaintenance.Fetch()
-        LBLAUTHORPREV.Text = AuthorMaintenance.PPrev
-        LBLAUTHORNEXT.Text = AuthorMaintenance.PMAX
-
-        DGPUBLISHER.DataSource = BaseMaintenance.Fetch(QueryTableType.PUBLISHER_QUERY_TABLE)
-        LBLPUBLISHERPREV.Text = BaseMaintenance.PPrev
-        LBLPUBLISHERNEXT.Text = BaseMaintenance.PMAX
-
-        DGCLASSIFICATIONS.DataSource = BaseMaintenance.Fetch(QueryTableType.CLASSIFICATION_QUERY_TABLE)
-        LBLCLASSIFICATIONNEXT.Text = BaseMaintenance.PMAX
-        LBLCLASSIFICATIONPREV.Text = BaseMaintenance.PPrev
-
-        DGDONATOR.DataSource = BaseMaintenance.Fetch(QueryTableType.DONATOR_QUERY_TABLE)
-        LBLDONATORNEXT.Text = BaseMaintenance.PMAX
-        LBLDONATORRPREV.Text = BaseMaintenance.PPrev
-
-        DGSUPPLIER.DataSource = BaseMaintenance.Fetch(QueryTableType.SUPPLIER_QUERY_TABLE)
-        LBLSUPPLIERNEXT.Text = BaseMaintenance.PMAX
-        LBLSUPPLIERPREV.Text = BaseMaintenance.PPrev
     End Sub
 
 #Region "Genre Module"
@@ -37,24 +13,24 @@
         Using dialog = GenreDialog
             dialog.ShowDialog()
         End Using
-        DGGENRE.DataSource = GenreMaintenance.Fetch
+        DGGENRE.DataSource = BaseMaintenance.Fetch(QueryTableType.GENRE_QUERY_TABLE)
         LBLGENRENEXT.Text = GenreMaintenance.PMAX
         LBLGENREPREV.Text = GenreMaintenance.PPrev
     End Sub
 
     Private Sub BTNGENREPNEXT_Click(sender As Object, e As EventArgs) Handles BTNGENREPNEXT.Click
-        If GenreMaintenance.PPrev < GenreMaintenance.PMAX Then
+        If BaseMaintenance.PPrev < BaseMaintenance.PMAX Then
             GenreMaintenance.PPrev += 1
-            LBLGENREPREV.Text = GenreMaintenance.PPrev
-            DGGENRE.DataSource = GenreMaintenance.Fetch()
+            LBLGENREPREV.Text = BaseMaintenance.PPrev
+            DGGENRE.DataSource = BaseMaintenance.Fetch(QueryTableType.GENRE_QUERY_TABLE)
         End If
     End Sub
 
     Private Sub BTNGENREPPREV_Click(sender As Object, e As EventArgs) Handles BTNGENREPPREV.Click
-        If GenreMaintenance.PPrev > 1 Then
-            GenreMaintenance.PPrev -= 1
-            LBLGENREPREV.Text = GenreMaintenance.PPrev
-            DGGENRE.DataSource = GenreMaintenance.Fetch()
+        If BaseMaintenance.PPrev > 1 Then
+            BaseMaintenance.PPrev -= 1
+            LBLGENREPREV.Text = BaseMaintenance.PPrev
+            DGGENRE.DataSource = BaseMaintenance.Fetch(QueryTableType.GENRE_QUERY_TABLE)
         End If
     End Sub
 
@@ -66,21 +42,23 @@
                     dialog.ShowDialog()
                 End Using
             End If
-            DGGENRE.DataSource = GenreMaintenance.Fetch
-            LBLGENRENEXT.Text = GenreMaintenance.PMAX
-            LBLGENREPREV.Text = GenreMaintenance.PPrev
+            DGGENRE.DataSource = BaseMaintenance.Fetch(QueryTableType.GENRE_QUERY_TABLE)
+            LBLGENRENEXT.Text = BaseMaintenance.PMAX
+            LBLGENREPREV.Text = BaseMaintenance.PPrev
         End If
     End Sub
 
     Private Sub TXTGENRESEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTGENRESEARCH.TextChanged
-        If Not String.IsNullOrEmpty(TXTGENRESEARCH.Text) Then
-            DGGENRE.DataSource = GenreMaintenance.Search(TXTGENRESEARCH.Text)
-            LBLGENRENEXT.Text = GenreMaintenance.PMAX
-            LBLGENREPREV.Text = GenreMaintenance.PPrev
-        Else
-            DGGENRE.DataSource = GenreMaintenance.Fetch
-            LBLGENRENEXT.Text = GenreMaintenance.PMAX
-            LBLGENREPREV.Text = GenreMaintenance.PPrev
+        If MaintenancePanels.SelectedTab.Equals(GenresTab) Then
+            If Not String.IsNullOrEmpty(TXTGENRESEARCH.Text) Then
+                DGGENRE.DataSource = BaseMaintenance.Search(QueryTableType.GENRE_QUERY_TABLE, TXTGENRESEARCH.Text)
+                LBLGENRENEXT.Text = BaseMaintenance.PMAX
+                LBLGENREPREV.Text = BaseMaintenance.PPrev
+            Else
+                DGGENRE.DataSource = BaseMaintenance.Fetch(QueryTableType.GENRE_QUERY_TABLE)
+                LBLGENRENEXT.Text = BaseMaintenance.PMAX
+                LBLGENREPREV.Text = BaseMaintenance.PPrev
+            End If
         End If
     End Sub
 #End Region
@@ -90,16 +68,16 @@
         Using dialog = AuthorDialog
             dialog.ShowDialog()
         End Using
-        LBLGENRENEXT.Text = AuthorMaintenance.PMAX
-        LBLGENREPREV.Text = AuthorMaintenance.PPrev
-        DGAUTHORS.DataSource = AuthorMaintenance.Fetch()
+        LBLGENRENEXT.Text = BaseMaintenance.PMAX
+        LBLGENREPREV.Text = BaseMaintenance.PPrev
+        DGAUTHORS.DataSource = BaseMaintenance.Fetch(QueryTableType.AUTHOR_QUERY_TABLE)
     End Sub
 
     Private Sub BTNAUTHORPNEXT_Click(sender As Object, e As EventArgs) Handles BTNAUTHORNEXT.Click
-        If AuthorMaintenance.PPrev < AuthorMaintenance.PMAX Then
-            AuthorMaintenance.PPrev += 1
-            LBLGENREPREV.Text = AuthorMaintenance.PPrev
-            DGAUTHORS.DataSource = AuthorMaintenance.Fetch()
+        If BaseMaintenance.PPrev < BaseMaintenance.PMAX Then
+            BaseMaintenance.PPrev += 1
+            LBLGENREPREV.Text = BaseMaintenance.PPrev
+            DGAUTHORS.DataSource = BaseMaintenance.Fetch(QueryTableType.AUTHOR_QUERY_TABLE)
         End If
     End Sub
 
@@ -111,29 +89,31 @@
                     dialog.ShowDialog()
                 End Using
             End If
-            DGAUTHORS.DataSource = AuthorMaintenance.Fetch
-            LBLAUTHORNEXT.Text = AuthorMaintenance.PMAX
-            LBLAUTHORPREV.Text = AuthorMaintenance.PPrev
+            DGAUTHORS.DataSource = BaseMaintenance.Fetch(QueryTableType.AUTHOR_QUERY_TABLE)
+            LBLAUTHORNEXT.Text = BaseMaintenance.PMAX
+            LBLAUTHORPREV.Text = BaseMaintenance.PPrev
         End If
     End Sub
 
     Private Sub TXTAUTHORSEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTSEARCHAUTHOR.TextChanged
-        If Not String.IsNullOrEmpty(TXTGENRESEARCH.Text) Then
-            DGAUTHORS.DataSource = AuthorMaintenance.Search(TXTSEARCHAUTHOR.Text)
-            LBLAUTHORNEXT.Text = AuthorMaintenance.PMAX
-            LBLAUTHORPREV.Text = AuthorMaintenance.PPrev
-        Else
-            DGAUTHORS.DataSource = AuthorMaintenance.Fetch
-            LBLAUTHORNEXT.Text = AuthorMaintenance.PMAX
-            LBLAUTHORPREV.Text = AuthorMaintenance.PPrev
+        If MaintenancePanels.SelectedTab.Equals(AuthorTab) Then
+            If Not String.IsNullOrEmpty(TXTSEARCHAUTHOR.Text) Then
+                DGAUTHORS.DataSource = BaseMaintenance.Search(QueryTableType.AUTHOR_QUERY_TABLE, TXTSEARCHAUTHOR.Text)
+                LBLAUTHORNEXT.Text = BaseMaintenance.PMAX
+                LBLAUTHORPREV.Text = BaseMaintenance.PPrev
+            Else
+                DGAUTHORS.DataSource = BaseMaintenance.Fetch(QueryTableType.AUTHOR_QUERY_TABLE)
+                LBLAUTHORNEXT.Text = BaseMaintenance.PMAX
+                LBLAUTHORPREV.Text = BaseMaintenance.PPrev
+            End If
         End If
     End Sub
 
     Private Sub BTNAUTHORPREV_Click(sender As Object, e As EventArgs) Handles BTNAUTHORPREV.Click
-        If AuthorMaintenance.PPrev > 1 Then
-            AuthorMaintenance.PPrev -= 1
-            LBLAUTHORPREV.Text = AuthorMaintenance.PPrev
-            DGAUTHORS.DataSource = AuthorMaintenance.Fetch()
+        If BaseMaintenance.PPrev > 1 Then
+            BaseMaintenance.PPrev -= 1
+            LBLAUTHORPREV.Text = BaseMaintenance.PPrev
+            DGAUTHORS.DataSource = BaseMaintenance.Fetch(QueryTableType.AUTHOR_QUERY_TABLE)
         End If
     End Sub
 #End Region
@@ -147,6 +127,50 @@
         LBLPUBLISHERNEXT.Text = BaseMaintenance.PMAX
         LBLPUBLISHERPREV.Text = BaseMaintenance.PPrev
     End Sub
+
+    Private Sub BTNPUBLISHERNEXT_Click(sender As Object, e As EventArgs) Handles BTNPUBLISHERNEXT.Click
+        If BaseMaintenance.PPrev < BaseMaintenance.PMAX Then
+            BaseMaintenance.PPrev += 1
+            LBLPUBLISHERPREV.Text = BaseMaintenance.PPrev
+            DGPUBLISHER.DataSource = BaseMaintenance.Fetch(QueryTableType.PUBLISHER_QUERY_TABLE)
+        End If
+    End Sub
+
+    Private Sub BTNPUBLISHERPREV_Click(sender As Object, e As EventArgs) Handles BTNPUBLISHERPREV.Click
+        If BaseMaintenance.PPrev > 1 Then
+            BaseMaintenance.PPrev -= 1
+            LBLPUBLISHERPREV.Text = BaseMaintenance.PPrev
+            DGPUBLISHER.DataSource = BaseMaintenance.Fetch(QueryTableType.PUBLISHER_QUERY_TABLE)
+        End If
+    End Sub
+
+    Private Sub DGPUBLISHER_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGPUBLISHER.CellMouseClick
+        If e.ColumnIndex <> 0 Then
+            If DGPUBLISHER.SelectedRows.Count > 0 Then
+                Dim datarow As DataRowView = DGPUBLISHER.SelectedRows.Item(0).DataBoundItem
+                Using dialog As New PublisherDialog(datarow)
+                    dialog.ShowDialog()
+                End Using
+            End If
+            DGPUBLISHER.DataSource = BaseMaintenance.Fetch(QueryTableType.PUBLISHER_QUERY_TABLE)
+            LBLPUBLISHERNEXT.Text = BaseMaintenance.PMAX
+            LBLPUBLISHERPREV.Text = BaseMaintenance.PPrev
+        End If
+    End Sub
+
+    Private Sub TXTPUBLSHERSEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTPUBLISHERSEARCH.TextChanged
+        If MaintenancePanels.SelectedTab.Equals(PublishhersTab) Then
+            If Not String.IsNullOrEmpty(TXTPUBLISHERSEARCH.Text) Then
+                DGPUBLISHER.DataSource = BaseMaintenance.Search(QueryTableType.PUBLISHER_QUERY_TABLE, TXTPUBLISHERSEARCH.Text)
+                LBLPUBLISHERNEXT.Text = BaseMaintenance.PMAX
+                LBLPUBLISHERPREV.Text = BaseMaintenance.PPrev
+            Else
+                DGPUBLISHER.DataSource = BaseMaintenance.Fetch(QueryTableType.PUBLISHER_QUERY_TABLE)
+                LBLPUBLISHERNEXT.Text = BaseMaintenance.PMAX
+                LBLPUBLISHERPREV.Text = BaseMaintenance.PPrev
+            End If
+        End If
+    End Sub
 #End Region
 
 #Region "Classification Maintenance"
@@ -157,6 +181,50 @@
         DGCLASSIFICATIONS.DataSource = BaseMaintenance.Fetch(QueryTableType.CLASSIFICATION_QUERY_TABLE)
         LBLCLASSIFICATIONNEXT.Text = BaseMaintenance.PMAX
         LBLCLASSIFICATIONPREV.Text = BaseMaintenance.PPrev
+    End Sub
+
+    Private Sub BTNCLASSIFICATIONNEXT_Click(sender As Object, e As EventArgs) Handles BTNCLASSIFICATIONNEXT.Click
+        If BaseMaintenance.PPrev < BaseMaintenance.PMAX Then
+            BaseMaintenance.PPrev += 1
+            LBLCLASSIFICATIONPREV.Text = BaseMaintenance.PPrev
+            DGCLASSIFICATIONS.DataSource = BaseMaintenance.Fetch(QueryTableType.CLASSIFICATION_QUERY_TABLE)
+        End If
+    End Sub
+
+    Private Sub BTNCLASSIFICATIONPREV_Click(sender As Object, e As EventArgs) Handles BTNCLASSIFICATIONPREV.Click
+        If BaseMaintenance.PPrev > 1 Then
+            BaseMaintenance.PPrev -= 1
+            LBLCLASSIFICATIONPREV.Text = BaseMaintenance.PPrev
+            DGCLASSIFICATIONS.DataSource = BaseMaintenance.Fetch(QueryTableType.CLASSIFICATION_QUERY_TABLE)
+        End If
+    End Sub
+
+    Private Sub DGCLASSIFICATION_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGCLASSIFICATIONS.CellMouseClick
+        If e.ColumnIndex <> 0 Then
+            If DGCLASSIFICATIONS.SelectedRows.Count > 0 Then
+                Dim datarow As DataRowView = DGCLASSIFICATIONS.SelectedRows.Item(0).DataBoundItem
+                Using dialog As New ClassificationDialog(datarow)
+                    dialog.ShowDialog()
+                End Using
+            End If
+            DGCLASSIFICATIONS.DataSource = BaseMaintenance.Fetch(QueryTableType.CLASSIFICATION_QUERY_TABLE)
+            LBLCLASSIFICATIONNEXT.Text = BaseMaintenance.PMAX
+            LBLCLASSIFICATIONPREV.Text = BaseMaintenance.PPrev
+        End If
+    End Sub
+
+    Private Sub TXTCLASSIFICATIONSEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTCLASSIFICATIONSEARCH.TextChanged
+        If MaintenancePanels.SelectedTab.Equals(ClassificationTab) Then
+            If Not String.IsNullOrEmpty(TXTCLASSIFICATIONSEARCH.Text) Then
+                DGCLASSIFICATIONS.DataSource = BaseMaintenance.Search(QueryTableType.CLASSIFICATION_QUERY_TABLE, TXTCLASSIFICATIONSEARCH.Text)
+                LBLCLASSIFICATIONNEXT.Text = BaseMaintenance.PMAX
+                LBLCLASSIFICATIONPREV.Text = BaseMaintenance.PPrev
+            Else
+                DGCLASSIFICATIONS.DataSource = BaseMaintenance.Fetch(QueryTableType.CLASSIFICATION_QUERY_TABLE)
+                LBLCLASSIFICATIONNEXT.Text = BaseMaintenance.PMAX
+                LBLCLASSIFICATIONPREV.Text = BaseMaintenance.PPrev
+            End If
+        End If
     End Sub
 #End Region
 
@@ -169,6 +237,50 @@
         LBLDONATORNEXT.Text = BaseMaintenance.PMAX
         LBLDONATORRPREV.Text = BaseMaintenance.PPrev
     End Sub
+
+    Private Sub BTNDONATORNEXT_Click(sender As Object, e As EventArgs) Handles BTNDONATORNEXT.Click
+        If BaseMaintenance.PPrev < BaseMaintenance.PMAX Then
+            BaseMaintenance.PPrev += 1
+            LBLDONATORRPREV.Text = BaseMaintenance.PPrev
+            DGDONATOR.DataSource = BaseMaintenance.Fetch(QueryTableType.DONATOR_QUERY_TABLE)
+        End If
+    End Sub
+
+    Private Sub BTNDONATORPREV_Click(sender As Object, e As EventArgs) Handles BTNDONATORRPREV.Click
+        If BaseMaintenance.PPrev > 1 Then
+            BaseMaintenance.PPrev -= 1
+            LBLDONATORRPREV.Text = BaseMaintenance.PPrev
+            DGDONATOR.DataSource = BaseMaintenance.Fetch(QueryTableType.DONATOR_QUERY_TABLE)
+        End If
+    End Sub
+
+    Private Sub DGDONATOR_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGDONATOR.CellMouseClick
+        If e.ColumnIndex <> 0 Then
+            If DGDONATOR.SelectedRows.Count > 0 Then
+                Dim datarow As DataRowView = DGDONATOR.SelectedRows.Item(0).DataBoundItem
+                Using dialog As New DonatorDialog(datarow)
+                    dialog.ShowDialog()
+                End Using
+            End If
+            DGDONATOR.DataSource = BaseMaintenance.Fetch(QueryTableType.DONATOR_QUERY_TABLE)
+            LBLDONATORNEXT.Text = BaseMaintenance.PMAX
+            LBLDONATORRPREV.Text = BaseMaintenance.PPrev
+        End If
+    End Sub
+
+    Private Sub TXTDONATORSEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTDONATORSEARCH.TextChanged
+        If MaintenancePanels.SelectedTab.Equals(DonatorsTab) Then
+            If Not String.IsNullOrEmpty(TXTDONATORSEARCH.Text) Then
+                DGDONATOR.DataSource = BaseMaintenance.Search(QueryTableType.DONATOR_QUERY_TABLE, TXTDONATORSEARCH.Text)
+                LBLDONATORNEXT.Text = BaseMaintenance.PMAX
+                LBLDONATORRPREV.Text = BaseMaintenance.PPrev
+            Else
+                DGDONATOR.DataSource = BaseMaintenance.Fetch(QueryTableType.DONATOR_QUERY_TABLE)
+                LBLDONATORNEXT.Text = BaseMaintenance.PMAX
+                LBLDONATORRPREV.Text = BaseMaintenance.PPrev
+            End If
+        End If
+    End Sub
 #End Region
 
 #Region "Supplier Maintenance"
@@ -179,6 +291,50 @@
         DGSUPPLIER.DataSource = BaseMaintenance.Fetch(QueryTableType.SUPPLIER_QUERY_TABLE)
         LBLSUPPLIERNEXT.Text = BaseMaintenance.PMAX
         LBLSUPPLIERPREV.Text = BaseMaintenance.PPrev
+    End Sub
+
+    Private Sub BTNSUPPLIERNEXT_Click(sender As Object, e As EventArgs) Handles BTNSUPPLIERNEXT.Click
+        If BaseMaintenance.PPrev < BaseMaintenance.PMAX Then
+            BaseMaintenance.PPrev += 1
+            LBLSUPPLIERPREV.Text = BaseMaintenance.PPrev
+            DGSUPPLIER.DataSource = BaseMaintenance.Fetch(QueryTableType.SUPPLIER_QUERY_TABLE)
+        End If
+    End Sub
+
+    Private Sub BTNSUPPLIERPREV_Click(sender As Object, e As EventArgs) Handles BTNSUPPLIERPREV.Click
+        If BaseMaintenance.PPrev > 1 Then
+            BaseMaintenance.PPrev -= 1
+            LBLSUPPLIERPREV.Text = BaseMaintenance.PPrev
+            DGSUPPLIER.DataSource = BaseMaintenance.Fetch(QueryTableType.SUPPLIER_QUERY_TABLE)
+        End If
+    End Sub
+
+    Private Sub DGSUPPLIER_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGSUPPLIER.CellMouseClick
+        If e.ColumnIndex <> 0 Then
+            If DGSUPPLIER.SelectedRows.Count > 0 Then
+                Dim datarow As DataRowView = DGSUPPLIER.SelectedRows.Item(0).DataBoundItem
+                Using dialog As New SupplierDialog(datarow)
+                    dialog.ShowDialog()
+                End Using
+            End If
+            DGSUPPLIER.DataSource = BaseMaintenance.Fetch(QueryTableType.SUPPLIER_QUERY_TABLE)
+            LBLSUPPLIERNEXT.Text = BaseMaintenance.PMAX
+            LBLSUPPLIERPREV.Text = BaseMaintenance.PPrev
+        End If
+    End Sub
+
+    Private Sub TXTSUPPLIERSEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTSUPPLIERSEARCH.TextChanged
+        If MaintenancePanels.SelectedTab.Equals(SuppliersTab) Then
+            If Not String.IsNullOrEmpty(TXTSUPPLIERSEARCH.Text) Then
+                DGSUPPLIER.DataSource = BaseMaintenance.Search(QueryTableType.SUPPLIER_QUERY_TABLE, TXTSUPPLIERSEARCH.Text)
+                LBLSUPPLIERNEXT.Text = BaseMaintenance.PMAX
+                LBLSUPPLIERPREV.Text = BaseMaintenance.PPrev
+            Else
+                DGSUPPLIER.DataSource = BaseMaintenance.Fetch(QueryTableType.SUPPLIER_QUERY_TABLE)
+                LBLSUPPLIERNEXT.Text = BaseMaintenance.PMAX
+                LBLSUPPLIERPREV.Text = BaseMaintenance.PPrev
+            End If
+        End If
     End Sub
 #End Region
 
@@ -201,6 +357,17 @@
         DGYEARLEVEL.DataSource = BaseMaintenance.Fetch(QueryTableType.YEARLEVEL_QUERY_TABLE)
         LBLYEARLEVELNEXT.Text = BaseMaintenance.PMAX
         LBLYEARLEVELPREV.Text = BaseMaintenance.PPrev
+    End Sub
+#End Region
+
+#Region "Language Maintenance"
+    Private Sub BTNADDLANGUAGE_Click(sender As Object, e As EventArgs) Handles BTNADDLANGUAGE.Click
+        Using dialog = LanguageDialog
+            dialog.ShowDialog()
+        End Using
+        DGLANGUAGE.DataSource = BaseMaintenance.Fetch(QueryTableType.LANGUAGES_QUERY_TABLE)
+        LBLLANGUAGENEXT.Text = BaseMaintenance.PMAX
+        LBLLANGUAGEPREV.Text = BaseMaintenance.PPrev
     End Sub
 #End Region
 
@@ -351,6 +518,46 @@
 
             Case MaintenancePanels.SelectedTab.Equals(AuthorTab)
 
+        End Select
+    End Sub
+
+    Private Sub MaintenancePanels_SelectedIndexChanged(sender As Object, e As EventArgs) Handles MaintenancePanels.SelectedIndexChanged
+        Select Case True
+            Case MaintenancePanels.SelectedTab.Equals(GenresTab)
+                ' TO DO FIX THIS SHITS!
+                DGGENRE.DataSource = GenreMaintenance.Fetch()
+                LBLGENREPREV.Text = GenreMaintenance.PPrev
+                LBLGENRENEXT.Text = GenreMaintenance.PMAX
+
+            Case MaintenancePanels.SelectedTab.Equals(AuthorTab)
+                DGAUTHORS.DataSource = AuthorMaintenance.Fetch()
+                LBLAUTHORPREV.Text = AuthorMaintenance.PPrev
+                LBLAUTHORNEXT.Text = AuthorMaintenance.PMAX
+
+            Case MaintenancePanels.SelectedTab.Equals(PublishhersTab)
+                DGPUBLISHER.DataSource = BaseMaintenance.Fetch(QueryTableType.PUBLISHER_QUERY_TABLE)
+                LBLPUBLISHERPREV.Text = BaseMaintenance.PPrev
+                LBLPUBLISHERNEXT.Text = BaseMaintenance.PMAX
+
+            Case MaintenancePanels.SelectedTab.Equals(ClassificationTab)
+                DGCLASSIFICATIONS.DataSource = BaseMaintenance.Fetch(QueryTableType.CLASSIFICATION_QUERY_TABLE)
+                LBLCLASSIFICATIONNEXT.Text = BaseMaintenance.PMAX
+                LBLCLASSIFICATIONPREV.Text = BaseMaintenance.PPrev
+
+            Case MaintenancePanels.SelectedTab.Equals(DonatorsTab)
+                DGDONATOR.DataSource = BaseMaintenance.Fetch(QueryTableType.DONATOR_QUERY_TABLE)
+                LBLDONATORNEXT.Text = BaseMaintenance.PMAX
+                LBLDONATORRPREV.Text = BaseMaintenance.PPrev
+
+            Case MaintenancePanels.SelectedTab.Equals(SuppliersTab)
+                DGSUPPLIER.DataSource = BaseMaintenance.Fetch(QueryTableType.SUPPLIER_QUERY_TABLE)
+                LBLSUPPLIERNEXT.Text = BaseMaintenance.PMAX
+                LBLSUPPLIERPREV.Text = BaseMaintenance.PPrev
+
+            Case MaintenancePanels.SelectedTab.Equals(LanguagesTab)
+                DGLANGUAGE.DataSource = BaseMaintenance.Fetch(QueryTableType.LANGUAGES_QUERY_TABLE)
+                LBLLANGUAGENEXT.Text = BaseMaintenance.PMAX
+                LBLLANGUAGEPREV.Text = BaseMaintenance.PPrev
         End Select
     End Sub
 

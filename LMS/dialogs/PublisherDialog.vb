@@ -15,18 +15,17 @@ Public Class PublisherDialog
     End Sub
 
     Private Sub BTNSAVE_Click(sender As Object, e As EventArgs) Handles BTNSAVE.Click
-        Dim inputs As Object() = {TXTPUBLISHERNAME, TXTPUBLISHERADDRESS}
+        Dim inputs As Object() = {TXTPUBLISHERNAME}
         For Each item In inputs
             errProvider.SetError(item, String.Empty)
         Next
 
         Dim data As New Dictionary(Of String, String) From {
                 {"@name", TXTPUBLISHERNAME.Text},
-                {"@address", TXTPUBLISHERADDRESS.Text},
                 {"@id", If(IsNothing(_data), 0, _data.Item("id").ToString)}
         }
 
-        If BaseMaintenance.Exists(QueryTableType.GENRE_QUERY_TABLE, data) Then
+        If BaseMaintenance.Exists(QueryTableType.PUBLISHER_QUERY_TABLE, data) Then
             errProvider.SetError(TXTPUBLISHERNAME, "This publisher already exits.")
             Exit Sub
         End If
@@ -49,10 +48,9 @@ Public Class PublisherDialog
         Close()
     End Sub
 
-    Private Sub GenreDialog_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub PublisherDialog_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If Not IsNothing(_data) Then
-            TXTPUBLISHERNAME.Text = _data.Item("name")
-            TXTPUBLISHERADDRESS.Text = If(IsDBNull(_data.Item("address")), Nothing, _data.Item("address"))
+            TXTPUBLISHERNAME.Text = _data.Item("publisher_name")
         End If
     End Sub
 End Class

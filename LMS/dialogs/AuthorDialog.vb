@@ -27,21 +27,21 @@ Public Class AuthorDialog
                 {"@id", If(IsNothing(_data), 0, _data.Item("id").ToString)}
         }
 
-        If AuthorMaintenance.Exists(data) Then
+        If BaseMaintenance.Exists(QueryTableType.AUTHOR_QUERY_TABLE, data) Then
             errProvider.SetError(TXTFIRSTNAME, "This author already exits.")
             errProvider.SetError(TXTLASTNAME, "This author already exits.")
             Exit Sub
         End If
 
         If IsNothing(_data) Then
-            If AuthorMaintenance.Add(data) Then
+            If BaseMaintenance.Add(QueryTableType.AUTHOR_QUERY_TABLE, data) Then
                 MessageBox.Show("Author has been added successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
                 MessageBox.Show("Failed adding the author.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 Exit Sub
             End If
         Else
-            If AuthorMaintenance.Update(data) Then
+            If BaseMaintenance.Update(QueryTableType.AUTHOR_QUERY_TABLE, data) Then
                 MessageBox.Show("Author has been updated successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
                 MessageBox.Show("Failed updating the author.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
