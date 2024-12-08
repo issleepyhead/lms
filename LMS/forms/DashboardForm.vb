@@ -415,6 +415,17 @@
     End Sub
 #End Region
 
+#Region "Book Maintenance"
+    Private Sub BTNADDBOOK_Click(sender As Object, e As EventArgs) Handles BTNADDBOOK.Click
+        Using dialog = BookDialog
+            dialog.ShowDialog()
+        End Using
+        DGLANGUAGE.DataSource = BaseMaintenance.Fetch(QueryTableType.LANGUAGES_QUERY_TABLE)
+        LBLLANGUAGENEXT.Text = BaseMaintenance.PMAX
+        LBLLANGUAGEPREV.Text = BaseMaintenance.PPrev
+    End Sub
+#End Region
+
     Private Sub SelectAllToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SelectAllToolStripMenuItem.Click
         If MainFormPanels.SelectedTab.Equals(MaintenanceTab) Then
             Select Case True

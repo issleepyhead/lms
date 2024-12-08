@@ -23,43 +23,41 @@ Partial Class BookDialog
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Guna2HtmlLabel3 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.TXTFIRSTNAME = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.TXTISBN = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2HtmlLabel1 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2HtmlLabel2 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.Guna2TextBox1 = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.TXTTITLE = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2HtmlLabel4 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.CMBGENDER = New Guna.UI2.WinForms.Guna2ComboBox()
+        Me.CMBGENRE = New Guna.UI2.WinForms.Guna2ComboBox()
         Me.Guna2HtmlLabel5 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2HtmlLabel6 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.Guna2ComboBox1 = New Guna.UI2.WinForms.Guna2ComboBox()
+        Me.CMBPUBLISHER = New Guna.UI2.WinForms.Guna2ComboBox()
         Me.Guna2HtmlLabel7 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2HtmlLabel8 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.Guna2ComboBox2 = New Guna.UI2.WinForms.Guna2ComboBox()
+        Me.CMBLANGUAGE = New Guna.UI2.WinForms.Guna2ComboBox()
         Me.Guna2HtmlLabel9 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2HtmlLabel10 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.Guna2ComboBox3 = New Guna.UI2.WinForms.Guna2ComboBox()
+        Me.CMBAUTHOR = New Guna.UI2.WinForms.Guna2ComboBox()
         Me.Guna2HtmlLabel11 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2HtmlLabel12 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.Guna2ComboBox4 = New Guna.UI2.WinForms.Guna2ComboBox()
+        Me.CMBCLASSIFICATION = New Guna.UI2.WinForms.Guna2ComboBox()
         Me.Guna2HtmlLabel13 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2HtmlLabel14 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2HtmlLabel15 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2HtmlLabel16 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.Guna2NumericUpDown1 = New Guna.UI2.WinForms.Guna2NumericUpDown()
-        Me.Guna2NumericUpDown2 = New Guna.UI2.WinForms.Guna2NumericUpDown()
-        Me.Guna2HtmlLabel17 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.NUMERICCOPY = New Guna.UI2.WinForms.Guna2NumericUpDown()
+        Me.NUMERICOVERDUESTUDENT = New Guna.UI2.WinForms.Guna2NumericUpDown()
         Me.Guna2HtmlLabel18 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.Guna2NumericUpDown3 = New Guna.UI2.WinForms.Guna2NumericUpDown()
-        Me.Guna2HtmlLabel19 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.NUMERICOVERDUEFACULTY = New Guna.UI2.WinForms.Guna2NumericUpDown()
         Me.Guna2HtmlLabel20 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.BTNSAVE = New Guna.UI2.WinForms.Guna2Button()
-        Me.Guna2CheckBox1 = New Guna.UI2.WinForms.Guna2CheckBox()
-        Me.Guna2ComboBox5 = New Guna.UI2.WinForms.Guna2ComboBox()
+        Me.CHCKBOXNOISBN = New Guna.UI2.WinForms.Guna2CheckBox()
+        Me.CMBCOVER = New Guna.UI2.WinForms.Guna2ComboBox()
         Me.Guna2HtmlLabel21 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2HtmlLabel22 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        CType(Me.Guna2NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Guna2NumericUpDown2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Guna2NumericUpDown3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NUMERICCOPY, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NUMERICOVERDUESTUDENT, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NUMERICOVERDUEFACULTY, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Guna2HtmlLabel3
@@ -74,27 +72,27 @@ Partial Class BookDialog
         Me.Guna2HtmlLabel3.TabIndex = 12
         Me.Guna2HtmlLabel3.Text = "*"
         '
-        'TXTFIRSTNAME
+        'TXTISBN
         '
-        Me.TXTFIRSTNAME.BorderRadius = 4
-        Me.TXTFIRSTNAME.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.TXTFIRSTNAME.DefaultText = ""
-        Me.TXTFIRSTNAME.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.TXTFIRSTNAME.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.TXTFIRSTNAME.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTFIRSTNAME.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTFIRSTNAME.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTFIRSTNAME.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TXTFIRSTNAME.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTFIRSTNAME.Location = New System.Drawing.Point(20, 43)
-        Me.TXTFIRSTNAME.Margin = New System.Windows.Forms.Padding(0)
-        Me.TXTFIRSTNAME.MaxLength = 45
-        Me.TXTFIRSTNAME.Name = "TXTFIRSTNAME"
-        Me.TXTFIRSTNAME.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXTFIRSTNAME.PlaceholderText = "e.g., J.K."
-        Me.TXTFIRSTNAME.SelectedText = ""
-        Me.TXTFIRSTNAME.Size = New System.Drawing.Size(306, 48)
-        Me.TXTFIRSTNAME.TabIndex = 11
+        Me.TXTISBN.BorderRadius = 4
+        Me.TXTISBN.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TXTISBN.DefaultText = ""
+        Me.TXTISBN.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TXTISBN.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TXTISBN.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTISBN.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTISBN.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTISBN.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TXTISBN.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTISBN.Location = New System.Drawing.Point(20, 43)
+        Me.TXTISBN.Margin = New System.Windows.Forms.Padding(0)
+        Me.TXTISBN.MaxLength = 45
+        Me.TXTISBN.Name = "TXTISBN"
+        Me.TXTISBN.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TXTISBN.PlaceholderText = "e.g., J.K."
+        Me.TXTISBN.SelectedText = ""
+        Me.TXTISBN.Size = New System.Drawing.Size(306, 48)
+        Me.TXTISBN.TabIndex = 11
         '
         'Guna2HtmlLabel1
         '
@@ -119,27 +117,27 @@ Partial Class BookDialog
         Me.Guna2HtmlLabel2.TabIndex = 15
         Me.Guna2HtmlLabel2.Text = "*"
         '
-        'Guna2TextBox1
+        'TXTTITLE
         '
-        Me.Guna2TextBox1.BorderRadius = 4
-        Me.Guna2TextBox1.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.Guna2TextBox1.DefaultText = ""
-        Me.Guna2TextBox1.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.Guna2TextBox1.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.Guna2TextBox1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.Guna2TextBox1.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.Guna2TextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Guna2TextBox1.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Guna2TextBox1.Location = New System.Drawing.Point(20, 128)
-        Me.Guna2TextBox1.Margin = New System.Windows.Forms.Padding(0)
-        Me.Guna2TextBox1.MaxLength = 45
-        Me.Guna2TextBox1.Name = "Guna2TextBox1"
-        Me.Guna2TextBox1.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.Guna2TextBox1.PlaceholderText = "e.g., J.K."
-        Me.Guna2TextBox1.SelectedText = ""
-        Me.Guna2TextBox1.Size = New System.Drawing.Size(306, 48)
-        Me.Guna2TextBox1.TabIndex = 14
+        Me.TXTTITLE.BorderRadius = 4
+        Me.TXTTITLE.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TXTTITLE.DefaultText = ""
+        Me.TXTTITLE.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TXTTITLE.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TXTTITLE.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTTITLE.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTTITLE.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTTITLE.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TXTTITLE.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTTITLE.Location = New System.Drawing.Point(20, 128)
+        Me.TXTTITLE.Margin = New System.Windows.Forms.Padding(0)
+        Me.TXTTITLE.MaxLength = 45
+        Me.TXTTITLE.Name = "TXTTITLE"
+        Me.TXTTITLE.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TXTTITLE.PlaceholderText = "e.g., J.K."
+        Me.TXTTITLE.SelectedText = ""
+        Me.TXTTITLE.Size = New System.Drawing.Size(306, 48)
+        Me.TXTTITLE.TabIndex = 14
         '
         'Guna2HtmlLabel4
         '
@@ -152,23 +150,27 @@ Partial Class BookDialog
         Me.Guna2HtmlLabel4.TabIndex = 13
         Me.Guna2HtmlLabel4.Text = "Title:"
         '
-        'CMBGENDER
+        'CMBGENRE
         '
-        Me.CMBGENDER.BackColor = System.Drawing.Color.Transparent
-        Me.CMBGENDER.BorderRadius = 4
-        Me.CMBGENDER.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-        Me.CMBGENDER.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.CMBGENDER.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.CMBGENDER.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.CMBGENDER.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-        Me.CMBGENDER.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
-        Me.CMBGENDER.ItemHeight = 40
-        Me.CMBGENDER.Items.AddRange(New Object() {"Male", "Female"})
-        Me.CMBGENDER.Location = New System.Drawing.Point(20, 220)
-        Me.CMBGENDER.Name = "CMBGENDER"
-        Me.CMBGENDER.Size = New System.Drawing.Size(306, 46)
-        Me.CMBGENDER.StartIndex = 0
-        Me.CMBGENDER.TabIndex = 19
+        Me.CMBGENRE.BackColor = System.Drawing.Color.Transparent
+        Me.CMBGENRE.BorderRadius = 4
+        Me.CMBGENRE.DisplayMember = "name"
+        Me.CMBGENRE.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.CMBGENRE.DropDownHeight = 280
+        Me.CMBGENRE.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CMBGENRE.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.CMBGENRE.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.CMBGENRE.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.CMBGENRE.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
+        Me.CMBGENRE.IntegralHeight = False
+        Me.CMBGENRE.ItemHeight = 40
+        Me.CMBGENRE.Location = New System.Drawing.Point(20, 220)
+        Me.CMBGENRE.Margin = New System.Windows.Forms.Padding(0)
+        Me.CMBGENRE.MaxDropDownItems = 5
+        Me.CMBGENRE.Name = "CMBGENRE"
+        Me.CMBGENRE.Size = New System.Drawing.Size(306, 46)
+        Me.CMBGENRE.TabIndex = 19
+        Me.CMBGENRE.ValueMember = "id"
         '
         'Guna2HtmlLabel5
         '
@@ -193,23 +195,27 @@ Partial Class BookDialog
         Me.Guna2HtmlLabel6.TabIndex = 17
         Me.Guna2HtmlLabel6.Text = "Genre:"
         '
-        'Guna2ComboBox1
+        'CMBPUBLISHER
         '
-        Me.Guna2ComboBox1.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2ComboBox1.BorderRadius = 4
-        Me.Guna2ComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-        Me.Guna2ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.Guna2ComboBox1.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Guna2ComboBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Guna2ComboBox1.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-        Me.Guna2ComboBox1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
-        Me.Guna2ComboBox1.ItemHeight = 40
-        Me.Guna2ComboBox1.Items.AddRange(New Object() {"Male", "Female"})
-        Me.Guna2ComboBox1.Location = New System.Drawing.Point(20, 309)
-        Me.Guna2ComboBox1.Name = "Guna2ComboBox1"
-        Me.Guna2ComboBox1.Size = New System.Drawing.Size(306, 46)
-        Me.Guna2ComboBox1.StartIndex = 0
-        Me.Guna2ComboBox1.TabIndex = 22
+        Me.CMBPUBLISHER.BackColor = System.Drawing.Color.Transparent
+        Me.CMBPUBLISHER.BorderRadius = 4
+        Me.CMBPUBLISHER.DisplayMember = "publisher_name"
+        Me.CMBPUBLISHER.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.CMBPUBLISHER.DropDownHeight = 280
+        Me.CMBPUBLISHER.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CMBPUBLISHER.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.CMBPUBLISHER.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.CMBPUBLISHER.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.CMBPUBLISHER.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
+        Me.CMBPUBLISHER.IntegralHeight = False
+        Me.CMBPUBLISHER.ItemHeight = 40
+        Me.CMBPUBLISHER.Location = New System.Drawing.Point(20, 309)
+        Me.CMBPUBLISHER.Margin = New System.Windows.Forms.Padding(0)
+        Me.CMBPUBLISHER.MaxDropDownItems = 5
+        Me.CMBPUBLISHER.Name = "CMBPUBLISHER"
+        Me.CMBPUBLISHER.Size = New System.Drawing.Size(306, 46)
+        Me.CMBPUBLISHER.TabIndex = 22
+        Me.CMBPUBLISHER.ValueMember = "id"
         '
         'Guna2HtmlLabel7
         '
@@ -234,23 +240,27 @@ Partial Class BookDialog
         Me.Guna2HtmlLabel8.TabIndex = 20
         Me.Guna2HtmlLabel8.Text = "Publisher:"
         '
-        'Guna2ComboBox2
+        'CMBLANGUAGE
         '
-        Me.Guna2ComboBox2.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2ComboBox2.BorderRadius = 4
-        Me.Guna2ComboBox2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-        Me.Guna2ComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.Guna2ComboBox2.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Guna2ComboBox2.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Guna2ComboBox2.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-        Me.Guna2ComboBox2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
-        Me.Guna2ComboBox2.ItemHeight = 40
-        Me.Guna2ComboBox2.Items.AddRange(New Object() {"Male", "Female"})
-        Me.Guna2ComboBox2.Location = New System.Drawing.Point(20, 400)
-        Me.Guna2ComboBox2.Name = "Guna2ComboBox2"
-        Me.Guna2ComboBox2.Size = New System.Drawing.Size(306, 46)
-        Me.Guna2ComboBox2.StartIndex = 0
-        Me.Guna2ComboBox2.TabIndex = 25
+        Me.CMBLANGUAGE.BackColor = System.Drawing.Color.Transparent
+        Me.CMBLANGUAGE.BorderRadius = 4
+        Me.CMBLANGUAGE.DisplayMember = "language"
+        Me.CMBLANGUAGE.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.CMBLANGUAGE.DropDownHeight = 280
+        Me.CMBLANGUAGE.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CMBLANGUAGE.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.CMBLANGUAGE.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.CMBLANGUAGE.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.CMBLANGUAGE.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
+        Me.CMBLANGUAGE.IntegralHeight = False
+        Me.CMBLANGUAGE.ItemHeight = 40
+        Me.CMBLANGUAGE.Location = New System.Drawing.Point(20, 400)
+        Me.CMBLANGUAGE.Margin = New System.Windows.Forms.Padding(0)
+        Me.CMBLANGUAGE.MaxDropDownItems = 5
+        Me.CMBLANGUAGE.Name = "CMBLANGUAGE"
+        Me.CMBLANGUAGE.Size = New System.Drawing.Size(306, 46)
+        Me.CMBLANGUAGE.TabIndex = 25
+        Me.CMBLANGUAGE.ValueMember = "id"
         '
         'Guna2HtmlLabel9
         '
@@ -275,23 +285,27 @@ Partial Class BookDialog
         Me.Guna2HtmlLabel10.TabIndex = 23
         Me.Guna2HtmlLabel10.Text = "Language:"
         '
-        'Guna2ComboBox3
+        'CMBAUTHOR
         '
-        Me.Guna2ComboBox3.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2ComboBox3.BorderRadius = 4
-        Me.Guna2ComboBox3.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-        Me.Guna2ComboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.Guna2ComboBox3.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Guna2ComboBox3.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Guna2ComboBox3.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-        Me.Guna2ComboBox3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
-        Me.Guna2ComboBox3.ItemHeight = 40
-        Me.Guna2ComboBox3.Items.AddRange(New Object() {"Male", "Female"})
-        Me.Guna2ComboBox3.Location = New System.Drawing.Point(20, 484)
-        Me.Guna2ComboBox3.Name = "Guna2ComboBox3"
-        Me.Guna2ComboBox3.Size = New System.Drawing.Size(306, 46)
-        Me.Guna2ComboBox3.StartIndex = 0
-        Me.Guna2ComboBox3.TabIndex = 28
+        Me.CMBAUTHOR.BackColor = System.Drawing.Color.Transparent
+        Me.CMBAUTHOR.BorderRadius = 4
+        Me.CMBAUTHOR.DisplayMember = "name"
+        Me.CMBAUTHOR.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.CMBAUTHOR.DropDownHeight = 160
+        Me.CMBAUTHOR.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CMBAUTHOR.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.CMBAUTHOR.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.CMBAUTHOR.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.CMBAUTHOR.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
+        Me.CMBAUTHOR.IntegralHeight = False
+        Me.CMBAUTHOR.ItemHeight = 40
+        Me.CMBAUTHOR.Location = New System.Drawing.Point(20, 484)
+        Me.CMBAUTHOR.Margin = New System.Windows.Forms.Padding(0)
+        Me.CMBAUTHOR.MaxDropDownItems = 4
+        Me.CMBAUTHOR.Name = "CMBAUTHOR"
+        Me.CMBAUTHOR.Size = New System.Drawing.Size(306, 46)
+        Me.CMBAUTHOR.TabIndex = 28
+        Me.CMBAUTHOR.ValueMember = "id"
         '
         'Guna2HtmlLabel11
         '
@@ -316,23 +330,27 @@ Partial Class BookDialog
         Me.Guna2HtmlLabel12.TabIndex = 26
         Me.Guna2HtmlLabel12.Text = "Author:"
         '
-        'Guna2ComboBox4
+        'CMBCLASSIFICATION
         '
-        Me.Guna2ComboBox4.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2ComboBox4.BorderRadius = 4
-        Me.Guna2ComboBox4.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-        Me.Guna2ComboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.Guna2ComboBox4.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Guna2ComboBox4.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Guna2ComboBox4.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-        Me.Guna2ComboBox4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
-        Me.Guna2ComboBox4.ItemHeight = 40
-        Me.Guna2ComboBox4.Items.AddRange(New Object() {"Male", "Female"})
-        Me.Guna2ComboBox4.Location = New System.Drawing.Point(369, 45)
-        Me.Guna2ComboBox4.Name = "Guna2ComboBox4"
-        Me.Guna2ComboBox4.Size = New System.Drawing.Size(306, 46)
-        Me.Guna2ComboBox4.StartIndex = 0
-        Me.Guna2ComboBox4.TabIndex = 31
+        Me.CMBCLASSIFICATION.BackColor = System.Drawing.Color.Transparent
+        Me.CMBCLASSIFICATION.BorderRadius = 4
+        Me.CMBCLASSIFICATION.DisplayMember = "classification"
+        Me.CMBCLASSIFICATION.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.CMBCLASSIFICATION.DropDownHeight = 280
+        Me.CMBCLASSIFICATION.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CMBCLASSIFICATION.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.CMBCLASSIFICATION.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.CMBCLASSIFICATION.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.CMBCLASSIFICATION.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
+        Me.CMBCLASSIFICATION.IntegralHeight = False
+        Me.CMBCLASSIFICATION.ItemHeight = 40
+        Me.CMBCLASSIFICATION.Location = New System.Drawing.Point(369, 45)
+        Me.CMBCLASSIFICATION.Margin = New System.Windows.Forms.Padding(0)
+        Me.CMBCLASSIFICATION.MaxDropDownItems = 5
+        Me.CMBCLASSIFICATION.Name = "CMBCLASSIFICATION"
+        Me.CMBCLASSIFICATION.Size = New System.Drawing.Size(306, 46)
+        Me.CMBCLASSIFICATION.TabIndex = 31
+        Me.CMBCLASSIFICATION.ValueMember = "id"
         '
         'Guna2HtmlLabel13
         '
@@ -362,7 +380,7 @@ Partial Class BookDialog
         Me.Guna2HtmlLabel15.BackColor = System.Drawing.Color.Transparent
         Me.Guna2HtmlLabel15.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Guna2HtmlLabel15.ForeColor = System.Drawing.Color.Red
-        Me.Guna2HtmlLabel15.Location = New System.Drawing.Point(583, 196)
+        Me.Guna2HtmlLabel15.Location = New System.Drawing.Point(593, 196)
         Me.Guna2HtmlLabel15.Margin = New System.Windows.Forms.Padding(0)
         Me.Guna2HtmlLabel15.Name = "Guna2HtmlLabel15"
         Me.Guna2HtmlLabel15.Size = New System.Drawing.Size(10, 23)
@@ -376,41 +394,29 @@ Partial Class BookDialog
         Me.Guna2HtmlLabel16.Location = New System.Drawing.Point(369, 196)
         Me.Guna2HtmlLabel16.Margin = New System.Windows.Forms.Padding(0)
         Me.Guna2HtmlLabel16.Name = "Guna2HtmlLabel16"
-        Me.Guna2HtmlLabel16.Size = New System.Drawing.Size(214, 23)
+        Me.Guna2HtmlLabel16.Size = New System.Drawing.Size(224, 23)
         Me.Guna2HtmlLabel16.TabIndex = 32
-        Me.Guna2HtmlLabel16.Text = "Reserve Copy For Reference:"
+        Me.Guna2HtmlLabel16.Text = "Reserved Copy For Reference:"
         '
-        'Guna2NumericUpDown1
+        'NUMERICCOPY
         '
-        Me.Guna2NumericUpDown1.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2NumericUpDown1.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.Guna2NumericUpDown1.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Guna2NumericUpDown1.Location = New System.Drawing.Point(369, 222)
-        Me.Guna2NumericUpDown1.Name = "Guna2NumericUpDown1"
-        Me.Guna2NumericUpDown1.Size = New System.Drawing.Size(306, 46)
-        Me.Guna2NumericUpDown1.TabIndex = 35
+        Me.NUMERICCOPY.BackColor = System.Drawing.Color.Transparent
+        Me.NUMERICCOPY.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.NUMERICCOPY.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.NUMERICCOPY.Location = New System.Drawing.Point(369, 222)
+        Me.NUMERICCOPY.Name = "NUMERICCOPY"
+        Me.NUMERICCOPY.Size = New System.Drawing.Size(306, 46)
+        Me.NUMERICCOPY.TabIndex = 35
         '
-        'Guna2NumericUpDown2
+        'NUMERICOVERDUESTUDENT
         '
-        Me.Guna2NumericUpDown2.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2NumericUpDown2.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.Guna2NumericUpDown2.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Guna2NumericUpDown2.Location = New System.Drawing.Point(369, 311)
-        Me.Guna2NumericUpDown2.Name = "Guna2NumericUpDown2"
-        Me.Guna2NumericUpDown2.Size = New System.Drawing.Size(306, 46)
-        Me.Guna2NumericUpDown2.TabIndex = 38
-        '
-        'Guna2HtmlLabel17
-        '
-        Me.Guna2HtmlLabel17.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2HtmlLabel17.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Guna2HtmlLabel17.ForeColor = System.Drawing.Color.Red
-        Me.Guna2HtmlLabel17.Location = New System.Drawing.Point(541, 285)
-        Me.Guna2HtmlLabel17.Margin = New System.Windows.Forms.Padding(0)
-        Me.Guna2HtmlLabel17.Name = "Guna2HtmlLabel17"
-        Me.Guna2HtmlLabel17.Size = New System.Drawing.Size(10, 23)
-        Me.Guna2HtmlLabel17.TabIndex = 37
-        Me.Guna2HtmlLabel17.Text = "*"
+        Me.NUMERICOVERDUESTUDENT.BackColor = System.Drawing.Color.Transparent
+        Me.NUMERICOVERDUESTUDENT.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.NUMERICOVERDUESTUDENT.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.NUMERICOVERDUESTUDENT.Location = New System.Drawing.Point(369, 311)
+        Me.NUMERICOVERDUESTUDENT.Name = "NUMERICOVERDUESTUDENT"
+        Me.NUMERICOVERDUESTUDENT.Size = New System.Drawing.Size(306, 46)
+        Me.NUMERICOVERDUESTUDENT.TabIndex = 38
         '
         'Guna2HtmlLabel18
         '
@@ -423,27 +429,15 @@ Partial Class BookDialog
         Me.Guna2HtmlLabel18.TabIndex = 36
         Me.Guna2HtmlLabel18.Text = "Overdue Fee (Student):"
         '
-        'Guna2NumericUpDown3
+        'NUMERICOVERDUEFACULTY
         '
-        Me.Guna2NumericUpDown3.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2NumericUpDown3.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.Guna2NumericUpDown3.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Guna2NumericUpDown3.Location = New System.Drawing.Point(369, 400)
-        Me.Guna2NumericUpDown3.Name = "Guna2NumericUpDown3"
-        Me.Guna2NumericUpDown3.Size = New System.Drawing.Size(306, 46)
-        Me.Guna2NumericUpDown3.TabIndex = 41
-        '
-        'Guna2HtmlLabel19
-        '
-        Me.Guna2HtmlLabel19.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2HtmlLabel19.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Guna2HtmlLabel19.ForeColor = System.Drawing.Color.Red
-        Me.Guna2HtmlLabel19.Location = New System.Drawing.Point(599, 285)
-        Me.Guna2HtmlLabel19.Margin = New System.Windows.Forms.Padding(0)
-        Me.Guna2HtmlLabel19.Name = "Guna2HtmlLabel19"
-        Me.Guna2HtmlLabel19.Size = New System.Drawing.Size(10, 23)
-        Me.Guna2HtmlLabel19.TabIndex = 40
-        Me.Guna2HtmlLabel19.Text = "*"
+        Me.NUMERICOVERDUEFACULTY.BackColor = System.Drawing.Color.Transparent
+        Me.NUMERICOVERDUEFACULTY.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.NUMERICOVERDUEFACULTY.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.NUMERICOVERDUEFACULTY.Location = New System.Drawing.Point(369, 400)
+        Me.NUMERICOVERDUEFACULTY.Name = "NUMERICOVERDUEFACULTY"
+        Me.NUMERICOVERDUEFACULTY.Size = New System.Drawing.Size(306, 46)
+        Me.NUMERICOVERDUEFACULTY.TabIndex = 41
         '
         'Guna2HtmlLabel20
         '
@@ -471,41 +465,44 @@ Partial Class BookDialog
         Me.BTNSAVE.TabIndex = 42
         Me.BTNSAVE.Text = "Save"
         '
-        'Guna2CheckBox1
+        'CHCKBOXNOISBN
         '
-        Me.Guna2CheckBox1.AutoSize = True
-        Me.Guna2CheckBox1.CheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Guna2CheckBox1.CheckedState.BorderRadius = 0
-        Me.Guna2CheckBox1.CheckedState.BorderThickness = 0
-        Me.Guna2CheckBox1.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Guna2CheckBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Guna2CheckBox1.Location = New System.Drawing.Point(249, 23)
-        Me.Guna2CheckBox1.Name = "Guna2CheckBox1"
-        Me.Guna2CheckBox1.Size = New System.Drawing.Size(77, 17)
-        Me.Guna2CheckBox1.TabIndex = 43
-        Me.Guna2CheckBox1.Text = "NO ISBN"
-        Me.Guna2CheckBox1.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
-        Me.Guna2CheckBox1.UncheckedState.BorderRadius = 0
-        Me.Guna2CheckBox1.UncheckedState.BorderThickness = 0
-        Me.Guna2CheckBox1.UncheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
+        Me.CHCKBOXNOISBN.AutoSize = True
+        Me.CHCKBOXNOISBN.CheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.CHCKBOXNOISBN.CheckedState.BorderRadius = 0
+        Me.CHCKBOXNOISBN.CheckedState.BorderThickness = 0
+        Me.CHCKBOXNOISBN.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.CHCKBOXNOISBN.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CHCKBOXNOISBN.Location = New System.Drawing.Point(249, 23)
+        Me.CHCKBOXNOISBN.Name = "CHCKBOXNOISBN"
+        Me.CHCKBOXNOISBN.Size = New System.Drawing.Size(77, 17)
+        Me.CHCKBOXNOISBN.TabIndex = 43
+        Me.CHCKBOXNOISBN.Text = "NO ISBN"
+        Me.CHCKBOXNOISBN.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
+        Me.CHCKBOXNOISBN.UncheckedState.BorderRadius = 0
+        Me.CHCKBOXNOISBN.UncheckedState.BorderThickness = 0
+        Me.CHCKBOXNOISBN.UncheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
         '
-        'Guna2ComboBox5
+        'CMBCOVER
         '
-        Me.Guna2ComboBox5.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2ComboBox5.BorderRadius = 4
-        Me.Guna2ComboBox5.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-        Me.Guna2ComboBox5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.Guna2ComboBox5.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Guna2ComboBox5.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Guna2ComboBox5.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-        Me.Guna2ComboBox5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
-        Me.Guna2ComboBox5.ItemHeight = 40
-        Me.Guna2ComboBox5.Items.AddRange(New Object() {"Male", "Female"})
-        Me.Guna2ComboBox5.Location = New System.Drawing.Point(369, 130)
-        Me.Guna2ComboBox5.Name = "Guna2ComboBox5"
-        Me.Guna2ComboBox5.Size = New System.Drawing.Size(306, 46)
-        Me.Guna2ComboBox5.StartIndex = 0
-        Me.Guna2ComboBox5.TabIndex = 46
+        Me.CMBCOVER.BackColor = System.Drawing.Color.Transparent
+        Me.CMBCOVER.BorderRadius = 4
+        Me.CMBCOVER.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.CMBCOVER.DropDownHeight = 280
+        Me.CMBCOVER.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CMBCOVER.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.CMBCOVER.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.CMBCOVER.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.CMBCOVER.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
+        Me.CMBCOVER.IntegralHeight = False
+        Me.CMBCOVER.ItemHeight = 40
+        Me.CMBCOVER.Items.AddRange(New Object() {"Soft Cover", "Hard Cover"})
+        Me.CMBCOVER.Location = New System.Drawing.Point(369, 130)
+        Me.CMBCOVER.MaxDropDownItems = 6
+        Me.CMBCOVER.Name = "CMBCOVER"
+        Me.CMBCOVER.Size = New System.Drawing.Size(306, 46)
+        Me.CMBCOVER.StartIndex = 0
+        Me.CMBCOVER.TabIndex = 46
         '
         'Guna2HtmlLabel21
         '
@@ -535,40 +532,38 @@ Partial Class BookDialog
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(698, 553)
-        Me.Controls.Add(Me.Guna2ComboBox5)
+        Me.Controls.Add(Me.CMBCOVER)
         Me.Controls.Add(Me.Guna2HtmlLabel21)
         Me.Controls.Add(Me.Guna2HtmlLabel22)
-        Me.Controls.Add(Me.Guna2CheckBox1)
+        Me.Controls.Add(Me.CHCKBOXNOISBN)
         Me.Controls.Add(Me.BTNSAVE)
-        Me.Controls.Add(Me.Guna2NumericUpDown3)
-        Me.Controls.Add(Me.Guna2HtmlLabel19)
+        Me.Controls.Add(Me.NUMERICOVERDUEFACULTY)
         Me.Controls.Add(Me.Guna2HtmlLabel20)
-        Me.Controls.Add(Me.Guna2NumericUpDown2)
-        Me.Controls.Add(Me.Guna2HtmlLabel17)
+        Me.Controls.Add(Me.NUMERICOVERDUESTUDENT)
         Me.Controls.Add(Me.Guna2HtmlLabel18)
-        Me.Controls.Add(Me.Guna2NumericUpDown1)
+        Me.Controls.Add(Me.NUMERICCOPY)
         Me.Controls.Add(Me.Guna2HtmlLabel15)
         Me.Controls.Add(Me.Guna2HtmlLabel16)
-        Me.Controls.Add(Me.Guna2ComboBox4)
+        Me.Controls.Add(Me.CMBCLASSIFICATION)
         Me.Controls.Add(Me.Guna2HtmlLabel13)
         Me.Controls.Add(Me.Guna2HtmlLabel14)
-        Me.Controls.Add(Me.Guna2ComboBox3)
+        Me.Controls.Add(Me.CMBAUTHOR)
         Me.Controls.Add(Me.Guna2HtmlLabel11)
         Me.Controls.Add(Me.Guna2HtmlLabel12)
-        Me.Controls.Add(Me.Guna2ComboBox2)
+        Me.Controls.Add(Me.CMBLANGUAGE)
         Me.Controls.Add(Me.Guna2HtmlLabel9)
         Me.Controls.Add(Me.Guna2HtmlLabel10)
-        Me.Controls.Add(Me.Guna2ComboBox1)
+        Me.Controls.Add(Me.CMBPUBLISHER)
         Me.Controls.Add(Me.Guna2HtmlLabel7)
         Me.Controls.Add(Me.Guna2HtmlLabel8)
-        Me.Controls.Add(Me.CMBGENDER)
+        Me.Controls.Add(Me.CMBGENRE)
         Me.Controls.Add(Me.Guna2HtmlLabel5)
         Me.Controls.Add(Me.Guna2HtmlLabel6)
         Me.Controls.Add(Me.Guna2HtmlLabel2)
-        Me.Controls.Add(Me.Guna2TextBox1)
+        Me.Controls.Add(Me.TXTTITLE)
         Me.Controls.Add(Me.Guna2HtmlLabel4)
         Me.Controls.Add(Me.Guna2HtmlLabel3)
-        Me.Controls.Add(Me.TXTFIRSTNAME)
+        Me.Controls.Add(Me.TXTISBN)
         Me.Controls.Add(Me.Guna2HtmlLabel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.MaximizeBox = False
@@ -578,47 +573,45 @@ Partial Class BookDialog
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Book Form"
-        CType(Me.Guna2NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Guna2NumericUpDown2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Guna2NumericUpDown3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NUMERICCOPY, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NUMERICOVERDUESTUDENT, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NUMERICOVERDUEFACULTY, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents Guna2HtmlLabel3 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents TXTFIRSTNAME As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents TXTISBN As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Guna2HtmlLabel1 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2HtmlLabel2 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents Guna2TextBox1 As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents TXTTITLE As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Guna2HtmlLabel4 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents CMBGENDER As Guna.UI2.WinForms.Guna2ComboBox
+    Friend WithEvents CMBGENRE As Guna.UI2.WinForms.Guna2ComboBox
     Friend WithEvents Guna2HtmlLabel5 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2HtmlLabel6 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents Guna2ComboBox1 As Guna.UI2.WinForms.Guna2ComboBox
+    Friend WithEvents CMBPUBLISHER As Guna.UI2.WinForms.Guna2ComboBox
     Friend WithEvents Guna2HtmlLabel7 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2HtmlLabel8 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents Guna2ComboBox2 As Guna.UI2.WinForms.Guna2ComboBox
+    Friend WithEvents CMBLANGUAGE As Guna.UI2.WinForms.Guna2ComboBox
     Friend WithEvents Guna2HtmlLabel9 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2HtmlLabel10 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents Guna2ComboBox3 As Guna.UI2.WinForms.Guna2ComboBox
+    Friend WithEvents CMBAUTHOR As Guna.UI2.WinForms.Guna2ComboBox
     Friend WithEvents Guna2HtmlLabel11 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2HtmlLabel12 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents Guna2ComboBox4 As Guna.UI2.WinForms.Guna2ComboBox
+    Friend WithEvents CMBCLASSIFICATION As Guna.UI2.WinForms.Guna2ComboBox
     Friend WithEvents Guna2HtmlLabel13 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2HtmlLabel14 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2HtmlLabel15 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2HtmlLabel16 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents Guna2NumericUpDown1 As Guna.UI2.WinForms.Guna2NumericUpDown
-    Friend WithEvents Guna2NumericUpDown2 As Guna.UI2.WinForms.Guna2NumericUpDown
-    Friend WithEvents Guna2HtmlLabel17 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents NUMERICCOPY As Guna.UI2.WinForms.Guna2NumericUpDown
+    Friend WithEvents NUMERICOVERDUESTUDENT As Guna.UI2.WinForms.Guna2NumericUpDown
     Friend WithEvents Guna2HtmlLabel18 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents Guna2NumericUpDown3 As Guna.UI2.WinForms.Guna2NumericUpDown
-    Friend WithEvents Guna2HtmlLabel19 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents NUMERICOVERDUEFACULTY As Guna.UI2.WinForms.Guna2NumericUpDown
     Friend WithEvents Guna2HtmlLabel20 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents BTNSAVE As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents Guna2CheckBox1 As Guna.UI2.WinForms.Guna2CheckBox
-    Friend WithEvents Guna2ComboBox5 As Guna.UI2.WinForms.Guna2ComboBox
+    Friend WithEvents CHCKBOXNOISBN As Guna.UI2.WinForms.Guna2CheckBox
+    Friend WithEvents CMBCOVER As Guna.UI2.WinForms.Guna2ComboBox
     Friend WithEvents Guna2HtmlLabel21 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2HtmlLabel22 As Guna.UI2.WinForms.Guna2HtmlLabel
 End Class

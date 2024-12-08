@@ -188,6 +188,11 @@ Partial Class DashboardForm
         Me.DataGridViewTextBoxColumn14 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn15 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DGBOOKCONTEXTMENUSTRIP = New Guna.UI2.WinForms.Guna2ContextMenuStrip()
+        Me.SelectAllToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.UnselectAllToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DeleteSelectedToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ISBNToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DonatorsTab = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel7 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel19 = New Guna.UI2.WinForms.Guna2Panel()
@@ -364,11 +369,6 @@ Partial Class DashboardForm
         Me.Guna2HtmlLabel3 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.LBLPROFILEROLE = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.LBLPROFILENAME = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.DGBOOKCONTEXTMENUSTRIP = New Guna.UI2.WinForms.Guna2ContextMenuStrip()
-        Me.ISBNToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.DeleteSelectedToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SelectAllToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.UnselectAllToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.DGSTUDENTCONTEXTMENUSTRIP = New Guna.UI2.WinForms.Guna2ContextMenuStrip()
         Me.SelectAllToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.UnselectAllToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
@@ -416,6 +416,7 @@ Partial Class DashboardForm
         Me.Guna2Panel17.SuspendLayout()
         Me.Guna2Panel18.SuspendLayout()
         CType(Me.DGBOOKS, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.DGBOOKCONTEXTMENUSTRIP.SuspendLayout()
         Me.DonatorsTab.SuspendLayout()
         Me.TableLayoutPanel7.SuspendLayout()
         Me.Guna2Panel19.SuspendLayout()
@@ -480,7 +481,6 @@ Partial Class DashboardForm
         Me.AuditTrailPanels.SuspendLayout()
         Me.Guna2Panel1.SuspendLayout()
         Me.Guna2Panel2.SuspendLayout()
-        Me.DGBOOKCONTEXTMENUSTRIP.SuspendLayout()
         Me.DGSTUDENTCONTEXTMENUSTRIP.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -2335,6 +2335,45 @@ Partial Class DashboardForm
         Me.DataGridViewTextBoxColumn15.DataPropertyName = "gender"
         Me.DataGridViewTextBoxColumn15.HeaderText = "Genre"
         Me.DataGridViewTextBoxColumn15.Name = "DataGridViewTextBoxColumn15"
+        '
+        'DGBOOKCONTEXTMENUSTRIP
+        '
+        Me.DGBOOKCONTEXTMENUSTRIP.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SelectAllToolStripMenuItem1, Me.UnselectAllToolStripMenuItem1, Me.DeleteSelectedToolStripMenuItem, Me.ISBNToolStripMenuItem})
+        Me.DGBOOKCONTEXTMENUSTRIP.Name = "DGBOOKCONTEXTMENUSTRIP"
+        Me.DGBOOKCONTEXTMENUSTRIP.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(CType(CType(151, Byte), Integer), CType(CType(143, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DGBOOKCONTEXTMENUSTRIP.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro
+        Me.DGBOOKCONTEXTMENUSTRIP.RenderStyle.ColorTable = Nothing
+        Me.DGBOOKCONTEXTMENUSTRIP.RenderStyle.RoundedEdges = True
+        Me.DGBOOKCONTEXTMENUSTRIP.RenderStyle.SelectionArrowColor = System.Drawing.Color.White
+        Me.DGBOOKCONTEXTMENUSTRIP.RenderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DGBOOKCONTEXTMENUSTRIP.RenderStyle.SelectionForeColor = System.Drawing.Color.White
+        Me.DGBOOKCONTEXTMENUSTRIP.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro
+        Me.DGBOOKCONTEXTMENUSTRIP.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
+        Me.DGBOOKCONTEXTMENUSTRIP.Size = New System.Drawing.Size(155, 92)
+        '
+        'SelectAllToolStripMenuItem1
+        '
+        Me.SelectAllToolStripMenuItem1.Name = "SelectAllToolStripMenuItem1"
+        Me.SelectAllToolStripMenuItem1.Size = New System.Drawing.Size(154, 22)
+        Me.SelectAllToolStripMenuItem1.Text = "Select All"
+        '
+        'UnselectAllToolStripMenuItem1
+        '
+        Me.UnselectAllToolStripMenuItem1.Name = "UnselectAllToolStripMenuItem1"
+        Me.UnselectAllToolStripMenuItem1.Size = New System.Drawing.Size(154, 22)
+        Me.UnselectAllToolStripMenuItem1.Text = "Unselect All"
+        '
+        'DeleteSelectedToolStripMenuItem
+        '
+        Me.DeleteSelectedToolStripMenuItem.Name = "DeleteSelectedToolStripMenuItem"
+        Me.DeleteSelectedToolStripMenuItem.Size = New System.Drawing.Size(154, 22)
+        Me.DeleteSelectedToolStripMenuItem.Text = "Delete Selected"
+        '
+        'ISBNToolStripMenuItem
+        '
+        Me.ISBNToolStripMenuItem.Name = "ISBNToolStripMenuItem"
+        Me.ISBNToolStripMenuItem.Size = New System.Drawing.Size(154, 22)
+        Me.ISBNToolStripMenuItem.Text = "Print ISBN"
         '
         'DonatorsTab
         '
@@ -5133,45 +5172,6 @@ Partial Class DashboardForm
         Me.LBLPROFILENAME.TabIndex = 1
         Me.LBLPROFILENAME.Text = "Doe, John"
         '
-        'DGBOOKCONTEXTMENUSTRIP
-        '
-        Me.DGBOOKCONTEXTMENUSTRIP.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SelectAllToolStripMenuItem1, Me.UnselectAllToolStripMenuItem1, Me.DeleteSelectedToolStripMenuItem, Me.ISBNToolStripMenuItem})
-        Me.DGBOOKCONTEXTMENUSTRIP.Name = "DGBOOKCONTEXTMENUSTRIP"
-        Me.DGBOOKCONTEXTMENUSTRIP.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(CType(CType(151, Byte), Integer), CType(CType(143, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.DGBOOKCONTEXTMENUSTRIP.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro
-        Me.DGBOOKCONTEXTMENUSTRIP.RenderStyle.ColorTable = Nothing
-        Me.DGBOOKCONTEXTMENUSTRIP.RenderStyle.RoundedEdges = True
-        Me.DGBOOKCONTEXTMENUSTRIP.RenderStyle.SelectionArrowColor = System.Drawing.Color.White
-        Me.DGBOOKCONTEXTMENUSTRIP.RenderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.DGBOOKCONTEXTMENUSTRIP.RenderStyle.SelectionForeColor = System.Drawing.Color.White
-        Me.DGBOOKCONTEXTMENUSTRIP.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro
-        Me.DGBOOKCONTEXTMENUSTRIP.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
-        Me.DGBOOKCONTEXTMENUSTRIP.Size = New System.Drawing.Size(155, 92)
-        '
-        'ISBNToolStripMenuItem
-        '
-        Me.ISBNToolStripMenuItem.Name = "ISBNToolStripMenuItem"
-        Me.ISBNToolStripMenuItem.Size = New System.Drawing.Size(154, 22)
-        Me.ISBNToolStripMenuItem.Text = "Print ISBN"
-        '
-        'DeleteSelectedToolStripMenuItem
-        '
-        Me.DeleteSelectedToolStripMenuItem.Name = "DeleteSelectedToolStripMenuItem"
-        Me.DeleteSelectedToolStripMenuItem.Size = New System.Drawing.Size(154, 22)
-        Me.DeleteSelectedToolStripMenuItem.Text = "Delete Selected"
-        '
-        'SelectAllToolStripMenuItem1
-        '
-        Me.SelectAllToolStripMenuItem1.Name = "SelectAllToolStripMenuItem1"
-        Me.SelectAllToolStripMenuItem1.Size = New System.Drawing.Size(154, 22)
-        Me.SelectAllToolStripMenuItem1.Text = "Select All"
-        '
-        'UnselectAllToolStripMenuItem1
-        '
-        Me.UnselectAllToolStripMenuItem1.Name = "UnselectAllToolStripMenuItem1"
-        Me.UnselectAllToolStripMenuItem1.Size = New System.Drawing.Size(154, 22)
-        Me.UnselectAllToolStripMenuItem1.Text = "Unselect All"
-        '
         'DGSTUDENTCONTEXTMENUSTRIP
         '
         Me.DGSTUDENTCONTEXTMENUSTRIP.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SelectAllToolStripMenuItem2, Me.UnselectAllToolStripMenuItem2, Me.DeleteSelectedToolStripMenuItem1, Me.PrintLibraryCardToolStripMenuItem})
@@ -5272,6 +5272,7 @@ Partial Class DashboardForm
         Me.Guna2Panel17.PerformLayout()
         Me.Guna2Panel18.ResumeLayout(False)
         CType(Me.DGBOOKS, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.DGBOOKCONTEXTMENUSTRIP.ResumeLayout(False)
         Me.DonatorsTab.ResumeLayout(False)
         Me.TableLayoutPanel7.ResumeLayout(False)
         Me.Guna2Panel19.ResumeLayout(False)
@@ -5345,7 +5346,6 @@ Partial Class DashboardForm
         Me.Guna2Panel1.ResumeLayout(False)
         Me.Guna2Panel2.ResumeLayout(False)
         Me.Guna2Panel2.PerformLayout()
-        Me.DGBOOKCONTEXTMENUSTRIP.ResumeLayout(False)
         Me.DGSTUDENTCONTEXTMENUSTRIP.ResumeLayout(False)
         Me.ResumeLayout(False)
 
