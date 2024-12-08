@@ -369,10 +369,54 @@
         LBLLANGUAGENEXT.Text = BaseMaintenance.PMAX
         LBLLANGUAGEPREV.Text = BaseMaintenance.PPrev
     End Sub
+
+    Private Sub BTNLANGUAGENEXT_Click(sender As Object, e As EventArgs) Handles BTNLANGUAGENEXT.Click
+        If BaseMaintenance.PPrev < BaseMaintenance.PMAX Then
+            BaseMaintenance.PPrev += 1
+            LBLLANGUAGEPREV.Text = BaseMaintenance.PPrev
+            DGLANGUAGE.DataSource = BaseMaintenance.Fetch(QueryTableType.LANGUAGES_QUERY_TABLE)
+        End If
+    End Sub
+
+    Private Sub BTNLANGUAGEPREV_Click(sender As Object, e As EventArgs) Handles BTNLANGUAGEPREV.Click
+        If BaseMaintenance.PPrev > 1 Then
+            BaseMaintenance.PPrev -= 1
+            LBLLANGUAGEPREV.Text = BaseMaintenance.PPrev
+            DGLANGUAGE.DataSource = BaseMaintenance.Fetch(QueryTableType.LANGUAGES_QUERY_TABLE)
+        End If
+    End Sub
+
+    Private Sub DGLANGUAGE_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGLANGUAGE.CellMouseClick
+        If e.ColumnIndex <> 0 Then
+            If DGLANGUAGE.SelectedRows.Count > 0 Then
+                Dim datarow As DataRowView = DGLANGUAGE.SelectedRows.Item(0).DataBoundItem
+                Using dialog As New LanguageDialog(datarow)
+                    dialog.ShowDialog()
+                End Using
+            End If
+            DGLANGUAGE.DataSource = BaseMaintenance.Fetch(QueryTableType.LANGUAGES_QUERY_TABLE)
+            LBLLANGUAGENEXT.Text = BaseMaintenance.PMAX
+            LBLLANGUAGEPREV.Text = BaseMaintenance.PPrev
+        End If
+    End Sub
+
+    Private Sub TXLANGUAGESEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTLANGUAGESEARCH.TextChanged
+        If MaintenancePanels.SelectedTab.Equals(LanguagesTab) Then
+            If Not String.IsNullOrEmpty(TXTPUBLISHERSEARCH.Text) Then
+                DGLANGUAGE.DataSource = BaseMaintenance.Search(QueryTableType.LANGUAGES_QUERY_TABLE, TXTLANGUAGESEARCH.Text)
+                LBLLANGUAGENEXT.Text = BaseMaintenance.PMAX
+                LBLLANGUAGEPREV.Text = BaseMaintenance.PPrev
+            Else
+                DGLANGUAGE.DataSource = BaseMaintenance.Fetch(QueryTableType.LANGUAGES_QUERY_TABLE)
+                LBLLANGUAGENEXT.Text = BaseMaintenance.PMAX
+                LBLLANGUAGEPREV.Text = BaseMaintenance.PPrev
+            End If
+        End If
+    End Sub
 #End Region
 
     Private Sub SelectAllToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SelectAllToolStripMenuItem.Click
-        If MaintenancePanels.SelectedTab.Equals(MaintenanceTab) Then
+        If MainFormPanels.SelectedTab.Equals(MaintenanceTab) Then
             Select Case True
                 Case MaintenancePanels.SelectedTab.Equals(GenresTab)
                     For Each item As DataGridViewRow In DGGENRE.Rows
@@ -512,15 +556,6 @@
         End Select
     End Sub
 
-    Private Sub RemoveAllMenuItem_Click(sender As Object, e As EventArgs) Handles RemoveAllMenuItem.Click
-        Select Case True
-            Case MaintenancePanels.SelectedTab.Equals(GenresTab)
-
-            Case MaintenancePanels.SelectedTab.Equals(AuthorTab)
-
-        End Select
-    End Sub
-
     Private Sub MaintenancePanels_SelectedIndexChanged(sender As Object, e As EventArgs) Handles MaintenancePanels.SelectedIndexChanged
         Select Case True
             Case MaintenancePanels.SelectedTab.Equals(GenresTab)
@@ -560,6 +595,4 @@
                 LBLLANGUAGEPREV.Text = BaseMaintenance.PPrev
         End Select
     End Sub
-
-
 End Class

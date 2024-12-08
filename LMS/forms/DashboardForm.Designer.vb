@@ -40,6 +40,7 @@ Partial Class DashboardForm
         Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -72,7 +73,6 @@ Partial Class DashboardForm
         Dim DataGridViewCellStyle49 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle51 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle50 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.MainFormPanels = New Guna.UI2.WinForms.Guna2TabControl()
         Me.DashboardTab = New System.Windows.Forms.TabPage()
@@ -99,7 +99,6 @@ Partial Class DashboardForm
         Me.DGMAINTENANCECONTEXTMENU = New Guna.UI2.WinForms.Guna2ContextMenuStrip()
         Me.SelectAllToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UnselectAllToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.RemoveAllMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RemoveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AuthorTab = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
@@ -132,6 +131,9 @@ Partial Class DashboardForm
         Me.BTNPUBLISHERNEXT = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Panel12 = New Guna.UI2.WinForms.Guna2Panel()
         Me.DGPUBLISHER = New Guna.UI2.WinForms.Guna2DataGridView()
+        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.chckBoxPublisher = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ClassificationTab = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel5 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel13 = New Guna.UI2.WinForms.Guna2Panel()
@@ -162,6 +164,10 @@ Partial Class DashboardForm
         Me.BTNLANGUAGENEXT = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Panel47 = New Guna.UI2.WinForms.Guna2Panel()
         Me.DGLANGUAGE = New Guna.UI2.WinForms.Guna2DataGridView()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.BooksTab = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel6 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel16 = New Guna.UI2.WinForms.Guna2Panel()
@@ -358,13 +364,16 @@ Partial Class DashboardForm
         Me.Guna2HtmlLabel3 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.LBLPROFILEROLE = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.LBLPROFILENAME = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.chckBoxPublisher = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DGBOOKCONTEXTMENUSTRIP = New Guna.UI2.WinForms.Guna2ContextMenuStrip()
+        Me.ISBNToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DeleteSelectedToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SelectAllToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.UnselectAllToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DGSTUDENTCONTEXTMENUSTRIP = New Guna.UI2.WinForms.Guna2ContextMenuStrip()
+        Me.SelectAllToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.UnselectAllToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DeleteSelectedToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PrintLibraryCardToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.MainFormPanels.SuspendLayout()
         Me.DashboardTab.SuspendLayout()
@@ -471,6 +480,8 @@ Partial Class DashboardForm
         Me.AuditTrailPanels.SuspendLayout()
         Me.Guna2Panel1.SuspendLayout()
         Me.Guna2Panel2.SuspendLayout()
+        Me.DGBOOKCONTEXTMENUSTRIP.SuspendLayout()
+        Me.DGSTUDENTCONTEXTMENUSTRIP.SuspendLayout()
         Me.SuspendLayout()
         '
         'TableLayoutPanel1
@@ -879,7 +890,7 @@ Partial Class DashboardForm
         '
         'DGMAINTENANCECONTEXTMENU
         '
-        Me.DGMAINTENANCECONTEXTMENU.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SelectAllToolStripMenuItem, Me.UnselectAllToolStripMenuItem, Me.RemoveAllMenuItem, Me.RemoveToolStripMenuItem})
+        Me.DGMAINTENANCECONTEXTMENU.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SelectAllToolStripMenuItem, Me.UnselectAllToolStripMenuItem, Me.RemoveToolStripMenuItem})
         Me.DGMAINTENANCECONTEXTMENU.Name = "DGGENRECONTEXTMENU"
         Me.DGMAINTENANCECONTEXTMENU.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(CType(CType(151, Byte), Integer), CType(CType(143, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.DGMAINTENANCECONTEXTMENU.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro
@@ -890,31 +901,25 @@ Partial Class DashboardForm
         Me.DGMAINTENANCECONTEXTMENU.RenderStyle.SelectionForeColor = System.Drawing.Color.White
         Me.DGMAINTENANCECONTEXTMENU.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro
         Me.DGMAINTENANCECONTEXTMENU.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
-        Me.DGMAINTENANCECONTEXTMENU.Size = New System.Drawing.Size(165, 92)
+        Me.DGMAINTENANCECONTEXTMENU.Size = New System.Drawing.Size(155, 70)
         '
         'SelectAllToolStripMenuItem
         '
         Me.SelectAllToolStripMenuItem.Name = "SelectAllToolStripMenuItem"
-        Me.SelectAllToolStripMenuItem.Size = New System.Drawing.Size(164, 22)
+        Me.SelectAllToolStripMenuItem.Size = New System.Drawing.Size(154, 22)
         Me.SelectAllToolStripMenuItem.Text = "Select All"
         '
         'UnselectAllToolStripMenuItem
         '
         Me.UnselectAllToolStripMenuItem.Name = "UnselectAllToolStripMenuItem"
-        Me.UnselectAllToolStripMenuItem.Size = New System.Drawing.Size(164, 22)
+        Me.UnselectAllToolStripMenuItem.Size = New System.Drawing.Size(154, 22)
         Me.UnselectAllToolStripMenuItem.Text = "Unselect All"
-        '
-        'RemoveAllMenuItem
-        '
-        Me.RemoveAllMenuItem.Name = "RemoveAllMenuItem"
-        Me.RemoveAllMenuItem.Size = New System.Drawing.Size(164, 22)
-        Me.RemoveAllMenuItem.Text = "Remove All"
         '
         'RemoveToolStripMenuItem
         '
         Me.RemoveToolStripMenuItem.Name = "RemoveToolStripMenuItem"
-        Me.RemoveToolStripMenuItem.Size = New System.Drawing.Size(164, 22)
-        Me.RemoveToolStripMenuItem.Text = "Remove Selected"
+        Me.RemoveToolStripMenuItem.Size = New System.Drawing.Size(154, 22)
+        Me.RemoveToolStripMenuItem.Text = "Delete Selected"
         '
         'AuthorTab
         '
@@ -1443,6 +1448,30 @@ Partial Class DashboardForm
         Me.DGPUBLISHER.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(205, Byte), Integer))
         Me.DGPUBLISHER.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
         '
+        'DataGridViewTextBoxColumn4
+        '
+        Me.DataGridViewTextBoxColumn4.DataPropertyName = "id"
+        Me.DataGridViewTextBoxColumn4.HeaderText = "id"
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        Me.DataGridViewTextBoxColumn4.Visible = False
+        '
+        'chckBoxPublisher
+        '
+        Me.chckBoxPublisher.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.chckBoxPublisher.HeaderText = ""
+        Me.chckBoxPublisher.Name = "chckBoxPublisher"
+        Me.chckBoxPublisher.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.chckBoxPublisher.Width = 40
+        '
+        'DataGridViewTextBoxColumn5
+        '
+        Me.DataGridViewTextBoxColumn5.DataPropertyName = "publisher_name"
+        Me.DataGridViewTextBoxColumn5.HeaderText = "Publisher Name"
+        Me.DataGridViewTextBoxColumn5.MaxInputLength = 50
+        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        Me.DataGridViewTextBoxColumn5.ReadOnly = True
+        Me.DataGridViewTextBoxColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
         'ClassificationTab
         '
         Me.ClassificationTab.Controls.Add(Me.TableLayoutPanel5)
@@ -1964,6 +1993,41 @@ Partial Class DashboardForm
         Me.DGLANGUAGE.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(205, Byte), Integer))
         Me.DGLANGUAGE.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
         '
+        'DataGridViewTextBoxColumn1
+        '
+        Me.DataGridViewTextBoxColumn1.DataPropertyName = "id"
+        Me.DataGridViewTextBoxColumn1.HeaderText = "id"
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.Visible = False
+        '
+        'DataGridViewCheckBoxColumn1
+        '
+        Me.DataGridViewCheckBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.DataGridViewCheckBoxColumn1.HeaderText = ""
+        Me.DataGridViewCheckBoxColumn1.Name = "DataGridViewCheckBoxColumn1"
+        Me.DataGridViewCheckBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewCheckBoxColumn1.Width = 40
+        '
+        'DataGridViewTextBoxColumn6
+        '
+        Me.DataGridViewTextBoxColumn6.DataPropertyName = "language"
+        Me.DataGridViewTextBoxColumn6.HeaderText = "Language"
+        Me.DataGridViewTextBoxColumn6.MaxInputLength = 50
+        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
+        Me.DataGridViewTextBoxColumn6.ReadOnly = True
+        Me.DataGridViewTextBoxColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
+        'DataGridViewTextBoxColumn7
+        '
+        Me.DataGridViewTextBoxColumn7.DataPropertyName = "code"
+        DataGridViewCellStyle18.NullValue = "None"
+        Me.DataGridViewTextBoxColumn7.DefaultCellStyle = DataGridViewCellStyle18
+        Me.DataGridViewTextBoxColumn7.HeaderText = "Language Code"
+        Me.DataGridViewTextBoxColumn7.MaxInputLength = 100
+        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
+        Me.DataGridViewTextBoxColumn7.ReadOnly = True
+        Me.DataGridViewTextBoxColumn7.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
         'BooksTab
         '
         Me.BooksTab.Controls.Add(Me.TableLayoutPanel6)
@@ -2182,7 +2246,7 @@ Partial Class DashboardForm
         Me.DGBOOKS.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle21
         Me.DGBOOKS.ColumnHeadersHeight = 48
         Me.DGBOOKS.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn12, Me.DataGridViewCheckBoxColumn3, Me.DataGridViewTextBoxColumn13, Me.DataGridViewTextBoxColumn14, Me.Column4, Me.DataGridViewTextBoxColumn15})
-        Me.DGBOOKS.ContextMenuStrip = Me.DGMAINTENANCECONTEXTMENU
+        Me.DGBOOKS.ContextMenuStrip = Me.DGBOOKCONTEXTMENUSTRIP
         DataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle23.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(239, Byte), Integer))
         DataGridViewCellStyle23.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -5069,64 +5133,83 @@ Partial Class DashboardForm
         Me.LBLPROFILENAME.TabIndex = 1
         Me.LBLPROFILENAME.Text = "Doe, John"
         '
-        'DataGridViewTextBoxColumn1
+        'DGBOOKCONTEXTMENUSTRIP
         '
-        Me.DataGridViewTextBoxColumn1.DataPropertyName = "id"
-        Me.DataGridViewTextBoxColumn1.HeaderText = "id"
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.Visible = False
+        Me.DGBOOKCONTEXTMENUSTRIP.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SelectAllToolStripMenuItem1, Me.UnselectAllToolStripMenuItem1, Me.DeleteSelectedToolStripMenuItem, Me.ISBNToolStripMenuItem})
+        Me.DGBOOKCONTEXTMENUSTRIP.Name = "DGBOOKCONTEXTMENUSTRIP"
+        Me.DGBOOKCONTEXTMENUSTRIP.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(CType(CType(151, Byte), Integer), CType(CType(143, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DGBOOKCONTEXTMENUSTRIP.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro
+        Me.DGBOOKCONTEXTMENUSTRIP.RenderStyle.ColorTable = Nothing
+        Me.DGBOOKCONTEXTMENUSTRIP.RenderStyle.RoundedEdges = True
+        Me.DGBOOKCONTEXTMENUSTRIP.RenderStyle.SelectionArrowColor = System.Drawing.Color.White
+        Me.DGBOOKCONTEXTMENUSTRIP.RenderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DGBOOKCONTEXTMENUSTRIP.RenderStyle.SelectionForeColor = System.Drawing.Color.White
+        Me.DGBOOKCONTEXTMENUSTRIP.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro
+        Me.DGBOOKCONTEXTMENUSTRIP.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
+        Me.DGBOOKCONTEXTMENUSTRIP.Size = New System.Drawing.Size(155, 92)
         '
-        'DataGridViewCheckBoxColumn1
+        'ISBNToolStripMenuItem
         '
-        Me.DataGridViewCheckBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.DataGridViewCheckBoxColumn1.HeaderText = ""
-        Me.DataGridViewCheckBoxColumn1.Name = "DataGridViewCheckBoxColumn1"
-        Me.DataGridViewCheckBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewCheckBoxColumn1.Width = 40
+        Me.ISBNToolStripMenuItem.Name = "ISBNToolStripMenuItem"
+        Me.ISBNToolStripMenuItem.Size = New System.Drawing.Size(154, 22)
+        Me.ISBNToolStripMenuItem.Text = "Print ISBN"
         '
-        'DataGridViewTextBoxColumn6
+        'DeleteSelectedToolStripMenuItem
         '
-        Me.DataGridViewTextBoxColumn6.DataPropertyName = "language"
-        Me.DataGridViewTextBoxColumn6.HeaderText = "Language"
-        Me.DataGridViewTextBoxColumn6.MaxInputLength = 50
-        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
-        Me.DataGridViewTextBoxColumn6.ReadOnly = True
-        Me.DataGridViewTextBoxColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DeleteSelectedToolStripMenuItem.Name = "DeleteSelectedToolStripMenuItem"
+        Me.DeleteSelectedToolStripMenuItem.Size = New System.Drawing.Size(154, 22)
+        Me.DeleteSelectedToolStripMenuItem.Text = "Delete Selected"
         '
-        'DataGridViewTextBoxColumn7
+        'SelectAllToolStripMenuItem1
         '
-        Me.DataGridViewTextBoxColumn7.DataPropertyName = "code"
-        DataGridViewCellStyle18.NullValue = "None"
-        Me.DataGridViewTextBoxColumn7.DefaultCellStyle = DataGridViewCellStyle18
-        Me.DataGridViewTextBoxColumn7.HeaderText = "Language Code"
-        Me.DataGridViewTextBoxColumn7.MaxInputLength = 100
-        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
-        Me.DataGridViewTextBoxColumn7.ReadOnly = True
-        Me.DataGridViewTextBoxColumn7.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.SelectAllToolStripMenuItem1.Name = "SelectAllToolStripMenuItem1"
+        Me.SelectAllToolStripMenuItem1.Size = New System.Drawing.Size(154, 22)
+        Me.SelectAllToolStripMenuItem1.Text = "Select All"
         '
-        'DataGridViewTextBoxColumn4
+        'UnselectAllToolStripMenuItem1
         '
-        Me.DataGridViewTextBoxColumn4.DataPropertyName = "id"
-        Me.DataGridViewTextBoxColumn4.HeaderText = "id"
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        Me.DataGridViewTextBoxColumn4.Visible = False
+        Me.UnselectAllToolStripMenuItem1.Name = "UnselectAllToolStripMenuItem1"
+        Me.UnselectAllToolStripMenuItem1.Size = New System.Drawing.Size(154, 22)
+        Me.UnselectAllToolStripMenuItem1.Text = "Unselect All"
         '
-        'chckBoxPublisher
+        'DGSTUDENTCONTEXTMENUSTRIP
         '
-        Me.chckBoxPublisher.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.chckBoxPublisher.HeaderText = ""
-        Me.chckBoxPublisher.Name = "chckBoxPublisher"
-        Me.chckBoxPublisher.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.chckBoxPublisher.Width = 40
+        Me.DGSTUDENTCONTEXTMENUSTRIP.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SelectAllToolStripMenuItem2, Me.UnselectAllToolStripMenuItem2, Me.DeleteSelectedToolStripMenuItem1, Me.PrintLibraryCardToolStripMenuItem})
+        Me.DGSTUDENTCONTEXTMENUSTRIP.Name = "DGSTUDENTCONTEXTMENUSTRIP"
+        Me.DGSTUDENTCONTEXTMENUSTRIP.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(CType(CType(151, Byte), Integer), CType(CType(143, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DGSTUDENTCONTEXTMENUSTRIP.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro
+        Me.DGSTUDENTCONTEXTMENUSTRIP.RenderStyle.ColorTable = Nothing
+        Me.DGSTUDENTCONTEXTMENUSTRIP.RenderStyle.RoundedEdges = True
+        Me.DGSTUDENTCONTEXTMENUSTRIP.RenderStyle.SelectionArrowColor = System.Drawing.Color.White
+        Me.DGSTUDENTCONTEXTMENUSTRIP.RenderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DGSTUDENTCONTEXTMENUSTRIP.RenderStyle.SelectionForeColor = System.Drawing.Color.White
+        Me.DGSTUDENTCONTEXTMENUSTRIP.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro
+        Me.DGSTUDENTCONTEXTMENUSTRIP.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
+        Me.DGSTUDENTCONTEXTMENUSTRIP.Size = New System.Drawing.Size(167, 92)
         '
-        'DataGridViewTextBoxColumn5
+        'SelectAllToolStripMenuItem2
         '
-        Me.DataGridViewTextBoxColumn5.DataPropertyName = "publisher_name"
-        Me.DataGridViewTextBoxColumn5.HeaderText = "Publisher Name"
-        Me.DataGridViewTextBoxColumn5.MaxInputLength = 50
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        Me.DataGridViewTextBoxColumn5.ReadOnly = True
-        Me.DataGridViewTextBoxColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.SelectAllToolStripMenuItem2.Name = "SelectAllToolStripMenuItem2"
+        Me.SelectAllToolStripMenuItem2.Size = New System.Drawing.Size(166, 22)
+        Me.SelectAllToolStripMenuItem2.Text = "Select All"
+        '
+        'UnselectAllToolStripMenuItem2
+        '
+        Me.UnselectAllToolStripMenuItem2.Name = "UnselectAllToolStripMenuItem2"
+        Me.UnselectAllToolStripMenuItem2.Size = New System.Drawing.Size(166, 22)
+        Me.UnselectAllToolStripMenuItem2.Text = "Unselect All"
+        '
+        'DeleteSelectedToolStripMenuItem1
+        '
+        Me.DeleteSelectedToolStripMenuItem1.Name = "DeleteSelectedToolStripMenuItem1"
+        Me.DeleteSelectedToolStripMenuItem1.Size = New System.Drawing.Size(166, 22)
+        Me.DeleteSelectedToolStripMenuItem1.Text = "Delete Selected"
+        '
+        'PrintLibraryCardToolStripMenuItem
+        '
+        Me.PrintLibraryCardToolStripMenuItem.Name = "PrintLibraryCardToolStripMenuItem"
+        Me.PrintLibraryCardToolStripMenuItem.Size = New System.Drawing.Size(166, 22)
+        Me.PrintLibraryCardToolStripMenuItem.Text = "Print Library Card"
         '
         'DashboardForm
         '
@@ -5262,6 +5345,8 @@ Partial Class DashboardForm
         Me.Guna2Panel1.ResumeLayout(False)
         Me.Guna2Panel2.ResumeLayout(False)
         Me.Guna2Panel2.PerformLayout()
+        Me.DGBOOKCONTEXTMENUSTRIP.ResumeLayout(False)
+        Me.DGSTUDENTCONTEXTMENUSTRIP.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -5299,7 +5384,6 @@ Partial Class DashboardForm
     Friend WithEvents DGMAINTENANCECONTEXTMENU As Guna.UI2.WinForms.Guna2ContextMenuStrip
     Friend WithEvents SelectAllToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents RemoveToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents RemoveAllMenuItem As ToolStripMenuItem
     Friend WithEvents UnselectAllToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ColumnGenreID As DataGridViewTextBoxColumn
     Friend WithEvents chckBoxGenre As DataGridViewCheckBoxColumn
@@ -5558,4 +5642,14 @@ Partial Class DashboardForm
     Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
     Friend WithEvents chckBoxPublisher As DataGridViewCheckBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
+    Friend WithEvents DGBOOKCONTEXTMENUSTRIP As Guna.UI2.WinForms.Guna2ContextMenuStrip
+    Friend WithEvents DGSTUDENTCONTEXTMENUSTRIP As Guna.UI2.WinForms.Guna2ContextMenuStrip
+    Friend WithEvents ISBNToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents DeleteSelectedToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents SelectAllToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents UnselectAllToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents SelectAllToolStripMenuItem2 As ToolStripMenuItem
+    Friend WithEvents UnselectAllToolStripMenuItem2 As ToolStripMenuItem
+    Friend WithEvents DeleteSelectedToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents PrintLibraryCardToolStripMenuItem As ToolStripMenuItem
 End Class
