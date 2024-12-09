@@ -22,6 +22,7 @@ Partial Class BookDialog
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.Guna2HtmlLabel3 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.TXTISBN = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2HtmlLabel1 = New Guna.UI2.WinForms.Guna2HtmlLabel()
@@ -55,9 +56,11 @@ Partial Class BookDialog
         Me.CMBCOVER = New Guna.UI2.WinForms.Guna2ComboBox()
         Me.Guna2HtmlLabel21 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2HtmlLabel22 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.errProvider = New System.Windows.Forms.ErrorProvider(Me.components)
         CType(Me.NUMERICCOPY, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NUMERICOVERDUESTUDENT, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NUMERICOVERDUEFACULTY, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.errProvider, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Guna2HtmlLabel3
@@ -86,7 +89,7 @@ Partial Class BookDialog
         Me.TXTISBN.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXTISBN.Location = New System.Drawing.Point(20, 43)
         Me.TXTISBN.Margin = New System.Windows.Forms.Padding(0)
-        Me.TXTISBN.MaxLength = 45
+        Me.TXTISBN.MaxLength = 13
         Me.TXTISBN.Name = "TXTISBN"
         Me.TXTISBN.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TXTISBN.PlaceholderText = "e.g., J.K."
@@ -412,6 +415,7 @@ Partial Class BookDialog
         '
         Me.NUMERICOVERDUESTUDENT.BackColor = System.Drawing.Color.Transparent
         Me.NUMERICOVERDUESTUDENT.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.NUMERICOVERDUESTUDENT.DecimalPlaces = 2
         Me.NUMERICOVERDUESTUDENT.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.NUMERICOVERDUESTUDENT.Location = New System.Drawing.Point(369, 311)
         Me.NUMERICOVERDUESTUDENT.Name = "NUMERICOVERDUESTUDENT"
@@ -433,6 +437,7 @@ Partial Class BookDialog
         '
         Me.NUMERICOVERDUEFACULTY.BackColor = System.Drawing.Color.Transparent
         Me.NUMERICOVERDUEFACULTY.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.NUMERICOVERDUEFACULTY.DecimalPlaces = 2
         Me.NUMERICOVERDUEFACULTY.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.NUMERICOVERDUEFACULTY.Location = New System.Drawing.Point(369, 400)
         Me.NUMERICOVERDUEFACULTY.Name = "NUMERICOVERDUEFACULTY"
@@ -527,6 +532,10 @@ Partial Class BookDialog
         Me.Guna2HtmlLabel22.TabIndex = 44
         Me.Guna2HtmlLabel22.Text = "Book Cover:"
         '
+        'errProvider
+        '
+        Me.errProvider.ContainerControl = Me
+        '
         'BookDialog
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -576,6 +585,7 @@ Partial Class BookDialog
         CType(Me.NUMERICCOPY, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NUMERICOVERDUESTUDENT, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NUMERICOVERDUEFACULTY, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.errProvider, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -614,4 +624,5 @@ Partial Class BookDialog
     Friend WithEvents CMBCOVER As Guna.UI2.WinForms.Guna2ComboBox
     Friend WithEvents Guna2HtmlLabel21 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2HtmlLabel22 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents errProvider As ErrorProvider
 End Class
