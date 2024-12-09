@@ -131,7 +131,7 @@
                     .FETCH_TOTAL_COUNT_QUERY = "SELECT COUNT(*) FROM tbllanguages",
                     .FETCH_LIMIT_QUERY = "SELECT language, code, id FROM tbllanguages ORDER BY language ASC LIMIT @page, 30;",
                     .FETCH_LIMIT_QUERY_SEARCH = "SELECT language, code, id FROM tbllanguages WHERE language LIKE @search OR code LIKE @search ORDER BY name ASC LIMIT @page, 30;",
-                    .FETCH_TOTAL_COUNT_QUERY_SEARCH = "SELECT COUNT(*) FROM tbllanguages WHERE language LIKE @search OR code LIKE @search",
+                    .FETCH_TOTAL_COUNT_QUERY_SEARCH = "SELECT COUNT(*) FROM tbllanguages WHERE language LIKE @search OR code LIKE @search ORDER BY language ASC",
                     .UPDATE_QUERY = "UPDATE tbllanguages SET language = @language, code = @code WHERE id = @id",
                     .FETCH_ALL_QUERY = "SELECT language, code, id FROM tbllanguages ORDER BY language ASC"
                 }
@@ -143,10 +143,19 @@
                     .DELETE_QUERY = "DELETE FROM tblbooks WHERE id = @id",
                     .EXISTS_QUERY_WITH_ID = "SELECT COUNT(*) FROM tblbooks WHERE LOWER(isbn) = LOWER(@isbn) AND id != @id",
                     .EXISTS_QUERY_NO_ID = "SELECT COUNT(*) FROM tblbooks WHERE LOWER(isbn) = LOWER(@isbn)",
-                    .FETCH_TOTAL_COUNT_QUERY = "SELECT COUNT(*) FROM books",
-                    .FETCH_LIMIT_QUERY = "SELECT language, code, id FROM tbllanguages ORDER BY language ASC LIMIT @page, 30;",
-                    .FETCH_LIMIT_QUERY_SEARCH = "SELECT language, code, id FROM tbllanguages WHERE language LIKE @search OR code LIKE @search ORDER BY name ASC LIMIT @page, 30;",
-                    .FETCH_TOTAL_COUNT_QUERY_SEARCH = "SELECT COUNT(*) FROM tblbooks WHERE isbn LIKE @search OR title LIKE @search",
+                    .FETCH_TOTAL_COUNT_QUERY = "SELECT COUNT(*) FROM tblbooks",
+                    .FETCH_LIMIT_QUERY = "SELECT b.*, g.name genre_name, concat(a.first_name, ' ', a.last_name) name
+                                            FROM tblbooks b
+                                            JOIN tblgenres g ON genre_id = g.id
+                                            JOIN tblauthors a ON author_id = a.id ORDER BY title ASC LIMIT @page, 30;",
+                    .FETCH_LIMIT_QUERY_SEARCH = "SELECT b.*, g.name genre_name, concat(a.first_name, ' ', a.last_name) name
+                                                    FROM tblbooks b
+                                                    JOIN tblgenres g ON genre_id = g.id
+                                                    JOIN tblauthors a ON author_id = a.id WHERE title LIKE @search OR isbn LIKE @search OR g.name LIKE @search OR a.first_name LIKE @search OR a.last_name LIKE @search ORDER BY title ASC LIMIT @page, 30;",
+                    .FETCH_TOTAL_COUNT_QUERY_SEARCH = "SELECT COUNT(*)
+                                                    FROM tblbooks b
+                                                    JOIN tblgenres g ON genre_id = g.id
+                                                    JOIN tblauthors a ON author_id = a.id WHERE title LIKE @search OR isbn LIKE @search OR g.name LIKE @search OR a.first_name LIKE @search OR a.last_name LIKE @search ORDER BY title ASC",
                     .UPDATE_QUERY = "UPDATE tblbooks SET isbn = @isbn, title = @title, book_cover = @cover, genre_id = @gid, author_id = @aid, publisher_id = @pid, language_id = @lid, classification_id = @cid, reserve_copy = @rcopy, spenalty = @spenalty, fpenalty = @fpenalty WHERE id = @id",
                     .FETCH_ALL_QUERY = "SELECT language, code, id FROM tbllanguages ORDER BY language ASC"
                 }

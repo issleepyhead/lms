@@ -420,9 +420,53 @@
         Using dialog = BookDialog
             dialog.ShowDialog()
         End Using
-        DGLANGUAGE.DataSource = BaseMaintenance.Fetch(QueryTableType.LANGUAGES_QUERY_TABLE)
-        LBLLANGUAGENEXT.Text = BaseMaintenance.PMAX
-        LBLLANGUAGEPREV.Text = BaseMaintenance.PPrev
+        DGBOOKS.DataSource = BaseMaintenance.Fetch(QueryTableType.BOOK_QUERY_TABLE)
+        LBLBOOKNEXT.Text = BaseMaintenance.PMAX
+        LBLBOOKPREV.Text = BaseMaintenance.PPrev
+    End Sub
+
+    Private Sub BTNBOOKNEXT_Click(sender As Object, e As EventArgs) Handles BTNBOOKNEXT.Click
+        If BaseMaintenance.PPrev < BaseMaintenance.PMAX Then
+            BaseMaintenance.PPrev += 1
+            LBLBOOKPREV.Text = BaseMaintenance.PPrev
+            DGBOOKS.DataSource = BaseMaintenance.Fetch(QueryTableType.BOOK_QUERY_TABLE)
+        End If
+    End Sub
+
+    Private Sub BTNBOOKPREV_Click(sender As Object, e As EventArgs) Handles BTNBOOKPREV.Click
+        If BaseMaintenance.PPrev > 1 Then
+            BaseMaintenance.PPrev -= 1
+            LBLBOOKPREV.Text = BaseMaintenance.PPrev
+            DGBOOKS.DataSource = BaseMaintenance.Fetch(QueryTableType.BOOK_QUERY_TABLE)
+        End If
+    End Sub
+
+    Private Sub DGBOOK_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGBOOKS.CellMouseClick
+        If e.ColumnIndex <> 0 Then
+            If DGBOOKS.SelectedRows.Count > 0 Then
+                Dim datarow As DataRowView = DGBOOKS.SelectedRows.Item(0).DataBoundItem
+                Using dialog As New BookDialog(datarow)
+                    dialog.ShowDialog()
+                End Using
+            End If
+            DGBOOKS.DataSource = BaseMaintenance.Fetch(QueryTableType.BOOK_QUERY_TABLE)
+            LBLBOOKNEXT.Text = BaseMaintenance.PMAX
+            LBLBOOKPREV.Text = BaseMaintenance.PPrev
+        End If
+    End Sub
+
+    Private Sub TXBOOKSEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTBOOKSEARCH.TextChanged
+        If MaintenancePanels.SelectedTab.Equals(BooksTab) Then
+            If Not String.IsNullOrEmpty(TXTBOOKSEARCH.Text) Then
+                DGBOOKS.DataSource = BaseMaintenance.Search(QueryTableType.BOOK_QUERY_TABLE, TXTBOOKSEARCH.Text)
+                LBLBOOKNEXT.Text = BaseMaintenance.PMAX
+                LBLBOOKPREV.Text = BaseMaintenance.PPrev
+            Else
+                DGBOOKS.DataSource = BaseMaintenance.Fetch(QueryTableType.BOOK_QUERY_TABLE)
+                LBLBOOKNEXT.Text = BaseMaintenance.PMAX
+                LBLBOOKPREV.Text = BaseMaintenance.PPrev
+            End If
+        End If
     End Sub
 #End Region
 
@@ -570,15 +614,14 @@
     Private Sub MaintenancePanels_SelectedIndexChanged(sender As Object, e As EventArgs) Handles MaintenancePanels.SelectedIndexChanged
         Select Case True
             Case MaintenancePanels.SelectedTab.Equals(GenresTab)
-                ' TO DO FIX THIS SHITS!
-                DGGENRE.DataSource = GenreMaintenance.Fetch()
-                LBLGENREPREV.Text = GenreMaintenance.PPrev
-                LBLGENRENEXT.Text = GenreMaintenance.PMAX
+                DGGENRE.DataSource = BaseMaintenance.Fetch(QueryTableType.GENRE_QUERY_TABLE)
+                LBLGENREPREV.Text = BaseMaintenance.PPrev
+                LBLGENRENEXT.Text = BaseMaintenance.PMAX
 
             Case MaintenancePanels.SelectedTab.Equals(AuthorTab)
-                DGAUTHORS.DataSource = AuthorMaintenance.Fetch()
-                LBLAUTHORPREV.Text = AuthorMaintenance.PPrev
-                LBLAUTHORNEXT.Text = AuthorMaintenance.PMAX
+                DGAUTHORS.DataSource = BaseMaintenance.Fetch(QueryTableType.AUTHOR_QUERY_TABLE)
+                LBLAUTHORPREV.Text = BaseMaintenance.PPrev
+                LBLAUTHORNEXT.Text = BaseMaintenance.PMAX
 
             Case MaintenancePanels.SelectedTab.Equals(PublishhersTab)
                 DGPUBLISHER.DataSource = BaseMaintenance.Fetch(QueryTableType.PUBLISHER_QUERY_TABLE)
@@ -604,6 +647,11 @@
                 DGLANGUAGE.DataSource = BaseMaintenance.Fetch(QueryTableType.LANGUAGES_QUERY_TABLE)
                 LBLLANGUAGENEXT.Text = BaseMaintenance.PMAX
                 LBLLANGUAGEPREV.Text = BaseMaintenance.PPrev
+
+            Case MaintenancePanels.SelectedTab.Equals(BooksTab)
+                DGBOOKS.DataSource = BaseMaintenance.Fetch(QueryTableType.BOOK_QUERY_TABLE)
+                LBLBOOKNEXT.Text = BaseMaintenance.PMAX
+                LBLBOOKPREV.Text = BaseMaintenance.PPrev
         End Select
     End Sub
 End Class

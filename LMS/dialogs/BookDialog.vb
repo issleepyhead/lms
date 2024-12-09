@@ -20,6 +20,8 @@ Public Class BookDialog
         CMBCLASSIFICATION.DataSource = BaseMaintenance.FetchAll(QueryTableType.CLASSIFICATION_QUERY_TABLE)
 
         If Not IsNothing(_data) Then
+            TXTISBN.Text = _data.Item("isbn")
+            TXTTITLE.Text = _data.Item("title")
             CMBGENRE.SelectedValue = _data.Item("genre_id")
             CMBPUBLISHER.SelectedValue = _data.Item("publisher_id")
             CMBLANGUAGE.SelectedValue = _data.Item("language_id")
