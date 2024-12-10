@@ -97,5 +97,20 @@ LMS
  <param name="params">A sql query.</param>
  <returns>An object of the result of the query.</returns>
 </member>
+<member name="M:LMS.ImportUtils.ExecNonQueryTransaction(System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+ <summary>
+ Only for executing update, delete, and create.
+ </summary>
+ <param name="query">A sql query.</param>
+ <param name="params">A collection of dictionary.</param>
+</member>
+<member name="M:LMS.ImportUtils.ExecScalarTransaction(System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+ <summary>
+ Only for executing scalar queries.
+ </summary>
+ <param name="query">A sql query.</param>
+ <param name="params">A sql query.</param>
+ <returns>An object of the result of the query.</returns>
+</member>
 </members>
 </doc>

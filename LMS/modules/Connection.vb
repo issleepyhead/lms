@@ -142,6 +142,4 @@ Module Connection
         End Try
         Return dt
     End Function
-
-
 End Module

@@ -14,13 +14,13 @@
             dialog.ShowDialog()
         End Using
         DGGENRE.DataSource = BaseMaintenance.Fetch(QueryTableType.GENRE_QUERY_TABLE)
-        LBLGENRENEXT.Text = GenreMaintenance.PMAX
-        LBLGENREPREV.Text = GenreMaintenance.PPrev
+        LBLGENRENEXT.Text = BaseMaintenance.PMAX
+        LBLGENREPREV.Text = BaseMaintenance.PPrev
     End Sub
 
     Private Sub BTNGENREPNEXT_Click(sender As Object, e As EventArgs) Handles BTNGENREPNEXT.Click
         If BaseMaintenance.PPrev < BaseMaintenance.PMAX Then
-            GenreMaintenance.PPrev += 1
+            BaseMaintenance.PPrev += 1
             LBLGENREPREV.Text = BaseMaintenance.PPrev
             DGGENRE.DataSource = BaseMaintenance.Fetch(QueryTableType.GENRE_QUERY_TABLE)
         End If
@@ -581,12 +581,12 @@
                     End If
                 Next
 
-                If GenreMaintenance.Delete(params) Then
+                If BaseMaintenance.Delete(QueryTableType.GENRE_QUERY_TABLE, params) Then
                     MessageBox.Show("Deleted Successfully!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Else
                     MessageBox.Show("Cannot delete the selected genre(s). Some genres are currently assigned to one or more books. Please remove the genre from the books before deleting.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 End If
-                DGGENRE.DataSource = GenreMaintenance.Fetch()
+                DGGENRE.DataSource = BaseMaintenance.Fetch(QueryTableType.GENRE_QUERY_TABLE)
 
 
 
@@ -602,12 +602,12 @@
                     End If
                 Next
 
-                If AuthorMaintenance.Delete(params) Then
+                If BaseMaintenance.Delete(QueryTableType.AUTHOR_QUERY_TABLE, params) Then
                     MessageBox.Show("Deleted Successfully!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Else
                     MessageBox.Show("Cannot delete the selected author(s). Some authors are currently assigned to one or more books. Please remove the author from the books before deleting.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 End If
-                DGAUTHORS.DataSource = AuthorMaintenance.Fetch()
+                DGAUTHORS.DataSource = BaseMaintenance.Fetch(QueryTableType.AUTHOR_QUERY_TABLE)
         End Select
     End Sub
 
@@ -653,5 +653,11 @@
                 LBLBOOKNEXT.Text = BaseMaintenance.PMAX
                 LBLBOOKPREV.Text = BaseMaintenance.PPrev
         End Select
+    End Sub
+
+    Private Sub BTNIMPORTBOOKS_Click(sender As Object, e As EventArgs) Handles BTNIMPORTBOOKS.Click
+        Using dialog = ImportBookDialog
+            dialog.ShowDialog()
+        End Using
     End Sub
 End Class
