@@ -1,4 +1,5 @@
 ﻿Imports MySql.Data.MySqlClient
+Imports Spire.Xls
 
 Module ImportUtils
     Private Transaction As MySqlTransaction
@@ -95,4 +96,14 @@ Module ImportUtils
             Transaction.Rollback()
         End If
     End Sub
+
+    Public Function ReadData(path) As Dictionary(Of String, DataTable)
+        Dim data As New Dictionary(Of String, DataTable)
+        Dim workbook As New Workbook
+        workbook.LoadFromFile(path)
+
+        Dim genreSheet As Worksheet = workbook.Worksheets("Genres")
+        data.Add("genres", genreSheet.ExportDataTable())
+        Return data
+    End Function
 End Module

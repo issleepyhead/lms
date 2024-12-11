@@ -8,7 +8,12 @@ Namespace My
     ' UnhandledException: Raised if the application encounters an unhandled exception.
     ' StartupNextInstance: Raised when launching a single-instance application and the application is already active. 
     ' NetworkAvailabilityChanged: Raised when the network connection is connected or disconnected.
+
     Partial Friend Class MyApplication
+
+        ' Keeps all the dialogs of the application
+        Public Shared DialogInstances As New Dictionary(Of String, Form)
+
         Private Sub MyApplication_Startup(sender As Object, e As StartupEventArgs) Handles Me.Startup
             My.Settings.last_run = Date.Now
 

@@ -1,4 +1,6 @@
-﻿Public Class DashboardForm
+﻿Imports LMS.My
+
+Public Class DashboardForm
     Private Sub BTNLOGOUT_Click(sender As Object, e As EventArgs) Handles BTNLOGOUT.Click
         ' TODO FIX THIS
         My.Settings.user_id = 0
@@ -656,8 +658,12 @@
     End Sub
 
     Private Sub BTNIMPORTBOOKS_Click(sender As Object, e As EventArgs) Handles BTNIMPORTBOOKS.Click
-        Using dialog = ImportBookDialog
+        Dim dialog As New ImportBookDialog
+        If Not MyApplication.DialogInstances.ContainsKey("importbook") Then
+            MyApplication.DialogInstances.Add("importbook", dialog)
             dialog.ShowDialog()
-        End Using
+        Else
+            MyApplication.DialogInstances.Item("importbook").ShowDialog()
+        End If
     End Sub
 End Class

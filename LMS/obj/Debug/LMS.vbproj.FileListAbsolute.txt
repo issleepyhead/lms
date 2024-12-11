@@ -172,3 +172,5 @@ C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.BookDialog.resources
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.LanguageDialog.resources
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.ImportBookDialog.resources
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.ImportFacultyDialog.resources
+C:\Users\jteno\OneDrive\Desktop\lms\LMS\bin\Debug\Spire.XLS.dll
+C:\Users\jteno\OneDrive\Desktop\lms\LMS\bin\Debug\Spire.XLS.xml
