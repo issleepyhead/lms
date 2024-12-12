@@ -1,6 +1,9 @@
 ﻿Imports LMS.My
 
 Public Class DashboardForm
+
+    ' Keeps all the dialogs of the application
+    Public Shared DialogInstances As New Dictionary(Of String, Form)
     Private Sub BTNLOGOUT_Click(sender As Object, e As EventArgs) Handles BTNLOGOUT.Click
         ' TODO FIX THIS
         My.Settings.user_id = 0
@@ -659,11 +662,11 @@ Public Class DashboardForm
 
     Private Sub BTNIMPORTBOOKS_Click(sender As Object, e As EventArgs) Handles BTNIMPORTBOOKS.Click
         Dim dialog As New ImportBookDialog
-        If Not MyApplication.DialogInstances.ContainsKey("importbook") Then
-            MyApplication.DialogInstances.Add("importbook", dialog)
+        If Not DialogInstances.ContainsKey("importbook") Then
+            DialogInstances.Add("importbook", dialog)
             dialog.ShowDialog()
         Else
-            MyApplication.DialogInstances.Item("importbook").ShowDialog()
+            DialogInstances.Item("importbook").ShowDialog()
         End If
     End Sub
 End Class

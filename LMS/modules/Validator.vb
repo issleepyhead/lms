@@ -3,7 +3,7 @@
 Module Validator
 
     Const NUMBER_PATTERN As String = "^[\d]*$"
-    Const DECI_NUMBER As String = ""
+    Const DECI_NUMBER As String = "^\d+(\.\d+)?$"
     Const PHONE As String = ""
 
     Public Enum VALIDATORTYPE
@@ -14,7 +14,7 @@ Module Validator
         NUMBER
     End Enum
 
-    Public Sub ClenseInput(sender As Object, allowed_pattern As String)
+    Public Sub NotAllowed(sender As Object, allowed_pattern As String)
         Try
             If String.IsNullOrEmpty(sender.Text) Then
                 sender.Clear()

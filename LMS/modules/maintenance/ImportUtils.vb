@@ -1,109 +1,84 @@
-﻿Imports MySql.Data.MySqlClient
+﻿Imports LMS.TransactionConnection
 Imports Spire.Xls
+Imports Spire.Xls.Core
 
 Module ImportUtils
-    Private Transaction As MySqlTransaction
-    Private Connection As MySqlConnection
-
-    Private Function GetConnection() As MySqlConnection
-        Try
-            If IsNothing(Connection) Then
-                Connection = New MySqlConnection(My.Settings.connection_string)
-            End If
-
-            If Connection.State <> ConnectionState.Open Then
-                Connection.Open()
-            End If
-        Catch ex As Exception
-            Logger.Logger(ex)
-        End Try
-        Return Connection
-    End Function
-
-    Private Function GetTransaction() As MySqlTransaction
-        Try
-            If IsNothing(Transaction) Then
-                Transaction = Connection.BeginTransaction
-            End If
-        Catch ex As Exception
-            Logger.Logger(ex)
-        End Try
-        Return Transaction
-    End Function
-
-    ''' <summary>
-    ''' Only for executing update, delete, and create.
-    ''' </summary>
-    ''' <param name="query">A sql query.</param>
-    ''' <param name="params">A collection of dictionary.</param>
-    Public Function ExecNonQueryTransaction(query As String, Optional params As Dictionary(Of String, String) = Nothing) As Integer
-        Dim res As Integer = 0
-        Try
-
-            Using cmd As New MySqlCommand(query, GetConnection(), GetTransaction())
-                If Not IsNothing(params) Then
-                    For Each item In params
-                        With cmd.Parameters
-                            .AddWithValue(item.Key, If(String.IsNullOrEmpty(item.Value), DBNull.Value, item.Value))
-                        End With
-                    Next
-                End If
-                res = cmd.ExecuteNonQuery()
-                If res = 0 Then
-                    Throw New Exception("Parang nothing happens lang ah?")
-                End If
-            End Using
-        Catch ex As Exception
-            Logger.Logger(ex)
-        End Try
-        Return res
-    End Function
-
-
-    ''' <summary>
-    ''' Only for executing scalar queries.
-    ''' </summary>
-    ''' <param name="query">A sql query.</param>
-    ''' <param name="params">A sql query.</param>
-    ''' <returns>An object of the result of the query.</returns>
-    Public Function ExecScalarTransaction(query As String, Optional params As Dictionary(Of String, String) = Nothing) As Object
-        Try
-            Using cmd As New MySqlCommand(query, GetConnection, GetTransaction)
-                If Not IsNothing(params) Then
-                    For Each item In params
-                        With cmd.Parameters
-                            .AddWithValue(item.Key, If(String.IsNullOrEmpty(item.Value), DBNull.Value, item.Value))
-                        End With
-                    Next
-                End If
-                Return cmd.ExecuteScalar
-            End Using
-        Catch ex As Exception
-            Logger.Logger(ex)
-            Return 0
-        End Try
-    End Function
-
-
-    Public Sub CommitTransaction()
-        If Not IsNothing(Transaction) Then
-            Transaction.Commit()
-        End If
-    End Sub
-
-    Public Sub RollbackTransaction()
-        If Not IsNothing(Transaction) Then
-            Transaction.Rollback()
-        End If
-    End Sub
 
     Public Function ReadData(path) As Dictionary(Of String, DataTable)
         Dim data As New Dictionary(Of String, DataTable)
-        Dim workbook As New Workbook
-        workbook.LoadFromFile(path)
+        Using workbook As New Workbook
+            workbook.LoadFromFile(path)
 
-        Dim genreSheet As Worksheet = workbook.Worksheets("Genres")
-        data.Add("genres", genreSheet.ExportDataTable())
+            For Each worksheet As Worksheet In workbook.Worksheets
+                Dim dt As DataTable = worksheet.ExportDataTable()
+                dt.Columns.Add("Status")
+                For Each drow As DataRow In dt.Rows
+                    drow.Item("Status") = "Ready"
+                Next
+                data.Add(worksheet.Name, dt)
+            Next
+        End Using
         Return data
+    End Function
+
+    Public Function IsValidSheets(path) As Boolean
+        Dim sheetNames As String() = {"Genres", "Authors", "Publishers", "Classifications", "Languages", "Books"}
+        Using workbook As New Workbook
+            workbook.LoadFromFile(path)
+
+            Dim wsheetNames As New List(Of String)
+            For Each wsheet As Worksheet In workbook.Worksheets
+                wsheetNames.Add(wsheet.Name.ToLower)
+            Next
+
+            Return sheetNames.All(Function(x) wsheetNames.Contains(x.ToLower))
+        End Using
+    End Function
+
+    Public Function IsColumnValid(path) As Boolean
+        Dim genreColumns As String() = {"Name", "Description"}
+        Dim authorColumns As String() = {"First Name", "Last Name", "Gender"}
+        Dim publisherColumns As String() = {"Publisher Name"}
+        Dim classificationColumns As String() = {"Dewey Decimal", "Classification"}
+        Dim languageColumns As String() = {"Language", "Code"}
+        Dim bookColumns As String() = {"Title", "ISBN", "Genre", "Publisher", "Language", "Author", "Classification", "Book Cover", "Reserve Copy"}
+
+        Dim sheetNames As String() = {"Genres", "Authors", "Publishers", "Classifications", "Languages", "Books"}
+        Using workbook As New Workbook
+            workbook.LoadFromFile(path)
+
+            For Each sheetName As String In sheetNames
+                Dim workSheet As Worksheet = workbook.Worksheets.Item(sheetName)
+                Dim dt As DataTable = workSheet.ExportDataTable()
+                Select Case sheetName
+                    Case "Genres"
+                        If Not genreColumns.All(Function(x) dt.Columns.Contains(x)) Then
+                            Return False
+                        End If
+                    Case "Authors"
+                        If Not authorColumns.All(Function(x) dt.Columns.Contains(x)) Then
+                            Return False
+                        End If
+                    Case "Publishers"
+                        If Not publisherColumns.All(Function(x) dt.Columns.Contains(x)) Then
+                            Return False
+                        End If
+                    Case "Classifications"
+                        If Not classificationColumns.All(Function(x) dt.Columns.Contains(x)) Then
+                            Return False
+                        End If
+                    Case "Languages"
+                        If Not languageColumns.All(Function(x) dt.Columns.Contains(x)) Then
+                            Return False
+                        End If
+                    Case "Books"
+                        If Not bookColumns.All(Function(x) dt.Columns.Contains(x)) Then
+                            Return False
+                        End If
+                End Select
+            Next
+            Return True
+        End Using
+
     End Function
 End Module

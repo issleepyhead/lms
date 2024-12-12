@@ -22,9 +22,9 @@ Partial Class ImportBookDialog
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel1 = New Guna.UI2.WinForms.Guna2Panel()
         Me.BTNPREVIEW = New Guna.UI2.WinForms.Guna2Button()
@@ -33,6 +33,8 @@ Partial Class ImportBookDialog
         Me.DGBOOK = New Guna.UI2.WinForms.Guna2DataGridView()
         Me.Guna2Panel2 = New Guna.UI2.WinForms.Guna2Panel()
         Me.BTNIMPORT = New Guna.UI2.WinForms.Guna2Button()
+        Me.BTNHIDE = New Guna.UI2.WinForms.Guna2Button()
+        Me.BTNCANCEL = New Guna.UI2.WinForms.Guna2Button()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.Guna2Panel1.SuspendLayout()
         CType(Me.DGBOOK, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -78,6 +80,7 @@ Partial Class ImportBookDialog
         Me.BTNPREVIEW.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTNPREVIEW.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTNPREVIEW.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTNPREVIEW.Enabled = False
         Me.BTNPREVIEW.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.BTNPREVIEW.ForeColor = System.Drawing.Color.White
         Me.BTNPREVIEW.Location = New System.Drawing.Point(1095, 23)
@@ -130,26 +133,26 @@ Partial Class ImportBookDialog
         '
         Me.DGBOOK.AllowUserToAddRows = False
         Me.DGBOOK.AllowUserToDeleteRows = False
-        DataGridViewCellStyle10.BackColor = System.Drawing.Color.White
-        Me.DGBOOK.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle10
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle11.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DGBOOK.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
+        Me.DGBOOK.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGBOOK.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.DGBOOK.ColumnHeadersHeight = 28
         Me.DGBOOK.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle12.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle12.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
-        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
-        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DGBOOK.DefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGBOOK.DefaultCellStyle = DataGridViewCellStyle3
         Me.DGBOOK.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DGBOOK.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.DGBOOK.Location = New System.Drawing.Point(20, 80)
@@ -183,6 +186,8 @@ Partial Class ImportBookDialog
         '
         'Guna2Panel2
         '
+        Me.Guna2Panel2.Controls.Add(Me.BTNCANCEL)
+        Me.Guna2Panel2.Controls.Add(Me.BTNHIDE)
         Me.Guna2Panel2.Controls.Add(Me.BTNIMPORT)
         Me.Guna2Panel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Guna2Panel2.Location = New System.Drawing.Point(0, 611)
@@ -208,6 +213,40 @@ Partial Class ImportBookDialog
         Me.BTNIMPORT.Size = New System.Drawing.Size(157, 36)
         Me.BTNIMPORT.TabIndex = 8
         Me.BTNIMPORT.Text = "Import"
+        '
+        'BTNHIDE
+        '
+        Me.BTNHIDE.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.BTNHIDE.BorderRadius = 8
+        Me.BTNHIDE.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.BTNHIDE.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.BTNHIDE.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.BTNHIDE.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTNHIDE.FillColor = System.Drawing.SystemColors.ControlDark
+        Me.BTNHIDE.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.BTNHIDE.ForeColor = System.Drawing.Color.Black
+        Me.BTNHIDE.Location = New System.Drawing.Point(933, 7)
+        Me.BTNHIDE.Name = "BTNHIDE"
+        Me.BTNHIDE.Size = New System.Drawing.Size(104, 36)
+        Me.BTNHIDE.TabIndex = 9
+        Me.BTNHIDE.Text = "Hide"
+        '
+        'BTNCANCEL
+        '
+        Me.BTNCANCEL.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.BTNCANCEL.BorderRadius = 8
+        Me.BTNCANCEL.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.BTNCANCEL.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.BTNCANCEL.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.BTNCANCEL.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTNCANCEL.FillColor = System.Drawing.SystemColors.ControlDark
+        Me.BTNCANCEL.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.BTNCANCEL.ForeColor = System.Drawing.Color.Black
+        Me.BTNCANCEL.Location = New System.Drawing.Point(823, 7)
+        Me.BTNCANCEL.Name = "BTNCANCEL"
+        Me.BTNCANCEL.Size = New System.Drawing.Size(104, 36)
+        Me.BTNCANCEL.TabIndex = 10
+        Me.BTNCANCEL.Text = "Cancel"
         '
         'ImportBookDialog
         '
@@ -238,4 +277,6 @@ Partial Class ImportBookDialog
     Friend WithEvents DGBOOK As Guna.UI2.WinForms.Guna2DataGridView
     Friend WithEvents Guna2Panel2 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents BTNIMPORT As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents BTNCANCEL As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents BTNHIDE As Guna.UI2.WinForms.Guna2Button
 End Class

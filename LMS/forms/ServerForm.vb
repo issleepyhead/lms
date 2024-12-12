@@ -51,6 +51,6 @@
     End Sub
 
     Private Sub TXTSERVER_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles TXTSERVER.Validating
-        ClenseInput(sender, "^[\d\.]*$")
+        NotAllowed(sender, "^[\d\.]*$")
     End Sub
 End Class

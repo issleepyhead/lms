@@ -281,6 +281,7 @@
     <Compile Include="modules\Logger.vb" />
     <Compile Include="modules\maintenance\BaseMaintenance.vb" />
     <Compile Include="modules\maintenance\ImportUtils.vb" />
+    <Compile Include="modules\TransactionConnection.vb" />
     <Compile Include="modules\maintenance\MaintenanceQueries.vb" />
     <Compile Include="modules\maintenance\QueryTableFactory.vb" />
     <Compile Include="modules\maintenance\QueryTableType.vb" />

@@ -28,11 +28,11 @@
     End Sub
 
     Private Sub TXTUSERNAME_TextChanged(sender As Object, e As EventArgs) Handles TXTUSERNAME.TextChanged
-        ClenseInput(sender, "^[a-z0-9\.@]*$")
+        NotAllowed(sender, "^[a-z0-9\.@]*$")
     End Sub
 
     Private Sub TXTPASSWORD_TextChanged(sender As Object, e As EventArgs) Handles TXTPASSWORD.TextChanged
-        ClenseInput(sender, "^[a-zA-Z0-9\p{P}]*$")
+        NotAllowed(sender, "^[a-zA-Z0-9\p{P}]*$")
     End Sub
 
     Private Sub TXTPASSWORD_IconRightClick(sender As Object, e As EventArgs) Handles TXTPASSWORD.IconRightClick
