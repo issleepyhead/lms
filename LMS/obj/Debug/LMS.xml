@@ -97,6 +97,42 @@ LMS
  <param name="params">A sql query.</param>
  <returns>An object of the result of the query.</returns>
 </member>
+<member name="M:LMS.ImportUtils.IsValidSheets(System.Object)">
+ <summary>
+ Checks if the excel file contains all the required sheet names for the excel file.
+ </summary>
+ <param name="path">A string path of the excel file.</param>
+ <returns>Boolean true of the excel file contains all the sheets names otherwise false.</returns>
+</member>
+<member name="M:LMS.ImportUtils.IsColumnValid(System.Object)">
+ <summary>
+ Checks if the sheets of the excel file contains all the required columns.
+ </summary>
+ <param name="path">A string path of the excel file.</param>
+ <returns>Boolean true of the excel file contains all the columns otherwise false.</returns>
+</member>
+<member name="T:LMS.STATUSTYPE">
+ <summary>
+ STATUS TYPE is for library resources that can be archived.
+ ACTIVE = 0
+ INACTIVE = 1
+ </summary>
+</member>
+<member name="T:LMS.BOOKSTATE">
+ <summary>
+ BOOKSTATE determines if the copy of a book if available for borrowing or not.
+ BORROWED = 0
+ AVAILABLE = 1
+ </summary>
+</member>
+<member name="T:LMS.BOOKCONDITIONTYPE">
+ <summary>
+ Condition type of a book
+ GOOD = 0
+ DAMAGED = 1
+ LOST = 2
+ </summary>
+</member>
 <member name="M:LMS.TransactionConnection.ExecNonQueryTransaction(System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
  <summary>
  Only for executing update, delete, and create.

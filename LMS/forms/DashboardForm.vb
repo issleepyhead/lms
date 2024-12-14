@@ -475,6 +475,17 @@ Public Class DashboardForm
     End Sub
 #End Region
 
+#Region "Section Maintenance"
+    Private Sub BTNADDSECTION_Click(sender As Object, e As EventArgs) Handles BTNADDSECTION.Click
+        Using dialog = SectionDialog
+            dialog.ShowDialog()
+        End Using
+        DGSECTIONS.DataSource = BaseMaintenance.Fetch(QueryTableType.SECTION_QUERY_TABLE)
+        LBLSECTIONNEXT.Text = BaseMaintenance.PMAX
+        LBLSECTIONPREV.Text = BaseMaintenance.PPrev
+    End Sub
+#End Region
+
     Private Sub SelectAllToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SelectAllToolStripMenuItem.Click
         If MainFormPanels.SelectedTab.Equals(MaintenanceTab) Then
             Select Case True
@@ -664,9 +675,11 @@ Public Class DashboardForm
         Dim dialog As New ImportBookDialog
         If Not DialogInstances.ContainsKey("importbook") Then
             DialogInstances.Add("importbook", dialog)
-            dialog.ShowDialog()
+            dialog.Show()
         Else
-            DialogInstances.Item("importbook").ShowDialog()
+            DialogInstances.Item("importbook").Show()
         End If
     End Sub
+
+
 End Class

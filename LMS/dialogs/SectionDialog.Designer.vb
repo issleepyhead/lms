@@ -22,16 +22,19 @@ Partial Class SectionDialog
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.BTNSAVE = New Guna.UI2.WinForms.Guna2Button()
-        Me.CMBGENDER = New Guna.UI2.WinForms.Guna2ComboBox()
+        Me.CMBYEARLEVEL = New Guna.UI2.WinForms.Guna2ComboBox()
         Me.Guna2HtmlLabel5 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2HtmlLabel6 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2HtmlLabel2 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.TXTLASTNAME = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.TXTSECTIONNAME = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2HtmlLabel4 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.CMBDEPARTMENT = New Guna.UI2.WinForms.Guna2ComboBox()
         Me.Guna2HtmlLabel1 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2HtmlLabel3 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.errProvider = New System.Windows.Forms.ErrorProvider(Me.components)
+        CType(Me.errProvider, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'BTNSAVE
@@ -50,23 +53,24 @@ Partial Class SectionDialog
         Me.BTNSAVE.TabIndex = 27
         Me.BTNSAVE.Text = "Save"
         '
-        'CMBGENDER
+        'CMBYEARLEVEL
         '
-        Me.CMBGENDER.BackColor = System.Drawing.Color.Transparent
-        Me.CMBGENDER.BorderRadius = 4
-        Me.CMBGENDER.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-        Me.CMBGENDER.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.CMBGENDER.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.CMBGENDER.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.CMBGENDER.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-        Me.CMBGENDER.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
-        Me.CMBGENDER.ItemHeight = 40
-        Me.CMBGENDER.Items.AddRange(New Object() {"Male", "Female"})
-        Me.CMBGENDER.Location = New System.Drawing.Point(20, 133)
-        Me.CMBGENDER.Name = "CMBGENDER"
-        Me.CMBGENDER.Size = New System.Drawing.Size(306, 46)
-        Me.CMBGENDER.StartIndex = 0
-        Me.CMBGENDER.TabIndex = 26
+        Me.CMBYEARLEVEL.BackColor = System.Drawing.Color.Transparent
+        Me.CMBYEARLEVEL.BorderRadius = 4
+        Me.CMBYEARLEVEL.DisplayMember = "year_level"
+        Me.CMBYEARLEVEL.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.CMBYEARLEVEL.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CMBYEARLEVEL.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.CMBYEARLEVEL.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.CMBYEARLEVEL.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.CMBYEARLEVEL.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
+        Me.CMBYEARLEVEL.ItemHeight = 40
+        Me.CMBYEARLEVEL.Location = New System.Drawing.Point(20, 133)
+        Me.CMBYEARLEVEL.Name = "CMBYEARLEVEL"
+        Me.CMBYEARLEVEL.Size = New System.Drawing.Size(306, 46)
+        Me.CMBYEARLEVEL.StartIndex = 0
+        Me.CMBYEARLEVEL.TabIndex = 26
+        Me.CMBYEARLEVEL.ValueMember = "id"
         '
         'Guna2HtmlLabel5
         '
@@ -103,27 +107,27 @@ Partial Class SectionDialog
         Me.Guna2HtmlLabel2.TabIndex = 23
         Me.Guna2HtmlLabel2.Text = "*"
         '
-        'TXTLASTNAME
+        'TXTSECTIONNAME
         '
-        Me.TXTLASTNAME.BorderRadius = 4
-        Me.TXTLASTNAME.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.TXTLASTNAME.DefaultText = ""
-        Me.TXTLASTNAME.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.TXTLASTNAME.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.TXTLASTNAME.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTLASTNAME.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTLASTNAME.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTLASTNAME.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TXTLASTNAME.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTLASTNAME.Location = New System.Drawing.Point(20, 221)
-        Me.TXTLASTNAME.Margin = New System.Windows.Forms.Padding(0)
-        Me.TXTLASTNAME.MaxLength = 45
-        Me.TXTLASTNAME.Name = "TXTLASTNAME"
-        Me.TXTLASTNAME.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXTLASTNAME.PlaceholderText = "e.g., Rowling"
-        Me.TXTLASTNAME.SelectedText = ""
-        Me.TXTLASTNAME.Size = New System.Drawing.Size(306, 48)
-        Me.TXTLASTNAME.TabIndex = 22
+        Me.TXTSECTIONNAME.BorderRadius = 4
+        Me.TXTSECTIONNAME.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TXTSECTIONNAME.DefaultText = ""
+        Me.TXTSECTIONNAME.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TXTSECTIONNAME.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TXTSECTIONNAME.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTSECTIONNAME.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTSECTIONNAME.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTSECTIONNAME.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TXTSECTIONNAME.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTSECTIONNAME.Location = New System.Drawing.Point(20, 221)
+        Me.TXTSECTIONNAME.Margin = New System.Windows.Forms.Padding(0)
+        Me.TXTSECTIONNAME.MaxLength = 45
+        Me.TXTSECTIONNAME.Name = "TXTSECTIONNAME"
+        Me.TXTSECTIONNAME.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TXTSECTIONNAME.PlaceholderText = "e.g., Rowling"
+        Me.TXTSECTIONNAME.SelectedText = ""
+        Me.TXTSECTIONNAME.Size = New System.Drawing.Size(306, 48)
+        Me.TXTSECTIONNAME.TabIndex = 22
         '
         'Guna2HtmlLabel4
         '
@@ -177,6 +181,11 @@ Partial Class SectionDialog
         Me.Guna2HtmlLabel3.TabIndex = 30
         Me.Guna2HtmlLabel3.Text = "Department:"
         '
+        'errProvider
+        '
+        Me.errProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink
+        Me.errProvider.ContainerControl = Me
+        '
         'SectionDialog
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -186,11 +195,11 @@ Partial Class SectionDialog
         Me.Controls.Add(Me.Guna2HtmlLabel1)
         Me.Controls.Add(Me.Guna2HtmlLabel3)
         Me.Controls.Add(Me.BTNSAVE)
-        Me.Controls.Add(Me.CMBGENDER)
+        Me.Controls.Add(Me.CMBYEARLEVEL)
         Me.Controls.Add(Me.Guna2HtmlLabel5)
         Me.Controls.Add(Me.Guna2HtmlLabel6)
         Me.Controls.Add(Me.Guna2HtmlLabel2)
-        Me.Controls.Add(Me.TXTLASTNAME)
+        Me.Controls.Add(Me.TXTSECTIONNAME)
         Me.Controls.Add(Me.Guna2HtmlLabel4)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.MaximizeBox = False
@@ -200,19 +209,21 @@ Partial Class SectionDialog
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Section Form"
+        CType(Me.errProvider, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents BTNSAVE As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents CMBGENDER As Guna.UI2.WinForms.Guna2ComboBox
+    Friend WithEvents CMBYEARLEVEL As Guna.UI2.WinForms.Guna2ComboBox
     Friend WithEvents Guna2HtmlLabel5 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2HtmlLabel6 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2HtmlLabel2 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents TXTLASTNAME As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents TXTSECTIONNAME As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Guna2HtmlLabel4 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents CMBDEPARTMENT As Guna.UI2.WinForms.Guna2ComboBox
     Friend WithEvents Guna2HtmlLabel1 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2HtmlLabel3 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents errProvider As ErrorProvider
 End Class

@@ -103,9 +103,9 @@
                     .EXISTS_QUERY_WITH_ID = "SELECT COUNT(*) FROM tblsections WHERE LOWER(name) = LOWER(@name) AND id != @id",
                     .EXISTS_QUERY_NO_ID = "SELECT COUNT(*) FROM tblsections WHERE LOWER(name) = LOWER(@name)",
                     .FETCH_TOTAL_COUNT_QUERY = "SELECT COUNT(*) FROM tblsections",
-                    .FETCH_LIMIT_QUERY = "SELECT s.id, s.name, s.year_id, y.year_level FROM tblsections s JOIN tblyearlevels y ON s.year_id = y.id ORDER BY name ASC LIMIT @page, 30;",
+                    .FETCH_LIMIT_QUERY = "SELECT s.id, s.name, s.year_id, y.year_level, y.department_id FROM tblsections s JOIN tblyearlevels y ON s.year_id = y.id ORDER BY name ASC LIMIT @page, 30;",
                     .FETCH_TOTAL_COUNT_QUERY_SEARCH = "SELECT COUNT(*) FROM tblsections WHERE name LIKE @search",
-                    .FETCH_LIMIT_QUERY_SEARCH = "SELECT s.id, s.name, s.year_id, y.year_level FROM tblsections s JOIN tblyearlevels y ON s.year_id = y.id WHERE name LIKE @search ORDER BY name ASC LIMIT @page, 30",
+                    .FETCH_LIMIT_QUERY_SEARCH = "SELECT s.id, s.name, s.year_id, y.year_level, y.department_id FROM tblsections s JOIN tblyearlevels y ON s.year_id = y.id WHERE name LIKE @search ORDER BY name ASC LIMIT @page, 30",
                     .UPDATE_QUERY = "UPDATE tblsections SET name = @name, year_id = @yid WHERE id = @id",
                     .FETCH_ALL_QUERY = "SELECT s.id, s.name, s.year_id, y.year_level FROM tblsections s JOIN tblyearlevel y ON s.year_id = y.id WHERE year_id = @yid ORDER BY s.name"
                 }
