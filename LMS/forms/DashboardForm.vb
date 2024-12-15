@@ -4,8 +4,9 @@ Public Class DashboardForm
 
     ' Keeps all the dialogs of the application
     Public Shared DialogInstances As New Dictionary(Of String, Form)
+
     Private Sub BTNLOGOUT_Click(sender As Object, e As EventArgs) Handles BTNLOGOUT.Click
-        ' TODO FIX THIS
+        ' TODO LOG OUT LOGIC
         My.Settings.user_id = 0
         My.Settings.Save()
         Using Me
@@ -23,7 +24,7 @@ Public Class DashboardForm
         LBLGENREPREV.Text = BaseMaintenance.PPrev
     End Sub
 
-    Private Sub BTNGENREPNEXT_Click(sender As Object, e As EventArgs) Handles BTNGENREPNEXT.Click
+    Private Sub BTNGENRENEXT_Click(sender As Object, e As EventArgs) Handles BTNGENRENEXT.Click
         If BaseMaintenance.PPrev < BaseMaintenance.PMAX Then
             BaseMaintenance.PPrev += 1
             LBLGENREPREV.Text = BaseMaintenance.PPrev
@@ -31,7 +32,7 @@ Public Class DashboardForm
         End If
     End Sub
 
-    Private Sub BTNGENREPPREV_Click(sender As Object, e As EventArgs) Handles BTNGENREPPREV.Click
+    Private Sub BTNGENREPREV_Click(sender As Object, e As EventArgs) Handles BTNGENREPREV.Click
         If BaseMaintenance.PPrev > 1 Then
             BaseMaintenance.PPrev -= 1
             LBLGENREPREV.Text = BaseMaintenance.PPrev
@@ -123,7 +124,7 @@ Public Class DashboardForm
     End Sub
 #End Region
 
-#Region "Publisher Maintenance"
+#Region "Publisher Module"
     Private Sub BTNADDPUBLISHER_Click(sender As Object, e As EventArgs) Handles BTNADDPUBLISHER.Click
         Using dialog = PublisherDialog
             dialog.ShowDialog()
@@ -178,7 +179,7 @@ Public Class DashboardForm
     End Sub
 #End Region
 
-#Region "Classification Maintenance"
+#Region "Classification Module"
     Private Sub BTNADDCLASSIFICATION_Click(sender As Object, e As EventArgs) Handles BTNADDCLASSIFICATION.Click
         Using dialog = ClassificationDialog
             dialog.ShowDialog()
@@ -233,7 +234,7 @@ Public Class DashboardForm
     End Sub
 #End Region
 
-#Region "Donator Maintenance"
+#Region "Donator Module"
     Private Sub BTNADDDONATOR_Click(sender As Object, e As EventArgs) Handles BTNADDDONATOR.Click
         Using dialog = DonatorDialog
             dialog.ShowDialog()
@@ -288,7 +289,7 @@ Public Class DashboardForm
     End Sub
 #End Region
 
-#Region "Supplier Maintenance"
+#Region "Supplier Module"
     Private Sub BTNADDSUPPLIER_Click(sender As Object, e As EventArgs) Handles BTNADDSUPPLIER.Click
         Using dialog = SupplierDialog
             dialog.ShowDialog()
@@ -343,7 +344,7 @@ Public Class DashboardForm
     End Sub
 #End Region
 
-#Region "Department Maintenance"
+#Region "Department Module"
     Private Sub BTNADDDEPARTMENT_Click(sender As Object, e As EventArgs) Handles BTNADDDEPARTMENT.Click
         Using dialog = DepartmentDialog
             dialog.ShowDialog()
@@ -352,9 +353,53 @@ Public Class DashboardForm
         LBLDEPARTMENTNEXT.Text = BaseMaintenance.PMAX
         LBLDEPARTMENTPREV.Text = BaseMaintenance.PPrev
     End Sub
+
+    Private Sub BTNDEPARTMENTNEXT_Click(sender As Object, e As EventArgs) Handles BTNDEPARTMENTNEXT.Click
+        If BaseMaintenance.PPrev < BaseMaintenance.PMAX Then
+            BaseMaintenance.PPrev += 1
+            LBLDEPARTMENTPREV.Text = BaseMaintenance.PPrev
+            DGDEPARTMENT.DataSource = BaseMaintenance.Fetch(QueryTableType.DEPARTMENT_QUERY_TABLE)
+        End If
+    End Sub
+
+    Private Sub BTNDEPARTMENTPREV_Click(sender As Object, e As EventArgs) Handles BTNDEPARTMENTPREV.Click
+        If BaseMaintenance.PPrev > 1 Then
+            BaseMaintenance.PPrev -= 1
+            LBLDEPARTMENTPREV.Text = BaseMaintenance.PPrev
+            DGDEPARTMENT.DataSource = BaseMaintenance.Fetch(QueryTableType.DEPARTMENT_QUERY_TABLE)
+        End If
+    End Sub
+
+    Private Sub DGDEPARTMENT_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGDEPARTMENT.CellMouseClick
+        If e.ColumnIndex <> 0 Then
+            If DGDEPARTMENT.SelectedRows.Count > 0 Then
+                Dim datarow As DataRowView = DGDEPARTMENT.SelectedRows.Item(0).DataBoundItem
+                Using dialog As New DepartmentDialog(datarow)
+                    dialog.ShowDialog()
+                End Using
+            End If
+            DGDEPARTMENT.DataSource = BaseMaintenance.Fetch(QueryTableType.DEPARTMENT_QUERY_TABLE)
+            LBLDEPARTMENTNEXT.Text = BaseMaintenance.PMAX
+            LBLDEPARTMENTPREV.Text = BaseMaintenance.PPrev
+        End If
+    End Sub
+
+    Private Sub TXTDEPARTMENTSEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTDEPARTMENTSEARCH.TextChanged
+        If AccountsPanel.SelectedTab.Equals(DepartmentTab) Then
+            If Not String.IsNullOrEmpty(TXTDEPARTMENTSEARCH.Text) Then
+                DGDEPARTMENT.DataSource = BaseMaintenance.Search(QueryTableType.DEPARTMENT_QUERY_TABLE, TXTDEPARTMENTSEARCH.Text)
+                LBLDEPARTMENTNEXT.Text = BaseMaintenance.PMAX
+                LBLGENREPREV.Text = BaseMaintenance.PPrev
+            Else
+                DGDEPARTMENT.DataSource = BaseMaintenance.Fetch(QueryTableType.DEPARTMENT_QUERY_TABLE)
+                LBLDEPARTMENTNEXT.Text = BaseMaintenance.PMAX
+                LBLDEPARTMENTPREV.Text = BaseMaintenance.PPrev
+            End If
+        End If
+    End Sub
 #End Region
 
-#Region "Year Level Maintenance"
+#Region "Year Level Module"
     Private Sub BTNADDYEARLEVEL_Click(sender As Object, e As EventArgs) Handles BTNADDYEARLEVEL.Click
         Using dialog = YearLevelDialog
             dialog.ShowDialog()
@@ -363,9 +408,53 @@ Public Class DashboardForm
         LBLYEARLEVELNEXT.Text = BaseMaintenance.PMAX
         LBLYEARLEVELPREV.Text = BaseMaintenance.PPrev
     End Sub
+
+    Private Sub BTNYEARLEVELNEXT_Click(sender As Object, e As EventArgs) Handles BTNYEARLEVELNEXT.Click
+        If BaseMaintenance.PPrev < BaseMaintenance.PMAX Then
+            BaseMaintenance.PPrev += 1
+            LBLYEARLEVELPREV.Text = BaseMaintenance.PPrev
+            DGYEARLEVEL.DataSource = BaseMaintenance.Fetch(QueryTableType.YEARLEVEL_QUERY_TABLE)
+        End If
+    End Sub
+
+    Private Sub BTNYEARLEVELPREV_Click(sender As Object, e As EventArgs) Handles BTNYEARLEVELPREV.Click
+        If BaseMaintenance.PPrev > 1 Then
+            BaseMaintenance.PPrev -= 1
+            LBLYEARLEVELPREV.Text = BaseMaintenance.PPrev
+            DGYEARLEVEL.DataSource = BaseMaintenance.Fetch(QueryTableType.YEARLEVEL_QUERY_TABLE)
+        End If
+    End Sub
+
+    Private Sub DGYEARLEVEL_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGGENRE.CellMouseClick
+        If e.ColumnIndex <> 0 Then
+            If DGYEARLEVEL.SelectedRows.Count > 0 Then
+                Dim datarow As DataRowView = DGYEARLEVEL.SelectedRows.Item(0).DataBoundItem
+                Using dialog As New YearLevelDialog(datarow)
+                    dialog.ShowDialog()
+                End Using
+            End If
+            DGYEARLEVEL.DataSource = BaseMaintenance.Fetch(QueryTableType.YEARLEVEL_QUERY_TABLE)
+            LBLYEARLEVELNEXT.Text = BaseMaintenance.PMAX
+            LBLYEARLEVELPREV.Text = BaseMaintenance.PPrev
+        End If
+    End Sub
+
+    Private Sub TXTYEARLEVELSEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTYEARLEVELSEARCH.TextChanged
+        If AccountsPanel.SelectedTab.Equals(YearLevelTab) Then
+            If Not String.IsNullOrEmpty(TXTYEARLEVELSEARCH.Text) Then
+                DGYEARLEVEL.DataSource = BaseMaintenance.Search(QueryTableType.YEARLEVEL_QUERY_TABLE, TXTYEARLEVELSEARCH.Text)
+                LBLYEARLEVELNEXT.Text = BaseMaintenance.PMAX
+                LBLYEARLEVELPREV.Text = BaseMaintenance.PPrev
+            Else
+                DGYEARLEVEL.DataSource = BaseMaintenance.Fetch(QueryTableType.YEARLEVEL_QUERY_TABLE)
+                LBLYEARLEVELNEXT.Text = BaseMaintenance.PMAX
+                LBLYEARLEVELPREV.Text = BaseMaintenance.PPrev
+            End If
+        End If
+    End Sub
 #End Region
 
-#Region "Language Maintenance"
+#Region "Language Module"
     Private Sub BTNADDLANGUAGE_Click(sender As Object, e As EventArgs) Handles BTNADDLANGUAGE.Click
         Using dialog = LanguageDialog
             dialog.ShowDialog()
@@ -420,7 +509,7 @@ Public Class DashboardForm
     End Sub
 #End Region
 
-#Region "Book Maintenance"
+#Region "Book Module"
     Private Sub BTNADDBOOK_Click(sender As Object, e As EventArgs) Handles BTNADDBOOK.Click
         Using dialog = BookDialog
             dialog.ShowDialog()
@@ -475,7 +564,7 @@ Public Class DashboardForm
     End Sub
 #End Region
 
-#Region "Section Maintenance"
+#Region "Section Module"
     Private Sub BTNADDSECTION_Click(sender As Object, e As EventArgs) Handles BTNADDSECTION.Click
         Using dialog = SectionDialog
             dialog.ShowDialog()
@@ -484,8 +573,53 @@ Public Class DashboardForm
         LBLSECTIONNEXT.Text = BaseMaintenance.PMAX
         LBLSECTIONPREV.Text = BaseMaintenance.PPrev
     End Sub
+
+    Private Sub BTNSECTIONPNEXT_Click(sender As Object, e As EventArgs) Handles BTNSECTIONNEXT.Click
+        If BaseMaintenance.PPrev < BaseMaintenance.PMAX Then
+            BaseMaintenance.PPrev += 1
+            LBLSECTIONPREV.Text = BaseMaintenance.PPrev
+            DGSECTIONS.DataSource = BaseMaintenance.Fetch(QueryTableType.SECTION_QUERY_TABLE)
+        End If
+    End Sub
+
+    Private Sub BTNSECTIONPPREV_Click(sender As Object, e As EventArgs) Handles BTNSECTIONPREV.Click
+        If BaseMaintenance.PPrev > 1 Then
+            BaseMaintenance.PPrev -= 1
+            LBLSECTIONPREV.Text = BaseMaintenance.PPrev
+            DGSECTIONS.DataSource = BaseMaintenance.Fetch(QueryTableType.SECTION_QUERY_TABLE)
+        End If
+    End Sub
+
+    Private Sub DGSECTION_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGSECTIONS.CellMouseClick
+        If e.ColumnIndex <> 0 Then
+            If DGSECTIONS.SelectedRows.Count > 0 Then
+                Dim datarow As DataRowView = DGSECTIONS.SelectedRows.Item(0).DataBoundItem
+                Using dialog As New SectionDialog(datarow)
+                    dialog.ShowDialog()
+                End Using
+            End If
+            DGSECTIONS.DataSource = BaseMaintenance.Fetch(QueryTableType.SECTION_QUERY_TABLE)
+            LBLSECTIONNEXT.Text = BaseMaintenance.PMAX
+            LBLSECTIONPREV.Text = BaseMaintenance.PPrev
+        End If
+    End Sub
+
+    Private Sub TXTSECTIONSEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTSECTIONSEARCH.TextChanged
+        If AccountsPanel.SelectedTab.Equals(SectionTab) Then
+            If Not String.IsNullOrEmpty(TXTSECTIONSEARCH.Text) Then
+                DGSECTIONS.DataSource = BaseMaintenance.Search(QueryTableType.SECTION_QUERY_TABLE, TXTSECTIONSEARCH.Text)
+                LBLSECTIONNEXT.Text = BaseMaintenance.PMAX
+                LBLSECTIONPREV.Text = BaseMaintenance.PPrev
+            Else
+                DGSECTIONS.DataSource = BaseMaintenance.Fetch(QueryTableType.SECTION_QUERY_TABLE)
+                LBLSECTIONNEXT.Text = BaseMaintenance.PMAX
+                LBLSECTIONPREV.Text = BaseMaintenance.PPrev
+            End If
+        End If
+    End Sub
 #End Region
 
+#Region "Select All Datagrid"
     Private Sub SelectAllToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SelectAllToolStripMenuItem.Click
         If MainFormPanels.SelectedTab.Equals(MaintenanceTab) Then
             Select Case True
@@ -530,7 +664,9 @@ Public Class DashboardForm
             End Select
         End If
     End Sub
+#End Region
 
+#Region "Unselect All"
     Private Sub UnselectAllToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UnselectAllToolStripMenuItem.Click
         If MainFormPanels.SelectedTab.Equals(MaintenanceTab) Then
             Select Case True
@@ -577,7 +713,9 @@ Public Class DashboardForm
             End Select
         End If
     End Sub
+#End Region
 
+#Region "Remove Selected"
     Private Sub RemoveSelectedToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RemoveToolStripMenuItem.Click
         ' TODO PERFORM A CHECK BEFORE DELETING THE DATA
         If MessageBox.Show("Are you sure you want to delete the selected item(s)?", "Delete Selected Items?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.No Then
@@ -626,7 +764,7 @@ Public Class DashboardForm
                 DGAUTHORS.DataSource = BaseMaintenance.Fetch(QueryTableType.AUTHOR_QUERY_TABLE)
         End Select
     End Sub
-
+#End Region
     Private Sub MaintenancePanels_SelectedIndexChanged(sender As Object, e As EventArgs) Handles MaintenancePanels.SelectedIndexChanged
         Select Case True
             Case MaintenancePanels.SelectedTab.Equals(GenresTab)
@@ -681,5 +819,22 @@ Public Class DashboardForm
         End If
     End Sub
 
+    Private Sub AccountsPanel_SelectedIndexChanged(sender As Object, e As EventArgs) Handles AccountsPanel.SelectedIndexChanged
+        Select Case True
+            Case AccountsPanel.SelectedTab.Equals(DepartmentTab)
+                DGDEPARTMENT.DataSource = BaseMaintenance.Fetch(QueryTableType.DEPARTMENT_QUERY_TABLE)
+                LBLDEPARTMENTPREV.Text = BaseMaintenance.PPrev
+                LBLDEPARTMENTNEXT.Text = BaseMaintenance.PMAX
 
+            Case AccountsPanel.SelectedTab.Equals(YearLevelTab)
+                DGYEARLEVEL.DataSource = BaseMaintenance.Fetch(QueryTableType.YEARLEVEL_QUERY_TABLE)
+                LBLYEARLEVELPREV.Text = BaseMaintenance.PPrev
+                LBLYEARLEVELNEXT.Text = BaseMaintenance.PMAX
+
+            Case AccountsPanel.SelectedTab.Equals(SectionTab)
+                DGSECTIONS.DataSource = BaseMaintenance.Fetch(QueryTableType.SECTION_QUERY_TABLE)
+                LBLSECTIONPREV.Text = BaseMaintenance.PPrev
+                LBLSECTIONNEXT.Text = BaseMaintenance.PMAX
+        End Select
+    End Sub
 End Class

@@ -148,7 +148,6 @@ C:\Users\jteno\OneDrive\Desktop\lms\LMS\bin\Debug\System.Memory.xml
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\bin\Debug\System.Numerics.Vectors.xml
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\bin\Debug\System.Threading.Tasks.Extensions.xml
-C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.vbproj.AssemblyReference.cache
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.AuthorDialog.resources
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.ClassificationDialog.resources
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.DepartmentDialog.resources
@@ -174,3 +173,4 @@ C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.ImportBookDialog.resources
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.ImportFacultyDialog.resources
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\bin\Debug\Spire.XLS.dll
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\bin\Debug\Spire.XLS.xml
+C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.vbproj.AssemblyReference.cache
