@@ -425,7 +425,7 @@ Public Class DashboardForm
         End If
     End Sub
 
-    Private Sub DGYEARLEVEL_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGGENRE.CellMouseClick
+    Private Sub DGYEARLEVEL_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGYEARLEVEL.CellMouseClick
         If e.ColumnIndex <> 0 Then
             If DGYEARLEVEL.SelectedRows.Count > 0 Then
                 Dim datarow As DataRowView = DGYEARLEVEL.SelectedRows.Item(0).DataBoundItem

@@ -27,6 +27,10 @@ Public Class BookDialog
             CMBLANGUAGE.SelectedValue = _data.Item("language_id")
             CMBAUTHOR.SelectedValue = _data.Item("author_id")
             CMBCLASSIFICATION.SelectedValue = _data.Item("classification_id")
+            NUMERICCOPY.Value = _data.Item("reserve_copy")
+            NUMERICOVERDUEFACULTY.Value = _data.Item("fpenalty")
+            NUMERICOVERDUESTUDENT.Value = _data.Item("spenalty")
+            CMBCOVER.Text = _data.Item("book_cover")
         End If
     End Sub
 
@@ -66,9 +70,9 @@ Public Class BookDialog
             End If
         Else
             If BaseMaintenance.Update(QueryTableType.BOOK_QUERY_TABLE, data) Then
-                MessageBox.Show("Supplier has been updated successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("Book has been updated successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
-                MessageBox.Show("Failed updating the supplier.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                MessageBox.Show("Failed updating the book.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 Exit Sub
             End If
         End If

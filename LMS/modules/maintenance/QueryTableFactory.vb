@@ -145,9 +145,9 @@
                     .EXISTS_QUERY_WITH_ID = "SELECT COUNT(*) FROM tblyearlevels WHERE LOWER(yearl_level) = LOWER(@name) AND id != @id",
                     .EXISTS_QUERY_NO_ID = "SELECT COUNT(*) FROM tblyearlevels WHERE LOWER(year_level) = LOWER(@name)",
                     .FETCH_TOTAL_COUNT_QUERY = "SELECT COUNT(*) FROM tblyearlevels",
-                    .FETCH_LIMIT_QUERY = "SELECT y.id, y.year_level, d.department_name FROM tblyearlevels y JOIN tbldepartments d ON y.department_id = d.id ORDER BY year_level ASC LIMIT @page, 30;",
+                    .FETCH_LIMIT_QUERY = "SELECT y.id, y.year_level, d.department_name, y.department_id FROM tblyearlevels y JOIN tbldepartments d ON y.department_id = d.id ORDER BY year_level ASC LIMIT @page, 30;",
                     .FETCH_TOTAL_COUNT_QUERY_SEARCH = "SELECT COUNT(*) FROM tblyearlevels WHERE year_level LIKE @search",
-                    .FETCH_LIMIT_QUERY_SEARCH = "SELECT y.id, y.year_level, d.department_name FROM tblyearlevels y JOIN tbldepartments d ON y.department_id = d.id WHERE year_level LIKE @search ORDER BY year_level ASC LIMIT @page, 30",
+                    .FETCH_LIMIT_QUERY_SEARCH = "SELECT y.id, y.year_level, d.department_name, y.department_id FROM tblyearlevels y JOIN tbldepartments d ON y.department_id = d.id WHERE year_level LIKE @search ORDER BY year_level ASC LIMIT @page, 30",
                     .UPDATE_QUERY = "UPDATE tblyearlevels SET year_level = @name, department_id = @did WHERE id = @id",
                     .FETCH_ALL_QUERY = "SELECT id, year_level FROM tblyearlevels WHERE department_id = @did ORDER BY year_level"
                 }

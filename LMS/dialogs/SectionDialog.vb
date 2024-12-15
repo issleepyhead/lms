@@ -22,16 +22,17 @@ Public Class SectionDialog
 
         Dim data As New Dictionary(Of String, String) From {
                 {"@name", TXTSECTIONNAME.Text},
+                {"@yid", CMBYEARLEVEL.SelectedValue},
                 {"@id", If(IsNothing(_data), 0, _data.Item("id").ToString)}
         }
 
-        If BaseMaintenance.Exists(QueryTableType.DEPARTMENT_QUERY_TABLE, data) Then
+        If BaseMaintenance.Exists(QueryTableType.SECTION_QUERY_TABLE, data) Then
             errProvider.SetError(TXTSECTIONNAME, "This section already exists.")
             Exit Sub
         End If
 
         If IsNothing(_data) Then
-            If BaseMaintenance.Add(QueryTableType.DEPARTMENT_QUERY_TABLE, data) Then
+            If BaseMaintenance.Add(QueryTableType.SECTION_QUERY_TABLE, data) Then
                 MessageBox.Show("Section has been added successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
                 MessageBox.Show("Failed adding the section.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -53,6 +54,7 @@ Public Class SectionDialog
         CMBYEARLEVEL.DataSource = BaseMaintenance.FetchAll(QueryTableType.YEARLEVEL_QUERY_TABLE, New Dictionary(Of String, String) From {{"@did", CMBDEPARTMENT.SelectedValue}})
         If Not IsNothing(_data) Then
             TXTSECTIONNAME.Text = _data.Item("name")
+            CMBDEPARTMENT.SelectedValue = _data.Item("department_id")
             CMBYEARLEVEL.SelectedValue = _data.Item("year_id")
         End If
     End Sub

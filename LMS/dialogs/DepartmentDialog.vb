@@ -50,7 +50,7 @@ Public Class DepartmentDialog
 
     Private Sub DepartmentDialog_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If Not IsNothing(_data) Then
-            TXTNAME.Text = _data.Item("name")
+            TXTNAME.Text = _data.Item("department_name")
         End If
     End Sub
 
