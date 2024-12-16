@@ -278,6 +278,7 @@
     </Compile>
     <Compile Include="modules\ApplicationModule.vb" />
     <Compile Include="modules\Connection.vb" />
+    <Compile Include="modules\ExcelDataLoader.vb" />
     <Compile Include="modules\Logger.vb" />
     <Compile Include="modules\maintenance\BaseMaintenance.vb" />
     <Compile Include="modules\maintenance\ImportUtils.vb" />
