@@ -44,20 +44,28 @@ Public Class ExcelDataLoader
             {"Languages", {"Language", "Code"}},
             {"Books", {"Title", "ISBN", "Genre", "Publisher", "Language", "Author", "Classification", "Book Cover", "Reserve Copy"}}
         }
-
-
         Using workbook As New Workbook
-            workbook.LoadFromFile(path)
+            Try
+                workbook.LoadFromFile(path)
 
+                ' Check all the sheet names if present
+                Dim filesheetNames = workbook.Worksheets.Select(Function(s) s.Name.ToLower).ToList()
+                If Not requiredColumns.Keys.All(Function(x) filesheetNames.Contains(x.ToLower)) Then
+                    Return False
+                End If
 
-            ' Ensure all required sheets are present
-            Dim filesheetNames = workbook.Worksheets.Select(Function(s) s.Name.ToLower).ToList()
-            If Not requiredColumns.Keys.All(Function(x) filesheetNames.Contains(x.ToLower)) Then
-                Return False
-            End If
+                ' Chech all the columns if pressent
+                For Each sheetName In requiredColumns.Keys
+                    Dim workSheet As Worksheet = workbook.Worksheets.Item(sheetName)
+                    Dim dt As DataTable = workSheet.ExportDataTable()
+                    If Not requiredColumns(sheetName).All(Function(col) dt.Columns.Contains(col)) Then
+                        Return False
+                    End If
+                Next
 
-
-
+            Catch ex As Exception
+                Logger.Logger(ex)
+            End Try
             Return True
         End Using
     End Function
