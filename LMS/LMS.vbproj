@@ -283,7 +283,6 @@
     <Compile Include="modules\maintenance\BaseMaintenance.vb" />
     <Compile Include="modules\maintenance\ImportUtils.vb" />
     <Compile Include="modules\maintenance\Types.vb" />
-    <Compile Include="modules\TransactionConnection.vb" />
     <Compile Include="modules\maintenance\MaintenanceQueries.vb" />
     <Compile Include="modules\maintenance\QueryTableFactory.vb" />
     <Compile Include="modules\maintenance\QueryTableType.vb" />
@@ -338,6 +337,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="dialogs\SectionDialog.resx">
       <DependentUpon>SectionDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dialogs\StudentDialog.resx">
+      <DependentUpon>StudentDialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="dialogs\SupplierDialog.resx">
       <DependentUpon>SupplierDialog.vb</DependentUpon>

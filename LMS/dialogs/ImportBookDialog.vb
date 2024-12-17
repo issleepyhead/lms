@@ -67,7 +67,7 @@ Public Class ImportBookDialog
     End Sub
 
     Private Sub BTNCANCEL_Click(sender As Object, e As EventArgs) Handles BTNCANCEL.Click
-        RollbackTransaction()
+        'RollbackTransaction()
     End Sub
 
     Private Sub BTNHIDE_Click(sender As Object, e As EventArgs) Handles BTNHIDE.Click
@@ -79,23 +79,23 @@ Public Class ImportBookDialog
         For Each kv As KeyValuePair(Of String, DataTable) In data
             For Each drow As DataRow In kv.Value.Rows
                 Dim res As Boolean = Nothing
-                Select Case kv.Key
-                    Case "Genres"
-                        res = ImportRowData(QueryTableType.GENRE_QUERY_TABLE, DataFactory(QueryTableType.GENRE_QUERY_TABLE, drow))
-                    Case "Authors"
-                        res = ImportRowData(QueryTableType.AUTHOR_QUERY_TABLE, DataFactory(QueryTableType.AUTHOR_QUERY_TABLE, drow))
-                    Case "Publishers"
-                        res = ImportRowData(QueryTableType.PUBLISHER_QUERY_TABLE, DataFactory(QueryTableType.PUBLISHER_QUERY_TABLE, drow))
-                    Case "Languages"
-                        res = ImportRowData(QueryTableType.LANGUAGES_QUERY_TABLE, DataFactory(QueryTableType.LANGUAGES_QUERY_TABLE, drow))
-                    Case "Classifications"
-                        res = ImportRowData(QueryTableType.CLASSIFICATION_QUERY_TABLE, DataFactory(QueryTableType.CLASSIFICATION_QUERY_TABLE, drow))
-                    Case "Books"
-                        res = ImportRowData(QueryTableType.BOOK_QUERY_TABLE, DataFactory(QueryTableType.BOOK_QUERY_TABLE, drow))
-                End Select
+                'Select Case kv.Key
+                '    Case "Genres"
+                '        res = ImportRowData(QueryTableType.GENRE_QUERY_TABLE, DataFactory(QueryTableType.GENRE_QUERY_TABLE, drow))
+                '    Case "Authors"
+                '        res = ImportRowData(QueryTableType.AUTHOR_QUERY_TABLE, DataFactory(QueryTableType.AUTHOR_QUERY_TABLE, drow))
+                '    Case "Publishers"
+                '        res = ImportRowData(QueryTableType.PUBLISHER_QUERY_TABLE, DataFactory(QueryTableType.PUBLISHER_QUERY_TABLE, drow))
+                '    Case "Languages"
+                '        res = ImportRowData(QueryTableType.LANGUAGES_QUERY_TABLE, DataFactory(QueryTableType.LANGUAGES_QUERY_TABLE, drow))
+                '    Case "Classifications"
+                '        res = ImportRowData(QueryTableType.CLASSIFICATION_QUERY_TABLE, DataFactory(QueryTableType.CLASSIFICATION_QUERY_TABLE, drow))
+                '    Case "Books"
+                '        res = ImportRowData(QueryTableType.BOOK_QUERY_TABLE, DataFactory(QueryTableType.BOOK_QUERY_TABLE, drow))
+                'End Select
                 drow.Item("Status") = If(res, "Done", "Failed")
             Next
         Next
-        CommitTransaction()
+        'CommitTransaction()
     End Sub
 End Class
