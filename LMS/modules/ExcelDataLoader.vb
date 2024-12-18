@@ -1,6 +1,6 @@
 ﻿Imports MySql.Data.MySqlClient
 Imports Spire.Xls
-
+Imports LMS.QueryTableType
 Public Class ExcelDataLoader
     Private _transInstance As MySqlTransaction
     Private _conn As MySqlConnection
@@ -10,65 +10,6 @@ Public Class ExcelDataLoader
     Sub New(path As String)
         _path = path
     End Sub
-
-    ''' <summary>
-    ''' Checks if the excel file contains all the required sheet names for the excel file.
-    ''' </summary>
-    ''' <param name="path">A string path of the excel file.</param>
-    ''' <returns>Boolean true of the excel file contains all the sheets names otherwise false.</returns>
-    Private Function IsValidSheets(path) As Boolean
-        Dim sheetNames As String() = {"Genres", "Authors", "Publishers", "Classifications", "Languages", "Books"}
-        Using workbook As New Workbook
-            workbook.LoadFromFile(path)
-
-            Dim wsheetNames As New List(Of String)
-            For Each wsheet As Worksheet In workbook.Worksheets
-                wsheetNames.Add(wsheet.Name.ToLower)
-            Next
-
-            Return sheetNames.All(Function(x) wsheetNames.Contains(x.ToLower))
-        End Using
-    End Function
-
-    ''' <summary>
-    ''' Checks if the sheets of the excel file contains all the required columns.
-    ''' </summary>
-    ''' <param name="path">A string path of the excel file.</param>
-    ''' <returns>Boolean true of the excel file contains all the columns otherwise false.</returns>
-    Private Function IsFileValid(path) As Boolean
-        Dim requiredColumns As New Dictionary(Of String, String()) From {
-            {"Genres", {"Name", "Description"}},
-            {"Authors", {"First Name", "Last Name", "Gender"}},
-            {"Publishers", {"Publisher Name"}},
-            {"Classifications", {"Dewey Decimal", "Classification"}},
-            {"Languages", {"Language", "Code"}},
-            {"Books", {"Title", "ISBN", "Genre", "Publisher", "Language", "Author", "Classification", "Book Cover", "Reserve Copy"}}
-        }
-        Using workbook As New Workbook
-            Try
-                workbook.LoadFromFile(path)
-
-                ' Check all the sheet names if present
-                Dim filesheetNames = workbook.Worksheets.Select(Function(s) s.Name.ToLower).ToList()
-                If Not requiredColumns.Keys.All(Function(x) filesheetNames.Contains(x.ToLower)) Then
-                    Return False
-                End If
-
-                ' Chech all the columns if pressent
-                For Each sheetName In requiredColumns.Keys
-                    Dim workSheet As Worksheet = workbook.Worksheets.Item(sheetName)
-                    Dim dt As DataTable = workSheet.ExportDataTable()
-                    If Not requiredColumns(sheetName).All(Function(col) dt.Columns.Contains(col)) Then
-                        Return False
-                    End If
-                Next
-
-            Catch ex As Exception
-                Logger.Logger(ex)
-            End Try
-            Return True
-        End Using
-    End Function
 
     ''' <summary>
     ''' Gets the connection instance.
@@ -200,4 +141,75 @@ Public Class ExcelDataLoader
             _conn.Dispose()
         End If
     End Sub
+
+
+    ''' <summary>
+    ''' Checks if the file is valid.
+    ''' </summary>
+    ''' <param name="path">A string path of the excel file.</param>
+    ''' <returns>Boolean true of the excel file contains all the columns otherwise false.</returns>
+    Private Function IsFileValid(path As String) As Boolean
+        If String.IsNullOrEmpty(path) OrElse Not path.EndsWith(".xlsx") Then
+            Return False
+        End If
+
+        Dim requiredFields As QueryTableType() = {GENRE_QUERY_TABLE, AUTHOR_QUERY_TABLE, PUBLISHER_QUERY_TABLE, CLASSIFICATION_QUERY_TABLE, LANGUAGES_QUERY_TABLE, BOOK_QUERY_TABLE}
+
+        Using workbook As New Workbook
+            Try
+                workbook.LoadFromFile(path)
+
+                Dim sheetNames As New List(Of String)
+                For Each wsheet As Worksheet In workbook.Worksheets
+                    sheetNames.Add(wsheet.Name.ToLower)
+                Next
+
+                Return requiredFields.All(Function(type)
+                                              Dim typeField = GetType(QueryTableType).GetField(type.ToString())
+                                              Dim sheetAttrib As SheetNameMapping = CType(Attribute.GetCustomAttribute(typeField, GetType(SheetNameMapping)), SheetNameMapping)
+                                              Dim colAttrib As ColumnMapping = CType(Attribute.GetCustomAttribute(typeField, GetType(ColumnMapping)), ColumnMapping)
+
+                                              If sheetNames.Contains(sheetAttrib.SheetName) Then
+                                                  Dim dt As DataTable = workbook.Worksheets(sheetAttrib.SheetName).ExportDataTable
+                                                  Return colAttrib.Columns.All(Function(x) dt.Columns.Contains(x))
+                                              Else
+                                                  Return False
+                                              End If
+                                          End Function)
+            Catch ex As Exception
+                Logger.Logger(ex)
+            End Try
+            Return True
+        End Using
+    End Function
+
+    ''' <summary>
+    ''' Loads all the data from the excel file.
+    ''' </summary>
+    ''' <param name="path">A file path of the excel file.</param>
+    ''' <returns>A dictionary containing all the data of the excel</returns>
+    Public Async Function ReadData(path As String) As Task(Of Dictionary(Of String, DataTable))
+        Dim data As New Dictionary(Of String, DataTable)
+        Await Task.Run(Sub()
+                           Using workbook As New Workbook
+                               Try
+                                   workbook.LoadFromFile(path)
+
+                                   For Each worksheet As Worksheet In workbook.Worksheets
+                                       Dim dt As DataTable = worksheet.ExportDataTable()
+                                       dt.Columns.Add("Status")
+                                       For Each drow As DataRow In dt.Rows
+                                           drow.Item("Status") = "Ready"
+                                       Next
+                                       data.Add(worksheet.Name, dt)
+                                   Next
+                               Catch ex As Exception
+                                   Logger.Logger(ex)
+                               End Try
+                           End Using
+                       End Sub)
+        Return data
+    End Function
+
+
 End Class

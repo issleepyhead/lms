@@ -277,6 +277,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="modules\ApplicationModule.vb" />
+    <Compile Include="modules\ColumnMapping.vb" />
     <Compile Include="modules\Connection.vb" />
     <Compile Include="modules\ExcelDataLoader.vb" />
     <Compile Include="modules\Logger.vb" />
@@ -286,6 +287,7 @@
     <Compile Include="modules\maintenance\MaintenanceQueries.vb" />
     <Compile Include="modules\maintenance\QueryTableFactory.vb" />
     <Compile Include="modules\maintenance\QueryTableType.vb" />
+    <Compile Include="modules\SheetNameMapping.vb" />
     <Compile Include="modules\Validator.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
