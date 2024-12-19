@@ -282,6 +282,7 @@
     <Compile Include="modules\ExcelDataLoader.vb" />
     <Compile Include="modules\Logger.vb" />
     <Compile Include="modules\maintenance\BaseMaintenance.vb" />
+    <Compile Include="modules\maintenance\ExcelDataFactory.vb" />
     <Compile Include="modules\maintenance\ImportUtils.vb" />
     <Compile Include="modules\maintenance\Types.vb" />
     <Compile Include="modules\maintenance\MaintenanceQueries.vb" />

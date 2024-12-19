@@ -210,6 +210,4 @@ Public Class ExcelDataLoader
                        End Sub)
         Return data
     End Function
-
-
 End Class
