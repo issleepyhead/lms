@@ -37,6 +37,7 @@ Module ExcelDataFactory
                 'data.Add("@cover", drow.Item("Book Cover"))
                 'data.Add("@fpenalty", 0)
                 'data.Add("@spenalty", 0)
+
         End Select
         Return data
     End Function
