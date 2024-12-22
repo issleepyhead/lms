@@ -5,11 +5,6 @@ Public Class ExcelDataLoader
     Private _transInstance As MySqlTransaction
     Private _conn As MySqlConnection
     Private _data As Dictionary(Of String, DataTable)
-    Private _path As String
-
-    Sub New(path As String)
-        _path = path
-    End Sub
 
     ''' <summary>
     ''' Gets the connection instance.
@@ -106,25 +101,25 @@ Public Class ExcelDataLoader
         Return Me.ExecNonQuery(query.ADD_QUERY, params) > 0
     End Function
 
-    Public Async Function ReadData() As Task(Of Dictionary(Of String, DataTable))
-        Dim data As New Dictionary(Of String, DataTable)
-        Await Task.Run(
-            Sub()
-                Using workbook As New Workbook
-                    workbook.LoadFromFile(_path)
+    'Public Shared Async Function ReadData(_path) As Task(Of Dictionary(Of String, DataTable))
+    '    Dim data As New Dictionary(Of String, DataTable)
+    '    Await Task.Run(
+    '        Sub()
+    '            Using workbook As New Workbook
+    '                workbook.LoadFromFile(_path)
 
-                    For Each worksheet As Worksheet In workbook.Worksheets
-                        Dim dt As DataTable = worksheet.ExportDataTable()
-                        dt.Columns.Add("Status")
-                        For Each drow As DataRow In dt.Rows
-                            drow.Item("Status") = "Ready"
-                        Next
-                        data.Add(worksheet.Name, dt)
-                    Next
-                End Using
-            End Sub)
-        Return data
-    End Function
+    '                For Each worksheet As Worksheet In workbook.Worksheets
+    '                    Dim dt As DataTable = worksheet.ExportDataTable()
+    '                    dt.Columns.Add("Status")
+    '                    For Each drow As DataRow In dt.Rows
+    '                        drow.Item("Status") = "Ready"
+    '                    Next
+    '                    data.Add(worksheet.Name, dt)
+    '                Next
+    '            End Using
+    '        End Sub)
+    '    Return data
+    'End Function
 
     Public Sub CommitTransaction()
         If Not IsNothing(_transInstance) Then
@@ -148,7 +143,7 @@ Public Class ExcelDataLoader
     ''' </summary>
     ''' <param name="path">A string path of the excel file.</param>
     ''' <returns>Boolean true of the excel file contains all the columns otherwise false.</returns>
-    Private Function IsFileValid(path As String) As Boolean
+    Public Shared Function IsFileValid(path As String) As Boolean
         If String.IsNullOrEmpty(path) OrElse Not path.EndsWith(".xlsx") Then
             Return False
         End If
@@ -188,7 +183,7 @@ Public Class ExcelDataLoader
     ''' </summary>
     ''' <param name="path">A file path of the excel file.</param>
     ''' <returns>A dictionary containing all the data of the excel</returns>
-    Public Async Function ReadData(path As String) As Task(Of Dictionary(Of String, DataTable))
+    Public Shared Async Function ReadData(path As String) As Task(Of Dictionary(Of String, DataTable))
         Dim data As New Dictionary(Of String, DataTable)
         Await Task.Run(Sub()
                            Using workbook As New Workbook

@@ -75,8 +75,6 @@ Partial Class DashboardForm
         Dim DataGridViewCellStyle50 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.MainFormPanels = New Guna.UI2.WinForms.Guna2TabControl()
-        Me.DashboardTab = New System.Windows.Forms.TabPage()
-        Me.Guna2Panel6 = New Guna.UI2.WinForms.Guna2Panel()
         Me.MaintenanceTab = New System.Windows.Forms.TabPage()
         Me.MaintenancePanels = New Guna.UI2.WinForms.Guna2TabControl()
         Me.GenresTab = New System.Windows.Forms.TabPage()
@@ -266,6 +264,11 @@ Partial Class DashboardForm
         Me.BTNYEARLEVELNEXT = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Panel27 = New Guna.UI2.WinForms.Guna2Panel()
         Me.DGYEARLEVEL = New Guna.UI2.WinForms.Guna2DataGridView()
+        Me.DataGridViewTextBoxColumn24 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewCheckBoxColumn6 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.DataGridViewTextBoxColumn25 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.SectionTab = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel10 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel28 = New Guna.UI2.WinForms.Guna2Panel()
@@ -343,9 +346,6 @@ Partial Class DashboardForm
         Me.BookInventoryTab = New System.Windows.Forms.TabPage()
         Me.BookInventoryPanels = New Guna.UI2.WinForms.Guna2TabControl()
         Me.CopiesTab = New System.Windows.Forms.TabPage()
-        Me.TableLayoutPanel15 = New System.Windows.Forms.TableLayoutPanel()
-        Me.Guna2Panel44 = New Guna.UI2.WinForms.Guna2Panel()
-        Me.Guna2Panel43 = New Guna.UI2.WinForms.Guna2Panel()
         Me.InventoryTab = New System.Windows.Forms.TabPage()
         Me.LostDamageTab = New System.Windows.Forms.TabPage()
         Me.BookTransactionTab = New System.Windows.Forms.TabPage()
@@ -381,14 +381,9 @@ Partial Class DashboardForm
         Me.UnselectAllToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.DeleteSelectedToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.PrintLibraryCardToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.DataGridViewTextBoxColumn24 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewCheckBoxColumn6 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.DataGridViewTextBoxColumn25 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DashboardTab = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.MainFormPanels.SuspendLayout()
-        Me.DashboardTab.SuspendLayout()
         Me.MaintenanceTab.SuspendLayout()
         Me.MaintenancePanels.SuspendLayout()
         Me.GenresTab.SuspendLayout()
@@ -481,8 +476,6 @@ Partial Class DashboardForm
         CType(Me.DGADMINISTRATOR, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.BookInventoryTab.SuspendLayout()
         Me.BookInventoryPanels.SuspendLayout()
-        Me.CopiesTab.SuspendLayout()
-        Me.TableLayoutPanel15.SuspendLayout()
         Me.BookTransactionTab.SuspendLayout()
         Me.BookTransactionPanels.SuspendLayout()
         Me.ReportsTab.SuspendLayout()
@@ -551,27 +544,6 @@ Partial Class DashboardForm
         Me.MainFormPanels.TabButtonTextOffset = New System.Drawing.Point(24, 0)
         Me.MainFormPanels.TabIndex = 1
         Me.MainFormPanels.TabMenuBackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(42, Byte), Integer), CType(CType(57, Byte), Integer))
-        '
-        'DashboardTab
-        '
-        Me.DashboardTab.Controls.Add(Me.Guna2Panel6)
-        Me.DashboardTab.Location = New System.Drawing.Point(204, 4)
-        Me.DashboardTab.Margin = New System.Windows.Forms.Padding(0)
-        Me.DashboardTab.Name = "DashboardTab"
-        Me.DashboardTab.Size = New System.Drawing.Size(1453, 564)
-        Me.DashboardTab.TabIndex = 0
-        Me.DashboardTab.Text = "Dashboard"
-        Me.DashboardTab.UseVisualStyleBackColor = True
-        '
-        'Guna2Panel6
-        '
-        Me.Guna2Panel6.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Guna2Panel6.FillColor = System.Drawing.Color.Yellow
-        Me.Guna2Panel6.Location = New System.Drawing.Point(0, 0)
-        Me.Guna2Panel6.Margin = New System.Windows.Forms.Padding(0)
-        Me.Guna2Panel6.Name = "Guna2Panel6"
-        Me.Guna2Panel6.Size = New System.Drawing.Size(1453, 564)
-        Me.Guna2Panel6.TabIndex = 0
         '
         'MaintenanceTab
         '
@@ -3548,6 +3520,43 @@ Partial Class DashboardForm
         Me.DGYEARLEVEL.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(205, Byte), Integer))
         Me.DGYEARLEVEL.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
         '
+        'DataGridViewTextBoxColumn24
+        '
+        Me.DataGridViewTextBoxColumn24.DataPropertyName = "id"
+        Me.DataGridViewTextBoxColumn24.HeaderText = "id"
+        Me.DataGridViewTextBoxColumn24.Name = "DataGridViewTextBoxColumn24"
+        Me.DataGridViewTextBoxColumn24.Visible = False
+        '
+        'Column18
+        '
+        Me.Column18.DataPropertyName = "department_id"
+        Me.Column18.HeaderText = "did"
+        Me.Column18.Name = "Column18"
+        Me.Column18.Visible = False
+        '
+        'DataGridViewCheckBoxColumn6
+        '
+        Me.DataGridViewCheckBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.DataGridViewCheckBoxColumn6.HeaderText = ""
+        Me.DataGridViewCheckBoxColumn6.Name = "DataGridViewCheckBoxColumn6"
+        Me.DataGridViewCheckBoxColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewCheckBoxColumn6.Width = 40
+        '
+        'DataGridViewTextBoxColumn25
+        '
+        Me.DataGridViewTextBoxColumn25.DataPropertyName = "year_level"
+        Me.DataGridViewTextBoxColumn25.HeaderText = "Year Level"
+        Me.DataGridViewTextBoxColumn25.MaxInputLength = 50
+        Me.DataGridViewTextBoxColumn25.Name = "DataGridViewTextBoxColumn25"
+        Me.DataGridViewTextBoxColumn25.ReadOnly = True
+        Me.DataGridViewTextBoxColumn25.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
+        'Column6
+        '
+        Me.Column6.DataPropertyName = "department_name"
+        Me.Column6.HeaderText = "Department"
+        Me.Column6.Name = "Column6"
+        '
         'SectionTab
         '
         Me.SectionTab.Controls.Add(Me.TableLayoutPanel10)
@@ -4765,7 +4774,7 @@ Partial Class DashboardForm
         '
         'CopiesTab
         '
-        Me.CopiesTab.Controls.Add(Me.TableLayoutPanel15)
+        Me.CopiesTab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.CopiesTab.Location = New System.Drawing.Point(4, 52)
         Me.CopiesTab.Margin = New System.Windows.Forms.Padding(0)
         Me.CopiesTab.Name = "CopiesTab"
@@ -4773,42 +4782,6 @@ Partial Class DashboardForm
         Me.CopiesTab.TabIndex = 0
         Me.CopiesTab.Text = "Copies"
         Me.CopiesTab.UseVisualStyleBackColor = True
-        '
-        'TableLayoutPanel15
-        '
-        Me.TableLayoutPanel15.ColumnCount = 2
-        Me.TableLayoutPanel15.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 300.0!))
-        Me.TableLayoutPanel15.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel15.Controls.Add(Me.Guna2Panel44, 1, 0)
-        Me.TableLayoutPanel15.Controls.Add(Me.Guna2Panel43, 0, 0)
-        Me.TableLayoutPanel15.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TableLayoutPanel15.Location = New System.Drawing.Point(0, 0)
-        Me.TableLayoutPanel15.Margin = New System.Windows.Forms.Padding(0)
-        Me.TableLayoutPanel15.Name = "TableLayoutPanel15"
-        Me.TableLayoutPanel15.RowCount = 1
-        Me.TableLayoutPanel15.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel15.Size = New System.Drawing.Size(1445, 508)
-        Me.TableLayoutPanel15.TabIndex = 1
-        '
-        'Guna2Panel44
-        '
-        Me.Guna2Panel44.CustomBorderColor = System.Drawing.Color.Black
-        Me.Guna2Panel44.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Guna2Panel44.Location = New System.Drawing.Point(300, 0)
-        Me.Guna2Panel44.Margin = New System.Windows.Forms.Padding(0)
-        Me.Guna2Panel44.Name = "Guna2Panel44"
-        Me.Guna2Panel44.Size = New System.Drawing.Size(1145, 508)
-        Me.Guna2Panel44.TabIndex = 1
-        '
-        'Guna2Panel43
-        '
-        Me.Guna2Panel43.CustomBorderColor = System.Drawing.Color.Black
-        Me.Guna2Panel43.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Guna2Panel43.Location = New System.Drawing.Point(0, 0)
-        Me.Guna2Panel43.Margin = New System.Windows.Forms.Padding(0)
-        Me.Guna2Panel43.Name = "Guna2Panel43"
-        Me.Guna2Panel43.Size = New System.Drawing.Size(300, 508)
-        Me.Guna2Panel43.TabIndex = 0
         '
         'InventoryTab
         '
@@ -5271,42 +5244,15 @@ Partial Class DashboardForm
         Me.PrintLibraryCardToolStripMenuItem.Size = New System.Drawing.Size(166, 22)
         Me.PrintLibraryCardToolStripMenuItem.Text = "Print Library Card"
         '
-        'DataGridViewTextBoxColumn24
+        'DashboardTab
         '
-        Me.DataGridViewTextBoxColumn24.DataPropertyName = "id"
-        Me.DataGridViewTextBoxColumn24.HeaderText = "id"
-        Me.DataGridViewTextBoxColumn24.Name = "DataGridViewTextBoxColumn24"
-        Me.DataGridViewTextBoxColumn24.Visible = False
-        '
-        'Column18
-        '
-        Me.Column18.DataPropertyName = "department_id"
-        Me.Column18.HeaderText = "did"
-        Me.Column18.Name = "Column18"
-        Me.Column18.Visible = False
-        '
-        'DataGridViewCheckBoxColumn6
-        '
-        Me.DataGridViewCheckBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.DataGridViewCheckBoxColumn6.HeaderText = ""
-        Me.DataGridViewCheckBoxColumn6.Name = "DataGridViewCheckBoxColumn6"
-        Me.DataGridViewCheckBoxColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewCheckBoxColumn6.Width = 40
-        '
-        'DataGridViewTextBoxColumn25
-        '
-        Me.DataGridViewTextBoxColumn25.DataPropertyName = "year_level"
-        Me.DataGridViewTextBoxColumn25.HeaderText = "Year Level"
-        Me.DataGridViewTextBoxColumn25.MaxInputLength = 50
-        Me.DataGridViewTextBoxColumn25.Name = "DataGridViewTextBoxColumn25"
-        Me.DataGridViewTextBoxColumn25.ReadOnly = True
-        Me.DataGridViewTextBoxColumn25.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        '
-        'Column6
-        '
-        Me.Column6.DataPropertyName = "department_name"
-        Me.Column6.HeaderText = "Department"
-        Me.Column6.Name = "Column6"
+        Me.DashboardTab.Location = New System.Drawing.Point(204, 4)
+        Me.DashboardTab.Name = "DashboardTab"
+        Me.DashboardTab.Padding = New System.Windows.Forms.Padding(3)
+        Me.DashboardTab.Size = New System.Drawing.Size(1453, 564)
+        Me.DashboardTab.TabIndex = 8
+        Me.DashboardTab.Text = "Dashboard"
+        Me.DashboardTab.UseVisualStyleBackColor = True
         '
         'DashboardForm
         '
@@ -5323,7 +5269,6 @@ Partial Class DashboardForm
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.MainFormPanels.ResumeLayout(False)
-        Me.DashboardTab.ResumeLayout(False)
         Me.MaintenanceTab.ResumeLayout(False)
         Me.MaintenancePanels.ResumeLayout(False)
         Me.GenresTab.ResumeLayout(False)
@@ -5430,8 +5375,6 @@ Partial Class DashboardForm
         CType(Me.DGADMINISTRATOR, System.ComponentModel.ISupportInitialize).EndInit()
         Me.BookInventoryTab.ResumeLayout(False)
         Me.BookInventoryPanels.ResumeLayout(False)
-        Me.CopiesTab.ResumeLayout(False)
-        Me.TableLayoutPanel15.ResumeLayout(False)
         Me.BookTransactionTab.ResumeLayout(False)
         Me.BookTransactionPanels.ResumeLayout(False)
         Me.ReportsTab.ResumeLayout(False)
@@ -5450,7 +5393,6 @@ Partial Class DashboardForm
 
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
     Friend WithEvents MainFormPanels As Guna.UI2.WinForms.Guna2TabControl
-    Friend WithEvents DashboardTab As TabPage
     Friend WithEvents MaintenanceTab As TabPage
     Friend WithEvents Guna2Panel1 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents Guna2Panel2 As Guna.UI2.WinForms.Guna2Panel
@@ -5469,7 +5411,6 @@ Partial Class DashboardForm
     Friend WithEvents Guna2Panel3 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents Guna2Panel4 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents Guna2Panel5 As Guna.UI2.WinForms.Guna2Panel
-    Friend WithEvents Guna2Panel6 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents BTNADDGENRE As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents TXTGENRESEARCH As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents DGGENRE As Guna.UI2.WinForms.Guna2DataGridView
@@ -5683,9 +5624,6 @@ Partial Class DashboardForm
     Friend WithEvents BorrowedBookReport As TabPage
     Friend WithEvents LostDamageTab As TabPage
     Friend WithEvents Guna2Button2 As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents TableLayoutPanel15 As TableLayoutPanel
-    Friend WithEvents Guna2Panel43 As Guna.UI2.WinForms.Guna2Panel
-    Friend WithEvents Guna2Panel44 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents ColumnAuthorID As DataGridViewTextBoxColumn
     Friend WithEvents chckBoxAuthor As DataGridViewCheckBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
@@ -5761,4 +5699,5 @@ Partial Class DashboardForm
     Friend WithEvents DataGridViewCheckBoxColumn6 As DataGridViewCheckBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn25 As DataGridViewTextBoxColumn
     Friend WithEvents Column6 As DataGridViewTextBoxColumn
+    Friend WithEvents DashboardTab As TabPage
 End Class

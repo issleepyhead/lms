@@ -97,19 +97,46 @@ LMS
  <param name="params">A sql query.</param>
  <returns>An object of the result of the query.</returns>
 </member>
-<member name="M:LMS.ImportUtils.IsValidSheets(System.Object)">
+<member name="M:LMS.ExcelDataLoader.GetConnection">
  <summary>
- Checks if the excel file contains all the required sheet names for the excel file.
+ Gets the connection instance.
  </summary>
- <param name="path">A string path of the excel file.</param>
- <returns>Boolean true of the excel file contains all the sheets names otherwise false.</returns>
+ <returns>A MySqlConnection instance.</returns>
 </member>
-<member name="M:LMS.ImportUtils.IsColumnValid(System.Object)">
+<member name="M:LMS.ExcelDataLoader.GetTransaction">
  <summary>
- Checks if the sheets of the excel file contains all the required columns.
+ Gets a MySqlTransaction instance.
+ </summary>
+ <returns>A MySqlTransaction instance.</returns>
+</member>
+<member name="M:LMS.ExcelDataLoader.ExecNonQuery(System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+ <summary>
+ Only for executing update, delete, and create.
+ </summary>
+ <param name="query">A sql query.</param>
+ <param name="params">A collection of dictionary.</param>
+</member>
+<member name="M:LMS.ExcelDataLoader.ExecScalar(System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+ <summary>
+ Only for executing scalar queries.
+ </summary>
+ <param name="query">A sql query.</param>
+ <param name="params">A sql query.</param>
+ <returns>An object of the result of the query.</returns>
+</member>
+<member name="M:LMS.ExcelDataLoader.IsFileValid(System.String)">
+ <summary>
+ Checks if the file is valid.
  </summary>
  <param name="path">A string path of the excel file.</param>
  <returns>Boolean true of the excel file contains all the columns otherwise false.</returns>
+</member>
+<member name="M:LMS.ExcelDataLoader.ReadData(System.String)">
+ <summary>
+ Loads all the data from the excel file.
+ </summary>
+ <param name="path">A file path of the excel file.</param>
+ <returns>A dictionary containing all the data of the excel</returns>
 </member>
 <member name="T:LMS.STATUSTYPE">
  <summary>
@@ -132,21 +159,6 @@ LMS
  DAMAGED = 1
  LOST = 2
  </summary>
-</member>
-<member name="M:LMS.TransactionConnection.ExecNonQueryTransaction(System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
- <summary>
- Only for executing update, delete, and create.
- </summary>
- <param name="query">A sql query.</param>
- <param name="params">A collection of dictionary.</param>
-</member>
-<member name="M:LMS.TransactionConnection.ExecScalarTransaction(System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
- <summary>
- Only for executing scalar queries.
- </summary>
- <param name="query">A sql query.</param>
- <param name="params">A sql query.</param>
- <returns>An object of the result of the query.</returns>
 </member>
 </members>
 </doc>
