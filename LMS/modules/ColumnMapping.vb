@@ -2,8 +2,10 @@
 Public Class ColumnMapping
     Inherits Attribute
 
-    Public Columns As String()
-    Public Sub New(columns As String())
+    Public ReadOnly Property Columns As String()
+    Public ReadOnly Property Names As String()
+    Public Sub New(columns As String(), names As String())
         Me.Columns = columns
+        Me.Names = names
     End Sub
 End Class
