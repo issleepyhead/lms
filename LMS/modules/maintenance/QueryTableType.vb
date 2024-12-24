@@ -1,7 +1,7 @@
 ﻿Public Enum QueryTableType
 
     <SheetNameMapping("Genres")>
-    <ColumnMapping({"Names", "Description"}, {"@name", "@desc"})>
+    <ColumnMapping({"Name", "Description"}, {"@name", "@desc"})>
     GENRE_QUERY_TABLE
 
     <SheetNameMapping("Publishers")>

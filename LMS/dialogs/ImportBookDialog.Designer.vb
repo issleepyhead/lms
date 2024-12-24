@@ -35,6 +35,7 @@ Partial Class ImportBookDialog
         Me.BTNCANCEL = New Guna.UI2.WinForms.Guna2Button()
         Me.BTNHIDE = New Guna.UI2.WinForms.Guna2Button()
         Me.BTNIMPORT = New Guna.UI2.WinForms.Guna2Button()
+        Me.ImportBackground = New System.ComponentModel.BackgroundWorker()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.Guna2Panel1.SuspendLayout()
         CType(Me.DGBOOK, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -248,6 +249,10 @@ Partial Class ImportBookDialog
         Me.BTNIMPORT.TabIndex = 8
         Me.BTNIMPORT.Text = "Import"
         '
+        'ImportBackground
+        '
+        Me.ImportBackground.WorkerSupportsCancellation = True
+        '
         'ImportBookDialog
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -279,4 +284,5 @@ Partial Class ImportBookDialog
     Friend WithEvents BTNIMPORT As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents BTNCANCEL As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents BTNHIDE As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents ImportBackground As System.ComponentModel.BackgroundWorker
 End Class
