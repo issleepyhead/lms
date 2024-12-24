@@ -496,7 +496,7 @@ Public Class DashboardForm
 
     Private Sub TXLANGUAGESEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTLANGUAGESEARCH.TextChanged
         If MaintenancePanels.SelectedTab.Equals(LanguagesTab) Then
-            If Not String.IsNullOrEmpty(TXTPUBLISHERSEARCH.Text) Then
+            If Not String.IsNullOrEmpty(TXTLANGUAGESEARCH.Text) Then
                 DGLANGUAGE.DataSource = BaseMaintenance.Search(QueryTableType.LANGUAGES_QUERY_TABLE, TXTLANGUAGESEARCH.Text)
                 LBLLANGUAGENEXT.Text = BaseMaintenance.PMAX
                 LBLLANGUAGEPREV.Text = BaseMaintenance.PPrev
@@ -653,6 +653,21 @@ Public Class DashboardForm
                         item.Cells("chckBoxClassification").Value = True
                     Next
                     DGCLASSIFICATIONS.EndEdit()
+                Case MaintenancePanels.SelectedTab.Equals(LanguagesTab)
+                    For Each item As DataGridViewRow In DGLANGUAGE.Rows
+                        item.Cells("chckBoxLanguage").Value = True
+                    Next
+                    DGLANGUAGE.EndEdit()
+                Case MaintenancePanels.SelectedTab.Equals(DonatorsTab)
+                    For Each item As DataGridViewRow In DGDONATOR.Rows
+                        item.Cells("chckBoxDonator").Value = True
+                    Next
+                    DGDONATOR.EndEdit()
+                Case MaintenancePanels.SelectedTab.Equals(SuppliersTab)
+                    For Each item As DataGridViewRow In DGSUPPLIER.Rows
+                        item.Cells("chckBoxSupplier").Value = True
+                    Next
+                    DGSUPPLIER.EndEdit()
             End Select
         Else
             Select Case True
@@ -701,6 +716,21 @@ Public Class DashboardForm
                         item.Cells("chckBoxClassification").Value = False
                     Next
                     DGCLASSIFICATIONS.EndEdit()
+                Case MaintenancePanels.SelectedTab.Equals(LanguagesTab)
+                    For Each item As DataGridViewRow In DGLANGUAGE.Rows
+                        item.Cells("chckBoxLanguage").Value = False
+                    Next
+                    DGLANGUAGE.EndEdit()
+                Case MaintenancePanels.SelectedTab.Equals(DonatorsTab)
+                    For Each item As DataGridViewRow In DGDONATOR.Rows
+                        item.Cells("chckBoxDonator").Value = False
+                    Next
+                    DGDONATOR.EndEdit()
+                Case MaintenancePanels.SelectedTab.Equals(SuppliersTab)
+                    For Each item As DataGridViewRow In DGSUPPLIER.Rows
+                        item.Cells("chckBoxSupplier").Value = False
+                    Next
+                    DGSUPPLIER.EndEdit()
             End Select
         Else
             Select Case True
@@ -810,6 +840,7 @@ Public Class DashboardForm
     End Sub
 
     Private Sub BTNIMPORTBOOKS_Click(sender As Object, e As EventArgs) Handles BTNIMPORTBOOKS.Click
+        ' TODO ARE YOU SURE THIS IS THE LIFE CYCLE OF THE DIALOG?
         Dim dialog As New ImportBookDialog
         If Not DialogInstances.ContainsKey("importbook") Then
             DialogInstances.Add("importbook", dialog)
@@ -837,4 +868,20 @@ Public Class DashboardForm
                 LBLSECTIONNEXT.Text = BaseMaintenance.PMAX
         End Select
     End Sub
+
+#Region "Book Menu Strip"
+    Private Sub SelectAllToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles SelectAllToolStripMenuItem1.Click
+        For Each item As DataGridViewRow In DGBOOKS.Rows
+            item.Cells("chckBoxBooks").Value = True
+        Next
+        DGBOOKS.EndEdit()
+    End Sub
+
+    Private Sub UnselectAllToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles UnselectAllToolStripMenuItem1.Click
+        For Each item As DataGridViewRow In DGBOOKS.Rows
+            item.Cells("chckBoxBooks").Value = False
+        Next
+        DGBOOKS.EndEdit()
+    End Sub
+#End Region
 End Class
