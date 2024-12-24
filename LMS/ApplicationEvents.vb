@@ -22,6 +22,7 @@ Namespace My
                     Throw New Exception("Can't connect to the server.")
                 End If
 
+                ' TODO FIX THIS THE ADMIN ACC DOES NOT CONTAIN THE INFO
                 If ExecScalar("SELECT COUNT(*) FROM tbladmins WHERE LOWER(role) = 'super admin'") = 0 Then
                     Dim params As New Dictionary(Of String, String) From {
                         {"@uname", "sa"},

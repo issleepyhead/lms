@@ -99,6 +99,7 @@
                 }
 
             Case QueryTableType.BOOK_QUERY_TABLE
+                ' TODO ADD CLASSIFICATION AND PUBLISHER
                 Return New MaintenanceQueries With {
                     .ADD_QUERY = "INSERT INTO tblbooks (isbn, title, book_cover, genre_id, author_id, publisher_id, language_id, classification_id, reserve_copy, spenalty, fpenalty)
                                     VALUES (@isbn, @title, @cover, @gid, @aid, @pid, @lid, @cid, @rcopy, @spenalty, @fpenalty)",
