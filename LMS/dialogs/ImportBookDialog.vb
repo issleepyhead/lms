@@ -6,12 +6,12 @@ Public Class ImportBookDialog
     Private path As String
     Private data As Dictionary(Of String, DataTable)
     Private _isHiding = False
-    Private _importHandler As ExcelDataLoader
+    Private _importHandler As BookExcelLoader
 
     Private Async Sub BTNSELECTFILE_Click(sender As Object, e As EventArgs) Handles BTNSELECTFILE.Click
         Using dialog As New OpenFileDialog
             If dialog.ShowDialog = DialogResult.OK Then
-                If ExcelDataLoader.IsFileValid(dialog.FileName) Then
+                If BookExcelLoader.IsFileValid(dialog.FileName) Then
                     MessageBox.Show("Invalid excel file, this file doesn't contain the required sheets or columns.", "Invalid Excel File", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     Exit Sub
                 End If
@@ -19,7 +19,7 @@ Public Class ImportBookDialog
                 BTNPREVIEW.Enabled = True
                 path = dialog.FileName
                 TXTPATH.Text = path
-                data = Await ExcelDataLoader.ReadData(path)
+                data = Await BookExcelLoader.ReadData(path)
             End If
         End Using
     End Sub
@@ -78,7 +78,7 @@ Public Class ImportBookDialog
     End Sub
 
     Private Sub BTNIMPORT_Click(sender As Object, e As EventArgs) Handles BTNIMPORT.Click
-        _importHandler = New ExcelDataLoader()
+        _importHandler = New BookExcelLoader()
         If Not ImportBackground.IsBusy Then
             ImportBackground.RunWorkerAsync()
         Else

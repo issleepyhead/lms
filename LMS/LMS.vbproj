@@ -276,10 +276,14 @@
       <DependentUpon>ServerForm.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="modules\import\AccountImport.vb" />
     <Compile Include="modules\ApplicationModule.vb" />
     <Compile Include="modules\ColumnMapping.vb" />
     <Compile Include="modules\Connection.vb" />
-    <Compile Include="modules\ExcelDataLoader.vb" />
+    <Compile Include="modules\import\BookImport.vb" />
+    <Compile Include="modules\import\ImportDBHandler.vb" />
+    <Compile Include="modules\import\BookExcelLoader.vb" />
+    <Compile Include="modules\import\ExcelDataLoader.vb" />
     <Compile Include="modules\Logger.vb" />
     <Compile Include="modules\maintenance\BaseMaintenance.vb" />
     <Compile Include="modules\maintenance\ImportUtils.vb" />

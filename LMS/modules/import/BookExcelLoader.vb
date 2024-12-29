@@ -1,7 +1,7 @@
 ﻿Imports MySql.Data.MySqlClient
 Imports Spire.Xls
 Imports LMS.QueryTableType
-Public Class ExcelDataLoader
+Public Class BookExcelLoader
     Private _transInstance As MySqlTransaction
     Private _conn As MySqlConnection
     Private _data As Dictionary(Of String, DataTable)
