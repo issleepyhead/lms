@@ -2,7 +2,7 @@
 
 Public MustInherit Class ExcelDataLoader
 
-    Protected _handler As ImportDBHandler
+    Public DBHANDLER As ImportDBHandler
     Protected _requiredFields As QueryTableType()
 
     ''' <summary>
@@ -33,7 +33,12 @@ Public MustInherit Class ExcelDataLoader
         Return data
     End Function
 
-    Public Function IsValid(path As String)
+    ''' <summary>
+    ''' Checks if the file is valid excel file.
+    ''' </summary>
+    ''' <param name="path">Path to the excel file.</param>
+    ''' <returns></returns>
+    Public Function IsValid(path As String) As Boolean
         If String.IsNullOrEmpty(path) OrElse Not path.EndsWith(".xlsx") Then
             Return False
         End If

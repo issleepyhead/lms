@@ -2,16 +2,21 @@
 Imports System.Windows.Forms
 Imports LMS.My
 
-Public Class ImportBookDialog
+Public Class ImportDataDialog
     Private path As String
     Private data As Dictionary(Of String, DataTable)
     Private _isHiding = False
-    Private _importHandler As BookExcelLoader
+    Private _importHandler As ExcelDataLoader
 
-    Private Async Sub BTNSELECTFILE_Click(sender As Object, e As EventArgs) Handles BTNSELECTFILE.Click
+    Sub New(excelLoader As ExcelDataLoader)
+        InitializeComponent()
+        _importHandler = excelLoader
+    End Sub
+
+    Private Sub BTNSELECTFILE_Click(sender As Object, e As EventArgs) Handles BTNSELECTFILE.Click
         Using dialog As New OpenFileDialog
             If dialog.ShowDialog = DialogResult.OK Then
-                If BookExcelLoader.IsFileValid(dialog.FileName) Then
+                If _importHandler.IsValid(dialog.FileName) Then
                     MessageBox.Show("Invalid excel file, this file doesn't contain the required sheets or columns.", "Invalid Excel File", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     Exit Sub
                 End If
@@ -19,23 +24,31 @@ Public Class ImportBookDialog
                 BTNPREVIEW.Enabled = True
                 path = dialog.FileName
                 TXTPATH.Text = path
-                data = Await BookExcelLoader.ReadData(path)
             End If
         End Using
     End Sub
 
-    Private Sub BTNPREVIEW_Click(sender As Object, e As EventArgs) Handles BTNPREVIEW.Click
+    Private Async Sub BTNPREVIEW_Click(sender As Object, e As EventArgs) Handles BTNPREVIEW.Click
+        ' TODO FIX THIS TO DYNAMIC
+        data = Await ExcelDataLoader.ReadData(path)
         DGBOOK.DataSource = data.Item("Books")
     End Sub
 
     Private Sub ImportBookDialog_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        ' TODO FIX THIS TO DYNAMIC
         If Not _isHiding Then
             If Not String.IsNullOrEmpty(path) OrElse Not IsNothing(DGBOOK.DataSource) Then
                 If MessageBox.Show("Are you sure you want to discard changes?", "Discard Changes?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                    If Not ImportBackground.CancellationPending Then
+                        ImportBackground.CancelAsync()
+                        _importHandler.DBHANDLER.RollbackTransaction()
+                    End If
                     DashboardForm.DialogInstances.Remove("importbook")
                 Else
                     e.Cancel = True
                 End If
+            Else
+                DashboardForm.DialogInstances.Remove("importbook")
             End If
         End If
         _isHiding = False
@@ -68,7 +81,7 @@ Public Class ImportBookDialog
     Private Sub BTNCANCEL_Click(sender As Object, e As EventArgs) Handles BTNCANCEL.Click
         If Not IsNothing(_importHandler) Then
             ImportBackground.CancelAsync()
-            _importHandler.RollbackTransaction()
+            _importHandler.DBHANDLER.RollbackTransaction()
         End If
     End Sub
 
@@ -78,7 +91,11 @@ Public Class ImportBookDialog
     End Sub
 
     Private Sub BTNIMPORT_Click(sender As Object, e As EventArgs) Handles BTNIMPORT.Click
-        _importHandler = New BookExcelLoader()
+        If IsNothing(data) Then
+            MessageBox.Show("Please select an excel data to be imported.", "No Data", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Exit Sub
+        End If
+
         If Not ImportBackground.IsBusy Then
             ImportBackground.RunWorkerAsync()
         Else
@@ -87,7 +104,11 @@ Public Class ImportBookDialog
     End Sub
 
     Private Sub ImportBackground_DoWork(sender As Object, e As DoWorkEventArgs) Handles ImportBackground.DoWork
-        If Not IsNothing(_importHandler) Then
+        ' TODO FIX THIS TO DYNAMIC
+        If Not IsNothing(data) Then
+            Me.Invoke(Sub()
+                          BTNIMPORT.Enabled = False
+                      End Sub)
             Dim orderImport As String() = {"Genres", "Authors", "Publishers", "Classifications", "Languages", "Books"}
             Dim orderQuery As QueryTableType() = {QueryTableType.GENRE_QUERY_TABLE, QueryTableType.AUTHOR_QUERY_TABLE, QueryTableType.PUBLISHER_QUERY_TABLE, QueryTableType.CLASSIFICATION_QUERY_TABLE, QueryTableType.LANGUAGES_QUERY_TABLE, QueryTableType.BOOK_QUERY_TABLE}
             For index As Integer = 0 To orderImport.Length - 1
@@ -98,15 +119,16 @@ Public Class ImportBookDialog
                     For Each drow As DataRow In dt.Rows
                         Dim rdata As Dictionary(Of String, String) = _importHandler.DataFactory(orderQuery(index), drow)
                         Dim query As MaintenanceQueries = QueryTableFactory.QueryTableFactory(orderQuery(index))
-                        If _importHandler.ExistsData(query, rdata) Then
+                        If _importHandler.DBHANDLER.ExistsData(query, rdata) Then
                             drow.Item("Status") = "Duplicate"
                         Else
-                            If _importHandler.AddData(query, rdata) Then
+                            If _importHandler.DBHANDLER.AddData(query, rdata) Then
                                 drow.Item("Status") = "Success"
                             Else
                                 drow.Item("Status") = "Failed"
                             End If
                         End If
+                        ImportBackground.ReportProgress(index)
                     Next
                 End If
             Next
@@ -114,10 +136,14 @@ Public Class ImportBookDialog
     End Sub
 
     Private Sub ImportBackground_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles ImportBackground.ProgressChanged
+        ' TODO FIX THIS TO DYNAMIC
         DGBOOK.DataSource = data.Item("Books")
     End Sub
 
     Private Sub ImportBackground_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles ImportBackground.RunWorkerCompleted
+        ' TODO FIX THIS TO DYNAMIC
+        _importHandler.DBHANDLER.CommitTransaction()
         DGBOOK.DataSource = data.Item("Books")
+        BTNIMPORT.Enabled = True
     End Sub
 End Class

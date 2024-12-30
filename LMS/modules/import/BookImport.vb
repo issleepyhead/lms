@@ -5,7 +5,7 @@ Public Class BookImport
     Inherits ExcelDataLoader
 
     Sub New()
-        _handler = New ImportDBHandler()
+        DBHANDLER = New ImportDBHandler()
         _requiredFields = {GENRE_QUERY_TABLE, AUTHOR_QUERY_TABLE, PUBLISHER_QUERY_TABLE, CLASSIFICATION_QUERY_TABLE, LANGUAGES_QUERY_TABLE, BOOK_QUERY_TABLE}
     End Sub
 

@@ -12,7 +12,7 @@ Public Class ImportDBHandler
     ''' <returns>A MySqlConnection instance.</returns>
     Private Function GetConnection() As MySqlConnection
         Try
-            If IsNothing(_conn) Then
+            If IsNothing(_conn) OrElse _conn.IsDisposed Then
                 _conn = New MySqlConnection(My.Settings.connection_string)
             End If
 
@@ -127,21 +127,29 @@ Public Class ImportDBHandler
     ''' Commit the transaction.
     ''' </summary>
     Public Sub CommitTransaction()
-        If Not IsNothing(_transInstance) Then
-            _transInstance.Commit()
-            _transInstance.Dispose()
-            _conn.Dispose()
-        End If
+        Try
+            If Not IsNothing(_transInstance) Then
+                _transInstance.Commit()
+                _transInstance.Dispose()
+                _conn.Dispose()
+            End If
+        Catch ex As Exception
+            Logger.Logger(ex)
+        End Try
     End Sub
 
     ''' <summary>
     ''' Rollback if the transaction.
     ''' </summary>
     Public Sub RollbackTransaction()
-        If Not IsNothing(_transInstance) Then
-            _transInstance.Rollback()
-            _transInstance.Dispose()
-            _conn.Dispose()
-        End If
+        Try
+            If Not IsNothing(_transInstance) Then
+                _transInstance.Rollback()
+                _transInstance.Dispose()
+                _conn.Dispose()
+            End If
+        Catch ex As Exception
+            Logger.Logger(ex)
+        End Try
     End Sub
 End Class

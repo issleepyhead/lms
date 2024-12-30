@@ -795,6 +795,8 @@ Public Class DashboardForm
         End Select
     End Sub
 #End Region
+
+#Region "Maintenance Tab"
     Private Sub MaintenancePanels_SelectedIndexChanged(sender As Object, e As EventArgs) Handles MaintenancePanels.SelectedIndexChanged
         Select Case True
             Case MaintenancePanels.SelectedTab.Equals(GenresTab)
@@ -838,10 +840,11 @@ Public Class DashboardForm
                 LBLBOOKPREV.Text = BaseMaintenance.PPrev
         End Select
     End Sub
+#End Region
 
     Private Sub BTNIMPORTBOOKS_Click(sender As Object, e As EventArgs) Handles BTNIMPORTBOOKS.Click
         ' TODO ARE YOU SURE THIS IS THE LIFE CYCLE OF THE DIALOG?
-        Dim dialog As New ImportBookDialog
+        Dim dialog As New ImportDataDialog(New BookImport)
         If Not DialogInstances.ContainsKey("importbook") Then
             DialogInstances.Add("importbook", dialog)
             dialog.Show()

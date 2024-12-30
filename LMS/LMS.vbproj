@@ -191,22 +191,10 @@
     <Compile Include="dialogs\GenreDialog.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="dialogs\ImportBookDialog.Designer.vb">
-      <DependentUpon>ImportBookDialog.vb</DependentUpon>
+    <Compile Include="dialogs\ImportDataDialog.Designer.vb">
+      <DependentUpon>ImportDataDialog.vb</DependentUpon>
     </Compile>
-    <Compile Include="dialogs\ImportBookDialog.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="dialogs\ImportFacultyDialog.Designer.vb">
-      <DependentUpon>ImportFacultyDialog.vb</DependentUpon>
-    </Compile>
-    <Compile Include="dialogs\ImportFacultyDialog.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="dialogs\ImportStudentsDialog.Designer.vb">
-      <DependentUpon>ImportStudentsDialog.vb</DependentUpon>
-    </Compile>
-    <Compile Include="dialogs\ImportStudentsDialog.vb">
+    <Compile Include="dialogs\ImportDataDialog.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="dialogs\LanguageDialog.Designer.vb">
@@ -282,7 +270,6 @@
     <Compile Include="modules\Connection.vb" />
     <Compile Include="modules\import\BookImport.vb" />
     <Compile Include="modules\import\ImportDBHandler.vb" />
-    <Compile Include="modules\import\BookExcelLoader.vb" />
     <Compile Include="modules\import\ExcelDataLoader.vb" />
     <Compile Include="modules\Logger.vb" />
     <Compile Include="modules\maintenance\BaseMaintenance.vb" />
@@ -329,11 +316,8 @@
     <EmbeddedResource Include="dialogs\GenreDialog.resx">
       <DependentUpon>GenreDialog.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="dialogs\ImportBookDialog.resx">
-      <DependentUpon>ImportBookDialog.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="dialogs\ImportFacultyDialog.resx">
-      <DependentUpon>ImportFacultyDialog.vb</DependentUpon>
+    <EmbeddedResource Include="dialogs\ImportDataDialog.resx">
+      <DependentUpon>ImportDataDialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="dialogs\LanguageDialog.resx">
       <DependentUpon>LanguageDialog.vb</DependentUpon>
