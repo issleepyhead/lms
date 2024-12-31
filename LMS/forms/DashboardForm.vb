@@ -1,10 +1,6 @@
 ﻿Imports LMS.My
 
 Public Class DashboardForm
-
-    ' Keeps all the dialogs of the application
-    Public Shared DialogInstances As New Dictionary(Of String, Form)
-
     Private Sub BTNLOGOUT_Click(sender As Object, e As EventArgs) Handles BTNLOGOUT.Click
         ' TODO LOG OUT LOGIC
         My.Settings.user_id = 0
@@ -842,15 +838,33 @@ Public Class DashboardForm
     End Sub
 #End Region
 
-    Private Sub BTNIMPORTBOOKS_Click(sender As Object, e As EventArgs) Handles BTNIMPORTBOOKS.Click
-        ' TODO ARE YOU SURE THIS IS THE LIFE CYCLE OF THE DIALOG?
-        Dim dialog As New ImportDataDialog(New BookImport)
-        If Not DialogInstances.ContainsKey("importbook") Then
-            DialogInstances.Add("importbook", dialog)
-            dialog.Show()
-        Else
-            DialogInstances.Item("importbook").Show()
-        End If
+    Private Sub BTNIMPORTS_Click(sender As Object, e As EventArgs) Handles BTNIMPORTBOOKS.Click, BTNIMPORTFACULTY.Click, BTNIMPORTSTUDENTS.Click
+        Select Case True
+            Case sender.Equals(BTNIMPORTBOOKS)
+                Dim dialog As New ImportDataDialog(New BookImport, "importbook")
+                If Not MyApplication.DialogInstances.ContainsKey("importbook") Then
+                    MyApplication.DialogInstances.Add("importbook", dialog)
+                    dialog.Show()
+                Else
+                    MyApplication.DialogInstances.Item("importbook").Show()
+                End If
+            Case sender.Equals(BTNIMPORTFACULTY)
+                Dim dialog As New ImportDataDialog(New AccountImport(QueryTableType.FACULTY_QUERY_TABLE), "importfaculty")
+                If Not MyApplication.DialogInstances.ContainsKey("importfaculty") Then
+                    MyApplication.DialogInstances.Add("importfaculty", dialog)
+                    dialog.Show()
+                Else
+                    MyApplication.DialogInstances.Item("importfaculty").Show()
+                End If
+            Case sender.Equals(BTNIMPORTSTUDENTS)
+                Dim dialog As New ImportDataDialog(New AccountImport(QueryTableType.STUDENT_QUERY_TABLE), "importstudent")
+                If Not MyApplication.DialogInstances.ContainsKey("importstudent") Then
+                    MyApplication.DialogInstances.Add("importstudent", dialog)
+                    dialog.Show()
+                Else
+                    MyApplication.DialogInstances.Item("importstudent").Show()
+                End If
+        End Select
     End Sub
 
     Private Sub AccountsPanel_SelectedIndexChanged(sender As Object, e As EventArgs) Handles AccountsPanel.SelectedIndexChanged

@@ -174,3 +174,4 @@ C:\Users\jteno\OneDrive\Desktop\lms\LMS\bin\Debug\Spire.XLS.xml
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.vbproj.AssemblyReference.cache
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.StudentDialog.resources
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.ImportDataDialog.resources
+C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.AccountDialog.resources

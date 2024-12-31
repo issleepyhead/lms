@@ -7,10 +7,12 @@ Public Class ImportDataDialog
     Private data As Dictionary(Of String, DataTable)
     Private _isHiding = False
     Private _importHandler As ExcelDataLoader
+    Private _keyDialog As String
 
-    Sub New(excelLoader As ExcelDataLoader)
+    Sub New(excelLoader As ExcelDataLoader, keyDialog As String)
         InitializeComponent()
         _importHandler = excelLoader
+        _keyDialog = keyDialog
     End Sub
 
     Private Sub BTNSELECTFILE_Click(sender As Object, e As EventArgs) Handles BTNSELECTFILE.Click
@@ -29,34 +31,43 @@ Public Class ImportDataDialog
     End Sub
 
     Private Async Sub BTNPREVIEW_Click(sender As Object, e As EventArgs) Handles BTNPREVIEW.Click
-        ' TODO FIX THIS TO DYNAMIC
+        ' Loads all the data from excel file.
         data = Await ExcelDataLoader.ReadData(path)
-        DGBOOK.DataSource = data.Item("Books")
+
+        If data.ContainsKey("Books") Then
+            DGDATA.DataSource = data.Item("Books")
+        ElseIf data.ContainsKey("Faculty") Then
+            DGDATA.DataSource = data.Item("Faculty")
+        Else
+            DGDATA.DataSource = data.Item("Students")
+        End If
     End Sub
 
     Private Sub ImportBookDialog_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         ' TODO FIX THIS TO DYNAMIC
         If Not _isHiding Then
-            If Not String.IsNullOrEmpty(path) OrElse Not IsNothing(DGBOOK.DataSource) Then
+            If Not String.IsNullOrEmpty(path) OrElse Not IsNothing(DGDATA.DataSource) Then
                 If MessageBox.Show("Are you sure you want to discard changes?", "Discard Changes?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
                     If Not ImportBackground.CancellationPending Then
                         ImportBackground.CancelAsync()
                         _importHandler.DBHANDLER.RollbackTransaction()
                     End If
-                    DashboardForm.DialogInstances.Remove("importbook")
+                    MyApplication.DialogInstances.Remove(_keyDialog)
                 Else
                     e.Cancel = True
                 End If
             Else
-                DashboardForm.DialogInstances.Remove("importbook")
+                MyApplication.DialogInstances.Remove(_keyDialog)
             End If
+        Else
+            MyApplication.DialogInstances.Remove(_keyDialog)
         End If
         _isHiding = False
     End Sub
 
-    Private Sub DGBOOK_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles DGBOOK.CellFormatting
+    Private Sub DGBOOK_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles DGDATA.CellFormatting
         ' Check if the value in the current cell is greater than 25
-        If e.ColumnIndex = DGBOOK.Columns.Count - 1 Then
+        If e.ColumnIndex = DGDATA.Columns.Count - 1 Then
 
             e.CellStyle.ForeColor = Color.White
             e.CellStyle.SelectionForeColor = Color.White
@@ -137,13 +148,13 @@ Public Class ImportDataDialog
 
     Private Sub ImportBackground_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles ImportBackground.ProgressChanged
         ' TODO FIX THIS TO DYNAMIC
-        DGBOOK.DataSource = data.Item("Books")
+        DGDATA.DataSource = data.Item("Books")
     End Sub
 
     Private Sub ImportBackground_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles ImportBackground.RunWorkerCompleted
         ' TODO FIX THIS TO DYNAMIC
         _importHandler.DBHANDLER.CommitTransaction()
-        DGBOOK.DataSource = data.Item("Books")
+        DGDATA.DataSource = data.Item("Books")
         BTNIMPORT.Enabled = True
     End Sub
 End Class

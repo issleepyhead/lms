@@ -30,7 +30,7 @@ Partial Class ImportDataDialog
         Me.BTNPREVIEW = New Guna.UI2.WinForms.Guna2Button()
         Me.BTNSELECTFILE = New Guna.UI2.WinForms.Guna2Button()
         Me.TXTPATH = New Guna.UI2.WinForms.Guna2TextBox()
-        Me.DGBOOK = New Guna.UI2.WinForms.Guna2DataGridView()
+        Me.DGDATA = New Guna.UI2.WinForms.Guna2DataGridView()
         Me.Guna2Panel2 = New Guna.UI2.WinForms.Guna2Panel()
         Me.BTNCANCEL = New Guna.UI2.WinForms.Guna2Button()
         Me.BTNHIDE = New Guna.UI2.WinForms.Guna2Button()
@@ -38,7 +38,7 @@ Partial Class ImportDataDialog
         Me.ImportBackground = New System.ComponentModel.BackgroundWorker()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.Guna2Panel1.SuspendLayout()
-        CType(Me.DGBOOK, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DGDATA, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Guna2Panel2.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -47,7 +47,7 @@ Partial Class ImportDataDialog
         Me.TableLayoutPanel1.ColumnCount = 1
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.Guna2Panel1, 0, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.DGBOOK, 0, 1)
+        Me.TableLayoutPanel1.Controls.Add(Me.DGDATA, 0, 1)
         Me.TableLayoutPanel1.Controls.Add(Me.Guna2Panel2, 0, 2)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
@@ -130,12 +130,12 @@ Partial Class ImportDataDialog
         Me.TXTPATH.Size = New System.Drawing.Size(1036, 36)
         Me.TXTPATH.TabIndex = 5
         '
-        'DGBOOK
+        'DGDATA
         '
-        Me.DGBOOK.AllowUserToAddRows = False
-        Me.DGBOOK.AllowUserToDeleteRows = False
+        Me.DGDATA.AllowUserToAddRows = False
+        Me.DGDATA.AllowUserToDeleteRows = False
         DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
-        Me.DGBOOK.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        Me.DGDATA.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(255, Byte), Integer))
         DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -143,9 +143,9 @@ Partial Class ImportDataDialog
         DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DGBOOK.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
-        Me.DGBOOK.ColumnHeadersHeight = 28
-        Me.DGBOOK.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing
+        Me.DGDATA.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        Me.DGDATA.ColumnHeadersHeight = 28
+        Me.DGDATA.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing
         DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = System.Drawing.Color.White
         DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -153,37 +153,37 @@ Partial Class ImportDataDialog
         DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
         DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
         DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DGBOOK.DefaultCellStyle = DataGridViewCellStyle3
-        Me.DGBOOK.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.DGBOOK.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.DGBOOK.Location = New System.Drawing.Point(20, 80)
-        Me.DGBOOK.Margin = New System.Windows.Forms.Padding(20, 10, 20, 10)
-        Me.DGBOOK.Name = "DGBOOK"
-        Me.DGBOOK.ReadOnly = True
-        Me.DGBOOK.RowHeadersVisible = False
-        Me.DGBOOK.Size = New System.Drawing.Size(1264, 557)
-        Me.DGBOOK.TabIndex = 1
-        Me.DGBOOK.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White
-        Me.DGBOOK.ThemeStyle.AlternatingRowsStyle.Font = Nothing
-        Me.DGBOOK.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty
-        Me.DGBOOK.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty
-        Me.DGBOOK.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty
-        Me.DGBOOK.ThemeStyle.BackColor = System.Drawing.Color.White
-        Me.DGBOOK.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.DGBOOK.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.DGBOOK.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        Me.DGBOOK.ThemeStyle.HeaderStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DGBOOK.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White
-        Me.DGBOOK.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing
-        Me.DGBOOK.ThemeStyle.HeaderStyle.Height = 28
-        Me.DGBOOK.ThemeStyle.ReadOnly = True
-        Me.DGBOOK.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White
-        Me.DGBOOK.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
-        Me.DGBOOK.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DGBOOK.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
-        Me.DGBOOK.ThemeStyle.RowsStyle.Height = 22
-        Me.DGBOOK.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.DGBOOK.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        Me.DGDATA.DefaultCellStyle = DataGridViewCellStyle3
+        Me.DGDATA.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.DGDATA.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DGDATA.Location = New System.Drawing.Point(20, 80)
+        Me.DGDATA.Margin = New System.Windows.Forms.Padding(20, 10, 20, 10)
+        Me.DGDATA.Name = "DGDATA"
+        Me.DGDATA.ReadOnly = True
+        Me.DGDATA.RowHeadersVisible = False
+        Me.DGDATA.Size = New System.Drawing.Size(1264, 557)
+        Me.DGDATA.TabIndex = 1
+        Me.DGDATA.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White
+        Me.DGDATA.ThemeStyle.AlternatingRowsStyle.Font = Nothing
+        Me.DGDATA.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty
+        Me.DGDATA.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty
+        Me.DGDATA.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty
+        Me.DGDATA.ThemeStyle.BackColor = System.Drawing.Color.White
+        Me.DGDATA.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DGDATA.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DGDATA.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        Me.DGDATA.ThemeStyle.HeaderStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGDATA.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White
+        Me.DGDATA.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing
+        Me.DGDATA.ThemeStyle.HeaderStyle.Height = 28
+        Me.DGDATA.ThemeStyle.ReadOnly = True
+        Me.DGDATA.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White
+        Me.DGDATA.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
+        Me.DGDATA.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGDATA.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        Me.DGDATA.ThemeStyle.RowsStyle.Height = 22
+        Me.DGDATA.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DGDATA.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
         '
         'Guna2Panel2
         '
@@ -264,12 +264,11 @@ Partial Class ImportDataDialog
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "ImportDataDialog"
-        Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Import Data"
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.Guna2Panel1.ResumeLayout(False)
-        CType(Me.DGBOOK, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DGDATA, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Guna2Panel2.ResumeLayout(False)
         Me.ResumeLayout(False)
 
@@ -280,7 +279,7 @@ Partial Class ImportDataDialog
     Friend WithEvents BTNPREVIEW As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents BTNSELECTFILE As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents TXTPATH As Guna.UI2.WinForms.Guna2TextBox
-    Friend WithEvents DGBOOK As Guna.UI2.WinForms.Guna2DataGridView
+    Friend WithEvents DGDATA As Guna.UI2.WinForms.Guna2DataGridView
     Friend WithEvents Guna2Panel2 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents BTNIMPORT As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents BTNCANCEL As Guna.UI2.WinForms.Guna2Button
