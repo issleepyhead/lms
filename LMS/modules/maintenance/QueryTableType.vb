@@ -1,5 +1,5 @@
 ﻿Public Enum QueryTableType
-
+#Region "Book Enums"
     <SheetNameMapping("Genres")>
     <ColumnMapping({"Name", "Description"}, {"@name", "@desc"})>
     GENRE_QUERY_TABLE
@@ -42,14 +42,30 @@
     <SheetNameMapping("Languages")>
     <ColumnMapping({"Language", "Code"}, {"@language", "@code"})>
     LANGUAGES_QUERY_TABLE
+#End Region
 
     DONATOR_QUERY_TABLE
     SUPPLIER_QUERY_TABLE
+
+    <SheetNameMapping("Year Levels")>
+    <ColumnMapping({"Year Level", "Department"}, {"@name", "@did"})>
     YEARLEVEL_QUERY_TABLE
+
+    <SheetNameMapping("Sections")>
+    <ColumnMapping({"Section Name", "Year Level"}, {"@name", "@yid"})>
     SECTION_QUERY_TABLE
-    LANGUAGE_QUERY_TABLE
+
+    <SheetNameMapping("Students")>
+    <ColumnMapping({"Name", "Description"}, {"@name", "@desc"})>
     STUDENT_QUERY_TABLE
+
+    <SheetNameMapping("Facultly")>
+    <ColumnMapping({"Name", "Description"}, {"@name", "@desc"})>
     FACULTY_QUERY_TABLE
-    ADMIN_QUERY_TABLE
+
+    <SheetNameMapping("Departments")>
+    <ColumnMapping({"Department Name"}, {"@name"})>
     DEPARTMENT_QUERY_TABLE
+
+    ADMIN_QUERY_TABLE
 End Enum

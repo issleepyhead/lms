@@ -166,6 +166,22 @@
                     .UPDATE_QUERY = "UPDATE tbldepartments SET department_name = @name WHERE id = @id",
                     .FETCH_ALL_QUERY = "SELECT id, department_name FROM tbldepartments ORDER BY department_name"
                 }
+
+            ' TODO PUT A SEARCH FOR SECTION
+            Case QueryTableType.STUDENT_QUERY_TABLE
+                Return New MaintenanceQueries With {
+                    .ADD_QUERY = "INSERT INTO tblstudents (student_no, lrn, full_name, gender, address, phone, email, section_id, year_id, password) VALUES
+                                (@studno, @lrn, @full_name, @gender, @address, @phone, @email, @sid, (SELECT TOP 1 year_id FROM tblsections WHERE id = @sid), @passwd)",
+                    .DELETE_QUERY = "DELETE FROM tblstudents WHERE id = @id",
+                    .EXISTS_QUERY_WITH_ID = "SELECT COUNT(*) FROM tblstudents WHERE (lrn = @lrn OR student_no = @student_no OR email = @email) AND id != @id",
+                    .EXISTS_QUERY_NO_ID = "SELECT COUNT(*) FROM tblstudents WHERE lrn = @lrn OR student_no = @student_no OR email = @email",
+                    .FETCH_TOTAL_COUNT_QUERY = "SELECT COUNT(*) FROM tblstudents",
+                    .FETCH_LIMIT_QUERY = "SELECT student_no, lrn, full_name, gender, address, phone, email, section_id, year_id FROM tblstudents ORDER BY full_name ASC LIMIT @page, 30;",
+                    .FETCH_TOTAL_COUNT_QUERY_SEARCH = "SELECT COUNT(*) FROM tblstudents WHERE lrn = @search OR student_no = @search OR email = @search OR full_name = @search",
+                    .FETCH_LIMIT_QUERY_SEARCH = "SELECT student_no, lrn, full_name, gender, address, phone, email, section_id, year_id FROM tblstudents WHERE lrn = @search OR student_no = @search OR email = @search OR full_name = @search ORDER BY full_name ASC LIMIT @page, 30",
+                    .UPDATE_QUERY = "UPDATE tblstudents SET department_name = @name WHERE id = @id",
+                    .FETCH_ALL_QUERY = "SELECT id, department_name FROM tblstudents ORDER BY department_name"
+                }
 #End Region
         End Select
         Return New MaintenanceQueries
