@@ -17,6 +17,7 @@ End Enum
 Public Enum BOOKSTATE
     BORROWED = 0
     AVAILABLE = 1
+    ARCHIVED = 2
 End Enum
 
 ''' <summary>

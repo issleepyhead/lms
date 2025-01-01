@@ -951,6 +951,15 @@ Public Class DashboardForm
         End Select
     End Sub
 
+    Private Sub BookInventoryPanels_SelectedIndexChanged(sender As Object, e As EventArgs) Handles BookInventoryPanels.SelectedIndexChanged
+        Select Case True
+            Case BookInventoryPanels.SelectedTab.Equals(CopiesTab)
+                DGBOOKCOPIES.DataSource = BaseMaintenance.Fetch(QueryTableType.BOOKCOPIES_QUERY_TABLE)
+                LBLCOPIESPREV.Text = BaseMaintenance.PPrev
+                LBLCOPIESNEXT.Text = BaseMaintenance.PMAX
+        End Select
+    End Sub
+
 #Region "Book Menu Strip"
     Private Sub SelectAllToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles SelectAllToolStripMenuItem1.Click
         For Each item As DataGridViewRow In DGBOOKS.Rows

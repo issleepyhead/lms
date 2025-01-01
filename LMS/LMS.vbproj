@@ -284,6 +284,7 @@
     <Compile Include="modules\maintenance\MaintenanceQueries.vb" />
     <Compile Include="modules\maintenance\QueryTableFactory.vb" />
     <Compile Include="modules\maintenance\QueryTableType.vb" />
+    <Compile Include="modules\maintenance\Utilities.vb" />
     <Compile Include="modules\SheetNameMapping.vb" />
     <Compile Include="modules\Validator.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />

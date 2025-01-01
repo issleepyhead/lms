@@ -182,6 +182,28 @@
                     .FETCH_ALL_QUERY = "SELECT id, department_name FROM tblstudents ORDER BY department_name"
                 }
 #End Region
+
+            Case QueryTableType.BOOKCOPIES_QUERY_TABLE
+                Return New MaintenanceQueries With {
+                    .ADD_QUERY = "INSERT INTO tblbookcopies (book_id, accession_no, price, donator_id, supplier_id) VALUES (@bid, @accession_no, @price, @did, @sid);",
+                    .UPDATE_QUERY = "UPDATE tblbookcopies SET price = @price;",
+                    .FETCH_LIMIT_QUERY = "SELECT 
+                                            b.title,
+	                                        b.isbn,
+                                            COUNT(CASE WHEN bc.condition = 0 THEN 1 END) good,
+                                            COUNT(CASE WHEN bc.condition = 1 THEN 1 END) damaged,
+                                            COUNT(CASE WHEN bc.condition = 2 THEN 1 END) lost,
+                                            COUNT(CASE WHEN bc.status = 0 THEN 1 END) borrowed,
+                                            COUNT(CASE WHEN bc.status = 1 THEN 1 END) available,
+	                                        COUNT(book_id) total
+                                        FROM
+                                            tblbookcopies bc
+                                                JOIN
+                                            tblbooks b ON bc.book_id = b.id
+                                        GROUP BY b.title, b.isbn
+                                        ORDER BY b.title",
+                    .FETCH_TOTAL_COUNT_QUERY = "SELECT COUNT(DISTINCT b.title) FROM tblbookcopies bc JOIN tblbooks b ON bc.book_id = b.id GROUP BY b.title, b.isbn ORDER BY b.title"
+                }
         End Select
         Return New MaintenanceQueries
     End Function
