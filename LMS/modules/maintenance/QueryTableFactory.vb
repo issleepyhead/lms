@@ -175,10 +175,10 @@
                     .EXISTS_QUERY_WITH_ID = "SELECT COUNT(*) FROM tblstudents WHERE (lrn = @lrn OR student_no = @studno OR email = @email) AND id != @id",
                     .EXISTS_QUERY_NO_ID = "SELECT COUNT(*) FROM tblstudents WHERE lrn = @lrn OR student_no = @studno OR email = @email",
                     .FETCH_TOTAL_COUNT_QUERY = "SELECT COUNT(*) FROM tblstudents",
-                    .FETCH_LIMIT_QUERY = "SELECT student_no, lrn, full_name, gender, address, phone, email, section_id, s.name section, s.year_id, y.year_level FROM tblstudents st JOIN tblsections s ON st.section_id = s.id JOIN tblyearlevels y ON s.year_id = y.id ORDER BY full_name ASC LIMIT @page, 30;",
+                    .FETCH_LIMIT_QUERY = "SELECT st.id, student_no, lrn, full_name, gender, address, phone, email, section_id, s.name section, s.year_id, y.year_level FROM tblstudents st JOIN tblsections s ON st.section_id = s.id JOIN tblyearlevels y ON s.year_id = y.id ORDER BY full_name ASC LIMIT @page, 30;",
                     .FETCH_TOTAL_COUNT_QUERY_SEARCH = "SELECT COUNT(*) FROM tblstudents WHERE lrn = @search OR student_no = @search OR email = @search OR full_name = @search",
-                    .FETCH_LIMIT_QUERY_SEARCH = "SELECT student_no, lrn, full_name, gender, address, phone, email, section_id, s.name section, s.year_id, y.year_level FROM tblstudents st JOIN tblsections s ON st.section_id = s.id JOIN tblyearlevels y ON s.year_id = y.id WHERE lrn = @search OR student_no = @search OR email = @search OR full_name = @search ORDER BY full_name ASC LIMIT @page, 30",
-                    .UPDATE_QUERY = "UPDATE tblstudents SET department_name = @name WHERE id = @id",
+                    .FETCH_LIMIT_QUERY_SEARCH = "SELECT st.id, student_no, lrn, full_name, gender, address, phone, email, section_id, s.name section, s.year_id, y.year_level FROM tblstudents st JOIN tblsections s ON st.section_id = s.id JOIN tblyearlevels y ON s.year_id = y.id WHERE lrn = @search OR student_no = @search OR email = @search OR full_name = @search ORDER BY full_name ASC LIMIT @page, 30",
+                    .UPDATE_QUERY = "UPDATE tblstudents SET student_no = @studno, lrn = @lrn, full_name = @full_name, gender = @gender, address = @address, email = @email, section_id = @sid WHERE id = @id",
                     .FETCH_ALL_QUERY = "SELECT id, department_name FROM tblstudents ORDER BY department_name"
                 }
 #End Region

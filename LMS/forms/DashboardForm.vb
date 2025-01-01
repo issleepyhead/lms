@@ -624,7 +624,54 @@ Public Class DashboardForm
         LBLSTUDENTNEXT.Text = BaseMaintenance.PMAX
         LBLSTUDENTPREV.Text = BaseMaintenance.PPrev
     End Sub
+
+    Private Sub BTNSTUDENTNEXT_Click(sender As Object, e As EventArgs) Handles BTNSTUDENTNEXT.Click
+        If BaseMaintenance.PPrev < BaseMaintenance.PMAX Then
+            BaseMaintenance.PPrev += 1
+            LBLSTUDENTPREV.Text = BaseMaintenance.PPrev
+            DGSTUDENT.DataSource = BaseMaintenance.Fetch(QueryTableType.STUDENT_QUERY_TABLE)
+        End If
+    End Sub
+
+    Private Sub BTNSTUDENTPREV_Click(sender As Object, e As EventArgs) Handles BTNSTUDENTPREV.Click
+        If BaseMaintenance.PPrev > 1 Then
+            BaseMaintenance.PPrev -= 1
+            LBLSTUDENTPREV.Text = BaseMaintenance.PPrev
+            DGSTUDENT.DataSource = BaseMaintenance.Fetch(QueryTableType.STUDENT_QUERY_TABLE)
+        End If
+    End Sub
+
+    Private Sub DGSTUDENT_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGSTUDENT.CellMouseClick
+        If e.ColumnIndex <> 0 Then
+            If DGSTUDENT.SelectedRows.Count > 0 Then
+                Dim datarow As DataRowView = DGSTUDENT.SelectedRows.Item(0).DataBoundItem
+                Using dialog As New StudentDialog(datarow)
+                    dialog.ShowDialog()
+                End Using
+            End If
+            DGSTUDENT.DataSource = BaseMaintenance.Fetch(QueryTableType.STUDENT_QUERY_TABLE)
+            LBLSTUDENTNEXT.Text = BaseMaintenance.PMAX
+            LBLSTUDENTPREV.Text = BaseMaintenance.PPrev
+        End If
+    End Sub
+
+    Private Sub TXTSTUDENTSEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTSTUDENTSEARCH.TextChanged
+        If MaintenancePanels.SelectedTab.Equals(StudentsTab) Then
+            If Not String.IsNullOrEmpty(TXTSTUDENTSEARCH.Text) Then
+                DGSTUDENT.DataSource = BaseMaintenance.Search(QueryTableType.STUDENT_QUERY_TABLE, TXTSTUDENTSEARCH.Text)
+                LBLSTUDENTNEXT.Text = BaseMaintenance.PMAX
+                LBLSTUDENTPREV.Text = BaseMaintenance.PPrev
+            Else
+                DGSTUDENT.DataSource = BaseMaintenance.Fetch(QueryTableType.STUDENT_QUERY_TABLE)
+                LBLSTUDENTNEXT.Text = BaseMaintenance.PMAX
+                LBLSTUDENTPREV.Text = BaseMaintenance.PPrev
+            End If
+        End If
+    End Sub
 #End Region
+
+
+
 
 #Region "Select All Datagrid"
     Private Sub SelectAllToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SelectAllToolStripMenuItem.Click

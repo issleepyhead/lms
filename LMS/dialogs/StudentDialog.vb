@@ -14,6 +14,17 @@ Public Class StudentDialog
 
     Private Sub StudentDialog_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CMBYEARLEVEL.DataSource = BaseMaintenance.FetchAll(QueryTableType.YEARLEVEL_QUERY_TABLE)
+        If Not IsNothing(_data) Then
+            TXTSTUDENTNO.Text = _data.Row("student_no")
+            TXTLRN.Text = _data.Row("lrn")
+            TXTFULLNAME.Text = _data.Row("full_name")
+            CMBGENDER.SelectedText = _data.Row("gender")
+            TXTADDRESS.Text = If(IsDBNull(_data.Row("address")), Nothing, _data.Row("address"))
+            TXTPHONE.Text = If(IsDBNull(_data.Row("phone")), Nothing, _data.Row("phone"))
+            CMBYEARLEVEL.SelectedValue = _data.Item("year_id")
+            TXTEMAIL.Text = _data.Item("email")
+            CMBSECTION.SelectedValue = _data.Item("section_id")
+        End If
     End Sub
 
     Private Sub CMBYEARLEVEL_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CMBYEARLEVEL.SelectedIndexChanged
