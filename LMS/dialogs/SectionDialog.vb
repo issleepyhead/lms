@@ -2,7 +2,6 @@
 
 Public Class SectionDialog
     Private _data As DataRowView
-    Private _id As Integer
 
     Sub New()
         InitializeComponent()
@@ -15,7 +14,7 @@ Public Class SectionDialog
     End Sub
 
     Private Sub BTNSAVE_Click(sender As Object, e As EventArgs) Handles BTNSAVE.Click
-        Dim inputs As Object() = {TXTSECTIONNAME, CMBDEPARTMENT, CMBYEARLEVEL}
+        Dim inputs As Object() = {TXTSECTIONNAME, CMBYEARLEVEL}
         For Each item In inputs
             errProvider.SetError(item, String.Empty)
         Next
@@ -39,7 +38,7 @@ Public Class SectionDialog
                 Exit Sub
             End If
         Else
-            If BaseMaintenance.Update(QueryTableType.DEPARTMENT_QUERY_TABLE, data) Then
+            If BaseMaintenance.Update(QueryTableType.SECTION_QUERY_TABLE, data) Then
                 MessageBox.Show("Section has been updated successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
                 MessageBox.Show("Failed updating the section.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -50,16 +49,10 @@ Public Class SectionDialog
     End Sub
 
     Private Sub SectionDialog_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        CMBDEPARTMENT.DataSource = BaseMaintenance.FetchAll(QueryTableType.DEPARTMENT_QUERY_TABLE)
-        CMBYEARLEVEL.DataSource = BaseMaintenance.FetchAll(QueryTableType.YEARLEVEL_QUERY_TABLE, New Dictionary(Of String, String) From {{"@did", CMBDEPARTMENT.SelectedValue}})
+        CMBYEARLEVEL.DataSource = BaseMaintenance.FetchAll(QueryTableType.YEARLEVEL_QUERY_TABLE)
         If Not IsNothing(_data) Then
             TXTSECTIONNAME.Text = _data.Item("name")
-            CMBDEPARTMENT.SelectedValue = _data.Item("department_id")
             CMBYEARLEVEL.SelectedValue = _data.Item("year_id")
         End If
-    End Sub
-
-    Private Sub CMBDEPARTMENT_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CMBDEPARTMENT.SelectedIndexChanged
-        CMBYEARLEVEL.DataSource = BaseMaintenance.FetchAll(QueryTableType.YEARLEVEL_QUERY_TABLE, New Dictionary(Of String, String) From {{"@did", CMBDEPARTMENT.SelectedValue}})
     End Sub
 End Class

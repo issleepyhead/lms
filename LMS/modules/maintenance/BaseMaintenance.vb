@@ -16,11 +16,16 @@ Module BaseMaintenance
     End Sub
 
     Private Function _Exists(params As Dictionary(Of String, String)) As Boolean
-        If CInt(params.Item("@id")) > 0 Then
-            Return CInt(ExecScalar(QueryTable.EXISTS_QUERY_WITH_ID, params)) > 0
-        Else
-            Return CInt(ExecScalar(QueryTable.EXISTS_QUERY_WITH_ID, params)) > 0
-        End If
+        Try
+            If CInt(params.Item("@id")) > 0 Then
+                Return CInt(ExecScalar(QueryTable.EXISTS_QUERY_WITH_ID, params)) > 0
+            Else
+                Return CInt(ExecScalar(QueryTable.EXISTS_QUERY_WITH_ID, params)) > 0
+            End If
+        Catch ex As Exception
+            Logger.Logger(ex)
+        End Try
+        Return False
     End Function
 
     Public Function Exists(type As QueryTableType, param As Dictionary(Of String, String)) As Boolean

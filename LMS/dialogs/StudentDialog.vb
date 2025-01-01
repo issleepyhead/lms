@@ -1,15 +1,72 @@
 ﻿Imports System.Windows.Forms
 
 Public Class StudentDialog
+    Private _data As DataRowView
 
-    Private Sub OK_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        Me.DialogResult = System.Windows.Forms.DialogResult.OK
-        Me.Close()
+    Sub New()
+        InitializeComponent()
     End Sub
 
-    Private Sub Cancel_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        Me.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.Close()
+    Sub New(data As DataRowView)
+        InitializeComponent()
+        _data = data
     End Sub
 
+    Private Sub StudentDialog_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        CMBYEARLEVEL.DataSource = BaseMaintenance.FetchAll(QueryTableType.YEARLEVEL_QUERY_TABLE)
+    End Sub
+
+    Private Sub CMBYEARLEVEL_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CMBYEARLEVEL.SelectedIndexChanged
+        If CMBYEARLEVEL.SelectedIndex <> -1 Then
+            CMBSECTION.DataSource = BaseMaintenance.FetchAll(QueryTableType.SECTION_QUERY_TABLE, New Dictionary(Of String, String) From {{"@yid", CMBYEARLEVEL.SelectedValue.ToString}})
+        End If
+    End Sub
+
+    Private Sub BTNSAVE_Click(sender As Object, e As EventArgs) Handles BTNSAVE.Click
+        Dim inputs As Object() = {TXTSTUDENTNO, TXTLRN, TXTFULLNAME, TXTEMAIL}
+        For Each item In inputs
+            errProvider.SetError(item, String.Empty)
+        Next
+
+        Dim year As String = Date.Now.Year.ToString
+        Dim firstLetterName As String = TXTFULLNAME.Text.ToUpper().Substring(0, 1)
+        Dim namearray As String() = TXTFULLNAME.Text.Split(" "c)
+        Dim lastName As String = namearray(namearray.Length - 1)
+
+        Dim data As New Dictionary(Of String, String) From {
+                {"@id", If(IsNothing(_data), 0, _data.Item("id").ToString)},
+                {"@studno", TXTSTUDENTNO.Text},
+                {"@lrn", TXTLRN.Text},
+                {"@full_name", TXTFULLNAME.Text},
+                {"@gender", CMBGENDER.Text},
+                {"@address", TXTADDRESS.Text},
+                {"@phone", TXTPHONE.Text},
+                {"@email", TXTEMAIL.Text},
+                {"@sid", CMBSECTION.SelectedValue},
+                {"@passwd", BCrypt.Net.BCrypt.HashPassword(firstLetterName & lastName & year)}
+        }
+
+        If BaseMaintenance.Exists(QueryTableType.STUDENT_QUERY_TABLE, data) Then
+            errProvider.SetError(TXTLRN, "This LRN already exists.")
+            errProvider.SetError(TXTSTUDENTNO, "This student number already exists.")
+            Exit Sub
+        End If
+
+        If IsNothing(_data) Then
+            If BaseMaintenance.Add(QueryTableType.STUDENT_QUERY_TABLE, data) Then
+                MessageBox.Show("Student has been added successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Else
+                MessageBox.Show("Failed adding the student.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Exit Sub
+            End If
+        Else
+            If BaseMaintenance.Update(QueryTableType.STUDENT_QUERY_TABLE, data) Then
+                MessageBox.Show("Student has been updated successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Else
+                MessageBox.Show("Failed updating the student.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Exit Sub
+            End If
+        End If
+        Close()
+    End Sub
 End Class

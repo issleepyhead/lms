@@ -136,7 +136,7 @@
                     .FETCH_TOTAL_COUNT_QUERY_SEARCH = "SELECT COUNT(*) FROM tblsections WHERE name LIKE @search",
                     .FETCH_LIMIT_QUERY_SEARCH = "SELECT s.id, s.name, s.year_id, y.year_level, y.department_id FROM tblsections s JOIN tblyearlevels y ON s.year_id = y.id WHERE name LIKE @search ORDER BY name ASC LIMIT @page, 30",
                     .UPDATE_QUERY = "UPDATE tblsections SET name = @name, year_id = @yid WHERE id = @id",
-                    .FETCH_ALL_QUERY = "SELECT s.id, s.name, s.year_id, y.year_level FROM tblsections s JOIN tblyearlevel y ON s.year_id = y.id WHERE year_id = @yid ORDER BY s.name"
+                    .FETCH_ALL_QUERY = "SELECT id, `name` FROM tblsections WHERE year_id = @yid ORDER BY `name`"
                 }
 
             Case QueryTableType.YEARLEVEL_QUERY_TABLE
@@ -150,7 +150,7 @@
                     .FETCH_TOTAL_COUNT_QUERY_SEARCH = "SELECT COUNT(*) FROM tblyearlevels WHERE year_level LIKE @search",
                     .FETCH_LIMIT_QUERY_SEARCH = "SELECT y.id, y.year_level, d.department_name, y.department_id FROM tblyearlevels y JOIN tbldepartments d ON y.department_id = d.id WHERE year_level LIKE @search ORDER BY year_level ASC LIMIT @page, 30",
                     .UPDATE_QUERY = "UPDATE tblyearlevels SET year_level = @name, department_id = @did WHERE id = @id",
-                    .FETCH_ALL_QUERY = "SELECT id, year_level FROM tblyearlevels WHERE department_id = @did ORDER BY year_level"
+                    .FETCH_ALL_QUERY = "SELECT id, year_level FROM tblyearlevels ORDER BY year_level"
                 }
 
             Case QueryTableType.DEPARTMENT_QUERY_TABLE
@@ -170,15 +170,14 @@
             ' TODO PUT A SEARCH FOR SECTION
             Case QueryTableType.STUDENT_QUERY_TABLE
                 Return New MaintenanceQueries With {
-                    .ADD_QUERY = "INSERT INTO tblstudents (student_no, lrn, full_name, gender, address, phone, email, section_id, year_id, password) VALUES
-                                (@studno, @lrn, @full_name, @gender, @address, @phone, @email, @sid, (SELECT TOP 1 year_id FROM tblsections WHERE id = @sid), @passwd)",
+                    .ADD_QUERY = "INSERT INTO tblstudents (student_no, lrn, full_name, gender, address, phone, email, section_id, password) VALUES (@studno, @lrn, @full_name, @gender, @address, @phone, @email, @sid, @passwd)",
                     .DELETE_QUERY = "DELETE FROM tblstudents WHERE id = @id",
-                    .EXISTS_QUERY_WITH_ID = "SELECT COUNT(*) FROM tblstudents WHERE (lrn = @lrn OR student_no = @student_no OR email = @email) AND id != @id",
-                    .EXISTS_QUERY_NO_ID = "SELECT COUNT(*) FROM tblstudents WHERE lrn = @lrn OR student_no = @student_no OR email = @email",
+                    .EXISTS_QUERY_WITH_ID = "SELECT COUNT(*) FROM tblstudents WHERE (lrn = @lrn OR student_no = @studno OR email = @email) AND id != @id",
+                    .EXISTS_QUERY_NO_ID = "SELECT COUNT(*) FROM tblstudents WHERE lrn = @lrn OR student_no = @studno OR email = @email",
                     .FETCH_TOTAL_COUNT_QUERY = "SELECT COUNT(*) FROM tblstudents",
-                    .FETCH_LIMIT_QUERY = "SELECT student_no, lrn, full_name, gender, address, phone, email, section_id, year_id FROM tblstudents ORDER BY full_name ASC LIMIT @page, 30;",
+                    .FETCH_LIMIT_QUERY = "SELECT student_no, lrn, full_name, gender, address, phone, email, section_id, s.name section, s.year_id, y.year_level FROM tblstudents st JOIN tblsections s ON st.section_id = s.id JOIN tblyearlevels y ON s.year_id = y.id ORDER BY full_name ASC LIMIT @page, 30;",
                     .FETCH_TOTAL_COUNT_QUERY_SEARCH = "SELECT COUNT(*) FROM tblstudents WHERE lrn = @search OR student_no = @search OR email = @search OR full_name = @search",
-                    .FETCH_LIMIT_QUERY_SEARCH = "SELECT student_no, lrn, full_name, gender, address, phone, email, section_id, year_id FROM tblstudents WHERE lrn = @search OR student_no = @search OR email = @search OR full_name = @search ORDER BY full_name ASC LIMIT @page, 30",
+                    .FETCH_LIMIT_QUERY_SEARCH = "SELECT student_no, lrn, full_name, gender, address, phone, email, section_id, s.name section, s.year_id, y.year_level FROM tblstudents st JOIN tblsections s ON st.section_id = s.id JOIN tblyearlevels y ON s.year_id = y.id WHERE lrn = @search OR student_no = @search OR email = @search OR full_name = @search ORDER BY full_name ASC LIMIT @page, 30",
                     .UPDATE_QUERY = "UPDATE tblstudents SET department_name = @name WHERE id = @id",
                     .FETCH_ALL_QUERY = "SELECT id, department_name FROM tblstudents ORDER BY department_name"
                 }

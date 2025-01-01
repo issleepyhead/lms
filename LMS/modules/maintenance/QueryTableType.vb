@@ -56,7 +56,7 @@
     SECTION_QUERY_TABLE
 
     <SheetNameMapping("Students")>
-    <ColumnMapping({"Name", "Description"}, {"@name", "@desc"})>
+    <ColumnMapping({"Student Number", "LRN", "Full Name", "Email", "Section"}, {"@name", "@desc"})>
     STUDENT_QUERY_TABLE
 
     <SheetNameMapping("Facultly")>

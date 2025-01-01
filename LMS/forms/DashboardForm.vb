@@ -615,6 +615,17 @@ Public Class DashboardForm
     End Sub
 #End Region
 
+#Region "Student Module"
+    Private Sub BTNADDSTUDENTS_Click(sender As Object, e As EventArgs) Handles BTNADDSTUDENTS.Click
+        Using dialog = StudentDialog
+            dialog.ShowDialog()
+        End Using
+        DGSTUDENT.DataSource = BaseMaintenance.Fetch(QueryTableType.STUDENT_QUERY_TABLE)
+        LBLSTUDENTNEXT.Text = BaseMaintenance.PMAX
+        LBLSTUDENTPREV.Text = BaseMaintenance.PPrev
+    End Sub
+#End Region
+
 #Region "Select All Datagrid"
     Private Sub SelectAllToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SelectAllToolStripMenuItem.Click
         If MainFormPanels.SelectedTab.Equals(MaintenanceTab) Then
@@ -838,6 +849,7 @@ Public Class DashboardForm
     End Sub
 #End Region
 
+#Region "Import Module"
     Private Sub BTNIMPORTS_Click(sender As Object, e As EventArgs) Handles BTNIMPORTBOOKS.Click, BTNIMPORTFACULTY.Click, BTNIMPORTSTUDENTS.Click
         Select Case True
             Case sender.Equals(BTNIMPORTBOOKS)
@@ -866,6 +878,7 @@ Public Class DashboardForm
                 End If
         End Select
     End Sub
+#End Region
 
     Private Sub AccountsPanel_SelectedIndexChanged(sender As Object, e As EventArgs) Handles AccountsPanel.SelectedIndexChanged
         Select Case True
@@ -883,6 +896,11 @@ Public Class DashboardForm
                 DGSECTIONS.DataSource = BaseMaintenance.Fetch(QueryTableType.SECTION_QUERY_TABLE)
                 LBLSECTIONPREV.Text = BaseMaintenance.PPrev
                 LBLSECTIONNEXT.Text = BaseMaintenance.PMAX
+            Case AccountsPanel.SelectedTab.Equals(StudentsTab)
+                DGSTUDENT.DataSource = BaseMaintenance.Fetch(QueryTableType.STUDENT_QUERY_TABLE)
+                LBLSTUDENTPREV.Text = BaseMaintenance.PPrev
+                LBLSTUDENTNEXT.Text = BaseMaintenance.PMAX
+
         End Select
     End Sub
 
