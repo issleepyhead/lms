@@ -181,6 +181,20 @@
                     .UPDATE_QUERY = "UPDATE tblstudents SET student_no = @studno, lrn = @lrn, full_name = @full_name, gender = @gender, address = @address, email = @email, section_id = @sid WHERE id = @id",
                     .FETCH_ALL_QUERY = "SELECT id, department_name FROM tblstudents ORDER BY department_name"
                 }
+
+            Case QueryTableType.FACULTY_QUERY_TABLE
+                Return New MaintenanceQueries With {
+                    .ADD_QUERY = "INSERT INTO tblfaculties (full_name, gender, address, phone, email, department_id, password) VALUES (@full_name, @gender, @address, @phone, @email, @did, @passwd)",
+                    .DELETE_QUERY = "DELETE FROM tblfaculties WHERE id = @id",
+                    .EXISTS_QUERY_WITH_ID = "SELECT COUNT(*) FROM tblfaculties WHERE email = @email AND id != @id",
+                    .EXISTS_QUERY_NO_ID = "SELECT COUNT(*) FROM tblfaculties WHERE email = @email",
+                    .FETCH_TOTAL_COUNT_QUERY = "SELECT COUNT(*) FROM tblfaculties",
+                    .FETCH_LIMIT_QUERY = "SELECT st.id, full_name, gender, address, phone, email, department_id FROM tblfaculties st JOIN tbldepartments d ON st.department_id = d.id ORDER BY full_name ASC LIMIT @page, 30;",
+                    .FETCH_TOTAL_COUNT_QUERY_SEARCH = "SELECT COUNT(*) FROM tblfaculties WHERE email LIKE @search OR full_name LIKE @search",
+                    .FETCH_LIMIT_QUERY_SEARCH = "SELECT st.id, full_name, gender, address, phone, email, department_id FROM tblfaculties st JOIN tbldepartments d ON st.department_id = d.id WHERE email LIKE @search OR full_name LIKE @search ORDER BY full_name ASC LIMIT @page, 30",
+                    .UPDATE_QUERY = "UPDATE tblfaculties SET full_name = @full_name, gender = @gender, address = @address, email = @email, section_id = @did WHERE id = @id",
+                    .FETCH_ALL_QUERY = "SELECT id, department_name FROM tblfaculties ORDER BY department_name"
+                }
 #End Region
 
             Case QueryTableType.BOOKCOPIES_QUERY_TABLE
