@@ -93,6 +93,30 @@ Module Connection
         Return False
     End Function
 
+    Public Function ExecProcedure(query As String, Optional params As Dictionary(Of String, String) = Nothing) As Boolean
+        Dim res As Integer = 0
+        Try
+
+            Using cmd As New MySqlCommand(query, GetConnectionInstance())
+                If Not IsNothing(params) Then
+                    For Each item In params
+                        With cmd.Parameters
+                            .AddWithValue(item.Key, If(String.IsNullOrEmpty(item.Value), DBNull.Value, item.Value))
+                        End With
+                    Next
+                End If
+                cmd.CommandType = CommandType.StoredProcedure
+                res = cmd.ExecuteNonQuery()
+                If res = 0 Then
+                    Throw New Exception("Parang nothing happens lang ah?")
+                End If
+            End Using
+        Catch ex As Exception
+            Logger.Logger(ex)
+        End Try
+        Return res
+    End Function
+
 
     ''' <summary>
     ''' Only for executing scalar queries.

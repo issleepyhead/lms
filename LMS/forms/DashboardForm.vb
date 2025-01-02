@@ -957,6 +957,23 @@ Public Class DashboardForm
                 DGBOOKCOPIES.DataSource = BaseMaintenance.Fetch(QueryTableType.BOOKCOPIES_QUERY_TABLE)
                 LBLCOPIESPREV.Text = BaseMaintenance.PPrev
                 LBLCOPIESNEXT.Text = BaseMaintenance.PMAX
+
+                Dim dtDonator As DataTable = BaseMaintenance.FetchAll(QueryTableType.DONATOR_QUERY_TABLE)
+                Dim newRow As DataRow = dtDonator.NewRow()
+                newRow("id") = 0
+                newRow("name") = "None"
+                dtDonator.Rows.InsertAt(newRow, 0)
+
+                Dim dtSupplier As DataTable = BaseMaintenance.FetchAll(QueryTableType.SUPPLIER_QUERY_TABLE)
+                newRow = dtSupplier.NewRow()
+                newRow("id") = 0
+                newRow("name") = "None"
+                dtSupplier.Rows.InsertAt(newRow, 0)
+
+                TXTACCESSION.Text = GenerateAccession()
+
+                CMBDONATORCOPIES.DataSource = dtDonator
+                CMBSUPPLIERCOPIES.DataSource = dtSupplier
         End Select
     End Sub
 
@@ -974,5 +991,23 @@ Public Class DashboardForm
         Next
         DGBOOKS.EndEdit()
     End Sub
+
+    Private Sub BTNADDCOPIES_Click(sender As Object, e As EventArgs) Handles BTNADDCOPIES.Click
+        ' TODO ADD SANITIZE THIS
+        AddCopies(CInt(TXTQUANTITY.Text), TXTISBNCOPIES.Text, CInt(TXTPRICECOPIES.Text), CMBDONATORCOPIES.SelectedValue, CMBSUPPLIERCOPIES.SelectedValue)
+    End Sub
+
+    Private Sub CHCKBOXDONATED_CheckedChanged(sender As Object, e As EventArgs) Handles CHCKBOXDONATED.CheckedChanged
+        If CHCKBOXDONATED.Checked Then
+            CMBSUPPLIERCOPIES.Enabled = False
+            CMBDONATORCOPIES.Enabled = True
+        Else
+            CMBDONATORCOPIES.Enabled = False
+            CMBSUPPLIERCOPIES.Enabled = True
+        End If
+    End Sub
+
+
+
 #End Region
 End Class
