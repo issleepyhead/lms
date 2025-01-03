@@ -185,7 +185,7 @@ Partial Class FacultyDialog
         '
         Me.CMBDEPARTMENT.BackColor = System.Drawing.Color.Transparent
         Me.CMBDEPARTMENT.BorderRadius = 4
-        Me.CMBDEPARTMENT.DisplayMember = "year_level"
+        Me.CMBDEPARTMENT.DisplayMember = "department_name"
         Me.CMBDEPARTMENT.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.CMBDEPARTMENT.DropDownHeight = 280
         Me.CMBDEPARTMENT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList

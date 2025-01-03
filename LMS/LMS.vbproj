@@ -323,6 +323,9 @@
     <EmbeddedResource Include="dialogs\DonatorDialog.resx">
       <DependentUpon>DonatorDialog.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="dialogs\FacultyDialog.resx">
+      <DependentUpon>FacultyDialog.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="dialogs\GenreDialog.resx">
       <DependentUpon>GenreDialog.vb</DependentUpon>
     </EmbeddedResource>
@@ -343,6 +346,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="dialogs\SupplierDialog.resx">
       <DependentUpon>SupplierDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dialogs\UserDialog.resx">
+      <DependentUpon>UserDialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="dialogs\YearLevelDialog.resx">
       <DependentUpon>YearLevelDialog.vb</DependentUpon>

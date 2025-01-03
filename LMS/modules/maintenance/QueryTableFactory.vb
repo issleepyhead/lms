@@ -1,4 +1,10 @@
 ﻿Module QueryTableFactory
+
+    ''' <summary>
+    ''' 
+    ''' </summary>
+    ''' <param name="type"></param>
+    ''' <returns></returns>
     Public Function QueryTableFactory(type As QueryTableType) As MaintenanceQueries
         Select Case type
 #Region "Maintenance Queries"
@@ -98,8 +104,8 @@
                     .FETCH_ALL_QUERY = "SELECT language, code, id FROM tbllanguages ORDER BY language ASC"
                 }
 
+            ' TODO FETCH ONLY THE ACTIVE
             Case QueryTableType.BOOK_QUERY_TABLE
-                ' TODO ADD CLASSIFICATION AND PUBLISHER
                 Return New MaintenanceQueries With {
                     .ADD_QUERY = "INSERT INTO tblbooks (isbn, title, book_cover, genre_id, author_id, publisher_id, language_id, classification_id, reserve_copy, spenalty, fpenalty)
                                     VALUES (@isbn, @title, @cover, @gid, @aid, @pid, @lid, @cid, @rcopy, @spenalty, @fpenalty)",
@@ -168,6 +174,7 @@
                 }
 
             ' TODO PUT A SEARCH FOR SECTION
+            ' TODO FETCH ONLY THE ACTIVE
             Case QueryTableType.STUDENT_QUERY_TABLE
                 Return New MaintenanceQueries With {
                     .ADD_QUERY = "INSERT INTO tblstudents (student_no, lrn, full_name, gender, address, phone, email, section_id, password) VALUES (@studno, @lrn, @full_name, @gender, @address, @phone, @email, @sid, @passwd)",
@@ -176,12 +183,13 @@
                     .EXISTS_QUERY_NO_ID = "SELECT COUNT(*) FROM tblstudents WHERE lrn = @lrn OR student_no = @studno OR email = @email",
                     .FETCH_TOTAL_COUNT_QUERY = "SELECT COUNT(*) FROM tblstudents",
                     .FETCH_LIMIT_QUERY = "SELECT st.id, student_no, lrn, full_name, gender, address, phone, email, section_id, s.name section, s.year_id, y.year_level FROM tblstudents st JOIN tblsections s ON st.section_id = s.id JOIN tblyearlevels y ON s.year_id = y.id ORDER BY full_name ASC LIMIT @page, 30;",
-                    .FETCH_TOTAL_COUNT_QUERY_SEARCH = "SELECT COUNT(*) FROM tblstudents WHERE lrn = @search OR student_no = @search OR email = @search OR full_name = @search",
-                    .FETCH_LIMIT_QUERY_SEARCH = "SELECT st.id, student_no, lrn, full_name, gender, address, phone, email, section_id, s.name section, s.year_id, y.year_level FROM tblstudents st JOIN tblsections s ON st.section_id = s.id JOIN tblyearlevels y ON s.year_id = y.id WHERE lrn = @search OR student_no = @search OR email = @search OR full_name = @search ORDER BY full_name ASC LIMIT @page, 30",
+                    .FETCH_TOTAL_COUNT_QUERY_SEARCH = "SELECT COUNT(*) FROM tblstudents WHERE lrn LIKE @search OR student_no LIKE @search OR email LIKE @search OR full_name LIKE @search",
+                    .FETCH_LIMIT_QUERY_SEARCH = "SELECT st.id, student_no, lrn, full_name, gender, address, phone, email, section_id, s.name section, s.year_id, y.year_level FROM tblstudents st JOIN tblsections s ON st.section_id = s.id JOIN tblyearlevels y ON s.year_id = y.id WHERE lrn LIKE @search OR student_no LIKE @search OR email LIKE @search OR full_name LIKE @search ORDER BY full_name ASC LIMIT @page, 30",
                     .UPDATE_QUERY = "UPDATE tblstudents SET student_no = @studno, lrn = @lrn, full_name = @full_name, gender = @gender, address = @address, email = @email, section_id = @sid WHERE id = @id",
                     .FETCH_ALL_QUERY = "SELECT id, department_name FROM tblstudents ORDER BY department_name"
                 }
 
+                ' TODO FETCH ONLY THE ACTIVE
             Case QueryTableType.FACULTY_QUERY_TABLE
                 Return New MaintenanceQueries With {
                     .ADD_QUERY = "INSERT INTO tblfaculties (full_name, gender, address, phone, email, department_id, password) VALUES (@full_name, @gender, @address, @phone, @email, @did, @passwd)",
@@ -189,10 +197,10 @@
                     .EXISTS_QUERY_WITH_ID = "SELECT COUNT(*) FROM tblfaculties WHERE email = @email AND id != @id",
                     .EXISTS_QUERY_NO_ID = "SELECT COUNT(*) FROM tblfaculties WHERE email = @email",
                     .FETCH_TOTAL_COUNT_QUERY = "SELECT COUNT(*) FROM tblfaculties",
-                    .FETCH_LIMIT_QUERY = "SELECT st.id, full_name, gender, address, phone, email, department_id FROM tblfaculties st JOIN tbldepartments d ON st.department_id = d.id ORDER BY full_name ASC LIMIT @page, 30;",
+                    .FETCH_LIMIT_QUERY = "SELECT st.id, full_name, gender, address, phone, email, department_id, d.department_name FROM tblfaculties st JOIN tbldepartments d ON st.department_id = d.id ORDER BY full_name ASC LIMIT @page, 30;",
                     .FETCH_TOTAL_COUNT_QUERY_SEARCH = "SELECT COUNT(*) FROM tblfaculties WHERE email LIKE @search OR full_name LIKE @search",
-                    .FETCH_LIMIT_QUERY_SEARCH = "SELECT st.id, full_name, gender, address, phone, email, department_id FROM tblfaculties st JOIN tbldepartments d ON st.department_id = d.id WHERE email LIKE @search OR full_name LIKE @search ORDER BY full_name ASC LIMIT @page, 30",
-                    .UPDATE_QUERY = "UPDATE tblfaculties SET full_name = @full_name, gender = @gender, address = @address, email = @email, section_id = @did WHERE id = @id",
+                    .FETCH_LIMIT_QUERY_SEARCH = "SELECT st.id, full_name, gender, address, phone, email, department_id, d.department_name FROM tblfaculties st JOIN tbldepartments d ON st.department_id = d.id WHERE email LIKE @search OR full_name LIKE @search ORDER BY full_name ASC LIMIT @page, 30",
+                    .UPDATE_QUERY = "UPDATE tblfaculties SET full_name = @full_name, gender = @gender, address = @address, email = @email, department_id = @did WHERE id = @id",
                     .FETCH_ALL_QUERY = "SELECT id, department_name FROM tblfaculties ORDER BY department_name"
                 }
 #End Region

@@ -194,5 +194,12 @@ LMS
  LOST = 2
  </summary>
 </member>
+<member name="M:LMS.QueryTableFactory.QueryTableFactory(LMS.QueryTableType)">
+ <summary>
+ 
+ </summary>
+ <param name="type"></param>
+ <returns></returns>
+</member>
 </members>
 </doc>

@@ -656,7 +656,7 @@ Public Class DashboardForm
     End Sub
 
     Private Sub TXTSTUDENTSEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTSTUDENTSEARCH.TextChanged
-        If MaintenancePanels.SelectedTab.Equals(StudentsTab) Then
+        If AccountsPanel.SelectedTab.Equals(StudentsTab) Then
             If Not String.IsNullOrEmpty(TXTSTUDENTSEARCH.Text) Then
                 DGSTUDENT.DataSource = BaseMaintenance.Search(QueryTableType.STUDENT_QUERY_TABLE, TXTSTUDENTSEARCH.Text)
                 LBLSTUDENTNEXT.Text = BaseMaintenance.PMAX
@@ -670,7 +670,60 @@ Public Class DashboardForm
     End Sub
 #End Region
 
+#Region "Faculty/Teacher Module"
+    Private Sub BTNADDFACULTY_Click(sender As Object, e As EventArgs) Handles BTNADDFACULTY.Click
+        Using dialog = FacultyDialog
+            dialog.ShowDialog()
+        End Using
+        DGFACULTY.DataSource = BaseMaintenance.Fetch(QueryTableType.FACULTY_QUERY_TABLE)
+        LBLFACULTYNEXT.Text = BaseMaintenance.PMAX
+        LBLFACULTYPREV.Text = BaseMaintenance.PPrev
+    End Sub
 
+    Private Sub BTNFACULTYNEXT_Click(sender As Object, e As EventArgs) Handles BTNFACULTYNEXT.Click
+        If BaseMaintenance.PPrev < BaseMaintenance.PMAX Then
+            BaseMaintenance.PPrev += 1
+            LBLFACULTYPREV.Text = BaseMaintenance.PPrev
+            DGFACULTY.DataSource = BaseMaintenance.Fetch(QueryTableType.FACULTY_QUERY_TABLE)
+        End If
+    End Sub
+
+    Private Sub BTNFACULTYPREV_Click(sender As Object, e As EventArgs) Handles BTNFACULTYPREV.Click
+        If BaseMaintenance.PPrev > 1 Then
+            BaseMaintenance.PPrev -= 1
+            LBLFACULTYPREV.Text = BaseMaintenance.PPrev
+            DGFACULTY.DataSource = BaseMaintenance.Fetch(QueryTableType.FACULTY_QUERY_TABLE)
+        End If
+    End Sub
+
+    Private Sub DGFACULTY_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGFACULTY.CellMouseClick
+        If e.ColumnIndex <> 0 Then
+            If DGFACULTY.SelectedRows.Count > 0 Then
+                Dim datarow As DataRowView = DGFACULTY.SelectedRows.Item(0).DataBoundItem
+                Using dialog As New FacultyDialog(datarow)
+                    dialog.ShowDialog()
+                End Using
+            End If
+            DGFACULTY.DataSource = BaseMaintenance.Fetch(QueryTableType.FACULTY_QUERY_TABLE)
+            LBLFACULTYNEXT.Text = BaseMaintenance.PMAX
+            LBLFACULTYPREV.Text = BaseMaintenance.PPrev
+        End If
+    End Sub
+
+    Private Sub TXTFACULTYSEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTFACULTYSEARCH.TextChanged
+        If AccountsPanel.SelectedTab.Equals(FacultyTab) Then
+            If Not String.IsNullOrEmpty(TXTFACULTYSEARCH.Text) Then
+                DGFACULTY.DataSource = BaseMaintenance.Search(QueryTableType.FACULTY_QUERY_TABLE, TXTFACULTYSEARCH.Text)
+                LBLFACULTYNEXT.Text = BaseMaintenance.PMAX
+                LBLFACULTYPREV.Text = BaseMaintenance.PPrev
+            Else
+                DGFACULTY.DataSource = BaseMaintenance.Fetch(QueryTableType.FACULTY_QUERY_TABLE)
+                LBLFACULTYNEXT.Text = BaseMaintenance.PMAX
+                LBLFACULTYPREV.Text = BaseMaintenance.PPrev
+            End If
+        End If
+    End Sub
+#End Region
 
 
 #Region "Select All Datagrid"
@@ -943,10 +996,16 @@ Public Class DashboardForm
                 DGSECTIONS.DataSource = BaseMaintenance.Fetch(QueryTableType.SECTION_QUERY_TABLE)
                 LBLSECTIONPREV.Text = BaseMaintenance.PPrev
                 LBLSECTIONNEXT.Text = BaseMaintenance.PMAX
+
             Case AccountsPanel.SelectedTab.Equals(StudentsTab)
                 DGSTUDENT.DataSource = BaseMaintenance.Fetch(QueryTableType.STUDENT_QUERY_TABLE)
                 LBLSTUDENTPREV.Text = BaseMaintenance.PPrev
                 LBLSTUDENTNEXT.Text = BaseMaintenance.PMAX
+
+            Case AccountsPanel.SelectedTab.Equals(FacultyTab)
+                DGFACULTY.DataSource = BaseMaintenance.Fetch(QueryTableType.FACULTY_QUERY_TABLE)
+                LBLFACULTYPREV.Text = BaseMaintenance.PPrev
+                LBLFACULTYNEXT.Text = BaseMaintenance.PMAX
 
         End Select
     End Sub
@@ -1006,8 +1065,6 @@ Public Class DashboardForm
             CMBSUPPLIERCOPIES.Enabled = True
         End If
     End Sub
-
-
 
 #End Region
 End Class
