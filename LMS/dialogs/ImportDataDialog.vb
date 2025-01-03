@@ -13,6 +13,14 @@ Public Class ImportDataDialog
         InitializeComponent()
         _importHandler = excelLoader
         _keyDialog = keyDialog
+
+        If keyDialog = "importbook" Then
+            Text &= " - Books"
+        ElseIf keyDialog = "importstudent" Then
+            Text &= " - Students"
+        Else
+            Text &= " - Teachers/Faculties"
+        End If
     End Sub
 
     Private Sub BTNSELECTFILE_Click(sender As Object, e As EventArgs) Handles BTNSELECTFILE.Click
@@ -44,7 +52,6 @@ Public Class ImportDataDialog
     End Sub
 
     Private Sub ImportBookDialog_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        ' TODO FIX THIS TO DYNAMIC
         If Not _isHiding Then
             If Not String.IsNullOrEmpty(path) OrElse Not IsNothing(DGDATA.DataSource) Then
                 If MessageBox.Show("Are you sure you want to discard changes?", "Discard Changes?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
@@ -115,13 +122,26 @@ Public Class ImportDataDialog
     End Sub
 
     Private Sub ImportBackground_DoWork(sender As Object, e As DoWorkEventArgs) Handles ImportBackground.DoWork
-        ' TODO FIX THIS TO DYNAMIC
         If Not IsNothing(data) Then
             Me.Invoke(Sub()
                           BTNIMPORT.Enabled = False
                       End Sub)
-            Dim orderImport As String() = {"Genres", "Authors", "Publishers", "Classifications", "Languages", "Books"}
-            Dim orderQuery As QueryTableType() = {QueryTableType.GENRE_QUERY_TABLE, QueryTableType.AUTHOR_QUERY_TABLE, QueryTableType.PUBLISHER_QUERY_TABLE, QueryTableType.CLASSIFICATION_QUERY_TABLE, QueryTableType.LANGUAGES_QUERY_TABLE, QueryTableType.BOOK_QUERY_TABLE}
+            Dim orderImport As String() = Nothing
+            Dim orderQuery As QueryTableType() = Nothing
+
+            If data.ContainsKey("Books") Then
+                orderImport = {"Genres", "Authors", "Publishers", "Classifications", "Languages", "Books"}
+                orderQuery = {QueryTableType.GENRE_QUERY_TABLE, QueryTableType.AUTHOR_QUERY_TABLE, QueryTableType.PUBLISHER_QUERY_TABLE, QueryTableType.CLASSIFICATION_QUERY_TABLE,
+                                    QueryTableType.LANGUAGES_QUERY_TABLE, QueryTableType.BOOK_QUERY_TABLE}
+
+            ElseIf data.ContainsKey("Students") Then
+                orderImport = {"Departments", "Year Levels", "Sections", "Students"}
+                orderQuery = {QueryTableType.DEPARTMENT_QUERY_TABLE, QueryTableType.YEARLEVEL_QUERY_TABLE, QueryTableType.SECTION_QUERY_TABLE, QueryTableType.STUDENT_QUERY_TABLE}
+            Else
+                orderImport = {"Departments", "Faculty"}
+                orderQuery = {QueryTableType.DEPARTMENT_QUERY_TABLE, QueryTableType.FACULTY_QUERY_TABLE}
+            End If
+
             For index As Integer = 0 To orderImport.Length - 1
                 If data.ContainsKey(orderImport(index)) Then
                     Dim dt As DataTable = data.Item(orderImport(index))
@@ -147,14 +167,24 @@ Public Class ImportDataDialog
     End Sub
 
     Private Sub ImportBackground_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles ImportBackground.ProgressChanged
-        ' TODO FIX THIS TO DYNAMIC
-        DGDATA.DataSource = data.Item("Books")
+        If data.ContainsKey("Books") Then
+            DGDATA.DataSource = data.Item("Books")
+        ElseIf data.ContainsKey("Students") Then
+            DGDATA.DataSource = data.Item("Students")
+        Else
+            DGDATA.DataSource = data.Item("Faculty")
+        End If
     End Sub
 
     Private Sub ImportBackground_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles ImportBackground.RunWorkerCompleted
-        ' TODO FIX THIS TO DYNAMIC
         _importHandler.DBHANDLER.CommitTransaction()
-        DGDATA.DataSource = data.Item("Books")
+        If data.ContainsKey("Books") Then
+            DGDATA.DataSource = data.Item("Books")
+        ElseIf data.ContainsKey("Students") Then
+            DGDATA.DataSource = data.Item("Students")
+        Else
+            DGDATA.DataSource = data.Item("Faculty")
+        End If
         BTNIMPORT.Enabled = True
     End Sub
 End Class

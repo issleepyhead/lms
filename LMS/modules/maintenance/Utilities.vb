@@ -13,8 +13,8 @@
             {"bid", book_id},
             {"number_of_copies", numOfCopies},
             {"pr", price},
-            {"did", If(IsNothing(donator_id) OrElse donator_id = 0, "", donator_id)},
-            {"sid", If(IsNothing(supplier_id) OrElse supplier_id = 0, "", supplier_id)}
+            {"did", If(IsNothing(donator_id) OrElse donator_id = 0, String.Empty, donator_id)},
+            {"sid", If(IsNothing(supplier_id) OrElse supplier_id = 0, String.Empty, supplier_id)}
         })
     End Function
 End Module

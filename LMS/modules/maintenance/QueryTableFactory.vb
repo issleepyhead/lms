@@ -113,11 +113,13 @@
                     .EXISTS_QUERY_WITH_ID = "SELECT COUNT(*) FROM tblbooks WHERE LOWER(isbn) = LOWER(@isbn) AND id != @id",
                     .EXISTS_QUERY_NO_ID = "SELECT COUNT(*) FROM tblbooks WHERE LOWER(isbn) = LOWER(@isbn)",
                     .FETCH_TOTAL_COUNT_QUERY = "SELECT COUNT(*) FROM tblbooks",
-                    .FETCH_LIMIT_QUERY = "SELECT b.*, g.name genre_name, concat(a.first_name, ' ', a.last_name) name
+                    .FETCH_LIMIT_QUERY = "SELECT b.title, b.isbn, b.book_cover, b.fpenalty, b.spenalty, b.publisher_id, b.genre_id, b.language_id, b.author_id,
+                                                 b.classification_id, b.reserve_copy, g.name genre_name, concat(a.first_name, ' ', a.last_name) name
                                             FROM tblbooks b
                                             JOIN tblgenres g ON genre_id = g.id
                                             JOIN tblauthors a ON author_id = a.id ORDER BY title ASC LIMIT @page, 30;",
-                    .FETCH_LIMIT_QUERY_SEARCH = "SELECT b.*, g.name genre_name, concat(a.first_name, ' ', a.last_name) name
+                    .FETCH_LIMIT_QUERY_SEARCH = "SELECT b.title, b.isbn, b.book_cover, b.fpenalty, b.spenalty, b.publisher_id, b.genre_id, b.language_id, b.author_id,
+                                                 b.classification_id, b.reserve_copy, g.name genre_name, concat(a.first_name, ' ', a.last_name) name
                                                     FROM tblbooks b
                                                     JOIN tblgenres g ON genre_id = g.id
                                                     JOIN tblauthors a ON author_id = a.id WHERE title LIKE @search OR isbn LIKE @search OR g.name LIKE @search OR a.first_name LIKE @search OR a.last_name LIKE @search ORDER BY title ASC LIMIT @page, 30;",
@@ -207,7 +209,6 @@
 
             Case QueryTableType.BOOKCOPIES_QUERY_TABLE
                 Return New MaintenanceQueries With {
-                    .ADD_QUERY = "INSERT INTO tblbookcopies (book_id, accession_no, price, donator_id, supplier_id) VALUES (@bid, @accession_no, @price, @did, @sid);",
                     .UPDATE_QUERY = "UPDATE tblbookcopies SET price = @price;",
                     .FETCH_LIMIT_QUERY = "SELECT 
                                             b.title,
@@ -225,6 +226,15 @@
                                         GROUP BY b.title, b.isbn
                                         ORDER BY b.title",
                     .FETCH_TOTAL_COUNT_QUERY = "SELECT COUNT(DISTINCT b.title) FROM tblbookcopies bc JOIN tblbooks b ON bc.book_id = b.id GROUP BY b.title, b.isbn ORDER BY b.title"
+                }
+            Case QueryTableType.BOOKINVENTORY_QUERY_TABLE
+                Return New MaintenanceQueries With {
+                    .DELETE_QUERY = "DELETE FROM tblbookcopies WHERE id = @id",
+                    .FETCH_TOTAL_COUNT_QUERY = "SELECT COUNT(*) FROM tblbookcopies",
+                    .FETCH_LIMIT_QUERY = "SELECT bc.id, b.title, b.isbn, bc.accession_no, d.name donator_name, s.name supplier_name, price FROM tblbookcopies bc JOIN tblbooks b ON bc.book_id = b.id JOIN tbldonators d ON bc.donator_id = d.id JOIN tblsuppliers s ON bc.supplier_id = s.id ORDER BY b.title LIMIT @page, 30;",
+                    .FETCH_LIMIT_QUERY_SEARCH = "SELECT bc.id, b.title, b.isbn, bc.accession_no, d.name donator_name, s.name supplier_name, price FROM tblbookcopies bc JOIN tblbooks b ON bc.book_id = b.id JOIN tbldonators d ON bc.donator_id = d.id JOIN tblsuppliers s ON bc.supplier_id = s.id WHERE b.title LIKE @search OR b.isbn LIKE @search ORDER BY b.title ASC LIMIT @page, 30;",
+                    .FETCH_TOTAL_COUNT_QUERY_SEARCH = "SELECT COUNT(*) FROM tblbookcopies bc JOIN tblbooks b ON bc.book_id = b.id JOIN tbldonators d ON bc.donator_id = d.id JOIN tblsuppliers s ON bc.supplier_id = s.id WHERE b.title LIKE @search OR b.isbn LIKE @search ORDER BY b.title",
+                    .UPDATE_QUERY = "UPDATE tblbookcopies SET price = @price WHERE id = @id"
                 }
         End Select
         Return New MaintenanceQueries

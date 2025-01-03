@@ -1033,6 +1033,10 @@ Public Class DashboardForm
 
                 CMBDONATORCOPIES.DataSource = dtDonator
                 CMBSUPPLIERCOPIES.DataSource = dtSupplier
+            Case BookInventoryPanels.SelectedTab.Equals(InventoryTab)
+                DGINVENTORY.DataSource = BaseMaintenance.Fetch(QueryTableType.BOOKINVENTORY_QUERY_TABLE)
+                LBLINVENTORYPREV.Text = BaseMaintenance.PPrev
+                LBLINVENTORYNEXT.Text = BaseMaintenance.PMAX
         End Select
     End Sub
 
