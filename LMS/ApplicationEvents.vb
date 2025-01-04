@@ -23,13 +23,19 @@ Namespace My
                 End If
 
                 ' TODO FIX THIS THE ADMIN ACC DOES NOT CONTAIN THE INFO
-                If ExecScalar("SELECT COUNT(*) FROM tbladmins WHERE LOWER(role) = 'super admin'") = 0 Then
+                If ExecScalar("SELECT COUNT(*) FROM tbladmins WHERE role = 0") = 0 Then
                     Dim params As New Dictionary(Of String, String) From {
-                        {"@uname", "sa"},
-                        {"@pwd", BCrypt.Net.BCrypt.HashPassword("sa")},
-                        {"@role", "Super Admin"}
+                        {"@full_name", "Juan Dela Cruz"},
+                        {"@gender", "Male"},
+                        {"@address", String.Empty},
+                        {"@phone", String.Empty},
+                        {"@email", "example@email.com"},
+                        {"@did", String.Empty},
+                        {"@username", "sa"},
+                        {"@passwd", BCrypt.Net.BCrypt.HashPassword("sa")}
                     }
-                    ExecNonQuery($"INSERT INTO tbladmins (username, password, role) VALUES (@uname, @pwd, @role)", params)
+                    ExecNonQuery(QueryTableFactory.QueryTableFactory(QueryTableType.FACULTY_QUERY_TABLE).ADD_QUERY, params)
+                    ExecNonQuery("INSERT INTO tbladmins (faculty_id, role) SELECT id, 0 FROM tblfaculties WHERE email = 'example@email.com' AND username = 'sa'")
                 End If
 
                 If My.Settings.user_id <> 0 AndAlso My.Settings.session_login > Date.Now Then

@@ -32,3 +32,13 @@ Public Enum BOOKCONDITIONTYPE
     LOST = 2
 End Enum
 
+Public Enum ROLETYPE
+    SUPERADMIN = 0
+    ASSIST_LIB = 1
+End Enum
+
+Public Enum TRANSACTIONSTATE
+    ACTIVE = 0
+    OVERDUE = 1
+    RETURNED = 2
+End Enum

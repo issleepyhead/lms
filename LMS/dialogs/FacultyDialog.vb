@@ -15,12 +15,14 @@ Public Class FacultyDialog
     Private Sub StudentDialog_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CMBDEPARTMENT.DataSource = BaseMaintenance.FetchAll(QueryTableType.DEPARTMENT_QUERY_TABLE)
         If Not IsNothing(_data) Then
+            TXTUSERNAME.Enabled = False
             TXTFULLNAME.Text = _data.Row("full_name")
             CMBGENDER.SelectedText = _data.Row("gender")
             TXTADDRESS.Text = If(IsDBNull(_data.Row("address")), Nothing, _data.Row("address"))
             TXTPHONE.Text = If(IsDBNull(_data.Row("phone")), Nothing, _data.Row("phone"))
             CMBDEPARTMENT.SelectedValue = _data.Item("department_id")
             TXTEMAIL.Text = _data.Item("email")
+            TXTUSERNAME.Text = _data.Item("username")
         End If
     End Sub
 
@@ -43,6 +45,7 @@ Public Class FacultyDialog
                 {"@phone", TXTPHONE.Text},
                 {"@email", TXTEMAIL.Text},
                 {"@did", CMBDEPARTMENT.SelectedValue},
+                {"@username", TXTUSERNAME.Text},
                 {"@passwd", BCrypt.Net.BCrypt.HashPassword(firstLetterName & lastName & year)}
         }
 

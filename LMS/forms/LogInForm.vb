@@ -5,7 +5,7 @@
         Dim params As New Dictionary(Of String, String) From {
             {"@username", TXTUSERNAME.Text}
         }
-        Dim data As DataTable = ExecFetch("SELECT id, password FROM tbladmins WHERE LOWER(username) = LOWER(@username)", params)
+        Dim data As DataTable = ExecFetch("SELECT id, password FROM tblfaculties WHERE username = @username UNION SELECT id, password FROM tblstudents WHERE lrn = @username OR student_no = @username", params)
         If data.Rows.Count > 0 Then
             If BCrypt.Net.BCrypt.Verify(TXTPASSWORD.Text, data.Rows.Item(0).Item("password")) Then
                 My.Settings.user_id = data.Rows.Item(0).Item("id")
