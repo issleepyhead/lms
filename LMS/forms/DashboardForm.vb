@@ -861,47 +861,48 @@ Public Class DashboardForm
 
         Select Case True
             Case MaintenancePanels.SelectedTab.Equals(GenresTab)
-                DGGENRE.EndEdit()
-                Dim params As New List(Of Dictionary(Of String, String))
-                For Each data As DataGridViewRow In DGGENRE.Rows
-                    If data.Cells("chckBoxGenre").Value Then
-                        Dim temp As New Dictionary(Of String, String) From {
-                            {"@id", data.Cells("ColumnGenreID").Value.ToString}
-                        }
-                        params.Add(temp)
-                    End If
-                Next
-
-                If BaseMaintenance.Delete(QueryTableType.GENRE_QUERY_TABLE, params) Then
-                    MessageBox.Show("Deleted Successfully!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                Else
-                    MessageBox.Show("Cannot delete the selected genre(s). Some genres are currently assigned to one or more books. Please remove the genre from the books before deleting.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                End If
-                DGGENRE.DataSource = BaseMaintenance.Fetch(QueryTableType.GENRE_QUERY_TABLE)
-
-
+                DeleteHelper(DGGENRE, QueryTableType.GENRE_QUERY_TABLE, "chckBoxGenre", "ColumnGenreID")
 
             Case MaintenancePanels.SelectedTab.Equals(AuthorTab)
-                DGAUTHORS.EndEdit()
-                Dim params As New List(Of Dictionary(Of String, String))
-                For Each data As DataGridViewRow In DGAUTHORS.Rows
-                    If data.Cells("chckBoxAuthor").Value Then
-                        Dim temp As New Dictionary(Of String, String) From {
-                            {"@id", data.Cells("ColumnAuthorID").Value.ToString}
-                        }
-                        params.Add(temp)
-                    End If
-                Next
+                DeleteHelper(DGAUTHORS, QueryTableType.AUTHOR_QUERY_TABLE, "chckBoxAuthor", "ColumnAuthorID")
 
-                If BaseMaintenance.Delete(QueryTableType.AUTHOR_QUERY_TABLE, params) Then
-                    MessageBox.Show("Deleted Successfully!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                Else
-                    MessageBox.Show("Cannot delete the selected author(s). Some authors are currently assigned to one or more books. Please remove the author from the books before deleting.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                End If
-                DGAUTHORS.DataSource = BaseMaintenance.Fetch(QueryTableType.AUTHOR_QUERY_TABLE)
+            Case MaintenancePanels.SelectedTab.Equals(PublishhersTab)
+                DeleteHelper(DGPUBLISHER, QueryTableType.PUBLISHER_QUERY_TABLE, "chckBoxPublisher", "ColumnPublisherID")
+
+            Case MaintenancePanels.SelectedTab.Equals(ClassificationTab)
+                DeleteHelper(DGCLASSIFICATIONS, QueryTableType.CLASSIFICATION_QUERY_TABLE, "chckBoxClassification", "ColumnClassificationID")
+
+            Case MaintenancePanels.SelectedTab.Equals(LanguagesTab)
+                DeleteHelper(DGLANGUAGE, QueryTableType.LANGUAGES_QUERY_TABLE, "chckBoxLanguage", "ColumnLanguageID")
+
+            Case MaintenancePanels.SelectedTab.Equals(DonatorsTab)
+                DeleteHelper(DGDONATOR, QueryTableType.DONATOR_QUERY_TABLE, "chckBoxDonator", "ColumnDonatorID")
+
+            Case MaintenancePanels.SelectedTab.Equals(SuppliersTab)
+                DeleteHelper(DGSUPPLIER, QueryTableType.SUPPLIER_QUERY_TABLE, "chckBoxSupplier", "ColumnSupplierID")
         End Select
     End Sub
 #End Region
+
+    Private Sub DeleteHelper(dg As Guna.UI2.WinForms.Guna2DataGridView, qtype As QueryTableType, cboxName As String, cellName As String)
+        dg.EndEdit()
+        Dim params As New List(Of Dictionary(Of String, String))
+        For Each data As DataGridViewRow In dg.Rows
+            If data.Cells(cboxName).Value Then
+                Dim temp As New Dictionary(Of String, String) From {
+                    {"@id", data.Cells(cellName).Value.ToString}
+                }
+                params.Add(temp)
+            End If
+        Next
+
+        If BaseMaintenance.Delete(qtype, params) Then
+            MessageBox.Show("Deleted Successfully!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Else
+            MessageBox.Show("Cannot delete the selected items. Some items are being used to other resources. Please remove the them before deleting.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
+        dg.DataSource = BaseMaintenance.Fetch(qtype)
+    End Sub
 
 #Region "Maintenance Tab"
     Private Sub MaintenancePanels_SelectedIndexChanged(sender As Object, e As EventArgs) Handles MaintenancePanels.SelectedIndexChanged
@@ -1067,6 +1068,16 @@ Public Class DashboardForm
         Else
             CMBDONATORCOPIES.Enabled = False
             CMBSUPPLIERCOPIES.Enabled = True
+        End If
+    End Sub
+
+    Private Sub BTNADDTRANSACTION_Click(sender As Object, e As EventArgs) Handles BTNADDTRANSACTION.Click
+        Dim dialog As New BorrowDialog()
+        If Not MyApplication.DialogInstances.ContainsKey("borrowdialog") Then
+            MyApplication.DialogInstances.Add("borrowdialog", dialog)
+            dialog.Show()
+        Else
+            MyApplication.DialogInstances.Item("borrowdialog").ShowDialog()
         End If
     End Sub
 

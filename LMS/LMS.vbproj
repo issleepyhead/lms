@@ -143,6 +143,12 @@
     <Compile Include="dialogs\AccountDialog.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="dialogs\AddBorrowBooksDialog.Designer.vb">
+      <DependentUpon>AddBorrowBooksDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="dialogs\AddBorrowBooksDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="dialogs\AdministratorDialog.Designer.vb">
       <DependentUpon>AdministratorDialog.vb</DependentUpon>
     </Compile>
@@ -219,6 +225,18 @@
       <DependentUpon>ReturnDialog.vb</DependentUpon>
     </Compile>
     <Compile Include="dialogs\ReturnDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialogs\SearchAccountDailog.Designer.vb">
+      <DependentUpon>SearchAccountDailog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="dialogs\SearchAccountDailog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialogs\SearchBooksDialog.Designer.vb">
+      <DependentUpon>SearchBooksDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="dialogs\SearchBooksDialog.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="dialogs\SectionDialog.Designer.vb">
@@ -307,11 +325,17 @@
     <EmbeddedResource Include="dialogs\AccountDialog.resx">
       <DependentUpon>AccountDialog.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="dialogs\AddBorrowBooksDialog.resx">
+      <DependentUpon>AddBorrowBooksDialog.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="dialogs\AuthorDialog.resx">
       <DependentUpon>AuthorDialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="dialogs\BookDialog.resx">
       <DependentUpon>BookDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dialogs\BorrowDialog.resx">
+      <DependentUpon>BorrowDialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="dialogs\ClassificationDialog.resx">
       <DependentUpon>ClassificationDialog.vb</DependentUpon>
@@ -336,6 +360,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="dialogs\PublisherDialog.resx">
       <DependentUpon>PublisherDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dialogs\SearchAccountDailog.resx">
+      <DependentUpon>SearchAccountDailog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dialogs\SearchBooksDialog.resx">
+      <DependentUpon>SearchBooksDialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="dialogs\SectionDialog.resx">
       <DependentUpon>SectionDialog.vb</DependentUpon>

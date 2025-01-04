@@ -177,3 +177,7 @@ C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.ImportDataDialog.resources
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.AccountDialog.resources
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.FacultyDialog.resources
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.UserDialog.resources
+C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.BorrowDialog.resources
+C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.AddBorrowBooksDialog.resources
+C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.SearchAccountDailog.resources
+C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.SearchBooksDialog.resources
