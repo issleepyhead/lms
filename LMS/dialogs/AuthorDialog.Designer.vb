@@ -183,16 +183,16 @@ Partial Class AuthorDialog
         'BTNSAVE
         '
         Me.BTNSAVE.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BTNSAVE.BorderRadius = 8
+        Me.BTNSAVE.BorderRadius = 4
         Me.BTNSAVE.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTNSAVE.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTNSAVE.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTNSAVE.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
         Me.BTNSAVE.Font = New System.Drawing.Font("Segoe UI", 12.0!)
         Me.BTNSAVE.ForeColor = System.Drawing.Color.White
-        Me.BTNSAVE.Location = New System.Drawing.Point(197, 297)
+        Me.BTNSAVE.Location = New System.Drawing.Point(197, 294)
         Me.BTNSAVE.Name = "BTNSAVE"
-        Me.BTNSAVE.Size = New System.Drawing.Size(128, 48)
+        Me.BTNSAVE.Size = New System.Drawing.Size(128, 40)
         Me.BTNSAVE.TabIndex = 4
         Me.BTNSAVE.Text = "Save"
         '
@@ -205,7 +205,7 @@ Partial Class AuthorDialog
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(348, 358)
+        Me.ClientSize = New System.Drawing.Size(348, 347)
         Me.Controls.Add(Me.BTNSAVE)
         Me.Controls.Add(Me.CMBGENDER)
         Me.Controls.Add(Me.Guna2HtmlLabel5)

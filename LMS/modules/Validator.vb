@@ -3,7 +3,7 @@
 Module Validator
 
     Public Const NUMBER_PATTERN As String = "^[\d]*$"
-    Public Const DECI_NUMBER_PATTERN As String = "^\d+(\.\d+)?$"
+    Public Const DECI_NUMBER_PATTERN As String = "^\d*\.?\d*$"
     Public Const PHONE_PATTERN As String = "^(09[0-9]{2}[- ]?[0-9]{{3}[- ]?[0-9]{4})$|^(\63[0-9]{3}[- ]?[0-9]{3}[- ]?[0-9]{4})$"
     Public Const EMAIL_PATTERN As String = "^[a-zA-Z0-9]._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
 

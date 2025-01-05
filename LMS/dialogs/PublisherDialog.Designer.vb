@@ -89,10 +89,10 @@ Partial Class PublisherDialog
         Me.BTNSAVE.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
         Me.BTNSAVE.Font = New System.Drawing.Font("Segoe UI", 12.0!)
         Me.BTNSAVE.ForeColor = System.Drawing.Color.White
-        Me.BTNSAVE.Location = New System.Drawing.Point(198, 112)
+        Me.BTNSAVE.Location = New System.Drawing.Point(198, 110)
         Me.BTNSAVE.Margin = New System.Windows.Forms.Padding(0)
         Me.BTNSAVE.Name = "BTNSAVE"
-        Me.BTNSAVE.Size = New System.Drawing.Size(128, 48)
+        Me.BTNSAVE.Size = New System.Drawing.Size(128, 40)
         Me.BTNSAVE.TabIndex = 2
         Me.BTNSAVE.Text = "Save"
         '
@@ -105,7 +105,7 @@ Partial Class PublisherDialog
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(346, 170)
+        Me.ClientSize = New System.Drawing.Size(346, 160)
         Me.Controls.Add(Me.BTNSAVE)
         Me.Controls.Add(Me.Guna2HtmlLabel3)
         Me.Controls.Add(Me.TXTPUBLISHERNAME)
