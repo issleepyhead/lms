@@ -65,7 +65,8 @@ Partial Class GenreDialog
         Me.Guna2HtmlLabel1.Margin = New System.Windows.Forms.Padding(0, 0, 0, 4)
         Me.Guna2HtmlLabel1.Name = "Guna2HtmlLabel1"
         Me.Guna2HtmlLabel1.Size = New System.Drawing.Size(98, 23)
-        Me.Guna2HtmlLabel1.TabIndex = 2
+        Me.Guna2HtmlLabel1.TabIndex = 100
+        Me.Guna2HtmlLabel1.TabStop = False
         Me.Guna2HtmlLabel1.Text = "Genre Name:"
         '
         'TXTDESCRIPTION
@@ -102,6 +103,7 @@ Partial Class GenreDialog
         Me.Guna2HtmlLabel2.Name = "Guna2HtmlLabel2"
         Me.Guna2HtmlLabel2.Size = New System.Drawing.Size(168, 23)
         Me.Guna2HtmlLabel2.TabIndex = 4
+        Me.Guna2HtmlLabel2.TabStop = False
         Me.Guna2HtmlLabel2.Text = "Description (Optional):"
         '
         'Guna2HtmlLabel3
@@ -114,6 +116,7 @@ Partial Class GenreDialog
         Me.Guna2HtmlLabel3.Name = "Guna2HtmlLabel3"
         Me.Guna2HtmlLabel3.Size = New System.Drawing.Size(10, 23)
         Me.Guna2HtmlLabel3.TabIndex = 6
+        Me.Guna2HtmlLabel3.TabStop = False
         Me.Guna2HtmlLabel3.Text = "*"
         '
         'BTNSAVE

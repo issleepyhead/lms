@@ -73,18 +73,18 @@ Public Class DashboardForm
 
 #Region "Author Module"
     Private Sub BTNADDAUTHOR_Click(sender As Object, e As EventArgs) Handles BTNADDAUTHOR.Click
-        Using dialog = AuthorDialog
+        Using dialog = New AuthorDialog
             dialog.ShowDialog()
         End Using
-        LBLGENRENEXT.Text = BaseMaintenance.PMAX
-        LBLGENREPREV.Text = BaseMaintenance.PPrev
+        LBLAUTHORNEXT.Text = BaseMaintenance.PMAX
+        LBLAUTHORPREV.Text = BaseMaintenance.PPrev
         DGAUTHORS.DataSource = BaseMaintenance.Fetch(QueryTableType.AUTHOR_QUERY_TABLE)
     End Sub
 
     Private Sub BTNAUTHORPNEXT_Click(sender As Object, e As EventArgs) Handles BTNAUTHORNEXT.Click
         If BaseMaintenance.PPrev < BaseMaintenance.PMAX Then
             BaseMaintenance.PPrev += 1
-            LBLGENREPREV.Text = BaseMaintenance.PPrev
+            LBLAUTHORPREV.Text = BaseMaintenance.PPrev
             DGAUTHORS.DataSource = BaseMaintenance.Fetch(QueryTableType.AUTHOR_QUERY_TABLE)
         End If
     End Sub

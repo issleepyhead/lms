@@ -7,6 +7,7 @@ Module Validator
     Public Const PHONE_PATTERN As String = "^(09[0-9]{2}[- ]?[0-9]{{3}[- ]?[0-9]{4})$|^(\63[0-9]{3}[- ]?[0-9]{3}[- ]?[0-9]{4})$"
     Public Const EMAIL_PATTERN As String = "^[a-zA-Z0-9]._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
 
+    Public Const NAME_PATTERN As String = "^[a-zA-Z-'\s]*$"
     Public Const CHARCTERS_PATTERN As String = "^[a-zA-Z\s]*$"
     Public Const ALPHANUMERIC_PATTERN As String = "^[a-zA-Z0-9\s]*$"
     Public Const CHARACTERS_AND_SYMBOLS_PATTERN As String = "^[a-zA-Z\{P}\s]*$"
