@@ -20,6 +20,8 @@ Public Class PublisherDialog
             errProvider.SetError(item, String.Empty)
         Next
 
+        TXTPUBLISHERNAME.Text = Validator.RemoveSpaces(TXTPUBLISHERNAME.Text)
+
         Dim data As New Dictionary(Of String, String) From {
                 {"@name", TXTPUBLISHERNAME.Text},
                 {"@id", If(IsNothing(_data), 0, _data.Item("id").ToString)}
@@ -52,5 +54,20 @@ Public Class PublisherDialog
         If Not IsNothing(_data) Then
             TXTPUBLISHERNAME.Text = _data.Item("publisher_name")
         End If
+    End Sub
+
+    Private Sub TXTPUBLISHERNAME_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles TXTPUBLISHERNAME.Validating
+        If String.IsNullOrWhiteSpace(sender.Text) Then
+            errProvider.SetError(sender, "This field can't be empty.")
+            e.Cancel = True
+        End If
+    End Sub
+
+    Private Sub TXTPUBLISHERNAME_Validated(sender As Object, e As EventArgs) Handles TXTPUBLISHERNAME.Validated
+        errProvider.SetError(sender, String.Empty)
+    End Sub
+
+    Private Sub TXTPUBLISHERNAME_TextChanged(sender As Object, e As EventArgs) Handles TXTPUBLISHERNAME.TextChanged
+        Validator.NotAllowed(sender, ALL_CHARACTERS_PATTERN)
     End Sub
 End Class
