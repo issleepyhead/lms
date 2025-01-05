@@ -221,5 +221,20 @@ Row event argument class
  <param name="type"></param>
  <returns></returns>
 </member>
+<member name="M:LMS.Validator.NotAllowed(System.Object,System.String)">
+ <summary>
+ Accepts only the allowed pattern in a control.
+ </summary>
+ <param name="sender">A control.</param>
+ <param name="allowed_pattern">Regex pattern of allowed characters</param>
+</member>
+<member name="M:LMS.Validator.MatchPattern(System.String,System.String)">
+ <summary>
+ Check if the pattern matches the input.
+ </summary>
+ <param name="input">Input string to match against</param>
+ <param name="pattern">Pattern to check if match</param>
+ <returns>True if input matches the pattern false otherwise.</returns>
+</member>
 </members>
 </doc>

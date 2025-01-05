@@ -35,6 +35,7 @@ Partial Class GenreDialog
         '
         'TXTNAME
         '
+        Me.TXTNAME.BorderColor = System.Drawing.Color.Gray
         Me.TXTNAME.BorderRadius = 4
         Me.TXTNAME.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.TXTNAME.DefaultText = ""
@@ -43,24 +44,25 @@ Partial Class GenreDialog
         Me.TXTNAME.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXTNAME.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXTNAME.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTNAME.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TXTNAME.Font = New System.Drawing.Font("Segoe UI", 12.0!)
         Me.TXTNAME.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTNAME.Location = New System.Drawing.Point(50, 42)
-        Me.TXTNAME.Margin = New System.Windows.Forms.Padding(0)
+        Me.TXTNAME.Location = New System.Drawing.Point(20, 47)
+        Me.TXTNAME.Margin = New System.Windows.Forms.Padding(0, 0, 0, 16)
         Me.TXTNAME.MaxLength = 45
         Me.TXTNAME.Name = "TXTNAME"
         Me.TXTNAME.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TXTNAME.PlaceholderText = "e.g., Novel"
         Me.TXTNAME.SelectedText = ""
+        Me.TXTNAME.ShortcutsEnabled = False
         Me.TXTNAME.Size = New System.Drawing.Size(306, 48)
-        Me.TXTNAME.TabIndex = 3
+        Me.TXTNAME.TabIndex = 0
         '
         'Guna2HtmlLabel1
         '
         Me.Guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent
         Me.Guna2HtmlLabel1.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Guna2HtmlLabel1.Location = New System.Drawing.Point(50, 16)
-        Me.Guna2HtmlLabel1.Margin = New System.Windows.Forms.Padding(0)
+        Me.Guna2HtmlLabel1.Location = New System.Drawing.Point(20, 20)
+        Me.Guna2HtmlLabel1.Margin = New System.Windows.Forms.Padding(0, 0, 0, 4)
         Me.Guna2HtmlLabel1.Name = "Guna2HtmlLabel1"
         Me.Guna2HtmlLabel1.Size = New System.Drawing.Size(98, 23)
         Me.Guna2HtmlLabel1.TabIndex = 2
@@ -68,6 +70,7 @@ Partial Class GenreDialog
         '
         'TXTDESCRIPTION
         '
+        Me.TXTDESCRIPTION.BorderColor = System.Drawing.Color.Gray
         Me.TXTDESCRIPTION.BorderRadius = 4
         Me.TXTDESCRIPTION.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.TXTDESCRIPTION.DefaultText = ""
@@ -78,7 +81,7 @@ Partial Class GenreDialog
         Me.TXTDESCRIPTION.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXTDESCRIPTION.Font = New System.Drawing.Font("Segoe UI", 12.0!)
         Me.TXTDESCRIPTION.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTDESCRIPTION.Location = New System.Drawing.Point(50, 132)
+        Me.TXTDESCRIPTION.Location = New System.Drawing.Point(20, 138)
         Me.TXTDESCRIPTION.Margin = New System.Windows.Forms.Padding(0)
         Me.TXTDESCRIPTION.MaxLength = 100
         Me.TXTDESCRIPTION.Multiline = True
@@ -86,26 +89,27 @@ Partial Class GenreDialog
         Me.TXTDESCRIPTION.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TXTDESCRIPTION.PlaceholderText = "e.g., This is a novel description."
         Me.TXTDESCRIPTION.SelectedText = ""
+        Me.TXTDESCRIPTION.ShortcutsEnabled = False
         Me.TXTDESCRIPTION.Size = New System.Drawing.Size(306, 131)
-        Me.TXTDESCRIPTION.TabIndex = 5
+        Me.TXTDESCRIPTION.TabIndex = 1
         '
         'Guna2HtmlLabel2
         '
         Me.Guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent
         Me.Guna2HtmlLabel2.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Guna2HtmlLabel2.Location = New System.Drawing.Point(50, 106)
-        Me.Guna2HtmlLabel2.Margin = New System.Windows.Forms.Padding(0)
+        Me.Guna2HtmlLabel2.Location = New System.Drawing.Point(20, 111)
+        Me.Guna2HtmlLabel2.Margin = New System.Windows.Forms.Padding(0, 0, 0, 4)
         Me.Guna2HtmlLabel2.Name = "Guna2HtmlLabel2"
-        Me.Guna2HtmlLabel2.Size = New System.Drawing.Size(91, 23)
+        Me.Guna2HtmlLabel2.Size = New System.Drawing.Size(168, 23)
         Me.Guna2HtmlLabel2.TabIndex = 4
-        Me.Guna2HtmlLabel2.Text = "Description:"
+        Me.Guna2HtmlLabel2.Text = "Description (Optional):"
         '
         'Guna2HtmlLabel3
         '
         Me.Guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent
         Me.Guna2HtmlLabel3.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Guna2HtmlLabel3.ForeColor = System.Drawing.Color.Red
-        Me.Guna2HtmlLabel3.Location = New System.Drawing.Point(148, 16)
+        Me.Guna2HtmlLabel3.Location = New System.Drawing.Point(118, 20)
         Me.Guna2HtmlLabel3.Margin = New System.Windows.Forms.Padding(0)
         Me.Guna2HtmlLabel3.Name = "Guna2HtmlLabel3"
         Me.Guna2HtmlLabel3.Size = New System.Drawing.Size(10, 23)
@@ -114,6 +118,7 @@ Partial Class GenreDialog
         '
         'BTNSAVE
         '
+        Me.BTNSAVE.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.BTNSAVE.BorderRadius = 8
         Me.BTNSAVE.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTNSAVE.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
@@ -121,10 +126,10 @@ Partial Class GenreDialog
         Me.BTNSAVE.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
         Me.BTNSAVE.Font = New System.Drawing.Font("Segoe UI", 12.0!)
         Me.BTNSAVE.ForeColor = System.Drawing.Color.White
-        Me.BTNSAVE.Location = New System.Drawing.Point(228, 284)
+        Me.BTNSAVE.Location = New System.Drawing.Point(198, 284)
         Me.BTNSAVE.Name = "BTNSAVE"
         Me.BTNSAVE.Size = New System.Drawing.Size(128, 48)
-        Me.BTNSAVE.TabIndex = 7
+        Me.BTNSAVE.TabIndex = 2
         Me.BTNSAVE.Text = "Save"
         '
         'errProvider
@@ -136,7 +141,7 @@ Partial Class GenreDialog
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(407, 349)
+        Me.ClientSize = New System.Drawing.Size(349, 345)
         Me.Controls.Add(Me.BTNSAVE)
         Me.Controls.Add(Me.Guna2HtmlLabel3)
         Me.Controls.Add(Me.TXTDESCRIPTION)
@@ -147,6 +152,7 @@ Partial Class GenreDialog
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "GenreDialog"
+        Me.Padding = New System.Windows.Forms.Padding(20, 20, 20, 10)
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Genre Form"

@@ -900,10 +900,6 @@ Public Class DashboardForm
 #Region "Remove Selected"
     Private Sub RemoveSelectedToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RemoveToolStripMenuItem.Click
         ' TODO PERFORM A CHECK BEFORE DELETING THE DATA
-        If MessageBox.Show("Are you sure you want to delete the selected item(s)?", "Delete Selected Items?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.No Then
-            Exit Sub
-        End If
-
         Select Case True
             Case MaintenancePanels.SelectedTab.Equals(GenresTab)
                 DeleteHelper(DGGENRE, QueryTableType.GENRE_QUERY_TABLE, "chckBoxGenre", "ColumnGenreID")
@@ -1141,6 +1137,15 @@ Public Class DashboardForm
                 params.Add(temp)
             End If
         Next
+
+        If params.Count = 0 Then
+            MessageBox.Show("Please select an item to continue.", "No Item Selected!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Exit Sub
+        End If
+
+        If MessageBox.Show("Are you sure you want to delete the selected item(s)?", "Delete Selected Items?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.No Then
+            Exit Sub
+        End If
 
         If BaseMaintenance.Delete(qtype, params) Then
             MessageBox.Show("Deleted Successfully!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
