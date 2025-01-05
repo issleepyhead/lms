@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="SystemDataSets" targetNamespace="http://tempuri.org/SystemDataSets.xsd" xmlns:mstns="http://tempuri.org/SystemDataSets.xsd" xmlns="http://tempuri.org/SystemDataSets.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="SystemDataSets" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="SystemDataSets" msprop:Generator_UserDSName="SystemDataSets">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DTBook" msprop:Generator_TableClassName="DTBookDataTable" msprop:Generator_TableVarName="tableDTBook" msprop:Generator_TablePropName="DTBook" msprop:Generator_RowDeletingName="DTBookRowDeleting" msprop:Generator_RowChangingName="DTBookRowChanging" msprop:Generator_RowEvHandlerName="DTBookRowChangeEventHandler" msprop:Generator_RowDeletedName="DTBookRowDeleted" msprop:Generator_UserTableName="DTBook" msprop:Generator_RowChangedName="DTBookRowChanged" msprop:Generator_RowEvArgName="DTBookRowChangeEvent" msprop:Generator_RowClassName="DTBookRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:string" />
+              <xs:element name="isbn" msprop:Generator_ColumnVarNameInTable="columnisbn" msprop:Generator_ColumnPropNameInRow="isbn" msprop:Generator_ColumnPropNameInTable="isbnColumn" msprop:Generator_UserColumnName="isbn" type="xs:string" minOccurs="0" />
+              <xs:element name="title" msprop:Generator_ColumnVarNameInTable="columntitle" msprop:Generator_ColumnPropNameInRow="title" msprop:Generator_ColumnPropNameInTable="titleColumn" msprop:Generator_UserColumnName="title" type="xs:string" minOccurs="0" />
+              <xs:element name="book_cover" msprop:Generator_ColumnVarNameInTable="columnbook_cover" msprop:Generator_ColumnPropNameInRow="book_cover" msprop:Generator_ColumnPropNameInTable="book_coverColumn" msprop:Generator_UserColumnName="book_cover" type="xs:string" minOccurs="0" />
+              <xs:element name="fpenalty" msprop:Generator_ColumnVarNameInTable="columnfpenalty" msprop:Generator_ColumnPropNameInRow="fpenalty" msprop:Generator_ColumnPropNameInTable="fpenaltyColumn" msprop:Generator_UserColumnName="fpenalty" type="xs:string" minOccurs="0" />
+              <xs:element name="spenalty" msprop:Generator_ColumnVarNameInTable="columnspenalty" msprop:Generator_ColumnPropNameInRow="spenalty" msprop:Generator_ColumnPropNameInTable="spenaltyColumn" msprop:Generator_UserColumnName="spenalty" type="xs:string" minOccurs="0" />
+              <xs:element name="publisher_id" msprop:Generator_ColumnVarNameInTable="columnpublisher_id" msprop:Generator_ColumnPropNameInRow="publisher_id" msprop:Generator_ColumnPropNameInTable="publisher_idColumn" msprop:Generator_UserColumnName="publisher_id" type="xs:string" minOccurs="0" />
+              <xs:element name="genre_id" msprop:Generator_ColumnVarNameInTable="columngenre_id" msprop:Generator_ColumnPropNameInRow="genre_id" msprop:Generator_ColumnPropNameInTable="genre_idColumn" msprop:Generator_UserColumnName="genre_id" type="xs:string" minOccurs="0" />
+              <xs:element name="language_id" msprop:Generator_ColumnVarNameInTable="columnlanguage_id" msprop:Generator_ColumnPropNameInRow="language_id" msprop:Generator_ColumnPropNameInTable="language_idColumn" msprop:Generator_UserColumnName="language_id" type="xs:string" minOccurs="0" />
+              <xs:element name="author_id" msprop:Generator_ColumnVarNameInTable="columnauthor_id" msprop:Generator_ColumnPropNameInRow="author_id" msprop:Generator_ColumnPropNameInTable="author_idColumn" msprop:Generator_UserColumnName="author_id" type="xs:string" minOccurs="0" />
+              <xs:element name="classification_id" msprop:Generator_ColumnVarNameInTable="columnclassification_id" msprop:Generator_ColumnPropNameInRow="classification_id" msprop:Generator_ColumnPropNameInTable="classification_idColumn" msprop:Generator_UserColumnName="classification_id" type="xs:string" minOccurs="0" />
+              <xs:element name="reserve_copy" msprop:Generator_ColumnVarNameInTable="columnreserve_copy" msprop:Generator_ColumnPropNameInRow="reserve_copy" msprop:Generator_ColumnPropNameInTable="reserve_copyColumn" msprop:Generator_UserColumnName="reserve_copy" type="xs:string" minOccurs="0" />
+              <xs:element name="genre_name" msprop:Generator_ColumnVarNameInTable="columngenre_name" msprop:Generator_ColumnPropNameInRow="genre_name" msprop:Generator_ColumnPropNameInTable="genre_nameColumn" msprop:Generator_UserColumnName="genre_name" type="xs:string" minOccurs="0" />
+              <xs:element name="name" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:DTBook" />
+      <xs:field xpath="mstns:id" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

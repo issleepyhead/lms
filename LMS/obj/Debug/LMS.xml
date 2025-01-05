@@ -82,6 +82,26 @@ LMS
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="T:LMS.SystemDataSets">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:LMS.SystemDataSets.DTBookDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:LMS.SystemDataSets.DTBookRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:LMS.SystemDataSets.DTBookRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
 <member name="M:LMS.Connection.ExecNonQuery(System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
  <summary>
  Only for executing update, delete, and create.

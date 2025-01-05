@@ -1,6 +1,12 @@
 ﻿Imports LMS.My
 
 Public Class DashboardForm
+
+    Private SELECTED_BOOKS As New SystemDataSets.DTBookDataTable
+
+    Private Sub DashboardForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    End Sub
+
     Private Sub BTNLOGOUT_Click(sender As Object, e As EventArgs) Handles BTNLOGOUT.Click
         ' TODO LOG OUT LOGIC
         My.Settings.user_id = 0
@@ -516,19 +522,59 @@ Public Class DashboardForm
     End Sub
 
     Private Sub BTNBOOKNEXT_Click(sender As Object, e As EventArgs) Handles BTNBOOKNEXT.Click
+        ' Before going to next page fetch all the selected values that are not in the select collection
+        For Each item As DataGridViewRow In DGBOOKS.Rows
+            Dim boundItem As DataRowView = TryCast(item.DataBoundItem, DataRowView)
+            If item.Cells(NameOf(chckBoxBooks)).Value AndAlso Not SELECTED_BOOKS.Rows.Contains(boundItem.Row.Item("id")) Then
+                SELECTED_BOOKS.Rows.Add(boundItem.Row.ItemArray)
+            End If
+        Next
+
         If BaseMaintenance.PPrev < BaseMaintenance.PMAX Then
             BaseMaintenance.PPrev += 1
             LBLBOOKPREV.Text = BaseMaintenance.PPrev
             DGBOOKS.DataSource = BaseMaintenance.Fetch(QueryTableType.BOOK_QUERY_TABLE)
         End If
+
+        DGBOOKS.BeginEdit(True)
+        ' Retain the previously selected rows
+        For Each item As DataGridViewRow In DGBOOKS.Rows
+            For Each drow As DataRow In SELECTED_BOOKS.Rows
+                Dim boundItem As DataRowView = TryCast(item.DataBoundItem, DataRowView)
+                If boundItem.Row.Item("id") = drow.Item("id") Then
+                    item.Cells(NameOf(chckBoxBooks)).Value = True
+                End If
+            Next
+        Next
+        DGBOOKS.EndEdit()
     End Sub
 
     Private Sub BTNBOOKPREV_Click(sender As Object, e As EventArgs) Handles BTNBOOKPREV.Click
+        ' Before going to prev page fetch all the selected values that are not in the select collection
+        For Each item As DataGridViewRow In DGBOOKS.Rows
+            Dim boundItem As DataRowView = TryCast(item.DataBoundItem, DataRowView)
+            If item.Cells(NameOf(chckBoxBooks)).Value AndAlso Not SELECTED_BOOKS.Rows.Contains(boundItem.Row.Item("id")) Then
+                SELECTED_BOOKS.Rows.Add(boundItem.Row.ItemArray)
+            End If
+        Next
+
         If BaseMaintenance.PPrev > 1 Then
             BaseMaintenance.PPrev -= 1
             LBLBOOKPREV.Text = BaseMaintenance.PPrev
             DGBOOKS.DataSource = BaseMaintenance.Fetch(QueryTableType.BOOK_QUERY_TABLE)
         End If
+
+        DGBOOKS.BeginEdit(True)
+        ' Retain the previously selected rows
+        For Each item As DataGridViewRow In DGBOOKS.Rows
+            For Each drow As DataRow In SELECTED_BOOKS.Rows
+                Dim boundItem As DataRowView = TryCast(item.DataBoundItem, DataRowView)
+                If boundItem.Row.Item("id") = drow.Item("id") Then
+                    item.Cells(NameOf(chckBoxBooks)).Value = True
+                End If
+            Next
+        Next
+        DGBOOKS.EndEdit()
     End Sub
 
     Private Sub DGBOOK_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGBOOKS.CellMouseClick
@@ -725,7 +771,6 @@ Public Class DashboardForm
     End Sub
 #End Region
 
-
 #Region "Select All Datagrid"
     Private Sub SelectAllToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SelectAllToolStripMenuItem.Click
         If MainFormPanels.SelectedTab.Equals(MaintenanceTab) Then
@@ -884,26 +929,6 @@ Public Class DashboardForm
     End Sub
 #End Region
 
-    Private Sub DeleteHelper(dg As Guna.UI2.WinForms.Guna2DataGridView, qtype As QueryTableType, cboxName As String, cellName As String)
-        dg.EndEdit()
-        Dim params As New List(Of Dictionary(Of String, String))
-        For Each data As DataGridViewRow In dg.Rows
-            If data.Cells(cboxName).Value Then
-                Dim temp As New Dictionary(Of String, String) From {
-                    {"@id", data.Cells(cellName).Value.ToString}
-                }
-                params.Add(temp)
-            End If
-        Next
-
-        If BaseMaintenance.Delete(qtype, params) Then
-            MessageBox.Show("Deleted Successfully!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        Else
-            MessageBox.Show("Cannot delete the selected items. Some items are being used to other resources. Please remove the them before deleting.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        End If
-        dg.DataSource = BaseMaintenance.Fetch(qtype)
-    End Sub
-
 #Region "Maintenance Tab"
     Private Sub MaintenancePanels_SelectedIndexChanged(sender As Object, e As EventArgs) Handles MaintenancePanels.SelectedIndexChanged
         Select Case True
@@ -943,6 +968,7 @@ Public Class DashboardForm
                 LBLLANGUAGEPREV.Text = BaseMaintenance.PPrev
 
             Case MaintenancePanels.SelectedTab.Equals(BooksTab)
+                SELECTED_BOOKS = New SystemDataSets.DTBookDataTable
                 DGBOOKS.DataSource = BaseMaintenance.Fetch(QueryTableType.BOOK_QUERY_TABLE)
                 LBLBOOKNEXT.Text = BaseMaintenance.PMAX
                 LBLBOOKPREV.Text = BaseMaintenance.PPrev
@@ -984,31 +1010,51 @@ Public Class DashboardForm
     Private Sub AccountsPanel_SelectedIndexChanged(sender As Object, e As EventArgs) Handles AccountsPanel.SelectedIndexChanged
         Select Case True
             Case AccountsPanel.SelectedTab.Equals(DepartmentTab)
-                DGDEPARTMENT.DataSource = BaseMaintenance.Fetch(QueryTableType.DEPARTMENT_QUERY_TABLE)
-                LBLDEPARTMENTPREV.Text = BaseMaintenance.PPrev
-                LBLDEPARTMENTNEXT.Text = BaseMaintenance.PMAX
+                LoadTabData(DGDEPARTMENT, LBLDEPARTMENTPREV, LBLDEPARTMENTNEXT, QueryTableType.DEPARTMENT_QUERY_TABLE)
 
             Case AccountsPanel.SelectedTab.Equals(YearLevelTab)
-                DGYEARLEVEL.DataSource = BaseMaintenance.Fetch(QueryTableType.YEARLEVEL_QUERY_TABLE)
-                LBLYEARLEVELPREV.Text = BaseMaintenance.PPrev
-                LBLYEARLEVELNEXT.Text = BaseMaintenance.PMAX
+                LoadTabData(DGYEARLEVEL, LBLYEARLEVELPREV, LBLYEARLEVELNEXT, QueryTableType.YEARLEVEL_QUERY_TABLE)
 
             Case AccountsPanel.SelectedTab.Equals(SectionTab)
-                DGSECTIONS.DataSource = BaseMaintenance.Fetch(QueryTableType.SECTION_QUERY_TABLE)
-                LBLSECTIONPREV.Text = BaseMaintenance.PPrev
-                LBLSECTIONNEXT.Text = BaseMaintenance.PMAX
+                LoadTabData(DGSECTIONS, LBLSECTIONPREV, LBLSECTIONNEXT, QueryTableType.SECTION_QUERY_TABLE)
 
             Case AccountsPanel.SelectedTab.Equals(StudentsTab)
-                DGSTUDENT.DataSource = BaseMaintenance.Fetch(QueryTableType.STUDENT_QUERY_TABLE)
-                LBLSTUDENTPREV.Text = BaseMaintenance.PPrev
-                LBLSTUDENTNEXT.Text = BaseMaintenance.PMAX
+                LoadTabData(DGSTUDENT, LBLSTUDENTPREV, LBLSTUDENTNEXT, QueryTableType.STUDENT_QUERY_TABLE)
 
             Case AccountsPanel.SelectedTab.Equals(FacultyTab)
-                DGFACULTY.DataSource = BaseMaintenance.Fetch(QueryTableType.FACULTY_QUERY_TABLE)
-                LBLFACULTYPREV.Text = BaseMaintenance.PPrev
-                LBLFACULTYNEXT.Text = BaseMaintenance.PMAX
+                LoadTabData(DGFACULTY, LBLFACULTYPREV, LBLFACULTYNEXT, QueryTableType.FACULTY_QUERY_TABLE)
 
         End Select
+    End Sub
+
+    Private Sub TXTCOPIESSEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTCOPIESSEARCH.TextChanged
+        If BookInventoryPanels.SelectedTab.Equals(CopiesTab) Then
+            If Not String.IsNullOrEmpty(TXTCOPIESSEARCH.Text) Then
+                DGBOOKCOPIES.DataSource = BaseMaintenance.Search(QueryTableType.BOOKCOPIES_QUERY_TABLE, TXTCOPIESSEARCH.Text)
+                LBLCOPIESNEXT.Text = BaseMaintenance.PMAX
+                LBLCOPIESPREV.Text = BaseMaintenance.PPrev
+            Else
+                DGBOOKCOPIES.DataSource = BaseMaintenance.Fetch(QueryTableType.BOOKCOPIES_QUERY_TABLE)
+                LBLCOPIESNEXT.Text = BaseMaintenance.PMAX
+                LBLCOPIESPREV.Text = BaseMaintenance.PPrev
+            End If
+        End If
+    End Sub
+
+    Private Sub BTNCOPIESPREV_Click(sender As Object, e As EventArgs) Handles BTNCOPIESPREV.Click
+        If BaseMaintenance.PPrev > 1 Then
+            BaseMaintenance.PPrev -= 1
+            LBLCOPIESPREV.Text = BaseMaintenance.PPrev
+            DGBOOKCOPIES.DataSource = BaseMaintenance.Fetch(QueryTableType.BOOKCOPIES_QUERY_TABLE)
+        End If
+    End Sub
+
+    Private Sub BTNCOPIESNEXT_Click(sender As Object, e As EventArgs) Handles BTNCOPIESNEXT.Click
+        If BaseMaintenance.PPrev < BaseMaintenance.PMAX Then
+            BaseMaintenance.PPrev += 1
+            LBLCOPIESPREV.Text = BaseMaintenance.PPrev
+            DGBOOKCOPIES.DataSource = BaseMaintenance.Fetch(QueryTableType.BOOKCOPIES_QUERY_TABLE)
+        End If
     End Sub
 
     Private Sub BookInventoryPanels_SelectedIndexChanged(sender As Object, e As EventArgs) Handles BookInventoryPanels.SelectedIndexChanged
@@ -1040,6 +1086,7 @@ Public Class DashboardForm
                 LBLINVENTORYNEXT.Text = BaseMaintenance.PMAX
         End Select
     End Sub
+
 
 #Region "Book Menu Strip"
     Private Sub SelectAllToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles SelectAllToolStripMenuItem1.Click
@@ -1080,6 +1127,46 @@ Public Class DashboardForm
             MyApplication.DialogInstances.Item("borrowdialog").ShowDialog()
         End If
     End Sub
-
 #End Region
+
+#Region "Helper Functions"
+    Private Sub DeleteHelper(dg As Guna.UI2.WinForms.Guna2DataGridView, qtype As QueryTableType, cboxName As String, cellName As String)
+        dg.EndEdit()
+        Dim params As New List(Of Dictionary(Of String, String))
+        For Each data As DataGridViewRow In dg.Rows
+            If data.Cells(cboxName).Value Then
+                Dim temp As New Dictionary(Of String, String) From {
+                    {"@id", data.Cells(cellName).Value.ToString}
+                }
+                params.Add(temp)
+            End If
+        Next
+
+        If BaseMaintenance.Delete(qtype, params) Then
+            MessageBox.Show("Deleted Successfully!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Else
+            MessageBox.Show("Cannot delete the selected items. Some items are being used to other resources. Please remove the them before deleting.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
+        dg.DataSource = BaseMaintenance.Fetch(qtype)
+    End Sub
+
+    Private Sub LoadTabData(dg As Guna.UI2.WinForms.Guna2DataGridView, lblPrev As Guna.UI2.WinForms.Guna2HtmlLabel, lblNext As Guna.UI2.WinForms.Guna2HtmlLabel, qtype As QueryTableType)
+        dg.DataSource = BaseMaintenance.Fetch(qtype)
+        lblPrev.Text = BaseMaintenance.PPrev
+        lblNext.Text = BaseMaintenance.PMAX
+    End Sub
+#End Region
+
+#Region "Refresh Buttons"
+    Private Sub BTNREFRESH_Click(sender As Object, e As EventArgs) Handles BTNGENREREFRESH.Click, BTNADMINREFRESH.Click, BTNAUTHORREFRESH.Click, BTNBOOKREFRESH.Click,
+            BTNBOOKREPORTREFRESH.Click, BTNBORROWEDREPORTREFRESH.Click, BTNBORROWERREPORTREFRESH.Click, BTNCLASSIFICATIONREFRESH.Click, BTNDEPARTMENTREFRESH.Click,
+            BTNDONATORREFRESH.Click, BTNEXPENDITUREREPORTREFRESH.Click, BTNFACULTYREFRESH.Click, BTNFINESREPORTREFRESH.Click, BTNLANGUAGEREFRESH.Click, BTNPUBLISHERREFRESH.Click,
+            BTNSECTIONREFRESH.Click, BTNSTUDENTREFRESH.Click, BTNSUPPLIERREFRESH.Click, BTNTRANSACTIONREFRESH.Click, BTNYEARLEVELREFRESH.Click
+        ' TODO ADD ALL THE NECESSARY REFRESH
+        AccountsPanel_SelectedIndexChanged(AccountsPanel, Nothing)
+        MaintenancePanels_SelectedIndexChanged(MaintenancePanels, Nothing)
+        BookInventoryPanels_SelectedIndexChanged(BookInventoryPanels, Nothing)
+    End Sub
+#End Region
+
 End Class

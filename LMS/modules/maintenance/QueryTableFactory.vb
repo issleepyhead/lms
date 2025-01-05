@@ -113,12 +113,12 @@
                     .EXISTS_QUERY_WITH_ID = "SELECT COUNT(*) FROM tblbooks WHERE LOWER(isbn) = LOWER(@isbn) AND id != @id",
                     .EXISTS_QUERY_NO_ID = "SELECT COUNT(*) FROM tblbooks WHERE LOWER(isbn) = LOWER(@isbn)",
                     .FETCH_TOTAL_COUNT_QUERY = "SELECT COUNT(*) FROM tblbooks",
-                    .FETCH_LIMIT_QUERY = "SELECT b.title, b.isbn, b.book_cover, b.fpenalty, b.spenalty, b.publisher_id, b.genre_id, b.language_id, b.author_id,
+                    .FETCH_LIMIT_QUERY = "SELECT b.id, b.title, b.isbn, b.book_cover, b.fpenalty, b.spenalty, b.publisher_id, b.genre_id, b.language_id, b.author_id,
                                                  b.classification_id, b.reserve_copy, g.name genre_name, concat(a.first_name, ' ', a.last_name) name
                                             FROM tblbooks b
                                             JOIN tblgenres g ON genre_id = g.id
                                             JOIN tblauthors a ON author_id = a.id ORDER BY title ASC LIMIT @page, 30;",
-                    .FETCH_LIMIT_QUERY_SEARCH = "SELECT b.title, b.isbn, b.book_cover, b.fpenalty, b.spenalty, b.publisher_id, b.genre_id, b.language_id, b.author_id,
+                    .FETCH_LIMIT_QUERY_SEARCH = "SELECT b.id, b.title, b.isbn, b.book_cover, b.fpenalty, b.spenalty, b.publisher_id, b.genre_id, b.language_id, b.author_id,
                                                  b.classification_id, b.reserve_copy, g.name genre_name, concat(a.first_name, ' ', a.last_name) name
                                                     FROM tblbooks b
                                                     JOIN tblgenres g ON genre_id = g.id
@@ -207,6 +207,7 @@
                 }
 #End Region
 
+            ' TODO SELECT THE ACTIVE ONLY
             Case QueryTableType.BOOKCOPIES_QUERY_TABLE
                 Return New MaintenanceQueries With {
                     .UPDATE_QUERY = "UPDATE tblbookcopies SET price = @price;",
@@ -225,7 +226,24 @@
                                             tblbooks b ON bc.book_id = b.id
                                         GROUP BY b.title, b.isbn
                                         ORDER BY b.title",
-                    .FETCH_TOTAL_COUNT_QUERY = "SELECT COUNT(DISTINCT b.title) FROM tblbookcopies bc JOIN tblbooks b ON bc.book_id = b.id GROUP BY b.title, b.isbn ORDER BY b.title"
+                    .FETCH_TOTAL_COUNT_QUERY = "SELECT COUNT(DISTINCT b.title) FROM tblbookcopies bc JOIN tblbooks b ON bc.book_id = b.id GROUP BY b.title, b.isbn ORDER BY b.title",
+                    .FETCH_LIMIT_QUERY_SEARCH = "SELECT 
+                                            b.title,
+	                                        b.isbn,
+                                            COUNT(CASE WHEN bc.condition = 0 THEN 1 END) good,
+                                            COUNT(CASE WHEN bc.condition = 1 THEN 1 END) damaged,
+                                            COUNT(CASE WHEN bc.condition = 2 THEN 1 END) lost,
+                                            COUNT(CASE WHEN bc.status = 0 THEN 1 END) borrowed,
+                                            COUNT(CASE WHEN bc.status = 1 THEN 1 END) available,
+	                                        COUNT(book_id) total
+                                        FROM
+                                            tblbookcopies bc
+                                                JOIN
+                                            tblbooks b ON bc.book_id = b.id
+                                        WHERE b.title LIKE @search OR b.isbn LIKE @search
+                                        GROUP BY b.title, b.isbn
+                                        ORDER BY b.title",
+                    .FETCH_TOTAL_COUNT_QUERY_SEARCH = "SELECT COUNT(DISTINCT b.title) FROM tblbookcopies bc JOIN tblbooks b ON bc.book_id = b.id WHERE b.title LIKE @search OR b.isbn LIKE @search GROUP BY b.title, b.isbn ORDER BY b.title"
                 }
             Case QueryTableType.BOOKINVENTORY_QUERY_TABLE
                 Return New MaintenanceQueries With {

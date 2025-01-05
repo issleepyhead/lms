@@ -44,9 +44,7 @@
     LANGUAGES_QUERY_TABLE
 #End Region
 
-    DONATOR_QUERY_TABLE
-    SUPPLIER_QUERY_TABLE
-
+#Region "User Enums"
     <SheetNameMapping("Year Levels")>
     <ColumnMapping({"Year Level", "Department"}, {"@name", "@did"})>
     YEARLEVEL_QUERY_TABLE
@@ -66,10 +64,18 @@
     <SheetNameMapping("Departments")>
     <ColumnMapping({"Department Name"}, {"@name"})>
     DEPARTMENT_QUERY_TABLE
+#End Region
+
+    DONATOR_QUERY_TABLE
+    SUPPLIER_QUERY_TABLE
+    BOOKCOPIES_QUERY_TABLE
+    BOOKINVENTORY_QUERY_TABLE
+
 
     ADMIN_QUERY_TABLE
 
-
-    BOOKCOPIES_QUERY_TABLE
-    BOOKINVENTORY_QUERY_TABLE
+    ARCHIVEBOOKS_QUERY_TABLE
+    ARCHIVECOPIES_QUERY_TABLE
+    DEACTIVATESTUDENT_QUERY_TABLE
+    DEACTIVATEFACULTY_QUERY_TABLE
 End Enum
