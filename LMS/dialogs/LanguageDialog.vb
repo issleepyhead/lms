@@ -20,6 +20,9 @@ Public Class LanguageDialog
             errProvider.SetError(item, String.Empty)
         Next
 
+        TXTLANGUAGE.Text = Validator.RemoveSpaces(TXTLANGUAGE.Text)
+        TXTLANGUAGECODE.Text = Validator.RemoveSpaces(TXTLANGUAGECODE.Text)
+
         Dim data As New Dictionary(Of String, String) From {
                 {"@language", TXTLANGUAGE.Text},
                 {"@code", TXTLANGUAGECODE.Text},
@@ -54,5 +57,20 @@ Public Class LanguageDialog
             TXTLANGUAGE.Text = _data.Item("language")
             TXTLANGUAGECODE.Text = _data.Item("code")
         End If
+    End Sub
+
+    Private Sub TextBox_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles TXTLANGUAGE.Validating, TXTLANGUAGECODE.Validating
+        If String.IsNullOrWhiteSpace(sender.Text) Then
+            errProvider.SetError(sender, "This field can't be empty.")
+            e.Cancel = True
+        End If
+    End Sub
+
+    Private Sub TextBox_Validated(sender As Object, e As EventArgs) Handles TXTLANGUAGECODE.Validated, TXTLANGUAGE.Validated
+        errProvider.SetError(sender, String.Empty)
+    End Sub
+
+    Private Sub TXTLANGUAGECODE_TextChanged(sender As Object, e As EventArgs) Handles TXTLANGUAGECODE.TextChanged
+        Validator.NotAllowed(sender, NUMBER_PATTERN)
     End Sub
 End Class
