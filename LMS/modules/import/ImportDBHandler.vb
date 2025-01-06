@@ -132,6 +132,8 @@ Public Class ImportDBHandler
                 _transInstance.Commit()
                 _transInstance.Dispose()
                 _conn.Dispose()
+                _transInstance = Nothing
+                _conn = Nothing
             End If
         Catch ex As Exception
             Logger.Logger(ex)
@@ -147,6 +149,8 @@ Public Class ImportDBHandler
                 _transInstance.Rollback()
                 _transInstance.Dispose()
                 _conn.Dispose()
+                _transInstance = Nothing
+                _conn = Nothing
             End If
         Catch ex As Exception
             Logger.Logger(ex)

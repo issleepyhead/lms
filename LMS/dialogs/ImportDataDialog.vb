@@ -15,10 +15,13 @@ Public Class ImportDataDialog
         _keyDialog = keyDialog
 
         If keyDialog = "importbook" Then
+            _importHandler = New BookImport
             Text &= " - Books"
         ElseIf keyDialog = "importstudent" Then
+            _importHandler = New AccountImport(QueryTableType.STUDENT_QUERY_TABLE)
             Text &= " - Students"
         Else
+            _importHandler = New AccountImport(QueryTableType.FACULTY_QUERY_TABLE)
             Text &= " - Teachers/Faculties"
         End If
     End Sub
@@ -26,7 +29,7 @@ Public Class ImportDataDialog
     Private Sub BTNSELECTFILE_Click(sender As Object, e As EventArgs) Handles BTNSELECTFILE.Click
         Using dialog As New OpenFileDialog
             If dialog.ShowDialog = DialogResult.OK Then
-                If _importHandler.IsValid(dialog.FileName) Then
+                If Not _importHandler.IsValid(dialog.FileName) Then
                     MessageBox.Show("Invalid excel file, this file doesn't contain the required sheets or columns.", "Invalid Excel File", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     Exit Sub
                 End If

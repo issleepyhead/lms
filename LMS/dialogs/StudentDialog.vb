@@ -22,7 +22,7 @@ Public Class StudentDialog
             TXTADDRESS.Text = If(IsDBNull(_data.Row("address")), Nothing, _data.Row("address"))
             TXTPHONE.Text = If(IsDBNull(_data.Row("phone")), Nothing, _data.Row("phone"))
             CMBYEARLEVEL.SelectedValue = _data.Item("year_id")
-            TXTEMAIL.Text = _data.Item("email")
+            TXTEMAIL.Text = If(IsDBNull(_data.Row("email")), Nothing, _data.Row("email"))
             CMBSECTION.SelectedValue = _data.Item("section_id")
         End If
     End Sub

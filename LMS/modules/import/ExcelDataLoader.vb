@@ -23,8 +23,12 @@ Public MustInherit Class ExcelDataLoader
                                        For Each drow As DataRow In dt.Rows
                                            drow.Item("Status") = "Ready"
                                        Next
+                                       'If dt.Columns.IndexOf("Status") <> dt.Columns.Count - 1 Then
+                                       '    dt.Columns("Status").SetOrdinal(dt.Columns.Count - 1)
+                                       'End If
                                        data.Add(worksheet.Name, dt)
                                    Next
+
                                Catch ex As Exception
                                    Logger.Logger(ex)
                                End Try
@@ -57,7 +61,7 @@ Public MustInherit Class ExcelDataLoader
                                                Dim sheetAttrib As SheetNameMapping = CType(Attribute.GetCustomAttribute(typeField, GetType(SheetNameMapping)), SheetNameMapping)
                                                Dim colAttrib As ColumnMapping = CType(Attribute.GetCustomAttribute(typeField, GetType(ColumnMapping)), ColumnMapping)
 
-                                               If sheetNames.Contains(sheetAttrib.SheetName) Then
+                                               If sheetNames.Contains(sheetAttrib.SheetName.ToLower) Then
                                                    Dim dt As DataTable = workbook.Worksheets(sheetAttrib.SheetName).ExportDataTable
                                                    Return colAttrib.Columns.All(Function(x) dt.Columns.Contains(x))
                                                Else
@@ -67,8 +71,8 @@ Public MustInherit Class ExcelDataLoader
             Catch ex As Exception
                 Logger.Logger(ex)
             End Try
-            Return True
         End Using
+        Return False
     End Function
 
     Public MustOverride Function DataFactory(type As QueryTableType, drow As DataRow) As Dictionary(Of String, String)
