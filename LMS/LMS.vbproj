@@ -170,6 +170,12 @@
     <Compile Include="dialogs\AuthorDialog.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="dialogs\AuthPasswordDialog.Designer.vb">
+      <DependentUpon>AuthPasswordDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="dialogs\AuthPasswordDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="dialogs\BookDialog.Designer.vb">
       <DependentUpon>BookDialog.vb</DependentUpon>
     </Compile>

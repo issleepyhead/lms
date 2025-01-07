@@ -71,7 +71,6 @@ Partial Class DashboardForm
         Dim DataGridViewCellStyle47 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle48 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle50 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle49 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle51 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle52 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle53 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -105,9 +104,14 @@ Partial Class DashboardForm
         Dim DataGridViewCellStyle81 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle82 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle83 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle49 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.MainFormPanels = New Guna.UI2.WinForms.Guna2TabControl()
         Me.DashboardTab = New System.Windows.Forms.TabPage()
+        Me.TableLayoutPanel29 = New System.Windows.Forms.TableLayoutPanel()
+        Me.Guna2Panel43 = New Guna.UI2.WinForms.Guna2Panel()
+        Me.ListView1 = New System.Windows.Forms.ListView()
+        Me.TableLayoutPanel30 = New System.Windows.Forms.TableLayoutPanel()
         Me.MaintenanceTab = New System.Windows.Forms.TabPage()
         Me.MaintenancePanels = New Guna.UI2.WinForms.Guna2TabControl()
         Me.GenresTab = New System.Windows.Forms.TabPage()
@@ -208,7 +212,7 @@ Partial Class DashboardForm
         Me.TableLayoutPanel6 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel16 = New Guna.UI2.WinForms.Guna2Panel()
         Me.BTNBOOKREFRESH = New Guna.UI2.WinForms.Guna2Button()
-        Me.Guna2ComboBox1 = New Guna.UI2.WinForms.Guna2ComboBox()
+        Me.CMBBOOKFILTER = New Guna.UI2.WinForms.Guna2ComboBox()
         Me.TXTBOOKSEARCH = New Guna.UI2.WinForms.Guna2TextBox()
         Me.BTNADDBOOK = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Panel17 = New Guna.UI2.WinForms.Guna2Panel()
@@ -411,7 +415,6 @@ Partial Class DashboardForm
         Me.Guna2Panel37 = New Guna.UI2.WinForms.Guna2Panel()
         Me.BTNADMINREFRESH = New Guna.UI2.WinForms.Guna2Button()
         Me.TXTADMINSEARCH = New Guna.UI2.WinForms.Guna2TextBox()
-        Me.BTNADDADMIN = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Panel38 = New Guna.UI2.WinForms.Guna2Panel()
         Me.LBLADMINNEXT = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2HtmlLabel37 = New Guna.UI2.WinForms.Guna2HtmlLabel()
@@ -420,12 +423,6 @@ Partial Class DashboardForm
         Me.BTNADMINNEXT = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Panel39 = New Guna.UI2.WinForms.Guna2Panel()
         Me.DGADMINISTRATOR = New Guna.UI2.WinForms.Guna2DataGridView()
-        Me.DataGridViewTextBoxColumn39 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewCheckBoxColumn10 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.DataGridViewTextBoxColumn40 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn42 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column22 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn41 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.BookInventoryTab = New System.Windows.Forms.TabPage()
         Me.BookInventoryPanels = New Guna.UI2.WinForms.Guna2TabControl()
         Me.CopiesTab = New System.Windows.Forms.TabPage()
@@ -523,6 +520,14 @@ Partial Class DashboardForm
         Me.BTNLOSTDAMAGENEXT = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Panel50 = New Guna.UI2.WinForms.Guna2Panel()
         Me.Guna2DataGridView1 = New Guna.UI2.WinForms.Guna2DataGridView()
+        Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.Column54 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column53 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column50 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column51 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column52 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.BookTransactionTab = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel21 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel57 = New Guna.UI2.WinForms.Guna2Panel()
@@ -692,18 +697,16 @@ Partial Class DashboardForm
         Me.Guna2HtmlLabel3 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.LBLPROFILEROLE = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.LBLPROFILENAME = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.Guna2Panel43 = New Guna.UI2.WinForms.Guna2Panel()
-        Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.Column54 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column53 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column50 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column51 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column52 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Guna2ComboBox1 = New Guna.UI2.WinForms.Guna2ComboBox()
+        Me.DataGridViewTextBoxColumn39 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewCheckBoxColumn10 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.DataGridViewTextBoxColumn40 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn41 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TableLayoutPanel1.SuspendLayout
         Me.MainFormPanels.SuspendLayout
         Me.DashboardTab.SuspendLayout
+        Me.TableLayoutPanel29.SuspendLayout
+        Me.Guna2Panel43.SuspendLayout
         Me.MaintenanceTab.SuspendLayout
         Me.MaintenancePanels.SuspendLayout
         Me.GenresTab.SuspendLayout
@@ -940,13 +943,63 @@ Partial Class DashboardForm
         'DashboardTab
         '
         Me.DashboardTab.BackColor = System.Drawing.SystemColors.MenuHighlight
-        Me.DashboardTab.Controls.Add(Me.Guna2Panel43)
+        Me.DashboardTab.Controls.Add(Me.TableLayoutPanel29)
         Me.DashboardTab.Location = New System.Drawing.Point(204, 4)
         Me.DashboardTab.Margin = New System.Windows.Forms.Padding(0)
         Me.DashboardTab.Name = "DashboardTab"
         Me.DashboardTab.Size = New System.Drawing.Size(1566, 657)
         Me.DashboardTab.TabIndex = 8
         Me.DashboardTab.Text = "Dashboard"
+        '
+        'TableLayoutPanel29
+        '
+        Me.TableLayoutPanel29.BackColor = System.Drawing.Color.White
+        Me.TableLayoutPanel29.ColumnCount = 2
+        Me.TableLayoutPanel29.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 77.4585!))
+        Me.TableLayoutPanel29.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.54151!))
+        Me.TableLayoutPanel29.Controls.Add(Me.Guna2Panel43, 1, 0)
+        Me.TableLayoutPanel29.Controls.Add(Me.TableLayoutPanel30, 0, 0)
+        Me.TableLayoutPanel29.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.TableLayoutPanel29.Location = New System.Drawing.Point(0, 0)
+        Me.TableLayoutPanel29.Margin = New System.Windows.Forms.Padding(0)
+        Me.TableLayoutPanel29.Name = "TableLayoutPanel29"
+        Me.TableLayoutPanel29.RowCount = 1
+        Me.TableLayoutPanel29.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel29.Size = New System.Drawing.Size(1566, 657)
+        Me.TableLayoutPanel29.TabIndex = 1
+        '
+        'Guna2Panel43
+        '
+        Me.Guna2Panel43.Controls.Add(Me.ListView1)
+        Me.Guna2Panel43.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Guna2Panel43.Location = New System.Drawing.Point(1212, 0)
+        Me.Guna2Panel43.Margin = New System.Windows.Forms.Padding(0)
+        Me.Guna2Panel43.Name = "Guna2Panel43"
+        Me.Guna2Panel43.Size = New System.Drawing.Size(354, 657)
+        Me.Guna2Panel43.TabIndex = 0
+        '
+        'ListView1
+        '
+        Me.ListView1.HideSelection = False
+        Me.ListView1.Location = New System.Drawing.Point(16, 133)
+        Me.ListView1.Name = "ListView1"
+        Me.ListView1.Size = New System.Drawing.Size(329, 439)
+        Me.ListView1.TabIndex = 0
+        Me.ListView1.UseCompatibleStateImageBehavior = False
+        '
+        'TableLayoutPanel30
+        '
+        Me.TableLayoutPanel30.ColumnCount = 2
+        Me.TableLayoutPanel30.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel30.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel30.Location = New System.Drawing.Point(0, 0)
+        Me.TableLayoutPanel30.Margin = New System.Windows.Forms.Padding(0)
+        Me.TableLayoutPanel30.Name = "TableLayoutPanel30"
+        Me.TableLayoutPanel30.RowCount = 2
+        Me.TableLayoutPanel30.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel30.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel30.Size = New System.Drawing.Size(200, 100)
+        Me.TableLayoutPanel30.TabIndex = 1
         '
         'MaintenanceTab
         '
@@ -2540,7 +2593,7 @@ Partial Class DashboardForm
         '
         Me.Guna2Panel16.BackColor = System.Drawing.SystemColors.Window
         Me.Guna2Panel16.Controls.Add(Me.BTNBOOKREFRESH)
-        Me.Guna2Panel16.Controls.Add(Me.Guna2ComboBox1)
+        Me.Guna2Panel16.Controls.Add(Me.CMBBOOKFILTER)
         Me.Guna2Panel16.Controls.Add(Me.TXTBOOKSEARCH)
         Me.Guna2Panel16.Controls.Add(Me.BTNADDBOOK)
         Me.Guna2Panel16.Dock = System.Windows.Forms.DockStyle.Fill
@@ -2567,26 +2620,26 @@ Partial Class DashboardForm
         Me.BTNBOOKREFRESH.TabIndex = 22
         Me.BTNBOOKREFRESH.Text = "Refresh"
         '
-        'Guna2ComboBox1
+        'CMBBOOKFILTER
         '
-        Me.Guna2ComboBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Guna2ComboBox1.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2ComboBox1.BorderColor = System.Drawing.Color.Gray
-        Me.Guna2ComboBox1.BorderRadius = 4
-        Me.Guna2ComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-        Me.Guna2ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.Guna2ComboBox1.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Guna2ComboBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Guna2ComboBox1.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-        Me.Guna2ComboBox1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
-        Me.Guna2ComboBox1.ItemHeight = 34
-        Me.Guna2ComboBox1.Items.AddRange(New Object() {"Male", "Female"})
-        Me.Guna2ComboBox1.Location = New System.Drawing.Point(1098, 10)
-        Me.Guna2ComboBox1.Margin = New System.Windows.Forms.Padding(0)
-        Me.Guna2ComboBox1.Name = "Guna2ComboBox1"
-        Me.Guna2ComboBox1.Size = New System.Drawing.Size(171, 40)
-        Me.Guna2ComboBox1.StartIndex = 0
-        Me.Guna2ComboBox1.TabIndex = 21
+        Me.CMBBOOKFILTER.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.CMBBOOKFILTER.BackColor = System.Drawing.Color.Transparent
+        Me.CMBBOOKFILTER.BorderColor = System.Drawing.Color.Gray
+        Me.CMBBOOKFILTER.BorderRadius = 4
+        Me.CMBBOOKFILTER.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.CMBBOOKFILTER.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CMBBOOKFILTER.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.CMBBOOKFILTER.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.CMBBOOKFILTER.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.CMBBOOKFILTER.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
+        Me.CMBBOOKFILTER.ItemHeight = 34
+        Me.CMBBOOKFILTER.Items.AddRange(New Object() {"All", "Active", "Archived"})
+        Me.CMBBOOKFILTER.Location = New System.Drawing.Point(1098, 10)
+        Me.CMBBOOKFILTER.Margin = New System.Windows.Forms.Padding(0)
+        Me.CMBBOOKFILTER.Name = "CMBBOOKFILTER"
+        Me.CMBBOOKFILTER.Size = New System.Drawing.Size(171, 40)
+        Me.CMBBOOKFILTER.StartIndex = 0
+        Me.CMBBOOKFILTER.TabIndex = 21
         '
         'TXTBOOKSEARCH
         '
@@ -3663,7 +3716,7 @@ Partial Class DashboardForm
         '
         'BTNADDDEPARTMENT
         '
-        Me.BTNADDDEPARTMENT.BorderRadius = 8
+        Me.BTNADDDEPARTMENT.BorderRadius = 4
         Me.BTNADDDEPARTMENT.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTNADDDEPARTMENT.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTNADDDEPARTMENT.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -3695,7 +3748,7 @@ Partial Class DashboardForm
         '
         'BTNDEPARTMENTREFRESH
         '
-        Me.BTNDEPARTMENTREFRESH.BorderRadius = 8
+        Me.BTNDEPARTMENTREFRESH.BorderRadius = 4
         Me.BTNDEPARTMENTREFRESH.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTNDEPARTMENTREFRESH.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTNDEPARTMENTREFRESH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -3748,7 +3801,7 @@ Partial Class DashboardForm
         'BTNDEPARTMENTPREV
         '
         Me.BTNDEPARTMENTPREV.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BTNDEPARTMENTPREV.BorderRadius = 8
+        Me.BTNDEPARTMENTPREV.BorderRadius = 4
         Me.BTNDEPARTMENTPREV.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTNDEPARTMENTPREV.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTNDEPARTMENTPREV.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -3765,7 +3818,7 @@ Partial Class DashboardForm
         'BTNDEPARTMENTNEXT
         '
         Me.BTNDEPARTMENTNEXT.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BTNDEPARTMENTNEXT.BorderRadius = 8
+        Me.BTNDEPARTMENTNEXT.BorderRadius = 4
         Me.BTNDEPARTMENTNEXT.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTNDEPARTMENTNEXT.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTNDEPARTMENTNEXT.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -3947,7 +4000,7 @@ Partial Class DashboardForm
         '
         'BTNADDYEARLEVEL
         '
-        Me.BTNADDYEARLEVEL.BorderRadius = 8
+        Me.BTNADDYEARLEVEL.BorderRadius = 4
         Me.BTNADDYEARLEVEL.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTNADDYEARLEVEL.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTNADDYEARLEVEL.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -3979,7 +4032,7 @@ Partial Class DashboardForm
         '
         'BTNYEARLEVELREFRESH
         '
-        Me.BTNYEARLEVELREFRESH.BorderRadius = 8
+        Me.BTNYEARLEVELREFRESH.BorderRadius = 4
         Me.BTNYEARLEVELREFRESH.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTNYEARLEVELREFRESH.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTNYEARLEVELREFRESH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -4032,7 +4085,7 @@ Partial Class DashboardForm
         'BTNYEARLEVELPREV
         '
         Me.BTNYEARLEVELPREV.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BTNYEARLEVELPREV.BorderRadius = 8
+        Me.BTNYEARLEVELPREV.BorderRadius = 4
         Me.BTNYEARLEVELPREV.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTNYEARLEVELPREV.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTNYEARLEVELPREV.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -4049,7 +4102,7 @@ Partial Class DashboardForm
         'BTNYEARLEVELNEXT
         '
         Me.BTNYEARLEVELNEXT.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BTNYEARLEVELNEXT.BorderRadius = 8
+        Me.BTNYEARLEVELNEXT.BorderRadius = 4
         Me.BTNYEARLEVELNEXT.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTNYEARLEVELNEXT.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTNYEARLEVELNEXT.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -4244,7 +4297,7 @@ Partial Class DashboardForm
         '
         'BTNADDSECTION
         '
-        Me.BTNADDSECTION.BorderRadius = 8
+        Me.BTNADDSECTION.BorderRadius = 4
         Me.BTNADDSECTION.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTNADDSECTION.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTNADDSECTION.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -4276,7 +4329,7 @@ Partial Class DashboardForm
         '
         'BTNSECTIONREFRESH
         '
-        Me.BTNSECTIONREFRESH.BorderRadius = 8
+        Me.BTNSECTIONREFRESH.BorderRadius = 4
         Me.BTNSECTIONREFRESH.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTNSECTIONREFRESH.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTNSECTIONREFRESH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -4329,7 +4382,7 @@ Partial Class DashboardForm
         'BTNSECTIONPREV
         '
         Me.BTNSECTIONPREV.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BTNSECTIONPREV.BorderRadius = 8
+        Me.BTNSECTIONPREV.BorderRadius = 4
         Me.BTNSECTIONPREV.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTNSECTIONPREV.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTNSECTIONPREV.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -4346,7 +4399,7 @@ Partial Class DashboardForm
         'BTNSECTIONNEXT
         '
         Me.BTNSECTIONNEXT.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BTNSECTIONNEXT.BorderRadius = 8
+        Me.BTNSECTIONNEXT.BorderRadius = 4
         Me.BTNSECTIONNEXT.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTNSECTIONNEXT.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTNSECTIONNEXT.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -4530,7 +4583,7 @@ Partial Class DashboardForm
         '
         'BTNSTUDENTREFRESH
         '
-        Me.BTNSTUDENTREFRESH.BorderRadius = 8
+        Me.BTNSTUDENTREFRESH.BorderRadius = 4
         Me.BTNSTUDENTREFRESH.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTNSTUDENTREFRESH.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTNSTUDENTREFRESH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -4556,9 +4609,9 @@ Partial Class DashboardForm
         Me.CMBYEARLEVEL.Font = New System.Drawing.Font("Segoe UI", 10.0!)
         Me.CMBYEARLEVEL.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
         Me.CMBYEARLEVEL.ItemHeight = 34
-        Me.CMBYEARLEVEL.Items.AddRange(New Object() {"Male", "Female"})
-        Me.CMBYEARLEVEL.Location = New System.Drawing.Point(1096, 10)
-        Me.CMBYEARLEVEL.Margin = New System.Windows.Forms.Padding(0)
+        Me.CMBYEARLEVEL.Items.AddRange(New Object() {"All", "Active", "Archived"})
+        Me.CMBYEARLEVEL.Location = New System.Drawing.Point(1093, 10)
+        Me.CMBYEARLEVEL.Margin = New System.Windows.Forms.Padding(0, 0, 16, 0)
         Me.CMBYEARLEVEL.Name = "CMBYEARLEVEL"
         Me.CMBYEARLEVEL.Size = New System.Drawing.Size(171, 40)
         Me.CMBYEARLEVEL.StartIndex = 0
@@ -4591,7 +4644,7 @@ Partial Class DashboardForm
         '
         'BTNADDSTUDENTS
         '
-        Me.BTNADDSTUDENTS.BorderRadius = 8
+        Me.BTNADDSTUDENTS.BorderRadius = 4
         Me.BTNADDSTUDENTS.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTNADDSTUDENTS.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTNADDSTUDENTS.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -4623,7 +4676,7 @@ Partial Class DashboardForm
         '
         'BTNIMPORTSTUDENTS
         '
-        Me.BTNIMPORTSTUDENTS.BorderRadius = 8
+        Me.BTNIMPORTSTUDENTS.BorderRadius = 4
         Me.BTNIMPORTSTUDENTS.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTNIMPORTSTUDENTS.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTNIMPORTSTUDENTS.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -4677,7 +4730,7 @@ Partial Class DashboardForm
         'BTNSTUDENTPREV
         '
         Me.BTNSTUDENTPREV.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BTNSTUDENTPREV.BorderRadius = 8
+        Me.BTNSTUDENTPREV.BorderRadius = 4
         Me.BTNSTUDENTPREV.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTNSTUDENTPREV.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTNSTUDENTPREV.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -4694,7 +4747,7 @@ Partial Class DashboardForm
         'BTNSTUDENTNEXT
         '
         Me.BTNSTUDENTNEXT.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BTNSTUDENTNEXT.BorderRadius = 8
+        Me.BTNSTUDENTNEXT.BorderRadius = 4
         Me.BTNSTUDENTNEXT.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTNSTUDENTNEXT.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTNSTUDENTNEXT.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -4963,6 +5016,7 @@ Partial Class DashboardForm
         'Guna2Panel34
         '
         Me.Guna2Panel34.BackColor = System.Drawing.SystemColors.Window
+        Me.Guna2Panel34.Controls.Add(Me.Guna2ComboBox1)
         Me.Guna2Panel34.Controls.Add(Me.BTNFACULTYREFRESH)
         Me.Guna2Panel34.Controls.Add(Me.TXTFACULTYSEARCH)
         Me.Guna2Panel34.Controls.Add(Me.BTNADDFACULTY)
@@ -4976,7 +5030,7 @@ Partial Class DashboardForm
         '
         'BTNFACULTYREFRESH
         '
-        Me.BTNFACULTYREFRESH.BorderRadius = 8
+        Me.BTNFACULTYREFRESH.BorderRadius = 4
         Me.BTNFACULTYREFRESH.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTNFACULTYREFRESH.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTNFACULTYREFRESH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -5017,7 +5071,7 @@ Partial Class DashboardForm
         '
         'BTNADDFACULTY
         '
-        Me.BTNADDFACULTY.BorderRadius = 8
+        Me.BTNADDFACULTY.BorderRadius = 4
         Me.BTNADDFACULTY.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTNADDFACULTY.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTNADDFACULTY.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -5049,7 +5103,7 @@ Partial Class DashboardForm
         '
         'BTNIMPORTFACULTY
         '
-        Me.BTNIMPORTFACULTY.BorderRadius = 8
+        Me.BTNIMPORTFACULTY.BorderRadius = 4
         Me.BTNIMPORTFACULTY.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTNIMPORTFACULTY.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTNIMPORTFACULTY.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -5103,7 +5157,7 @@ Partial Class DashboardForm
         'BTNFACULTYPREV
         '
         Me.BTNFACULTYPREV.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BTNFACULTYPREV.BorderRadius = 8
+        Me.BTNFACULTYPREV.BorderRadius = 4
         Me.BTNFACULTYPREV.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTNFACULTYPREV.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTNFACULTYPREV.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -5120,7 +5174,7 @@ Partial Class DashboardForm
         'BTNFACULTYNEXT
         '
         Me.BTNFACULTYNEXT.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BTNFACULTYNEXT.BorderRadius = 8
+        Me.BTNFACULTYNEXT.BorderRadius = 4
         Me.BTNFACULTYNEXT.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTNFACULTYNEXT.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTNFACULTYNEXT.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -5382,7 +5436,6 @@ Partial Class DashboardForm
         Me.Guna2Panel37.BackColor = System.Drawing.SystemColors.Window
         Me.Guna2Panel37.Controls.Add(Me.BTNADMINREFRESH)
         Me.Guna2Panel37.Controls.Add(Me.TXTADMINSEARCH)
-        Me.Guna2Panel37.Controls.Add(Me.BTNADDADMIN)
         Me.Guna2Panel37.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Guna2Panel37.Location = New System.Drawing.Point(0, 0)
         Me.Guna2Panel37.Margin = New System.Windows.Forms.Padding(0)
@@ -5393,14 +5446,14 @@ Partial Class DashboardForm
         '
         'BTNADMINREFRESH
         '
-        Me.BTNADMINREFRESH.BorderRadius = 8
+        Me.BTNADMINREFRESH.BorderRadius = 4
         Me.BTNADMINREFRESH.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTNADMINREFRESH.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTNADMINREFRESH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTNADMINREFRESH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
         Me.BTNADMINREFRESH.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.BTNADMINREFRESH.ForeColor = System.Drawing.Color.White
-        Me.BTNADMINREFRESH.Location = New System.Drawing.Point(170, 10)
+        Me.BTNADMINREFRESH.Location = New System.Drawing.Point(20, 10)
         Me.BTNADMINREFRESH.Margin = New System.Windows.Forms.Padding(0)
         Me.BTNADMINREFRESH.Name = "BTNADMINREFRESH"
         Me.BTNADMINREFRESH.Size = New System.Drawing.Size(141, 40)
@@ -5431,22 +5484,6 @@ Partial Class DashboardForm
         Me.TXTADMINSEARCH.SelectedText = ""
         Me.TXTADMINSEARCH.Size = New System.Drawing.Size(258, 40)
         Me.TXTADMINSEARCH.TabIndex = 6
-        '
-        'BTNADDADMIN
-        '
-        Me.BTNADDADMIN.BorderRadius = 8
-        Me.BTNADDADMIN.DisabledState.BorderColor = System.Drawing.Color.DarkGray
-        Me.BTNADDADMIN.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
-        Me.BTNADDADMIN.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
-        Me.BTNADDADMIN.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.BTNADDADMIN.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.BTNADDADMIN.ForeColor = System.Drawing.Color.White
-        Me.BTNADDADMIN.Location = New System.Drawing.Point(20, 10)
-        Me.BTNADDADMIN.Margin = New System.Windows.Forms.Padding(0)
-        Me.BTNADDADMIN.Name = "BTNADDADMIN"
-        Me.BTNADDADMIN.Size = New System.Drawing.Size(141, 40)
-        Me.BTNADDADMIN.TabIndex = 0
-        Me.BTNADDADMIN.Text = "New Administrator"
         '
         'Guna2Panel38
         '
@@ -5502,7 +5539,7 @@ Partial Class DashboardForm
         'BTNADMINPREV
         '
         Me.BTNADMINPREV.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BTNADMINPREV.BorderRadius = 8
+        Me.BTNADMINPREV.BorderRadius = 4
         Me.BTNADMINPREV.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTNADMINPREV.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTNADMINPREV.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -5519,7 +5556,7 @@ Partial Class DashboardForm
         'BTNADMINNEXT
         '
         Me.BTNADMINNEXT.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BTNADMINNEXT.BorderRadius = 8
+        Me.BTNADMINNEXT.BorderRadius = 4
         Me.BTNADMINNEXT.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTNADMINNEXT.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTNADMINNEXT.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -5563,7 +5600,7 @@ Partial Class DashboardForm
         DataGridViewCellStyle48.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DGADMINISTRATOR.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle48
         Me.DGADMINISTRATOR.ColumnHeadersHeight = 48
-        Me.DGADMINISTRATOR.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn39, Me.DataGridViewCheckBoxColumn10, Me.DataGridViewTextBoxColumn40, Me.DataGridViewTextBoxColumn42, Me.Column22, Me.DataGridViewTextBoxColumn41})
+        Me.DGADMINISTRATOR.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn39, Me.DataGridViewCheckBoxColumn10, Me.DataGridViewTextBoxColumn40, Me.DataGridViewTextBoxColumn41})
         Me.DGADMINISTRATOR.ContextMenuStrip = Me.DGMAINTENANCECONTEXTMENU
         DataGridViewCellStyle50.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle50.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(239, Byte), Integer))
@@ -5606,52 +5643,6 @@ Partial Class DashboardForm
         Me.DGADMINISTRATOR.ThemeStyle.RowsStyle.Height = 48
         Me.DGADMINISTRATOR.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(205, Byte), Integer))
         Me.DGADMINISTRATOR.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
-        '
-        'DataGridViewTextBoxColumn39
-        '
-        Me.DataGridViewTextBoxColumn39.DataPropertyName = "id"
-        Me.DataGridViewTextBoxColumn39.HeaderText = "id"
-        Me.DataGridViewTextBoxColumn39.Name = "DataGridViewTextBoxColumn39"
-        Me.DataGridViewTextBoxColumn39.Visible = False
-        '
-        'DataGridViewCheckBoxColumn10
-        '
-        Me.DataGridViewCheckBoxColumn10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.DataGridViewCheckBoxColumn10.HeaderText = ""
-        Me.DataGridViewCheckBoxColumn10.Name = "DataGridViewCheckBoxColumn10"
-        Me.DataGridViewCheckBoxColumn10.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewCheckBoxColumn10.Width = 40
-        '
-        'DataGridViewTextBoxColumn40
-        '
-        Me.DataGridViewTextBoxColumn40.DataPropertyName = "first_name"
-        Me.DataGridViewTextBoxColumn40.HeaderText = "Full Name"
-        Me.DataGridViewTextBoxColumn40.MaxInputLength = 50
-        Me.DataGridViewTextBoxColumn40.Name = "DataGridViewTextBoxColumn40"
-        Me.DataGridViewTextBoxColumn40.ReadOnly = True
-        Me.DataGridViewTextBoxColumn40.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        '
-        'DataGridViewTextBoxColumn42
-        '
-        Me.DataGridViewTextBoxColumn42.DataPropertyName = "gender"
-        Me.DataGridViewTextBoxColumn42.HeaderText = "Phone"
-        Me.DataGridViewTextBoxColumn42.Name = "DataGridViewTextBoxColumn42"
-        '
-        'Column22
-        '
-        Me.Column22.HeaderText = "Email"
-        Me.Column22.Name = "Column22"
-        '
-        'DataGridViewTextBoxColumn41
-        '
-        Me.DataGridViewTextBoxColumn41.DataPropertyName = "last_name"
-        DataGridViewCellStyle49.NullValue = "None"
-        Me.DataGridViewTextBoxColumn41.DefaultCellStyle = DataGridViewCellStyle49
-        Me.DataGridViewTextBoxColumn41.HeaderText = "Role"
-        Me.DataGridViewTextBoxColumn41.MaxInputLength = 100
-        Me.DataGridViewTextBoxColumn41.Name = "DataGridViewTextBoxColumn41"
-        Me.DataGridViewTextBoxColumn41.ReadOnly = True
-        Me.DataGridViewTextBoxColumn41.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         '
         'BookInventoryTab
         '
@@ -5759,7 +5750,7 @@ Partial Class DashboardForm
         '
         'Guna2Button1
         '
-        Me.Guna2Button1.BorderRadius = 8
+        Me.Guna2Button1.BorderRadius = 4
         Me.Guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.Guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.Guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -5852,7 +5843,7 @@ Partial Class DashboardForm
         'BTNCOPIESPREV
         '
         Me.BTNCOPIESPREV.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BTNCOPIESPREV.BorderRadius = 8
+        Me.BTNCOPIESPREV.BorderRadius = 4
         Me.BTNCOPIESPREV.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTNCOPIESPREV.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTNCOPIESPREV.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -5869,7 +5860,7 @@ Partial Class DashboardForm
         'BTNCOPIESNEXT
         '
         Me.BTNCOPIESNEXT.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BTNCOPIESNEXT.BorderRadius = 8
+        Me.BTNCOPIESNEXT.BorderRadius = 4
         Me.BTNCOPIESNEXT.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTNCOPIESNEXT.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTNCOPIESNEXT.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -6364,7 +6355,7 @@ Partial Class DashboardForm
         '
         'Guna2Button2
         '
-        Me.Guna2Button2.BorderRadius = 8
+        Me.Guna2Button2.BorderRadius = 4
         Me.Guna2Button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.Guna2Button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.Guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -6457,7 +6448,7 @@ Partial Class DashboardForm
         'BTNINVENTORYPREV
         '
         Me.BTNINVENTORYPREV.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BTNINVENTORYPREV.BorderRadius = 8
+        Me.BTNINVENTORYPREV.BorderRadius = 4
         Me.BTNINVENTORYPREV.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTNINVENTORYPREV.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTNINVENTORYPREV.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -6474,7 +6465,7 @@ Partial Class DashboardForm
         'BTNINVENTORYNEXT
         '
         Me.BTNINVENTORYNEXT.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BTNINVENTORYNEXT.BorderRadius = 8
+        Me.BTNINVENTORYNEXT.BorderRadius = 4
         Me.BTNINVENTORYNEXT.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTNINVENTORYNEXT.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTNINVENTORYNEXT.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -6875,7 +6866,7 @@ Partial Class DashboardForm
         '
         'Guna2Button3
         '
-        Me.Guna2Button3.BorderRadius = 8
+        Me.Guna2Button3.BorderRadius = 4
         Me.Guna2Button3.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.Guna2Button3.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.Guna2Button3.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -6988,7 +6979,7 @@ Partial Class DashboardForm
         'BTNLOSTDAMAGEPREV
         '
         Me.BTNLOSTDAMAGEPREV.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BTNLOSTDAMAGEPREV.BorderRadius = 8
+        Me.BTNLOSTDAMAGEPREV.BorderRadius = 4
         Me.BTNLOSTDAMAGEPREV.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTNLOSTDAMAGEPREV.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTNLOSTDAMAGEPREV.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -7005,7 +6996,7 @@ Partial Class DashboardForm
         'BTNLOSTDAMAGENEXT
         '
         Me.BTNLOSTDAMAGENEXT.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BTNLOSTDAMAGENEXT.BorderRadius = 8
+        Me.BTNLOSTDAMAGENEXT.BorderRadius = 4
         Me.BTNLOSTDAMAGENEXT.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTNLOSTDAMAGENEXT.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTNLOSTDAMAGENEXT.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -7093,6 +7084,55 @@ Partial Class DashboardForm
         Me.Guna2DataGridView1.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(205, Byte), Integer))
         Me.Guna2DataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
         '
+        'DataGridViewTextBoxColumn11
+        '
+        Me.DataGridViewTextBoxColumn11.DataPropertyName = "id"
+        Me.DataGridViewTextBoxColumn11.HeaderText = "id"
+        Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
+        Me.DataGridViewTextBoxColumn11.Visible = False
+        '
+        'DataGridViewCheckBoxColumn1
+        '
+        Me.DataGridViewCheckBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.DataGridViewCheckBoxColumn1.HeaderText = ""
+        Me.DataGridViewCheckBoxColumn1.Name = "DataGridViewCheckBoxColumn1"
+        Me.DataGridViewCheckBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewCheckBoxColumn1.Width = 40
+        '
+        'Column54
+        '
+        Me.Column54.HeaderText = "Accession No."
+        Me.Column54.Name = "Column54"
+        '
+        'Column53
+        '
+        Me.Column53.HeaderText = "Circulation No."
+        Me.Column53.Name = "Column53"
+        '
+        'DataGridViewTextBoxColumn18
+        '
+        Me.DataGridViewTextBoxColumn18.DataPropertyName = "department_name"
+        Me.DataGridViewTextBoxColumn18.HeaderText = "Title"
+        Me.DataGridViewTextBoxColumn18.MaxInputLength = 50
+        Me.DataGridViewTextBoxColumn18.Name = "DataGridViewTextBoxColumn18"
+        Me.DataGridViewTextBoxColumn18.ReadOnly = True
+        Me.DataGridViewTextBoxColumn18.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
+        'Column50
+        '
+        Me.Column50.HeaderText = "ISBN"
+        Me.Column50.Name = "Column50"
+        '
+        'Column51
+        '
+        Me.Column51.HeaderText = "Borrowed Condition"
+        Me.Column51.Name = "Column51"
+        '
+        'Column52
+        '
+        Me.Column52.HeaderText = "Returned Condition"
+        Me.Column52.Name = "Column52"
+        '
         'BookTransactionTab
         '
         Me.BookTransactionTab.BackColor = System.Drawing.SystemColors.MenuHighlight
@@ -7139,7 +7179,7 @@ Partial Class DashboardForm
         '
         'BTNTRANSACTIONREFRESH
         '
-        Me.BTNTRANSACTIONREFRESH.BorderRadius = 8
+        Me.BTNTRANSACTIONREFRESH.BorderRadius = 4
         Me.BTNTRANSACTIONREFRESH.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTNTRANSACTIONREFRESH.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTNTRANSACTIONREFRESH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -7155,7 +7195,7 @@ Partial Class DashboardForm
         '
         'BTNADDTRANSACTION
         '
-        Me.BTNADDTRANSACTION.BorderRadius = 8
+        Me.BTNADDTRANSACTION.BorderRadius = 4
         Me.BTNADDTRANSACTION.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTNADDTRANSACTION.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTNADDTRANSACTION.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -7215,7 +7255,7 @@ Partial Class DashboardForm
         '
         'Guna2Button11
         '
-        Me.Guna2Button11.BorderRadius = 8
+        Me.Guna2Button11.BorderRadius = 4
         Me.Guna2Button11.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.Guna2Button11.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.Guna2Button11.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -7311,7 +7351,7 @@ Partial Class DashboardForm
         'BTNTRANSACTIONPREV
         '
         Me.BTNTRANSACTIONPREV.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BTNTRANSACTIONPREV.BorderRadius = 8
+        Me.BTNTRANSACTIONPREV.BorderRadius = 4
         Me.BTNTRANSACTIONPREV.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTNTRANSACTIONPREV.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTNTRANSACTIONPREV.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -7328,7 +7368,7 @@ Partial Class DashboardForm
         'BTNTRANSACTIONNEXT
         '
         Me.BTNTRANSACTIONNEXT.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BTNTRANSACTIONNEXT.BorderRadius = 8
+        Me.BTNTRANSACTIONNEXT.BorderRadius = 4
         Me.BTNTRANSACTIONNEXT.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTNTRANSACTIONNEXT.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTNTRANSACTIONNEXT.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -7556,7 +7596,7 @@ Partial Class DashboardForm
         '
         'BTNBOOKREPORTREFRESH
         '
-        Me.BTNBOOKREPORTREFRESH.BorderRadius = 8
+        Me.BTNBOOKREPORTREFRESH.BorderRadius = 4
         Me.BTNBOOKREPORTREFRESH.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTNBOOKREPORTREFRESH.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTNBOOKREPORTREFRESH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -7649,7 +7689,7 @@ Partial Class DashboardForm
         'BTNBOOKREPORTRPEV
         '
         Me.BTNBOOKREPORTRPEV.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BTNBOOKREPORTRPEV.BorderRadius = 8
+        Me.BTNBOOKREPORTRPEV.BorderRadius = 4
         Me.BTNBOOKREPORTRPEV.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTNBOOKREPORTRPEV.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTNBOOKREPORTRPEV.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -7666,7 +7706,7 @@ Partial Class DashboardForm
         'BTNBOOKREPORTNEXT
         '
         Me.BTNBOOKREPORTNEXT.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BTNBOOKREPORTNEXT.BorderRadius = 8
+        Me.BTNBOOKREPORTNEXT.BorderRadius = 4
         Me.BTNBOOKREPORTNEXT.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTNBOOKREPORTNEXT.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTNBOOKREPORTNEXT.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -9254,7 +9294,7 @@ Partial Class DashboardForm
         '
         'Guna2Button10
         '
-        Me.Guna2Button10.BorderRadius = 8
+        Me.Guna2Button10.BorderRadius = 4
         Me.Guna2Button10.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.Guna2Button10.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.Guna2Button10.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -9347,7 +9387,7 @@ Partial Class DashboardForm
         'Guna2Button23
         '
         Me.Guna2Button23.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Guna2Button23.BorderRadius = 8
+        Me.Guna2Button23.BorderRadius = 4
         Me.Guna2Button23.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.Guna2Button23.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.Guna2Button23.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -9364,7 +9404,7 @@ Partial Class DashboardForm
         'Guna2Button24
         '
         Me.Guna2Button24.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Guna2Button24.BorderRadius = 8
+        Me.Guna2Button24.BorderRadius = 4
         Me.Guna2Button24.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.Guna2Button24.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.Guna2Button24.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -9861,63 +9901,60 @@ Partial Class DashboardForm
         Me.LBLPROFILENAME.TabIndex = 1
         Me.LBLPROFILENAME.Text = "Doe, John"
         '
-        'Guna2Panel43
+        'Guna2ComboBox1
         '
-        Me.Guna2Panel43.BackColor = System.Drawing.Color.White
-        Me.Guna2Panel43.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Guna2Panel43.Location = New System.Drawing.Point(0, 0)
-        Me.Guna2Panel43.Name = "Guna2Panel43"
-        Me.Guna2Panel43.Size = New System.Drawing.Size(1566, 657)
-        Me.Guna2Panel43.TabIndex = 0
+        Me.Guna2ComboBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Guna2ComboBox1.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2ComboBox1.BorderRadius = 4
+        Me.Guna2ComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.Guna2ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.Guna2ComboBox1.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Guna2ComboBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Guna2ComboBox1.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.Guna2ComboBox1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
+        Me.Guna2ComboBox1.ItemHeight = 34
+        Me.Guna2ComboBox1.Items.AddRange(New Object() {"All", "Active", "Archived"})
+        Me.Guna2ComboBox1.Location = New System.Drawing.Point(1099, 10)
+        Me.Guna2ComboBox1.Margin = New System.Windows.Forms.Padding(0)
+        Me.Guna2ComboBox1.Name = "Guna2ComboBox1"
+        Me.Guna2ComboBox1.Size = New System.Drawing.Size(171, 40)
+        Me.Guna2ComboBox1.StartIndex = 0
+        Me.Guna2ComboBox1.TabIndex = 22
         '
-        'DataGridViewTextBoxColumn11
+        'DataGridViewTextBoxColumn39
         '
-        Me.DataGridViewTextBoxColumn11.DataPropertyName = "id"
-        Me.DataGridViewTextBoxColumn11.HeaderText = "id"
-        Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
-        Me.DataGridViewTextBoxColumn11.Visible = False
+        Me.DataGridViewTextBoxColumn39.DataPropertyName = "id"
+        Me.DataGridViewTextBoxColumn39.HeaderText = "id"
+        Me.DataGridViewTextBoxColumn39.Name = "DataGridViewTextBoxColumn39"
+        Me.DataGridViewTextBoxColumn39.Visible = False
         '
-        'DataGridViewCheckBoxColumn1
+        'DataGridViewCheckBoxColumn10
         '
-        Me.DataGridViewCheckBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.DataGridViewCheckBoxColumn1.HeaderText = ""
-        Me.DataGridViewCheckBoxColumn1.Name = "DataGridViewCheckBoxColumn1"
-        Me.DataGridViewCheckBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewCheckBoxColumn1.Width = 40
+        Me.DataGridViewCheckBoxColumn10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.DataGridViewCheckBoxColumn10.HeaderText = ""
+        Me.DataGridViewCheckBoxColumn10.Name = "DataGridViewCheckBoxColumn10"
+        Me.DataGridViewCheckBoxColumn10.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewCheckBoxColumn10.Width = 40
         '
-        'Column54
+        'DataGridViewTextBoxColumn40
         '
-        Me.Column54.HeaderText = "Accession No."
-        Me.Column54.Name = "Column54"
+        Me.DataGridViewTextBoxColumn40.DataPropertyName = "full_name"
+        Me.DataGridViewTextBoxColumn40.HeaderText = "Full Name"
+        Me.DataGridViewTextBoxColumn40.MaxInputLength = 50
+        Me.DataGridViewTextBoxColumn40.Name = "DataGridViewTextBoxColumn40"
+        Me.DataGridViewTextBoxColumn40.ReadOnly = True
+        Me.DataGridViewTextBoxColumn40.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         '
-        'Column53
+        'DataGridViewTextBoxColumn41
         '
-        Me.Column53.HeaderText = "Circulation No."
-        Me.Column53.Name = "Column53"
-        '
-        'DataGridViewTextBoxColumn18
-        '
-        Me.DataGridViewTextBoxColumn18.DataPropertyName = "department_name"
-        Me.DataGridViewTextBoxColumn18.HeaderText = "Title"
-        Me.DataGridViewTextBoxColumn18.MaxInputLength = 50
-        Me.DataGridViewTextBoxColumn18.Name = "DataGridViewTextBoxColumn18"
-        Me.DataGridViewTextBoxColumn18.ReadOnly = True
-        Me.DataGridViewTextBoxColumn18.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        '
-        'Column50
-        '
-        Me.Column50.HeaderText = "ISBN"
-        Me.Column50.Name = "Column50"
-        '
-        'Column51
-        '
-        Me.Column51.HeaderText = "Borrowed Condition"
-        Me.Column51.Name = "Column51"
-        '
-        'Column52
-        '
-        Me.Column52.HeaderText = "Returned Condition"
-        Me.Column52.Name = "Column52"
+        Me.DataGridViewTextBoxColumn41.DataPropertyName = "role"
+        DataGridViewCellStyle49.NullValue = "None"
+        Me.DataGridViewTextBoxColumn41.DefaultCellStyle = DataGridViewCellStyle49
+        Me.DataGridViewTextBoxColumn41.HeaderText = "Role"
+        Me.DataGridViewTextBoxColumn41.MaxInputLength = 100
+        Me.DataGridViewTextBoxColumn41.Name = "DataGridViewTextBoxColumn41"
+        Me.DataGridViewTextBoxColumn41.ReadOnly = True
+        Me.DataGridViewTextBoxColumn41.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         '
         'DashboardForm
         '
@@ -9935,6 +9972,8 @@ Partial Class DashboardForm
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.MainFormPanels.ResumeLayout(False)
         Me.DashboardTab.ResumeLayout(False)
+        Me.TableLayoutPanel29.ResumeLayout(False)
+        Me.Guna2Panel43.ResumeLayout(False)
         Me.MaintenanceTab.ResumeLayout(False)
         Me.MaintenancePanels.ResumeLayout(False)
         Me.GenresTab.ResumeLayout(False)
@@ -10325,7 +10364,6 @@ Partial Class DashboardForm
     Friend WithEvents TableLayoutPanel13 As TableLayoutPanel
     Friend WithEvents Guna2Panel37 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents TXTADMINSEARCH As Guna.UI2.WinForms.Guna2TextBox
-    Friend WithEvents BTNADDADMIN As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Guna2Panel38 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents LBLADMINNEXT As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2HtmlLabel37 As Guna.UI2.WinForms.Guna2HtmlLabel
@@ -10402,12 +10440,6 @@ Partial Class DashboardForm
     Friend WithEvents Column6 As DataGridViewTextBoxColumn
     Friend WithEvents DashboardTab As TabPage
     Friend WithEvents AccountTab As TabPage
-    Friend WithEvents DataGridViewTextBoxColumn39 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewCheckBoxColumn10 As DataGridViewCheckBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn40 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn42 As DataGridViewTextBoxColumn
-    Friend WithEvents Column22 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn41 As DataGridViewTextBoxColumn
     Friend WithEvents TableLayoutPanel15 As TableLayoutPanel
     Friend WithEvents Guna2Panel6 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents TXTISBNCOPIES As Guna.UI2.WinForms.Guna2TextBox
@@ -10632,7 +10664,7 @@ Partial Class DashboardForm
     Friend WithEvents ArchiveSelectedToolStripMenuItem2 As ToolStripMenuItem
     Friend WithEvents UnarchiveSelectedToolStripMenuItem2 As ToolStripMenuItem
     Friend WithEvents DGBOOKCOPIESCONTEXTMENUSTRIP As Guna.UI2.WinForms.Guna2ContextMenuStrip
-    Friend WithEvents Guna2ComboBox1 As Guna.UI2.WinForms.Guna2ComboBox
+    Friend WithEvents CMBBOOKFILTER As Guna.UI2.WinForms.Guna2ComboBox
     Friend WithEvents SelectAllToolStripMenuItem4 As ToolStripMenuItem
     Friend WithEvents UnselectAllToolStripMenuItem4 As ToolStripMenuItem
     Friend WithEvents ArchiveSelectedToolStripMenuItem3 As ToolStripMenuItem
@@ -10729,7 +10761,6 @@ Partial Class DashboardForm
     Friend WithEvents chckBoxSupplier As DataGridViewCheckBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn21 As DataGridViewTextBoxColumn
     Friend WithEvents Column7 As DataGridViewTextBoxColumn
-    Friend WithEvents Guna2Panel43 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents DataGridViewTextBoxColumn11 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewCheckBoxColumn1 As DataGridViewCheckBoxColumn
     Friend WithEvents Column54 As DataGridViewTextBoxColumn
@@ -10738,4 +10769,13 @@ Partial Class DashboardForm
     Friend WithEvents Column50 As DataGridViewTextBoxColumn
     Friend WithEvents Column51 As DataGridViewTextBoxColumn
     Friend WithEvents Column52 As DataGridViewTextBoxColumn
+    Friend WithEvents TableLayoutPanel29 As TableLayoutPanel
+    Friend WithEvents Guna2Panel43 As Guna.UI2.WinForms.Guna2Panel
+    Friend WithEvents ListView1 As ListView
+    Friend WithEvents TableLayoutPanel30 As TableLayoutPanel
+    Friend WithEvents Guna2ComboBox1 As Guna.UI2.WinForms.Guna2ComboBox
+    Friend WithEvents DataGridViewTextBoxColumn39 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewCheckBoxColumn10 As DataGridViewCheckBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn40 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn41 As DataGridViewTextBoxColumn
 End Class

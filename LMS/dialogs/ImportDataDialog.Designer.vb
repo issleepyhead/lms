@@ -76,7 +76,7 @@ Partial Class ImportDataDialog
         'BTNPREVIEW
         '
         Me.BTNPREVIEW.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BTNPREVIEW.BorderRadius = 8
+        Me.BTNPREVIEW.BorderRadius = 4
         Me.BTNPREVIEW.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTNPREVIEW.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTNPREVIEW.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -93,7 +93,7 @@ Partial Class ImportDataDialog
         'BTNSELECTFILE
         '
         Me.BTNSELECTFILE.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BTNSELECTFILE.BorderRadius = 8
+        Me.BTNSELECTFILE.BorderRadius = 4
         Me.BTNSELECTFILE.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTNSELECTFILE.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTNSELECTFILE.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -110,7 +110,7 @@ Partial Class ImportDataDialog
         '
         Me.TXTPATH.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TXTPATH.BorderRadius = 8
+        Me.TXTPATH.BorderRadius = 4
         Me.TXTPATH.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.TXTPATH.DefaultText = ""
         Me.TXTPATH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
@@ -121,7 +121,7 @@ Partial Class ImportDataDialog
         Me.TXTPATH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXTPATH.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.TXTPATH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTPATH.Location = New System.Drawing.Point(23, 23)
+        Me.TXTPATH.Location = New System.Drawing.Point(20, 23)
         Me.TXTPATH.Name = "TXTPATH"
         Me.TXTPATH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TXTPATH.PlaceholderText = "File Path"
@@ -136,6 +136,7 @@ Partial Class ImportDataDialog
         Me.DGDATA.AllowUserToDeleteRows = False
         DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
         Me.DGDATA.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        Me.DGDATA.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(255, Byte), Integer))
         DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -201,7 +202,7 @@ Partial Class ImportDataDialog
         'BTNCANCEL
         '
         Me.BTNCANCEL.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BTNCANCEL.BorderRadius = 8
+        Me.BTNCANCEL.BorderRadius = 4
         Me.BTNCANCEL.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTNCANCEL.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTNCANCEL.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -218,7 +219,7 @@ Partial Class ImportDataDialog
         'BTNHIDE
         '
         Me.BTNHIDE.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BTNHIDE.BorderRadius = 8
+        Me.BTNHIDE.BorderRadius = 4
         Me.BTNHIDE.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTNHIDE.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTNHIDE.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -235,7 +236,7 @@ Partial Class ImportDataDialog
         'BTNIMPORT
         '
         Me.BTNIMPORT.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BTNIMPORT.BorderRadius = 8
+        Me.BTNIMPORT.BorderRadius = 4
         Me.BTNIMPORT.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTNIMPORT.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTNIMPORT.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))

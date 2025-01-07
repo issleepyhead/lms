@@ -196,8 +196,8 @@
                 Return New MaintenanceQueries With {
                     .ADD_QUERY = "INSERT INTO tblfaculties (full_name, gender, address, phone, email, department_id, password, username) VALUES (@full_name, @gender, @address, @phone, @email, @did, @passwd, @username)",
                     .DELETE_QUERY = "DELETE FROM tblfaculties WHERE id = @id",
-                    .EXISTS_QUERY_WITH_ID = "SELECT COUNT(*) FROM tblfaculties WHERE email = @email AND id != @id",
-                    .EXISTS_QUERY_NO_ID = "SELECT COUNT(*) FROM tblfaculties WHERE email = @email",
+                    .EXISTS_QUERY_WITH_ID = "SELECT COUNT(*) FROM tblfaculties WHERE username = @username AND id != @id",
+                    .EXISTS_QUERY_NO_ID = "SELECT COUNT(*) FROM tblfaculties WHERE username = @username",
                     .FETCH_TOTAL_COUNT_QUERY = "SELECT COUNT(*) FROM tblfaculties",
                     .FETCH_LIMIT_QUERY = "SELECT st.id, st.username, full_name, gender, address, phone, email, department_id, d.department_name FROM tblfaculties st JOIN tbldepartments d ON st.department_id = d.id ORDER BY full_name ASC LIMIT @page, 30;",
                     .FETCH_TOTAL_COUNT_QUERY_SEARCH = "SELECT COUNT(*) FROM tblfaculties WHERE email LIKE @search OR full_name LIKE @search",
@@ -225,7 +225,7 @@
                                                 JOIN
                                             tblbooks b ON bc.book_id = b.id
                                         GROUP BY b.title, b.isbn
-                                        ORDER BY b.title",
+                                        ORDER BY b.title LIMIT @page, 30;",
                     .FETCH_TOTAL_COUNT_QUERY = "SELECT COUNT(DISTINCT b.title) FROM tblbookcopies bc JOIN tblbooks b ON bc.book_id = b.id GROUP BY b.title, b.isbn ORDER BY b.title",
                     .FETCH_LIMIT_QUERY_SEARCH = "SELECT 
                                             b.title,
@@ -242,7 +242,7 @@
                                             tblbooks b ON bc.book_id = b.id
                                         WHERE b.title LIKE @search OR b.isbn LIKE @search
                                         GROUP BY b.title, b.isbn
-                                        ORDER BY b.title",
+                                        ORDER BY b.title LIMIT @page, 30;",
                     .FETCH_TOTAL_COUNT_QUERY_SEARCH = "SELECT COUNT(DISTINCT b.title) FROM tblbookcopies bc JOIN tblbooks b ON bc.book_id = b.id WHERE b.title LIKE @search OR b.isbn LIKE @search GROUP BY b.title, b.isbn ORDER BY b.title"
                 }
             Case QueryTableType.BOOKINVENTORY_QUERY_TABLE
@@ -253,6 +253,17 @@
                     .FETCH_LIMIT_QUERY_SEARCH = "SELECT bc.id, b.title, b.isbn, bc.accession_no, d.name donator_name, s.name supplier_name, price FROM tblbookcopies bc JOIN tblbooks b ON bc.book_id = b.id JOIN tbldonators d ON bc.donator_id = d.id JOIN tblsuppliers s ON bc.supplier_id = s.id WHERE b.title LIKE @search OR b.isbn LIKE @search ORDER BY b.title ASC LIMIT @page, 30;",
                     .FETCH_TOTAL_COUNT_QUERY_SEARCH = "SELECT COUNT(*) FROM tblbookcopies bc JOIN tblbooks b ON bc.book_id = b.id JOIN tbldonators d ON bc.donator_id = d.id JOIN tblsuppliers s ON bc.supplier_id = s.id WHERE b.title LIKE @search OR b.isbn LIKE @search ORDER BY b.title",
                     .UPDATE_QUERY = "UPDATE tblbookcopies SET price = @price WHERE id = @id"
+                }
+
+            Case QueryTableType.ADMIN_QUERY_TABLE
+                Return New MaintenanceQueries With {
+                    .ADD_QUERY = "INSERT INTO tbladmins (student_id, faculty_id) VALUES (student_id, faculty_id)",
+                    .DELETE_QUERY = "DELETE FROM tbladmins WHERE id = @id",
+                    .FETCH_LIMIT_QUERY = "SELECT a.id, full_name, CASE WHEN `role` = 0 THEN 'Super Admin' ELSE 'Assistant Librarian' END AS `role` FROM tbladmins a JOIN tblstudents s ON a.student_id = s.id UNION SELECT a.id, full_name, CASE WHEN `role` = 0 THEN 'Super Admin' ELSE 'Assistant Librarian' END AS `role` FROM tbladmins a JOIN tblfaculties f ON a.faculty_id = f.id ORDER BY full_name LIMIT @page, 30;",
+                    .FETCH_LIMIT_QUERY_SEARCH = "SELECT a.id, full_name, CASE WHEN `role` = 0 THEN 'Super Admin' ELSE 'Assistant Librarian' END AS `role` FROM tbladmins a JOIN tblstudents s ON a.student_id = s.id UNION SELECT a.id, full_name, CASE WHEN `role` = 0 THEN 'Super Admin' ELSE 'Assistant Librarian' END AS `role` FROM tbladmins a JOIN tblfaculties f ON a.faculty_id = f.id WHERE full_name LIKE @search OR phone LIKE @search OR email LIKE @search ORDER BY full_name LIMIT @page, 30;",
+                    .FETCH_TOTAL_COUNT_QUERY = "SELECT COUNT(*) FROM tbladmins a LEFT JOIN tblfaculties f ON a.faculty_id = f.id LEFT JOIN tblstudents s ON a.student_id = s.id",
+                    .FETCH_TOTAL_COUNT_QUERY_SEARCH = "SELECT COUNT(*) FROM tbladmins a LEFT JOIN tblfaculties f ON a.faculty_id = f.id LEFT JOIN tblstudents s ON a.student_id = s.id WHERE full_name LIKE @search OR phone LIKE @search OR email LIKE @search",
+                    .UPDATE_QUERY = "UPDATE tbladmins SET role = @role"
                 }
         End Select
         Return New MaintenanceQueries

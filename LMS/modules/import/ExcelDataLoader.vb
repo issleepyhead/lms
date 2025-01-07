@@ -23,9 +23,6 @@ Public MustInherit Class ExcelDataLoader
                                        For Each drow As DataRow In dt.Rows
                                            drow.Item("Status") = "Ready"
                                        Next
-                                       'If dt.Columns.IndexOf("Status") <> dt.Columns.Count - 1 Then
-                                       '    dt.Columns("Status").SetOrdinal(dt.Columns.Count - 1)
-                                       'End If
                                        data.Add(worksheet.Name, dt)
                                    Next
 

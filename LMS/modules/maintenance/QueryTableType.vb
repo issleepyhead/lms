@@ -57,8 +57,8 @@
     <ColumnMapping({"Student Number", "LRN", "Full Name", "Email", "Section", "Gender"}, {"@studno", "@lrn", "@full_name", "@email", "@sid", "@gender"})>
     STUDENT_QUERY_TABLE
 
-    <SheetNameMapping("Facultly")>
-    <ColumnMapping({"Name", "Description"}, {"@name", "@desc"})>
+    <SheetNameMapping("Faculties")>
+    <ColumnMapping({"Full Name", "Gender", "Department"}, {"@full_name", "@gender", "@did"})>
     FACULTY_QUERY_TABLE
 
     <SheetNameMapping("Departments")>

@@ -47,8 +47,8 @@ Public Class ImportDataDialog
 
         If data.ContainsKey("Books") Then
             DGDATA.DataSource = data.Item("Books")
-        ElseIf data.ContainsKey("Faculty") Then
-            DGDATA.DataSource = data.Item("Faculty")
+        ElseIf data.ContainsKey("Faculties") Then
+            DGDATA.DataSource = data.Item("Faculties")
         Else
             DGDATA.DataSource = data.Item("Students")
         End If
@@ -125,6 +125,7 @@ Public Class ImportDataDialog
     End Sub
 
     Private Sub ImportBackground_DoWork(sender As Object, e As DoWorkEventArgs) Handles ImportBackground.DoWork
+        ' TODO Fix these some sheets and columns are optional.
         If Not IsNothing(data) Then
             Me.Invoke(Sub()
                           BTNIMPORT.Enabled = False
@@ -141,7 +142,7 @@ Public Class ImportDataDialog
                 orderImport = {"Departments", "Year Levels", "Sections", "Students"}
                 orderQuery = {QueryTableType.DEPARTMENT_QUERY_TABLE, QueryTableType.YEARLEVEL_QUERY_TABLE, QueryTableType.SECTION_QUERY_TABLE, QueryTableType.STUDENT_QUERY_TABLE}
             Else
-                orderImport = {"Departments", "Faculty"}
+                orderImport = {"Departments", "Faculties"}
                 orderQuery = {QueryTableType.DEPARTMENT_QUERY_TABLE, QueryTableType.FACULTY_QUERY_TABLE}
             End If
 
@@ -175,7 +176,7 @@ Public Class ImportDataDialog
         ElseIf data.ContainsKey("Students") Then
             DGDATA.DataSource = data.Item("Students")
         Else
-            DGDATA.DataSource = data.Item("Faculty")
+            DGDATA.DataSource = data.Item("Faculties")
         End If
     End Sub
 
@@ -186,7 +187,7 @@ Public Class ImportDataDialog
         ElseIf data.ContainsKey("Students") Then
             DGDATA.DataSource = data.Item("Students")
         Else
-            DGDATA.DataSource = data.Item("Faculty")
+            DGDATA.DataSource = data.Item("Faculties")
         End If
         BTNIMPORT.Enabled = True
     End Sub
