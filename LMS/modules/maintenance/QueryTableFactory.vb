@@ -1,5 +1,6 @@
 ﻿Module QueryTableFactory
 
+#Region "Maintenanc Queries"
     ''' <summary>
     ''' 
     ''' </summary>
@@ -210,7 +211,8 @@
             ' TODO SELECT THE ACTIVE ONLY
             Case QueryTableType.BOOKCOPIES_QUERY_TABLE
                 Return New MaintenanceQueries With {
-                    .UPDATE_QUERY = "UPDATE tblbookcopies SET price = @price;",
+                    .UPDATE_QUERY = "UPDATE tblbookcopies SET status = 1;",
+                    .DELETE_QUERY = "UPDATE tblbookcopies SET status = 0",
                     .FETCH_LIMIT_QUERY = "SELECT 
                                             b.title,
 	                                        b.isbn,
@@ -268,4 +270,10 @@
         End Select
         Return New MaintenanceQueries
     End Function
+#End Region
+
+    Public ADD_ASSISTANT_STUDENT_QUERY As String = "INSERT INTO tbladmins (student_id) VALUES (@sid)"
+    Public ADD_ASSISTANT_FACULTY_QUERY As String = "INSERT INTO tbladmins (faculty_id) VALUES (@fid)"
+    Public REMOVE_ASSISTANT_QUERY As String = ""
+    Public PROMOTE_SUPERADMIN_QUERY As String = ""
 End Module

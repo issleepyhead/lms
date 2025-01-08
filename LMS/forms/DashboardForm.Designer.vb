@@ -71,6 +71,7 @@ Partial Class DashboardForm
         Dim DataGridViewCellStyle47 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle48 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle50 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle49 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle51 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle52 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle53 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -104,7 +105,6 @@ Partial Class DashboardForm
         Dim DataGridViewCellStyle81 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle82 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle83 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle49 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.MainFormPanels = New Guna.UI2.WinForms.Guna2TabControl()
         Me.DashboardTab = New System.Windows.Forms.TabPage()
@@ -355,19 +355,6 @@ Partial Class DashboardForm
         Me.BTNSTUDENTNEXT = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Panel33 = New Guna.UI2.WinForms.Guna2Panel()
         Me.DGSTUDENT = New Guna.UI2.WinForms.Guna2DataGridView()
-        Me.DataGridViewTextBoxColumn31 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column38 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewCheckBoxColumn8 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.DataGridViewTextBoxColumn32 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn34 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column21 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column33 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column34 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column37 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column36 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column35 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DGSTUDENTCONTEXTMENUSTRIP = New Guna.UI2.WinForms.Guna2ContextMenuStrip()
         Me.SelectAllToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.UnselectAllToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
@@ -379,6 +366,7 @@ Partial Class DashboardForm
         Me.FacultyTab = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel12 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel34 = New Guna.UI2.WinForms.Guna2Panel()
+        Me.Guna2ComboBox1 = New Guna.UI2.WinForms.Guna2ComboBox()
         Me.BTNFACULTYREFRESH = New Guna.UI2.WinForms.Guna2Button()
         Me.TXTFACULTYSEARCH = New Guna.UI2.WinForms.Guna2TextBox()
         Me.BTNADDFACULTY = New Guna.UI2.WinForms.Guna2Button()
@@ -423,6 +411,10 @@ Partial Class DashboardForm
         Me.BTNADMINNEXT = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Panel39 = New Guna.UI2.WinForms.Guna2Panel()
         Me.DGADMINISTRATOR = New Guna.UI2.WinForms.Guna2DataGridView()
+        Me.DataGridViewTextBoxColumn39 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewCheckBoxColumn10 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.DataGridViewTextBoxColumn40 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn41 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.BookInventoryTab = New System.Windows.Forms.TabPage()
         Me.BookInventoryPanels = New Guna.UI2.WinForms.Guna2TabControl()
         Me.CopiesTab = New System.Windows.Forms.TabPage()
@@ -510,7 +502,6 @@ Partial Class DashboardForm
         Me.TableLayoutPanel18 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel48 = New Guna.UI2.WinForms.Guna2Panel()
         Me.Guna2Button3 = New Guna.UI2.WinForms.Guna2Button()
-        Me.CMBLOSTDAMAGEFILTER = New Guna.UI2.WinForms.Guna2ComboBox()
         Me.TXTLOSTDAMAGESEARCH = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2Panel49 = New Guna.UI2.WinForms.Guna2Panel()
         Me.LBLLOSTDAMAGENEXT = New Guna.UI2.WinForms.Guna2HtmlLabel()
@@ -697,11 +688,19 @@ Partial Class DashboardForm
         Me.Guna2HtmlLabel3 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.LBLPROFILEROLE = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.LBLPROFILENAME = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.Guna2ComboBox1 = New Guna.UI2.WinForms.Guna2ComboBox()
-        Me.DataGridViewTextBoxColumn39 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewCheckBoxColumn10 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.DataGridViewTextBoxColumn40 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn41 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColumnStudentID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column38 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.chckBoxStudent = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.DataGridViewTextBoxColumn32 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn34 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column21 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column33 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column34 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column37 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column36 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column35 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TableLayoutPanel1.SuspendLayout
         Me.MainFormPanels.SuspendLayout
         Me.DashboardTab.SuspendLayout
@@ -4791,7 +4790,7 @@ Partial Class DashboardForm
         DataGridViewCellStyle41.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DGSTUDENT.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle41
         Me.DGSTUDENT.ColumnHeadersHeight = 48
-        Me.DGSTUDENT.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn31, Me.Column38, Me.DataGridViewCheckBoxColumn8, Me.DataGridViewTextBoxColumn32, Me.Column19, Me.DataGridViewTextBoxColumn34, Me.Column20, Me.Column21, Me.Column33, Me.Column34, Me.Column37, Me.Column36, Me.Column35})
+        Me.DGSTUDENT.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ColumnStudentID, Me.Column38, Me.chckBoxStudent, Me.DataGridViewTextBoxColumn32, Me.Column19, Me.DataGridViewTextBoxColumn34, Me.Column20, Me.Column21, Me.Column33, Me.Column34, Me.Column37, Me.Column36, Me.Column35})
         Me.DGSTUDENT.ContextMenuStrip = Me.DGSTUDENTCONTEXTMENUSTRIP
         DataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle42.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(239, Byte), Integer))
@@ -4834,96 +4833,6 @@ Partial Class DashboardForm
         Me.DGSTUDENT.ThemeStyle.RowsStyle.Height = 48
         Me.DGSTUDENT.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(205, Byte), Integer))
         Me.DGSTUDENT.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
-        '
-        'DataGridViewTextBoxColumn31
-        '
-        Me.DataGridViewTextBoxColumn31.DataPropertyName = "id"
-        Me.DataGridViewTextBoxColumn31.HeaderText = "id"
-        Me.DataGridViewTextBoxColumn31.Name = "DataGridViewTextBoxColumn31"
-        Me.DataGridViewTextBoxColumn31.Visible = False
-        '
-        'Column38
-        '
-        Me.Column38.DataPropertyName = "email"
-        Me.Column38.HeaderText = "email"
-        Me.Column38.Name = "Column38"
-        Me.Column38.Visible = False
-        '
-        'DataGridViewCheckBoxColumn8
-        '
-        Me.DataGridViewCheckBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.DataGridViewCheckBoxColumn8.HeaderText = ""
-        Me.DataGridViewCheckBoxColumn8.Name = "DataGridViewCheckBoxColumn8"
-        Me.DataGridViewCheckBoxColumn8.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewCheckBoxColumn8.Width = 40
-        '
-        'DataGridViewTextBoxColumn32
-        '
-        Me.DataGridViewTextBoxColumn32.DataPropertyName = "full_name"
-        Me.DataGridViewTextBoxColumn32.HeaderText = "Full Name"
-        Me.DataGridViewTextBoxColumn32.MaxInputLength = 50
-        Me.DataGridViewTextBoxColumn32.Name = "DataGridViewTextBoxColumn32"
-        Me.DataGridViewTextBoxColumn32.ReadOnly = True
-        Me.DataGridViewTextBoxColumn32.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        '
-        'Column19
-        '
-        Me.Column19.DataPropertyName = "lrn"
-        Me.Column19.HeaderText = "LRN"
-        Me.Column19.Name = "Column19"
-        '
-        'DataGridViewTextBoxColumn34
-        '
-        Me.DataGridViewTextBoxColumn34.DataPropertyName = "student_no"
-        Me.DataGridViewTextBoxColumn34.HeaderText = "Student Number"
-        Me.DataGridViewTextBoxColumn34.Name = "DataGridViewTextBoxColumn34"
-        '
-        'Column20
-        '
-        Me.Column20.DataPropertyName = "section"
-        Me.Column20.HeaderText = "Section"
-        Me.Column20.Name = "Column20"
-        '
-        'Column21
-        '
-        Me.Column21.DataPropertyName = "year_level"
-        Me.Column21.HeaderText = "Year"
-        Me.Column21.Name = "Column21"
-        '
-        'Column33
-        '
-        Me.Column33.DataPropertyName = "section_id"
-        Me.Column33.HeaderText = "sid"
-        Me.Column33.Name = "Column33"
-        Me.Column33.Visible = False
-        '
-        'Column34
-        '
-        Me.Column34.DataPropertyName = "year_id"
-        Me.Column34.HeaderText = "yid"
-        Me.Column34.Name = "Column34"
-        Me.Column34.Visible = False
-        '
-        'Column37
-        '
-        Me.Column37.DataPropertyName = "phone"
-        Me.Column37.HeaderText = "phone"
-        Me.Column37.Name = "Column37"
-        Me.Column37.Visible = False
-        '
-        'Column36
-        '
-        Me.Column36.DataPropertyName = "address"
-        Me.Column36.HeaderText = "address"
-        Me.Column36.Name = "Column36"
-        Me.Column36.Visible = False
-        '
-        'Column35
-        '
-        Me.Column35.DataPropertyName = "gender"
-        Me.Column35.HeaderText = "gender"
-        Me.Column35.Name = "Column35"
-        Me.Column35.Visible = False
         '
         'DGSTUDENTCONTEXTMENUSTRIP
         '
@@ -5027,6 +4936,26 @@ Partial Class DashboardForm
         Me.Guna2Panel34.Padding = New System.Windows.Forms.Padding(20, 0, 20, 0)
         Me.Guna2Panel34.Size = New System.Drawing.Size(1558, 60)
         Me.Guna2Panel34.TabIndex = 0
+        '
+        'Guna2ComboBox1
+        '
+        Me.Guna2ComboBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Guna2ComboBox1.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2ComboBox1.BorderRadius = 4
+        Me.Guna2ComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.Guna2ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.Guna2ComboBox1.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Guna2ComboBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Guna2ComboBox1.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.Guna2ComboBox1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
+        Me.Guna2ComboBox1.ItemHeight = 34
+        Me.Guna2ComboBox1.Items.AddRange(New Object() {"All", "Active", "Archived"})
+        Me.Guna2ComboBox1.Location = New System.Drawing.Point(1099, 10)
+        Me.Guna2ComboBox1.Margin = New System.Windows.Forms.Padding(0)
+        Me.Guna2ComboBox1.Name = "Guna2ComboBox1"
+        Me.Guna2ComboBox1.Size = New System.Drawing.Size(171, 40)
+        Me.Guna2ComboBox1.StartIndex = 0
+        Me.Guna2ComboBox1.TabIndex = 22
         '
         'BTNFACULTYREFRESH
         '
@@ -5643,6 +5572,41 @@ Partial Class DashboardForm
         Me.DGADMINISTRATOR.ThemeStyle.RowsStyle.Height = 48
         Me.DGADMINISTRATOR.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(205, Byte), Integer))
         Me.DGADMINISTRATOR.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
+        '
+        'DataGridViewTextBoxColumn39
+        '
+        Me.DataGridViewTextBoxColumn39.DataPropertyName = "id"
+        Me.DataGridViewTextBoxColumn39.HeaderText = "id"
+        Me.DataGridViewTextBoxColumn39.Name = "DataGridViewTextBoxColumn39"
+        Me.DataGridViewTextBoxColumn39.Visible = False
+        '
+        'DataGridViewCheckBoxColumn10
+        '
+        Me.DataGridViewCheckBoxColumn10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.DataGridViewCheckBoxColumn10.HeaderText = ""
+        Me.DataGridViewCheckBoxColumn10.Name = "DataGridViewCheckBoxColumn10"
+        Me.DataGridViewCheckBoxColumn10.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewCheckBoxColumn10.Width = 40
+        '
+        'DataGridViewTextBoxColumn40
+        '
+        Me.DataGridViewTextBoxColumn40.DataPropertyName = "full_name"
+        Me.DataGridViewTextBoxColumn40.HeaderText = "Full Name"
+        Me.DataGridViewTextBoxColumn40.MaxInputLength = 50
+        Me.DataGridViewTextBoxColumn40.Name = "DataGridViewTextBoxColumn40"
+        Me.DataGridViewTextBoxColumn40.ReadOnly = True
+        Me.DataGridViewTextBoxColumn40.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
+        'DataGridViewTextBoxColumn41
+        '
+        Me.DataGridViewTextBoxColumn41.DataPropertyName = "role"
+        DataGridViewCellStyle49.NullValue = "None"
+        Me.DataGridViewTextBoxColumn41.DefaultCellStyle = DataGridViewCellStyle49
+        Me.DataGridViewTextBoxColumn41.HeaderText = "Role"
+        Me.DataGridViewTextBoxColumn41.MaxInputLength = 100
+        Me.DataGridViewTextBoxColumn41.Name = "DataGridViewTextBoxColumn41"
+        Me.DataGridViewTextBoxColumn41.ReadOnly = True
+        Me.DataGridViewTextBoxColumn41.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         '
         'BookInventoryTab
         '
@@ -6854,7 +6818,6 @@ Partial Class DashboardForm
         '
         Me.Guna2Panel48.BackColor = System.Drawing.SystemColors.Window
         Me.Guna2Panel48.Controls.Add(Me.Guna2Button3)
-        Me.Guna2Panel48.Controls.Add(Me.CMBLOSTDAMAGEFILTER)
         Me.Guna2Panel48.Controls.Add(Me.TXTLOSTDAMAGESEARCH)
         Me.Guna2Panel48.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Guna2Panel48.Location = New System.Drawing.Point(0, 0)
@@ -6879,26 +6842,6 @@ Partial Class DashboardForm
         Me.Guna2Button3.Size = New System.Drawing.Size(141, 40)
         Me.Guna2Button3.TabIndex = 22
         Me.Guna2Button3.Text = "Refresh"
-        '
-        'CMBLOSTDAMAGEFILTER
-        '
-        Me.CMBLOSTDAMAGEFILTER.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.CMBLOSTDAMAGEFILTER.BackColor = System.Drawing.Color.Transparent
-        Me.CMBLOSTDAMAGEFILTER.BorderRadius = 4
-        Me.CMBLOSTDAMAGEFILTER.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-        Me.CMBLOSTDAMAGEFILTER.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.CMBLOSTDAMAGEFILTER.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.CMBLOSTDAMAGEFILTER.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.CMBLOSTDAMAGEFILTER.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-        Me.CMBLOSTDAMAGEFILTER.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
-        Me.CMBLOSTDAMAGEFILTER.ItemHeight = 34
-        Me.CMBLOSTDAMAGEFILTER.Items.AddRange(New Object() {"Male", "Female"})
-        Me.CMBLOSTDAMAGEFILTER.Location = New System.Drawing.Point(1094, 10)
-        Me.CMBLOSTDAMAGEFILTER.Margin = New System.Windows.Forms.Padding(0)
-        Me.CMBLOSTDAMAGEFILTER.Name = "CMBLOSTDAMAGEFILTER"
-        Me.CMBLOSTDAMAGEFILTER.Size = New System.Drawing.Size(171, 40)
-        Me.CMBLOSTDAMAGEFILTER.StartIndex = 0
-        Me.CMBLOSTDAMAGEFILTER.TabIndex = 21
         '
         'TXTLOSTDAMAGESEARCH
         '
@@ -9901,60 +9844,95 @@ Partial Class DashboardForm
         Me.LBLPROFILENAME.TabIndex = 1
         Me.LBLPROFILENAME.Text = "Doe, John"
         '
-        'Guna2ComboBox1
+        'ColumnStudentID
         '
-        Me.Guna2ComboBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Guna2ComboBox1.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2ComboBox1.BorderRadius = 4
-        Me.Guna2ComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-        Me.Guna2ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.Guna2ComboBox1.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Guna2ComboBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Guna2ComboBox1.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-        Me.Guna2ComboBox1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
-        Me.Guna2ComboBox1.ItemHeight = 34
-        Me.Guna2ComboBox1.Items.AddRange(New Object() {"All", "Active", "Archived"})
-        Me.Guna2ComboBox1.Location = New System.Drawing.Point(1099, 10)
-        Me.Guna2ComboBox1.Margin = New System.Windows.Forms.Padding(0)
-        Me.Guna2ComboBox1.Name = "Guna2ComboBox1"
-        Me.Guna2ComboBox1.Size = New System.Drawing.Size(171, 40)
-        Me.Guna2ComboBox1.StartIndex = 0
-        Me.Guna2ComboBox1.TabIndex = 22
+        Me.ColumnStudentID.DataPropertyName = "id"
+        Me.ColumnStudentID.HeaderText = "id"
+        Me.ColumnStudentID.Name = "ColumnStudentID"
+        Me.ColumnStudentID.Visible = False
         '
-        'DataGridViewTextBoxColumn39
+        'Column38
         '
-        Me.DataGridViewTextBoxColumn39.DataPropertyName = "id"
-        Me.DataGridViewTextBoxColumn39.HeaderText = "id"
-        Me.DataGridViewTextBoxColumn39.Name = "DataGridViewTextBoxColumn39"
-        Me.DataGridViewTextBoxColumn39.Visible = False
+        Me.Column38.DataPropertyName = "email"
+        Me.Column38.HeaderText = "email"
+        Me.Column38.Name = "Column38"
+        Me.Column38.Visible = False
         '
-        'DataGridViewCheckBoxColumn10
+        'chckBoxStudent
         '
-        Me.DataGridViewCheckBoxColumn10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.DataGridViewCheckBoxColumn10.HeaderText = ""
-        Me.DataGridViewCheckBoxColumn10.Name = "DataGridViewCheckBoxColumn10"
-        Me.DataGridViewCheckBoxColumn10.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewCheckBoxColumn10.Width = 40
+        Me.chckBoxStudent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.chckBoxStudent.HeaderText = ""
+        Me.chckBoxStudent.Name = "chckBoxStudent"
+        Me.chckBoxStudent.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.chckBoxStudent.Width = 40
         '
-        'DataGridViewTextBoxColumn40
+        'DataGridViewTextBoxColumn32
         '
-        Me.DataGridViewTextBoxColumn40.DataPropertyName = "full_name"
-        Me.DataGridViewTextBoxColumn40.HeaderText = "Full Name"
-        Me.DataGridViewTextBoxColumn40.MaxInputLength = 50
-        Me.DataGridViewTextBoxColumn40.Name = "DataGridViewTextBoxColumn40"
-        Me.DataGridViewTextBoxColumn40.ReadOnly = True
-        Me.DataGridViewTextBoxColumn40.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewTextBoxColumn32.DataPropertyName = "full_name"
+        Me.DataGridViewTextBoxColumn32.HeaderText = "Full Name"
+        Me.DataGridViewTextBoxColumn32.MaxInputLength = 50
+        Me.DataGridViewTextBoxColumn32.Name = "DataGridViewTextBoxColumn32"
+        Me.DataGridViewTextBoxColumn32.ReadOnly = True
+        Me.DataGridViewTextBoxColumn32.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         '
-        'DataGridViewTextBoxColumn41
+        'Column19
         '
-        Me.DataGridViewTextBoxColumn41.DataPropertyName = "role"
-        DataGridViewCellStyle49.NullValue = "None"
-        Me.DataGridViewTextBoxColumn41.DefaultCellStyle = DataGridViewCellStyle49
-        Me.DataGridViewTextBoxColumn41.HeaderText = "Role"
-        Me.DataGridViewTextBoxColumn41.MaxInputLength = 100
-        Me.DataGridViewTextBoxColumn41.Name = "DataGridViewTextBoxColumn41"
-        Me.DataGridViewTextBoxColumn41.ReadOnly = True
-        Me.DataGridViewTextBoxColumn41.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.Column19.DataPropertyName = "lrn"
+        Me.Column19.HeaderText = "LRN"
+        Me.Column19.Name = "Column19"
+        '
+        'DataGridViewTextBoxColumn34
+        '
+        Me.DataGridViewTextBoxColumn34.DataPropertyName = "student_no"
+        Me.DataGridViewTextBoxColumn34.HeaderText = "Student Number"
+        Me.DataGridViewTextBoxColumn34.Name = "DataGridViewTextBoxColumn34"
+        '
+        'Column20
+        '
+        Me.Column20.DataPropertyName = "section"
+        Me.Column20.HeaderText = "Section"
+        Me.Column20.Name = "Column20"
+        '
+        'Column21
+        '
+        Me.Column21.DataPropertyName = "year_level"
+        Me.Column21.HeaderText = "Year"
+        Me.Column21.Name = "Column21"
+        '
+        'Column33
+        '
+        Me.Column33.DataPropertyName = "section_id"
+        Me.Column33.HeaderText = "sid"
+        Me.Column33.Name = "Column33"
+        Me.Column33.Visible = False
+        '
+        'Column34
+        '
+        Me.Column34.DataPropertyName = "year_id"
+        Me.Column34.HeaderText = "yid"
+        Me.Column34.Name = "Column34"
+        Me.Column34.Visible = False
+        '
+        'Column37
+        '
+        Me.Column37.DataPropertyName = "phone"
+        Me.Column37.HeaderText = "phone"
+        Me.Column37.Name = "Column37"
+        Me.Column37.Visible = False
+        '
+        'Column36
+        '
+        Me.Column36.DataPropertyName = "address"
+        Me.Column36.HeaderText = "address"
+        Me.Column36.Name = "Column36"
+        Me.Column36.Visible = False
+        '
+        'Column35
+        '
+        Me.Column35.DataPropertyName = "gender"
+        Me.Column35.HeaderText = "gender"
+        Me.Column35.Name = "Column35"
+        Me.Column35.Visible = False
         '
         'DashboardForm
         '
@@ -10622,19 +10600,6 @@ Partial Class DashboardForm
     Friend WithEvents DataGridViewCheckBoxColumn16 As DataGridViewCheckBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn62 As DataGridViewTextBoxColumn
     Friend WithEvents CMBYEARLEVEL As Guna.UI2.WinForms.Guna2ComboBox
-    Friend WithEvents DataGridViewTextBoxColumn31 As DataGridViewTextBoxColumn
-    Friend WithEvents Column38 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewCheckBoxColumn8 As DataGridViewCheckBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn32 As DataGridViewTextBoxColumn
-    Friend WithEvents Column19 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn34 As DataGridViewTextBoxColumn
-    Friend WithEvents Column20 As DataGridViewTextBoxColumn
-    Friend WithEvents Column21 As DataGridViewTextBoxColumn
-    Friend WithEvents Column33 As DataGridViewTextBoxColumn
-    Friend WithEvents Column34 As DataGridViewTextBoxColumn
-    Friend WithEvents Column37 As DataGridViewTextBoxColumn
-    Friend WithEvents Column36 As DataGridViewTextBoxColumn
-    Friend WithEvents Column35 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn26 As DataGridViewTextBoxColumn
     Friend WithEvents Column23 As DataGridViewTextBoxColumn
     Friend WithEvents Column40 As DataGridViewTextBoxColumn
@@ -10693,7 +10658,6 @@ Partial Class DashboardForm
     Friend WithEvents BTNSTUDENTREFRESH As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents BTNFACULTYREFRESH As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents BTNADMINREFRESH As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents CMBLOSTDAMAGEFILTER As Guna.UI2.WinForms.Guna2ComboBox
     Friend WithEvents Guna2Button1 As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Guna2Button2 As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Guna2Button3 As Guna.UI2.WinForms.Guna2Button
@@ -10778,4 +10742,17 @@ Partial Class DashboardForm
     Friend WithEvents DataGridViewCheckBoxColumn10 As DataGridViewCheckBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn40 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn41 As DataGridViewTextBoxColumn
+    Friend WithEvents ColumnStudentID As DataGridViewTextBoxColumn
+    Friend WithEvents Column38 As DataGridViewTextBoxColumn
+    Friend WithEvents chckBoxStudent As DataGridViewCheckBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn32 As DataGridViewTextBoxColumn
+    Friend WithEvents Column19 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn34 As DataGridViewTextBoxColumn
+    Friend WithEvents Column20 As DataGridViewTextBoxColumn
+    Friend WithEvents Column21 As DataGridViewTextBoxColumn
+    Friend WithEvents Column33 As DataGridViewTextBoxColumn
+    Friend WithEvents Column34 As DataGridViewTextBoxColumn
+    Friend WithEvents Column37 As DataGridViewTextBoxColumn
+    Friend WithEvents Column36 As DataGridViewTextBoxColumn
+    Friend WithEvents Column35 As DataGridViewTextBoxColumn
 End Class

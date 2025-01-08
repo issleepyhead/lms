@@ -14,10 +14,10 @@ Public Class ImportDataDialog
         _importHandler = excelLoader
         _keyDialog = keyDialog
 
-        If keyDialog = "importbook" Then
+        If keyDialog = NameOf(BookDialog) Then
             _importHandler = New BookImport
             Text &= " - Books"
-        ElseIf keyDialog = "importstudent" Then
+        ElseIf keyDialog = NameOf(StudentDialog) Then
             _importHandler = New AccountImport(QueryTableType.STUDENT_QUERY_TABLE)
             Text &= " - Students"
         Else

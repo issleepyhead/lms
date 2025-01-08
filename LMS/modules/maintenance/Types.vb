@@ -5,8 +5,8 @@
 ''' INACTIVE = 1
 ''' </summary>
 Public Enum STATUSTYPE
-    ACTIVE = 0
-    INACTIVE = 1
+    ACTIVE = 1
+    INACTIVE = 0
 End Enum
 
 ''' <summary>
