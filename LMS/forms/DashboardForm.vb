@@ -523,14 +523,6 @@ Public Class DashboardForm
     End Sub
 
     Private Sub BTNBOOKNEXT_Click(sender As Object, e As EventArgs) Handles BTNBOOKNEXT.Click
-        ' Before going to next page fetch all the selected values that are not in the select collection
-        For Each item As DataGridViewRow In DGBOOKS.Rows
-            Dim boundItem As DataRowView = TryCast(item.DataBoundItem, DataRowView)
-            If item.Cells(NameOf(chckBoxBooks)).Value AndAlso Not SELECTED_BOOKS.Rows.Contains(boundItem.Row.Item("id")) Then
-                SELECTED_BOOKS.Rows.Add(boundItem.Row.ItemArray)
-            End If
-        Next
-
         If BaseMaintenance.PPrev < BaseMaintenance.PMAX Then
             BaseMaintenance.PPrev += 1
             LBLBOOKPREV.Text = BaseMaintenance.PPrev
@@ -551,14 +543,6 @@ Public Class DashboardForm
     End Sub
 
     Private Sub BTNBOOKPREV_Click(sender As Object, e As EventArgs) Handles BTNBOOKPREV.Click
-        ' Before going to prev page fetch all the selected values that are not in the select collection
-        For Each item As DataGridViewRow In DGBOOKS.Rows
-            Dim boundItem As DataRowView = TryCast(item.DataBoundItem, DataRowView)
-            If item.Cells(NameOf(chckBoxBooks)).Value AndAlso Not SELECTED_BOOKS.Rows.Contains(boundItem.Row.Item("id")) Then
-                SELECTED_BOOKS.Rows.Add(boundItem.Row.ItemArray)
-            End If
-        Next
-
         If BaseMaintenance.PPrev > 1 Then
             BaseMaintenance.PPrev -= 1
             LBLBOOKPREV.Text = BaseMaintenance.PPrev
@@ -594,14 +578,49 @@ Public Class DashboardForm
 
     Private Sub TXBOOKSEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTBOOKSEARCH.TextChanged
         If MaintenancePanels.SelectedTab.Equals(BooksTab) Then
-            If Not String.IsNullOrEmpty(TXTBOOKSEARCH.Text) Then
+            If CMBBOOKFILTER.SelectedIndex = 0 Then
                 DGBOOKS.DataSource = BaseMaintenance.Search(QueryTableType.BOOK_QUERY_TABLE, TXTBOOKSEARCH.Text)
                 LBLBOOKNEXT.Text = BaseMaintenance.PMAX
                 LBLBOOKPREV.Text = BaseMaintenance.PPrev
             Else
-                DGBOOKS.DataSource = BaseMaintenance.Fetch(QueryTableType.BOOK_QUERY_TABLE)
+                DGBOOKS.DataSource = BaseMaintenance.SearchArchive(QueryTableType.BOOK_QUERY_TABLE, TXTBOOKSEARCH.Text)
                 LBLBOOKNEXT.Text = BaseMaintenance.PMAX
                 LBLBOOKPREV.Text = BaseMaintenance.PPrev
+            End If
+        End If
+    End Sub
+
+    Private Sub CMBBOOKFILTER_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CMBBOOKFILTER.SelectedIndexChanged
+        If MaintenancePanels.SelectedTab.Equals(BooksTab) Then
+            If CMBBOOKFILTER.SelectedIndex = 0 Then
+                DGBOOKS.DataSource = BaseMaintenance.Search(QueryTableType.BOOK_QUERY_TABLE, TXTBOOKSEARCH.Text)
+                LBLBOOKNEXT.Text = BaseMaintenance.PMAX
+                LBLBOOKPREV.Text = BaseMaintenance.PPrev
+            Else
+                DGBOOKS.DataSource = BaseMaintenance.SearchArchive(QueryTableType.BOOK_QUERY_TABLE, TXTBOOKSEARCH.Text)
+                LBLBOOKNEXT.Text = BaseMaintenance.PMAX
+                LBLBOOKPREV.Text = BaseMaintenance.PPrev
+            End If
+        End If
+    End Sub
+
+    Private Sub DGBOOKS_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGBOOKS.CellContentClick
+        If e.ColumnIndex = chckBoxBooks.Index Then
+            DGBOOKS.EndEdit()
+            Dim boundItem As DataRowView = TryCast(DGBOOKS.Rows(e.RowIndex).DataBoundItem, DataRowView)
+            If CBool(DGBOOKS.Rows(e.RowIndex).Cells(e.ColumnIndex).Value) AndAlso Not SELECTED_BOOKS.Rows.Contains(boundItem.Row.Item("id")) Then
+                SELECTED_BOOKS.Rows.Add(boundItem.Row.ItemArray)
+            Else
+                If SELECTED_BOOKS.Rows.Contains(boundItem.Row.Item("id")) Then
+                    Dim row As DataRow = Nothing
+                    For Each item As DataRow In SELECTED_BOOKS.Rows
+                        If item.Item("id") = boundItem.Row.Item("id") Then
+                            row = item
+                            Exit For
+                        End If
+                    Next
+                    SELECTED_BOOKS.Rows.Remove(row)
+                End If
             End If
         End If
     End Sub
@@ -778,49 +797,39 @@ Public Class DashboardForm
             Select Case True
                 Case MaintenancePanels.SelectedTab.Equals(GenresTab)
                     For Each item As DataGridViewRow In DGGENRE.Rows
-                        item.Cells("chckBoxGenre").Value = True
+                        item.Cells(NameOf(chckBoxGenre)).Value = True
                     Next
                     DGGENRE.EndEdit()
                 Case MaintenancePanels.SelectedTab.Equals(AuthorTab)
                     For Each item As DataGridViewRow In DGAUTHORS.Rows
-                        item.Cells("chckBoxAuthor").Value = True
+                        item.Cells(NameOf(chckBoxAuthor)).Value = True
                     Next
                     DGAUTHORS.EndEdit()
                 Case MaintenancePanels.SelectedTab.Equals(PublishhersTab)
                     For Each item As DataGridViewRow In DGPUBLISHER.Rows
-                        item.Cells("chckBoxPublisher").Value = True
+                        item.Cells(NameOf(chckBoxPublisher)).Value = True
                     Next
                     DGPUBLISHER.EndEdit()
                 Case MaintenancePanels.SelectedTab.Equals(DonatorsTab)
                     For Each item As DataGridViewRow In DGDONATOR.Rows
-                        item.Cells("chckBoxDonator").Value = True
+                        item.Cells(NameOf(chckBoxDonator)).Value = True
                     Next
                     DGDONATOR.EndEdit()
                 Case MaintenancePanels.SelectedTab.Equals(SuppliersTab)
                     For Each item As DataGridViewRow In DGSUPPLIER.Rows
-                        item.Cells("chckBoxSupplier").Value = True
+                        item.Cells(NameOf(chckBoxSupplier)).Value = True
                     Next
                     DGSUPPLIER.EndEdit()
                 Case MaintenancePanels.SelectedTab.Equals(ClassificationTab)
                     For Each item As DataGridViewRow In DGCLASSIFICATIONS.Rows
-                        item.Cells("chckBoxClassification").Value = True
+                        item.Cells(NameOf(chckBoxClassification)).Value = True
                     Next
                     DGCLASSIFICATIONS.EndEdit()
                 Case MaintenancePanels.SelectedTab.Equals(LanguagesTab)
                     For Each item As DataGridViewRow In DGLANGUAGE.Rows
-                        item.Cells("chckBoxLanguage").Value = True
+                        item.Cells(NameOf(chckBoxLanguage)).Value = True
                     Next
                     DGLANGUAGE.EndEdit()
-                Case MaintenancePanels.SelectedTab.Equals(DonatorsTab)
-                    For Each item As DataGridViewRow In DGDONATOR.Rows
-                        item.Cells("chckBoxDonator").Value = True
-                    Next
-                    DGDONATOR.EndEdit()
-                Case MaintenancePanels.SelectedTab.Equals(SuppliersTab)
-                    For Each item As DataGridViewRow In DGSUPPLIER.Rows
-                        item.Cells("chckBoxSupplier").Value = True
-                    Next
-                    DGSUPPLIER.EndEdit()
             End Select
         Else
             Select Case True
@@ -1109,23 +1118,82 @@ Public Class DashboardForm
 
 #Region "Book Copies Module"
     Private Sub ArchiveSelectedToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles ArchiveSelectedToolStripMenuItem2.Click
-        ' TODO FIX THE ARCHIVING
-        For Each item As DataGridViewRow In DGBOOKS.Rows
-            DeleteHelper(DGBOOKCOPIES, QueryTableType.BOOKCOPIES_QUERY_TABLE, NameOf(chckBoxBooks), NameOf(ColumnBookID))
-        Next
+        If SELECTED_BOOKS.Rows.Count = 0 Then
+            MessageBox.Show("Please select an item to continue.", "No Item Selected!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Exit Sub
+        Else
+            If MessageBox.Show("Archiving the selected item(s) will make the copies unavailable to inventory." & vbLf & "Are you sure you want to archive the selected item(s)?", "Archive Selected Item(s)?", MessageBoxButtons.YesNo, MessageBoxIcon.Information) <> DialogResult.Yes Then
+                Exit Sub
+            End If
+
+            Dim collection As New List(Of Dictionary(Of String, String))
+            For Each item As DataRow In SELECTED_BOOKS.Rows
+                collection.Add(New Dictionary(Of String, String) From {{"@id", item.Item("id")}})
+            Next
+            If ExecTransactionNonQuery(ARCHIVE_BOOKS_QUERY, collection) Then
+                MessageBox.Show("Archived Successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Else
+                MessageBox.Show("Archiving failed.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            End If
+        End If
         DGBOOKS.EndEdit()
+        LoadTabData(DGBOOKS, LBLBOOKPREV, LBLBOOKNEXT, QueryTableType.BOOK_QUERY_TABLE)
     End Sub
 
     Private Sub UnarchiveSelectedToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles UnarchiveSelectedToolStripMenuItem2.Click
-        For Each item As DataGridViewRow In DGBOOKS.Rows
-            item.Cells(NameOf(chckBoxBooks)).Value = True
-        Next
+        If SELECTED_BOOKS.Rows.Count = 0 Then
+            MessageBox.Show("Please select an item to continue.", "No Item Selected!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Exit Sub
+        Else
+
+            Dim collection As New List(Of Dictionary(Of String, String))
+            For Each item As DataRow In SELECTED_BOOKS.Rows
+                collection.Add(New Dictionary(Of String, String) From {{"@id", item.Item("id")}})
+            Next
+            If ExecTransactionNonQuery(UNARCHIVE_BOOKS_QUERY, collection) Then
+                MessageBox.Show("Unarchived Successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Else
+                MessageBox.Show("Unarchive failed.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            End If
+        End If
         DGBOOKS.EndEdit()
+        LoadTabData(DGBOOKS, LBLBOOKPREV, LBLBOOKNEXT, QueryTableType.BOOK_QUERY_TABLE)
     End Sub
+
+    Private Sub DeleteSelectedToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DeleteSelectedToolStripMenuItem.Click
+
+        If SELECTED_BOOKS.Rows.Count = 0 Then
+            MessageBox.Show("Please select an item to continue.", "No Item Selected!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Exit Sub
+        End If
+
+        If MessageBox.Show("Deleting these items will also delete the existing book copies." & vbLf & "Are you sure you want to delete the selected item(s)?", "Delete Selected Items?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.No Then
+            Exit Sub
+        End If
+
+        Dim collection As New List(Of Dictionary(Of String, String))
+
+        For Each item As DataRow In SELECTED_BOOKS.Rows
+            collection.Add(New Dictionary(Of String, String) From {{"@id", item.Item("id")}})
+        Next
+
+        If BaseMaintenance.Delete(QueryTableType.BOOK_QUERY_TABLE, collection) Then
+            MessageBox.Show("Deleted Successfully!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Else
+            MessageBox.Show("Cannot delete the selected items. Some items are being used to other resources. Please remove the them before deleting.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
+        LoadTabData(DGBOOKS, LBLBOOKPREV, LBLBOOKNEXT, QueryTableType.BOOK_QUERY_TABLE)
+    End Sub
+
+
 
     Private Sub SelectAllToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles SelectAllToolStripMenuItem1.Click
         For Each item As DataGridViewRow In DGBOOKS.Rows
             item.Cells(NameOf(chckBoxBooks)).Value = True
+            Dim boundItem As DataRowView = TryCast(item.DataBoundItem, DataRowView)
+            If Not SELECTED_BOOKS.Rows.Contains(boundItem.Row.Item("id")) Then
+                SELECTED_BOOKS.Rows.Add(boundItem.Row.ItemArray)
+            End If
         Next
         DGBOOKS.EndEdit()
     End Sub
@@ -1133,6 +1201,17 @@ Public Class DashboardForm
     Private Sub UnselectAllToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles UnselectAllToolStripMenuItem1.Click
         For Each item As DataGridViewRow In DGBOOKS.Rows
             item.Cells(NameOf(chckBoxBooks)).Value = False
+            Dim boundItem As DataRowView = TryCast(item.DataBoundItem, DataRowView)
+            If SELECTED_BOOKS.Rows.Contains(boundItem.Row.Item("id")) Then
+                Dim row As DataRow = Nothing
+                For Each rowItem As DataRow In SELECTED_BOOKS.Rows
+                    If rowItem.Item("id") = boundItem.Row.Item("id") Then
+                        row = rowItem
+                        Exit For
+                    End If
+                Next
+                SELECTED_BOOKS.Rows.Remove(row)
+            End If
         Next
         SELECTED_BOOKS = New SystemDataSets.DTBookDataTable
         DGBOOKS.EndEdit()

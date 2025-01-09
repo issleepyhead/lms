@@ -113,23 +113,37 @@
                     .DELETE_QUERY = "DELETE FROM tblbooks WHERE id = @id",
                     .EXISTS_QUERY_WITH_ID = "SELECT COUNT(*) FROM tblbooks WHERE LOWER(isbn) = LOWER(@isbn) AND id != @id",
                     .EXISTS_QUERY_NO_ID = "SELECT COUNT(*) FROM tblbooks WHERE LOWER(isbn) = LOWER(@isbn)",
-                    .FETCH_TOTAL_COUNT_QUERY = "SELECT COUNT(*) FROM tblbooks",
+                    .FETCH_TOTAL_COUNT_QUERY = "SELECT COUNT(*) FROM tblbooks WHERE status = 1",
                     .FETCH_LIMIT_QUERY = "SELECT b.id, b.title, b.isbn, b.book_cover, b.fpenalty, b.spenalty, b.publisher_id, b.genre_id, b.language_id, b.author_id,
                                                  b.classification_id, b.reserve_copy, g.name genre_name, concat(a.first_name, ' ', a.last_name) name
                                             FROM tblbooks b
                                             JOIN tblgenres g ON genre_id = g.id
-                                            JOIN tblauthors a ON author_id = a.id ORDER BY title ASC LIMIT @page, 30;",
+                                            JOIN tblauthors a ON author_id = a.id WHERE status = 1 ORDER BY title ASC LIMIT @page, 30;",
                     .FETCH_LIMIT_QUERY_SEARCH = "SELECT b.id, b.title, b.isbn, b.book_cover, b.fpenalty, b.spenalty, b.publisher_id, b.genre_id, b.language_id, b.author_id,
                                                  b.classification_id, b.reserve_copy, g.name genre_name, concat(a.first_name, ' ', a.last_name) name
                                                     FROM tblbooks b
                                                     JOIN tblgenres g ON genre_id = g.id
-                                                    JOIN tblauthors a ON author_id = a.id WHERE title LIKE @search OR isbn LIKE @search OR g.name LIKE @search OR a.first_name LIKE @search OR a.last_name LIKE @search ORDER BY title ASC LIMIT @page, 30;",
+                                                    JOIN tblauthors a ON author_id = a.id WHERE status = 1 AND title LIKE @search OR isbn LIKE @search OR g.name LIKE @search OR a.first_name LIKE @search OR a.last_name LIKE @search ORDER BY title ASC LIMIT @page, 30;",
                     .FETCH_TOTAL_COUNT_QUERY_SEARCH = "SELECT COUNT(*)
                                                     FROM tblbooks b
                                                     JOIN tblgenres g ON genre_id = g.id
-                                                    JOIN tblauthors a ON author_id = a.id WHERE title LIKE @search OR isbn LIKE @search OR g.name LIKE @search OR a.first_name LIKE @search OR a.last_name LIKE @search ORDER BY title ASC",
-                    .UPDATE_QUERY = "UPDATE tblbooks SET isbn = @isbn, title = @title, book_cover = @cover, genre_id = @gid, author_id = @aid, publisher_id = @pid, language_id = @lid, classification_id = @cid, reserve_copy = @rcopy, spenalty = @spenalty, fpenalty = @fpenalty WHERE id = @id",
-                    .FETCH_ALL_QUERY = "SELECT language, code, id FROM tbllanguages ORDER BY language ASC"
+                                                    JOIN tblauthors a ON author_id = a.id WHERE status = 1 AND title LIKE @search OR isbn LIKE @search OR g.name LIKE @search OR a.first_name LIKE @search OR a.last_name LIKE @search ORDER BY title ASC",
+                    .UPDATE_QUERY = "UPDATE tblbooks SET isbn = @isbn, title = @title, book_cover = @cover, genre_id = @gid, author_id = @aid, publisher_id = @pid, language_id = @lid, classification_id = @cid, reserve_copy = @rcopy, spenalty = @spenalty, fpenalty = @fpenalty, status = 1 WHERE id = @id",
+                    .FETCH_ARCHIVE_TOTAL_COUNT = "SELECT COUNT(*) FROM tblbooks WHERE status = 0",
+                    .FETCH_ARCHIVE_SEARCH_TOTAL_COUNT = "SELECT COUNT(*)
+                                                    FROM tblbooks b
+                                                    JOIN tblgenres g ON genre_id = g.id
+                                                    JOIN tblauthors a ON author_id = a.id WHERE status = 0 AND (title LIKE @search OR isbn LIKE @search OR g.name LIKE @search OR a.first_name LIKE @search OR a.last_name LIKE @search) ORDER BY title ASC",
+                    .FETCH_ARCHIVE_LIMIT = "SELECT b.id, b.title, b.isbn, b.book_cover, b.fpenalty, b.spenalty, b.publisher_id, b.genre_id, b.language_id, b.author_id,
+                                                 b.classification_id, b.reserve_copy, g.name genre_name, concat(a.first_name, ' ', a.last_name) name
+                                            FROM tblbooks b
+                                            JOIN tblgenres g ON genre_id = g.id
+                                            JOIN tblauthors a ON author_id = a.id WHERE status = 0 ORDER BY title ASC LIMIT @page, 30;",
+                    .FETCH_ARCHIVE_LIMIT_SEARCH = "SELECT b.id, b.title, b.isbn, b.book_cover, b.fpenalty, b.spenalty, b.publisher_id, b.genre_id, b.language_id, b.author_id,
+                                                 b.classification_id, b.reserve_copy, g.name genre_name, concat(a.first_name, ' ', a.last_name) name
+                                                    FROM tblbooks b
+                                                    JOIN tblgenres g ON genre_id = g.id
+                                                    JOIN tblauthors a ON author_id = a.id WHERE status = 0 AND (title LIKE @search OR isbn LIKE @search OR g.name LIKE @search OR a.first_name LIKE @search OR a.last_name LIKE @search) ORDER BY title ASC LIMIT @page, 30;"
                 }
 #End Region
 
@@ -274,6 +288,10 @@
 
     Public ADD_ASSISTANT_STUDENT_QUERY As String = "INSERT INTO tbladmins (student_id) VALUES (@sid)"
     Public ADD_ASSISTANT_FACULTY_QUERY As String = "INSERT INTO tbladmins (faculty_id) VALUES (@fid)"
-    Public REMOVE_ASSISTANT_QUERY As String = ""
-    Public PROMOTE_SUPERADMIN_QUERY As String = ""
+    Public REMOVE_ASSISTANT_QUERY As String = "DELETE FROM tbladmins WHERE id = @id"
+    Public PROMOTE_SUPERADMIN_QUERY As String = "INSERT INTO tbladmins (faculty_id, role) VALUES (@fid, 0)"
+    Public UPDATE_ROLE_QUERY As String = "UPDATE tbladmins SET role = @role"
+
+    Public ARCHIVE_BOOKS_QUERY As String = "UPDATE tblbooks SET status = 0 WHERE id = @id"
+    Public UNARCHIVE_BOOKS_QUERY As String = "UPDATE tblbooks SET status = 1 WHERE id = @id"
 End Module

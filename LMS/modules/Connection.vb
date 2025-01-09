@@ -70,6 +70,8 @@ Module Connection
             GetConnectionInstance()
             If Not IsNothing(Connection) AndAlso IsNothing(trans) Then
                 trans = Connection.BeginTransaction
+            Else
+                Return False
             End If
 
             Using cmd As New MySqlCommand(query, Connection, trans)

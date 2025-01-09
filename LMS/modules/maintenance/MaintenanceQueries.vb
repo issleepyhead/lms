@@ -9,4 +9,8 @@
     Public Property FETCH_TOTAL_COUNT_QUERY_SEARCH As String
     Public Property FETCH_LIMIT_QUERY_SEARCH As String
     Public Property FETCH_ALL_QUERY As String
+    Public Property FETCH_ARCHIVE_LIMIT As String
+    Public Property FETCH_ARCHIVE_LIMIT_SEARCH As String
+    Public Property FETCH_ARCHIVE_TOTAL_COUNT As String
+    Public Property FETCH_ARCHIVE_SEARCH_TOTAL_COUNT As String
 End Class

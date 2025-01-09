@@ -101,4 +101,42 @@ Module BaseMaintenance
         SetQueryTable(type)
         Return _FetchAll(type, params)
     End Function
+
+    Private Function _SearchArchive(type As QueryTableType, query As String) As DataTable
+        Dim searchQuery As New Dictionary(Of String, String) From {
+            {"@search", "%" & query & "%"}
+        }
+        PPrev = 1
+        PMAX = ExecScalar(QueryTable.FETCH_ARCHIVE_SEARCH_TOTAL_COUNT, searchQuery)
+        If PMAX Mod 30 <> 0 Then
+            PMAX = (PMAX \ 30) + 1
+        Else
+            PMAX \= 30
+        End If
+        Return ExecFetch(QueryTable.FETCH_ARCHIVE_LIMIT_SEARCH, params:=searchQuery, paginate:=PPrev - 1, isPaginate:=True)
+    End Function
+
+    Public Function SearchArchive(type As QueryTableType, query As String) As DataTable
+        SetQueryTable(type)
+        Return _SearchArchive(type, query)
+    End Function
+
+    Private Function _FetchArchive(type As QueryTableType, Optional params As Dictionary(Of String, String) = Nothing) As DataTable
+        PMAX = ExecScalar(QueryTable.FETCH_ARCHIVE_TOTAL_COUNT)
+        If PMAX Mod 30 <> 0 Then
+            PMAX = (PMAX \ 30) + 1
+        Else
+            PMAX \= 30
+        End If
+        Return ExecFetch(QueryTable.FETCH_ARCHIVE_LIMIT, paginate:=PPrev - 1, isPaginate:=True)
+    End Function
+
+    Public Function FetchArchive(type As QueryTableType, Optional params As Dictionary(Of String, String) = Nothing) As DataTable
+        SetQueryTable(type)
+        Return _FetchArchive(type, params)
+    End Function
+
+    Public Function ExecTransactionNonQuery(query As String, Optional params As List(Of Dictionary(Of String, String)) = Nothing) As Boolean
+        Return ExecNonQueryTrans(query, params)
+    End Function
 End Module
