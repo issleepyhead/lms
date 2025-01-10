@@ -92,12 +92,42 @@ Represents a strongly typed in-memory cache of data.
 Represents the strongly named DataTable class.
 </summary>
 </member>
+<member name="T:LMS.SystemDataSets.DTStudentDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:LMS.SystemDataSets.DTFacultyDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
 <member name="T:LMS.SystemDataSets.DTBookRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
 </member>
+<member name="T:LMS.SystemDataSets.DTStudentRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:LMS.SystemDataSets.DTFacultyRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
 <member name="T:LMS.SystemDataSets.DTBookRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:LMS.SystemDataSets.DTStudentRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:LMS.SystemDataSets.DTFacultyRowChangeEvent">
 <summary>
 Row event argument class
 </summary>

@@ -294,4 +294,10 @@
 
     Public ARCHIVE_BOOKS_QUERY As String = "UPDATE tblbooks SET status = 0 WHERE id = @id"
     Public UNARCHIVE_BOOKS_QUERY As String = "UPDATE tblbooks SET status = 1 WHERE id = @id"
+
+    Public ARCHIVE_STUDENT_QUERY As String = "UPDATE tblstudents SET status = 0 WHERE id = @id"
+    Public UNARCHIVE_STUDENT_QUERY As String = "UPDATE tblstudents SET status = 1 WHERE id = @id"
+
+    Public ARCHIVE_FACULTY_QUERY As String = "UPDATE tblfaculties SET status = 0 WHERE id = @id"
+    Public UNARCHIVE_FACULTY_QUERY As String = "UDATE tblfaculties SET status = 1 WHERE id = @id"
 End Module

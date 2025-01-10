@@ -3,6 +3,8 @@
 Public Class DashboardForm
 
     Private SELECTED_BOOKS As New SystemDataSets.DTBookDataTable
+    Private SELECTED_STUDENTS As New SystemDataSets.DTStudentDataTable
+    Private SELECTED_FACULTY As New SystemDataSets.DTFacultyDataTable
 
     Private Sub DashboardForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
     End Sub
@@ -529,6 +531,16 @@ Public Class DashboardForm
             LBLSTUDENTPREV.Text = BaseMaintenance.PPrev
             DGSTUDENT.DataSource = BaseMaintenance.Fetch(QueryTableType.STUDENT_QUERY_TABLE)
         End If
+
+        ' Retain the previously selected rows
+        For Each item As DataGridViewRow In DGSTUDENT.Rows
+            For Each drow As DataRow In SELECTED_STUDENTS.Rows
+                Dim boundItem As DataRowView = TryCast(item.DataBoundItem, DataRowView)
+                If boundItem.Row.Item("id") = drow.Item("id") Then
+                    item.Cells(NameOf(chckBoxStudent)).Value = True
+                End If
+            Next
+        Next
     End Sub
 
     Private Sub BTNSTUDENTPREV_Click(sender As Object, e As EventArgs) Handles BTNSTUDENTPREV.Click
@@ -537,6 +549,16 @@ Public Class DashboardForm
             LBLSTUDENTPREV.Text = BaseMaintenance.PPrev
             DGSTUDENT.DataSource = BaseMaintenance.Fetch(QueryTableType.STUDENT_QUERY_TABLE)
         End If
+
+        ' Retain the previously selected rows
+        For Each item As DataGridViewRow In DGSTUDENT.Rows
+            For Each drow As DataRow In SELECTED_STUDENTS.Rows
+                Dim boundItem As DataRowView = TryCast(item.DataBoundItem, DataRowView)
+                If boundItem.Row.Item("id") = drow.Item("id") Then
+                    item.Cells(NameOf(chckBoxStudent)).Value = True
+                End If
+            Next
+        Next
     End Sub
 
     Private Sub DGSTUDENT_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGSTUDENT.CellMouseClick
@@ -566,6 +588,27 @@ Public Class DashboardForm
             End If
         End If
     End Sub
+
+    Private Sub DGSTUDENT_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGSTUDENT.CellContentClick
+        If e.ColumnIndex = chckBoxStudent.Index Then
+            DGSTUDENT.EndEdit()
+            Dim boundItem As DataRowView = TryCast(DGSTUDENT.Rows(e.RowIndex).DataBoundItem, DataRowView)
+            If CBool(DGSTUDENT.Rows(e.RowIndex).Cells(e.ColumnIndex).Value) AndAlso Not SELECTED_STUDENTS.Rows.Contains(boundItem.Row.Item("id")) Then
+                SELECTED_STUDENTS.Rows.Add(boundItem.Row.Item("id"))
+            Else
+                If SELECTED_STUDENTS.Rows.Contains(boundItem.Row.Item("id")) Then
+                    Dim row As DataRow = Nothing
+                    For Each item As DataRow In SELECTED_STUDENTS.Rows
+                        If item.Item("id") = boundItem.Row.Item("id") Then
+                            row = item
+                            Exit For
+                        End If
+                    Next
+                    SELECTED_STUDENTS.Rows.Remove(row)
+                End If
+            End If
+        End If
+    End Sub
 #End Region
 
 #Region "Faculty/Teacher Module"
@@ -584,6 +627,16 @@ Public Class DashboardForm
             LBLFACULTYPREV.Text = BaseMaintenance.PPrev
             DGFACULTY.DataSource = BaseMaintenance.Fetch(QueryTableType.FACULTY_QUERY_TABLE)
         End If
+
+        ' Retain the previously selected rows
+        For Each item As DataGridViewRow In DGFACULTY.Rows
+            For Each drow As DataRow In SELECTED_FACULTY.Rows
+                Dim boundItem As DataRowView = TryCast(item.DataBoundItem, DataRowView)
+                If boundItem.Row.Item("id") = drow.Item("id") Then
+                    item.Cells(NameOf(chckBoxFaculty)).Value = True
+                End If
+            Next
+        Next
     End Sub
 
     Private Sub BTNFACULTYPREV_Click(sender As Object, e As EventArgs) Handles BTNFACULTYPREV.Click
@@ -592,6 +645,16 @@ Public Class DashboardForm
             LBLFACULTYPREV.Text = BaseMaintenance.PPrev
             DGFACULTY.DataSource = BaseMaintenance.Fetch(QueryTableType.FACULTY_QUERY_TABLE)
         End If
+
+        ' Retain the previously selected rows
+        For Each item As DataGridViewRow In DGFACULTY.Rows
+            For Each drow As DataRow In SELECTED_FACULTY.Rows
+                Dim boundItem As DataRowView = TryCast(item.DataBoundItem, DataRowView)
+                If boundItem.Row.Item("id") = drow.Item("id") Then
+                    item.Cells(NameOf(chckBoxFaculty)).Value = True
+                End If
+            Next
+        Next
     End Sub
 
     Private Sub DGFACULTY_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGFACULTY.CellMouseClick
@@ -864,6 +927,7 @@ Public Class DashboardForm
     End Sub
 #End Region
 
+#Region "Account Panel"
     Private Sub AccountsPanel_SelectedIndexChanged(sender As Object, e As EventArgs) Handles AccountsPanel.SelectedIndexChanged
         Select Case True
             Case AccountsPanel.SelectedTab.Equals(DepartmentTab)
@@ -876,9 +940,11 @@ Public Class DashboardForm
                 LoadTabData(DGSECTIONS, LBLSECTIONPREV, LBLSECTIONNEXT, QueryTableType.SECTION_QUERY_TABLE, TXTSECTIONSEARCH)
 
             Case AccountsPanel.SelectedTab.Equals(StudentsTab)
+                SELECTED_STUDENTS = New SystemDataSets.DTStudentDataTable
                 LoadTabData(DGSTUDENT, LBLSTUDENTPREV, LBLSTUDENTNEXT, QueryTableType.STUDENT_QUERY_TABLE, TXTSTUDENTSEARCH)
 
             Case AccountsPanel.SelectedTab.Equals(FacultyTab)
+                SELECTED_FACULTY = New SystemDataSets.DTFacultyDataTable
                 LoadTabData(DGFACULTY, LBLFACULTYPREV, LBLFACULTYNEXT, QueryTableType.FACULTY_QUERY_TABLE, TXTFACULTYSEARCH)
 
             Case AccountsPanel.SelectedTab.Equals(AdminTab)
@@ -886,7 +952,9 @@ Public Class DashboardForm
 
         End Select
     End Sub
+#End Region
 
+#Region "Book Copies"
     Private Sub TXTCOPIESSEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTCOPIESSEARCH.TextChanged
         If BookInventoryPanels.SelectedTab.Equals(CopiesTab) Then
             If Not String.IsNullOrEmpty(TXTCOPIESSEARCH.Text) Then
@@ -916,7 +984,9 @@ Public Class DashboardForm
             DGBOOKCOPIES.DataSource = BaseMaintenance.Fetch(QueryTableType.BOOKCOPIES_QUERY_TABLE)
         End If
     End Sub
+#End Region
 
+#Region "BookInventory Panels"
     Private Sub BookInventoryPanels_SelectedIndexChanged(sender As Object, e As EventArgs) Handles BookInventoryPanels.SelectedIndexChanged
         Select Case True
             Case BookInventoryPanels.SelectedTab.Equals(CopiesTab)
@@ -946,9 +1016,87 @@ Public Class DashboardForm
                 LBLINVENTORYNEXT.Text = BaseMaintenance.PMAX
         End Select
     End Sub
+#End Region
 
 #Region "Student Menu Strip"
     Private Sub PromoteAsAssistLibrarianToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PromoteAsAssistLibrarianToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub SelectAllToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles SelectAllToolStripMenuItem2.Click
+        For Each item As DataGridViewRow In DGSTUDENT.Rows
+            item.Cells(NameOf(chckBoxStudent)).Value = True
+        Next
+        DGSTUDENT.EndEdit()
+    End Sub
+
+    Private Sub UnselectAllToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles UnselectAllToolStripMenuItem2.Click
+        For Each item As DataGridViewRow In DGSTUDENT.Rows
+            item.Cells(NameOf(chckBoxStudent)).Value = False
+        Next
+        DGSTUDENT.EndEdit()
+    End Sub
+
+    Private Sub ArchiveSelectedToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ArchiveSelectedToolStripMenuItem1.Click
+        If SELECTED_STUDENTS.Rows.Count = 0 Then
+            MessageBox.Show("Please select an item to continue.", "No Item Selected!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Exit Sub
+        Else
+            If MessageBox.Show("Archiving the selected item(s) will make the copies unavailable to inventory." & vbLf & "Are you sure you want to archive the selected item(s)?", "Archive Selected Item(s)?", MessageBoxButtons.YesNo, MessageBoxIcon.Information) <> DialogResult.Yes Then
+                Exit Sub
+            End If
+
+            Dim collection As New List(Of Dictionary(Of String, String))
+            For Each item As DataRow In SELECTED_STUDENTS.Rows
+                collection.Add(New Dictionary(Of String, String) From {{"@id", item.Item("id")}})
+            Next
+            If ExecTransactionNonQuery(ARCHIVE_STUDENT_QUERY, collection) Then
+                MessageBox.Show("Archived Successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Else
+                MessageBox.Show("Archiving failed.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            End If
+        End If
+        DGSTUDENT.EndEdit()
+        'If CMBBOOKFILTER.SelectedIndex = 0 Then
+        '    DGBOOKS.DataSource = BaseMaintenance.Search(QueryTableType.BOOK_QUERY_TABLE, TXTBOOKSEARCH.Text)
+        '    LBLBOOKNEXT.Text = BaseMaintenance.PMAX
+        '    LBLBOOKPREV.Text = BaseMaintenance.PPrev
+        'Else
+        '    DGBOOKS.DataSource = BaseMaintenance.SearchArchive(QueryTableType.BOOK_QUERY_TABLE, TXTBOOKSEARCH.Text)
+        '    LBLBOOKNEXT.Text = BaseMaintenance.PMAX
+        '    LBLBOOKPREV.Text = BaseMaintenance.PPrev
+        'End If
+    End Sub
+
+    Private Sub UnarchiveSelectedToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles UnarchiveSelectedToolStripMenuItem1.Click
+
+    End Sub
+
+    Private Sub DeleteSelectedToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles DeleteSelectedToolStripMenuItem1.Click
+        If SELECTED_STUDENTS.Rows.Count = 0 Then
+            MessageBox.Show("Please select an item to continue.", "No Item Selected!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Exit Sub
+        End If
+
+        If MessageBox.Show("Deleting these items will also delete the existing book copies." & vbLf & "Are you sure you want to delete the selected item(s)?", "Delete Selected Items?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.No Then
+            Exit Sub
+        End If
+
+        Dim collection As New List(Of Dictionary(Of String, String))
+
+        For Each item As DataRow In SELECTED_STUDENTS.Rows
+            collection.Add(New Dictionary(Of String, String) From {{"@id", item.Item("id")}})
+        Next
+
+        If BaseMaintenance.Delete(QueryTableType.STUDENT_QUERY_TABLE, collection) Then
+            MessageBox.Show("Deleted Successfully!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Else
+            MessageBox.Show("Cannot delete the selected items. Some items are being used to other resources. Please remove the them before deleting.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
+        CMBBOOKFILTER_SelectedIndexChanged(CMBBOOKFILTER, Nothing)
+    End Sub
+
+    Private Sub PrintLibraryCardToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PrintLibraryCardToolStripMenuItem.Click
 
     End Sub
 #End Region
@@ -1186,5 +1334,6 @@ Public Class DashboardForm
         BookInventoryPanels_SelectedIndexChanged(BookInventoryPanels, Nothing)
     End Sub
 #End Region
+
 
 End Class
