@@ -99,7 +99,7 @@
                     .EXISTS_QUERY_NO_ID = "SELECT COUNT(*) FROM tbllanguages WHERE LOWER(language) = LOWER(@language) AND code = @code",
                     .FETCH_TOTAL_COUNT_QUERY = "SELECT COUNT(*) FROM tbllanguages",
                     .FETCH_LIMIT_QUERY = "SELECT language, code, id FROM tbllanguages ORDER BY language ASC LIMIT @page, 30;",
-                    .FETCH_LIMIT_QUERY_SEARCH = "SELECT language, code, id FROM tbllanguages WHERE language LIKE @search OR code LIKE @search ORDER BY name ASC LIMIT @page, 30;",
+                    .FETCH_LIMIT_QUERY_SEARCH = "SELECT language, code, id FROM tbllanguages WHERE language LIKE @search OR code LIKE @search ORDER BY language ASC LIMIT @page, 30;",
                     .FETCH_TOTAL_COUNT_QUERY_SEARCH = "SELECT COUNT(*) FROM tbllanguages WHERE language LIKE @search OR code LIKE @search ORDER BY language ASC",
                     .UPDATE_QUERY = "UPDATE tbllanguages SET language = @language, code = @code WHERE id = @id",
                     .FETCH_ALL_QUERY = "SELECT language, code, id FROM tbllanguages ORDER BY language ASC"

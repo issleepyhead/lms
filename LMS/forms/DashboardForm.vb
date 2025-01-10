@@ -35,7 +35,7 @@ Public Class DashboardForm
     End Sub
 
     Private Sub DGGENRE_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGGENRE.CellMouseClick
-        If e.ColumnIndex <> 0 AndAlso e.RowIndex <> 0 Then
+        If e.ColumnIndex <> 0 AndAlso e.RowIndex <> -1 Then
             If DGGENRE.SelectedRows.Count > 0 Then
                 Dim datarow As DataRowView = DGGENRE.SelectedRows.Item(0).DataBoundItem
                 Using dialog As New GenreDialog(datarow)
@@ -68,7 +68,7 @@ Public Class DashboardForm
     End Sub
 
     Private Sub DGAUTHOR_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGAUTHORS.CellMouseClick
-        If e.ColumnIndex <> 0 AndAlso e.RowIndex <> 0 Then
+        If e.ColumnIndex <> 0 AndAlso e.RowIndex <> -1 Then
             If DGAUTHORS.SelectedRows.Count > 0 Then
                 Dim datarow As DataRowView = DGAUTHORS.SelectedRows.Item(0).DataBoundItem
                 Using dialog As New AuthorDialog(datarow)
@@ -109,7 +109,7 @@ Public Class DashboardForm
     End Sub
 
     Private Sub DGPUBLISHER_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGPUBLISHER.CellMouseClick
-        If e.ColumnIndex <> 0 Then
+        If e.ColumnIndex <> 0 AndAlso e.RowIndex <> -1 Then
             If DGPUBLISHER.SelectedRows.Count > 0 Then
                 Dim datarow As DataRowView = DGPUBLISHER.SelectedRows.Item(0).DataBoundItem
                 Using dialog As New PublisherDialog(datarow)
@@ -138,7 +138,7 @@ Public Class DashboardForm
     End Sub
 
     Private Sub BTNCLASSIFICATIONNEXT_Click(sender As Object, e As EventArgs) Handles BTNCLASSIFICATIONNEXT.Click
-        PrevPageHelper(LBLCLASSIFICATIONPREV, LBLCLASSIFICATIONNEXT, DGCLASSIFICATIONS, QueryTableType.CLASSIFICATION_QUERY_TABLE, TXTCLASSIFICATIONSEARCH)
+        NextPageHelper(LBLCLASSIFICATIONPREV, LBLCLASSIFICATIONNEXT, DGCLASSIFICATIONS, QueryTableType.CLASSIFICATION_QUERY_TABLE, TXTCLASSIFICATIONSEARCH)
     End Sub
 
     Private Sub BTNCLASSIFICATIONPREV_Click(sender As Object, e As EventArgs) Handles BTNCLASSIFICATIONPREV.Click
@@ -146,7 +146,7 @@ Public Class DashboardForm
     End Sub
 
     Private Sub DGCLASSIFICATION_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGCLASSIFICATIONS.CellMouseClick
-        If e.ColumnIndex <> 0 Then
+        If e.ColumnIndex <> 0 AndAlso e.RowIndex <> -1 Then
             If DGCLASSIFICATIONS.SelectedRows.Count > 0 Then
                 Dim datarow As DataRowView = DGCLASSIFICATIONS.SelectedRows.Item(0).DataBoundItem
                 Using dialog As New ClassificationDialog(datarow)
@@ -183,7 +183,7 @@ Public Class DashboardForm
     End Sub
 
     Private Sub DGDONATOR_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGDONATOR.CellMouseClick
-        If e.ColumnIndex <> 0 Then
+        If e.ColumnIndex <> 0 AndAlso e.RowIndex <> -1 Then
             If DGDONATOR.SelectedRows.Count > 0 Then
                 Dim datarow As DataRowView = DGDONATOR.SelectedRows.Item(0).DataBoundItem
                 Using dialog As New DonatorDialog(datarow)
@@ -220,7 +220,7 @@ Public Class DashboardForm
     End Sub
 
     Private Sub DGSUPPLIER_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGSUPPLIER.CellMouseClick
-        If e.ColumnIndex <> 0 Then
+        If e.ColumnIndex <> 0 AndAlso e.RowIndex <> -1 Then
             If DGSUPPLIER.SelectedRows.Count > 0 Then
                 Dim datarow As DataRowView = DGSUPPLIER.SelectedRows.Item(0).DataBoundItem
                 Using dialog As New SupplierDialog(datarow)
@@ -257,7 +257,7 @@ Public Class DashboardForm
     End Sub
 
     Private Sub DGDEPARTMENT_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGDEPARTMENT.CellMouseClick
-        If e.ColumnIndex <> 0 Then
+        If e.ColumnIndex <> 0 AndAlso e.RowIndex <> -1 Then
             If DGDEPARTMENT.SelectedRows.Count > 0 Then
                 Dim datarow As DataRowView = DGDEPARTMENT.SelectedRows.Item(0).DataBoundItem
                 Using dialog As New DepartmentDialog(datarow)
@@ -294,7 +294,7 @@ Public Class DashboardForm
     End Sub
 
     Private Sub DGYEARLEVEL_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGYEARLEVEL.CellMouseClick
-        If e.ColumnIndex <> 0 Then
+        If e.ColumnIndex <> 0 AndAlso e.RowIndex <> -1 Then
             If DGYEARLEVEL.SelectedRows.Count > 0 Then
                 Dim datarow As DataRowView = DGYEARLEVEL.SelectedRows.Item(0).DataBoundItem
                 Using dialog As New YearLevelDialog(datarow)
@@ -331,7 +331,7 @@ Public Class DashboardForm
     End Sub
 
     Private Sub DGLANGUAGE_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGLANGUAGE.CellMouseClick
-        If e.ColumnIndex <> 0 Then
+        If e.ColumnIndex <> 0 AndAlso e.RowIndex <> -1 Then
             If DGLANGUAGE.SelectedRows.Count > 0 Then
                 Dim datarow As DataRowView = DGLANGUAGE.SelectedRows.Item(0).DataBoundItem
                 Using dialog As New LanguageDialog(datarow)
@@ -413,14 +413,18 @@ Public Class DashboardForm
     End Sub
 
     Private Sub DGBOOK_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGBOOKS.CellMouseClick
-        If e.ColumnIndex <> 0 Then
+        If e.ColumnIndex <> 0 AndAlso e.RowIndex <> -1 Then
             If DGBOOKS.SelectedRows.Count > 0 Then
                 Dim datarow As DataRowView = DGBOOKS.SelectedRows.Item(0).DataBoundItem
                 Using dialog As New BookDialog(datarow)
                     dialog.ShowDialog()
                 End Using
             End If
-            DGBOOKS.DataSource = BaseMaintenance.Fetch(QueryTableType.BOOK_QUERY_TABLE)
+            If CMBBOOKFILTER.SelectedIndex = 0 Then
+                DGBOOKS.DataSource = BaseMaintenance.Search(QueryTableType.BOOK_QUERY_TABLE, TXTBOOKSEARCH.Text)
+            Else
+                DGBOOKS.DataSource = BaseMaintenance.SearchArchive(QueryTableType.BOOK_QUERY_TABLE, TXTBOOKSEARCH.Text)
+            End If
             LBLBOOKNEXT.Text = BaseMaintenance.PMAX
             LBLBOOKPREV.Text = BaseMaintenance.PPrev
         End If
@@ -430,13 +434,11 @@ Public Class DashboardForm
         If MaintenancePanels.SelectedTab.Equals(BooksTab) Then
             If CMBBOOKFILTER.SelectedIndex = 0 Then
                 DGBOOKS.DataSource = BaseMaintenance.Search(QueryTableType.BOOK_QUERY_TABLE, TXTBOOKSEARCH.Text)
-                LBLBOOKNEXT.Text = BaseMaintenance.PMAX
-                LBLBOOKPREV.Text = BaseMaintenance.PPrev
             Else
                 DGBOOKS.DataSource = BaseMaintenance.SearchArchive(QueryTableType.BOOK_QUERY_TABLE, TXTBOOKSEARCH.Text)
-                LBLBOOKNEXT.Text = BaseMaintenance.PMAX
-                LBLBOOKPREV.Text = BaseMaintenance.PPrev
             End If
+            LBLBOOKNEXT.Text = BaseMaintenance.PMAX
+            LBLBOOKPREV.Text = BaseMaintenance.PPrev
         End If
     End Sub
 
@@ -444,13 +446,11 @@ Public Class DashboardForm
         If MaintenancePanels.SelectedTab.Equals(BooksTab) Then
             If CMBBOOKFILTER.SelectedIndex = 0 Then
                 DGBOOKS.DataSource = BaseMaintenance.Search(QueryTableType.BOOK_QUERY_TABLE, TXTBOOKSEARCH.Text)
-                LBLBOOKNEXT.Text = BaseMaintenance.PMAX
-                LBLBOOKPREV.Text = BaseMaintenance.PPrev
             Else
                 DGBOOKS.DataSource = BaseMaintenance.SearchArchive(QueryTableType.BOOK_QUERY_TABLE, TXTBOOKSEARCH.Text)
-                LBLBOOKNEXT.Text = BaseMaintenance.PMAX
-                LBLBOOKPREV.Text = BaseMaintenance.PPrev
             End If
+            LBLBOOKNEXT.Text = BaseMaintenance.PMAX
+            LBLBOOKPREV.Text = BaseMaintenance.PPrev
         End If
     End Sub
 
@@ -495,7 +495,7 @@ Public Class DashboardForm
     End Sub
 
     Private Sub DGSECTION_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGSECTIONS.CellMouseClick
-        If e.ColumnIndex <> 0 Then
+        If e.ColumnIndex <> 0 AndAlso e.RowIndex <> -1 Then
             If DGSECTIONS.SelectedRows.Count > 0 Then
                 Dim datarow As DataRowView = DGSECTIONS.SelectedRows.Item(0).DataBoundItem
                 Using dialog As New SectionDialog(datarow)
@@ -540,7 +540,7 @@ Public Class DashboardForm
     End Sub
 
     Private Sub DGSTUDENT_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGSTUDENT.CellMouseClick
-        If e.ColumnIndex <> 0 Then
+        If e.ColumnIndex <> 0 AndAlso e.RowIndex <> -1 Then
             If DGSTUDENT.SelectedRows.Count > 0 Then
                 Dim datarow As DataRowView = DGSTUDENT.SelectedRows.Item(0).DataBoundItem
                 Using dialog As New StudentDialog(datarow)
@@ -595,7 +595,7 @@ Public Class DashboardForm
     End Sub
 
     Private Sub DGFACULTY_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGFACULTY.CellMouseClick
-        If e.ColumnIndex <> 0 Then
+        If e.ColumnIndex <> 0 AndAlso e.RowIndex <> -1 Then
             If DGFACULTY.SelectedRows.Count > 0 Then
                 Dim datarow As DataRowView = DGFACULTY.SelectedRows.Item(0).DataBoundItem
                 Using dialog As New FacultyDialog(datarow)
@@ -667,9 +667,19 @@ Public Class DashboardForm
             Select Case True
                 Case AccountsPanel.SelectedTab.Equals(DepartmentTab)
                     For Each item As DataGridViewRow In DGDEPARTMENT.Rows
-                        item.Cells("chckBoxDepartment").Value = True
+                        item.Cells(NameOf(chckBoxDepartment)).Value = True
                     Next
                     DGDEPARTMENT.EndEdit()
+                Case AccountsPanel.SelectedTab.Equals(YearLevelTab)
+                    For Each item As DataGridViewRow In DGYEARLEVEL.Rows
+                        item.Cells(NameOf(chckBoxYearLevel)).Value = True
+                    Next
+                    DGYEARLEVEL.EndEdit()
+                Case AccountsPanel.SelectedTab.Equals(SectionTab)
+                    For Each item As DataGridViewRow In DGSECTIONS.Rows
+                        item.Cells(NameOf(chckBoxSection)).Value = True
+                    Next
+                    DGSECTIONS.EndEdit()
             End Select
         End If
     End Sub
@@ -682,58 +692,58 @@ Public Class DashboardForm
             ' Maintenance Panel Selection
                 Case MaintenancePanels.SelectedTab.Equals(GenresTab)
                     For Each item As DataGridViewRow In DGGENRE.Rows
-                        item.Cells("chckBoxGenre").Value = False
+                        item.Cells(NameOf(chckBoxGenre)).Value = False
                     Next
                     DGGENRE.EndEdit()
                 Case MaintenancePanels.SelectedTab.Equals(AuthorTab)
                     For Each item As DataGridViewRow In DGAUTHORS.Rows
-                        item.Cells("chckBoxAuthor").Value = False
+                        item.Cells(NameOf(chckBoxAuthor)).Value = False
                     Next
                     DGAUTHORS.EndEdit()
                 Case MaintenancePanels.SelectedTab.Equals(PublishhersTab)
                     For Each item As DataGridViewRow In DGPUBLISHER.Rows
-                        item.Cells("chckBoxPublisher").Value = False
+                        item.Cells(NameOf(chckBoxPublisher)).Value = False
                     Next
                     DGPUBLISHER.EndEdit()
                 Case MaintenancePanels.SelectedTab.Equals(DonatorsTab)
                     For Each item As DataGridViewRow In DGDONATOR.Rows
-                        item.Cells("chckBoxDonator").Value = False
+                        item.Cells(NameOf(chckBoxDonator)).Value = False
                     Next
                     DGDONATOR.EndEdit()
-                Case MaintenancePanels.SelectedTab.Equals(SuppliersTab)
-                    For Each item As DataGridViewRow In DGSUPPLIER.Rows
-                        item.Cells("chckBoxSupplier").Value = False
-                    Next
-                    DGSUPPLIER.EndEdit()
                 Case MaintenancePanels.SelectedTab.Equals(ClassificationTab)
                     For Each item As DataGridViewRow In DGCLASSIFICATIONS.Rows
-                        item.Cells("chckBoxClassification").Value = False
+                        item.Cells(NameOf(chckBoxClassification)).Value = False
                     Next
                     DGCLASSIFICATIONS.EndEdit()
                 Case MaintenancePanels.SelectedTab.Equals(LanguagesTab)
                     For Each item As DataGridViewRow In DGLANGUAGE.Rows
-                        item.Cells("chckBoxLanguage").Value = False
+                        item.Cells(NameOf(chckBoxLanguage)).Value = False
                     Next
                     DGLANGUAGE.EndEdit()
-                Case MaintenancePanels.SelectedTab.Equals(DonatorsTab)
-                    For Each item As DataGridViewRow In DGDONATOR.Rows
-                        item.Cells("chckBoxDonator").Value = False
-                    Next
                     DGDONATOR.EndEdit()
                 Case MaintenancePanels.SelectedTab.Equals(SuppliersTab)
                     For Each item As DataGridViewRow In DGSUPPLIER.Rows
-                        item.Cells("chckBoxSupplier").Value = False
+                        item.Cells(NameOf(chckBoxSupplier)).Value = False
                     Next
                     DGSUPPLIER.EndEdit()
             End Select
         Else
             Select Case True
-                ' Accounts Panel Selection
                 Case AccountsPanel.SelectedTab.Equals(DepartmentTab)
                     For Each item As DataGridViewRow In DGDEPARTMENT.Rows
-                        item.Cells("chckBoxDepartment").Value = False
+                        item.Cells(NameOf(chckBoxDepartment)).Value = False
                     Next
                     DGDEPARTMENT.EndEdit()
+                Case AccountsPanel.SelectedTab.Equals(YearLevelTab)
+                    For Each item As DataGridViewRow In DGYEARLEVEL.Rows
+                        item.Cells(NameOf(chckBoxYearLevel)).Value = False
+                    Next
+                    DGYEARLEVEL.EndEdit()
+                Case AccountsPanel.SelectedTab.Equals(SectionTab)
+                    For Each item As DataGridViewRow In DGSECTIONS.Rows
+                        item.Cells(NameOf(chckBoxSection)).Value = False
+                    Next
+                    DGSECTIONS.EndEdit()
             End Select
         End If
     End Sub
@@ -742,28 +752,39 @@ Public Class DashboardForm
 #Region "Remove Selected"
     Private Sub RemoveSelectedToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RemoveToolStripMenuItem.Click
         ' TODO PERFORM A CHECK BEFORE DELETING THE DATA
-        Select Case True
-            Case MaintenancePanels.SelectedTab.Equals(GenresTab)
-                DeleteHelper(DGGENRE, QueryTableType.GENRE_QUERY_TABLE, "chckBoxGenre", "ColumnGenreID")
+        If MainFormPanels.SelectedTab.Equals(MaintenanceTab) Then
+            Select Case True
+                Case MaintenancePanels.SelectedTab.Equals(GenresTab)
+                    DeleteHelper(DGGENRE, QueryTableType.GENRE_QUERY_TABLE, NameOf(chckBoxGenre), NameOf(ColumnGenreID))
 
-            Case MaintenancePanels.SelectedTab.Equals(AuthorTab)
-                DeleteHelper(DGAUTHORS, QueryTableType.AUTHOR_QUERY_TABLE, "chckBoxAuthor", "ColumnAuthorID")
+                Case MaintenancePanels.SelectedTab.Equals(AuthorTab)
+                    DeleteHelper(DGAUTHORS, QueryTableType.AUTHOR_QUERY_TABLE, NameOf(chckBoxAuthor), NameOf(ColumnAuthorID))
 
-            Case MaintenancePanels.SelectedTab.Equals(PublishhersTab)
-                DeleteHelper(DGPUBLISHER, QueryTableType.PUBLISHER_QUERY_TABLE, "chckBoxPublisher", "ColumnPublisherID")
+                Case MaintenancePanels.SelectedTab.Equals(PublishhersTab)
+                    DeleteHelper(DGPUBLISHER, QueryTableType.PUBLISHER_QUERY_TABLE, NameOf(chckBoxPublisher), NameOf(ColumnPublisherID))
 
-            Case MaintenancePanels.SelectedTab.Equals(ClassificationTab)
-                DeleteHelper(DGCLASSIFICATIONS, QueryTableType.CLASSIFICATION_QUERY_TABLE, "chckBoxClassification", "ColumnClassificationID")
+                Case MaintenancePanels.SelectedTab.Equals(ClassificationTab)
+                    DeleteHelper(DGCLASSIFICATIONS, QueryTableType.CLASSIFICATION_QUERY_TABLE, NameOf(chckBoxClassification), NameOf(ColumnClassificationID))
 
-            Case MaintenancePanels.SelectedTab.Equals(LanguagesTab)
-                DeleteHelper(DGLANGUAGE, QueryTableType.LANGUAGES_QUERY_TABLE, "chckBoxLanguage", "ColumnLanguageID")
+                Case MaintenancePanels.SelectedTab.Equals(LanguagesTab)
+                    DeleteHelper(DGLANGUAGE, QueryTableType.LANGUAGES_QUERY_TABLE, NameOf(chckBoxLanguage), NameOf(ColumnLanguageID))
 
-            Case MaintenancePanels.SelectedTab.Equals(DonatorsTab)
-                DeleteHelper(DGDONATOR, QueryTableType.DONATOR_QUERY_TABLE, "chckBoxDonator", "ColumnDonatorID")
+                Case MaintenancePanels.SelectedTab.Equals(DonatorsTab)
+                    DeleteHelper(DGDONATOR, QueryTableType.DONATOR_QUERY_TABLE, NameOf(chckBoxDonator), NameOf(ColumnDonatorID))
 
-            Case MaintenancePanels.SelectedTab.Equals(SuppliersTab)
-                DeleteHelper(DGSUPPLIER, QueryTableType.SUPPLIER_QUERY_TABLE, "chckBoxSupplier", "ColumnSupplierID")
-        End Select
+                Case MaintenancePanels.SelectedTab.Equals(SuppliersTab)
+                    DeleteHelper(DGSUPPLIER, QueryTableType.SUPPLIER_QUERY_TABLE, NameOf(chckBoxSupplier), NameOf(ColumnSupplierID))
+            End Select
+        Else
+            Select Case True
+                Case AccountsPanel.SelectedTab.Equals(DepartmentTab)
+                    DeleteHelper(DGDEPARTMENT, QueryTableType.DEPARTMENT_QUERY_TABLE, NameOf(chckBoxDepartment), NameOf(ColumnDepartmentID))
+                Case AccountsPanel.SelectedTab.Equals(YearLevelTab)
+                    DeleteHelper(DGYEARLEVEL, QueryTableType.YEARLEVEL_QUERY_TABLE, NameOf(chckBoxYearLevel), NameOf(ColumnYearLevelID))
+                Case AccountsPanel.SelectedTab.Equals(SectionTab)
+                    DeleteHelper(DGSECTIONS, QueryTableType.SECTION_QUERY_TABLE, NameOf(chckBoxSection), NameOf(ColumnSectionID))
+            End Select
+        End If
     End Sub
 #End Region
 
@@ -771,45 +792,29 @@ Public Class DashboardForm
     Private Sub MaintenancePanels_SelectedIndexChanged(sender As Object, e As EventArgs) Handles MaintenancePanels.SelectedIndexChanged
         Select Case True
             Case MaintenancePanels.SelectedTab.Equals(GenresTab)
-                DGGENRE.DataSource = BaseMaintenance.Fetch(QueryTableType.GENRE_QUERY_TABLE)
-                LBLGENREPREV.Text = BaseMaintenance.PPrev
-                LBLGENRENEXT.Text = BaseMaintenance.PMAX
+                LoadTabData(DGGENRE, LBLGENREPREV, LBLGENRENEXT, QueryTableType.GENRE_QUERY_TABLE, TXTGENRESEARCH)
 
             Case MaintenancePanels.SelectedTab.Equals(AuthorTab)
-                DGAUTHORS.DataSource = BaseMaintenance.Fetch(QueryTableType.AUTHOR_QUERY_TABLE)
-                LBLAUTHORPREV.Text = BaseMaintenance.PPrev
-                LBLAUTHORNEXT.Text = BaseMaintenance.PMAX
+                LoadTabData(DGAUTHORS, LBLAUTHORPREV, LBLAUTHORNEXT, QueryTableType.AUTHOR_QUERY_TABLE, TXTSEARCHAUTHOR)
 
             Case MaintenancePanels.SelectedTab.Equals(PublishhersTab)
-                DGPUBLISHER.DataSource = BaseMaintenance.Fetch(QueryTableType.PUBLISHER_QUERY_TABLE)
-                LBLPUBLISHERPREV.Text = BaseMaintenance.PPrev
-                LBLPUBLISHERNEXT.Text = BaseMaintenance.PMAX
+                LoadTabData(DGPUBLISHER, LBLPUBLISHERPREV, LBLPUBLISHERNEXT, QueryTableType.PUBLISHER_QUERY_TABLE, TXTPUBLISHERSEARCH)
 
             Case MaintenancePanels.SelectedTab.Equals(ClassificationTab)
-                DGCLASSIFICATIONS.DataSource = BaseMaintenance.Fetch(QueryTableType.CLASSIFICATION_QUERY_TABLE)
-                LBLCLASSIFICATIONNEXT.Text = BaseMaintenance.PMAX
-                LBLCLASSIFICATIONPREV.Text = BaseMaintenance.PPrev
+                LoadTabData(DGCLASSIFICATIONS, LBLCLASSIFICATIONPREV, LBLCLASSIFICATIONNEXT, QueryTableType.CLASSIFICATION_QUERY_TABLE, TXTCLASSIFICATIONSEARCH)
 
             Case MaintenancePanels.SelectedTab.Equals(DonatorsTab)
-                DGDONATOR.DataSource = BaseMaintenance.Fetch(QueryTableType.DONATOR_QUERY_TABLE)
-                LBLDONATORNEXT.Text = BaseMaintenance.PMAX
-                LBLDONATORRPREV.Text = BaseMaintenance.PPrev
+                LoadTabData(DGDONATOR, LBLDONATORRPREV, LBLDONATORNEXT, QueryTableType.DONATOR_QUERY_TABLE, TXTDONATORSEARCH)
 
             Case MaintenancePanels.SelectedTab.Equals(SuppliersTab)
-                DGSUPPLIER.DataSource = BaseMaintenance.Fetch(QueryTableType.SUPPLIER_QUERY_TABLE)
-                LBLSUPPLIERNEXT.Text = BaseMaintenance.PMAX
-                LBLSUPPLIERPREV.Text = BaseMaintenance.PPrev
+                LoadTabData(DGSUPPLIER, LBLSUPPLIERPREV, LBLSUPPLIERNEXT, QueryTableType.SUPPLIER_QUERY_TABLE, TXTSUPPLIERSEARCH)
 
             Case MaintenancePanels.SelectedTab.Equals(LanguagesTab)
-                DGLANGUAGE.DataSource = BaseMaintenance.Fetch(QueryTableType.LANGUAGES_QUERY_TABLE)
-                LBLLANGUAGENEXT.Text = BaseMaintenance.PMAX
-                LBLLANGUAGEPREV.Text = BaseMaintenance.PPrev
+                LoadTabData(DGLANGUAGE, LBLLANGUAGEPREV, LBLLANGUAGENEXT, QueryTableType.LANGUAGES_QUERY_TABLE, TXTLANGUAGESEARCH)
 
             Case MaintenancePanels.SelectedTab.Equals(BooksTab)
                 SELECTED_BOOKS = New SystemDataSets.DTBookDataTable
-                DGBOOKS.DataSource = BaseMaintenance.Fetch(QueryTableType.BOOK_QUERY_TABLE)
-                LBLBOOKNEXT.Text = BaseMaintenance.PMAX
-                LBLBOOKPREV.Text = BaseMaintenance.PPrev
+                LoadTabData(DGBOOKS, LBLBOOKPREV, LBLBOOKNEXT, QueryTableType.BOOK_QUERY_TABLE, TXTBOOKSEARCH)
         End Select
     End Sub
 #End Region
@@ -862,22 +867,22 @@ Public Class DashboardForm
     Private Sub AccountsPanel_SelectedIndexChanged(sender As Object, e As EventArgs) Handles AccountsPanel.SelectedIndexChanged
         Select Case True
             Case AccountsPanel.SelectedTab.Equals(DepartmentTab)
-                LoadTabData(DGDEPARTMENT, LBLDEPARTMENTPREV, LBLDEPARTMENTNEXT, QueryTableType.DEPARTMENT_QUERY_TABLE)
+                LoadTabData(DGDEPARTMENT, LBLDEPARTMENTPREV, LBLDEPARTMENTNEXT, QueryTableType.DEPARTMENT_QUERY_TABLE, TXTDEPARTMENTSEARCH)
 
             Case AccountsPanel.SelectedTab.Equals(YearLevelTab)
-                LoadTabData(DGYEARLEVEL, LBLYEARLEVELPREV, LBLYEARLEVELNEXT, QueryTableType.YEARLEVEL_QUERY_TABLE)
+                LoadTabData(DGYEARLEVEL, LBLYEARLEVELPREV, LBLYEARLEVELNEXT, QueryTableType.YEARLEVEL_QUERY_TABLE, TXTYEARLEVELSEARCH)
 
             Case AccountsPanel.SelectedTab.Equals(SectionTab)
-                LoadTabData(DGSECTIONS, LBLSECTIONPREV, LBLSECTIONNEXT, QueryTableType.SECTION_QUERY_TABLE)
+                LoadTabData(DGSECTIONS, LBLSECTIONPREV, LBLSECTIONNEXT, QueryTableType.SECTION_QUERY_TABLE, TXTSECTIONSEARCH)
 
             Case AccountsPanel.SelectedTab.Equals(StudentsTab)
-                LoadTabData(DGSTUDENT, LBLSTUDENTPREV, LBLSTUDENTNEXT, QueryTableType.STUDENT_QUERY_TABLE)
+                LoadTabData(DGSTUDENT, LBLSTUDENTPREV, LBLSTUDENTNEXT, QueryTableType.STUDENT_QUERY_TABLE, TXTSTUDENTSEARCH)
 
             Case AccountsPanel.SelectedTab.Equals(FacultyTab)
-                LoadTabData(DGFACULTY, LBLFACULTYPREV, LBLFACULTYNEXT, QueryTableType.FACULTY_QUERY_TABLE)
+                LoadTabData(DGFACULTY, LBLFACULTYPREV, LBLFACULTYNEXT, QueryTableType.FACULTY_QUERY_TABLE, TXTFACULTYSEARCH)
 
             Case AccountsPanel.SelectedTab.Equals(AdminTab)
-                LoadTabData(DGADMINISTRATOR, LBLADMINPREV, LBLADMINNEXT, QueryTableType.ADMIN_QUERY_TABLE)
+                LoadTabData(DGADMINISTRATOR, LBLADMINPREV, LBLADMINNEXT, QueryTableType.ADMIN_QUERY_TABLE, TXTADMINSEARCH)
 
         End Select
     End Sub
@@ -969,7 +974,15 @@ Public Class DashboardForm
             End If
         End If
         DGBOOKS.EndEdit()
-        CMBBOOKFILTER_SelectedIndexChanged(CMBBOOKFILTER, Nothing)
+        If CMBBOOKFILTER.SelectedIndex = 0 Then
+            DGBOOKS.DataSource = BaseMaintenance.Search(QueryTableType.BOOK_QUERY_TABLE, TXTBOOKSEARCH.Text)
+            LBLBOOKNEXT.Text = BaseMaintenance.PMAX
+            LBLBOOKPREV.Text = BaseMaintenance.PPrev
+        Else
+            DGBOOKS.DataSource = BaseMaintenance.SearchArchive(QueryTableType.BOOK_QUERY_TABLE, TXTBOOKSEARCH.Text)
+            LBLBOOKNEXT.Text = BaseMaintenance.PMAX
+            LBLBOOKPREV.Text = BaseMaintenance.PPrev
+        End If
     End Sub
 
     Private Sub UnarchiveSelectedToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles UnarchiveSelectedToolStripMenuItem2.Click
@@ -989,7 +1002,13 @@ Public Class DashboardForm
             End If
         End If
         DGBOOKS.EndEdit()
-        CMBBOOKFILTER_SelectedIndexChanged(CMBBOOKFILTER, Nothing)
+        If CMBBOOKFILTER.SelectedIndex = 0 Then
+            DGBOOKS.DataSource = BaseMaintenance.Search(QueryTableType.BOOK_QUERY_TABLE, TXTBOOKSEARCH.Text)
+        Else
+            DGBOOKS.DataSource = BaseMaintenance.SearchArchive(QueryTableType.BOOK_QUERY_TABLE, TXTBOOKSEARCH.Text)
+        End If
+        LBLBOOKNEXT.Text = BaseMaintenance.PMAX
+        LBLBOOKPREV.Text = BaseMaintenance.PPrev
     End Sub
 
     Private Sub DeleteSelectedToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DeleteSelectedToolStripMenuItem.Click
@@ -1100,12 +1119,13 @@ Public Class DashboardForm
         If BaseMaintenance.Delete(qtype, params) Then
             MessageBox.Show("Deleted Successfully!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Else
-            MessageBox.Show("Cannot delete the selected items. Some items are being used to other resources. Please remove the them before deleting.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("Cannot delete the selected items. Some items are being used to other resources. Please remove the them before deleting.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         End If
         dg.DataSource = BaseMaintenance.Fetch(qtype)
     End Sub
 
-    Private Sub LoadTabData(dg As Object, lblPrev As Object, lblNext As Object, qtype As QueryTableType)
+    Private Sub LoadTabData(dg As Object, lblPrev As Object, lblNext As Object, qtype As QueryTableType, txtSearch As Object)
+        txtSearch.Clear()
         dg.DataSource = BaseMaintenance.Fetch(qtype)
         lblPrev.Text = BaseMaintenance.PPrev
         lblNext.Text = BaseMaintenance.PMAX
