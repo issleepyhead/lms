@@ -60,7 +60,6 @@ Module BaseMaintenance
         Dim searchQuery As New Dictionary(Of String, String) From {
             {"@search", "%" & query & "%"}
         }
-        PPrev = 1
         PMAX = ExecScalar(QueryTable.FETCH_TOTAL_COUNT_QUERY_SEARCH, searchQuery)
         If PMAX Mod 30 <> 0 Then
             PMAX = (PMAX \ 30) + 1
@@ -106,7 +105,6 @@ Module BaseMaintenance
         Dim searchQuery As New Dictionary(Of String, String) From {
             {"@search", "%" & query & "%"}
         }
-        PPrev = 1
         PMAX = ExecScalar(QueryTable.FETCH_ARCHIVE_SEARCH_TOTAL_COUNT, searchQuery)
         If PMAX Mod 30 <> 0 Then
             PMAX = (PMAX \ 30) + 1
