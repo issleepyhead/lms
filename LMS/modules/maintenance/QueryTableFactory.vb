@@ -279,24 +279,29 @@
 
             Case QueryTableType.ADMIN_QUERY_TABLE
                 Return New MaintenanceQueries With {
-                    .ADD_QUERY = "INSERT INTO tbladmins (student_id, faculty_id) VALUES (student_id, faculty_id)",
+                    .ADD_QUERY = "INSERT INTO tbladmins (student_id, faculty_id) VALUES (@sid, @fid)",
                     .DELETE_QUERY = "DELETE FROM tbladmins WHERE id = @id",
                     .FETCH_LIMIT_QUERY = "SELECT a.id, full_name, CASE WHEN `role` = 0 THEN 'Super Admin' ELSE 'Assistant Librarian' END AS `role` FROM tbladmins a JOIN tblstudents s ON a.student_id = s.id UNION SELECT a.id, full_name, CASE WHEN `role` = 0 THEN 'Super Admin' ELSE 'Assistant Librarian' END AS `role` FROM tbladmins a JOIN tblfaculties f ON a.faculty_id = f.id ORDER BY full_name LIMIT @page, 30;",
                     .FETCH_LIMIT_QUERY_SEARCH = "SELECT a.id, full_name, CASE WHEN `role` = 0 THEN 'Super Admin' ELSE 'Assistant Librarian' END AS `role` FROM tbladmins a JOIN tblstudents s ON a.student_id = s.id UNION SELECT a.id, full_name, CASE WHEN `role` = 0 THEN 'Super Admin' ELSE 'Assistant Librarian' END AS `role` FROM tbladmins a JOIN tblfaculties f ON a.faculty_id = f.id WHERE full_name LIKE @search OR phone LIKE @search OR email LIKE @search ORDER BY full_name LIMIT @page, 30;",
                     .FETCH_TOTAL_COUNT_QUERY = "SELECT COUNT(*) FROM tbladmins a LEFT JOIN tblfaculties f ON a.faculty_id = f.id LEFT JOIN tblstudents s ON a.student_id = s.id",
-                    .FETCH_TOTAL_COUNT_QUERY_SEARCH = "SELECT COUNT(*) FROM tbladmins a LEFT JOIN tblfaculties f ON a.faculty_id = f.id LEFT JOIN tblstudents s ON a.student_id = s.id WHERE full_name LIKE @search OR phone LIKE @search OR email LIKE @search",
-                    .UPDATE_QUERY = "UPDATE tbladmins SET role = @role"
+                    .FETCH_TOTAL_COUNT_QUERY_SEARCH = "SELECT COUNT(*) FROM tbladmins a LEFT JOIN tblfaculties f ON a.faculty_id = f.id LEFT JOIN tblstudents s ON a.student_id = s.id WHERE full_name LIKE @search OR phone LIKE @search OR email LIKE @search"
                 }
         End Select
         Return New MaintenanceQueries
     End Function
 #End Region
 
-    Public ADD_ASSISTANT_STUDENT_QUERY As String = "INSERT INTO tbladmins (student_id) VALUES (@sid)"
-    Public ADD_ASSISTANT_FACULTY_QUERY As String = "INSERT INTO tbladmins (faculty_id) VALUES (@fid)"
-    Public REMOVE_ASSISTANT_QUERY As String = "DELETE FROM tbladmins WHERE id = @id"
-    Public PROMOTE_SUPERADMIN_QUERY As String = "INSERT INTO tbladmins (faculty_id, role) VALUES (@fid, 0)"
-    Public UPDATE_ROLE_QUERY As String = "UPDATE tbladmins SET role = @role"
+    'Public ADD_ASSISTANT_STUDENT_QUERY As String = "INSERT INTO tbladmins (student_id) VALUES (@sid)"
+    'Public ADD_ASSISTANT_FACULTY_QUERY As String = "INSERT INTO tbladmins (faculty_id) VALUES (@fid)"
+    'Public REMOVE_ASSISTANT_QUERY As String = "DELETE FROM tbladmins WHERE id = @id"
+    Public STUDENT_ADMIN_EXISTS_QUERY As String = "SELECT COUNT(*) FROM tbladmins WHERE student_id = @id"
+    Public FACULTY_ADMIN_EXISTS_QUERY As String = "SELECT COUNT(*) FROM tbladmins WHERE faculty_id = @id"
+
+    Public ADD_ADMIN_QUERY As String = "INSERT INTO tbladmins (student_id, faculty_id) VALUES (@sid, @fid)"
+    Public ADD_SUPERADMIN_QUERY As String = "INSERT INTO tbladmins (faculty_id, role) VALUES (@fid, 0)"
+    Public PROMOTE_SUPERADMIN_QUERY As String = "UPDATE tbladmins SET role = 0 WHERE faculty_id = @fid"
+    Public DEMOTE_SUPERADMIN_QUERY As String = "UPDATE tbladmins SET role = 1 WHERE role = 0"
+    'Public UPDATE_ROLE_QUERY As String = "UPDATE tbladmins SET role = @role"
 
     Public ARCHIVE_BOOKS_QUERY As String = "UPDATE tblbooks SET status = 0 WHERE id = @id"
     Public UNARCHIVE_BOOKS_QUERY As String = "UPDATE tblbooks SET status = 1 WHERE id = @id"
@@ -305,5 +310,5 @@
     Public UNARCHIVE_STUDENT_QUERY As String = "UPDATE tblstudents SET status = 1 WHERE id = @id"
 
     Public ARCHIVE_FACULTY_QUERY As String = "UPDATE tblfaculties SET status = 0 WHERE id = @id"
-    Public UNARCHIVE_FACULTY_QUERY As String = "UDATE tblfaculties SET status = 1 WHERE id = @id"
+    Public UNARCHIVE_FACULTY_QUERY As String = "UPDATE tblfaculties SET status = 1 WHERE id = @id"
 End Module

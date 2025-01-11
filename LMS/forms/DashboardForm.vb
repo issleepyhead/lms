@@ -7,6 +7,7 @@ Public Class DashboardForm
     Private SELECTED_FACULTY As New SystemDataSets.DTFacultyDataTable
 
     Private Sub DashboardForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        BookInventoryPanels_SelectedIndexChanged(BookInventoryPanels, Nothing)
     End Sub
 
     Private Sub BTNLOGOUT_Click(sender As Object, e As EventArgs) Handles BTNLOGOUT.Click
@@ -1085,7 +1086,27 @@ Public Class DashboardForm
 
 #Region "Student Menu Strip"
     Private Sub PromoteAsAssistLibrarianToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PromoteAsAssistLibrarianToolStripMenuItem.Click
+        If SELECTED_STUDENTS.Rows.Count = 0 Then
+            MessageBox.Show("Please select an item to continue.", "No Item Selected!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Exit Sub
+        Else
+            If MessageBox.Show("Are you sure you want to add the selected item(s) as assistant librarian?", "Archive Selected?", MessageBoxButtons.YesNo, MessageBoxIcon.Information) <> DialogResult.Yes Then
+                Exit Sub
+            End If
 
+            Dim collection As New List(Of Dictionary(Of String, String))
+            For Each item As DataRow In SELECTED_STUDENTS.Rows
+                collection.Add(New Dictionary(Of String, String) From {{"@sid", item.Item("id")}, {"@fid", ""}})
+            Next
+            If AddAssistantLibrarian(collection) Then
+                MessageBox.Show("Added Successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Else
+                MessageBox.Show("Action failed.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            End If
+        End If
+        DGSTUDENT.EndEdit()
+        CMBSTUDENTFILTER_SelectedIndexChanged(CMBSTUDENTFILTER, Nothing)
+        SELECTED_STUDENTS = New SystemDataSets.DTStudentDataTable
     End Sub
 
     Private Sub SelectAllToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles SelectAllToolStripMenuItem2.Click
@@ -1184,23 +1205,91 @@ Public Class DashboardForm
 #Region "Faculty Menu Strip"
 
     Private Sub SelectAllToolStripMenuItem3_Click(sender As Object, e As EventArgs) Handles SelectAllToolStripMenuItem3.Click
-
+        For Each item As DataGridViewRow In DGFACULTY.Rows
+            item.Cells(NameOf(chckBoxFaculty)).Value = True
+            Dim boundItem As DataRowView = TryCast(item.DataBoundItem, DataRowView)
+            If Not SELECTED_FACULTY.Rows.Contains(boundItem.Row.Item("id")) Then
+                SELECTED_FACULTY.Rows.Add(boundItem.Row.Item("id"))
+            End If
+        Next
+        DGBOOKS.EndEdit()
     End Sub
 
     Private Sub UnselectAllToolStripMenuItem3_Click(sender As Object, e As EventArgs) Handles UnselectAllToolStripMenuItem3.Click
-
+        For Each item As DataGridViewRow In DGFACULTY.Rows
+            item.Cells(NameOf(chckBoxFaculty)).Value = False
+        Next
+        SELECTED_FACULTY = New SystemDataSets.DTFacultyDataTable
+        DGFACULTY.EndEdit()
     End Sub
 
     Private Sub DeleteSelectedToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles DeleteSelectedToolStripMenuItem2.Click
+        If SELECTED_FACULTY.Rows.Count = 0 Then
+            MessageBox.Show("Please select an item to continue.", "No Item Selected!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Exit Sub
+        End If
 
+        If MessageBox.Show("Deleting these items will also delete the existing book copies." & vbLf & "Are you sure you want to delete the selected item(s)?", "Delete Selected?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.No Then
+            Exit Sub
+        End If
+
+        Dim collection As New List(Of Dictionary(Of String, String))
+
+        For Each item As DataRow In SELECTED_FACULTY.Rows
+            collection.Add(New Dictionary(Of String, String) From {{"@id", item.Item("id")}})
+        Next
+
+        If BaseMaintenance.Delete(QueryTableType.FACULTY_QUERY_TABLE, collection) Then
+            MessageBox.Show("Deleted Successfully!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Else
+            MessageBox.Show("Cannot delete the selected items. Some items are being used to other resources. Please remove the them before deleting.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
+        CMBFACULTYFILTER_SelectedIndexChanged(CMBFACULTYFILTER, Nothing)
+        SELECTED_FACULTY = New SystemDataSets.DTFacultyDataTable
     End Sub
 
     Private Sub ArchiveSelectedToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ArchiveSelectedToolStripMenuItem.Click
+        If SELECTED_FACULTY.Rows.Count = 0 Then
+            MessageBox.Show("Please select an item to continue.", "No Item Selected!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Exit Sub
+        Else
+            If MessageBox.Show("Are you sure you want to archive the selected item(s)?", "Archive Selected?", MessageBoxButtons.YesNo, MessageBoxIcon.Information) <> DialogResult.Yes Then
+                Exit Sub
+            End If
 
+            Dim collection As New List(Of Dictionary(Of String, String))
+            For Each item As DataRow In SELECTED_FACULTY.Rows
+                collection.Add(New Dictionary(Of String, String) From {{"@id", item.Item("id")}})
+            Next
+            If ExecTransactionNonQuery(ARCHIVE_FACULTY_QUERY, collection) Then
+                MessageBox.Show("Archived Successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Else
+                MessageBox.Show("Archiving failed.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            End If
+        End If
+        DGFACULTY.EndEdit()
+        CMBFACULTYFILTER_SelectedIndexChanged(CMBFACULTYFILTER, Nothing)
+        SELECTED_FACULTY = New SystemDataSets.DTFacultyDataTable
     End Sub
 
     Private Sub UnarchiveSelectedToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UnarchiveSelectedToolStripMenuItem.Click
+        If SELECTED_FACULTY.Rows.Count = 0 Then
+            MessageBox.Show("Please select an item to continue.", "No Item Selected!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Exit Sub
+        Else
 
+            Dim collection As New List(Of Dictionary(Of String, String))
+            For Each item As DataRow In SELECTED_FACULTY.Rows
+                collection.Add(New Dictionary(Of String, String) From {{"@id", item.Item("id")}})
+            Next
+            If ExecTransactionNonQuery(UNARCHIVE_FACULTY_QUERY, collection) Then
+                MessageBox.Show("Unarchived Successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Else
+                MessageBox.Show("Unarchive failed.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            End If
+        End If
+        CMBFACULTYFILTER_SelectedIndexChanged(CMBFACULTYFILTER, Nothing)
+        SELECTED_FACULTY = New SystemDataSets.DTFacultyDataTable
     End Sub
 
     Private Sub SuperAdminToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SuperAdminToolStripMenuItem.Click
@@ -1208,7 +1297,27 @@ Public Class DashboardForm
     End Sub
 
     Private Sub AssistLibrarianToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AssistLibrarianToolStripMenuItem.Click
+        If SELECTED_FACULTY.Rows.Count = 0 Then
+            MessageBox.Show("Please select an item to continue.", "No Item Selected!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Exit Sub
+        Else
+            If MessageBox.Show("Are you sure you want to add the selected item(s) as assistant librarian?", "Archive Selected?", MessageBoxButtons.YesNo, MessageBoxIcon.Information) <> DialogResult.Yes Then
+                Exit Sub
+            End If
 
+            Dim collection As New List(Of Dictionary(Of String, String))
+            For Each item As DataRow In SELECTED_FACULTY.Rows
+                collection.Add(New Dictionary(Of String, String) From {{"@sid", ""}, {"@fid", item.Item("id")}})
+            Next
+            If AddAssistantLibrarian(collection) Then
+                MessageBox.Show("Added Successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Else
+                MessageBox.Show("Action failed.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            End If
+        End If
+        DGFACULTY.EndEdit()
+        CMBFACULTYFILTER_SelectedIndexChanged(CMBFACULTYFILTER, Nothing)
+        SELECTED_FACULTY = New SystemDataSets.DTFacultyDataTable
     End Sub
 #End Region
 
@@ -1307,7 +1416,36 @@ Public Class DashboardForm
 
     Private Sub BTNADDCOPIES_Click(sender As Object, e As EventArgs) Handles BTNADDCOPIES.Click
         ' TODO ADD SANITIZE THIS
-        AddCopies(CInt(TXTQUANTITY.Text), TXTISBNCOPIES.Text, CInt(TXTPRICECOPIES.Text), CMBDONATORCOPIES.SelectedValue, CMBSUPPLIERCOPIES.SelectedValue)
+
+        Dim price_copy As String = If(String.IsNullOrEmpty(TXTPRICECOPIES.Text), "0", TXTPRICECOPIES.Text)
+        Dim hasErrors As Boolean = False
+        If Not Validator.MatchPattern(TXTQUANTITY.Text, "^\d+$") Then
+            errProvider.SetError(TXTQUANTITY, "Invalid number format.")
+            hasErrors = True
+        End If
+
+        If Not Validator.MatchPattern(price_copy, "^\d+\.?\d*$") Then
+            errProvider.SetError(TXTPRICECOPIES, "Invalid number format.")
+            hasErrors = True
+        End If
+
+        If Not hasErrors AndAlso CInt(TXTQUANTITY.Text) < 1 Then
+            errProvider.SetError(TXTQUANTITY, "Quantity should be greater than 0.")
+            hasErrors = True
+        End If
+
+        If hasErrors Then
+            Exit Sub
+        End If
+
+
+        If MessageBox.Show($"Are you sure you want to add {CInt(TXTQUANTITY.Text)} copies of {TXTISBNCOPIES.Text}?", "Add Copies?", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = DialogResult.Yes Then
+            AddCopies(CInt(TXTQUANTITY.Text), TXTISBNCOPIES.Text, If(String.IsNullOrEmpty(TXTPRICECOPIES.Text), 0, CInt(price_copy)), CMBDONATORCOPIES.SelectedValue, CMBSUPPLIERCOPIES.SelectedValue)
+        End If
+        TXTQUANTITY.Text = String.Empty
+        TXTISBNCOPIES.Text = String.Empty
+        'CMBDONATORCOPIES.Text = "None"
+        'CMBSUPPLIERCOPIES.Text = "None"
     End Sub
 
     Private Sub CHCKBOXDONATED_CheckedChanged(sender As Object, e As EventArgs) Handles CHCKBOXDONATED.CheckedChanged

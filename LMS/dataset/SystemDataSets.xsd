@@ -12,7 +12,7 @@
   <xs:element name="SystemDataSets" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="SystemDataSets" msprop:Generator_UserDSName="SystemDataSets">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="DTBook" msprop:Generator_TableClassName="DTBookDataTable" msprop:Generator_TableVarName="tableDTBook" msprop:Generator_RowChangedName="DTBookRowChanged" msprop:Generator_TablePropName="DTBook" msprop:Generator_RowDeletingName="DTBookRowDeleting" msprop:Generator_RowChangingName="DTBookRowChanging" msprop:Generator_RowEvHandlerName="DTBookRowChangeEventHandler" msprop:Generator_RowDeletedName="DTBookRowDeleted" msprop:Generator_RowClassName="DTBookRow" msprop:Generator_UserTableName="DTBook" msprop:Generator_RowEvArgName="DTBookRowChangeEvent">
+        <xs:element name="DTBook" msprop:Generator_TableClassName="DTBookDataTable" msprop:Generator_TableVarName="tableDTBook" msprop:Generator_TablePropName="DTBook" msprop:Generator_RowDeletingName="DTBookRowDeleting" msprop:Generator_RowChangingName="DTBookRowChanging" msprop:Generator_RowEvHandlerName="DTBookRowChangeEventHandler" msprop:Generator_RowDeletedName="DTBookRowDeleted" msprop:Generator_UserTableName="DTBook" msprop:Generator_RowChangedName="DTBookRowChanged" msprop:Generator_RowEvArgName="DTBookRowChangeEvent" msprop:Generator_RowClassName="DTBookRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:string" />
@@ -32,17 +32,17 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DTStudent" msprop:Generator_TableClassName="DTStudentDataTable" msprop:Generator_TableVarName="tableDTStudent" msprop:Generator_TablePropName="DTStudent" msprop:Generator_RowDeletingName="DTStudentRowDeleting" msprop:Generator_RowChangingName="DTStudentRowChanging" msprop:Generator_RowEvHandlerName="DTStudentRowChangeEventHandler" msprop:Generator_RowDeletedName="DTStudentRowDeleted" msprop:Generator_UserTableName="DTStudent" msprop:Generator_RowChangedName="DTStudentRowChanged" msprop:Generator_RowEvArgName="DTStudentRowChangeEvent" msprop:Generator_RowClassName="DTStudentRow">
+        <xs:element name="DTStudent" msprop:Generator_TableClassName="DTStudentDataTable" msprop:Generator_TableVarName="tableDTStudent" msprop:Generator_RowChangedName="DTStudentRowChanged" msprop:Generator_TablePropName="DTStudent" msprop:Generator_RowDeletingName="DTStudentRowDeleting" msprop:Generator_RowChangingName="DTStudentRowChanging" msprop:Generator_RowEvHandlerName="DTStudentRowChangeEventHandler" msprop:Generator_RowDeletedName="DTStudentRowDeleted" msprop:Generator_RowClassName="DTStudentRow" msprop:Generator_UserTableName="DTStudent" msprop:Generator_RowEvArgName="DTStudentRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:string" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DTFaculty" msprop:Generator_TableClassName="DTFacultyDataTable" msprop:Generator_TableVarName="tableDTFaculty" msprop:Generator_TablePropName="DTFaculty" msprop:Generator_RowDeletingName="DTFacultyRowDeleting" msprop:Generator_RowChangingName="DTFacultyRowChanging" msprop:Generator_RowEvHandlerName="DTFacultyRowChangeEventHandler" msprop:Generator_RowDeletedName="DTFacultyRowDeleted" msprop:Generator_UserTableName="DTFaculty" msprop:Generator_RowChangedName="DTFacultyRowChanged" msprop:Generator_RowEvArgName="DTFacultyRowChangeEvent" msprop:Generator_RowClassName="DTFacultyRow">
+        <xs:element name="DTFaculty" msprop:Generator_TableClassName="DTFacultyDataTable" msprop:Generator_TableVarName="tableDTFaculty" msprop:Generator_RowChangedName="DTFacultyRowChanged" msprop:Generator_TablePropName="DTFaculty" msprop:Generator_RowDeletingName="DTFacultyRowDeleting" msprop:Generator_RowChangingName="DTFacultyRowChanging" msprop:Generator_RowEvHandlerName="DTFacultyRowChangeEventHandler" msprop:Generator_RowDeletedName="DTFacultyRowDeleted" msprop:Generator_RowClassName="DTFacultyRow" msprop:Generator_UserTableName="DTFaculty" msprop:Generator_RowEvArgName="DTFacultyRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:string" minOccurs="0" />
+              <xs:element name="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:string" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -54,6 +54,10 @@
     </xs:unique>
     <xs:unique name="DTStudent_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:DTStudent" />
+      <xs:field xpath="mstns:id" />
+    </xs:unique>
+    <xs:unique name="DTFaculty_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:DTFaculty" />
       <xs:field xpath="mstns:id" />
     </xs:unique>
   </xs:element>
