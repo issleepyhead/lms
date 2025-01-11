@@ -53,10 +53,7 @@ Module Connection
                         End With
                     Next
                 End If
-                res = cmd.ExecuteNonQuery()
-                If res = 0 Then
-                    Throw New Exception("Parang nothing happens lang ah?")
-                End If
+                cmd.ExecuteNonQuery()
             End Using
         Catch ex As Exception
             Logger.Logger(ex)
@@ -108,10 +105,7 @@ Module Connection
                     Next
                 End If
                 cmd.CommandType = CommandType.StoredProcedure
-                res = cmd.ExecuteNonQuery()
-                If res = 0 Then
-                    Throw New Exception("Parang nothing happens lang ah?")
-                End If
+                cmd.ExecuteNonQuery()
             End Using
         Catch ex As Exception
             Logger.Logger(ex)

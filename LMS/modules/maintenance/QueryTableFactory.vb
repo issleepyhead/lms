@@ -271,9 +271,9 @@
                 Return New MaintenanceQueries With {
                     .DELETE_QUERY = "DELETE FROM tblbookcopies WHERE id = @id",
                     .FETCH_TOTAL_COUNT_QUERY = "SELECT COUNT(*) FROM tblbookcopies",
-                    .FETCH_LIMIT_QUERY = "SELECT bc.id, b.title, b.isbn, bc.accession_no, d.name donator_name, s.name supplier_name, price FROM tblbookcopies bc JOIN tblbooks b ON bc.book_id = b.id JOIN tbldonators d ON bc.donator_id = d.id JOIN tblsuppliers s ON bc.supplier_id = s.id ORDER BY b.title LIMIT @page, 30;",
-                    .FETCH_LIMIT_QUERY_SEARCH = "SELECT bc.id, b.title, b.isbn, bc.accession_no, d.name donator_name, s.name supplier_name, price FROM tblbookcopies bc JOIN tblbooks b ON bc.book_id = b.id JOIN tbldonators d ON bc.donator_id = d.id JOIN tblsuppliers s ON bc.supplier_id = s.id WHERE b.title LIKE @search OR b.isbn LIKE @search ORDER BY b.title ASC LIMIT @page, 30;",
-                    .FETCH_TOTAL_COUNT_QUERY_SEARCH = "SELECT COUNT(*) FROM tblbookcopies bc JOIN tblbooks b ON bc.book_id = b.id JOIN tbldonators d ON bc.donator_id = d.id JOIN tblsuppliers s ON bc.supplier_id = s.id WHERE b.title LIKE @search OR b.isbn LIKE @search ORDER BY b.title",
+                    .FETCH_LIMIT_QUERY = "SELECT bc.id, b.title, b.isbn, bc.accession_no, d.name donator_name, s.name supplier_name, price FROM tblbookcopies bc JOIN tblbooks b ON bc.book_id = b.id LEFT JOIN tbldonators d ON bc.donator_id = d.id LEFT JOIN tblsuppliers s ON bc.supplier_id = s.id ORDER BY b.title LIMIT @page, 30;",
+                    .FETCH_LIMIT_QUERY_SEARCH = "SELECT bc.id, b.title, b.isbn, bc.accession_no, d.name donator_name, s.name supplier_name, price FROM tblbookcopies bc JOIN tblbooks b ON bc.book_id = b.id LEFT JOIN tbldonators d ON bc.donator_id = d.id LEFT JOIN tblsuppliers s ON bc.supplier_id = s.id WHERE b.title LIKE @search OR b.isbn LIKE @search ORDER BY b.title ASC LIMIT @page, 30;",
+                    .FETCH_TOTAL_COUNT_QUERY_SEARCH = "SELECT COUNT(*) FROM tblbookcopies bc JOIN tblbooks b ON bc.book_id = b.id LEFT JOIN tbldonators d ON bc.donator_id = d.id LEFT JOIN tblsuppliers s ON bc.supplier_id = s.id WHERE b.title LIKE @search OR b.isbn LIKE @search ORDER BY b.title",
                     .UPDATE_QUERY = "UPDATE tblbookcopies SET price = @price WHERE id = @id"
                 }
 

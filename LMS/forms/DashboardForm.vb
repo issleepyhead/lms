@@ -1039,7 +1039,11 @@ Public Class DashboardForm
         If BaseMaintenance.PPrev > 1 Then
             BaseMaintenance.PPrev -= 1
             LBLCOPIESPREV.Text = BaseMaintenance.PPrev
-            DGBOOKCOPIES.DataSource = BaseMaintenance.Fetch(QueryTableType.BOOKCOPIES_QUERY_TABLE)
+            If String.IsNullOrEmpty(TXTCOPIESSEARCH.Text) Then
+                DGBOOKCOPIES.DataSource = BaseMaintenance.Fetch(QueryTableType.BOOKCOPIES_QUERY_TABLE)
+            Else
+                DGBOOKCOPIES.DataSource = BaseMaintenance.Search(QueryTableType.BOOKCOPIES_QUERY_TABLE, TXTCOPIESSEARCH.Text)
+            End If
         End If
     End Sub
 
@@ -1047,7 +1051,11 @@ Public Class DashboardForm
         If BaseMaintenance.PPrev < BaseMaintenance.PMAX Then
             BaseMaintenance.PPrev += 1
             LBLCOPIESPREV.Text = BaseMaintenance.PPrev
-            DGBOOKCOPIES.DataSource = BaseMaintenance.Fetch(QueryTableType.BOOKCOPIES_QUERY_TABLE)
+            If String.IsNullOrEmpty(TXTCOPIESSEARCH.Text) Then
+                DGBOOKCOPIES.DataSource = BaseMaintenance.Fetch(QueryTableType.BOOKCOPIES_QUERY_TABLE)
+            Else
+                DGBOOKCOPIES.DataSource = BaseMaintenance.Search(QueryTableType.BOOKCOPIES_QUERY_TABLE, TXTCOPIESSEARCH.Text)
+            End If
         End If
     End Sub
 #End Region
@@ -1560,7 +1568,45 @@ Public Class DashboardForm
         MaintenancePanels_SelectedIndexChanged(MaintenancePanels, Nothing)
         BookInventoryPanels_SelectedIndexChanged(BookInventoryPanels, Nothing)
     End Sub
+
+
 #End Region
 
+#Region "Book Inventory Module"
+    Private Sub BTNINVENTORYPREV_Click(sender As Object, e As EventArgs) Handles BTNINVENTORYPREV.Click
+        If BaseMaintenance.PPrev > 1 Then
+            BaseMaintenance.PPrev -= 1
+            LBLINVENTORYPREV.Text = BaseMaintenance.PPrev
+            If String.IsNullOrEmpty(TXTINVENTORYSEARCH.Text) Then
+                DGINVENTORY.DataSource = BaseMaintenance.Fetch(QueryTableType.BOOKINVENTORY_QUERY_TABLE)
+            Else
+                DGINVENTORY.DataSource = BaseMaintenance.Search(QueryTableType.BOOKINVENTORY_QUERY_TABLE, TXTINVENTORYSEARCH.Text)
+            End If
+        End If
+    End Sub
+
+    Private Sub BTNINVENTORYNEXT_Click(sender As Object, e As EventArgs) Handles BTNINVENTORYNEXT.Click
+        If BaseMaintenance.PPrev < BaseMaintenance.PMAX Then
+            BaseMaintenance.PPrev += 1
+            LBLINVENTORYPREV.Text = BaseMaintenance.PPrev
+            If String.IsNullOrEmpty(TXTINVENTORYSEARCH.Text) Then
+                DGINVENTORY.DataSource = BaseMaintenance.Fetch(QueryTableType.BOOKINVENTORY_QUERY_TABLE)
+            Else
+                DGINVENTORY.DataSource = BaseMaintenance.Search(QueryTableType.BOOKINVENTORY_QUERY_TABLE, TXTINVENTORYSEARCH.Text)
+            End If
+        End If
+    End Sub
+
+    Private Sub DGINVENTORY_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGINVENTORY.CellClick
+        If e.ColumnIndex <> chckBoxInventory.Index AndAlso e.RowIndex <> -1 Then
+            Dim boundItem As DataRowView = TryCast(DGINVENTORY.Rows(e.RowIndex).DataBoundItem, DataRowView)
+            LBLINVACCESSION.Text = boundItem.Item("accession_no")
+            LBLINVDONATOR.Text = If(IsDBNull(boundItem.Item("donator_name")), "None", boundItem.Item("donator_name"))
+            LBLINVISBN.Text = boundItem.Item("isbn")
+            LBLINVSUPPLIER.Text = If(IsDBNull(boundItem.Item("supplier_name")), "None", boundItem.Item("supplier_name"))
+            TXTINVPRICE.Text = If(IsDBNull(boundItem.Item("price")), Nothing, boundItem.Item("price"))
+        End If
+    End Sub
+#End Region
 
 End Class
