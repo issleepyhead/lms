@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class SearchBooksDialog
+Partial Class ViewBooksDialog
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -25,27 +25,16 @@ Partial Class SearchBooksDialog
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Me.Guna2Panel1 = New Guna.UI2.WinForms.Guna2Panel()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
+        Me.Guna2Panel1 = New Guna.UI2.WinForms.Guna2Panel()
+        Me.TXTBOOKSEARCH = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2Panel2 = New Guna.UI2.WinForms.Guna2Panel()
         Me.DGBOOKS = New Guna.UI2.WinForms.Guna2DataGridView()
-        Me.TXTBOOKSEARCH = New Guna.UI2.WinForms.Guna2TextBox()
-        Me.Guna2Panel1.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
+        Me.Guna2Panel1.SuspendLayout()
         Me.Guna2Panel2.SuspendLayout()
         CType(Me.DGBOOKS, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'Guna2Panel1
-        '
-        Me.Guna2Panel1.Controls.Add(Me.TXTBOOKSEARCH)
-        Me.Guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Guna2Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Guna2Panel1.Margin = New System.Windows.Forms.Padding(0)
-        Me.Guna2Panel1.Name = "Guna2Panel1"
-        Me.Guna2Panel1.Padding = New System.Windows.Forms.Padding(20, 0, 20, 0)
-        Me.Guna2Panel1.Size = New System.Drawing.Size(922, 60)
-        Me.Guna2Panel1.TabIndex = 0
         '
         'TableLayoutPanel1
         '
@@ -60,7 +49,45 @@ Partial Class SearchBooksDialog
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(922, 545)
-        Me.TableLayoutPanel1.TabIndex = 1
+        Me.TableLayoutPanel1.TabIndex = 2
+        '
+        'Guna2Panel1
+        '
+        Me.Guna2Panel1.Controls.Add(Me.TXTBOOKSEARCH)
+        Me.Guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Guna2Panel1.Location = New System.Drawing.Point(0, 0)
+        Me.Guna2Panel1.Margin = New System.Windows.Forms.Padding(0)
+        Me.Guna2Panel1.Name = "Guna2Panel1"
+        Me.Guna2Panel1.Padding = New System.Windows.Forms.Padding(20, 0, 20, 0)
+        Me.Guna2Panel1.Size = New System.Drawing.Size(922, 60)
+        Me.Guna2Panel1.TabIndex = 0
+        '
+        'TXTBOOKSEARCH
+        '
+        Me.TXTBOOKSEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TXTBOOKSEARCH.BorderColor = System.Drawing.Color.Gray
+        Me.TXTBOOKSEARCH.BorderRadius = 4
+        Me.TXTBOOKSEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TXTBOOKSEARCH.DefaultText = ""
+        Me.TXTBOOKSEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TXTBOOKSEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TXTBOOKSEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTBOOKSEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTBOOKSEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTBOOKSEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.TXTBOOKSEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTBOOKSEARCH.IconRight = Global.LMS.My.Resources.Resources.search
+        Me.TXTBOOKSEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
+        Me.TXTBOOKSEARCH.Location = New System.Drawing.Point(644, 10)
+        Me.TXTBOOKSEARCH.Margin = New System.Windows.Forms.Padding(0)
+        Me.TXTBOOKSEARCH.MaxLength = 15
+        Me.TXTBOOKSEARCH.Name = "TXTBOOKSEARCH"
+        Me.TXTBOOKSEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TXTBOOKSEARCH.PlaceholderText = "Search Book Copy"
+        Me.TXTBOOKSEARCH.SelectedText = ""
+        Me.TXTBOOKSEARCH.ShortcutsEnabled = False
+        Me.TXTBOOKSEARCH.Size = New System.Drawing.Size(258, 40)
+        Me.TXTBOOKSEARCH.TabIndex = 7
         '
         'Guna2Panel2
         '
@@ -133,34 +160,7 @@ Partial Class SearchBooksDialog
         Me.DGBOOKS.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(205, Byte), Integer))
         Me.DGBOOKS.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
         '
-        'TXTBOOKSEARCH
-        '
-        Me.TXTBOOKSEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TXTBOOKSEARCH.BorderColor = System.Drawing.Color.Gray
-        Me.TXTBOOKSEARCH.BorderRadius = 4
-        Me.TXTBOOKSEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.TXTBOOKSEARCH.DefaultText = ""
-        Me.TXTBOOKSEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.TXTBOOKSEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.TXTBOOKSEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTBOOKSEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTBOOKSEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTBOOKSEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.TXTBOOKSEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTBOOKSEARCH.IconRight = Global.LMS.My.Resources.Resources.search
-        Me.TXTBOOKSEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
-        Me.TXTBOOKSEARCH.Location = New System.Drawing.Point(644, 10)
-        Me.TXTBOOKSEARCH.Margin = New System.Windows.Forms.Padding(0)
-        Me.TXTBOOKSEARCH.MaxLength = 15
-        Me.TXTBOOKSEARCH.Name = "TXTBOOKSEARCH"
-        Me.TXTBOOKSEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXTBOOKSEARCH.PlaceholderText = "Search Book Copy"
-        Me.TXTBOOKSEARCH.SelectedText = ""
-        Me.TXTBOOKSEARCH.ShortcutsEnabled = False
-        Me.TXTBOOKSEARCH.Size = New System.Drawing.Size(258, 40)
-        Me.TXTBOOKSEARCH.TabIndex = 7
-        '
-        'SearchBooksDialog
+        'ViewBooksDialog
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -169,21 +169,21 @@ Partial Class SearchBooksDialog
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.MaximizeBox = False
         Me.MinimizeBox = False
-        Me.Name = "SearchBooksDialog"
+        Me.Name = "ViewBooksDialog"
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "Search Books"
-        Me.Guna2Panel1.ResumeLayout(False)
+        Me.Text = "View Books"
         Me.TableLayoutPanel1.ResumeLayout(False)
+        Me.Guna2Panel1.ResumeLayout(False)
         Me.Guna2Panel2.ResumeLayout(False)
         CType(Me.DGBOOKS, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
 
+    Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
     Friend WithEvents Guna2Panel1 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents TXTBOOKSEARCH As Guna.UI2.WinForms.Guna2TextBox
-    Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
     Friend WithEvents Guna2Panel2 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents DGBOOKS As Guna.UI2.WinForms.Guna2DataGridView
 End Class

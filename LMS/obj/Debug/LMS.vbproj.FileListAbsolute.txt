@@ -181,3 +181,4 @@ C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.AddBorrowBooksDialog.resou
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.SearchAccountDailog.resources
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.SearchBooksDialog.resources
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.vbproj.AssemblyReference.cache
+C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.ViewBooksDialog.resources

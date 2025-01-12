@@ -23,11 +23,13 @@ Partial Class BorrowDialog
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.BTNSEARCHBOOKS = New Guna.UI2.WinForms.Guna2Button()
+        Me.TXTISBN = New Guna.UI2.WinForms.Guna2TextBox()
         Me.RBFACULTY = New Guna.UI2.WinForms.Guna2RadioButton()
         Me.RBSTUDENT = New Guna.UI2.WinForms.Guna2RadioButton()
         Me.BTNBORROWBOOKS = New Guna.UI2.WinForms.Guna2Button()
-        Me.Guna2HtmlLabel3 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.Guna2HtmlLabel9 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.LBLFACULTYREQUIRED = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.LBLSTUDENTREQUIRED = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.BTNADDBOOKS = New Guna.UI2.WinForms.Guna2Button()
         Me.BTNSEARCHFACULTY = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2HtmlLabel2 = New Guna.UI2.WinForms.Guna2HtmlLabel()
@@ -35,20 +37,18 @@ Partial Class BorrowDialog
         Me.BTNSEARCHSTUDENT = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2HtmlLabel1 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.TXTSTUDENTLRN = New Guna.UI2.WinForms.Guna2TextBox()
-        Me.TXTISBN = New Guna.UI2.WinForms.Guna2TextBox()
-        Me.Guna2Button1 = New Guna.UI2.WinForms.Guna2Button()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.Guna2Button1)
+        Me.GroupBox1.Controls.Add(Me.BTNSEARCHBOOKS)
         Me.GroupBox1.Controls.Add(Me.TXTISBN)
         Me.GroupBox1.Controls.Add(Me.RBFACULTY)
         Me.GroupBox1.Controls.Add(Me.RBSTUDENT)
         Me.GroupBox1.Controls.Add(Me.BTNBORROWBOOKS)
-        Me.GroupBox1.Controls.Add(Me.Guna2HtmlLabel3)
-        Me.GroupBox1.Controls.Add(Me.Guna2HtmlLabel9)
+        Me.GroupBox1.Controls.Add(Me.LBLFACULTYREQUIRED)
+        Me.GroupBox1.Controls.Add(Me.LBLSTUDENTREQUIRED)
         Me.GroupBox1.Controls.Add(Me.BTNADDBOOKS)
         Me.GroupBox1.Controls.Add(Me.BTNSEARCHFACULTY)
         Me.GroupBox1.Controls.Add(Me.Guna2HtmlLabel2)
@@ -65,6 +65,48 @@ Partial Class BorrowDialog
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         '
+        'BTNSEARCHBOOKS
+        '
+        Me.BTNSEARCHBOOKS.BorderRadius = 4
+        Me.BTNSEARCHBOOKS.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.BTNSEARCHBOOKS.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.BTNSEARCHBOOKS.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.BTNSEARCHBOOKS.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTNSEARCHBOOKS.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.BTNSEARCHBOOKS.ForeColor = System.Drawing.Color.White
+        Me.BTNSEARCHBOOKS.Location = New System.Drawing.Point(262, 236)
+        Me.BTNSEARCHBOOKS.Margin = New System.Windows.Forms.Padding(0)
+        Me.BTNSEARCHBOOKS.Name = "BTNSEARCHBOOKS"
+        Me.BTNSEARCHBOOKS.Size = New System.Drawing.Size(110, 40)
+        Me.BTNSEARCHBOOKS.TabIndex = 132
+        Me.BTNSEARCHBOOKS.Text = "Search Book"
+        '
+        'TXTISBN
+        '
+        Me.TXTISBN.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.TXTISBN.BorderColor = System.Drawing.Color.Gray
+        Me.TXTISBN.BorderRadius = 4
+        Me.TXTISBN.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TXTISBN.DefaultText = ""
+        Me.TXTISBN.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TXTISBN.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TXTISBN.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTISBN.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTISBN.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTISBN.Font = New System.Drawing.Font("Segoe UI", 11.25!)
+        Me.TXTISBN.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTISBN.Location = New System.Drawing.Point(20, 236)
+        Me.TXTISBN.Margin = New System.Windows.Forms.Padding(0, 0, 0, 8)
+        Me.TXTISBN.MaxLength = 20
+        Me.TXTISBN.Name = "TXTISBN"
+        Me.TXTISBN.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TXTISBN.PlaceholderForeColor = System.Drawing.Color.DarkGray
+        Me.TXTISBN.PlaceholderText = "Scan or type accession number"
+        Me.TXTISBN.SelectedText = ""
+        Me.TXTISBN.ShortcutsEnabled = False
+        Me.TXTISBN.Size = New System.Drawing.Size(238, 40)
+        Me.TXTISBN.TabIndex = 131
+        '
         'RBFACULTY
         '
         Me.RBFACULTY.AutoSize = True
@@ -73,8 +115,8 @@ Partial Class BorrowDialog
         Me.RBFACULTY.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.RBFACULTY.CheckedState.InnerColor = System.Drawing.Color.White
         Me.RBFACULTY.CheckedState.InnerOffset = -4
-        Me.RBFACULTY.Location = New System.Drawing.Point(20, 199)
-        Me.RBFACULTY.Margin = New System.Windows.Forms.Padding(0, 0, 8, 16)
+        Me.RBFACULTY.Location = New System.Drawing.Point(90, 199)
+        Me.RBFACULTY.Margin = New System.Windows.Forms.Padding(0, 0, 8, 0)
         Me.RBFACULTY.Name = "RBFACULTY"
         Me.RBFACULTY.Size = New System.Drawing.Size(59, 17)
         Me.RBFACULTY.TabIndex = 130
@@ -93,8 +135,8 @@ Partial Class BorrowDialog
         Me.RBSTUDENT.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.RBSTUDENT.CheckedState.InnerColor = System.Drawing.Color.White
         Me.RBSTUDENT.CheckedState.InnerOffset = -4
-        Me.RBSTUDENT.Location = New System.Drawing.Point(87, 199)
-        Me.RBSTUDENT.Margin = New System.Windows.Forms.Padding(0, 0, 0, 16)
+        Me.RBSTUDENT.Location = New System.Drawing.Point(20, 199)
+        Me.RBSTUDENT.Margin = New System.Windows.Forms.Padding(0, 0, 8, 16)
         Me.RBSTUDENT.Name = "RBSTUDENT"
         Me.RBSTUDENT.Size = New System.Drawing.Size(62, 17)
         Me.RBSTUDENT.TabIndex = 129
@@ -123,29 +165,29 @@ Partial Class BorrowDialog
         Me.BTNBORROWBOOKS.TabIndex = 128
         Me.BTNBORROWBOOKS.Text = "Borrow Books"
         '
-        'Guna2HtmlLabel3
+        'LBLFACULTYREQUIRED
         '
-        Me.Guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2HtmlLabel3.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Guna2HtmlLabel3.ForeColor = System.Drawing.Color.Red
-        Me.Guna2HtmlLabel3.Location = New System.Drawing.Point(151, 116)
-        Me.Guna2HtmlLabel3.Margin = New System.Windows.Forms.Padding(0)
-        Me.Guna2HtmlLabel3.Name = "Guna2HtmlLabel3"
-        Me.Guna2HtmlLabel3.Size = New System.Drawing.Size(10, 23)
-        Me.Guna2HtmlLabel3.TabIndex = 127
-        Me.Guna2HtmlLabel3.Text = "*"
+        Me.LBLFACULTYREQUIRED.BackColor = System.Drawing.Color.Transparent
+        Me.LBLFACULTYREQUIRED.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LBLFACULTYREQUIRED.ForeColor = System.Drawing.Color.Red
+        Me.LBLFACULTYREQUIRED.Location = New System.Drawing.Point(151, 116)
+        Me.LBLFACULTYREQUIRED.Margin = New System.Windows.Forms.Padding(0)
+        Me.LBLFACULTYREQUIRED.Name = "LBLFACULTYREQUIRED"
+        Me.LBLFACULTYREQUIRED.Size = New System.Drawing.Size(10, 23)
+        Me.LBLFACULTYREQUIRED.TabIndex = 127
+        Me.LBLFACULTYREQUIRED.Text = "*"
         '
-        'Guna2HtmlLabel9
+        'LBLSTUDENTREQUIRED
         '
-        Me.Guna2HtmlLabel9.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2HtmlLabel9.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Guna2HtmlLabel9.ForeColor = System.Drawing.Color.Red
-        Me.Guna2HtmlLabel9.Location = New System.Drawing.Point(158, 33)
-        Me.Guna2HtmlLabel9.Margin = New System.Windows.Forms.Padding(0)
-        Me.Guna2HtmlLabel9.Name = "Guna2HtmlLabel9"
-        Me.Guna2HtmlLabel9.Size = New System.Drawing.Size(10, 23)
-        Me.Guna2HtmlLabel9.TabIndex = 126
-        Me.Guna2HtmlLabel9.Text = "*"
+        Me.LBLSTUDENTREQUIRED.BackColor = System.Drawing.Color.Transparent
+        Me.LBLSTUDENTREQUIRED.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LBLSTUDENTREQUIRED.ForeColor = System.Drawing.Color.Red
+        Me.LBLSTUDENTREQUIRED.Location = New System.Drawing.Point(158, 33)
+        Me.LBLSTUDENTREQUIRED.Margin = New System.Windows.Forms.Padding(0)
+        Me.LBLSTUDENTREQUIRED.Name = "LBLSTUDENTREQUIRED"
+        Me.LBLSTUDENTREQUIRED.Size = New System.Drawing.Size(10, 23)
+        Me.LBLSTUDENTREQUIRED.TabIndex = 126
+        Me.LBLSTUDENTREQUIRED.Text = "*"
         '
         'BTNADDBOOKS
         '
@@ -197,6 +239,7 @@ Partial Class BorrowDialog
         Me.CMBFACULTY.BackColor = System.Drawing.Color.Transparent
         Me.CMBFACULTY.BorderColor = System.Drawing.Color.Gray
         Me.CMBFACULTY.BorderRadius = 4
+        Me.CMBFACULTY.DisplayMember = "Full Name"
         Me.CMBFACULTY.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.CMBFACULTY.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CMBFACULTY.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
@@ -208,8 +251,8 @@ Partial Class BorrowDialog
         Me.CMBFACULTY.Margin = New System.Windows.Forms.Padding(0, 0, 0, 16)
         Me.CMBFACULTY.Name = "CMBFACULTY"
         Me.CMBFACULTY.Size = New System.Drawing.Size(238, 40)
-        Me.CMBFACULTY.StartIndex = 0
         Me.CMBFACULTY.TabIndex = 122
+        Me.CMBFACULTY.ValueMember = "id"
         '
         'BTNSEARCHSTUDENT
         '
@@ -253,57 +296,15 @@ Partial Class BorrowDialog
         Me.TXTSTUDENTLRN.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXTSTUDENTLRN.Location = New System.Drawing.Point(20, 60)
         Me.TXTSTUDENTLRN.Margin = New System.Windows.Forms.Padding(0, 0, 0, 16)
-        Me.TXTSTUDENTLRN.MaxLength = 5
+        Me.TXTSTUDENTLRN.MaxLength = 30
         Me.TXTSTUDENTLRN.Name = "TXTSTUDENTLRN"
         Me.TXTSTUDENTLRN.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TXTSTUDENTLRN.PlaceholderForeColor = System.Drawing.Color.DarkGray
-        Me.TXTSTUDENTLRN.PlaceholderText = "Scan LRN/Student No."
+        Me.TXTSTUDENTLRN.PlaceholderText = "Scan or type LRN/Student No."
         Me.TXTSTUDENTLRN.SelectedText = ""
         Me.TXTSTUDENTLRN.ShortcutsEnabled = False
         Me.TXTSTUDENTLRN.Size = New System.Drawing.Size(238, 40)
         Me.TXTSTUDENTLRN.TabIndex = 119
-        '
-        'TXTISBN
-        '
-        Me.TXTISBN.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.TXTISBN.BorderColor = System.Drawing.Color.Gray
-        Me.TXTISBN.BorderRadius = 4
-        Me.TXTISBN.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.TXTISBN.DefaultText = ""
-        Me.TXTISBN.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.TXTISBN.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.TXTISBN.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTISBN.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTISBN.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTISBN.Font = New System.Drawing.Font("Segoe UI", 11.25!)
-        Me.TXTISBN.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTISBN.Location = New System.Drawing.Point(20, 236)
-        Me.TXTISBN.Margin = New System.Windows.Forms.Padding(0, 0, 0, 8)
-        Me.TXTISBN.MaxLength = 5
-        Me.TXTISBN.Name = "TXTISBN"
-        Me.TXTISBN.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXTISBN.PlaceholderForeColor = System.Drawing.Color.DarkGray
-        Me.TXTISBN.PlaceholderText = "Scan or type ISBN"
-        Me.TXTISBN.SelectedText = ""
-        Me.TXTISBN.ShortcutsEnabled = False
-        Me.TXTISBN.Size = New System.Drawing.Size(238, 40)
-        Me.TXTISBN.TabIndex = 131
-        '
-        'Guna2Button1
-        '
-        Me.Guna2Button1.BorderRadius = 4
-        Me.Guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray
-        Me.Guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
-        Me.Guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
-        Me.Guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.Guna2Button1.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Guna2Button1.ForeColor = System.Drawing.Color.White
-        Me.Guna2Button1.Location = New System.Drawing.Point(262, 236)
-        Me.Guna2Button1.Margin = New System.Windows.Forms.Padding(0)
-        Me.Guna2Button1.Name = "Guna2Button1"
-        Me.Guna2Button1.Size = New System.Drawing.Size(110, 40)
-        Me.Guna2Button1.TabIndex = 132
-        Me.Guna2Button1.Text = "Search Book"
         '
         'BorrowDialog
         '
@@ -328,8 +329,8 @@ Partial Class BorrowDialog
     Friend WithEvents RBFACULTY As Guna.UI2.WinForms.Guna2RadioButton
     Friend WithEvents RBSTUDENT As Guna.UI2.WinForms.Guna2RadioButton
     Friend WithEvents BTNBORROWBOOKS As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents Guna2HtmlLabel3 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents Guna2HtmlLabel9 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents LBLFACULTYREQUIRED As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents LBLSTUDENTREQUIRED As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents BTNADDBOOKS As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents BTNSEARCHFACULTY As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Guna2HtmlLabel2 As Guna.UI2.WinForms.Guna2HtmlLabel
@@ -338,5 +339,5 @@ Partial Class BorrowDialog
     Friend WithEvents Guna2HtmlLabel1 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents TXTSTUDENTLRN As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents TXTISBN As Guna.UI2.WinForms.Guna2TextBox
-    Friend WithEvents Guna2Button1 As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents BTNSEARCHBOOKS As Guna.UI2.WinForms.Guna2Button
 End Class
