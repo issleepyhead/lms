@@ -1472,7 +1472,7 @@ Public Class DashboardForm
             MyApplication.DialogInstances.Add(NameOf(BorrowDialog), dialog)
             dialog.Show()
         Else
-            MyApplication.DialogInstances.Item(NameOf(BorrowDialog)).ShowDialog()
+            MyApplication.DialogInstances.Item(NameOf(BorrowDialog)).Show()
         End If
     End Sub
 #End Region

@@ -26,10 +26,13 @@ Partial Class SearchBooksDialog
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Guna2Panel1 = New Guna.UI2.WinForms.Guna2Panel()
+        Me.TXTBOOKSEARCH = New Guna.UI2.WinForms.Guna2TextBox()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel2 = New Guna.UI2.WinForms.Guna2Panel()
         Me.DGBOOKS = New Guna.UI2.WinForms.Guna2DataGridView()
-        Me.TXTBOOKSEARCH = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Guna2Panel1.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.Guna2Panel2.SuspendLayout()
@@ -46,6 +49,33 @@ Partial Class SearchBooksDialog
         Me.Guna2Panel1.Padding = New System.Windows.Forms.Padding(20, 0, 20, 0)
         Me.Guna2Panel1.Size = New System.Drawing.Size(922, 60)
         Me.Guna2Panel1.TabIndex = 0
+        '
+        'TXTBOOKSEARCH
+        '
+        Me.TXTBOOKSEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TXTBOOKSEARCH.BorderColor = System.Drawing.Color.Gray
+        Me.TXTBOOKSEARCH.BorderRadius = 4
+        Me.TXTBOOKSEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TXTBOOKSEARCH.DefaultText = ""
+        Me.TXTBOOKSEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TXTBOOKSEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TXTBOOKSEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTBOOKSEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTBOOKSEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTBOOKSEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.TXTBOOKSEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTBOOKSEARCH.IconRight = Global.LMS.My.Resources.Resources.search
+        Me.TXTBOOKSEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
+        Me.TXTBOOKSEARCH.Location = New System.Drawing.Point(644, 10)
+        Me.TXTBOOKSEARCH.Margin = New System.Windows.Forms.Padding(0)
+        Me.TXTBOOKSEARCH.MaxLength = 15
+        Me.TXTBOOKSEARCH.Name = "TXTBOOKSEARCH"
+        Me.TXTBOOKSEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TXTBOOKSEARCH.PlaceholderText = "Search Book Copy"
+        Me.TXTBOOKSEARCH.SelectedText = ""
+        Me.TXTBOOKSEARCH.ShortcutsEnabled = False
+        Me.TXTBOOKSEARCH.Size = New System.Drawing.Size(258, 40)
+        Me.TXTBOOKSEARCH.TabIndex = 7
         '
         'TableLayoutPanel1
         '
@@ -91,6 +121,7 @@ Partial Class SearchBooksDialog
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DGBOOKS.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.DGBOOKS.ColumnHeadersHeight = 48
+        Me.DGBOOKS.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column3, Me.Column4})
         DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(239, Byte), Integer))
         DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -133,32 +164,32 @@ Partial Class SearchBooksDialog
         Me.DGBOOKS.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(205, Byte), Integer))
         Me.DGBOOKS.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
         '
-        'TXTBOOKSEARCH
+        'Column1
         '
-        Me.TXTBOOKSEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TXTBOOKSEARCH.BorderColor = System.Drawing.Color.Gray
-        Me.TXTBOOKSEARCH.BorderRadius = 4
-        Me.TXTBOOKSEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.TXTBOOKSEARCH.DefaultText = ""
-        Me.TXTBOOKSEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.TXTBOOKSEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.TXTBOOKSEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTBOOKSEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTBOOKSEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTBOOKSEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.TXTBOOKSEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTBOOKSEARCH.IconRight = Global.LMS.My.Resources.Resources.search
-        Me.TXTBOOKSEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
-        Me.TXTBOOKSEARCH.Location = New System.Drawing.Point(644, 10)
-        Me.TXTBOOKSEARCH.Margin = New System.Windows.Forms.Padding(0)
-        Me.TXTBOOKSEARCH.MaxLength = 15
-        Me.TXTBOOKSEARCH.Name = "TXTBOOKSEARCH"
-        Me.TXTBOOKSEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXTBOOKSEARCH.PlaceholderText = "Search Book Copy"
-        Me.TXTBOOKSEARCH.SelectedText = ""
-        Me.TXTBOOKSEARCH.ShortcutsEnabled = False
-        Me.TXTBOOKSEARCH.Size = New System.Drawing.Size(258, 40)
-        Me.TXTBOOKSEARCH.TabIndex = 7
+        Me.Column1.DataPropertyName = "id"
+        Me.Column1.HeaderText = "id"
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
+        Me.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.Column1.Visible = False
+        '
+        'Column3
+        '
+        Me.Column3.DataPropertyName = "accession_no"
+        Me.Column3.HeaderText = "Accession No."
+        Me.Column3.Name = "Column3"
+        Me.Column3.ReadOnly = True
+        Me.Column3.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'Column4
+        '
+        Me.Column4.DataPropertyName = "title"
+        Me.Column4.HeaderText = "Title"
+        Me.Column4.Name = "Column4"
+        Me.Column4.ReadOnly = True
+        Me.Column4.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
         '
         'SearchBooksDialog
         '
@@ -186,4 +217,7 @@ Partial Class SearchBooksDialog
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
     Friend WithEvents Guna2Panel2 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents DGBOOKS As Guna.UI2.WinForms.Guna2DataGridView
+    Friend WithEvents Column1 As DataGridViewTextBoxColumn
+    Friend WithEvents Column3 As DataGridViewTextBoxColumn
+    Friend WithEvents Column4 As DataGridViewTextBoxColumn
 End Class

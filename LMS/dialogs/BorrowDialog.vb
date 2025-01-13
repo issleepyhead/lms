@@ -2,7 +2,8 @@
 Imports LMS.My
 
 Public Class BorrowDialog
-    Public bookList As New List(Of Dictionary(Of String, String))
+    Public bookListData As New List(Of DataRow)
+    Public sid As Integer = 0
     Private Sub BorrowDialog_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim fborrower As DataTable = FetchFacultyBorrower()
         Dim newRow As DataRow = fborrower.NewRow()
@@ -34,6 +35,7 @@ Public Class BorrowDialog
             BTNSEARCHFACULTY.Enabled = False
         Else
             TXTSTUDENTLRN.Clear()
+            sid = 0
             LBLSTUDENTREQUIRED.Visible = False
             TXTSTUDENTLRN.Enabled = False
             BTNSEARCHSTUDENT.Enabled = False
@@ -51,7 +53,9 @@ Public Class BorrowDialog
         Else
             LBLFACULTYREQUIRED.Visible = False
             CMBFACULTY.Enabled = False
+            CMBFACULTY.SelectedValue = 0
             BTNSEARCHFACULTY.Enabled = False
+            sid = 0
         End If
     End Sub
 
@@ -68,18 +72,48 @@ Public Class BorrowDialog
     End Sub
 
     Private Sub BTNBORROWBOOKS_Click(sender As Object, e As EventArgs) Handles BTNBORROWBOOKS.Click
+        If bookListData.Count = 0 Then
+            MessageBox.Show("No items in the borrow list." & vbLf & "Please add book copies in the borrow list first.", "Empty Borrow List!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Exit Sub
+        End If
+
+        Dim header As New Dictionary(Of String, String) From {
+            {"@isby", My.Settings.user_id},
+            {"@cno", GenerateCirculation()},
+            {"@odate", DateTime.Now.AddDays(5).ToString("yyyy-MM-dd HH:mm:ss")},
+            {"@bdate", Date.Now.ToString("yyyy-MM-dd HH:mm:ss")}
+        }
+
         If RBSTUDENT.Checked Then
             If CheckStudent(TXTSTUDENTLRN.Text) > 0 Then
-                MsgBox("exists!")
+                header.Add("@sid", sid)
+                header.Add("@fid", String.Empty)
             Else
-                MsgBox("doesnt")
+                MessageBox.Show("Account not found." & vbLf & "Please check your details and try again.", "Account Not Found!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Exit Sub
             End If
         Else
             If CMBFACULTY.SelectedValue = 0 Then
-                MsgBox("Choose a faculty")
+                MessageBox.Show("Please select a faculty.", "No Faculty Selected!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Exit Sub
             Else
-                MsgBox("passed")
+                header.Add("@sid", String.Empty)
+                header.Add("@fid", CMBFACULTY.SelectedValue)
             End If
+        End If
+
+        Dim copies As New List(Of Dictionary(Of String, String))
+        For Each item As DataRow In bookListData
+            copies.Add(New Dictionary(Of String, String) From {{"@cid", item.Item("id")}})
+        Next
+
+        If InsertBorrow(header, copies) Then
+            MessageBox.Show("Books have been successfully borrowed.", "Borrowing Complete!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            bookListData.Clear()
+            sid = 0
+            TXTSTUDENTLRN.Clear()
+        Else
+            MessageBox.Show("An error occured please try again.", "Borrowing Failed!", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
     End Sub
 
@@ -91,7 +125,7 @@ Public Class BorrowDialog
 
     Private Sub BTNADDBOOKS_Click(sender As Object, e As EventArgs) Handles BTNADDBOOKS.Click
         Using dialog As New ViewBooksDialog(Me)
-
+            dialog.ShowDialog()
         End Using
     End Sub
 End Class

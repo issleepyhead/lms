@@ -316,7 +316,7 @@ Partial Class BorrowDialog
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "BorrowDialog"
-        Me.ShowInTaskbar = False
+        Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Borrow Form"
         Me.GroupBox1.ResumeLayout(False)

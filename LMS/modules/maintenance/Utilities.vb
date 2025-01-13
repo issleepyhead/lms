@@ -10,6 +10,12 @@ Module Utilities
         Return highestAccession.ToString().PadLeft(10, "0")
     End Function
 
+    Public Function GenerateCirculation() As String
+        Dim highestCirculation As Integer = ExecScalar("SELECT CAST(circulation_no AS SIGNED) circulation_no FROM tblborrowheaders ORDER BY CAST(circulation_no AS SIGNED) DESC LIMIT 1")
+        highestCirculation += 1
+        Return highestCirculation.ToString().PadLeft(10, "0")
+    End Function
+
     Public Function AddCopies(numOfCopies As Integer, isbn As String, price As Decimal, Optional donator_id As Integer = Nothing, Optional supplier_id As Integer = Nothing) As Boolean
         Dim book_id As Integer = ExecScalar("SELECT id FROM tblbooks WHERE isbn = @isbn", New Dictionary(Of String, String) From {{"@isbn", isbn}})
         Return ExecProcedure("AddBookCopies", New Dictionary(Of String, String) From {
@@ -124,19 +130,24 @@ Module Utilities
                 conn.Open()
                 trans = conn.BeginTransaction
 
-                Dim cmd As New MySqlCommand("INSERT INTO tblborrowheaders (student_id, faculty_id, circulation_no, issued_by, overdue_date, borrow_date, status) OUTPUT INSERTED.Id
-                                               VALUES (@sid, @fid, @cno, @isby, @odate, @bdate, @stat)", conn, trans)
+                Dim cmd As New MySqlCommand("INSERT INTO tblborrowheaders (student_id, faculty_id, circulation_no, issued_by, overdue_date, borrow_date)
+                                               VALUES (@sid, @fid, @cno, @isby, CAST(@odate AS DATETIME), CAST(@bdate AS DATETIME))", conn, trans)
                 With cmd.Parameters
                     For Each kv In header
                         .AddWithValue(kv.Key, If(String.IsNullOrEmpty(kv.Value), DBNull.Value, kv.Value))
                     Next
+                    cmd.Parameters.Item("@odate").DbType = DbType.DateTime
+                    cmd.Parameters.Item("@bdate").DbType = DbType.DateTime
                 End With
                 Dim id As Integer = 0
-                If (id = cmd.ExecuteNonQuery()) > 0 Then
+                If cmd.ExecuteNonQuery() > 0 Then
+                    cmd.CommandText = "SELECT last_insert_id() FROM tblborrowheaders"
+                    cmd.Parameters.Clear()
+                    id = cmd.ExecuteScalar()
                     For Each item In copies
                         cmd.Parameters.Clear()
                         item.Add("@id", id)
-                        cmd.CommandText = "INSERT INTO tblborrowedcopies (header_id, copy_id, borrow_condition) VALUES (@id, @cid, (SELECT condition FROM tblbookcopies WHERE id = @cid))"
+                        cmd.CommandText = "INSERT INTO tblborrowedcopies (header_id, copy_id, borrowed_condition) VALUES (@id, @cid, (SELECT `condition` FROM tblbookcopies WHERE id = @cid LIMIT 1))"
 
                         With cmd.Parameters
                             For Each kv In item
@@ -145,11 +156,13 @@ Module Utilities
                         End With
                         cmd.ExecuteNonQuery()
                     Next
+                    trans.Commit()
                 End If
             End Using
             Return True
         Catch ex As Exception
             Logger.Logger(ex)
+            trans.Rollback()
             Return False
         End Try
     End Function
@@ -159,23 +172,7 @@ Module Utilities
         Try
             Using conn As New MySqlConnection(My.Settings.connection_string)
                 conn.Open()
-                Dim cmd As New MySqlCommand("SELECT bc.id, accession_no 'Accession No.' ,title 'Title'FROM tblbookcopies bc JOIN tblbooks b ON bc.book_id = b.id LEFT JOIN tbldonators d ON bc.donator_id = d.id LEFT JOIN tblsuppliers s ON bc.supplier_id = s.id WHERE bc.status = 1 AND (isbn LIKE @query OR accession_no LIKE @query OR title LIKE @query) ORDER BY b.title, accession_no", conn)
-                cmd.Parameters.AddWithValue("@query", "%" & query & "%")
-                Dim adapter As New MySqlDataAdapter(cmd)
-                adapter.Fill(dt)
-                Return dt
-            End Using
-        Catch ex As Exception
-            Return dt
-        End Try
-    End Function
-
-    Public Function LoadBooksCopies(query As String) As DataTable
-        Dim dt As New DataTable
-        Try
-            Using conn As New MySqlConnection(My.Settings.connection_string)
-                conn.Open()
-                Dim cmd As New MySqlCommand("SELECT bc.id, accession_no 'Accession No.' ,title 'Title'FROM tblbookcopies bc JOIN tblbooks b ON bc.book_id = b.id LEFT JOIN tbldonators d ON bc.donator_id = d.id LEFT JOIN tblsuppliers s ON bc.supplier_id = s.id WHERE bc.status = 1 AND (isbn LIKE @query OR accession_no LIKE @query OR title LIKE @query) ORDER BY b.title, accession_no", conn)
+                Dim cmd As New MySqlCommand("SELECT bc.id, accession_no ,title FROM tblbookcopies bc JOIN tblbooks b ON bc.book_id = b.id LEFT JOIN tbldonators d ON bc.donator_id = d.id LEFT JOIN tblsuppliers s ON bc.supplier_id = s.id WHERE bc.status = 1 AND (isbn LIKE @query OR accession_no LIKE @query OR title LIKE @query) ORDER BY b.title, accession_no", conn)
                 cmd.Parameters.AddWithValue("@query", "%" & query & "%")
                 Dim adapter As New MySqlDataAdapter(cmd)
                 adapter.Fill(dt)

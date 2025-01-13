@@ -38,7 +38,7 @@ Public Enum ROLETYPE
 End Enum
 
 Public Enum TRANSACTIONSTATE
-    ACTIVE = 0
-    OVERDUE = 1
-    RETURNED = 2
+    RETURNED = 0
+    ACTIVE = 1
+    OVERDUE = 2
 End Enum

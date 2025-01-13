@@ -309,6 +309,12 @@
       <DependentUpon>ServerForm.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="forms\UserForm.Designer.vb">
+      <DependentUpon>UserForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\UserForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="modules\import\AccountImport.vb" />
     <Compile Include="modules\ApplicationModule.vb" />
     <Compile Include="modules\ColumnMapping.vb" />
@@ -414,6 +420,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\ServerForm.resx">
       <DependentUpon>ServerForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\UserForm.resx">
+      <DependentUpon>UserForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

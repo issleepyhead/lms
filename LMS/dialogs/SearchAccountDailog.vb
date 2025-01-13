@@ -32,6 +32,7 @@ Public Class SearchAccountDailog
         Dim bound As DataRowView = TryCast(DGACCOUNT.Rows(e.RowIndex).DataBoundItem, DataRowView)
         If _window.RBSTUDENT.Checked Then
             _window.TXTSTUDENTLRN.Text = bound.Row.Item("Student No.")
+            _window.sid = bound.Row.Item("id")
         Else
             _window.CMBFACULTY.SelectedValue = bound.Row.Item("id")
         End If
