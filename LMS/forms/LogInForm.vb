@@ -5,10 +5,27 @@
         Dim params As New Dictionary(Of String, String) From {
             {"@username", TXTUSERNAME.Text}
         }
-        Dim data As DataTable = ExecFetch("SELECT id, password FROM tblfaculties WHERE username = @username OR email = @username UNION SELECT id, password FROM tblstudents WHERE lrn = @username OR student_no = @username", params)
+        Dim data As DataTable = ExecFetch("SELECT id, password FROM tblfaculties WHERE username = @username OR email = @username", params)
+        Dim fromStudent As Boolean = False
+        If data.Rows.Count = 0 Then
+            fromStudent = True
+            data = ExecScalar("SELECT id, password FROM tblstudents WHERE lrn = @username OR student_no = @username", params)
+        End If
         If data.Rows.Count > 0 Then
             If BCrypt.Net.BCrypt.Verify(TXTPASSWORD.Text, data.Rows.Item(0).Item("password")) Then
-                My.Settings.user_id = data.Rows.Item(0).Item("id")
+                Dim id As Integer = data.Rows.Item(0).Item("id")
+                Dim aid As Integer
+                If fromStudent Then
+                    aid = ExecScalar("SELECT id FROM tbladmins WHERE student_id = @id", New Dictionary(Of String, String) From {{"@id", id}})
+                Else
+                    aid = ExecScalar("SELECT id FROM tbladmins WHERE faculty_id = @id", New Dictionary(Of String, String) From {{"@id", id}})
+                End If
+
+                If aid <> 0 Then
+                    My.Settings.user_id = aid
+                Else
+                    My.Settings.user_id = id
+                End If
                 If CHKREMEMBER.Checked Then
                     My.Settings.remember_user = True
                     My.Settings.user_username = TXTUSERNAME.Text

@@ -182,4 +182,109 @@ Module Utilities
             Return dt
         End Try
     End Function
+
+    Public Function FetchTransactions(status As Integer, Optional query As String = Nothing, Optional sdate As Date = Nothing, Optional edate As Date = Nothing) As DataTable
+        Dim params As New Dictionary(Of String, String) From {
+            {"@stat", status}
+        }
+        If Not String.IsNullOrEmpty(query) AndAlso sdate = Date.MinValue Then
+            params.Add("@query", "%" & query & "%")
+            BaseMaintenance.PMAX = ExecScalar("SELECT COUNT(*)
+                            FROM tblborrowheaders bt
+                            LEFT JOIN tblstudents st ON bt.student_id = st.id
+                            LEFT JOIN tblfaculties ft ON bt.faculty_id = ft.id
+                            LEFT JOIN tbladmins a ON bt.issued_by = a.id
+                            LEFT JOIN tblstudents ad ON a.student_id = ad.id
+                            LEFT JOIN tblfaculties af ON a.faculty_id = af.id
+                            WHERE bt.status = @stat AND (st.full_name LIKE @query OR ft.full_name LIKE @query OR ad.full_name LIKE @query OR af.full_name LIKE @query OR bt.circulation_no LIKE @query)", params)
+            If BaseMaintenance.PMAX Mod 30 <> 0 Then
+                BaseMaintenance.PMAX = (BaseMaintenance.PMAX \ 30) + 1
+            Else
+                BaseMaintenance.PMAX \= 30
+            End If
+            Return ExecFetch("SELECT bt.id, CASE WHEN bt.student_id IS NULL THEN ft.full_name ELSE st.full_name END AS full_name, circulation_no, overdue_date, borrow_date,
+                            CASE WHEN a.student_id IS NULL THEN af.full_name ELSE ad.full_name END AS issued_by
+                            FROM tblborrowheaders bt
+                            LEFT JOIN tblstudents st ON bt.student_id = st.id
+                            LEFT JOIN tblfaculties ft ON bt.faculty_id = ft.id
+                            LEFT JOIN tbladmins a ON bt.issued_by = a.id
+                            LEFT JOIN tblstudents ad ON a.student_id = ad.id
+                            LEFT JOIN tblfaculties af ON a.faculty_id = af.id
+                            WHERE bt.status = @stat AND (st.full_name LIKE @query OR ft.full_name LIKE @query OR ad.full_name LIKE @query OR af.full_name LIKE @query OR bt.circulation_no LIKE @query)", params)
+        ElseIf Not String.IsNullOrEmpty(query) AndAlso sdate <> Date.MinValue Then
+            params.Add("@query", "%" & query & "%")
+            params.Add("@sdate", sdate.ToString("yyyy-MM-dd"))
+            params.Add("@edate", edate.ToString("yyyy-MM-dd"))
+            BaseMaintenance.PMAX = ExecScalar("SELECT COUNT(*)
+                            FROM tblborrowheaders bt
+                            LEFT JOIN tblstudents st ON bt.student_id = st.id
+                            LEFT JOIN tblfaculties ft ON bt.faculty_id = ft.id
+                            LEFT JOIN tbladmins a ON bt.issued_by = a.id
+                            LEFT JOIN tblstudents ad ON a.student_id = ad.id
+                            LEFT JOIN tblfaculties af ON a.faculty_id = af.id
+                            WHERE bt.status = @stat AND (st.full_name LIKE @query OR ft.full_name LIKE @query OR ad.full_name LIKE @query OR af.full_name LIKE @query OR bt.circulation_no LIKE @query) AND (borrow_date BETWEEN @sdate AND @edate OR overdue_date BETWEEN @sdate AND @edate)", params)
+            If BaseMaintenance.PMAX Mod 30 <> 0 Then
+                BaseMaintenance.PMAX = (BaseMaintenance.PMAX \ 30) + 1
+            Else
+                BaseMaintenance.PMAX \= 30
+            End If
+            Return ExecFetch("SELECT bt.id, CASE WHEN bt.student_id IS NULL THEN ft.full_name ELSE st.full_name END AS full_name, circulation_no, overdue_date, borrow_date,
+                            CASE WHEN a.student_id IS NULL THEN af.full_name ELSE ad.full_name END AS issued_by
+                            FROM tblborrowheaders bt
+                            LEFT JOIN tblstudents st ON bt.student_id = st.id
+                            LEFT JOIN tblfaculties ft ON bt.faculty_id = ft.id
+                            LEFT JOIN tbladmins a ON bt.issued_by = a.id
+                            LEFT JOIN tblstudents ad ON a.student_id = ad.id
+                            LEFT JOIN tblfaculties af ON a.faculty_id = af.id
+                            WHERE bt.status = @stat AND (st.full_name LIKE @query OR ft.full_name LIKE @query OR ad.full_name LIKE @query OR af.full_name LIKE @query OR bt.circulation_no LIKE @query) AND (borrow_date BETWEEN @sdate AND @edate OR overdue_date BETWEEN @sdate AND @edate)", params)
+        ElseIf String.IsNullOrEmpty(query) AndAlso sdate <> Date.MinValue Then
+            params.Add("@sdate", sdate.ToString("yyyy-MM-dd"))
+            params.Add("@edate", edate.ToString("yyyy-MM-dd"))
+            BaseMaintenance.PMAX = ExecScalar("SELECT COUNT(*)
+                            FROM tblborrowheaders bt
+                            LEFT JOIN tblstudents st ON bt.student_id = st.id
+                            LEFT JOIN tblfaculties ft ON bt.faculty_id = ft.id
+                            LEFT JOIN tbladmins a ON bt.issued_by = a.id
+                            LEFT JOIN tblstudents ad ON a.student_id = ad.id
+                            LEFT JOIN tblfaculties af ON a.faculty_id = af.id
+                            WHERE bt.status = @stat AND (borrow_date BETWEEN @sdate AND @edate OR overdue_date BETWEEN @sdate AND @edate)", params)
+            If BaseMaintenance.PMAX Mod 30 <> 0 Then
+                BaseMaintenance.PMAX = (BaseMaintenance.PMAX \ 30) + 1
+            Else
+                BaseMaintenance.PMAX \= 30
+            End If
+            Return ExecFetch("SELECT bt.id, CASE WHEN bt.student_id IS NULL THEN ft.full_name ELSE st.full_name END AS full_name, circulation_no, overdue_date, borrow_date,
+                            CASE WHEN a.student_id IS NULL THEN af.full_name ELSE ad.full_name END AS issued_by
+                            FROM tblborrowheaders bt
+                            LEFT JOIN tblstudents st ON bt.student_id = st.id
+                            LEFT JOIN tblfaculties ft ON bt.faculty_id = ft.id
+                            LEFT JOIN tbladmins a ON bt.issued_by = a.id
+                            LEFT JOIN tblstudents ad ON a.student_id = ad.id
+                            LEFT JOIN tblfaculties af ON a.faculty_id = af.id
+                            WHERE bt.status = @stat AND (borrow_date BETWEEN @sdate AND @edate OR overdue_date BETWEEN @sdate AND @edate)", params)
+        Else
+            BaseMaintenance.PMAX = ExecScalar("SELECT COUNT(*)
+                            FROM tblborrowheaders bt
+                            LEFT JOIN tblstudents st ON bt.student_id = st.id
+                            LEFT JOIN tblfaculties ft ON bt.faculty_id = ft.id
+                            LEFT JOIN tbladmins a ON bt.issued_by = a.id
+                            LEFT JOIN tblstudents ad ON a.student_id = ad.id
+                            LEFT JOIN tblfaculties af ON a.faculty_id = af.id
+                            WHERE bt.status = @stat", params)
+            If BaseMaintenance.PMAX Mod 30 <> 0 Then
+                BaseMaintenance.PMAX = (BaseMaintenance.PMAX \ 30) + 1
+            Else
+                BaseMaintenance.PMAX \= 30
+            End If
+            Return ExecFetch("SELECT bt.id, CASE WHEN bt.student_id IS NULL THEN ft.full_name ELSE st.full_name END AS full_name, circulation_no, overdue_date, borrow_date,
+                            CASE WHEN a.student_id IS NULL THEN af.full_name ELSE ad.full_name END AS issued_by
+                            FROM tblborrowheaders bt
+                            LEFT JOIN tblstudents st ON bt.student_id = st.id
+                            LEFT JOIN tblfaculties ft ON bt.faculty_id = ft.id
+                            LEFT JOIN tbladmins a ON bt.issued_by = a.id
+                            LEFT JOIN tblstudents ad ON a.student_id = ad.id
+                            LEFT JOIN tblfaculties af ON a.faculty_id = af.id
+                            WHERE bt.status = @stat", params, BaseMaintenance.PPrev - 1, True)
+        End If
+    End Function
 End Module

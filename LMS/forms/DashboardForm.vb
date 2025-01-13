@@ -1607,6 +1607,63 @@ Public Class DashboardForm
             TXTINVPRICE.Text = If(IsDBNull(boundItem.Item("price")), Nothing, boundItem.Item("price"))
         End If
     End Sub
+
+    Private Sub MainFormPanels_SelectedIndexChanged(sender As Object, e As EventArgs) Handles MainFormPanels.SelectedIndexChanged
+        Select Case True
+            Case MainFormPanels.SelectedTab.Equals(BookTransactionTab)
+                BaseMaintenance.PPrev = 1
+                CMBTRANSACTIONFILTER.SelectedIndex = 0
+                TXTTRANSACTIONSEARCH.Clear()
+                DGTRANSACTION.DataSource = FetchTransactions(1)
+                LBLTRANSACTIONNEXT.Text = BaseMaintenance.PMAX
+                LBLTRANSACTIONPREV.Text = BaseMaintenance.PPrev
+        End Select
+    End Sub
+
+    Private Sub CMBTRANSACTIONFILTER_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CMBTRANSACTIONFILTER.SelectedIndexChanged
+        Select Case True
+            Case MainFormPanels.SelectedTab.Equals(BookTransactionTab)
+                If CMBTRANSACTIONFILTER.Text = "Active" Then
+                    DGTRANSACTION.DataSource = FetchTransactions(1, TXTTRANSACTIONSEARCH.Text)
+                ElseIf CMBTRANSACTIONFILTER.Text = "Overdue" Then
+                    DGTRANSACTION.DataSource = FetchTransactions(2, TXTTRANSACTIONSEARCH.Text)
+                Else
+                    DGTRANSACTION.DataSource = FetchTransactions(0, TXTTRANSACTIONSEARCH.Text)
+                End If
+                LBLTRANSACTIONNEXT.Text = BaseMaintenance.PMAX
+                LBLTRANSACTIONPREV.Text = BaseMaintenance.PPrev
+        End Select
+    End Sub
+
+    Private Sub TXTTRANSACTIONSEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTTRANSACTIONSEARCH.TextChanged
+        Select Case True
+            Case MainFormPanels.SelectedTab.Equals(BookTransactionTab)
+                If CMBTRANSACTIONFILTER.Text = "Active" Then
+                    DGTRANSACTION.DataSource = FetchTransactions(1, TXTTRANSACTIONSEARCH.Text)
+                ElseIf CMBTRANSACTIONFILTER.Text = "Overdue" Then
+                    DGTRANSACTION.DataSource = FetchTransactions(2, TXTTRANSACTIONSEARCH.Text)
+                Else
+                    DGTRANSACTION.DataSource = FetchTransactions(0, TXTTRANSACTIONSEARCH.Text)
+                End If
+                LBLTRANSACTIONNEXT.Text = BaseMaintenance.PMAX
+                LBLTRANSACTIONPREV.Text = BaseMaintenance.PPrev
+        End Select
+    End Sub
+
+    Private Sub BTNTRANSACTIONSEARCH_Click(sender As Object, e As EventArgs) Handles BTNTRANSACTIONSEARCH.Click
+        Select Case True
+            Case MainFormPanels.SelectedTab.Equals(BookTransactionTab)
+                If CMBTRANSACTIONFILTER.Text = "Active" Then
+                    DGTRANSACTION.DataSource = FetchTransactions(1, TXTTRANSACTIONSEARCH.Text, DTTRANSACTIONS.Value, DTTRANSACTIONE.Value)
+                ElseIf CMBTRANSACTIONFILTER.Text = "Overdue" Then
+                    DGTRANSACTION.DataSource = FetchTransactions(2, TXTTRANSACTIONSEARCH.Text, DTTRANSACTIONS.Value, DTTRANSACTIONE.Value)
+                Else
+                    DGTRANSACTION.DataSource = FetchTransactions(0, TXTTRANSACTIONSEARCH.Text, DTTRANSACTIONS.Value, DTTRANSACTIONE.Value)
+                End If
+                LBLTRANSACTIONNEXT.Text = BaseMaintenance.PMAX
+                LBLTRANSACTIONPREV.Text = BaseMaintenance.PPrev
+        End Select
+    End Sub
 #End Region
 
 End Class
