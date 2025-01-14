@@ -23,9 +23,6 @@ Partial Class StudentDialog
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Me.Guna2HtmlLabel3 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.TXTSTUDENTNO = New Guna.UI2.WinForms.Guna2TextBox()
-        Me.Guna2HtmlLabel1 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2HtmlLabel2 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.TXTLRN = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2HtmlLabel4 = New Guna.UI2.WinForms.Guna2HtmlLabel()
@@ -45,7 +42,6 @@ Partial Class StudentDialog
         Me.Guna2HtmlLabel12 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2HtmlLabel14 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.TXTPHONE = New Guna.UI2.WinForms.Guna2TextBox()
-        Me.Guna2HtmlLabel13 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.TXTEMAIL = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2HtmlLabel15 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.BTNSAVE = New Guna.UI2.WinForms.Guna2Button()
@@ -53,57 +49,12 @@ Partial Class StudentDialog
         CType(Me.errProvider, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'Guna2HtmlLabel3
-        '
-        Me.Guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2HtmlLabel3.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Guna2HtmlLabel3.ForeColor = System.Drawing.Color.Red
-        Me.Guna2HtmlLabel3.Location = New System.Drawing.Point(163, 24)
-        Me.Guna2HtmlLabel3.Margin = New System.Windows.Forms.Padding(0)
-        Me.Guna2HtmlLabel3.Name = "Guna2HtmlLabel3"
-        Me.Guna2HtmlLabel3.Size = New System.Drawing.Size(10, 23)
-        Me.Guna2HtmlLabel3.TabIndex = 32
-        Me.Guna2HtmlLabel3.Text = "*"
-        '
-        'TXTSTUDENTNO
-        '
-        Me.TXTSTUDENTNO.BorderRadius = 4
-        Me.TXTSTUDENTNO.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.TXTSTUDENTNO.DefaultText = ""
-        Me.TXTSTUDENTNO.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.TXTSTUDENTNO.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.TXTSTUDENTNO.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTSTUDENTNO.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTSTUDENTNO.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTSTUDENTNO.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TXTSTUDENTNO.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTSTUDENTNO.Location = New System.Drawing.Point(34, 52)
-        Me.TXTSTUDENTNO.Margin = New System.Windows.Forms.Padding(0)
-        Me.TXTSTUDENTNO.MaxLength = 20
-        Me.TXTSTUDENTNO.Name = "TXTSTUDENTNO"
-        Me.TXTSTUDENTNO.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXTSTUDENTNO.PlaceholderText = "e.g., Junior High School"
-        Me.TXTSTUDENTNO.SelectedText = ""
-        Me.TXTSTUDENTNO.Size = New System.Drawing.Size(306, 48)
-        Me.TXTSTUDENTNO.TabIndex = 31
-        '
-        'Guna2HtmlLabel1
-        '
-        Me.Guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2HtmlLabel1.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Guna2HtmlLabel1.Location = New System.Drawing.Point(34, 25)
-        Me.Guna2HtmlLabel1.Margin = New System.Windows.Forms.Padding(0)
-        Me.Guna2HtmlLabel1.Name = "Guna2HtmlLabel1"
-        Me.Guna2HtmlLabel1.Size = New System.Drawing.Size(129, 23)
-        Me.Guna2HtmlLabel1.TabIndex = 30
-        Me.Guna2HtmlLabel1.Text = "Student Number:"
-        '
         'Guna2HtmlLabel2
         '
         Me.Guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent
         Me.Guna2HtmlLabel2.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Guna2HtmlLabel2.ForeColor = System.Drawing.Color.Red
-        Me.Guna2HtmlLabel2.Location = New System.Drawing.Point(71, 114)
+        Me.Guna2HtmlLabel2.Location = New System.Drawing.Point(74, 24)
         Me.Guna2HtmlLabel2.Margin = New System.Windows.Forms.Padding(0)
         Me.Guna2HtmlLabel2.Name = "Guna2HtmlLabel2"
         Me.Guna2HtmlLabel2.Size = New System.Drawing.Size(10, 23)
@@ -122,9 +73,9 @@ Partial Class StudentDialog
         Me.TXTLRN.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXTLRN.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TXTLRN.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTLRN.Location = New System.Drawing.Point(34, 142)
+        Me.TXTLRN.Location = New System.Drawing.Point(37, 52)
         Me.TXTLRN.Margin = New System.Windows.Forms.Padding(0)
-        Me.TXTLRN.MaxLength = 45
+        Me.TXTLRN.MaxLength = 13
         Me.TXTLRN.Name = "TXTLRN"
         Me.TXTLRN.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TXTLRN.PlaceholderText = "e.g., Junior High School"
@@ -136,7 +87,7 @@ Partial Class StudentDialog
         '
         Me.Guna2HtmlLabel4.BackColor = System.Drawing.Color.Transparent
         Me.Guna2HtmlLabel4.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Guna2HtmlLabel4.Location = New System.Drawing.Point(34, 115)
+        Me.Guna2HtmlLabel4.Location = New System.Drawing.Point(37, 25)
         Me.Guna2HtmlLabel4.Margin = New System.Windows.Forms.Padding(0)
         Me.Guna2HtmlLabel4.Name = "Guna2HtmlLabel4"
         Me.Guna2HtmlLabel4.Size = New System.Drawing.Size(37, 23)
@@ -148,7 +99,7 @@ Partial Class StudentDialog
         Me.Guna2HtmlLabel5.BackColor = System.Drawing.Color.Transparent
         Me.Guna2HtmlLabel5.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Guna2HtmlLabel5.ForeColor = System.Drawing.Color.Red
-        Me.Guna2HtmlLabel5.Location = New System.Drawing.Point(114, 209)
+        Me.Guna2HtmlLabel5.Location = New System.Drawing.Point(117, 119)
         Me.Guna2HtmlLabel5.Margin = New System.Windows.Forms.Padding(0)
         Me.Guna2HtmlLabel5.Name = "Guna2HtmlLabel5"
         Me.Guna2HtmlLabel5.Size = New System.Drawing.Size(10, 23)
@@ -167,7 +118,7 @@ Partial Class StudentDialog
         Me.TXTFULLNAME.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXTFULLNAME.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TXTFULLNAME.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTFULLNAME.Location = New System.Drawing.Point(34, 237)
+        Me.TXTFULLNAME.Location = New System.Drawing.Point(37, 147)
         Me.TXTFULLNAME.Margin = New System.Windows.Forms.Padding(0)
         Me.TXTFULLNAME.MaxLength = 45
         Me.TXTFULLNAME.Name = "TXTFULLNAME"
@@ -181,7 +132,7 @@ Partial Class StudentDialog
         '
         Me.Guna2HtmlLabel6.BackColor = System.Drawing.Color.Transparent
         Me.Guna2HtmlLabel6.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Guna2HtmlLabel6.Location = New System.Drawing.Point(34, 210)
+        Me.Guna2HtmlLabel6.Location = New System.Drawing.Point(37, 120)
         Me.Guna2HtmlLabel6.Margin = New System.Windows.Forms.Padding(0)
         Me.Guna2HtmlLabel6.Name = "Guna2HtmlLabel6"
         Me.Guna2HtmlLabel6.Size = New System.Drawing.Size(79, 23)
@@ -323,7 +274,7 @@ Partial Class StudentDialog
         Me.CMBGENDER.IntegralHeight = False
         Me.CMBGENDER.ItemHeight = 40
         Me.CMBGENDER.Items.AddRange(New Object() {"Male", "Female"})
-        Me.CMBGENDER.Location = New System.Drawing.Point(34, 421)
+        Me.CMBGENDER.Location = New System.Drawing.Point(37, 331)
         Me.CMBGENDER.MaxDropDownItems = 6
         Me.CMBGENDER.Name = "CMBGENDER"
         Me.CMBGENDER.Size = New System.Drawing.Size(306, 46)
@@ -335,7 +286,7 @@ Partial Class StudentDialog
         Me.Guna2HtmlLabel11.BackColor = System.Drawing.Color.Transparent
         Me.Guna2HtmlLabel11.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Guna2HtmlLabel11.ForeColor = System.Drawing.Color.Red
-        Me.Guna2HtmlLabel11.Location = New System.Drawing.Point(97, 393)
+        Me.Guna2HtmlLabel11.Location = New System.Drawing.Point(100, 303)
         Me.Guna2HtmlLabel11.Margin = New System.Windows.Forms.Padding(0)
         Me.Guna2HtmlLabel11.Name = "Guna2HtmlLabel11"
         Me.Guna2HtmlLabel11.Size = New System.Drawing.Size(10, 23)
@@ -346,7 +297,7 @@ Partial Class StudentDialog
         '
         Me.Guna2HtmlLabel12.BackColor = System.Drawing.Color.Transparent
         Me.Guna2HtmlLabel12.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Guna2HtmlLabel12.Location = New System.Drawing.Point(34, 395)
+        Me.Guna2HtmlLabel12.Location = New System.Drawing.Point(37, 305)
         Me.Guna2HtmlLabel12.Margin = New System.Windows.Forms.Padding(0)
         Me.Guna2HtmlLabel12.Name = "Guna2HtmlLabel12"
         Me.Guna2HtmlLabel12.Size = New System.Drawing.Size(61, 23)
@@ -386,18 +337,6 @@ Partial Class StudentDialog
         Me.TXTPHONE.Size = New System.Drawing.Size(306, 48)
         Me.TXTPHONE.TabIndex = 57
         '
-        'Guna2HtmlLabel13
-        '
-        Me.Guna2HtmlLabel13.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2HtmlLabel13.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Guna2HtmlLabel13.ForeColor = System.Drawing.Color.Red
-        Me.Guna2HtmlLabel13.Location = New System.Drawing.Point(79, 302)
-        Me.Guna2HtmlLabel13.Margin = New System.Windows.Forms.Padding(0)
-        Me.Guna2HtmlLabel13.Name = "Guna2HtmlLabel13"
-        Me.Guna2HtmlLabel13.Size = New System.Drawing.Size(10, 23)
-        Me.Guna2HtmlLabel13.TabIndex = 60
-        Me.Guna2HtmlLabel13.Text = "*"
-        '
         'TXTEMAIL
         '
         Me.TXTEMAIL.BorderRadius = 4
@@ -410,7 +349,7 @@ Partial Class StudentDialog
         Me.TXTEMAIL.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXTEMAIL.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TXTEMAIL.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTEMAIL.Location = New System.Drawing.Point(34, 330)
+        Me.TXTEMAIL.Location = New System.Drawing.Point(37, 240)
         Me.TXTEMAIL.Margin = New System.Windows.Forms.Padding(0)
         Me.TXTEMAIL.MaxLength = 45
         Me.TXTEMAIL.Name = "TXTEMAIL"
@@ -424,7 +363,7 @@ Partial Class StudentDialog
         '
         Me.Guna2HtmlLabel15.BackColor = System.Drawing.Color.Transparent
         Me.Guna2HtmlLabel15.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Guna2HtmlLabel15.Location = New System.Drawing.Point(34, 303)
+        Me.Guna2HtmlLabel15.Location = New System.Drawing.Point(37, 213)
         Me.Guna2HtmlLabel15.Margin = New System.Windows.Forms.Padding(0)
         Me.Guna2HtmlLabel15.Name = "Guna2HtmlLabel15"
         Me.Guna2HtmlLabel15.Size = New System.Drawing.Size(45, 23)
@@ -440,7 +379,7 @@ Partial Class StudentDialog
         Me.BTNSAVE.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
         Me.BTNSAVE.Font = New System.Drawing.Font("Segoe UI", 12.0!)
         Me.BTNSAVE.ForeColor = System.Drawing.Color.White
-        Me.BTNSAVE.Location = New System.Drawing.Point(551, 421)
+        Me.BTNSAVE.Location = New System.Drawing.Point(551, 406)
         Me.BTNSAVE.Name = "BTNSAVE"
         Me.BTNSAVE.Size = New System.Drawing.Size(128, 48)
         Me.BTNSAVE.TabIndex = 61
@@ -455,9 +394,8 @@ Partial Class StudentDialog
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(712, 490)
+        Me.ClientSize = New System.Drawing.Size(712, 466)
         Me.Controls.Add(Me.BTNSAVE)
-        Me.Controls.Add(Me.Guna2HtmlLabel13)
         Me.Controls.Add(Me.TXTEMAIL)
         Me.Controls.Add(Me.Guna2HtmlLabel15)
         Me.Controls.Add(Me.TXTPHONE)
@@ -479,9 +417,6 @@ Partial Class StudentDialog
         Me.Controls.Add(Me.Guna2HtmlLabel2)
         Me.Controls.Add(Me.TXTLRN)
         Me.Controls.Add(Me.Guna2HtmlLabel4)
-        Me.Controls.Add(Me.Guna2HtmlLabel3)
-        Me.Controls.Add(Me.TXTSTUDENTNO)
-        Me.Controls.Add(Me.Guna2HtmlLabel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.MaximizeBox = False
         Me.MinimizeBox = False
@@ -494,10 +429,6 @@ Partial Class StudentDialog
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents Guna2HtmlLabel3 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents TXTSTUDENTNO As Guna.UI2.WinForms.Guna2TextBox
-    Friend WithEvents Guna2HtmlLabel1 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2HtmlLabel2 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents TXTLRN As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Guna2HtmlLabel4 As Guna.UI2.WinForms.Guna2HtmlLabel
@@ -517,7 +448,6 @@ Partial Class StudentDialog
     Friend WithEvents Guna2HtmlLabel12 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2HtmlLabel14 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents TXTPHONE As Guna.UI2.WinForms.Guna2TextBox
-    Friend WithEvents Guna2HtmlLabel13 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents TXTEMAIL As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Guna2HtmlLabel15 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents BTNSAVE As Guna.UI2.WinForms.Guna2Button

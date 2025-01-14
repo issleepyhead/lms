@@ -194,19 +194,19 @@
             ' TODO FETCH ONLY THE ACTIVE
             Case QueryTableType.STUDENT_QUERY_TABLE
                 Return New MaintenanceQueries With {
-                    .ADD_QUERY = "INSERT INTO tblstudents (student_no, lrn, full_name, gender, address, phone, email, section_id, password) VALUES (@studno, @lrn, @full_name, @gender, @address, @phone, @email, @sid, @passwd)",
+                    .ADD_QUERY = "INSERT INTO tblstudents (lrn, full_name, gender, address, phone, email, section_id, password) VALUES (@lrn, @full_name, @gender, @address, @phone, @email, @sid, @passwd)",
                     .DELETE_QUERY = "DELETE FROM tblstudents WHERE id = @id",
-                    .EXISTS_QUERY_WITH_ID = "SELECT COUNT(*) FROM tblstudents WHERE (lrn = @lrn OR student_no = @studno OR email = @email) AND id != @id",
-                    .EXISTS_QUERY_NO_ID = "SELECT COUNT(*) FROM tblstudents WHERE lrn = @lrn OR student_no = @studno OR email = @email",
+                    .EXISTS_QUERY_WITH_ID = "SELECT COUNT(*) FROM tblstudents WHERE lrn = @lrn AND id != @id",
+                    .EXISTS_QUERY_NO_ID = "SELECT COUNT(*) FROM tblstudents WHERE lrn = @lrn",
                     .FETCH_TOTAL_COUNT_QUERY = "SELECT COUNT(*) FROM tblstudents WHERE status = 1",
-                    .FETCH_LIMIT_QUERY = "SELECT st.id, student_no, lrn, full_name, gender, address, phone, email, section_id, s.name section, s.year_id, y.year_level FROM tblstudents st JOIN tblsections s ON st.section_id = s.id JOIN tblyearlevels y ON s.year_id = y.id WHERE status = 1 ORDER BY full_name ASC LIMIT @page, 30;",
-                    .FETCH_TOTAL_COUNT_QUERY_SEARCH = "SELECT COUNT(*) FROM tblstudents WHERE status = 1 AND (lrn LIKE @search OR student_no LIKE @search OR email LIKE @search OR full_name LIKE @search)",
-                    .FETCH_LIMIT_QUERY_SEARCH = "SELECT st.id, student_no, lrn, full_name, gender, address, phone, email, section_id, s.name section, s.year_id, y.year_level FROM tblstudents st JOIN tblsections s ON st.section_id = s.id JOIN tblyearlevels y ON s.year_id = y.id WHERE status = 1 AND (lrn LIKE @search OR student_no LIKE @search OR email LIKE @search OR full_name LIKE @search) ORDER BY full_name ASC LIMIT @page, 30",
-                    .UPDATE_QUERY = "UPDATE tblstudents SET student_no = @studno, lrn = @lrn, full_name = @full_name, gender = @gender, address = @address, email = @email, section_id = @sid, status = 1 WHERE id = @id",
+                    .FETCH_LIMIT_QUERY = "SELECT st.id, lrn, full_name, gender, address, phone, email, section_id, s.name section, s.year_id, y.year_level FROM tblstudents st JOIN tblsections s ON st.section_id = s.id JOIN tblyearlevels y ON s.year_id = y.id WHERE status = 1 ORDER BY full_name ASC LIMIT @page, 30;",
+                    .FETCH_TOTAL_COUNT_QUERY_SEARCH = "SELECT COUNT(*) FROM tblstudents WHERE status = 1 AND (lrn LIKE @search OR email LIKE @search OR full_name LIKE @search)",
+                    .FETCH_LIMIT_QUERY_SEARCH = "SELECT st.id, lrn, full_name, gender, address, phone, email, section_id, s.name section, s.year_id, y.year_level FROM tblstudents st JOIN tblsections s ON st.section_id = s.id JOIN tblyearlevels y ON s.year_id = y.id WHERE status = 1 AND (lrn LIKE @search OR email LIKE @search OR full_name LIKE @search) ORDER BY full_name ASC LIMIT @page, 30",
+                    .UPDATE_QUERY = "UPDATE tblstudents SET lrn = @lrn, full_name = @full_name, gender = @gender, address = @address, email = @email, section_id = @sid, status = 1 WHERE id = @id",
                     .FETCH_ALL_QUERY = "SELECT id, department_name FROM tblstudents ORDER BY department_name",
-                    .FETCH_ARCHIVE_LIMIT = "SELECT st.id, student_no, lrn, full_name, gender, address, phone, email, section_id, s.name section, s.year_id, y.year_level FROM tblstudents st JOIN tblsections s ON st.section_id = s.id JOIN tblyearlevels y ON s.year_id = y.id WHERE status = 0 ORDER BY full_name ASC LIMIT @page, 30;",
-                    .FETCH_ARCHIVE_LIMIT_SEARCH = "SELECT st.id, student_no, lrn, full_name, gender, address, phone, email, section_id, s.name section, s.year_id, y.year_level FROM tblstudents st JOIN tblsections s ON st.section_id = s.id JOIN tblyearlevels y ON s.year_id = y.id WHERE status = 0 AND (lrn LIKE @search OR student_no LIKE @search OR email LIKE @search OR full_name LIKE @search) ORDER BY full_name ASC LIMIT @page, 30",
-                    .FETCH_ARCHIVE_SEARCH_TOTAL_COUNT = "SELECT COUNT(*) FROM tblstudents WHERE status = 0 AND (lrn LIKE @search OR student_no LIKE @search OR email LIKE @search OR full_name LIKE @search)",
+                    .FETCH_ARCHIVE_LIMIT = "SELECT st.id, lrn, full_name, gender, address, phone, email, section_id, s.name section, s.year_id, y.year_level FROM tblstudents st JOIN tblsections s ON st.section_id = s.id JOIN tblyearlevels y ON s.year_id = y.id WHERE status = 0 ORDER BY full_name ASC LIMIT @page, 30;",
+                    .FETCH_ARCHIVE_LIMIT_SEARCH = "SELECT st.id, lrn, full_name, gender, address, phone, email, section_id, s.name section, s.year_id, y.year_level FROM tblstudents st JOIN tblsections s ON st.section_id = s.id JOIN tblyearlevels y ON s.year_id = y.id WHERE status = 0 AND (lrn LIKE @search OR email LIKE @search OR full_name LIKE @search) ORDER BY full_name ASC LIMIT @page, 30",
+                    .FETCH_ARCHIVE_SEARCH_TOTAL_COUNT = "SELECT COUNT(*) FROM tblstudents WHERE status = 0 AND (lrn LIKE @search OR email LIKE @search OR full_name LIKE @search)",
                     .FETCH_ARCHIVE_TOTAL_COUNT = "SELECT COUNT(*) FROM tblstudents WHERE status = 0"
                 }
 

@@ -356,19 +356,6 @@ Partial Class DashboardForm
         Me.BTNSTUDENTNEXT = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Panel33 = New Guna.UI2.WinForms.Guna2Panel()
         Me.DGSTUDENT = New Guna.UI2.WinForms.Guna2DataGridView()
-        Me.ColumnStudentID = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column38 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.chckBoxStudent = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.DataGridViewTextBoxColumn32 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn34 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column21 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column33 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column34 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column37 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column36 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column35 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DGSTUDENTCONTEXTMENUSTRIP = New Guna.UI2.WinForms.Guna2ContextMenuStrip()
         Me.SelectAllToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.UnselectAllToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
@@ -535,6 +522,7 @@ Partial Class DashboardForm
         Me.BookTransactionTab = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel21 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel57 = New Guna.UI2.WinForms.Guna2Panel()
+        Me.CMBTRANSACTIONFILTER = New Guna.UI2.WinForms.Guna2ComboBox()
         Me.BTNTRANSACTIONREFRESH = New Guna.UI2.WinForms.Guna2Button()
         Me.BTNADDTRANSACTION = New Guna.UI2.WinForms.Guna2Button()
         Me.TXTTRANSACTIONSEARCH = New Guna.UI2.WinForms.Guna2TextBox()
@@ -550,6 +538,13 @@ Partial Class DashboardForm
         Me.BTNTRANSACTIONNEXT = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Panel59 = New Guna.UI2.WinForms.Guna2Panel()
         Me.DGTRANSACTION = New Guna.UI2.WinForms.Guna2DataGridView()
+        Me.DataGridViewTextBoxColumn47 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewCheckBoxColumn4 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.DataGridViewTextBoxColumn48 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column32 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column28 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column31 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column30 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ReportsTab = New System.Windows.Forms.TabPage()
         Me.ReportsPanel = New Guna.UI2.WinForms.Guna2TabControl()
         Me.BooksReportTab = New System.Windows.Forms.TabPage()
@@ -694,14 +689,18 @@ Partial Class DashboardForm
         Me.LBLPROFILEROLE = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.LBLPROFILENAME = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.errProvider = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.CMBTRANSACTIONFILTER = New Guna.UI2.WinForms.Guna2ComboBox()
-        Me.DataGridViewTextBoxColumn47 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewCheckBoxColumn4 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.DataGridViewTextBoxColumn48 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column32 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column28 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column31 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column30 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColumnStudentID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column38 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.chckBoxStudent = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.DataGridViewTextBoxColumn32 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column21 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column33 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column34 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column37 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column36 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column35 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TableLayoutPanel1.SuspendLayout
         Me.MainFormPanels.SuspendLayout
         Me.DashboardTab.SuspendLayout
@@ -4796,7 +4795,7 @@ Partial Class DashboardForm
         DataGridViewCellStyle41.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DGSTUDENT.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle41
         Me.DGSTUDENT.ColumnHeadersHeight = 48
-        Me.DGSTUDENT.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ColumnStudentID, Me.Column38, Me.chckBoxStudent, Me.DataGridViewTextBoxColumn32, Me.Column19, Me.DataGridViewTextBoxColumn34, Me.Column20, Me.Column21, Me.Column33, Me.Column34, Me.Column37, Me.Column36, Me.Column35})
+        Me.DGSTUDENT.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ColumnStudentID, Me.Column38, Me.chckBoxStudent, Me.DataGridViewTextBoxColumn32, Me.Column19, Me.Column20, Me.Column21, Me.Column33, Me.Column34, Me.Column37, Me.Column36, Me.Column35})
         Me.DGSTUDENT.ContextMenuStrip = Me.DGSTUDENTCONTEXTMENUSTRIP
         DataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle42.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(239, Byte), Integer))
@@ -4839,96 +4838,6 @@ Partial Class DashboardForm
         Me.DGSTUDENT.ThemeStyle.RowsStyle.Height = 48
         Me.DGSTUDENT.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(205, Byte), Integer))
         Me.DGSTUDENT.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
-        '
-        'ColumnStudentID
-        '
-        Me.ColumnStudentID.DataPropertyName = "id"
-        Me.ColumnStudentID.HeaderText = "id"
-        Me.ColumnStudentID.Name = "ColumnStudentID"
-        Me.ColumnStudentID.Visible = False
-        '
-        'Column38
-        '
-        Me.Column38.DataPropertyName = "email"
-        Me.Column38.HeaderText = "email"
-        Me.Column38.Name = "Column38"
-        Me.Column38.Visible = False
-        '
-        'chckBoxStudent
-        '
-        Me.chckBoxStudent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.chckBoxStudent.HeaderText = ""
-        Me.chckBoxStudent.Name = "chckBoxStudent"
-        Me.chckBoxStudent.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.chckBoxStudent.Width = 40
-        '
-        'DataGridViewTextBoxColumn32
-        '
-        Me.DataGridViewTextBoxColumn32.DataPropertyName = "full_name"
-        Me.DataGridViewTextBoxColumn32.HeaderText = "Full Name"
-        Me.DataGridViewTextBoxColumn32.MaxInputLength = 50
-        Me.DataGridViewTextBoxColumn32.Name = "DataGridViewTextBoxColumn32"
-        Me.DataGridViewTextBoxColumn32.ReadOnly = True
-        Me.DataGridViewTextBoxColumn32.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        '
-        'Column19
-        '
-        Me.Column19.DataPropertyName = "lrn"
-        Me.Column19.HeaderText = "LRN"
-        Me.Column19.Name = "Column19"
-        '
-        'DataGridViewTextBoxColumn34
-        '
-        Me.DataGridViewTextBoxColumn34.DataPropertyName = "student_no"
-        Me.DataGridViewTextBoxColumn34.HeaderText = "Student Number"
-        Me.DataGridViewTextBoxColumn34.Name = "DataGridViewTextBoxColumn34"
-        '
-        'Column20
-        '
-        Me.Column20.DataPropertyName = "section"
-        Me.Column20.HeaderText = "Section"
-        Me.Column20.Name = "Column20"
-        '
-        'Column21
-        '
-        Me.Column21.DataPropertyName = "year_level"
-        Me.Column21.HeaderText = "Year"
-        Me.Column21.Name = "Column21"
-        '
-        'Column33
-        '
-        Me.Column33.DataPropertyName = "section_id"
-        Me.Column33.HeaderText = "sid"
-        Me.Column33.Name = "Column33"
-        Me.Column33.Visible = False
-        '
-        'Column34
-        '
-        Me.Column34.DataPropertyName = "year_id"
-        Me.Column34.HeaderText = "yid"
-        Me.Column34.Name = "Column34"
-        Me.Column34.Visible = False
-        '
-        'Column37
-        '
-        Me.Column37.DataPropertyName = "phone"
-        Me.Column37.HeaderText = "phone"
-        Me.Column37.Name = "Column37"
-        Me.Column37.Visible = False
-        '
-        'Column36
-        '
-        Me.Column36.DataPropertyName = "address"
-        Me.Column36.HeaderText = "address"
-        Me.Column36.Name = "Column36"
-        Me.Column36.Visible = False
-        '
-        'Column35
-        '
-        Me.Column35.DataPropertyName = "gender"
-        Me.Column35.HeaderText = "gender"
-        Me.Column35.Name = "Column35"
-        Me.Column35.Visible = False
         '
         'DGSTUDENTCONTEXTMENUSTRIP
         '
@@ -7223,6 +7132,26 @@ Partial Class DashboardForm
         Me.Guna2Panel57.Size = New System.Drawing.Size(1566, 60)
         Me.Guna2Panel57.TabIndex = 0
         '
+        'CMBTRANSACTIONFILTER
+        '
+        Me.CMBTRANSACTIONFILTER.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.CMBTRANSACTIONFILTER.BackColor = System.Drawing.Color.Transparent
+        Me.CMBTRANSACTIONFILTER.BorderRadius = 4
+        Me.CMBTRANSACTIONFILTER.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.CMBTRANSACTIONFILTER.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CMBTRANSACTIONFILTER.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.CMBTRANSACTIONFILTER.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.CMBTRANSACTIONFILTER.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.CMBTRANSACTIONFILTER.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
+        Me.CMBTRANSACTIONFILTER.ItemHeight = 34
+        Me.CMBTRANSACTIONFILTER.Items.AddRange(New Object() {"Active", "Overdue", "Returned"})
+        Me.CMBTRANSACTIONFILTER.Location = New System.Drawing.Point(1106, 10)
+        Me.CMBTRANSACTIONFILTER.Margin = New System.Windows.Forms.Padding(0)
+        Me.CMBTRANSACTIONFILTER.Name = "CMBTRANSACTIONFILTER"
+        Me.CMBTRANSACTIONFILTER.Size = New System.Drawing.Size(171, 40)
+        Me.CMBTRANSACTIONFILTER.StartIndex = 0
+        Me.CMBTRANSACTIONFILTER.TabIndex = 23
+        '
         'BTNTRANSACTIONREFRESH
         '
         Me.BTNTRANSACTIONREFRESH.BorderRadius = 4
@@ -7501,6 +7430,54 @@ Partial Class DashboardForm
         Me.DGTRANSACTION.ThemeStyle.RowsStyle.Height = 48
         Me.DGTRANSACTION.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(205, Byte), Integer))
         Me.DGTRANSACTION.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
+        '
+        'DataGridViewTextBoxColumn47
+        '
+        Me.DataGridViewTextBoxColumn47.DataPropertyName = "id"
+        Me.DataGridViewTextBoxColumn47.HeaderText = "id"
+        Me.DataGridViewTextBoxColumn47.Name = "DataGridViewTextBoxColumn47"
+        Me.DataGridViewTextBoxColumn47.Visible = False
+        '
+        'DataGridViewCheckBoxColumn4
+        '
+        Me.DataGridViewCheckBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.DataGridViewCheckBoxColumn4.HeaderText = ""
+        Me.DataGridViewCheckBoxColumn4.Name = "DataGridViewCheckBoxColumn4"
+        Me.DataGridViewCheckBoxColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewCheckBoxColumn4.Width = 40
+        '
+        'DataGridViewTextBoxColumn48
+        '
+        Me.DataGridViewTextBoxColumn48.DataPropertyName = "circulation_no"
+        Me.DataGridViewTextBoxColumn48.HeaderText = "Circulation No."
+        Me.DataGridViewTextBoxColumn48.MaxInputLength = 50
+        Me.DataGridViewTextBoxColumn48.Name = "DataGridViewTextBoxColumn48"
+        Me.DataGridViewTextBoxColumn48.ReadOnly = True
+        Me.DataGridViewTextBoxColumn48.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
+        'Column32
+        '
+        Me.Column32.DataPropertyName = "issued_by"
+        Me.Column32.HeaderText = "Issued By"
+        Me.Column32.Name = "Column32"
+        '
+        'Column28
+        '
+        Me.Column28.DataPropertyName = "full_name"
+        Me.Column28.HeaderText = "Borrower"
+        Me.Column28.Name = "Column28"
+        '
+        'Column31
+        '
+        Me.Column31.DataPropertyName = "borrow_date"
+        Me.Column31.HeaderText = "Borrowed Date"
+        Me.Column31.Name = "Column31"
+        '
+        'Column30
+        '
+        Me.Column30.DataPropertyName = "overdue_date"
+        Me.Column30.HeaderText = "Overdue Date"
+        Me.Column30.Name = "Column30"
         '
         'ReportsTab
         '
@@ -9903,73 +9880,89 @@ Partial Class DashboardForm
         Me.errProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink
         Me.errProvider.ContainerControl = Me
         '
-        'CMBTRANSACTIONFILTER
+        'ColumnStudentID
         '
-        Me.CMBTRANSACTIONFILTER.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.CMBTRANSACTIONFILTER.BackColor = System.Drawing.Color.Transparent
-        Me.CMBTRANSACTIONFILTER.BorderRadius = 4
-        Me.CMBTRANSACTIONFILTER.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-        Me.CMBTRANSACTIONFILTER.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.CMBTRANSACTIONFILTER.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.CMBTRANSACTIONFILTER.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.CMBTRANSACTIONFILTER.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-        Me.CMBTRANSACTIONFILTER.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
-        Me.CMBTRANSACTIONFILTER.ItemHeight = 34
-        Me.CMBTRANSACTIONFILTER.Items.AddRange(New Object() {"Active", "Overdue", "Returned"})
-        Me.CMBTRANSACTIONFILTER.Location = New System.Drawing.Point(1106, 10)
-        Me.CMBTRANSACTIONFILTER.Margin = New System.Windows.Forms.Padding(0)
-        Me.CMBTRANSACTIONFILTER.Name = "CMBTRANSACTIONFILTER"
-        Me.CMBTRANSACTIONFILTER.Size = New System.Drawing.Size(171, 40)
-        Me.CMBTRANSACTIONFILTER.StartIndex = 0
-        Me.CMBTRANSACTIONFILTER.TabIndex = 23
+        Me.ColumnStudentID.DataPropertyName = "id"
+        Me.ColumnStudentID.HeaderText = "id"
+        Me.ColumnStudentID.Name = "ColumnStudentID"
+        Me.ColumnStudentID.Visible = False
         '
-        'DataGridViewTextBoxColumn47
+        'Column38
         '
-        Me.DataGridViewTextBoxColumn47.DataPropertyName = "id"
-        Me.DataGridViewTextBoxColumn47.HeaderText = "id"
-        Me.DataGridViewTextBoxColumn47.Name = "DataGridViewTextBoxColumn47"
-        Me.DataGridViewTextBoxColumn47.Visible = False
+        Me.Column38.DataPropertyName = "email"
+        Me.Column38.HeaderText = "email"
+        Me.Column38.Name = "Column38"
+        Me.Column38.Visible = False
         '
-        'DataGridViewCheckBoxColumn4
+        'chckBoxStudent
         '
-        Me.DataGridViewCheckBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.DataGridViewCheckBoxColumn4.HeaderText = ""
-        Me.DataGridViewCheckBoxColumn4.Name = "DataGridViewCheckBoxColumn4"
-        Me.DataGridViewCheckBoxColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewCheckBoxColumn4.Width = 40
+        Me.chckBoxStudent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.chckBoxStudent.HeaderText = ""
+        Me.chckBoxStudent.Name = "chckBoxStudent"
+        Me.chckBoxStudent.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.chckBoxStudent.Width = 40
         '
-        'DataGridViewTextBoxColumn48
+        'DataGridViewTextBoxColumn32
         '
-        Me.DataGridViewTextBoxColumn48.DataPropertyName = "circulation_no"
-        Me.DataGridViewTextBoxColumn48.HeaderText = "Circulation No."
-        Me.DataGridViewTextBoxColumn48.MaxInputLength = 50
-        Me.DataGridViewTextBoxColumn48.Name = "DataGridViewTextBoxColumn48"
-        Me.DataGridViewTextBoxColumn48.ReadOnly = True
-        Me.DataGridViewTextBoxColumn48.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewTextBoxColumn32.DataPropertyName = "full_name"
+        Me.DataGridViewTextBoxColumn32.HeaderText = "Full Name"
+        Me.DataGridViewTextBoxColumn32.MaxInputLength = 50
+        Me.DataGridViewTextBoxColumn32.Name = "DataGridViewTextBoxColumn32"
+        Me.DataGridViewTextBoxColumn32.ReadOnly = True
+        Me.DataGridViewTextBoxColumn32.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         '
-        'Column32
+        'Column19
         '
-        Me.Column32.DataPropertyName = "issued_by"
-        Me.Column32.HeaderText = "Issued By"
-        Me.Column32.Name = "Column32"
+        Me.Column19.DataPropertyName = "lrn"
+        Me.Column19.HeaderText = "LRN"
+        Me.Column19.Name = "Column19"
         '
-        'Column28
+        'Column20
         '
-        Me.Column28.DataPropertyName = "full_name"
-        Me.Column28.HeaderText = "Borrower"
-        Me.Column28.Name = "Column28"
+        Me.Column20.DataPropertyName = "section"
+        Me.Column20.HeaderText = "Section"
+        Me.Column20.Name = "Column20"
         '
-        'Column31
+        'Column21
         '
-        Me.Column31.DataPropertyName = "borrow_date"
-        Me.Column31.HeaderText = "Borrowed Date"
-        Me.Column31.Name = "Column31"
+        Me.Column21.DataPropertyName = "year_level"
+        Me.Column21.HeaderText = "Year"
+        Me.Column21.Name = "Column21"
         '
-        'Column30
+        'Column33
         '
-        Me.Column30.DataPropertyName = "overdue_date"
-        Me.Column30.HeaderText = "Overdue Date"
-        Me.Column30.Name = "Column30"
+        Me.Column33.DataPropertyName = "section_id"
+        Me.Column33.HeaderText = "sid"
+        Me.Column33.Name = "Column33"
+        Me.Column33.Visible = False
+        '
+        'Column34
+        '
+        Me.Column34.DataPropertyName = "year_id"
+        Me.Column34.HeaderText = "yid"
+        Me.Column34.Name = "Column34"
+        Me.Column34.Visible = False
+        '
+        'Column37
+        '
+        Me.Column37.DataPropertyName = "phone"
+        Me.Column37.HeaderText = "phone"
+        Me.Column37.Name = "Column37"
+        Me.Column37.Visible = False
+        '
+        'Column36
+        '
+        Me.Column36.DataPropertyName = "address"
+        Me.Column36.HeaderText = "address"
+        Me.Column36.Name = "Column36"
+        Me.Column36.Visible = False
+        '
+        'Column35
+        '
+        Me.Column35.DataPropertyName = "gender"
+        Me.Column35.HeaderText = "gender"
+        Me.Column35.Name = "Column35"
+        Me.Column35.Visible = False
         '
         'DashboardForm
         '
@@ -10719,19 +10712,6 @@ Partial Class DashboardForm
     Friend WithEvents ListView1 As ListView
     Friend WithEvents TableLayoutPanel30 As TableLayoutPanel
     Friend WithEvents CMBFACULTYFILTER As Guna.UI2.WinForms.Guna2ComboBox
-    Friend WithEvents ColumnStudentID As DataGridViewTextBoxColumn
-    Friend WithEvents Column38 As DataGridViewTextBoxColumn
-    Friend WithEvents chckBoxStudent As DataGridViewCheckBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn32 As DataGridViewTextBoxColumn
-    Friend WithEvents Column19 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn34 As DataGridViewTextBoxColumn
-    Friend WithEvents Column20 As DataGridViewTextBoxColumn
-    Friend WithEvents Column21 As DataGridViewTextBoxColumn
-    Friend WithEvents Column33 As DataGridViewTextBoxColumn
-    Friend WithEvents Column34 As DataGridViewTextBoxColumn
-    Friend WithEvents Column37 As DataGridViewTextBoxColumn
-    Friend WithEvents Column36 As DataGridViewTextBoxColumn
-    Friend WithEvents Column35 As DataGridViewTextBoxColumn
     Friend WithEvents ColumnYearLevelID As DataGridViewTextBoxColumn
     Friend WithEvents Column18 As DataGridViewTextBoxColumn
     Friend WithEvents chckBoxYearLevel As DataGridViewCheckBoxColumn
@@ -10793,4 +10773,16 @@ Partial Class DashboardForm
     Friend WithEvents Column28 As DataGridViewTextBoxColumn
     Friend WithEvents Column31 As DataGridViewTextBoxColumn
     Friend WithEvents Column30 As DataGridViewTextBoxColumn
+    Friend WithEvents ColumnStudentID As DataGridViewTextBoxColumn
+    Friend WithEvents Column38 As DataGridViewTextBoxColumn
+    Friend WithEvents chckBoxStudent As DataGridViewCheckBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn32 As DataGridViewTextBoxColumn
+    Friend WithEvents Column19 As DataGridViewTextBoxColumn
+    Friend WithEvents Column20 As DataGridViewTextBoxColumn
+    Friend WithEvents Column21 As DataGridViewTextBoxColumn
+    Friend WithEvents Column33 As DataGridViewTextBoxColumn
+    Friend WithEvents Column34 As DataGridViewTextBoxColumn
+    Friend WithEvents Column37 As DataGridViewTextBoxColumn
+    Friend WithEvents Column36 As DataGridViewTextBoxColumn
+    Friend WithEvents Column35 As DataGridViewTextBoxColumn
 End Class

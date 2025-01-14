@@ -9,7 +9,7 @@
         Dim fromStudent As Boolean = False
         If data.Rows.Count = 0 Then
             fromStudent = True
-            data = ExecScalar("SELECT id, password FROM tblstudents WHERE lrn = @username OR student_no = @username", params)
+            data = ExecScalar("SELECT id, password FROM tblstudents WHERE lrn = @username", params)
         End If
         If data.Rows.Count > 0 Then
             If BCrypt.Net.BCrypt.Verify(TXTPASSWORD.Text, data.Rows.Item(0).Item("password")) Then

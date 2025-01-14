@@ -53,7 +53,7 @@ Module Connection
                         End With
                     Next
                 End If
-                cmd.ExecuteNonQuery()
+                res = cmd.ExecuteNonQuery()
             End Using
         Catch ex As Exception
             Logger.Logger(ex)

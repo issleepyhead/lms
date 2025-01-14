@@ -15,7 +15,6 @@ Public Class StudentDialog
     Private Sub StudentDialog_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CMBYEARLEVEL.DataSource = BaseMaintenance.FetchAll(QueryTableType.YEARLEVEL_QUERY_TABLE)
         If Not IsNothing(_data) Then
-            TXTSTUDENTNO.Text = _data.Row("student_no")
             TXTLRN.Text = _data.Row("lrn")
             TXTFULLNAME.Text = _data.Row("full_name")
             CMBGENDER.SelectedText = _data.Row("gender")
@@ -34,7 +33,7 @@ Public Class StudentDialog
     End Sub
 
     Private Sub BTNSAVE_Click(sender As Object, e As EventArgs) Handles BTNSAVE.Click
-        Dim inputs As Object() = {TXTSTUDENTNO, TXTLRN, TXTFULLNAME, TXTEMAIL}
+        Dim inputs As Object() = {TXTLRN, TXTFULLNAME, TXTEMAIL}
         For Each item In inputs
             errProvider.SetError(item, String.Empty)
         Next
@@ -46,7 +45,6 @@ Public Class StudentDialog
 
         Dim data As New Dictionary(Of String, String) From {
                 {"@id", If(IsNothing(_data), 0, _data.Item("id").ToString)},
-                {"@studno", TXTSTUDENTNO.Text},
                 {"@lrn", TXTLRN.Text},
                 {"@full_name", TXTFULLNAME.Text},
                 {"@gender", CMBGENDER.Text},
@@ -59,7 +57,6 @@ Public Class StudentDialog
 
         If BaseMaintenance.Exists(QueryTableType.STUDENT_QUERY_TABLE, data) Then
             errProvider.SetError(TXTLRN, "This LRN already exists.")
-            errProvider.SetError(TXTSTUDENTNO, "This student number already exists.")
             Exit Sub
         End If
 
