@@ -64,11 +64,11 @@ Module Utilities
             Dim adapter As MySqlDataAdapter
             Using conn As New MySqlConnection(My.Settings.connection_string)
                 conn.Open()
-                Dim cmd As New MySqlCommand("SELECT st.id, student_no `Student No.`, lrn `LRN`, full_name `Full Name`
+                Dim cmd As New MySqlCommand("SELECT st.id, lrn `LRN`, full_name `Full Name`
                                                 FROM tblstudents st
                                                 LEFT JOIN tblborrowheaders bh ON st.id = bh.student_id
                                                 LEFT JOIN tblborrowedcopies bc ON bh.id = bc.header_id
-                                                GROUP BY student_no, lrn, full_name, st.id
+                                                GROUP BY lrn, full_name, st.id
                                                 HAVING COUNT(bc.copy_id) < 5", conn)
                 adapter = New MySqlDataAdapter(cmd)
                 adapter.Fill(dt)
@@ -111,7 +111,7 @@ Module Utilities
                                             FROM tblstudents st
                                             LEFT JOIN tblborrowheaders bh ON st.id = bh.student_id
                                             LEFT JOIN tblborrowedcopies bc ON bh.id = bc.header_id
-                                            WHERE (student_no = @query OR lrn = @query) AND st.status = 1
+                                            WHERE lrn = @query AND st.status = 1
                                             GROUP BY st.id
                                             HAVING COUNT(bc.copy_id) < 5", conn)
                 cmd.Parameters.AddWithValue("@query", query)

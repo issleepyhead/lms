@@ -356,6 +356,18 @@ Partial Class DashboardForm
         Me.BTNSTUDENTNEXT = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Panel33 = New Guna.UI2.WinForms.Guna2Panel()
         Me.DGSTUDENT = New Guna.UI2.WinForms.Guna2DataGridView()
+        Me.ColumnStudentID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column38 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.chckBoxStudent = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.DataGridViewTextBoxColumn32 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column21 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column33 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column34 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column37 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column36 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column35 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DGSTUDENTCONTEXTMENUSTRIP = New Guna.UI2.WinForms.Guna2ContextMenuStrip()
         Me.SelectAllToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.UnselectAllToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
@@ -689,18 +701,6 @@ Partial Class DashboardForm
         Me.LBLPROFILEROLE = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.LBLPROFILENAME = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.errProvider = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.ColumnStudentID = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column38 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.chckBoxStudent = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.DataGridViewTextBoxColumn32 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column21 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column33 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column34 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column37 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column36 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column35 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TableLayoutPanel1.SuspendLayout
         Me.MainFormPanels.SuspendLayout
         Me.DashboardTab.SuspendLayout
@@ -4838,6 +4838,90 @@ Partial Class DashboardForm
         Me.DGSTUDENT.ThemeStyle.RowsStyle.Height = 48
         Me.DGSTUDENT.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(205, Byte), Integer))
         Me.DGSTUDENT.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
+        '
+        'ColumnStudentID
+        '
+        Me.ColumnStudentID.DataPropertyName = "id"
+        Me.ColumnStudentID.HeaderText = "id"
+        Me.ColumnStudentID.Name = "ColumnStudentID"
+        Me.ColumnStudentID.Visible = False
+        '
+        'Column38
+        '
+        Me.Column38.DataPropertyName = "email"
+        Me.Column38.HeaderText = "email"
+        Me.Column38.Name = "Column38"
+        Me.Column38.Visible = False
+        '
+        'chckBoxStudent
+        '
+        Me.chckBoxStudent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.chckBoxStudent.HeaderText = ""
+        Me.chckBoxStudent.Name = "chckBoxStudent"
+        Me.chckBoxStudent.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.chckBoxStudent.Width = 40
+        '
+        'DataGridViewTextBoxColumn32
+        '
+        Me.DataGridViewTextBoxColumn32.DataPropertyName = "full_name"
+        Me.DataGridViewTextBoxColumn32.HeaderText = "Full Name"
+        Me.DataGridViewTextBoxColumn32.MaxInputLength = 50
+        Me.DataGridViewTextBoxColumn32.Name = "DataGridViewTextBoxColumn32"
+        Me.DataGridViewTextBoxColumn32.ReadOnly = True
+        Me.DataGridViewTextBoxColumn32.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
+        'Column19
+        '
+        Me.Column19.DataPropertyName = "lrn"
+        Me.Column19.HeaderText = "LRN"
+        Me.Column19.Name = "Column19"
+        '
+        'Column20
+        '
+        Me.Column20.DataPropertyName = "section"
+        Me.Column20.HeaderText = "Section"
+        Me.Column20.Name = "Column20"
+        '
+        'Column21
+        '
+        Me.Column21.DataPropertyName = "year_level"
+        Me.Column21.HeaderText = "Year"
+        Me.Column21.Name = "Column21"
+        '
+        'Column33
+        '
+        Me.Column33.DataPropertyName = "section_id"
+        Me.Column33.HeaderText = "sid"
+        Me.Column33.Name = "Column33"
+        Me.Column33.Visible = False
+        '
+        'Column34
+        '
+        Me.Column34.DataPropertyName = "year_id"
+        Me.Column34.HeaderText = "yid"
+        Me.Column34.Name = "Column34"
+        Me.Column34.Visible = False
+        '
+        'Column37
+        '
+        Me.Column37.DataPropertyName = "phone"
+        Me.Column37.HeaderText = "phone"
+        Me.Column37.Name = "Column37"
+        Me.Column37.Visible = False
+        '
+        'Column36
+        '
+        Me.Column36.DataPropertyName = "address"
+        Me.Column36.HeaderText = "address"
+        Me.Column36.Name = "Column36"
+        Me.Column36.Visible = False
+        '
+        'Column35
+        '
+        Me.Column35.DataPropertyName = "gender"
+        Me.Column35.HeaderText = "gender"
+        Me.Column35.Name = "Column35"
+        Me.Column35.Visible = False
         '
         'DGSTUDENTCONTEXTMENUSTRIP
         '
@@ -9879,90 +9963,6 @@ Partial Class DashboardForm
         '
         Me.errProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink
         Me.errProvider.ContainerControl = Me
-        '
-        'ColumnStudentID
-        '
-        Me.ColumnStudentID.DataPropertyName = "id"
-        Me.ColumnStudentID.HeaderText = "id"
-        Me.ColumnStudentID.Name = "ColumnStudentID"
-        Me.ColumnStudentID.Visible = False
-        '
-        'Column38
-        '
-        Me.Column38.DataPropertyName = "email"
-        Me.Column38.HeaderText = "email"
-        Me.Column38.Name = "Column38"
-        Me.Column38.Visible = False
-        '
-        'chckBoxStudent
-        '
-        Me.chckBoxStudent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.chckBoxStudent.HeaderText = ""
-        Me.chckBoxStudent.Name = "chckBoxStudent"
-        Me.chckBoxStudent.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.chckBoxStudent.Width = 40
-        '
-        'DataGridViewTextBoxColumn32
-        '
-        Me.DataGridViewTextBoxColumn32.DataPropertyName = "full_name"
-        Me.DataGridViewTextBoxColumn32.HeaderText = "Full Name"
-        Me.DataGridViewTextBoxColumn32.MaxInputLength = 50
-        Me.DataGridViewTextBoxColumn32.Name = "DataGridViewTextBoxColumn32"
-        Me.DataGridViewTextBoxColumn32.ReadOnly = True
-        Me.DataGridViewTextBoxColumn32.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        '
-        'Column19
-        '
-        Me.Column19.DataPropertyName = "lrn"
-        Me.Column19.HeaderText = "LRN"
-        Me.Column19.Name = "Column19"
-        '
-        'Column20
-        '
-        Me.Column20.DataPropertyName = "section"
-        Me.Column20.HeaderText = "Section"
-        Me.Column20.Name = "Column20"
-        '
-        'Column21
-        '
-        Me.Column21.DataPropertyName = "year_level"
-        Me.Column21.HeaderText = "Year"
-        Me.Column21.Name = "Column21"
-        '
-        'Column33
-        '
-        Me.Column33.DataPropertyName = "section_id"
-        Me.Column33.HeaderText = "sid"
-        Me.Column33.Name = "Column33"
-        Me.Column33.Visible = False
-        '
-        'Column34
-        '
-        Me.Column34.DataPropertyName = "year_id"
-        Me.Column34.HeaderText = "yid"
-        Me.Column34.Name = "Column34"
-        Me.Column34.Visible = False
-        '
-        'Column37
-        '
-        Me.Column37.DataPropertyName = "phone"
-        Me.Column37.HeaderText = "phone"
-        Me.Column37.Name = "Column37"
-        Me.Column37.Visible = False
-        '
-        'Column36
-        '
-        Me.Column36.DataPropertyName = "address"
-        Me.Column36.HeaderText = "address"
-        Me.Column36.Name = "Column36"
-        Me.Column36.Visible = False
-        '
-        'Column35
-        '
-        Me.Column35.DataPropertyName = "gender"
-        Me.Column35.HeaderText = "gender"
-        Me.Column35.Name = "Column35"
-        Me.Column35.Visible = False
         '
         'DashboardForm
         '

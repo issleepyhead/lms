@@ -1664,6 +1664,12 @@ Public Class DashboardForm
                 LBLTRANSACTIONPREV.Text = BaseMaintenance.PPrev
         End Select
     End Sub
+
+    Private Sub DGTRANSACTION_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGTRANSACTION.CellClick
+        Using dialog As New ReturnDialog()
+            dialog.ShowDialog()
+        End Using
+    End Sub
 #End Region
 
 End Class
