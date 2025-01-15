@@ -551,7 +551,6 @@ Partial Class DashboardForm
         Me.Guna2Panel59 = New Guna.UI2.WinForms.Guna2Panel()
         Me.DGTRANSACTION = New Guna.UI2.WinForms.Guna2DataGridView()
         Me.DataGridViewTextBoxColumn47 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewCheckBoxColumn4 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.DataGridViewTextBoxColumn48 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column32 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column28 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -701,6 +700,7 @@ Partial Class DashboardForm
         Me.LBLPROFILEROLE = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.LBLPROFILENAME = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.errProvider = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.TransactionTimer = New System.Windows.Forms.Timer(Me.components)
         Me.TableLayoutPanel1.SuspendLayout
         Me.MainFormPanels.SuspendLayout
         Me.DashboardTab.SuspendLayout
@@ -7471,7 +7471,7 @@ Partial Class DashboardForm
         DataGridViewCellStyle61.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DGTRANSACTION.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle61
         Me.DGTRANSACTION.ColumnHeadersHeight = 48
-        Me.DGTRANSACTION.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn47, Me.DataGridViewCheckBoxColumn4, Me.DataGridViewTextBoxColumn48, Me.Column32, Me.Column28, Me.Column31, Me.Column30})
+        Me.DGTRANSACTION.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn47, Me.DataGridViewTextBoxColumn48, Me.Column32, Me.Column28, Me.Column31, Me.Column30})
         Me.DGTRANSACTION.ContextMenuStrip = Me.DGMAINTENANCECONTEXTMENU
         DataGridViewCellStyle62.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle62.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(239, Byte), Integer))
@@ -7522,14 +7522,6 @@ Partial Class DashboardForm
         Me.DataGridViewTextBoxColumn47.Name = "DataGridViewTextBoxColumn47"
         Me.DataGridViewTextBoxColumn47.Visible = False
         '
-        'DataGridViewCheckBoxColumn4
-        '
-        Me.DataGridViewCheckBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.DataGridViewCheckBoxColumn4.HeaderText = ""
-        Me.DataGridViewCheckBoxColumn4.Name = "DataGridViewCheckBoxColumn4"
-        Me.DataGridViewCheckBoxColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewCheckBoxColumn4.Width = 40
-        '
         'DataGridViewTextBoxColumn48
         '
         Me.DataGridViewTextBoxColumn48.DataPropertyName = "circulation_no"
@@ -7544,24 +7536,32 @@ Partial Class DashboardForm
         Me.Column32.DataPropertyName = "issued_by"
         Me.Column32.HeaderText = "Issued By"
         Me.Column32.Name = "Column32"
+        Me.Column32.ReadOnly = True
+        Me.Column32.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         '
         'Column28
         '
         Me.Column28.DataPropertyName = "full_name"
         Me.Column28.HeaderText = "Borrower"
         Me.Column28.Name = "Column28"
+        Me.Column28.ReadOnly = True
+        Me.Column28.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         '
         'Column31
         '
         Me.Column31.DataPropertyName = "borrow_date"
         Me.Column31.HeaderText = "Borrowed Date"
         Me.Column31.Name = "Column31"
+        Me.Column31.ReadOnly = True
+        Me.Column31.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         '
         'Column30
         '
         Me.Column30.DataPropertyName = "overdue_date"
         Me.Column30.HeaderText = "Overdue Date"
         Me.Column30.Name = "Column30"
+        Me.Column30.ReadOnly = True
+        Me.Column30.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         '
         'ReportsTab
         '
@@ -9964,6 +9964,11 @@ Partial Class DashboardForm
         Me.errProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink
         Me.errProvider.ContainerControl = Me
         '
+        'TransactionTimer
+        '
+        Me.TransactionTimer.Enabled = True
+        Me.TransactionTimer.Interval = 500
+        '
         'DashboardForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -10766,13 +10771,6 @@ Partial Class DashboardForm
     Friend WithEvents Column47 As DataGridViewTextBoxColumn
     Friend WithEvents Column48 As DataGridViewTextBoxColumn
     Friend WithEvents CMBTRANSACTIONFILTER As Guna.UI2.WinForms.Guna2ComboBox
-    Friend WithEvents DataGridViewTextBoxColumn47 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewCheckBoxColumn4 As DataGridViewCheckBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn48 As DataGridViewTextBoxColumn
-    Friend WithEvents Column32 As DataGridViewTextBoxColumn
-    Friend WithEvents Column28 As DataGridViewTextBoxColumn
-    Friend WithEvents Column31 As DataGridViewTextBoxColumn
-    Friend WithEvents Column30 As DataGridViewTextBoxColumn
     Friend WithEvents ColumnStudentID As DataGridViewTextBoxColumn
     Friend WithEvents Column38 As DataGridViewTextBoxColumn
     Friend WithEvents chckBoxStudent As DataGridViewCheckBoxColumn
@@ -10785,4 +10783,11 @@ Partial Class DashboardForm
     Friend WithEvents Column37 As DataGridViewTextBoxColumn
     Friend WithEvents Column36 As DataGridViewTextBoxColumn
     Friend WithEvents Column35 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn47 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn48 As DataGridViewTextBoxColumn
+    Friend WithEvents Column32 As DataGridViewTextBoxColumn
+    Friend WithEvents Column28 As DataGridViewTextBoxColumn
+    Friend WithEvents Column31 As DataGridViewTextBoxColumn
+    Friend WithEvents Column30 As DataGridViewTextBoxColumn
+    Friend WithEvents TransactionTimer As Timer
 End Class

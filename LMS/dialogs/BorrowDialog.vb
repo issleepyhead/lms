@@ -3,7 +3,7 @@ Imports LMS.My
 
 Public Class BorrowDialog
     Public bookListData As New List(Of DataRow)
-    Public sid As Integer = 0
+    Public sid As Integer = 0 ' student id lol!
     Private Sub BorrowDialog_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim fborrower As DataTable = FetchFacultyBorrower()
         Dim newRow As DataRow = fborrower.NewRow()
@@ -14,7 +14,7 @@ Public Class BorrowDialog
     End Sub
 
     Private Sub BorrowDialog_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        If Not String.IsNullOrEmpty(TXTSTUDENTLRN.Text) OrElse CMBFACULTY.SelectedIndex <> -1 Then
+        If Not String.IsNullOrEmpty(TXTSTUDENTLRN.Text) OrElse CMBFACULTY.SelectedIndex <> 0 OrElse bookListData.Count > 0 Then
             If MessageBox.Show("Are you sure you want to discard changes?", "Discard Changes?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
                 MyApplication.DialogInstances.Remove(NameOf(BorrowDialog))
             Else
@@ -112,6 +112,8 @@ Public Class BorrowDialog
             bookListData.Clear()
             sid = 0
             TXTSTUDENTLRN.Clear()
+            CMBFACULTY.SelectedValue = 0
+            Close()
         Else
             MessageBox.Show("An error occured please try again.", "Borrowing Failed!", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
@@ -127,5 +129,17 @@ Public Class BorrowDialog
         Using dialog As New ViewBooksDialog(Me)
             dialog.ShowDialog()
         End Using
+    End Sub
+
+    Private Sub TXTISBN_TextChanged(sender As Object, e As EventArgs) Handles TXTISBN.TextChanged
+        If TXTISBN.Text.Length = 10 Then
+            Dim dt As DataTable = SearchBooksAccession(TXTISBN.Text)
+            If dt.Rows.Count > 0 Then
+                bookListData.Add(dt.Rows.Item(0))
+                TXTISBN.Clear()
+            Else
+                MessageBox.Show("The book copy you are attempting to borrow is either unavailable or doesn't exists.", "Not found!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
+        End If
     End Sub
 End Class

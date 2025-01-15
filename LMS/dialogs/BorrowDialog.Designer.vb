@@ -97,7 +97,7 @@ Partial Class BorrowDialog
         Me.TXTISBN.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXTISBN.Location = New System.Drawing.Point(20, 236)
         Me.TXTISBN.Margin = New System.Windows.Forms.Padding(0, 0, 0, 8)
-        Me.TXTISBN.MaxLength = 20
+        Me.TXTISBN.MaxLength = 10
         Me.TXTISBN.Name = "TXTISBN"
         Me.TXTISBN.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TXTISBN.PlaceholderForeColor = System.Drawing.Color.DarkGray

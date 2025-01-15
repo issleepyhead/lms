@@ -69,7 +69,7 @@ Module Utilities
                                                 LEFT JOIN tblborrowheaders bh ON st.id = bh.student_id
                                                 LEFT JOIN tblborrowedcopies bc ON bh.id = bc.header_id
                                                 GROUP BY lrn, full_name, st.id
-                                                HAVING COUNT(bc.copy_id) < 5", conn)
+                                                HAVING COUNT(bc.copy_id) < (SELECT s_count FROM tblappsettings)", conn)
                 adapter = New MySqlDataAdapter(cmd)
                 adapter.Fill(dt)
                 Return dt
@@ -93,7 +93,7 @@ Module Utilities
                                                 LEFT JOIN tblborrowedcopies bc ON bh.id = bc.header_id
                                                 WHERE st.status = 1
                                                 GROUP BY full_name, dp.department_name, st.id
-                                                HAVING COUNT(bc.copy_id) < 5", conn)
+                                                HAVING COUNT(bc.copy_id) < (SELECT f_count FROM tblappsettings)", conn)
                 adapter = New MySqlDataAdapter(cmd)
                 adapter.Fill(dt)
                 Return dt
@@ -154,7 +154,10 @@ Module Utilities
                                 .AddWithValue(kv.Key, If(String.IsNullOrEmpty(kv.Value), DBNull.Value, kv.Value))
                             Next
                         End With
-                        cmd.ExecuteNonQuery()
+                        If cmd.ExecuteNonQuery() > 0 Then
+                            cmd.CommandText = "UPDATE tblbookcopies SET status = 0 WHERE id = @cid"
+                            cmd.ExecuteNonQuery()
+                        End If
                     Next
                     trans.Commit()
                 End If
@@ -181,6 +184,10 @@ Module Utilities
         Catch ex As Exception
             Return dt
         End Try
+    End Function
+
+    Public Function SearchBooksAccession(query As String) As DataTable
+        Return ExecFetch("SELECT bc.id, accession_no ,title FROM tblbookcopies bc JOIN tblbooks b ON bc.book_id = b.id LEFT JOIN tbldonators d ON bc.donator_id = d.id LEFT JOIN tblsuppliers s ON bc.supplier_id = s.id WHERE bc.status = 1 AND accession_no = @query", New Dictionary(Of String, String) From {{"@query", query}})
     End Function
 
     Public Function FetchTransactions(status As Integer, Optional query As String = Nothing, Optional sdate As Date = Nothing, Optional edate As Date = Nothing) As DataTable
@@ -287,4 +294,5 @@ Module Utilities
                             WHERE bt.status = @stat", params, BaseMaintenance.PPrev - 1, True)
         End If
     End Function
+
 End Module

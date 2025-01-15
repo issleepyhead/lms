@@ -22,9 +22,9 @@ Partial Class ReturnDialog
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Guna2Panel2 = New Guna.UI2.WinForms.Guna2Panel()
         Me.BTNSAVE = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Panel1 = New Guna.UI2.WinForms.Guna2Panel()
@@ -52,12 +52,12 @@ Partial Class ReturnDialog
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel3 = New Guna.UI2.WinForms.Guna2Panel()
         Me.DGBORROWEDCOPIES = New Guna.UI2.WinForms.Guna2DataGridView()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ColumnReturnedCond = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ColumnBorrowedCond = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColumnReturnCond = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColumnBorrowedCond = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColumnBorrowedCondition = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColumnBtnReturn = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.Guna2Panel2.SuspendLayout()
@@ -128,7 +128,7 @@ Partial Class ReturnDialog
         '
         Me.LBLSTATUS.BackColor = System.Drawing.Color.Transparent
         Me.LBLSTATUS.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LBLSTATUS.Location = New System.Drawing.Point(1275, 158)
+        Me.LBLSTATUS.Location = New System.Drawing.Point(1216, 162)
         Me.LBLSTATUS.Margin = New System.Windows.Forms.Padding(0)
         Me.LBLSTATUS.Name = "LBLSTATUS"
         Me.LBLSTATUS.Size = New System.Drawing.Size(9, 23)
@@ -139,7 +139,7 @@ Partial Class ReturnDialog
         '
         Me.LBLBORROWDATE.BackColor = System.Drawing.Color.Transparent
         Me.LBLBORROWDATE.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LBLBORROWDATE.Location = New System.Drawing.Point(1275, 107)
+        Me.LBLBORROWDATE.Location = New System.Drawing.Point(1109, 101)
         Me.LBLBORROWDATE.Margin = New System.Windows.Forms.Padding(0)
         Me.LBLBORROWDATE.Name = "LBLBORROWDATE"
         Me.LBLBORROWDATE.Size = New System.Drawing.Size(9, 23)
@@ -150,7 +150,7 @@ Partial Class ReturnDialog
         '
         Me.LBLDUEDATE.BackColor = System.Drawing.Color.Transparent
         Me.LBLDUEDATE.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LBLDUEDATE.Location = New System.Drawing.Point(1275, 49)
+        Me.LBLDUEDATE.Location = New System.Drawing.Point(1110, 46)
         Me.LBLDUEDATE.Margin = New System.Windows.Forms.Padding(0)
         Me.LBLDUEDATE.Name = "LBLDUEDATE"
         Me.LBLDUEDATE.Size = New System.Drawing.Size(9, 23)
@@ -387,42 +387,37 @@ Partial Class ReturnDialog
         '
         Me.DGBORROWEDCOPIES.AllowUserToAddRows = False
         Me.DGBORROWEDCOPIES.AllowUserToDeleteRows = False
-        Me.DGBORROWEDCOPIES.AllowUserToResizeColumns = False
-        Me.DGBORROWEDCOPIES.AllowUserToResizeRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(197, Byte), Integer), CType(CType(203, Byte), Integer), CType(CType(232, Byte), Integer))
-        Me.DGBORROWEDCOPIES.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
-        Me.DGBORROWEDCOPIES.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(63, Byte), Integer), CType(CType(81, Byte), Integer), CType(CType(181, Byte), Integer))
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DGBORROWEDCOPIES.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
-        Me.DGBORROWEDCOPIES.ColumnHeadersHeight = 40
-        Me.DGBORROWEDCOPIES.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column3, Me.ColumnReturnedCond, Me.ColumnBorrowedCond, Me.Column5, Me.Column2, Me.Column1, Me.ColumnBorrowedCondition, Me.ColumnBtnReturn})
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(239, Byte), Integer))
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(205, Byte), Integer))
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DGBORROWEDCOPIES.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(CType(CType(197, Byte), Integer), CType(CType(203, Byte), Integer), CType(CType(232, Byte), Integer))
+        Me.DGBORROWEDCOPIES.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle16
+        DataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(CType(CType(63, Byte), Integer), CType(CType(81, Byte), Integer), CType(CType(181, Byte), Integer))
+        DataGridViewCellStyle17.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle17.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(63, Byte), Integer), CType(CType(81, Byte), Integer), CType(CType(181, Byte), Integer))
+        DataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGBORROWEDCOPIES.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle17
+        Me.DGBORROWEDCOPIES.ColumnHeadersHeight = 32
+        Me.DGBORROWEDCOPIES.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.ColumnReturnCond, Me.ColumnBorrowedCond, Me.Column7, Me.Column5, Me.Column4, Me.ColumnBorrowedCondition, Me.ColumnBtnReturn})
+        DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(239, Byte), Integer))
+        DataGridViewCellStyle18.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle18.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(205, Byte), Integer))
+        DataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGBORROWEDCOPIES.DefaultCellStyle = DataGridViewCellStyle18
         Me.DGBORROWEDCOPIES.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DGBORROWEDCOPIES.GridColor = System.Drawing.Color.FromArgb(CType(CType(194, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(231, Byte), Integer))
         Me.DGBORROWEDCOPIES.Location = New System.Drawing.Point(20, 0)
         Me.DGBORROWEDCOPIES.Margin = New System.Windows.Forms.Padding(0)
         Me.DGBORROWEDCOPIES.Name = "DGBORROWEDCOPIES"
-        Me.DGBORROWEDCOPIES.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         Me.DGBORROWEDCOPIES.RowHeadersVisible = False
-        Me.DGBORROWEDCOPIES.RowHeadersWidth = 40
         Me.DGBORROWEDCOPIES.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        Me.DGBORROWEDCOPIES.RowTemplate.Height = 40
+        Me.DGBORROWEDCOPIES.RowTemplate.Height = 32
         Me.DGBORROWEDCOPIES.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DGBORROWEDCOPIES.Size = New System.Drawing.Size(1264, 437)
-        Me.DGBORROWEDCOPIES.TabIndex = 2
+        Me.DGBORROWEDCOPIES.TabIndex = 3
         Me.DGBORROWEDCOPIES.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Indigo
         Me.DGBORROWEDCOPIES.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(197, Byte), Integer), CType(CType(203, Byte), Integer), CType(CType(232, Byte), Integer))
         Me.DGBORROWEDCOPIES.ThemeStyle.AlternatingRowsStyle.Font = Nothing
@@ -432,82 +427,75 @@ Partial Class ReturnDialog
         Me.DGBORROWEDCOPIES.ThemeStyle.BackColor = System.Drawing.Color.White
         Me.DGBORROWEDCOPIES.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(CType(CType(194, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(231, Byte), Integer))
         Me.DGBORROWEDCOPIES.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(63, Byte), Integer), CType(CType(81, Byte), Integer), CType(CType(181, Byte), Integer))
-        Me.DGBORROWEDCOPIES.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        Me.DGBORROWEDCOPIES.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
         Me.DGBORROWEDCOPIES.ThemeStyle.HeaderStyle.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DGBORROWEDCOPIES.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White
         Me.DGBORROWEDCOPIES.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.DGBORROWEDCOPIES.ThemeStyle.HeaderStyle.Height = 40
+        Me.DGBORROWEDCOPIES.ThemeStyle.HeaderStyle.Height = 32
         Me.DGBORROWEDCOPIES.ThemeStyle.ReadOnly = False
         Me.DGBORROWEDCOPIES.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(239, Byte), Integer))
         Me.DGBORROWEDCOPIES.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
-        Me.DGBORROWEDCOPIES.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGBORROWEDCOPIES.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DGBORROWEDCOPIES.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Black
-        Me.DGBORROWEDCOPIES.ThemeStyle.RowsStyle.Height = 40
+        Me.DGBORROWEDCOPIES.ThemeStyle.RowsStyle.Height = 32
         Me.DGBORROWEDCOPIES.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(205, Byte), Integer))
         Me.DGBORROWEDCOPIES.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
         '
-        'Column3
+        'Column1
         '
-        Me.Column3.DataPropertyName = "id"
-        Me.Column3.HeaderText = "id"
-        Me.Column3.Name = "Column3"
-        Me.Column3.Visible = False
+        Me.Column1.DataPropertyName = "id"
+        Me.Column1.HeaderText = "id"
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
+        Me.Column1.Visible = False
         '
-        'ColumnReturnedCond
+        'ColumnReturnCond
         '
-        Me.ColumnReturnedCond.DataPropertyName = "returned_condition"
-        Me.ColumnReturnedCond.HeaderText = "return_cond"
-        Me.ColumnReturnedCond.Name = "ColumnReturnedCond"
-        Me.ColumnReturnedCond.ReadOnly = True
-        Me.ColumnReturnedCond.Visible = False
+        Me.ColumnReturnCond.DataPropertyName = "returned_condition"
+        Me.ColumnReturnCond.HeaderText = "return_cond"
+        Me.ColumnReturnCond.Name = "ColumnReturnCond"
+        Me.ColumnReturnCond.Visible = False
         '
         'ColumnBorrowedCond
         '
         Me.ColumnBorrowedCond.DataPropertyName = "borrowed_condition"
-        Me.ColumnBorrowedCond.HeaderText = "borrowed_cond"
+        Me.ColumnBorrowedCond.HeaderText = "borrow_cond"
         Me.ColumnBorrowedCond.Name = "ColumnBorrowedCond"
-        Me.ColumnBorrowedCond.ReadOnly = True
-        Me.ColumnBorrowedCond.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.ColumnBorrowedCond.Visible = False
+        '
+        'Column7
+        '
+        Me.Column7.DataPropertyName = "accession_no"
+        Me.Column7.HeaderText = "Accession Number"
+        Me.Column7.Name = "Column7"
+        Me.Column7.ReadOnly = True
         '
         'Column5
         '
-        Me.Column5.DataPropertyName = "accession_no"
-        Me.Column5.HeaderText = "Accession"
+        Me.Column5.DataPropertyName = "title"
+        Me.Column5.HeaderText = "Title"
         Me.Column5.Name = "Column5"
         Me.Column5.ReadOnly = True
-        Me.Column5.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         '
-        'Column2
+        'Column4
         '
-        Me.Column2.DataPropertyName = "title"
-        Me.Column2.HeaderText = "Title"
-        Me.Column2.Name = "Column2"
-        Me.Column2.ReadOnly = True
-        Me.Column2.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        '
-        'Column1
-        '
-        Me.Column1.DataPropertyName = "isbn"
-        Me.Column1.HeaderText = "ISBN"
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        Me.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.Column4.DataPropertyName = "isbn"
+        Me.Column4.HeaderText = "ISBN"
+        Me.Column4.Name = "Column4"
+        Me.Column4.ReadOnly = True
         '
         'ColumnBorrowedCondition
         '
         Me.ColumnBorrowedCondition.HeaderText = "Borrowed Condition"
         Me.ColumnBorrowedCondition.Name = "ColumnBorrowedCondition"
-        Me.ColumnBorrowedCondition.ReadOnly = True
         Me.ColumnBorrowedCondition.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         '
         'ColumnBtnReturn
         '
-        Me.ColumnBtnReturn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.ColumnBtnReturn.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.ColumnBtnReturn.HeaderText = "Action"
         Me.ColumnBtnReturn.Name = "ColumnBtnReturn"
-        Me.ColumnBtnReturn.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.ColumnBtnReturn.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.ColumnBtnReturn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
         Me.ColumnBtnReturn.Text = "Return"
         Me.ColumnBtnReturn.UseColumnTextForButtonValue = True
         '
@@ -559,14 +547,14 @@ Partial Class ReturnDialog
     Friend WithEvents LBLBORROWDATE As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents LBLDUEDATE As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2Panel3 As Guna.UI2.WinForms.Guna2Panel
-    Friend WithEvents DGBORROWEDCOPIES As Guna.UI2.WinForms.Guna2DataGridView
     Friend WithEvents BTNSAVE As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents Column3 As DataGridViewTextBoxColumn
-    Friend WithEvents ColumnReturnedCond As DataGridViewTextBoxColumn
-    Friend WithEvents ColumnBorrowedCond As DataGridViewTextBoxColumn
-    Friend WithEvents Column5 As DataGridViewTextBoxColumn
-    Friend WithEvents Column2 As DataGridViewTextBoxColumn
+    Friend WithEvents DGBORROWEDCOPIES As Guna.UI2.WinForms.Guna2DataGridView
     Friend WithEvents Column1 As DataGridViewTextBoxColumn
+    Friend WithEvents ColumnReturnCond As DataGridViewTextBoxColumn
+    Friend WithEvents ColumnBorrowedCond As DataGridViewTextBoxColumn
+    Friend WithEvents Column7 As DataGridViewTextBoxColumn
+    Friend WithEvents Column5 As DataGridViewTextBoxColumn
+    Friend WithEvents Column4 As DataGridViewTextBoxColumn
     Friend WithEvents ColumnBorrowedCondition As DataGridViewTextBoxColumn
     Friend WithEvents ColumnBtnReturn As DataGridViewButtonColumn
 End Class

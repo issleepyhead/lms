@@ -41,5 +41,81 @@
     <Setting Name="user_username" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="email" Type="System.String" Scope="User">
+      <Value Profile="(Default)">example@gmail.com</Value>
+    </Setting>
+    <Setting Name="email_pass" Type="System.String" Scope="User">
+      <Value Profile="(Default)">mypass</Value>
+    </Setting>
+    <Setting Name="spenalty" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="fpenalty" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="gpenalty" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="fdays" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="sdays" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="scount" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="fcount" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="return_message" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Dear @borrower,
+
+This is to confirm the return of the following books on @return_date:
+@borrowed_books
+
+Thank you for returning them on time. We look forward to serving you again.
+
+Best regards,
+Librarian: @librarian</Value>
+    </Setting>
+    <Setting Name="borrow_message" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Dear @borrower,
+
+You borrowed the following books on @borrow_date, due by @overdue_date:
+@borrowed_books
+
+Please return them on time.
+
+Thank you,
+Librarian: @librarian</Value>
+    </Setting>
+    <Setting Name="overdue_message" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Dear @borrower,
+
+The following books borrowed on @borrow_date are overdue since @overdue_date:
+@borrowed_books
+
+Kindly return them promptly.
+
+Thank you,
+Librarian: @librarian</Value>
+    </Setting>
+    <Setting Name="enable_notif" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="before_overdue_message" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Dear @borrower,
+
+This is a friendly reminder that the following books borrowed on @borrow_date are due soon:
+@borrowed_books
+
+Due Date: @overdue_date
+
+Please return them by the due date to avoid overdue fines.
+
+Thank you,
+Librarian: @librarian</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

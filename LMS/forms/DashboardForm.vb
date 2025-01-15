@@ -1638,6 +1638,8 @@ Public Class DashboardForm
     Private Sub TXTTRANSACTIONSEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTTRANSACTIONSEARCH.TextChanged
         Select Case True
             Case MainFormPanels.SelectedTab.Equals(BookTransactionTab)
+                TransactionTimer.Enabled = True
+                TransactionTimer.Start()
                 If CMBTRANSACTIONFILTER.Text = "Active" Then
                     DGTRANSACTION.DataSource = FetchTransactions(1, TXTTRANSACTIONSEARCH.Text)
                 ElseIf CMBTRANSACTIONFILTER.Text = "Overdue" Then
@@ -1647,6 +1649,9 @@ Public Class DashboardForm
                 End If
                 LBLTRANSACTIONNEXT.Text = BaseMaintenance.PMAX
                 LBLTRANSACTIONPREV.Text = BaseMaintenance.PPrev
+            Case Else
+                TransactionTimer.Enabled = False
+                TransactionTimer.Stop()
         End Select
     End Sub
 
@@ -1666,9 +1671,18 @@ Public Class DashboardForm
     End Sub
 
     Private Sub DGTRANSACTION_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGTRANSACTION.CellClick
-        Using dialog As New ReturnDialog()
-            dialog.ShowDialog()
-        End Using
+        If DGTRANSACTION.SelectedRows.Count > 0 AndAlso e.RowIndex <> -1 Then
+            Dim boundItem As DataRowView = TryCast(DGTRANSACTION.SelectedRows(0).DataBoundItem, DataRowView)
+            Using dialog As New ReturnDialog(boundItem.Row.Item("id"))
+                dialog.ShowDialog()
+            End Using
+        End If
+    End Sub
+
+    Private Sub TransactionTimer_Tick(sender As Object, e As EventArgs) Handles TransactionTimer.Tick
+        If MainFormPanels.SelectedTab.Equals(BookTransactionTab) Then
+            CMBTRANSACTIONFILTER_SelectedIndexChanged(CMBTRANSACTIONFILTER, Nothing)
+        End If
     End Sub
 #End Region
 
