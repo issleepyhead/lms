@@ -8,6 +8,7 @@ Public Class DashboardForm
 
     Private Sub DashboardForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         BookInventoryPanels_SelectedIndexChanged(BookInventoryPanels, Nothing)
+        DGTRANSACTION.Columns(NameOf(ColumnOverdueDate)).DisplayIndex = DGTRANSACTION.Columns.Count - 1
     End Sub
 
     Private Sub BTNLOGOUT_Click(sender As Object, e As EventArgs) Handles BTNLOGOUT.Click

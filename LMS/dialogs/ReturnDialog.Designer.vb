@@ -22,9 +22,11 @@ Partial Class ReturnDialog
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Guna2Panel2 = New Guna.UI2.WinForms.Guna2Panel()
         Me.BTNSAVE = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Panel1 = New Guna.UI2.WinForms.Guna2Panel()
@@ -52,19 +54,28 @@ Partial Class ReturnDialog
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel3 = New Guna.UI2.WinForms.Guna2Panel()
         Me.DGBORROWEDCOPIES = New Guna.UI2.WinForms.Guna2DataGridView()
+        Me.DGBORROWEDCOPIESMENUSTRIP = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.SelectAllToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.UnselectAllToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ReturnAllToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.NoteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AddToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ViewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColumnReturnCond = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColumnBorrowedCond = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.chckBoxBorrowCopies = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColumnBorrowedCondition = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ColumnBtnReturn = New System.Windows.Forms.DataGridViewButtonColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Guna2Panel2.SuspendLayout()
         Me.Guna2Panel1.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.Guna2Panel3.SuspendLayout()
         CType(Me.DGBORROWEDCOPIES, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.DGBORROWEDCOPIESMENUSTRIP.SuspendLayout()
         Me.SuspendLayout()
         '
         'Guna2Panel2
@@ -86,7 +97,7 @@ Partial Class ReturnDialog
         Me.BTNSAVE.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
         Me.BTNSAVE.Font = New System.Drawing.Font("Segoe UI", 12.0!)
         Me.BTNSAVE.ForeColor = System.Drawing.Color.White
-        Me.BTNSAVE.Location = New System.Drawing.Point(1113, 10)
+        Me.BTNSAVE.Location = New System.Drawing.Point(1116, 10)
         Me.BTNSAVE.Margin = New System.Windows.Forms.Padding(0)
         Me.BTNSAVE.Name = "BTNSAVE"
         Me.BTNSAVE.Size = New System.Drawing.Size(168, 40)
@@ -387,26 +398,27 @@ Partial Class ReturnDialog
         '
         Me.DGBORROWEDCOPIES.AllowUserToAddRows = False
         Me.DGBORROWEDCOPIES.AllowUserToDeleteRows = False
-        DataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(CType(CType(197, Byte), Integer), CType(CType(203, Byte), Integer), CType(CType(232, Byte), Integer))
-        Me.DGBORROWEDCOPIES.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle16
-        DataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(CType(CType(63, Byte), Integer), CType(CType(81, Byte), Integer), CType(CType(181, Byte), Integer))
-        DataGridViewCellStyle17.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle17.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(63, Byte), Integer), CType(CType(81, Byte), Integer), CType(CType(181, Byte), Integer))
-        DataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DGBORROWEDCOPIES.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle17
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(197, Byte), Integer), CType(CType(203, Byte), Integer), CType(CType(232, Byte), Integer))
+        Me.DGBORROWEDCOPIES.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(63, Byte), Integer), CType(CType(81, Byte), Integer), CType(CType(181, Byte), Integer))
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(63, Byte), Integer), CType(CType(81, Byte), Integer), CType(CType(181, Byte), Integer))
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGBORROWEDCOPIES.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.DGBORROWEDCOPIES.ColumnHeadersHeight = 32
-        Me.DGBORROWEDCOPIES.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.ColumnReturnCond, Me.ColumnBorrowedCond, Me.Column7, Me.Column5, Me.Column4, Me.ColumnBorrowedCondition, Me.ColumnBtnReturn})
-        DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(239, Byte), Integer))
-        DataGridViewCellStyle18.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle18.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(205, Byte), Integer))
-        DataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DGBORROWEDCOPIES.DefaultCellStyle = DataGridViewCellStyle18
+        Me.DGBORROWEDCOPIES.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.ColumnReturnCond, Me.ColumnBorrowedCond, Me.chckBoxBorrowCopies, Me.Column7, Me.Column5, Me.Column4, Me.ColumnBorrowedCondition, Me.Column2})
+        Me.DGBORROWEDCOPIES.ContextMenuStrip = Me.DGBORROWEDCOPIESMENUSTRIP
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(239, Byte), Integer))
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(205, Byte), Integer))
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGBORROWEDCOPIES.DefaultCellStyle = DataGridViewCellStyle4
         Me.DGBORROWEDCOPIES.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DGBORROWEDCOPIES.GridColor = System.Drawing.Color.FromArgb(CType(CType(194, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(231, Byte), Integer))
         Me.DGBORROWEDCOPIES.Location = New System.Drawing.Point(20, 0)
@@ -441,6 +453,49 @@ Partial Class ReturnDialog
         Me.DGBORROWEDCOPIES.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(205, Byte), Integer))
         Me.DGBORROWEDCOPIES.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
         '
+        'DGBORROWEDCOPIESMENUSTRIP
+        '
+        Me.DGBORROWEDCOPIESMENUSTRIP.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SelectAllToolStripMenuItem, Me.UnselectAllToolStripMenuItem, Me.ReturnAllToolStripMenuItem, Me.NoteToolStripMenuItem})
+        Me.DGBORROWEDCOPIESMENUSTRIP.Name = "DGBORROWEDCOPIESMENUSTRIP"
+        Me.DGBORROWEDCOPIESMENUSTRIP.Size = New System.Drawing.Size(157, 92)
+        '
+        'SelectAllToolStripMenuItem
+        '
+        Me.SelectAllToolStripMenuItem.Name = "SelectAllToolStripMenuItem"
+        Me.SelectAllToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
+        Me.SelectAllToolStripMenuItem.Text = "Select All"
+        '
+        'UnselectAllToolStripMenuItem
+        '
+        Me.UnselectAllToolStripMenuItem.Name = "UnselectAllToolStripMenuItem"
+        Me.UnselectAllToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
+        Me.UnselectAllToolStripMenuItem.Text = "Unselect All"
+        '
+        'ReturnAllToolStripMenuItem
+        '
+        Me.ReturnAllToolStripMenuItem.Name = "ReturnAllToolStripMenuItem"
+        Me.ReturnAllToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
+        Me.ReturnAllToolStripMenuItem.Text = "Return Selected"
+        '
+        'NoteToolStripMenuItem
+        '
+        Me.NoteToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddToolStripMenuItem, Me.ViewToolStripMenuItem})
+        Me.NoteToolStripMenuItem.Name = "NoteToolStripMenuItem"
+        Me.NoteToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
+        Me.NoteToolStripMenuItem.Text = "Note"
+        '
+        'AddToolStripMenuItem
+        '
+        Me.AddToolStripMenuItem.Name = "AddToolStripMenuItem"
+        Me.AddToolStripMenuItem.Size = New System.Drawing.Size(99, 22)
+        Me.AddToolStripMenuItem.Text = "Add"
+        '
+        'ViewToolStripMenuItem
+        '
+        Me.ViewToolStripMenuItem.Name = "ViewToolStripMenuItem"
+        Me.ViewToolStripMenuItem.Size = New System.Drawing.Size(99, 22)
+        Me.ViewToolStripMenuItem.Text = "View"
+        '
         'Column1
         '
         Me.Column1.DataPropertyName = "id"
@@ -462,6 +517,13 @@ Partial Class ReturnDialog
         Me.ColumnBorrowedCond.HeaderText = "borrow_cond"
         Me.ColumnBorrowedCond.Name = "ColumnBorrowedCond"
         Me.ColumnBorrowedCond.Visible = False
+        '
+        'chckBoxBorrowCopies
+        '
+        Me.chckBoxBorrowCopies.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.chckBoxBorrowCopies.HeaderText = ""
+        Me.chckBoxBorrowCopies.Name = "chckBoxBorrowCopies"
+        Me.chckBoxBorrowCopies.Width = 40
         '
         'Column7
         '
@@ -490,14 +552,14 @@ Partial Class ReturnDialog
         Me.ColumnBorrowedCondition.Name = "ColumnBorrowedCondition"
         Me.ColumnBorrowedCondition.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         '
-        'ColumnBtnReturn
+        'Column2
         '
-        Me.ColumnBtnReturn.HeaderText = "Action"
-        Me.ColumnBtnReturn.Name = "ColumnBtnReturn"
-        Me.ColumnBtnReturn.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.ColumnBtnReturn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.ColumnBtnReturn.Text = "Return"
-        Me.ColumnBtnReturn.UseColumnTextForButtonValue = True
+        Me.Column2.DataPropertyName = "returned_date"
+        DataGridViewCellStyle3.NullValue = "Not Returned"
+        Me.Column2.DefaultCellStyle = DataGridViewCellStyle3
+        Me.Column2.HeaderText = "Return Date"
+        Me.Column2.Name = "Column2"
+        Me.Column2.ReadOnly = True
         '
         'ReturnDialog
         '
@@ -518,6 +580,7 @@ Partial Class ReturnDialog
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.Guna2Panel3.ResumeLayout(False)
         CType(Me.DGBORROWEDCOPIES, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.DGBORROWEDCOPIESMENUSTRIP.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -549,12 +612,20 @@ Partial Class ReturnDialog
     Friend WithEvents Guna2Panel3 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents BTNSAVE As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents DGBORROWEDCOPIES As Guna.UI2.WinForms.Guna2DataGridView
+    Friend WithEvents DGBORROWEDCOPIESMENUSTRIP As ContextMenuStrip
+    Friend WithEvents SelectAllToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents UnselectAllToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ReturnAllToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents NoteToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents AddToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ViewToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents Column1 As DataGridViewTextBoxColumn
     Friend WithEvents ColumnReturnCond As DataGridViewTextBoxColumn
     Friend WithEvents ColumnBorrowedCond As DataGridViewTextBoxColumn
+    Friend WithEvents chckBoxBorrowCopies As DataGridViewCheckBoxColumn
     Friend WithEvents Column7 As DataGridViewTextBoxColumn
     Friend WithEvents Column5 As DataGridViewTextBoxColumn
     Friend WithEvents Column4 As DataGridViewTextBoxColumn
     Friend WithEvents ColumnBorrowedCondition As DataGridViewTextBoxColumn
-    Friend WithEvents ColumnBtnReturn As DataGridViewButtonColumn
+    Friend WithEvents Column2 As DataGridViewTextBoxColumn
 End Class

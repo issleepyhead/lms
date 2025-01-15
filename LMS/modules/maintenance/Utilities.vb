@@ -79,6 +79,34 @@ Module Utilities
         End Try
     End Function
 
+    Public Function ReturnBooks(bookCopies As List(Of Dictionary(Of String, String))) As Boolean
+        ' TODO FIX THIS LATURRR
+        Dim transac As MySqlTransaction = Nothing
+        Try
+            Using conn As New MySqlConnection(My.Settings.connection_string)
+                conn.Open()
+                transac = conn.BeginTransaction
+
+                For Each item As Dictionary(Of String, String) In bookCopies
+                    Dim cmd As New MySqlCommand("UPDATE tblborrowedcopies SET returned_condition = @rcond, date_returned = NOW() WHERE id = @id", conn, transac)
+                    cmd.ExecuteNonQuery()
+                    If item.Item("@rcond") = BOOKCONDITIONTYPE.GOOD OrElse item.Item("@rcond") = BOOKCONDITIONTYPE.DAMAGED Then
+                        cmd.CommandText = "UPDATE tblbookcopies SET condition = @rcond, status = 0 WHERE id = @cid"
+                    Else
+                        cmd.CommandText = "UPDATE tblbookcopies SET condition = @rcond, status = 2 WHERE id = @cid"
+                    End If
+                    cmd.ExecuteNonQuery()
+                Next
+                transac.Commit()
+                Return True
+            End Using
+        Catch ex As Exception
+            Logger.Logger(ex)
+            transac.Rollback()
+            Return False
+        End Try
+    End Function
+
     Public Function FetchFacultyBorrower() As DataTable
         ' TODO Change the limit
         Dim dt As New DataTable

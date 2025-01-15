@@ -224,6 +224,12 @@
     <Compile Include="dialogs\LanguageDialog.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="dialogs\NoteDialog.Designer.vb">
+      <DependentUpon>NoteDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="dialogs\NoteDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="dialogs\PublisherDialog.Designer.vb">
       <DependentUpon>PublisherDialog.vb</DependentUpon>
     </Compile>
@@ -375,6 +381,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="dialogs\LanguageDialog.resx">
       <DependentUpon>LanguageDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dialogs\NoteDialog.resx">
+      <DependentUpon>NoteDialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="dialogs\PublisherDialog.resx">
       <DependentUpon>PublisherDialog.vb</DependentUpon>

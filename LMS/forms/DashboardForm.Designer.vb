@@ -118,7 +118,6 @@ Partial Class DashboardForm
         Me.GenresTab = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel3 = New Guna.UI2.WinForms.Guna2Panel()
-        Me.TXTGENRESEARCH = New Guna.UI2.WinForms.Guna2TextBox()
         Me.BTNADDGENRE = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Panel4 = New Guna.UI2.WinForms.Guna2Panel()
         Me.BTNGENREREFRESH = New Guna.UI2.WinForms.Guna2Button()
@@ -140,7 +139,6 @@ Partial Class DashboardForm
         Me.AuthorTab = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel7 = New Guna.UI2.WinForms.Guna2Panel()
-        Me.TXTSEARCHAUTHOR = New Guna.UI2.WinForms.Guna2TextBox()
         Me.BTNADDAUTHOR = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Panel8 = New Guna.UI2.WinForms.Guna2Panel()
         Me.BTNAUTHORREFRESH = New Guna.UI2.WinForms.Guna2Button()
@@ -159,7 +157,6 @@ Partial Class DashboardForm
         Me.PublishhersTab = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel4 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel10 = New Guna.UI2.WinForms.Guna2Panel()
-        Me.TXTPUBLISHERSEARCH = New Guna.UI2.WinForms.Guna2TextBox()
         Me.BTNADDPUBLISHER = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Panel11 = New Guna.UI2.WinForms.Guna2Panel()
         Me.BTNPUBLISHERREFRESH = New Guna.UI2.WinForms.Guna2Button()
@@ -176,7 +173,6 @@ Partial Class DashboardForm
         Me.ClassificationTab = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel5 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel13 = New Guna.UI2.WinForms.Guna2Panel()
-        Me.TXTCLASSIFICATIONSEARCH = New Guna.UI2.WinForms.Guna2TextBox()
         Me.BTNADDCLASSIFICATION = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Panel14 = New Guna.UI2.WinForms.Guna2Panel()
         Me.BTNCLASSIFICATIONREFRESH = New Guna.UI2.WinForms.Guna2Button()
@@ -194,7 +190,6 @@ Partial Class DashboardForm
         Me.LanguagesTab = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel16 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel45 = New Guna.UI2.WinForms.Guna2Panel()
-        Me.TXTLANGUAGESEARCH = New Guna.UI2.WinForms.Guna2TextBox()
         Me.BTNADDLANGUAGE = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Panel46 = New Guna.UI2.WinForms.Guna2Panel()
         Me.BTNLANGUAGEREFRESH = New Guna.UI2.WinForms.Guna2Button()
@@ -214,7 +209,6 @@ Partial Class DashboardForm
         Me.Guna2Panel16 = New Guna.UI2.WinForms.Guna2Panel()
         Me.BTNBOOKREFRESH = New Guna.UI2.WinForms.Guna2Button()
         Me.CMBBOOKFILTER = New Guna.UI2.WinForms.Guna2ComboBox()
-        Me.TXTBOOKSEARCH = New Guna.UI2.WinForms.Guna2TextBox()
         Me.BTNADDBOOK = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Panel17 = New Guna.UI2.WinForms.Guna2Panel()
         Me.BTNIMPORTBOOKS = New Guna.UI2.WinForms.Guna2Button()
@@ -250,7 +244,6 @@ Partial Class DashboardForm
         Me.DonatorsTab = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel7 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel19 = New Guna.UI2.WinForms.Guna2Panel()
-        Me.TXTDONATORSEARCH = New Guna.UI2.WinForms.Guna2TextBox()
         Me.BTNADDDONATOR = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Panel20 = New Guna.UI2.WinForms.Guna2Panel()
         Me.BTNDONATORREFRESH = New Guna.UI2.WinForms.Guna2Button()
@@ -267,7 +260,6 @@ Partial Class DashboardForm
         Me.SuppliersTab = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel8 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel22 = New Guna.UI2.WinForms.Guna2Panel()
-        Me.TXTSUPPLIERSEARCH = New Guna.UI2.WinForms.Guna2TextBox()
         Me.BTNADDSUPPLIER = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Panel23 = New Guna.UI2.WinForms.Guna2Panel()
         Me.BTNSUPPLIERREFRESH = New Guna.UI2.WinForms.Guna2Button()
@@ -287,7 +279,6 @@ Partial Class DashboardForm
         Me.DepartmentTab = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel14 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel40 = New Guna.UI2.WinForms.Guna2Panel()
-        Me.TXTDEPARTMENTSEARCH = New Guna.UI2.WinForms.Guna2TextBox()
         Me.BTNADDDEPARTMENT = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Panel41 = New Guna.UI2.WinForms.Guna2Panel()
         Me.BTNDEPARTMENTREFRESH = New Guna.UI2.WinForms.Guna2Button()
@@ -304,7 +295,6 @@ Partial Class DashboardForm
         Me.YearLevelTab = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel9 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel25 = New Guna.UI2.WinForms.Guna2Panel()
-        Me.TXTYEARLEVELSEARCH = New Guna.UI2.WinForms.Guna2TextBox()
         Me.BTNADDYEARLEVEL = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Panel26 = New Guna.UI2.WinForms.Guna2Panel()
         Me.BTNYEARLEVELREFRESH = New Guna.UI2.WinForms.Guna2Button()
@@ -323,7 +313,6 @@ Partial Class DashboardForm
         Me.SectionTab = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel10 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel28 = New Guna.UI2.WinForms.Guna2Panel()
-        Me.TXTSECTIONSEARCH = New Guna.UI2.WinForms.Guna2TextBox()
         Me.BTNADDSECTION = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Panel29 = New Guna.UI2.WinForms.Guna2Panel()
         Me.BTNSECTIONREFRESH = New Guna.UI2.WinForms.Guna2Button()
@@ -345,7 +334,6 @@ Partial Class DashboardForm
         Me.Guna2Panel31 = New Guna.UI2.WinForms.Guna2Panel()
         Me.BTNSTUDENTREFRESH = New Guna.UI2.WinForms.Guna2Button()
         Me.CMBSTUDENTFILTER = New Guna.UI2.WinForms.Guna2ComboBox()
-        Me.TXTSTUDENTSEARCH = New Guna.UI2.WinForms.Guna2TextBox()
         Me.BTNADDSTUDENTS = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Panel32 = New Guna.UI2.WinForms.Guna2Panel()
         Me.BTNIMPORTSTUDENTS = New Guna.UI2.WinForms.Guna2Button()
@@ -381,7 +369,6 @@ Partial Class DashboardForm
         Me.Guna2Panel34 = New Guna.UI2.WinForms.Guna2Panel()
         Me.CMBFACULTYFILTER = New Guna.UI2.WinForms.Guna2ComboBox()
         Me.BTNFACULTYREFRESH = New Guna.UI2.WinForms.Guna2Button()
-        Me.TXTFACULTYSEARCH = New Guna.UI2.WinForms.Guna2TextBox()
         Me.BTNADDFACULTY = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Panel35 = New Guna.UI2.WinForms.Guna2Panel()
         Me.BTNIMPORTFACULTY = New Guna.UI2.WinForms.Guna2Button()
@@ -415,7 +402,6 @@ Partial Class DashboardForm
         Me.TableLayoutPanel13 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel37 = New Guna.UI2.WinForms.Guna2Panel()
         Me.BTNADMINREFRESH = New Guna.UI2.WinForms.Guna2Button()
-        Me.TXTADMINSEARCH = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2Panel38 = New Guna.UI2.WinForms.Guna2Panel()
         Me.LBLADMINNEXT = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2HtmlLabel37 = New Guna.UI2.WinForms.Guna2HtmlLabel()
@@ -435,7 +421,6 @@ Partial Class DashboardForm
         Me.TableLayoutPanel20 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel54 = New Guna.UI2.WinForms.Guna2Panel()
         Me.Guna2Button1 = New Guna.UI2.WinForms.Guna2Button()
-        Me.TXTCOPIESSEARCH = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2Panel55 = New Guna.UI2.WinForms.Guna2Panel()
         Me.LBLCOPIESNEXT = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2HtmlLabel42 = New Guna.UI2.WinForms.Guna2HtmlLabel()
@@ -474,7 +459,6 @@ Partial Class DashboardForm
         Me.TableLayoutPanel19 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel44 = New Guna.UI2.WinForms.Guna2Panel()
         Me.Guna2Button2 = New Guna.UI2.WinForms.Guna2Button()
-        Me.TXTINVENTORYSEARCH = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2Panel51 = New Guna.UI2.WinForms.Guna2Panel()
         Me.LBLINVENTORYNEXT = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2HtmlLabel8 = New Guna.UI2.WinForms.Guna2HtmlLabel()
@@ -514,7 +498,6 @@ Partial Class DashboardForm
         Me.TableLayoutPanel18 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel48 = New Guna.UI2.WinForms.Guna2Panel()
         Me.Guna2Button3 = New Guna.UI2.WinForms.Guna2Button()
-        Me.TXTLOSTDAMAGESEARCH = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2Panel49 = New Guna.UI2.WinForms.Guna2Panel()
         Me.LBLLOSTDAMAGENEXT = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2HtmlLabel33 = New Guna.UI2.WinForms.Guna2HtmlLabel()
@@ -537,7 +520,6 @@ Partial Class DashboardForm
         Me.CMBTRANSACTIONFILTER = New Guna.UI2.WinForms.Guna2ComboBox()
         Me.BTNTRANSACTIONREFRESH = New Guna.UI2.WinForms.Guna2Button()
         Me.BTNADDTRANSACTION = New Guna.UI2.WinForms.Guna2Button()
-        Me.TXTTRANSACTIONSEARCH = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2Panel58 = New Guna.UI2.WinForms.Guna2Panel()
         Me.BTNTRANSACTIONSEARCH = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2HtmlLabel44 = New Guna.UI2.WinForms.Guna2HtmlLabel()
@@ -550,19 +532,12 @@ Partial Class DashboardForm
         Me.BTNTRANSACTIONNEXT = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Panel59 = New Guna.UI2.WinForms.Guna2Panel()
         Me.DGTRANSACTION = New Guna.UI2.WinForms.Guna2DataGridView()
-        Me.DataGridViewTextBoxColumn47 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn48 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column32 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column28 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column31 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column30 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ReportsTab = New System.Windows.Forms.TabPage()
         Me.ReportsPanel = New Guna.UI2.WinForms.Guna2TabControl()
         Me.BooksReportTab = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel22 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel60 = New Guna.UI2.WinForms.Guna2Panel()
         Me.BTNBOOKREPORTREFRESH = New Guna.UI2.WinForms.Guna2Button()
-        Me.TXTBOOKREPORTSEARCH = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2Panel61 = New Guna.UI2.WinForms.Guna2Panel()
         Me.LBLBOOKREPORTNEXT = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2HtmlLabel47 = New Guna.UI2.WinForms.Guna2HtmlLabel()
@@ -578,7 +553,6 @@ Partial Class DashboardForm
         Me.TableLayoutPanel23 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel63 = New Guna.UI2.WinForms.Guna2Panel()
         Me.BTNEXPENDITUREREPORTREFRESH = New Guna.UI2.WinForms.Guna2Button()
-        Me.TXTEXPENDITUREREPORTSEARCH = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2Panel64 = New Guna.UI2.WinForms.Guna2Panel()
         Me.LBLEXPENDITUREREPORTNEXT = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2HtmlLabel50 = New Guna.UI2.WinForms.Guna2HtmlLabel()
@@ -594,7 +568,6 @@ Partial Class DashboardForm
         Me.TableLayoutPanel24 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel66 = New Guna.UI2.WinForms.Guna2Panel()
         Me.BTNFINESREPORTREFRESH = New Guna.UI2.WinForms.Guna2Button()
-        Me.TXTFINESREPORTSSEARCH = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2Panel67 = New Guna.UI2.WinForms.Guna2Panel()
         Me.LBLFINESREPORTNEXT = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2HtmlLabel53 = New Guna.UI2.WinForms.Guna2HtmlLabel()
@@ -610,7 +583,6 @@ Partial Class DashboardForm
         Me.TableLayoutPanel25 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel69 = New Guna.UI2.WinForms.Guna2Panel()
         Me.BTNBORROWERREPORTREFRESH = New Guna.UI2.WinForms.Guna2Button()
-        Me.TXTBORROWERREPORTSEARH = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2Panel70 = New Guna.UI2.WinForms.Guna2Panel()
         Me.LBLBORROWERREPORTNEXT = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2HtmlLabel56 = New Guna.UI2.WinForms.Guna2HtmlLabel()
@@ -626,7 +598,6 @@ Partial Class DashboardForm
         Me.TableLayoutPanel26 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel72 = New Guna.UI2.WinForms.Guna2Panel()
         Me.BTNBORROWEDREPORTREFRESH = New Guna.UI2.WinForms.Guna2Button()
-        Me.TXTBORROWEDREPORTSSEARCH = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2Panel73 = New Guna.UI2.WinForms.Guna2Panel()
         Me.LBLBORROWEDREPORTNEXT = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2HtmlLabel59 = New Guna.UI2.WinForms.Guna2HtmlLabel()
@@ -662,7 +633,6 @@ Partial Class DashboardForm
         Me.TableLayoutPanel27 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel75 = New Guna.UI2.WinForms.Guna2Panel()
         Me.Guna2Button10 = New Guna.UI2.WinForms.Guna2Button()
-        Me.Guna2TextBox13 = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2Panel76 = New Guna.UI2.WinForms.Guna2Panel()
         Me.Guna2HtmlLabel61 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2HtmlLabel62 = New Guna.UI2.WinForms.Guna2HtmlLabel()
@@ -678,7 +648,6 @@ Partial Class DashboardForm
         Me.TableLayoutPanel28 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel78 = New Guna.UI2.WinForms.Guna2Panel()
         Me.Guna2Button13 = New Guna.UI2.WinForms.Guna2Button()
-        Me.Guna2TextBox14 = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2Panel79 = New Guna.UI2.WinForms.Guna2Panel()
         Me.Guna2HtmlLabel64 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2HtmlLabel65 = New Guna.UI2.WinForms.Guna2HtmlLabel()
@@ -701,6 +670,37 @@ Partial Class DashboardForm
         Me.LBLPROFILENAME = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.errProvider = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.TransactionTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.TXTGENRESEARCH = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.TXTSEARCHAUTHOR = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.TXTPUBLISHERSEARCH = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.TXTCLASSIFICATIONSEARCH = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.TXTLANGUAGESEARCH = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.TXTBOOKSEARCH = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.TXTDONATORSEARCH = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.TXTSUPPLIERSEARCH = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.TXTDEPARTMENTSEARCH = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.TXTYEARLEVELSEARCH = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.TXTSECTIONSEARCH = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.TXTSTUDENTSEARCH = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.TXTFACULTYSEARCH = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.TXTADMINSEARCH = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.TXTCOPIESSEARCH = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.TXTINVENTORYSEARCH = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.TXTLOSTDAMAGESEARCH = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.TXTTRANSACTIONSEARCH = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.TXTBOOKREPORTSEARCH = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.TXTEXPENDITUREREPORTSEARCH = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.TXTFINESREPORTSSEARCH = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.TXTBORROWERREPORTSEARH = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.TXTBORROWEDREPORTSSEARCH = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.Guna2TextBox13 = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.Guna2TextBox14 = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.DataGridViewTextBoxColumn47 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn48 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column32 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column28 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column31 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColumnOverdueDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TableLayoutPanel1.SuspendLayout
         Me.MainFormPanels.SuspendLayout
         Me.DashboardTab.SuspendLayout
@@ -1093,32 +1093,6 @@ Partial Class DashboardForm
         Me.Guna2Panel3.Size = New System.Drawing.Size(1558, 60)
         Me.Guna2Panel3.TabIndex = 0
         '
-        'TXTGENRESEARCH
-        '
-        Me.TXTGENRESEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TXTGENRESEARCH.BorderColor = System.Drawing.Color.Gray
-        Me.TXTGENRESEARCH.BorderRadius = 4
-        Me.TXTGENRESEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.TXTGENRESEARCH.DefaultText = ""
-        Me.TXTGENRESEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.TXTGENRESEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.TXTGENRESEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTGENRESEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTGENRESEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTGENRESEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.TXTGENRESEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTGENRESEARCH.IconRight = Global.LMS.My.Resources.Resources.search
-        Me.TXTGENRESEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
-        Me.TXTGENRESEARCH.Location = New System.Drawing.Point(1280, 10)
-        Me.TXTGENRESEARCH.Margin = New System.Windows.Forms.Padding(0)
-        Me.TXTGENRESEARCH.MaxLength = 8
-        Me.TXTGENRESEARCH.Name = "TXTGENRESEARCH"
-        Me.TXTGENRESEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXTGENRESEARCH.PlaceholderText = "Search Genres"
-        Me.TXTGENRESEARCH.SelectedText = ""
-        Me.TXTGENRESEARCH.Size = New System.Drawing.Size(258, 40)
-        Me.TXTGENRESEARCH.TabIndex = 6
-        '
         'BTNADDGENRE
         '
         Me.BTNADDGENRE.BorderRadius = 4
@@ -1423,32 +1397,6 @@ Partial Class DashboardForm
         Me.Guna2Panel7.Size = New System.Drawing.Size(1558, 60)
         Me.Guna2Panel7.TabIndex = 0
         '
-        'TXTSEARCHAUTHOR
-        '
-        Me.TXTSEARCHAUTHOR.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TXTSEARCHAUTHOR.BorderColor = System.Drawing.Color.Gray
-        Me.TXTSEARCHAUTHOR.BorderRadius = 4
-        Me.TXTSEARCHAUTHOR.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.TXTSEARCHAUTHOR.DefaultText = ""
-        Me.TXTSEARCHAUTHOR.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.TXTSEARCHAUTHOR.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.TXTSEARCHAUTHOR.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTSEARCHAUTHOR.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTSEARCHAUTHOR.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTSEARCHAUTHOR.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.TXTSEARCHAUTHOR.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTSEARCHAUTHOR.IconRight = Global.LMS.My.Resources.Resources.search
-        Me.TXTSEARCHAUTHOR.IconRightOffset = New System.Drawing.Point(8, 0)
-        Me.TXTSEARCHAUTHOR.Location = New System.Drawing.Point(1280, 10)
-        Me.TXTSEARCHAUTHOR.Margin = New System.Windows.Forms.Padding(0)
-        Me.TXTSEARCHAUTHOR.MaxLength = 8
-        Me.TXTSEARCHAUTHOR.Name = "TXTSEARCHAUTHOR"
-        Me.TXTSEARCHAUTHOR.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXTSEARCHAUTHOR.PlaceholderText = "Search Authors"
-        Me.TXTSEARCHAUTHOR.SelectedText = ""
-        Me.TXTSEARCHAUTHOR.Size = New System.Drawing.Size(258, 40)
-        Me.TXTSEARCHAUTHOR.TabIndex = 6
-        '
         'BTNADDAUTHOR
         '
         Me.BTNADDAUTHOR.BorderRadius = 4
@@ -1725,32 +1673,6 @@ Partial Class DashboardForm
         Me.Guna2Panel10.Size = New System.Drawing.Size(1558, 60)
         Me.Guna2Panel10.TabIndex = 0
         '
-        'TXTPUBLISHERSEARCH
-        '
-        Me.TXTPUBLISHERSEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TXTPUBLISHERSEARCH.BorderColor = System.Drawing.Color.Gray
-        Me.TXTPUBLISHERSEARCH.BorderRadius = 4
-        Me.TXTPUBLISHERSEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.TXTPUBLISHERSEARCH.DefaultText = ""
-        Me.TXTPUBLISHERSEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.TXTPUBLISHERSEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.TXTPUBLISHERSEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTPUBLISHERSEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTPUBLISHERSEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTPUBLISHERSEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.TXTPUBLISHERSEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTPUBLISHERSEARCH.IconRight = Global.LMS.My.Resources.Resources.search
-        Me.TXTPUBLISHERSEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
-        Me.TXTPUBLISHERSEARCH.Location = New System.Drawing.Point(1280, 10)
-        Me.TXTPUBLISHERSEARCH.Margin = New System.Windows.Forms.Padding(0)
-        Me.TXTPUBLISHERSEARCH.MaxLength = 8
-        Me.TXTPUBLISHERSEARCH.Name = "TXTPUBLISHERSEARCH"
-        Me.TXTPUBLISHERSEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXTPUBLISHERSEARCH.PlaceholderText = "Search Publishers"
-        Me.TXTPUBLISHERSEARCH.SelectedText = ""
-        Me.TXTPUBLISHERSEARCH.Size = New System.Drawing.Size(258, 40)
-        Me.TXTPUBLISHERSEARCH.TabIndex = 6
-        '
         'BTNADDPUBLISHER
         '
         Me.BTNADDPUBLISHER.BorderRadius = 4
@@ -2009,32 +1931,6 @@ Partial Class DashboardForm
         Me.Guna2Panel13.Padding = New System.Windows.Forms.Padding(20, 0, 20, 0)
         Me.Guna2Panel13.Size = New System.Drawing.Size(1558, 60)
         Me.Guna2Panel13.TabIndex = 0
-        '
-        'TXTCLASSIFICATIONSEARCH
-        '
-        Me.TXTCLASSIFICATIONSEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TXTCLASSIFICATIONSEARCH.BorderColor = System.Drawing.Color.Gray
-        Me.TXTCLASSIFICATIONSEARCH.BorderRadius = 4
-        Me.TXTCLASSIFICATIONSEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.TXTCLASSIFICATIONSEARCH.DefaultText = ""
-        Me.TXTCLASSIFICATIONSEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.TXTCLASSIFICATIONSEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.TXTCLASSIFICATIONSEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTCLASSIFICATIONSEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTCLASSIFICATIONSEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTCLASSIFICATIONSEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.TXTCLASSIFICATIONSEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTCLASSIFICATIONSEARCH.IconRight = Global.LMS.My.Resources.Resources.search
-        Me.TXTCLASSIFICATIONSEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
-        Me.TXTCLASSIFICATIONSEARCH.Location = New System.Drawing.Point(1280, 10)
-        Me.TXTCLASSIFICATIONSEARCH.Margin = New System.Windows.Forms.Padding(0)
-        Me.TXTCLASSIFICATIONSEARCH.MaxLength = 8
-        Me.TXTCLASSIFICATIONSEARCH.Name = "TXTCLASSIFICATIONSEARCH"
-        Me.TXTCLASSIFICATIONSEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXTCLASSIFICATIONSEARCH.PlaceholderText = "Search Classifications"
-        Me.TXTCLASSIFICATIONSEARCH.SelectedText = ""
-        Me.TXTCLASSIFICATIONSEARCH.Size = New System.Drawing.Size(258, 40)
-        Me.TXTCLASSIFICATIONSEARCH.TabIndex = 6
         '
         'BTNADDCLASSIFICATION
         '
@@ -2305,32 +2201,6 @@ Partial Class DashboardForm
         Me.Guna2Panel45.Padding = New System.Windows.Forms.Padding(20, 0, 20, 0)
         Me.Guna2Panel45.Size = New System.Drawing.Size(1558, 60)
         Me.Guna2Panel45.TabIndex = 0
-        '
-        'TXTLANGUAGESEARCH
-        '
-        Me.TXTLANGUAGESEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TXTLANGUAGESEARCH.BorderColor = System.Drawing.Color.Gray
-        Me.TXTLANGUAGESEARCH.BorderRadius = 4
-        Me.TXTLANGUAGESEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.TXTLANGUAGESEARCH.DefaultText = ""
-        Me.TXTLANGUAGESEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.TXTLANGUAGESEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.TXTLANGUAGESEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTLANGUAGESEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTLANGUAGESEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTLANGUAGESEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.TXTLANGUAGESEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTLANGUAGESEARCH.IconRight = Global.LMS.My.Resources.Resources.search
-        Me.TXTLANGUAGESEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
-        Me.TXTLANGUAGESEARCH.Location = New System.Drawing.Point(1280, 10)
-        Me.TXTLANGUAGESEARCH.Margin = New System.Windows.Forms.Padding(0)
-        Me.TXTLANGUAGESEARCH.MaxLength = 8
-        Me.TXTLANGUAGESEARCH.Name = "TXTLANGUAGESEARCH"
-        Me.TXTLANGUAGESEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXTLANGUAGESEARCH.PlaceholderText = "Search Languages"
-        Me.TXTLANGUAGESEARCH.SelectedText = ""
-        Me.TXTLANGUAGESEARCH.Size = New System.Drawing.Size(258, 40)
-        Me.TXTLANGUAGESEARCH.TabIndex = 6
         '
         'BTNADDLANGUAGE
         '
@@ -2640,32 +2510,6 @@ Partial Class DashboardForm
         Me.CMBBOOKFILTER.Size = New System.Drawing.Size(171, 40)
         Me.CMBBOOKFILTER.StartIndex = 0
         Me.CMBBOOKFILTER.TabIndex = 21
-        '
-        'TXTBOOKSEARCH
-        '
-        Me.TXTBOOKSEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TXTBOOKSEARCH.BorderColor = System.Drawing.Color.Gray
-        Me.TXTBOOKSEARCH.BorderRadius = 4
-        Me.TXTBOOKSEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.TXTBOOKSEARCH.DefaultText = ""
-        Me.TXTBOOKSEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.TXTBOOKSEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.TXTBOOKSEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTBOOKSEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTBOOKSEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTBOOKSEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.TXTBOOKSEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTBOOKSEARCH.IconRight = Global.LMS.My.Resources.Resources.search
-        Me.TXTBOOKSEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
-        Me.TXTBOOKSEARCH.Location = New System.Drawing.Point(1280, 10)
-        Me.TXTBOOKSEARCH.Margin = New System.Windows.Forms.Padding(0)
-        Me.TXTBOOKSEARCH.MaxLength = 8
-        Me.TXTBOOKSEARCH.Name = "TXTBOOKSEARCH"
-        Me.TXTBOOKSEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXTBOOKSEARCH.PlaceholderText = "Search Books"
-        Me.TXTBOOKSEARCH.SelectedText = ""
-        Me.TXTBOOKSEARCH.Size = New System.Drawing.Size(258, 40)
-        Me.TXTBOOKSEARCH.TabIndex = 6
         '
         'BTNADDBOOK
         '
@@ -3066,32 +2910,6 @@ Partial Class DashboardForm
         Me.Guna2Panel19.Size = New System.Drawing.Size(1558, 60)
         Me.Guna2Panel19.TabIndex = 0
         '
-        'TXTDONATORSEARCH
-        '
-        Me.TXTDONATORSEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TXTDONATORSEARCH.BorderColor = System.Drawing.Color.Gray
-        Me.TXTDONATORSEARCH.BorderRadius = 4
-        Me.TXTDONATORSEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.TXTDONATORSEARCH.DefaultText = ""
-        Me.TXTDONATORSEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.TXTDONATORSEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.TXTDONATORSEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTDONATORSEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTDONATORSEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTDONATORSEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.TXTDONATORSEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTDONATORSEARCH.IconRight = Global.LMS.My.Resources.Resources.search
-        Me.TXTDONATORSEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
-        Me.TXTDONATORSEARCH.Location = New System.Drawing.Point(1280, 10)
-        Me.TXTDONATORSEARCH.Margin = New System.Windows.Forms.Padding(0)
-        Me.TXTDONATORSEARCH.MaxLength = 8
-        Me.TXTDONATORSEARCH.Name = "TXTDONATORSEARCH"
-        Me.TXTDONATORSEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXTDONATORSEARCH.PlaceholderText = "Search Donators"
-        Me.TXTDONATORSEARCH.SelectedText = ""
-        Me.TXTDONATORSEARCH.Size = New System.Drawing.Size(258, 40)
-        Me.TXTDONATORSEARCH.TabIndex = 6
-        '
         'BTNADDDONATOR
         '
         Me.BTNADDDONATOR.BorderRadius = 4
@@ -3350,32 +3168,6 @@ Partial Class DashboardForm
         Me.Guna2Panel22.Padding = New System.Windows.Forms.Padding(20, 0, 20, 0)
         Me.Guna2Panel22.Size = New System.Drawing.Size(1558, 60)
         Me.Guna2Panel22.TabIndex = 0
-        '
-        'TXTSUPPLIERSEARCH
-        '
-        Me.TXTSUPPLIERSEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TXTSUPPLIERSEARCH.BorderColor = System.Drawing.Color.Gray
-        Me.TXTSUPPLIERSEARCH.BorderRadius = 4
-        Me.TXTSUPPLIERSEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.TXTSUPPLIERSEARCH.DefaultText = ""
-        Me.TXTSUPPLIERSEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.TXTSUPPLIERSEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.TXTSUPPLIERSEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTSUPPLIERSEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTSUPPLIERSEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTSUPPLIERSEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.TXTSUPPLIERSEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTSUPPLIERSEARCH.IconRight = Global.LMS.My.Resources.Resources.search
-        Me.TXTSUPPLIERSEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
-        Me.TXTSUPPLIERSEARCH.Location = New System.Drawing.Point(1280, 10)
-        Me.TXTSUPPLIERSEARCH.Margin = New System.Windows.Forms.Padding(0)
-        Me.TXTSUPPLIERSEARCH.MaxLength = 8
-        Me.TXTSUPPLIERSEARCH.Name = "TXTSUPPLIERSEARCH"
-        Me.TXTSUPPLIERSEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXTSUPPLIERSEARCH.PlaceholderText = "Search Suppliers"
-        Me.TXTSUPPLIERSEARCH.SelectedText = ""
-        Me.TXTSUPPLIERSEARCH.Size = New System.Drawing.Size(258, 40)
-        Me.TXTSUPPLIERSEARCH.TabIndex = 6
         '
         'BTNADDSUPPLIER
         '
@@ -3689,31 +3481,6 @@ Partial Class DashboardForm
         Me.Guna2Panel40.Size = New System.Drawing.Size(1558, 60)
         Me.Guna2Panel40.TabIndex = 0
         '
-        'TXTDEPARTMENTSEARCH
-        '
-        Me.TXTDEPARTMENTSEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TXTDEPARTMENTSEARCH.BorderRadius = 4
-        Me.TXTDEPARTMENTSEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.TXTDEPARTMENTSEARCH.DefaultText = ""
-        Me.TXTDEPARTMENTSEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.TXTDEPARTMENTSEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.TXTDEPARTMENTSEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTDEPARTMENTSEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTDEPARTMENTSEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTDEPARTMENTSEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.TXTDEPARTMENTSEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTDEPARTMENTSEARCH.IconRight = Global.LMS.My.Resources.Resources.search
-        Me.TXTDEPARTMENTSEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
-        Me.TXTDEPARTMENTSEARCH.Location = New System.Drawing.Point(1280, 10)
-        Me.TXTDEPARTMENTSEARCH.Margin = New System.Windows.Forms.Padding(0)
-        Me.TXTDEPARTMENTSEARCH.MaxLength = 8
-        Me.TXTDEPARTMENTSEARCH.Name = "TXTDEPARTMENTSEARCH"
-        Me.TXTDEPARTMENTSEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXTDEPARTMENTSEARCH.PlaceholderText = "Search Departments"
-        Me.TXTDEPARTMENTSEARCH.SelectedText = ""
-        Me.TXTDEPARTMENTSEARCH.Size = New System.Drawing.Size(258, 40)
-        Me.TXTDEPARTMENTSEARCH.TabIndex = 6
-        '
         'BTNADDDEPARTMENT
         '
         Me.BTNADDDEPARTMENT.BorderRadius = 4
@@ -3973,31 +3740,6 @@ Partial Class DashboardForm
         Me.Guna2Panel25.Padding = New System.Windows.Forms.Padding(20, 0, 20, 0)
         Me.Guna2Panel25.Size = New System.Drawing.Size(1558, 60)
         Me.Guna2Panel25.TabIndex = 0
-        '
-        'TXTYEARLEVELSEARCH
-        '
-        Me.TXTYEARLEVELSEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TXTYEARLEVELSEARCH.BorderRadius = 4
-        Me.TXTYEARLEVELSEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.TXTYEARLEVELSEARCH.DefaultText = ""
-        Me.TXTYEARLEVELSEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.TXTYEARLEVELSEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.TXTYEARLEVELSEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTYEARLEVELSEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTYEARLEVELSEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTYEARLEVELSEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.TXTYEARLEVELSEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTYEARLEVELSEARCH.IconRight = Global.LMS.My.Resources.Resources.search
-        Me.TXTYEARLEVELSEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
-        Me.TXTYEARLEVELSEARCH.Location = New System.Drawing.Point(1280, 10)
-        Me.TXTYEARLEVELSEARCH.Margin = New System.Windows.Forms.Padding(0)
-        Me.TXTYEARLEVELSEARCH.MaxLength = 8
-        Me.TXTYEARLEVELSEARCH.Name = "TXTYEARLEVELSEARCH"
-        Me.TXTYEARLEVELSEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXTYEARLEVELSEARCH.PlaceholderText = "Search Year Levels"
-        Me.TXTYEARLEVELSEARCH.SelectedText = ""
-        Me.TXTYEARLEVELSEARCH.Size = New System.Drawing.Size(258, 40)
-        Me.TXTYEARLEVELSEARCH.TabIndex = 6
         '
         'BTNADDYEARLEVEL
         '
@@ -4271,31 +4013,6 @@ Partial Class DashboardForm
         Me.Guna2Panel28.Padding = New System.Windows.Forms.Padding(20, 0, 20, 0)
         Me.Guna2Panel28.Size = New System.Drawing.Size(1558, 60)
         Me.Guna2Panel28.TabIndex = 0
-        '
-        'TXTSECTIONSEARCH
-        '
-        Me.TXTSECTIONSEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TXTSECTIONSEARCH.BorderRadius = 4
-        Me.TXTSECTIONSEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.TXTSECTIONSEARCH.DefaultText = ""
-        Me.TXTSECTIONSEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.TXTSECTIONSEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.TXTSECTIONSEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTSECTIONSEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTSECTIONSEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTSECTIONSEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.TXTSECTIONSEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTSECTIONSEARCH.IconRight = Global.LMS.My.Resources.Resources.search
-        Me.TXTSECTIONSEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
-        Me.TXTSECTIONSEARCH.Location = New System.Drawing.Point(1280, 10)
-        Me.TXTSECTIONSEARCH.Margin = New System.Windows.Forms.Padding(0)
-        Me.TXTSECTIONSEARCH.MaxLength = 8
-        Me.TXTSECTIONSEARCH.Name = "TXTSECTIONSEARCH"
-        Me.TXTSECTIONSEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXTSECTIONSEARCH.PlaceholderText = "Search Sections"
-        Me.TXTSECTIONSEARCH.SelectedText = ""
-        Me.TXTSECTIONSEARCH.Size = New System.Drawing.Size(258, 40)
-        Me.TXTSECTIONSEARCH.TabIndex = 6
         '
         'BTNADDSECTION
         '
@@ -4620,31 +4337,6 @@ Partial Class DashboardForm
         Me.CMBSTUDENTFILTER.Size = New System.Drawing.Size(171, 40)
         Me.CMBSTUDENTFILTER.StartIndex = 0
         Me.CMBSTUDENTFILTER.TabIndex = 21
-        '
-        'TXTSTUDENTSEARCH
-        '
-        Me.TXTSTUDENTSEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TXTSTUDENTSEARCH.BorderRadius = 4
-        Me.TXTSTUDENTSEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.TXTSTUDENTSEARCH.DefaultText = ""
-        Me.TXTSTUDENTSEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.TXTSTUDENTSEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.TXTSTUDENTSEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTSTUDENTSEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTSTUDENTSEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTSTUDENTSEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.TXTSTUDENTSEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTSTUDENTSEARCH.IconRight = Global.LMS.My.Resources.Resources.search
-        Me.TXTSTUDENTSEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
-        Me.TXTSTUDENTSEARCH.Location = New System.Drawing.Point(1280, 10)
-        Me.TXTSTUDENTSEARCH.Margin = New System.Windows.Forms.Padding(0)
-        Me.TXTSTUDENTSEARCH.MaxLength = 8
-        Me.TXTSTUDENTSEARCH.Name = "TXTSTUDENTSEARCH"
-        Me.TXTSTUDENTSEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXTSTUDENTSEARCH.PlaceholderText = "Search Students"
-        Me.TXTSTUDENTSEARCH.SelectedText = ""
-        Me.TXTSTUDENTSEARCH.Size = New System.Drawing.Size(258, 40)
-        Me.TXTSTUDENTSEARCH.TabIndex = 6
         '
         'BTNADDSTUDENTS
         '
@@ -5063,31 +4755,6 @@ Partial Class DashboardForm
         Me.BTNFACULTYREFRESH.TabIndex = 9
         Me.BTNFACULTYREFRESH.Text = "Refresh"
         '
-        'TXTFACULTYSEARCH
-        '
-        Me.TXTFACULTYSEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TXTFACULTYSEARCH.BorderRadius = 4
-        Me.TXTFACULTYSEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.TXTFACULTYSEARCH.DefaultText = ""
-        Me.TXTFACULTYSEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.TXTFACULTYSEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.TXTFACULTYSEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTFACULTYSEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTFACULTYSEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTFACULTYSEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.TXTFACULTYSEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTFACULTYSEARCH.IconRight = Global.LMS.My.Resources.Resources.search
-        Me.TXTFACULTYSEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
-        Me.TXTFACULTYSEARCH.Location = New System.Drawing.Point(1280, 10)
-        Me.TXTFACULTYSEARCH.Margin = New System.Windows.Forms.Padding(0)
-        Me.TXTFACULTYSEARCH.MaxLength = 8
-        Me.TXTFACULTYSEARCH.Name = "TXTFACULTYSEARCH"
-        Me.TXTFACULTYSEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXTFACULTYSEARCH.PlaceholderText = "Search Authors"
-        Me.TXTFACULTYSEARCH.SelectedText = ""
-        Me.TXTFACULTYSEARCH.Size = New System.Drawing.Size(258, 40)
-        Me.TXTFACULTYSEARCH.TabIndex = 6
-        '
         'BTNADDFACULTY
         '
         Me.BTNADDFACULTY.BorderRadius = 4
@@ -5480,31 +5147,6 @@ Partial Class DashboardForm
         Me.BTNADMINREFRESH.TabIndex = 9
         Me.BTNADMINREFRESH.Text = "Refresh"
         '
-        'TXTADMINSEARCH
-        '
-        Me.TXTADMINSEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TXTADMINSEARCH.BorderRadius = 4
-        Me.TXTADMINSEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.TXTADMINSEARCH.DefaultText = ""
-        Me.TXTADMINSEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.TXTADMINSEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.TXTADMINSEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTADMINSEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTADMINSEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTADMINSEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.TXTADMINSEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTADMINSEARCH.IconRight = Global.LMS.My.Resources.Resources.search
-        Me.TXTADMINSEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
-        Me.TXTADMINSEARCH.Location = New System.Drawing.Point(1280, 10)
-        Me.TXTADMINSEARCH.Margin = New System.Windows.Forms.Padding(0)
-        Me.TXTADMINSEARCH.MaxLength = 8
-        Me.TXTADMINSEARCH.Name = "TXTADMINSEARCH"
-        Me.TXTADMINSEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXTADMINSEARCH.PlaceholderText = "Search Administrators"
-        Me.TXTADMINSEARCH.SelectedText = ""
-        Me.TXTADMINSEARCH.Size = New System.Drawing.Size(258, 40)
-        Me.TXTADMINSEARCH.TabIndex = 6
-        '
         'Guna2Panel38
         '
         Me.Guna2Panel38.BackColor = System.Drawing.SystemColors.Window
@@ -5818,31 +5460,6 @@ Partial Class DashboardForm
         Me.Guna2Button1.Size = New System.Drawing.Size(141, 40)
         Me.Guna2Button1.TabIndex = 10
         Me.Guna2Button1.Text = "Refresh"
-        '
-        'TXTCOPIESSEARCH
-        '
-        Me.TXTCOPIESSEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TXTCOPIESSEARCH.BorderRadius = 4
-        Me.TXTCOPIESSEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.TXTCOPIESSEARCH.DefaultText = ""
-        Me.TXTCOPIESSEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.TXTCOPIESSEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.TXTCOPIESSEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTCOPIESSEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTCOPIESSEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTCOPIESSEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.TXTCOPIESSEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTCOPIESSEARCH.IconRight = Global.LMS.My.Resources.Resources.search
-        Me.TXTCOPIESSEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
-        Me.TXTCOPIESSEARCH.Location = New System.Drawing.Point(920, 10)
-        Me.TXTCOPIESSEARCH.Margin = New System.Windows.Forms.Padding(0)
-        Me.TXTCOPIESSEARCH.MaxLength = 8
-        Me.TXTCOPIESSEARCH.Name = "TXTCOPIESSEARCH"
-        Me.TXTCOPIESSEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXTCOPIESSEARCH.PlaceholderText = "Search Title or ISBN"
-        Me.TXTCOPIESSEARCH.SelectedText = ""
-        Me.TXTCOPIESSEARCH.Size = New System.Drawing.Size(258, 40)
-        Me.TXTCOPIESSEARCH.TabIndex = 6
         '
         'Guna2Panel55
         '
@@ -6418,31 +6035,6 @@ Partial Class DashboardForm
         Me.Guna2Button2.TabIndex = 10
         Me.Guna2Button2.Text = "Refresh"
         '
-        'TXTINVENTORYSEARCH
-        '
-        Me.TXTINVENTORYSEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TXTINVENTORYSEARCH.BorderRadius = 4
-        Me.TXTINVENTORYSEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.TXTINVENTORYSEARCH.DefaultText = ""
-        Me.TXTINVENTORYSEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.TXTINVENTORYSEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.TXTINVENTORYSEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTINVENTORYSEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTINVENTORYSEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTINVENTORYSEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.TXTINVENTORYSEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTINVENTORYSEARCH.IconRight = Global.LMS.My.Resources.Resources.search
-        Me.TXTINVENTORYSEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
-        Me.TXTINVENTORYSEARCH.Location = New System.Drawing.Point(920, 10)
-        Me.TXTINVENTORYSEARCH.Margin = New System.Windows.Forms.Padding(0)
-        Me.TXTINVENTORYSEARCH.MaxLength = 8
-        Me.TXTINVENTORYSEARCH.Name = "TXTINVENTORYSEARCH"
-        Me.TXTINVENTORYSEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXTINVENTORYSEARCH.PlaceholderText = "Search Title or ISBN"
-        Me.TXTINVENTORYSEARCH.SelectedText = ""
-        Me.TXTINVENTORYSEARCH.Size = New System.Drawing.Size(258, 40)
-        Me.TXTINVENTORYSEARCH.TabIndex = 6
-        '
         'Guna2Panel51
         '
         Me.Guna2Panel51.BackColor = System.Drawing.SystemColors.Window
@@ -6933,31 +6525,6 @@ Partial Class DashboardForm
         Me.Guna2Button3.TabIndex = 22
         Me.Guna2Button3.Text = "Refresh"
         '
-        'TXTLOSTDAMAGESEARCH
-        '
-        Me.TXTLOSTDAMAGESEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TXTLOSTDAMAGESEARCH.BorderRadius = 4
-        Me.TXTLOSTDAMAGESEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.TXTLOSTDAMAGESEARCH.DefaultText = ""
-        Me.TXTLOSTDAMAGESEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.TXTLOSTDAMAGESEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.TXTLOSTDAMAGESEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTLOSTDAMAGESEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTLOSTDAMAGESEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTLOSTDAMAGESEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.TXTLOSTDAMAGESEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTLOSTDAMAGESEARCH.IconRight = Global.LMS.My.Resources.Resources.search
-        Me.TXTLOSTDAMAGESEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
-        Me.TXTLOSTDAMAGESEARCH.Location = New System.Drawing.Point(1280, 10)
-        Me.TXTLOSTDAMAGESEARCH.Margin = New System.Windows.Forms.Padding(0)
-        Me.TXTLOSTDAMAGESEARCH.MaxLength = 8
-        Me.TXTLOSTDAMAGESEARCH.Name = "TXTLOSTDAMAGESEARCH"
-        Me.TXTLOSTDAMAGESEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXTLOSTDAMAGESEARCH.PlaceholderText = "Search Title, ISBN, or Name"
-        Me.TXTLOSTDAMAGESEARCH.SelectedText = ""
-        Me.TXTLOSTDAMAGESEARCH.Size = New System.Drawing.Size(258, 40)
-        Me.TXTLOSTDAMAGESEARCH.TabIndex = 6
-        '
         'Guna2Panel49
         '
         Me.Guna2Panel49.BackColor = System.Drawing.SystemColors.Window
@@ -7268,31 +6835,6 @@ Partial Class DashboardForm
         Me.BTNADDTRANSACTION.TabIndex = 7
         Me.BTNADDTRANSACTION.Text = "Borrow Book"
         '
-        'TXTTRANSACTIONSEARCH
-        '
-        Me.TXTTRANSACTIONSEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TXTTRANSACTIONSEARCH.BorderRadius = 4
-        Me.TXTTRANSACTIONSEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.TXTTRANSACTIONSEARCH.DefaultText = ""
-        Me.TXTTRANSACTIONSEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.TXTTRANSACTIONSEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.TXTTRANSACTIONSEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTTRANSACTIONSEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTTRANSACTIONSEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTTRANSACTIONSEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.TXTTRANSACTIONSEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTTRANSACTIONSEARCH.IconRight = Global.LMS.My.Resources.Resources.search
-        Me.TXTTRANSACTIONSEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
-        Me.TXTTRANSACTIONSEARCH.Location = New System.Drawing.Point(1288, 10)
-        Me.TXTTRANSACTIONSEARCH.Margin = New System.Windows.Forms.Padding(0)
-        Me.TXTTRANSACTIONSEARCH.MaxLength = 15
-        Me.TXTTRANSACTIONSEARCH.Name = "TXTTRANSACTIONSEARCH"
-        Me.TXTTRANSACTIONSEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXTTRANSACTIONSEARCH.PlaceholderText = "Search Name or Circulation"
-        Me.TXTTRANSACTIONSEARCH.SelectedText = ""
-        Me.TXTTRANSACTIONSEARCH.Size = New System.Drawing.Size(258, 40)
-        Me.TXTTRANSACTIONSEARCH.TabIndex = 6
-        '
         'Guna2Panel58
         '
         Me.Guna2Panel58.BackColor = System.Drawing.SystemColors.Window
@@ -7471,14 +7013,14 @@ Partial Class DashboardForm
         DataGridViewCellStyle61.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DGTRANSACTION.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle61
         Me.DGTRANSACTION.ColumnHeadersHeight = 48
-        Me.DGTRANSACTION.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn47, Me.DataGridViewTextBoxColumn48, Me.Column32, Me.Column28, Me.Column31, Me.Column30})
+        Me.DGTRANSACTION.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn47, Me.DataGridViewTextBoxColumn48, Me.Column32, Me.Column28, Me.Column31, Me.ColumnOverdueDate})
         Me.DGTRANSACTION.ContextMenuStrip = Me.DGMAINTENANCECONTEXTMENU
         DataGridViewCellStyle62.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle62.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(239, Byte), Integer))
         DataGridViewCellStyle62.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle62.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle62.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(205, Byte), Integer))
-        DataGridViewCellStyle62.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle62.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle62.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle62.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DGTRANSACTION.DefaultCellStyle = DataGridViewCellStyle62
         Me.DGTRANSACTION.Dock = System.Windows.Forms.DockStyle.Fill
@@ -7512,56 +7054,8 @@ Partial Class DashboardForm
         Me.DGTRANSACTION.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DGTRANSACTION.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Black
         Me.DGTRANSACTION.ThemeStyle.RowsStyle.Height = 48
-        Me.DGTRANSACTION.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(205, Byte), Integer))
-        Me.DGTRANSACTION.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
-        '
-        'DataGridViewTextBoxColumn47
-        '
-        Me.DataGridViewTextBoxColumn47.DataPropertyName = "id"
-        Me.DataGridViewTextBoxColumn47.HeaderText = "id"
-        Me.DataGridViewTextBoxColumn47.Name = "DataGridViewTextBoxColumn47"
-        Me.DataGridViewTextBoxColumn47.Visible = False
-        '
-        'DataGridViewTextBoxColumn48
-        '
-        Me.DataGridViewTextBoxColumn48.DataPropertyName = "circulation_no"
-        Me.DataGridViewTextBoxColumn48.HeaderText = "Circulation No."
-        Me.DataGridViewTextBoxColumn48.MaxInputLength = 50
-        Me.DataGridViewTextBoxColumn48.Name = "DataGridViewTextBoxColumn48"
-        Me.DataGridViewTextBoxColumn48.ReadOnly = True
-        Me.DataGridViewTextBoxColumn48.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        '
-        'Column32
-        '
-        Me.Column32.DataPropertyName = "issued_by"
-        Me.Column32.HeaderText = "Issued By"
-        Me.Column32.Name = "Column32"
-        Me.Column32.ReadOnly = True
-        Me.Column32.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        '
-        'Column28
-        '
-        Me.Column28.DataPropertyName = "full_name"
-        Me.Column28.HeaderText = "Borrower"
-        Me.Column28.Name = "Column28"
-        Me.Column28.ReadOnly = True
-        Me.Column28.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        '
-        'Column31
-        '
-        Me.Column31.DataPropertyName = "borrow_date"
-        Me.Column31.HeaderText = "Borrowed Date"
-        Me.Column31.Name = "Column31"
-        Me.Column31.ReadOnly = True
-        Me.Column31.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        '
-        'Column30
-        '
-        Me.Column30.DataPropertyName = "overdue_date"
-        Me.Column30.HeaderText = "Overdue Date"
-        Me.Column30.Name = "Column30"
-        Me.Column30.ReadOnly = True
-        Me.Column30.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGTRANSACTION.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.Empty
+        Me.DGTRANSACTION.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Empty
         '
         'ReportsTab
         '
@@ -7667,31 +7161,6 @@ Partial Class DashboardForm
         Me.BTNBOOKREPORTREFRESH.Size = New System.Drawing.Size(141, 40)
         Me.BTNBOOKREPORTREFRESH.TabIndex = 10
         Me.BTNBOOKREPORTREFRESH.Text = "Refresh"
-        '
-        'TXTBOOKREPORTSEARCH
-        '
-        Me.TXTBOOKREPORTSEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TXTBOOKREPORTSEARCH.BorderRadius = 4
-        Me.TXTBOOKREPORTSEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.TXTBOOKREPORTSEARCH.DefaultText = ""
-        Me.TXTBOOKREPORTSEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.TXTBOOKREPORTSEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.TXTBOOKREPORTSEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTBOOKREPORTSEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTBOOKREPORTSEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTBOOKREPORTSEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.TXTBOOKREPORTSEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTBOOKREPORTSEARCH.IconRight = Global.LMS.My.Resources.Resources.search
-        Me.TXTBOOKREPORTSEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
-        Me.TXTBOOKREPORTSEARCH.Location = New System.Drawing.Point(1280, 10)
-        Me.TXTBOOKREPORTSEARCH.Margin = New System.Windows.Forms.Padding(0)
-        Me.TXTBOOKREPORTSEARCH.MaxLength = 8
-        Me.TXTBOOKREPORTSEARCH.Name = "TXTBOOKREPORTSEARCH"
-        Me.TXTBOOKREPORTSEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXTBOOKREPORTSEARCH.PlaceholderText = "Search Departments"
-        Me.TXTBOOKREPORTSEARCH.SelectedText = ""
-        Me.TXTBOOKREPORTSEARCH.Size = New System.Drawing.Size(258, 40)
-        Me.TXTBOOKREPORTSEARCH.TabIndex = 6
         '
         'Guna2Panel61
         '
@@ -7935,31 +7404,6 @@ Partial Class DashboardForm
         Me.BTNEXPENDITUREREPORTREFRESH.TabIndex = 10
         Me.BTNEXPENDITUREREPORTREFRESH.Text = "Refresh"
         '
-        'TXTEXPENDITUREREPORTSEARCH
-        '
-        Me.TXTEXPENDITUREREPORTSEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TXTEXPENDITUREREPORTSEARCH.BorderRadius = 4
-        Me.TXTEXPENDITUREREPORTSEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.TXTEXPENDITUREREPORTSEARCH.DefaultText = ""
-        Me.TXTEXPENDITUREREPORTSEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.TXTEXPENDITUREREPORTSEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.TXTEXPENDITUREREPORTSEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTEXPENDITUREREPORTSEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTEXPENDITUREREPORTSEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTEXPENDITUREREPORTSEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.TXTEXPENDITUREREPORTSEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTEXPENDITUREREPORTSEARCH.IconRight = Global.LMS.My.Resources.Resources.search
-        Me.TXTEXPENDITUREREPORTSEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
-        Me.TXTEXPENDITUREREPORTSEARCH.Location = New System.Drawing.Point(1280, 10)
-        Me.TXTEXPENDITUREREPORTSEARCH.Margin = New System.Windows.Forms.Padding(0)
-        Me.TXTEXPENDITUREREPORTSEARCH.MaxLength = 8
-        Me.TXTEXPENDITUREREPORTSEARCH.Name = "TXTEXPENDITUREREPORTSEARCH"
-        Me.TXTEXPENDITUREREPORTSEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXTEXPENDITUREREPORTSEARCH.PlaceholderText = "Search Departments"
-        Me.TXTEXPENDITUREREPORTSEARCH.SelectedText = ""
-        Me.TXTEXPENDITUREREPORTSEARCH.Size = New System.Drawing.Size(258, 40)
-        Me.TXTEXPENDITUREREPORTSEARCH.TabIndex = 6
-        '
         'Guna2Panel64
         '
         Me.Guna2Panel64.BackColor = System.Drawing.SystemColors.Window
@@ -8200,31 +7644,6 @@ Partial Class DashboardForm
         Me.BTNFINESREPORTREFRESH.Size = New System.Drawing.Size(141, 40)
         Me.BTNFINESREPORTREFRESH.TabIndex = 10
         Me.BTNFINESREPORTREFRESH.Text = "Refresh"
-        '
-        'TXTFINESREPORTSSEARCH
-        '
-        Me.TXTFINESREPORTSSEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TXTFINESREPORTSSEARCH.BorderRadius = 4
-        Me.TXTFINESREPORTSSEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.TXTFINESREPORTSSEARCH.DefaultText = ""
-        Me.TXTFINESREPORTSSEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.TXTFINESREPORTSSEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.TXTFINESREPORTSSEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTFINESREPORTSSEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTFINESREPORTSSEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTFINESREPORTSSEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.TXTFINESREPORTSSEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTFINESREPORTSSEARCH.IconRight = Global.LMS.My.Resources.Resources.search
-        Me.TXTFINESREPORTSSEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
-        Me.TXTFINESREPORTSSEARCH.Location = New System.Drawing.Point(1280, 10)
-        Me.TXTFINESREPORTSSEARCH.Margin = New System.Windows.Forms.Padding(0)
-        Me.TXTFINESREPORTSSEARCH.MaxLength = 8
-        Me.TXTFINESREPORTSSEARCH.Name = "TXTFINESREPORTSSEARCH"
-        Me.TXTFINESREPORTSSEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXTFINESREPORTSSEARCH.PlaceholderText = "Search Departments"
-        Me.TXTFINESREPORTSSEARCH.SelectedText = ""
-        Me.TXTFINESREPORTSSEARCH.Size = New System.Drawing.Size(258, 40)
-        Me.TXTFINESREPORTSSEARCH.TabIndex = 6
         '
         'Guna2Panel67
         '
@@ -8467,31 +7886,6 @@ Partial Class DashboardForm
         Me.BTNBORROWERREPORTREFRESH.TabIndex = 10
         Me.BTNBORROWERREPORTREFRESH.Text = "Refresh"
         '
-        'TXTBORROWERREPORTSEARH
-        '
-        Me.TXTBORROWERREPORTSEARH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TXTBORROWERREPORTSEARH.BorderRadius = 4
-        Me.TXTBORROWERREPORTSEARH.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.TXTBORROWERREPORTSEARH.DefaultText = ""
-        Me.TXTBORROWERREPORTSEARH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.TXTBORROWERREPORTSEARH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.TXTBORROWERREPORTSEARH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTBORROWERREPORTSEARH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTBORROWERREPORTSEARH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTBORROWERREPORTSEARH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.TXTBORROWERREPORTSEARH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTBORROWERREPORTSEARH.IconRight = Global.LMS.My.Resources.Resources.search
-        Me.TXTBORROWERREPORTSEARH.IconRightOffset = New System.Drawing.Point(8, 0)
-        Me.TXTBORROWERREPORTSEARH.Location = New System.Drawing.Point(1280, 10)
-        Me.TXTBORROWERREPORTSEARH.Margin = New System.Windows.Forms.Padding(0)
-        Me.TXTBORROWERREPORTSEARH.MaxLength = 8
-        Me.TXTBORROWERREPORTSEARH.Name = "TXTBORROWERREPORTSEARH"
-        Me.TXTBORROWERREPORTSEARH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXTBORROWERREPORTSEARH.PlaceholderText = "Search Departments"
-        Me.TXTBORROWERREPORTSEARH.SelectedText = ""
-        Me.TXTBORROWERREPORTSEARH.Size = New System.Drawing.Size(258, 40)
-        Me.TXTBORROWERREPORTSEARH.TabIndex = 6
-        '
         'Guna2Panel70
         '
         Me.Guna2Panel70.BackColor = System.Drawing.SystemColors.Window
@@ -8733,31 +8127,6 @@ Partial Class DashboardForm
         Me.BTNBORROWEDREPORTREFRESH.Size = New System.Drawing.Size(141, 40)
         Me.BTNBORROWEDREPORTREFRESH.TabIndex = 10
         Me.BTNBORROWEDREPORTREFRESH.Text = "Refresh"
-        '
-        'TXTBORROWEDREPORTSSEARCH
-        '
-        Me.TXTBORROWEDREPORTSSEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TXTBORROWEDREPORTSSEARCH.BorderRadius = 4
-        Me.TXTBORROWEDREPORTSSEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.TXTBORROWEDREPORTSSEARCH.DefaultText = ""
-        Me.TXTBORROWEDREPORTSSEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.TXTBORROWEDREPORTSSEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.TXTBORROWEDREPORTSSEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTBORROWEDREPORTSSEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTBORROWEDREPORTSSEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTBORROWEDREPORTSSEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.TXTBORROWEDREPORTSSEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTBORROWEDREPORTSSEARCH.IconRight = Global.LMS.My.Resources.Resources.search
-        Me.TXTBORROWEDREPORTSSEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
-        Me.TXTBORROWEDREPORTSSEARCH.Location = New System.Drawing.Point(1280, 10)
-        Me.TXTBORROWEDREPORTSSEARCH.Margin = New System.Windows.Forms.Padding(0)
-        Me.TXTBORROWEDREPORTSSEARCH.MaxLength = 8
-        Me.TXTBORROWEDREPORTSSEARCH.Name = "TXTBORROWEDREPORTSSEARCH"
-        Me.TXTBORROWEDREPORTSSEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXTBORROWEDREPORTSSEARCH.PlaceholderText = "Search Departments"
-        Me.TXTBORROWEDREPORTSSEARCH.SelectedText = ""
-        Me.TXTBORROWEDREPORTSSEARCH.Size = New System.Drawing.Size(258, 40)
-        Me.TXTBORROWEDREPORTSSEARCH.TabIndex = 6
         '
         'Guna2Panel73
         '
@@ -9366,31 +8735,6 @@ Partial Class DashboardForm
         Me.Guna2Button10.TabIndex = 10
         Me.Guna2Button10.Text = "Refresh"
         '
-        'Guna2TextBox13
-        '
-        Me.Guna2TextBox13.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Guna2TextBox13.BorderRadius = 4
-        Me.Guna2TextBox13.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.Guna2TextBox13.DefaultText = ""
-        Me.Guna2TextBox13.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.Guna2TextBox13.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.Guna2TextBox13.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.Guna2TextBox13.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.Guna2TextBox13.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Guna2TextBox13.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.Guna2TextBox13.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Guna2TextBox13.IconRight = Global.LMS.My.Resources.Resources.search
-        Me.Guna2TextBox13.IconRightOffset = New System.Drawing.Point(8, 0)
-        Me.Guna2TextBox13.Location = New System.Drawing.Point(1280, 10)
-        Me.Guna2TextBox13.Margin = New System.Windows.Forms.Padding(0)
-        Me.Guna2TextBox13.MaxLength = 8
-        Me.Guna2TextBox13.Name = "Guna2TextBox13"
-        Me.Guna2TextBox13.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.Guna2TextBox13.PlaceholderText = "Search Departments"
-        Me.Guna2TextBox13.SelectedText = ""
-        Me.Guna2TextBox13.Size = New System.Drawing.Size(258, 40)
-        Me.Guna2TextBox13.TabIndex = 6
-        '
         'Guna2Panel76
         '
         Me.Guna2Panel76.BackColor = System.Drawing.SystemColors.Window
@@ -9632,31 +8976,6 @@ Partial Class DashboardForm
         Me.Guna2Button13.Size = New System.Drawing.Size(141, 40)
         Me.Guna2Button13.TabIndex = 10
         Me.Guna2Button13.Text = "Refresh"
-        '
-        'Guna2TextBox14
-        '
-        Me.Guna2TextBox14.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Guna2TextBox14.BorderRadius = 4
-        Me.Guna2TextBox14.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.Guna2TextBox14.DefaultText = ""
-        Me.Guna2TextBox14.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.Guna2TextBox14.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.Guna2TextBox14.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.Guna2TextBox14.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.Guna2TextBox14.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Guna2TextBox14.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.Guna2TextBox14.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Guna2TextBox14.IconRight = Global.LMS.My.Resources.Resources.search
-        Me.Guna2TextBox14.IconRightOffset = New System.Drawing.Point(8, 0)
-        Me.Guna2TextBox14.Location = New System.Drawing.Point(1280, 10)
-        Me.Guna2TextBox14.Margin = New System.Windows.Forms.Padding(0)
-        Me.Guna2TextBox14.MaxLength = 8
-        Me.Guna2TextBox14.Name = "Guna2TextBox14"
-        Me.Guna2TextBox14.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.Guna2TextBox14.PlaceholderText = "Search Departments"
-        Me.Guna2TextBox14.SelectedText = ""
-        Me.Guna2TextBox14.Size = New System.Drawing.Size(258, 40)
-        Me.Guna2TextBox14.TabIndex = 6
         '
         'Guna2Panel79
         '
@@ -9968,6 +9287,687 @@ Partial Class DashboardForm
         '
         Me.TransactionTimer.Enabled = True
         Me.TransactionTimer.Interval = 500
+        '
+        'TXTGENRESEARCH
+        '
+        Me.TXTGENRESEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TXTGENRESEARCH.BorderColor = System.Drawing.Color.Gray
+        Me.TXTGENRESEARCH.BorderRadius = 4
+        Me.TXTGENRESEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TXTGENRESEARCH.DefaultText = ""
+        Me.TXTGENRESEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TXTGENRESEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TXTGENRESEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTGENRESEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTGENRESEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTGENRESEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.TXTGENRESEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTGENRESEARCH.IconRight = Global.LMS.My.Resources.Resources.search
+        Me.TXTGENRESEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
+        Me.TXTGENRESEARCH.Location = New System.Drawing.Point(1280, 10)
+        Me.TXTGENRESEARCH.Margin = New System.Windows.Forms.Padding(0)
+        Me.TXTGENRESEARCH.MaxLength = 8
+        Me.TXTGENRESEARCH.Name = "TXTGENRESEARCH"
+        Me.TXTGENRESEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TXTGENRESEARCH.PlaceholderText = "Search Genres"
+        Me.TXTGENRESEARCH.SelectedText = ""
+        Me.TXTGENRESEARCH.Size = New System.Drawing.Size(258, 40)
+        Me.TXTGENRESEARCH.TabIndex = 6
+        '
+        'TXTSEARCHAUTHOR
+        '
+        Me.TXTSEARCHAUTHOR.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TXTSEARCHAUTHOR.BorderColor = System.Drawing.Color.Gray
+        Me.TXTSEARCHAUTHOR.BorderRadius = 4
+        Me.TXTSEARCHAUTHOR.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TXTSEARCHAUTHOR.DefaultText = ""
+        Me.TXTSEARCHAUTHOR.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TXTSEARCHAUTHOR.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TXTSEARCHAUTHOR.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTSEARCHAUTHOR.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTSEARCHAUTHOR.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTSEARCHAUTHOR.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.TXTSEARCHAUTHOR.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTSEARCHAUTHOR.IconRight = Global.LMS.My.Resources.Resources.search
+        Me.TXTSEARCHAUTHOR.IconRightOffset = New System.Drawing.Point(8, 0)
+        Me.TXTSEARCHAUTHOR.Location = New System.Drawing.Point(1280, 10)
+        Me.TXTSEARCHAUTHOR.Margin = New System.Windows.Forms.Padding(0)
+        Me.TXTSEARCHAUTHOR.MaxLength = 8
+        Me.TXTSEARCHAUTHOR.Name = "TXTSEARCHAUTHOR"
+        Me.TXTSEARCHAUTHOR.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TXTSEARCHAUTHOR.PlaceholderText = "Search Authors"
+        Me.TXTSEARCHAUTHOR.SelectedText = ""
+        Me.TXTSEARCHAUTHOR.Size = New System.Drawing.Size(258, 40)
+        Me.TXTSEARCHAUTHOR.TabIndex = 6
+        '
+        'TXTPUBLISHERSEARCH
+        '
+        Me.TXTPUBLISHERSEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TXTPUBLISHERSEARCH.BorderColor = System.Drawing.Color.Gray
+        Me.TXTPUBLISHERSEARCH.BorderRadius = 4
+        Me.TXTPUBLISHERSEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TXTPUBLISHERSEARCH.DefaultText = ""
+        Me.TXTPUBLISHERSEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TXTPUBLISHERSEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TXTPUBLISHERSEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTPUBLISHERSEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTPUBLISHERSEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTPUBLISHERSEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.TXTPUBLISHERSEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTPUBLISHERSEARCH.IconRight = Global.LMS.My.Resources.Resources.search
+        Me.TXTPUBLISHERSEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
+        Me.TXTPUBLISHERSEARCH.Location = New System.Drawing.Point(1280, 10)
+        Me.TXTPUBLISHERSEARCH.Margin = New System.Windows.Forms.Padding(0)
+        Me.TXTPUBLISHERSEARCH.MaxLength = 8
+        Me.TXTPUBLISHERSEARCH.Name = "TXTPUBLISHERSEARCH"
+        Me.TXTPUBLISHERSEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TXTPUBLISHERSEARCH.PlaceholderText = "Search Publishers"
+        Me.TXTPUBLISHERSEARCH.SelectedText = ""
+        Me.TXTPUBLISHERSEARCH.Size = New System.Drawing.Size(258, 40)
+        Me.TXTPUBLISHERSEARCH.TabIndex = 6
+        '
+        'TXTCLASSIFICATIONSEARCH
+        '
+        Me.TXTCLASSIFICATIONSEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TXTCLASSIFICATIONSEARCH.BorderColor = System.Drawing.Color.Gray
+        Me.TXTCLASSIFICATIONSEARCH.BorderRadius = 4
+        Me.TXTCLASSIFICATIONSEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TXTCLASSIFICATIONSEARCH.DefaultText = ""
+        Me.TXTCLASSIFICATIONSEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TXTCLASSIFICATIONSEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TXTCLASSIFICATIONSEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTCLASSIFICATIONSEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTCLASSIFICATIONSEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTCLASSIFICATIONSEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.TXTCLASSIFICATIONSEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTCLASSIFICATIONSEARCH.IconRight = Global.LMS.My.Resources.Resources.search
+        Me.TXTCLASSIFICATIONSEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
+        Me.TXTCLASSIFICATIONSEARCH.Location = New System.Drawing.Point(1280, 10)
+        Me.TXTCLASSIFICATIONSEARCH.Margin = New System.Windows.Forms.Padding(0)
+        Me.TXTCLASSIFICATIONSEARCH.MaxLength = 8
+        Me.TXTCLASSIFICATIONSEARCH.Name = "TXTCLASSIFICATIONSEARCH"
+        Me.TXTCLASSIFICATIONSEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TXTCLASSIFICATIONSEARCH.PlaceholderText = "Search Classifications"
+        Me.TXTCLASSIFICATIONSEARCH.SelectedText = ""
+        Me.TXTCLASSIFICATIONSEARCH.Size = New System.Drawing.Size(258, 40)
+        Me.TXTCLASSIFICATIONSEARCH.TabIndex = 6
+        '
+        'TXTLANGUAGESEARCH
+        '
+        Me.TXTLANGUAGESEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TXTLANGUAGESEARCH.BorderColor = System.Drawing.Color.Gray
+        Me.TXTLANGUAGESEARCH.BorderRadius = 4
+        Me.TXTLANGUAGESEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TXTLANGUAGESEARCH.DefaultText = ""
+        Me.TXTLANGUAGESEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TXTLANGUAGESEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TXTLANGUAGESEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTLANGUAGESEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTLANGUAGESEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTLANGUAGESEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.TXTLANGUAGESEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTLANGUAGESEARCH.IconRight = Global.LMS.My.Resources.Resources.search
+        Me.TXTLANGUAGESEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
+        Me.TXTLANGUAGESEARCH.Location = New System.Drawing.Point(1280, 10)
+        Me.TXTLANGUAGESEARCH.Margin = New System.Windows.Forms.Padding(0)
+        Me.TXTLANGUAGESEARCH.MaxLength = 8
+        Me.TXTLANGUAGESEARCH.Name = "TXTLANGUAGESEARCH"
+        Me.TXTLANGUAGESEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TXTLANGUAGESEARCH.PlaceholderText = "Search Languages"
+        Me.TXTLANGUAGESEARCH.SelectedText = ""
+        Me.TXTLANGUAGESEARCH.Size = New System.Drawing.Size(258, 40)
+        Me.TXTLANGUAGESEARCH.TabIndex = 6
+        '
+        'TXTBOOKSEARCH
+        '
+        Me.TXTBOOKSEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TXTBOOKSEARCH.BorderColor = System.Drawing.Color.Gray
+        Me.TXTBOOKSEARCH.BorderRadius = 4
+        Me.TXTBOOKSEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TXTBOOKSEARCH.DefaultText = ""
+        Me.TXTBOOKSEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TXTBOOKSEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TXTBOOKSEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTBOOKSEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTBOOKSEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTBOOKSEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.TXTBOOKSEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTBOOKSEARCH.IconRight = Global.LMS.My.Resources.Resources.search
+        Me.TXTBOOKSEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
+        Me.TXTBOOKSEARCH.Location = New System.Drawing.Point(1280, 10)
+        Me.TXTBOOKSEARCH.Margin = New System.Windows.Forms.Padding(0)
+        Me.TXTBOOKSEARCH.MaxLength = 8
+        Me.TXTBOOKSEARCH.Name = "TXTBOOKSEARCH"
+        Me.TXTBOOKSEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TXTBOOKSEARCH.PlaceholderText = "Search Books"
+        Me.TXTBOOKSEARCH.SelectedText = ""
+        Me.TXTBOOKSEARCH.Size = New System.Drawing.Size(258, 40)
+        Me.TXTBOOKSEARCH.TabIndex = 6
+        '
+        'TXTDONATORSEARCH
+        '
+        Me.TXTDONATORSEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TXTDONATORSEARCH.BorderColor = System.Drawing.Color.Gray
+        Me.TXTDONATORSEARCH.BorderRadius = 4
+        Me.TXTDONATORSEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TXTDONATORSEARCH.DefaultText = ""
+        Me.TXTDONATORSEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TXTDONATORSEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TXTDONATORSEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTDONATORSEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTDONATORSEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTDONATORSEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.TXTDONATORSEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTDONATORSEARCH.IconRight = Global.LMS.My.Resources.Resources.search
+        Me.TXTDONATORSEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
+        Me.TXTDONATORSEARCH.Location = New System.Drawing.Point(1280, 10)
+        Me.TXTDONATORSEARCH.Margin = New System.Windows.Forms.Padding(0)
+        Me.TXTDONATORSEARCH.MaxLength = 8
+        Me.TXTDONATORSEARCH.Name = "TXTDONATORSEARCH"
+        Me.TXTDONATORSEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TXTDONATORSEARCH.PlaceholderText = "Search Donators"
+        Me.TXTDONATORSEARCH.SelectedText = ""
+        Me.TXTDONATORSEARCH.Size = New System.Drawing.Size(258, 40)
+        Me.TXTDONATORSEARCH.TabIndex = 6
+        '
+        'TXTSUPPLIERSEARCH
+        '
+        Me.TXTSUPPLIERSEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TXTSUPPLIERSEARCH.BorderColor = System.Drawing.Color.Gray
+        Me.TXTSUPPLIERSEARCH.BorderRadius = 4
+        Me.TXTSUPPLIERSEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TXTSUPPLIERSEARCH.DefaultText = ""
+        Me.TXTSUPPLIERSEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TXTSUPPLIERSEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TXTSUPPLIERSEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTSUPPLIERSEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTSUPPLIERSEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTSUPPLIERSEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.TXTSUPPLIERSEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTSUPPLIERSEARCH.IconRight = Global.LMS.My.Resources.Resources.search
+        Me.TXTSUPPLIERSEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
+        Me.TXTSUPPLIERSEARCH.Location = New System.Drawing.Point(1280, 10)
+        Me.TXTSUPPLIERSEARCH.Margin = New System.Windows.Forms.Padding(0)
+        Me.TXTSUPPLIERSEARCH.MaxLength = 8
+        Me.TXTSUPPLIERSEARCH.Name = "TXTSUPPLIERSEARCH"
+        Me.TXTSUPPLIERSEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TXTSUPPLIERSEARCH.PlaceholderText = "Search Suppliers"
+        Me.TXTSUPPLIERSEARCH.SelectedText = ""
+        Me.TXTSUPPLIERSEARCH.Size = New System.Drawing.Size(258, 40)
+        Me.TXTSUPPLIERSEARCH.TabIndex = 6
+        '
+        'TXTDEPARTMENTSEARCH
+        '
+        Me.TXTDEPARTMENTSEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TXTDEPARTMENTSEARCH.BorderRadius = 4
+        Me.TXTDEPARTMENTSEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TXTDEPARTMENTSEARCH.DefaultText = ""
+        Me.TXTDEPARTMENTSEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TXTDEPARTMENTSEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TXTDEPARTMENTSEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTDEPARTMENTSEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTDEPARTMENTSEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTDEPARTMENTSEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.TXTDEPARTMENTSEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTDEPARTMENTSEARCH.IconRight = Global.LMS.My.Resources.Resources.search
+        Me.TXTDEPARTMENTSEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
+        Me.TXTDEPARTMENTSEARCH.Location = New System.Drawing.Point(1280, 10)
+        Me.TXTDEPARTMENTSEARCH.Margin = New System.Windows.Forms.Padding(0)
+        Me.TXTDEPARTMENTSEARCH.MaxLength = 8
+        Me.TXTDEPARTMENTSEARCH.Name = "TXTDEPARTMENTSEARCH"
+        Me.TXTDEPARTMENTSEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TXTDEPARTMENTSEARCH.PlaceholderText = "Search Departments"
+        Me.TXTDEPARTMENTSEARCH.SelectedText = ""
+        Me.TXTDEPARTMENTSEARCH.Size = New System.Drawing.Size(258, 40)
+        Me.TXTDEPARTMENTSEARCH.TabIndex = 6
+        '
+        'TXTYEARLEVELSEARCH
+        '
+        Me.TXTYEARLEVELSEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TXTYEARLEVELSEARCH.BorderRadius = 4
+        Me.TXTYEARLEVELSEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TXTYEARLEVELSEARCH.DefaultText = ""
+        Me.TXTYEARLEVELSEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TXTYEARLEVELSEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TXTYEARLEVELSEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTYEARLEVELSEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTYEARLEVELSEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTYEARLEVELSEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.TXTYEARLEVELSEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTYEARLEVELSEARCH.IconRight = Global.LMS.My.Resources.Resources.search
+        Me.TXTYEARLEVELSEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
+        Me.TXTYEARLEVELSEARCH.Location = New System.Drawing.Point(1280, 10)
+        Me.TXTYEARLEVELSEARCH.Margin = New System.Windows.Forms.Padding(0)
+        Me.TXTYEARLEVELSEARCH.MaxLength = 8
+        Me.TXTYEARLEVELSEARCH.Name = "TXTYEARLEVELSEARCH"
+        Me.TXTYEARLEVELSEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TXTYEARLEVELSEARCH.PlaceholderText = "Search Year Levels"
+        Me.TXTYEARLEVELSEARCH.SelectedText = ""
+        Me.TXTYEARLEVELSEARCH.Size = New System.Drawing.Size(258, 40)
+        Me.TXTYEARLEVELSEARCH.TabIndex = 6
+        '
+        'TXTSECTIONSEARCH
+        '
+        Me.TXTSECTIONSEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TXTSECTIONSEARCH.BorderRadius = 4
+        Me.TXTSECTIONSEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TXTSECTIONSEARCH.DefaultText = ""
+        Me.TXTSECTIONSEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TXTSECTIONSEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TXTSECTIONSEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTSECTIONSEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTSECTIONSEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTSECTIONSEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.TXTSECTIONSEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTSECTIONSEARCH.IconRight = Global.LMS.My.Resources.Resources.search
+        Me.TXTSECTIONSEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
+        Me.TXTSECTIONSEARCH.Location = New System.Drawing.Point(1280, 10)
+        Me.TXTSECTIONSEARCH.Margin = New System.Windows.Forms.Padding(0)
+        Me.TXTSECTIONSEARCH.MaxLength = 8
+        Me.TXTSECTIONSEARCH.Name = "TXTSECTIONSEARCH"
+        Me.TXTSECTIONSEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TXTSECTIONSEARCH.PlaceholderText = "Search Sections"
+        Me.TXTSECTIONSEARCH.SelectedText = ""
+        Me.TXTSECTIONSEARCH.Size = New System.Drawing.Size(258, 40)
+        Me.TXTSECTIONSEARCH.TabIndex = 6
+        '
+        'TXTSTUDENTSEARCH
+        '
+        Me.TXTSTUDENTSEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TXTSTUDENTSEARCH.BorderRadius = 4
+        Me.TXTSTUDENTSEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TXTSTUDENTSEARCH.DefaultText = ""
+        Me.TXTSTUDENTSEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TXTSTUDENTSEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TXTSTUDENTSEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTSTUDENTSEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTSTUDENTSEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTSTUDENTSEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.TXTSTUDENTSEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTSTUDENTSEARCH.IconRight = Global.LMS.My.Resources.Resources.search
+        Me.TXTSTUDENTSEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
+        Me.TXTSTUDENTSEARCH.Location = New System.Drawing.Point(1280, 10)
+        Me.TXTSTUDENTSEARCH.Margin = New System.Windows.Forms.Padding(0)
+        Me.TXTSTUDENTSEARCH.MaxLength = 8
+        Me.TXTSTUDENTSEARCH.Name = "TXTSTUDENTSEARCH"
+        Me.TXTSTUDENTSEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TXTSTUDENTSEARCH.PlaceholderText = "Search Students"
+        Me.TXTSTUDENTSEARCH.SelectedText = ""
+        Me.TXTSTUDENTSEARCH.Size = New System.Drawing.Size(258, 40)
+        Me.TXTSTUDENTSEARCH.TabIndex = 6
+        '
+        'TXTFACULTYSEARCH
+        '
+        Me.TXTFACULTYSEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TXTFACULTYSEARCH.BorderRadius = 4
+        Me.TXTFACULTYSEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TXTFACULTYSEARCH.DefaultText = ""
+        Me.TXTFACULTYSEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TXTFACULTYSEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TXTFACULTYSEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTFACULTYSEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTFACULTYSEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTFACULTYSEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.TXTFACULTYSEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTFACULTYSEARCH.IconRight = Global.LMS.My.Resources.Resources.search
+        Me.TXTFACULTYSEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
+        Me.TXTFACULTYSEARCH.Location = New System.Drawing.Point(1280, 10)
+        Me.TXTFACULTYSEARCH.Margin = New System.Windows.Forms.Padding(0)
+        Me.TXTFACULTYSEARCH.MaxLength = 8
+        Me.TXTFACULTYSEARCH.Name = "TXTFACULTYSEARCH"
+        Me.TXTFACULTYSEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TXTFACULTYSEARCH.PlaceholderText = "Search Authors"
+        Me.TXTFACULTYSEARCH.SelectedText = ""
+        Me.TXTFACULTYSEARCH.Size = New System.Drawing.Size(258, 40)
+        Me.TXTFACULTYSEARCH.TabIndex = 6
+        '
+        'TXTADMINSEARCH
+        '
+        Me.TXTADMINSEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TXTADMINSEARCH.BorderRadius = 4
+        Me.TXTADMINSEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TXTADMINSEARCH.DefaultText = ""
+        Me.TXTADMINSEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TXTADMINSEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TXTADMINSEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTADMINSEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTADMINSEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTADMINSEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.TXTADMINSEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTADMINSEARCH.IconRight = Global.LMS.My.Resources.Resources.search
+        Me.TXTADMINSEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
+        Me.TXTADMINSEARCH.Location = New System.Drawing.Point(1280, 10)
+        Me.TXTADMINSEARCH.Margin = New System.Windows.Forms.Padding(0)
+        Me.TXTADMINSEARCH.MaxLength = 8
+        Me.TXTADMINSEARCH.Name = "TXTADMINSEARCH"
+        Me.TXTADMINSEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TXTADMINSEARCH.PlaceholderText = "Search Administrators"
+        Me.TXTADMINSEARCH.SelectedText = ""
+        Me.TXTADMINSEARCH.Size = New System.Drawing.Size(258, 40)
+        Me.TXTADMINSEARCH.TabIndex = 6
+        '
+        'TXTCOPIESSEARCH
+        '
+        Me.TXTCOPIESSEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TXTCOPIESSEARCH.BorderRadius = 4
+        Me.TXTCOPIESSEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TXTCOPIESSEARCH.DefaultText = ""
+        Me.TXTCOPIESSEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TXTCOPIESSEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TXTCOPIESSEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTCOPIESSEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTCOPIESSEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTCOPIESSEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.TXTCOPIESSEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTCOPIESSEARCH.IconRight = Global.LMS.My.Resources.Resources.search
+        Me.TXTCOPIESSEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
+        Me.TXTCOPIESSEARCH.Location = New System.Drawing.Point(920, 10)
+        Me.TXTCOPIESSEARCH.Margin = New System.Windows.Forms.Padding(0)
+        Me.TXTCOPIESSEARCH.MaxLength = 8
+        Me.TXTCOPIESSEARCH.Name = "TXTCOPIESSEARCH"
+        Me.TXTCOPIESSEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TXTCOPIESSEARCH.PlaceholderText = "Search Title or ISBN"
+        Me.TXTCOPIESSEARCH.SelectedText = ""
+        Me.TXTCOPIESSEARCH.Size = New System.Drawing.Size(258, 40)
+        Me.TXTCOPIESSEARCH.TabIndex = 6
+        '
+        'TXTINVENTORYSEARCH
+        '
+        Me.TXTINVENTORYSEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TXTINVENTORYSEARCH.BorderRadius = 4
+        Me.TXTINVENTORYSEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TXTINVENTORYSEARCH.DefaultText = ""
+        Me.TXTINVENTORYSEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TXTINVENTORYSEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TXTINVENTORYSEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTINVENTORYSEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTINVENTORYSEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTINVENTORYSEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.TXTINVENTORYSEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTINVENTORYSEARCH.IconRight = Global.LMS.My.Resources.Resources.search
+        Me.TXTINVENTORYSEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
+        Me.TXTINVENTORYSEARCH.Location = New System.Drawing.Point(920, 10)
+        Me.TXTINVENTORYSEARCH.Margin = New System.Windows.Forms.Padding(0)
+        Me.TXTINVENTORYSEARCH.MaxLength = 8
+        Me.TXTINVENTORYSEARCH.Name = "TXTINVENTORYSEARCH"
+        Me.TXTINVENTORYSEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TXTINVENTORYSEARCH.PlaceholderText = "Search Title or ISBN"
+        Me.TXTINVENTORYSEARCH.SelectedText = ""
+        Me.TXTINVENTORYSEARCH.Size = New System.Drawing.Size(258, 40)
+        Me.TXTINVENTORYSEARCH.TabIndex = 6
+        '
+        'TXTLOSTDAMAGESEARCH
+        '
+        Me.TXTLOSTDAMAGESEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TXTLOSTDAMAGESEARCH.BorderRadius = 4
+        Me.TXTLOSTDAMAGESEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TXTLOSTDAMAGESEARCH.DefaultText = ""
+        Me.TXTLOSTDAMAGESEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TXTLOSTDAMAGESEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TXTLOSTDAMAGESEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTLOSTDAMAGESEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTLOSTDAMAGESEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTLOSTDAMAGESEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.TXTLOSTDAMAGESEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTLOSTDAMAGESEARCH.IconRight = Global.LMS.My.Resources.Resources.search
+        Me.TXTLOSTDAMAGESEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
+        Me.TXTLOSTDAMAGESEARCH.Location = New System.Drawing.Point(1280, 10)
+        Me.TXTLOSTDAMAGESEARCH.Margin = New System.Windows.Forms.Padding(0)
+        Me.TXTLOSTDAMAGESEARCH.MaxLength = 8
+        Me.TXTLOSTDAMAGESEARCH.Name = "TXTLOSTDAMAGESEARCH"
+        Me.TXTLOSTDAMAGESEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TXTLOSTDAMAGESEARCH.PlaceholderText = "Search Title, ISBN, or Name"
+        Me.TXTLOSTDAMAGESEARCH.SelectedText = ""
+        Me.TXTLOSTDAMAGESEARCH.Size = New System.Drawing.Size(258, 40)
+        Me.TXTLOSTDAMAGESEARCH.TabIndex = 6
+        '
+        'TXTTRANSACTIONSEARCH
+        '
+        Me.TXTTRANSACTIONSEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TXTTRANSACTIONSEARCH.BorderRadius = 4
+        Me.TXTTRANSACTIONSEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TXTTRANSACTIONSEARCH.DefaultText = ""
+        Me.TXTTRANSACTIONSEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TXTTRANSACTIONSEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TXTTRANSACTIONSEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTTRANSACTIONSEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTTRANSACTIONSEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTTRANSACTIONSEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.TXTTRANSACTIONSEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTTRANSACTIONSEARCH.IconRight = Global.LMS.My.Resources.Resources.search
+        Me.TXTTRANSACTIONSEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
+        Me.TXTTRANSACTIONSEARCH.Location = New System.Drawing.Point(1288, 10)
+        Me.TXTTRANSACTIONSEARCH.Margin = New System.Windows.Forms.Padding(0)
+        Me.TXTTRANSACTIONSEARCH.MaxLength = 15
+        Me.TXTTRANSACTIONSEARCH.Name = "TXTTRANSACTIONSEARCH"
+        Me.TXTTRANSACTIONSEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TXTTRANSACTIONSEARCH.PlaceholderText = "Search Name or Circulation"
+        Me.TXTTRANSACTIONSEARCH.SelectedText = ""
+        Me.TXTTRANSACTIONSEARCH.Size = New System.Drawing.Size(258, 40)
+        Me.TXTTRANSACTIONSEARCH.TabIndex = 6
+        '
+        'TXTBOOKREPORTSEARCH
+        '
+        Me.TXTBOOKREPORTSEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TXTBOOKREPORTSEARCH.BorderRadius = 4
+        Me.TXTBOOKREPORTSEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TXTBOOKREPORTSEARCH.DefaultText = ""
+        Me.TXTBOOKREPORTSEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TXTBOOKREPORTSEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TXTBOOKREPORTSEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTBOOKREPORTSEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTBOOKREPORTSEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTBOOKREPORTSEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.TXTBOOKREPORTSEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTBOOKREPORTSEARCH.IconRight = Global.LMS.My.Resources.Resources.search
+        Me.TXTBOOKREPORTSEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
+        Me.TXTBOOKREPORTSEARCH.Location = New System.Drawing.Point(1280, 10)
+        Me.TXTBOOKREPORTSEARCH.Margin = New System.Windows.Forms.Padding(0)
+        Me.TXTBOOKREPORTSEARCH.MaxLength = 8
+        Me.TXTBOOKREPORTSEARCH.Name = "TXTBOOKREPORTSEARCH"
+        Me.TXTBOOKREPORTSEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TXTBOOKREPORTSEARCH.PlaceholderText = "Search Departments"
+        Me.TXTBOOKREPORTSEARCH.SelectedText = ""
+        Me.TXTBOOKREPORTSEARCH.Size = New System.Drawing.Size(258, 40)
+        Me.TXTBOOKREPORTSEARCH.TabIndex = 6
+        '
+        'TXTEXPENDITUREREPORTSEARCH
+        '
+        Me.TXTEXPENDITUREREPORTSEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TXTEXPENDITUREREPORTSEARCH.BorderRadius = 4
+        Me.TXTEXPENDITUREREPORTSEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TXTEXPENDITUREREPORTSEARCH.DefaultText = ""
+        Me.TXTEXPENDITUREREPORTSEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TXTEXPENDITUREREPORTSEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TXTEXPENDITUREREPORTSEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTEXPENDITUREREPORTSEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTEXPENDITUREREPORTSEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTEXPENDITUREREPORTSEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.TXTEXPENDITUREREPORTSEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTEXPENDITUREREPORTSEARCH.IconRight = Global.LMS.My.Resources.Resources.search
+        Me.TXTEXPENDITUREREPORTSEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
+        Me.TXTEXPENDITUREREPORTSEARCH.Location = New System.Drawing.Point(1280, 10)
+        Me.TXTEXPENDITUREREPORTSEARCH.Margin = New System.Windows.Forms.Padding(0)
+        Me.TXTEXPENDITUREREPORTSEARCH.MaxLength = 8
+        Me.TXTEXPENDITUREREPORTSEARCH.Name = "TXTEXPENDITUREREPORTSEARCH"
+        Me.TXTEXPENDITUREREPORTSEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TXTEXPENDITUREREPORTSEARCH.PlaceholderText = "Search Departments"
+        Me.TXTEXPENDITUREREPORTSEARCH.SelectedText = ""
+        Me.TXTEXPENDITUREREPORTSEARCH.Size = New System.Drawing.Size(258, 40)
+        Me.TXTEXPENDITUREREPORTSEARCH.TabIndex = 6
+        '
+        'TXTFINESREPORTSSEARCH
+        '
+        Me.TXTFINESREPORTSSEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TXTFINESREPORTSSEARCH.BorderRadius = 4
+        Me.TXTFINESREPORTSSEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TXTFINESREPORTSSEARCH.DefaultText = ""
+        Me.TXTFINESREPORTSSEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TXTFINESREPORTSSEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TXTFINESREPORTSSEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTFINESREPORTSSEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTFINESREPORTSSEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTFINESREPORTSSEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.TXTFINESREPORTSSEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTFINESREPORTSSEARCH.IconRight = Global.LMS.My.Resources.Resources.search
+        Me.TXTFINESREPORTSSEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
+        Me.TXTFINESREPORTSSEARCH.Location = New System.Drawing.Point(1280, 10)
+        Me.TXTFINESREPORTSSEARCH.Margin = New System.Windows.Forms.Padding(0)
+        Me.TXTFINESREPORTSSEARCH.MaxLength = 8
+        Me.TXTFINESREPORTSSEARCH.Name = "TXTFINESREPORTSSEARCH"
+        Me.TXTFINESREPORTSSEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TXTFINESREPORTSSEARCH.PlaceholderText = "Search Departments"
+        Me.TXTFINESREPORTSSEARCH.SelectedText = ""
+        Me.TXTFINESREPORTSSEARCH.Size = New System.Drawing.Size(258, 40)
+        Me.TXTFINESREPORTSSEARCH.TabIndex = 6
+        '
+        'TXTBORROWERREPORTSEARH
+        '
+        Me.TXTBORROWERREPORTSEARH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TXTBORROWERREPORTSEARH.BorderRadius = 4
+        Me.TXTBORROWERREPORTSEARH.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TXTBORROWERREPORTSEARH.DefaultText = ""
+        Me.TXTBORROWERREPORTSEARH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TXTBORROWERREPORTSEARH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TXTBORROWERREPORTSEARH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTBORROWERREPORTSEARH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTBORROWERREPORTSEARH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTBORROWERREPORTSEARH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.TXTBORROWERREPORTSEARH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTBORROWERREPORTSEARH.IconRight = Global.LMS.My.Resources.Resources.search
+        Me.TXTBORROWERREPORTSEARH.IconRightOffset = New System.Drawing.Point(8, 0)
+        Me.TXTBORROWERREPORTSEARH.Location = New System.Drawing.Point(1280, 10)
+        Me.TXTBORROWERREPORTSEARH.Margin = New System.Windows.Forms.Padding(0)
+        Me.TXTBORROWERREPORTSEARH.MaxLength = 8
+        Me.TXTBORROWERREPORTSEARH.Name = "TXTBORROWERREPORTSEARH"
+        Me.TXTBORROWERREPORTSEARH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TXTBORROWERREPORTSEARH.PlaceholderText = "Search Departments"
+        Me.TXTBORROWERREPORTSEARH.SelectedText = ""
+        Me.TXTBORROWERREPORTSEARH.Size = New System.Drawing.Size(258, 40)
+        Me.TXTBORROWERREPORTSEARH.TabIndex = 6
+        '
+        'TXTBORROWEDREPORTSSEARCH
+        '
+        Me.TXTBORROWEDREPORTSSEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TXTBORROWEDREPORTSSEARCH.BorderRadius = 4
+        Me.TXTBORROWEDREPORTSSEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TXTBORROWEDREPORTSSEARCH.DefaultText = ""
+        Me.TXTBORROWEDREPORTSSEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TXTBORROWEDREPORTSSEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TXTBORROWEDREPORTSSEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTBORROWEDREPORTSSEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTBORROWEDREPORTSSEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTBORROWEDREPORTSSEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.TXTBORROWEDREPORTSSEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTBORROWEDREPORTSSEARCH.IconRight = Global.LMS.My.Resources.Resources.search
+        Me.TXTBORROWEDREPORTSSEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
+        Me.TXTBORROWEDREPORTSSEARCH.Location = New System.Drawing.Point(1280, 10)
+        Me.TXTBORROWEDREPORTSSEARCH.Margin = New System.Windows.Forms.Padding(0)
+        Me.TXTBORROWEDREPORTSSEARCH.MaxLength = 8
+        Me.TXTBORROWEDREPORTSSEARCH.Name = "TXTBORROWEDREPORTSSEARCH"
+        Me.TXTBORROWEDREPORTSSEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TXTBORROWEDREPORTSSEARCH.PlaceholderText = "Search Departments"
+        Me.TXTBORROWEDREPORTSSEARCH.SelectedText = ""
+        Me.TXTBORROWEDREPORTSSEARCH.Size = New System.Drawing.Size(258, 40)
+        Me.TXTBORROWEDREPORTSSEARCH.TabIndex = 6
+        '
+        'Guna2TextBox13
+        '
+        Me.Guna2TextBox13.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Guna2TextBox13.BorderRadius = 4
+        Me.Guna2TextBox13.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.Guna2TextBox13.DefaultText = ""
+        Me.Guna2TextBox13.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.Guna2TextBox13.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.Guna2TextBox13.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.Guna2TextBox13.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.Guna2TextBox13.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Guna2TextBox13.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.Guna2TextBox13.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Guna2TextBox13.IconRight = Global.LMS.My.Resources.Resources.search
+        Me.Guna2TextBox13.IconRightOffset = New System.Drawing.Point(8, 0)
+        Me.Guna2TextBox13.Location = New System.Drawing.Point(1280, 10)
+        Me.Guna2TextBox13.Margin = New System.Windows.Forms.Padding(0)
+        Me.Guna2TextBox13.MaxLength = 8
+        Me.Guna2TextBox13.Name = "Guna2TextBox13"
+        Me.Guna2TextBox13.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.Guna2TextBox13.PlaceholderText = "Search Departments"
+        Me.Guna2TextBox13.SelectedText = ""
+        Me.Guna2TextBox13.Size = New System.Drawing.Size(258, 40)
+        Me.Guna2TextBox13.TabIndex = 6
+        '
+        'Guna2TextBox14
+        '
+        Me.Guna2TextBox14.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Guna2TextBox14.BorderRadius = 4
+        Me.Guna2TextBox14.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.Guna2TextBox14.DefaultText = ""
+        Me.Guna2TextBox14.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.Guna2TextBox14.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.Guna2TextBox14.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.Guna2TextBox14.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.Guna2TextBox14.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Guna2TextBox14.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.Guna2TextBox14.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Guna2TextBox14.IconRight = Global.LMS.My.Resources.Resources.search
+        Me.Guna2TextBox14.IconRightOffset = New System.Drawing.Point(8, 0)
+        Me.Guna2TextBox14.Location = New System.Drawing.Point(1280, 10)
+        Me.Guna2TextBox14.Margin = New System.Windows.Forms.Padding(0)
+        Me.Guna2TextBox14.MaxLength = 8
+        Me.Guna2TextBox14.Name = "Guna2TextBox14"
+        Me.Guna2TextBox14.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.Guna2TextBox14.PlaceholderText = "Search Departments"
+        Me.Guna2TextBox14.SelectedText = ""
+        Me.Guna2TextBox14.Size = New System.Drawing.Size(258, 40)
+        Me.Guna2TextBox14.TabIndex = 6
+        '
+        'DataGridViewTextBoxColumn47
+        '
+        Me.DataGridViewTextBoxColumn47.DataPropertyName = "id"
+        Me.DataGridViewTextBoxColumn47.HeaderText = "id"
+        Me.DataGridViewTextBoxColumn47.Name = "DataGridViewTextBoxColumn47"
+        Me.DataGridViewTextBoxColumn47.Visible = False
+        '
+        'DataGridViewTextBoxColumn48
+        '
+        Me.DataGridViewTextBoxColumn48.DataPropertyName = "circulation_no"
+        Me.DataGridViewTextBoxColumn48.HeaderText = "Circulation No."
+        Me.DataGridViewTextBoxColumn48.MaxInputLength = 50
+        Me.DataGridViewTextBoxColumn48.Name = "DataGridViewTextBoxColumn48"
+        Me.DataGridViewTextBoxColumn48.ReadOnly = True
+        Me.DataGridViewTextBoxColumn48.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
+        'Column32
+        '
+        Me.Column32.DataPropertyName = "issued_by"
+        Me.Column32.HeaderText = "Issued By"
+        Me.Column32.Name = "Column32"
+        Me.Column32.ReadOnly = True
+        Me.Column32.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
+        'Column28
+        '
+        Me.Column28.DataPropertyName = "full_name"
+        Me.Column28.HeaderText = "Borrower"
+        Me.Column28.Name = "Column28"
+        Me.Column28.ReadOnly = True
+        Me.Column28.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
+        'Column31
+        '
+        Me.Column31.DataPropertyName = "borrow_date"
+        Me.Column31.HeaderText = "Borrowed Date"
+        Me.Column31.Name = "Column31"
+        Me.Column31.ReadOnly = True
+        Me.Column31.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
+        'ColumnOverdueDate
+        '
+        Me.ColumnOverdueDate.DataPropertyName = "overdue_date"
+        Me.ColumnOverdueDate.HeaderText = "Overdue Date"
+        Me.ColumnOverdueDate.Name = "ColumnOverdueDate"
+        Me.ColumnOverdueDate.ReadOnly = True
+        Me.ColumnOverdueDate.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         '
         'DashboardForm
         '
@@ -10783,11 +10783,11 @@ Partial Class DashboardForm
     Friend WithEvents Column37 As DataGridViewTextBoxColumn
     Friend WithEvents Column36 As DataGridViewTextBoxColumn
     Friend WithEvents Column35 As DataGridViewTextBoxColumn
+    Friend WithEvents TransactionTimer As Timer
     Friend WithEvents DataGridViewTextBoxColumn47 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn48 As DataGridViewTextBoxColumn
     Friend WithEvents Column32 As DataGridViewTextBoxColumn
     Friend WithEvents Column28 As DataGridViewTextBoxColumn
     Friend WithEvents Column31 As DataGridViewTextBoxColumn
-    Friend WithEvents Column30 As DataGridViewTextBoxColumn
-    Friend WithEvents TransactionTimer As Timer
+    Friend WithEvents ColumnOverdueDate As DataGridViewTextBoxColumn
 End Class

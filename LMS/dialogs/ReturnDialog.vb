@@ -2,7 +2,7 @@
 Imports System.Windows.Forms
 
 Public Class ReturnDialog
-    Private _id As Integer
+    Public _id As Integer
     Private Class ConditionType
         Public Property id As Integer
         Public Property name As String
@@ -64,9 +64,17 @@ Public Class ReturnDialog
                                             ORDER BY bc.accession_no, b.title", New Dictionary(Of String, String) From {{"@id", _id}})
         DGBORROWEDCOPIES.DataSource = dt
         DGBORROWEDCOPIES.Columns.Add(cmb)
-        DGBORROWEDCOPIES.Columns(NameOf(ColumnBtnReturn)).DisplayIndex = DGBORROWEDCOPIES.Columns.Count - 1
-        DGBORROWEDCOPIES.Columns(NameOf(ColumnBorrowedCondition)).DisplayIndex = DGBORROWEDCOPIES.Columns.Count - 3
-        DGBORROWEDCOPIES.Columns(cmb.Name).DisplayIndex = DGBORROWEDCOPIES.Columns.Count - 2
+        DGBORROWEDCOPIES.Columns(NameOf(ColumnBorrowedCondition)).DisplayIndex = DGBORROWEDCOPIES.Columns.Count - 2
+        DGBORROWEDCOPIES.Columns(cmb.Name).DisplayIndex = DGBORROWEDCOPIES.Columns.Count - 1
+
+        For Each row As DataGridViewRow In DGBORROWEDCOPIES.Rows
+            Dim bound As DataRowView = TryCast(row.DataBoundItem, DataRowView)
+            'row.Cells.Item("cmbCondition").Value = bound.Row.Item("return_condition")
+            If Not IsDBNull(bound.Item("returned_condition")) Then
+                row.Cells.Item(cmb.Name).Value = CInt(bound.Item("returned_condition"))
+                row.Cells.Item(cmb.Name).ReadOnly = True
+            End If
+        Next
     End Sub
 
     Private Sub DGBORROWEDCOPIES_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles DGBORROWEDCOPIES.CellFormatting
@@ -81,10 +89,33 @@ Public Class ReturnDialog
         End If
     End Sub
 
-    'Private Sub DGBORROWEDCOPIES_EditingControlShowing(sender As Object, e As DataGridViewEditingControlShowingEventArgs)
-    '    Dim cmb As ComboBox = DirectCast(e.Control, ComboBox)
-    '    cmb.IntegralHeight = False
-    '    cmb.ItemHeight = 40
-    '    cmb.DropDownHeight = 280
-    'End Sub
+    Private Sub SelectAllToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SelectAllToolStripMenuItem.Click
+        For Each row As DataGridViewRow In DGBORROWEDCOPIES.Rows
+            row.Cells(NameOf(chckBoxBorrowCopies)).Value = True
+        Next
+        DGBORROWEDCOPIES.EndEdit()
+    End Sub
+
+    Private Sub UnselectAllToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UnselectAllToolStripMenuItem.Click
+        For Each row As DataGridViewRow In DGBORROWEDCOPIES.Rows
+            row.Cells(NameOf(chckBoxBorrowCopies)).Value = False
+        Next
+        DGBORROWEDCOPIES.EndEdit()
+    End Sub
+
+    Private Sub ReturnAllToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReturnAllToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub AddToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddToolStripMenuItem.Click
+        Using dialog As New NoteDialog(Me)
+            dialog.ShowDialog()
+        End Using
+    End Sub
+
+    Private Sub ViewToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewToolStripMenuItem.Click
+        Using dialog As New NoteDialog(Me)
+            dialog.ShowDialog()
+        End Using
+    End Sub
 End Class
