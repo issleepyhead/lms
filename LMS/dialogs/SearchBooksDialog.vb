@@ -29,6 +29,19 @@ Public Class SearchBooksDialog
     End Sub
 
     Private Sub DGBOOKS_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGBOOKS.CellClick
+
+        If _window.RBSTUDENT.Checked Then
+            If _window.bookListData.Count + 1 + CountBooksBorrowedFaculty(_window.sid) > My.Settings.scount Then
+                MessageBox.Show("The student has reached the borrow limit.", "Borrow Limit Exceed!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Exit Sub
+            End If
+        Else
+            If _window.bookListData.Count + 1 + CountBooksBorrowedFaculty(_window.CMBFACULTY.SelectedValue) > My.Settings.fcount Then
+                MessageBox.Show("The faculty/teacher has reached the borrow limit.", "Borrow Limit Exceed!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Exit Sub
+            End If
+        End If
+
         If e.RowIndex <> -1 Then
             Dim boundItem As DataRowView = TryCast(DGBOOKS.Rows(e.RowIndex).DataBoundItem, DataRowView)
             Dim exists As Boolean = False

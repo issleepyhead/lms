@@ -61,7 +61,9 @@ Partial Class ReturnDialog
         Me.NoteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AddToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Guna2HtmlLabel13 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.ColumnID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColumnCopyID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColumnReturnCond = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColumnBorrowedCond = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.chckBoxBorrowCopies = New System.Windows.Forms.DataGridViewCheckBoxColumn()
@@ -69,7 +71,7 @@ Partial Class ReturnDialog
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColumnBorrowedCondition = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColumnDateReturned = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Guna2Panel2.SuspendLayout()
         Me.Guna2Panel1.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
@@ -106,6 +108,7 @@ Partial Class ReturnDialog
         '
         'Guna2Panel1
         '
+        Me.Guna2Panel1.Controls.Add(Me.Guna2HtmlLabel13)
         Me.Guna2Panel1.Controls.Add(Me.LBLSTATUS)
         Me.Guna2Panel1.Controls.Add(Me.LBLBORROWDATE)
         Me.Guna2Panel1.Controls.Add(Me.LBLDUEDATE)
@@ -139,7 +142,7 @@ Partial Class ReturnDialog
         '
         Me.LBLSTATUS.BackColor = System.Drawing.Color.Transparent
         Me.LBLSTATUS.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LBLSTATUS.Location = New System.Drawing.Point(1216, 162)
+        Me.LBLSTATUS.Location = New System.Drawing.Point(1173, 154)
         Me.LBLSTATUS.Margin = New System.Windows.Forms.Padding(0)
         Me.LBLSTATUS.Name = "LBLSTATUS"
         Me.LBLSTATUS.Size = New System.Drawing.Size(9, 23)
@@ -150,7 +153,7 @@ Partial Class ReturnDialog
         '
         Me.LBLBORROWDATE.BackColor = System.Drawing.Color.Transparent
         Me.LBLBORROWDATE.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LBLBORROWDATE.Location = New System.Drawing.Point(1109, 101)
+        Me.LBLBORROWDATE.Location = New System.Drawing.Point(1104, 105)
         Me.LBLBORROWDATE.Margin = New System.Windows.Forms.Padding(0)
         Me.LBLBORROWDATE.Name = "LBLBORROWDATE"
         Me.LBLBORROWDATE.Size = New System.Drawing.Size(9, 23)
@@ -161,7 +164,7 @@ Partial Class ReturnDialog
         '
         Me.LBLDUEDATE.BackColor = System.Drawing.Color.Transparent
         Me.LBLDUEDATE.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LBLDUEDATE.Location = New System.Drawing.Point(1110, 46)
+        Me.LBLDUEDATE.Location = New System.Drawing.Point(1104, 48)
         Me.LBLDUEDATE.Margin = New System.Windows.Forms.Padding(0)
         Me.LBLDUEDATE.Name = "LBLDUEDATE"
         Me.LBLDUEDATE.Size = New System.Drawing.Size(9, 23)
@@ -326,7 +329,7 @@ Partial Class ReturnDialog
         '
         Me.Guna2HtmlLabel4.BackColor = System.Drawing.Color.Transparent
         Me.Guna2HtmlLabel4.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Guna2HtmlLabel4.Location = New System.Drawing.Point(1233, 134)
+        Me.Guna2HtmlLabel4.Location = New System.Drawing.Point(1104, 154)
         Me.Guna2HtmlLabel4.Name = "Guna2HtmlLabel4"
         Me.Guna2HtmlLabel4.Size = New System.Drawing.Size(48, 23)
         Me.Guna2HtmlLabel4.TabIndex = 119
@@ -409,7 +412,7 @@ Partial Class ReturnDialog
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DGBORROWEDCOPIES.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.DGBORROWEDCOPIES.ColumnHeadersHeight = 32
-        Me.DGBORROWEDCOPIES.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.ColumnReturnCond, Me.ColumnBorrowedCond, Me.chckBoxBorrowCopies, Me.Column7, Me.Column5, Me.Column4, Me.ColumnBorrowedCondition, Me.Column2})
+        Me.DGBORROWEDCOPIES.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ColumnID, Me.ColumnCopyID, Me.ColumnReturnCond, Me.ColumnBorrowedCond, Me.chckBoxBorrowCopies, Me.Column7, Me.Column5, Me.Column4, Me.ColumnBorrowedCondition, Me.ColumnDateReturned})
         Me.DGBORROWEDCOPIES.ContextMenuStrip = Me.DGBORROWEDCOPIESMENUSTRIP
         DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(239, Byte), Integer))
@@ -496,13 +499,32 @@ Partial Class ReturnDialog
         Me.ViewToolStripMenuItem.Size = New System.Drawing.Size(99, 22)
         Me.ViewToolStripMenuItem.Text = "View"
         '
-        'Column1
+        'Guna2HtmlLabel13
         '
-        Me.Column1.DataPropertyName = "id"
-        Me.Column1.HeaderText = "id"
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        Me.Column1.Visible = False
+        Me.Guna2HtmlLabel13.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2HtmlLabel13.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Guna2HtmlLabel13.Location = New System.Drawing.Point(1159, 154)
+        Me.Guna2HtmlLabel13.Margin = New System.Windows.Forms.Padding(0)
+        Me.Guna2HtmlLabel13.Name = "Guna2HtmlLabel13"
+        Me.Guna2HtmlLabel13.Size = New System.Drawing.Size(7, 23)
+        Me.Guna2HtmlLabel13.TabIndex = 141
+        Me.Guna2HtmlLabel13.Text = ":"
+        '
+        'ColumnID
+        '
+        Me.ColumnID.DataPropertyName = "id"
+        Me.ColumnID.HeaderText = "id"
+        Me.ColumnID.Name = "ColumnID"
+        Me.ColumnID.ReadOnly = True
+        Me.ColumnID.Visible = False
+        '
+        'ColumnCopyID
+        '
+        Me.ColumnCopyID.DataPropertyName = "copy_id"
+        Me.ColumnCopyID.HeaderText = "copy_id"
+        Me.ColumnCopyID.Name = "ColumnCopyID"
+        Me.ColumnCopyID.ReadOnly = True
+        Me.ColumnCopyID.Visible = False
         '
         'ColumnReturnCond
         '
@@ -552,14 +574,14 @@ Partial Class ReturnDialog
         Me.ColumnBorrowedCondition.Name = "ColumnBorrowedCondition"
         Me.ColumnBorrowedCondition.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         '
-        'Column2
+        'ColumnDateReturned
         '
-        Me.Column2.DataPropertyName = "returned_date"
+        Me.ColumnDateReturned.DataPropertyName = "date_returned"
         DataGridViewCellStyle3.NullValue = "Not Returned"
-        Me.Column2.DefaultCellStyle = DataGridViewCellStyle3
-        Me.Column2.HeaderText = "Return Date"
-        Me.Column2.Name = "Column2"
-        Me.Column2.ReadOnly = True
+        Me.ColumnDateReturned.DefaultCellStyle = DataGridViewCellStyle3
+        Me.ColumnDateReturned.HeaderText = "Return Date"
+        Me.ColumnDateReturned.Name = "ColumnDateReturned"
+        Me.ColumnDateReturned.ReadOnly = True
         '
         'ReturnDialog
         '
@@ -619,7 +641,9 @@ Partial Class ReturnDialog
     Friend WithEvents NoteToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AddToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ViewToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents Column1 As DataGridViewTextBoxColumn
+    Friend WithEvents Guna2HtmlLabel13 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents ColumnID As DataGridViewTextBoxColumn
+    Friend WithEvents ColumnCopyID As DataGridViewTextBoxColumn
     Friend WithEvents ColumnReturnCond As DataGridViewTextBoxColumn
     Friend WithEvents ColumnBorrowedCond As DataGridViewTextBoxColumn
     Friend WithEvents chckBoxBorrowCopies As DataGridViewCheckBoxColumn
@@ -627,5 +651,5 @@ Partial Class ReturnDialog
     Friend WithEvents Column5 As DataGridViewTextBoxColumn
     Friend WithEvents Column4 As DataGridViewTextBoxColumn
     Friend WithEvents ColumnBorrowedCondition As DataGridViewTextBoxColumn
-    Friend WithEvents Column2 As DataGridViewTextBoxColumn
+    Friend WithEvents ColumnDateReturned As DataGridViewTextBoxColumn
 End Class

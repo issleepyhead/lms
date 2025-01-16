@@ -35,14 +35,15 @@ Public Class ReturnDialog
 
 
         Dim header As DataTable = ExecFetch("SELECT bt.id, CASE WHEN bt.student_id IS NULL THEN ft.full_name ELSE st.full_name END AS full_name, circulation_no, overdue_date, borrow_date,
-                            CASE WHEN a.student_id IS NULL THEN af.full_name ELSE ad.full_name END AS issued_by
-                            FROM tblborrowheaders bt
-                            LEFT JOIN tblstudents st ON bt.student_id = st.id
-                            LEFT JOIN tblfaculties ft ON bt.faculty_id = ft.id
-                            LEFT JOIN tbladmins a ON bt.issued_by = a.id
-                            LEFT JOIN tblstudents ad ON a.student_id = ad.id
-                            LEFT JOIN tblfaculties af ON a.faculty_id = af.id
-                            WHERE bt.id = @id", New Dictionary(Of String, String) From {{"@id", _id}})
+                                                CASE WHEN a.student_id IS NULL THEN af.full_name ELSE ad.full_name END AS issued_by, CAST(now() AS DATE) - CAST(overdue_date AS DATE) overdue_days,
+                                                bt.status, CASE WHEN CAST(now() AS DATE) - CAST(overdue_date AS DATE) < 1 THEN 0 ELSE CAST(now() AS DATE) - CAST(overdue_date AS DATE) * (SELECT CASE WHEN bt.student_id IS NULL THEN fpenalty ELSE spenalty END AS penalty FROM tblappsettings) END AS penalty
+                                                FROM tblborrowheaders bt
+                                                LEFT JOIN tblstudents st ON bt.student_id = st.id
+                                                LEFT JOIN tblfaculties ft ON bt.faculty_id = ft.id
+                                                LEFT JOIN tbladmins a ON bt.issued_by = a.id
+                                                LEFT JOIN tblstudents ad ON a.student_id = ad.id
+                                                LEFT JOIN tblfaculties af ON a.faculty_id = af.id
+                                                WHERE bt.id = @id", New Dictionary(Of String, String) From {{"@id", _id}})
 
         If header.Rows.Count > 0 Then
             With header.Rows(0)
@@ -51,11 +52,29 @@ Public Class ReturnDialog
                 LBLBORROWDATE.Text = .Item("borrow_date")
                 LBLDUEDATE.Text = .Item("overdue_date")
                 LBLISSUEDBY.Text = .Item("issued_by")
+
+                Dim stat As Integer = .Item("status")
+                If stat = 1 Then
+                    LBLSTATUS.Text = "Active"
+                ElseIf stat = 2 Then
+                    LBLSTATUS.Text = "Overdue"
+                Else
+                    LBLSTATUS.Text = "Returned"
+                End If
+
+                Dim overdue_days As Integer = .Item("overdue_days")
+                If overdue_days < 1 Then
+                    LBLOVERDUEDAYS.Text = "None"
+                Else
+                    LBLOVERDUEDAYS.Text = overdue_days & " Day(s)"
+                End If
+
+                LBLPENALTY.Text = "₱ " & .Item("penalty")
             End With
         End If
 
 
-        Dim dt As DataTable = ExecFetch("SELECT bi.id, bc.accession_no, b.title, b.isbn, bi.borrowed_condition, bi.returned_condition
+        Dim dt As DataTable = ExecFetch("SELECT bi.id, bi.copy_id, bc.accession_no, b.title, b.isbn, bi.borrowed_condition, bi.returned_condition, bi.date_returned
                                             FROM tblborrowheaders bh
                                             LEFT JOIN tblborrowedcopies bi ON bh.id = bi.header_id
                                             LEFT JOIN tblbookcopies bc ON bi.copy_id = bc.id
@@ -64,7 +83,8 @@ Public Class ReturnDialog
                                             ORDER BY bc.accession_no, b.title", New Dictionary(Of String, String) From {{"@id", _id}})
         DGBORROWEDCOPIES.DataSource = dt
         DGBORROWEDCOPIES.Columns.Add(cmb)
-        DGBORROWEDCOPIES.Columns(NameOf(ColumnBorrowedCondition)).DisplayIndex = DGBORROWEDCOPIES.Columns.Count - 2
+        DGBORROWEDCOPIES.Columns(NameOf(ColumnDateReturned)).DisplayIndex = DGBORROWEDCOPIES.Columns.Count - 2
+        DGBORROWEDCOPIES.Columns(NameOf(ColumnBorrowedCondition)).DisplayIndex = DGBORROWEDCOPIES.Columns.Count - 3
         DGBORROWEDCOPIES.Columns(cmb.Name).DisplayIndex = DGBORROWEDCOPIES.Columns.Count - 1
 
         For Each row As DataGridViewRow In DGBORROWEDCOPIES.Rows
@@ -73,6 +93,7 @@ Public Class ReturnDialog
             If Not IsDBNull(bound.Item("returned_condition")) Then
                 row.Cells.Item(cmb.Name).Value = CInt(bound.Item("returned_condition"))
                 row.Cells.Item(cmb.Name).ReadOnly = True
+                row.Cells(NameOf(chckBoxBorrowCopies)).ReadOnly = True
             End If
         Next
     End Sub
@@ -104,7 +125,24 @@ Public Class ReturnDialog
     End Sub
 
     Private Sub ReturnAllToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReturnAllToolStripMenuItem.Click
+        DGBORROWEDCOPIES.EndEdit()
+        Dim collection As New List(Of Dictionary(Of String, String))
+        For Each dt As DataGridViewRow In DGBORROWEDCOPIES.Rows
+            If CBool(dt.Cells(NameOf(chckBoxBorrowCopies)).Value) Then
+                If IsDBNull(dt.Cells(NameOf(ColumnReturnCond)).Value) AndAlso Not IsNothing(dt.Cells("ColumnReturnCondition").Value) Then
+                    collection.Add(New Dictionary(Of String, String) From {{"@rcond", dt.Cells("ColumnReturnCondition").Value}, {"@id", dt.Cells("ColumnID").Value}, {"@cid", dt.Cells("ColumnCopyID").Value}})
+                End If
 
+                If IsDBNull(dt.Cells(NameOf(ColumnReturnCond)).Value) AndAlso IsNothing(dt.Cells("ColumnReturnCondition").Value) Then
+                    MessageBox.Show("Please fill all the return condition first before returning.", "Return Condition Empty!", MessageBoxButtons.OK, MessageBoxIcon.Hand)
+                    Exit Sub
+                End If
+            End If
+        Next
+
+        If ReturnBooks(_id, collection) Then
+            MessageBox.Show("The books borrowed have been returned successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
     End Sub
 
     Private Sub AddToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddToolStripMenuItem.Click
@@ -117,5 +155,28 @@ Public Class ReturnDialog
         Using dialog As New NoteDialog(Me)
             dialog.ShowDialog()
         End Using
+    End Sub
+
+    Private Sub BTNSAVE_Click(sender As Object, e As EventArgs) Handles BTNSAVE.Click
+        DGBORROWEDCOPIES.EndEdit()
+        Dim collection As New List(Of Dictionary(Of String, String))
+        For Each dt As DataGridViewRow In DGBORROWEDCOPIES.Rows
+            If IsDBNull(dt.Cells(NameOf(ColumnReturnCond)).Value) AndAlso Not IsNothing(dt.Cells("ColumnReturnCondition").Value) Then
+                collection.Add(New Dictionary(Of String, String) From {{"@rcond", dt.Cells("ColumnReturnCondition").Value}, {"@id", dt.Cells("ColumnID").Value}, {"@cid", dt.Cells("ColumnCopyID").Value}})
+            End If
+
+            If IsDBNull(dt.Cells(NameOf(ColumnReturnCond)).Value) AndAlso IsNothing(dt.Cells("ColumnReturnCondition").Value) Then
+                MessageBox.Show("Please fill all the return condition first before returning.", "Return Condition Empty!", MessageBoxButtons.OK, MessageBoxIcon.Hand)
+                Exit Sub
+            End If
+        Next
+
+        If ReturnBooks(_id, collection) Then
+            MessageBox.Show("The books borrowed have been returned successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            For Each row As DataGridViewRow In DGBORROWEDCOPIES.Rows
+                row.Cells.Item("ColumnReturnCondition").ReadOnly = True
+                row.Cells(NameOf(chckBoxBorrowCopies)).ReadOnly = True
+            Next
+        End If
     End Sub
 End Class

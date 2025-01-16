@@ -64,12 +64,12 @@ Module Utilities
             Dim adapter As MySqlDataAdapter
             Using conn As New MySqlConnection(My.Settings.connection_string)
                 conn.Open()
-                Dim cmd As New MySqlCommand("SELECT st.id, lrn `LRN`, full_name `Full Name`
+                Dim cmd As New MySqlCommand("SELECT st.id, st.lrn, st.full_name
                                                 FROM tblstudents st
-                                                LEFT JOIN tblborrowheaders bh ON st.id = bh.student_id
+                                                LEFT JOIN tblborrowheaders bh ON bh.student_id = st.id
                                                 LEFT JOIN tblborrowedcopies bc ON bh.id = bc.header_id
-                                                GROUP BY lrn, full_name, st.id
-                                                HAVING COUNT(bc.copy_id) < (SELECT s_count FROM tblappsettings)", conn)
+                                                GROUP BY st.id, st.lrn, st.full_name
+                                                HAVING COUNT(CASE WHEN bc.returned_condition IS NULL THEN 1 END) < (SELECT s_count FROM tblappsettings)", conn)
                 adapter = New MySqlDataAdapter(cmd)
                 adapter.Fill(dt)
                 Return dt
@@ -79,7 +79,7 @@ Module Utilities
         End Try
     End Function
 
-    Public Function ReturnBooks(bookCopies As List(Of Dictionary(Of String, String))) As Boolean
+    Public Function ReturnBooks(header_id As Integer, bookCopies As List(Of Dictionary(Of String, String))) As Boolean
         ' TODO FIX THIS LATURRR
         Dim transac As MySqlTransaction = Nothing
         Try
@@ -87,16 +87,33 @@ Module Utilities
                 conn.Open()
                 transac = conn.BeginTransaction
 
+                Dim cmd As New MySqlCommand()
+                cmd.Connection = conn
+                cmd.Transaction = transac
+
                 For Each item As Dictionary(Of String, String) In bookCopies
-                    Dim cmd As New MySqlCommand("UPDATE tblborrowedcopies SET returned_condition = @rcond, date_returned = NOW() WHERE id = @id", conn, transac)
+                    cmd.Parameters.Clear()
+                    cmd.CommandText = "UPDATE tblborrowedcopies SET returned_condition = @rcond, date_returned = NOW() WHERE id = @id"
+                    For Each kv As KeyValuePair(Of String, String) In item
+                        cmd.Parameters.AddWithValue(kv.Key, If(String.IsNullOrEmpty(kv.Value), DBNull.Value, kv.Value))
+                    Next
                     cmd.ExecuteNonQuery()
+
                     If item.Item("@rcond") = BOOKCONDITIONTYPE.GOOD OrElse item.Item("@rcond") = BOOKCONDITIONTYPE.DAMAGED Then
-                        cmd.CommandText = "UPDATE tblbookcopies SET condition = @rcond, status = 0 WHERE id = @cid"
+                        cmd.CommandText = "UPDATE tblbookcopies SET `condition` = @rcond, `status` = 1 WHERE id = @cid"
                     Else
-                        cmd.CommandText = "UPDATE tblbookcopies SET condition = @rcond, status = 2 WHERE id = @cid"
+                        cmd.CommandText = "UPDATE tblbookcopies SET `condition` = @rcond, `status` = 3 WHERE id = @cid"
                     End If
                     cmd.ExecuteNonQuery()
                 Next
+
+                cmd.Parameters.Clear()
+                cmd.CommandText = "SELECT COUNT(*) FROM tblborrowedcopies WHERE header_id = @tid AND returned_condition IS NULL"
+                cmd.Parameters.AddWithValue("@tid", header_id)
+                If cmd.ExecuteScalar() = 0 Then
+                    cmd.CommandText = "UPDATE tblborrowheaders SET `status` = 0 WHERE id = @tid"
+                    cmd.ExecuteNonQuery()
+                End If
                 transac.Commit()
                 Return True
             End Using
@@ -136,12 +153,11 @@ Module Utilities
             Using conn As New MySqlConnection(My.Settings.connection_string)
                 conn.Open()
                 Dim cmd As New MySqlCommand("SELECT st.id
-                                            FROM tblstudents st
-                                            LEFT JOIN tblborrowheaders bh ON st.id = bh.student_id
-                                            LEFT JOIN tblborrowedcopies bc ON bh.id = bc.header_id
-                                            WHERE lrn = @query AND st.status = 1
-                                            GROUP BY st.id
-                                            HAVING COUNT(bc.copy_id) < 5", conn)
+                                                FROM tblstudents st
+                                                LEFT JOIN tblborrowheaders bh ON bh.student_id = st.id
+                                                LEFT JOIN tblborrowedcopies bc ON bh.id = bc.header_id
+                                                GROUP BY st.id, st.lrn, st.full_name
+                                                HAVING COUNT(CASE WHEN bc.returned_condition IS NULL THEN 1 END) < (SELECT s_count FROM tblappsettings)", conn)
                 cmd.Parameters.AddWithValue("@query", query)
                 Return cmd.ExecuteScalar()
             End Using
@@ -323,4 +339,15 @@ Module Utilities
         End If
     End Function
 
+    Public Function CountBooksBorrowedStudent(sid As Integer) As Integer
+        Return ExecScalar("SELECT COUNT(CASE WHEN bc.returned_condition IS NULL THEN 1 END) AS borrowed
+                            FROM tblborrowheaders bh
+                            LEFT JOIN tblborrowedcopies bc ON bh.id = bc.header_id WHERE bh.student_id = @sid", New Dictionary(Of String, String) From {{"@sid", sid}})
+    End Function
+
+    Public Function CountBooksBorrowedFaculty(fid As Integer) As Integer
+        Return ExecScalar("SELECT COUNT(CASE WHEN bc.returned_condition IS NULL THEN 1 END) AS borrowed
+                            FROM tblborrowheaders bh
+                            LEFT JOIN tblborrowedcopies bc ON bh.id = bc.header_id WHERE bh.faculty_id = @fid", New Dictionary(Of String, String) From {{"@fid", fid}})
+    End Function
 End Module

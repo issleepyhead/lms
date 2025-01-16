@@ -72,6 +72,18 @@ Public Class BorrowDialog
     End Sub
 
     Private Sub BTNBORROWBOOKS_Click(sender As Object, e As EventArgs) Handles BTNBORROWBOOKS.Click
+        If RBSTUDENT.Checked Then
+            If bookListData.Count + CountBooksBorrowedFaculty(sid) > My.Settings.scount Then
+                MessageBox.Show("The student has reached the borrow limit.", "Borrow Limit Exceed!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Exit Sub
+            End If
+        Else
+            If bookListData.Count + CountBooksBorrowedFaculty(CMBFACULTY.SelectedValue) > My.Settings.fcount Then
+                MessageBox.Show("The faculty/teacher has reached the borrow limit.", "Borrow Limit Exceed!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Exit Sub
+            End If
+        End If
+
         If bookListData.Count = 0 Then
             MessageBox.Show("No items in the borrow list." & vbLf & "Please add book copies in the borrow list first.", "Empty Borrow List!", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Exit Sub
@@ -135,6 +147,18 @@ Public Class BorrowDialog
         If TXTISBN.Text.Length = 10 Then
             Dim dt As DataTable = SearchBooksAccession(TXTISBN.Text)
             If dt.Rows.Count > 0 Then
+                If RBSTUDENT.Checked Then
+                    If bookListData.Count + 1 + CountBooksBorrowedFaculty(sid) > My.Settings.scount Then
+                        MessageBox.Show("The student has reached the borrow limit.", "Borrow Limit Exceed!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        Exit Sub
+                    End If
+                Else
+                    If bookListData.Count + 1 + CountBooksBorrowedFaculty(CMBFACULTY.SelectedValue) > My.Settings.fcount Then
+                        MessageBox.Show("The faculty/teacher has reached the borrow limit.", "Borrow Limit Exceed!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        Exit Sub
+                    End If
+                End If
+
                 bookListData.Add(dt.Rows.Item(0))
                 TXTISBN.Clear()
             Else

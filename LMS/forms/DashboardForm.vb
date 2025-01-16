@@ -1618,6 +1618,27 @@ Public Class DashboardForm
                 DGTRANSACTION.DataSource = FetchTransactions(1)
                 LBLTRANSACTIONNEXT.Text = BaseMaintenance.PMAX
                 LBLTRANSACTIONPREV.Text = BaseMaintenance.PPrev
+            Case MainFormPanels.SelectedTab.Equals(BookInventoryTab)
+                DGBOOKCOPIES.DataSource = BaseMaintenance.Fetch(QueryTableType.BOOKCOPIES_QUERY_TABLE)
+                LBLCOPIESPREV.Text = BaseMaintenance.PPrev
+                LBLCOPIESNEXT.Text = BaseMaintenance.PMAX
+
+                Dim dtDonator As DataTable = BaseMaintenance.FetchAll(QueryTableType.DONATOR_QUERY_TABLE)
+                Dim newRow As DataRow = dtDonator.NewRow()
+                newRow("id") = 0
+                newRow("name") = "None"
+                dtDonator.Rows.InsertAt(newRow, 0)
+
+                Dim dtSupplier As DataTable = BaseMaintenance.FetchAll(QueryTableType.SUPPLIER_QUERY_TABLE)
+                newRow = dtSupplier.NewRow()
+                newRow("id") = 0
+                newRow("name") = "None"
+                dtSupplier.Rows.InsertAt(newRow, 0)
+
+                TXTACCESSION.Text = GenerateAccession()
+
+                CMBDONATORCOPIES.DataSource = dtDonator
+                CMBSUPPLIERCOPIES.DataSource = dtSupplier
         End Select
     End Sub
 
