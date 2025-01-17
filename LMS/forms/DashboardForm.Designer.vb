@@ -575,6 +575,9 @@ Partial Class DashboardForm
         Me.DataGridViewTextBoxColumn49 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewCheckBoxColumn5 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.DataGridViewTextBoxColumn50 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column64 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column65 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column22 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ExpenditureReportTab = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel23 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel63 = New Guna.UI2.WinForms.Guna2Panel()
@@ -591,6 +594,8 @@ Partial Class DashboardForm
         Me.DataGridViewTextBoxColumn51 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewCheckBoxColumn11 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.DataGridViewTextBoxColumn52 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column30 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column29 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.FinesReportTab = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel24 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel66 = New Guna.UI2.WinForms.Guna2Panel()
@@ -607,6 +612,12 @@ Partial Class DashboardForm
         Me.DataGridViewTextBoxColumn53 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewCheckBoxColumn12 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.DataGridViewTextBoxColumn54 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column55 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column56 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column57 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column59 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column60 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column58 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.BorrowerReportTab = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel25 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel69 = New Guna.UI2.WinForms.Guna2Panel()
@@ -623,6 +634,7 @@ Partial Class DashboardForm
         Me.DataGridViewTextBoxColumn55 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewCheckBoxColumn13 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.DataGridViewTextBoxColumn56 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column61 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.BorrowedBookReport = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel26 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel72 = New Guna.UI2.WinForms.Guna2Panel()
@@ -640,9 +652,30 @@ Partial Class DashboardForm
         Me.DataGridViewCheckBoxColumn14 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.DataGridViewTextBoxColumn58 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.AccountTab = New System.Windows.Forms.TabPage()
+        Me.Guna2Panel82 = New Guna.UI2.WinForms.Guna2Panel()
+        Me.Guna2Button5 = New Guna.UI2.WinForms.Guna2Button()
+        Me.Guna2HtmlLabel58 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.Guna2TextBox21 = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.Guna2HtmlLabel57 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.Guna2TextBox20 = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.Guna2HtmlLabel55 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.Guna2TextBox19 = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.Guna2HtmlLabel54 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.Guna2TextBox18 = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.Guna2HtmlLabel52 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.Guna2TextBox17 = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.Guna2HtmlLabel51 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.Guna2TextBox16 = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.Guna2HtmlLabel49 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.Guna2TextBox15 = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.Guna2HtmlLabel48 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.Guna2TextBox12 = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.Guna2HtmlLabel46 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.Guna2TextBox11 = New Guna.UI2.WinForms.Guna2TextBox()
         Me.SettingsTab = New System.Windows.Forms.TabPage()
         Me.SettingsPanels = New Guna.UI2.WinForms.Guna2TabControl()
         Me.GeneralSettingsTab = New System.Windows.Forms.TabPage()
+        Me.BTNSAVE = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2CheckBox1 = New Guna.UI2.WinForms.Guna2CheckBox()
         Me.chkEmail = New Guna.UI2.WinForms.Guna2CheckBox()
         Me.Guna2Button27 = New Guna.UI2.WinForms.Guna2Button()
@@ -657,6 +690,21 @@ Partial Class DashboardForm
         Me.Guna2HtmlLabel1 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.txtSettingsPenalty = New Guna.UI2.WinForms.Guna2TextBox()
         Me.EmailSettingsTab = New System.Windows.Forms.TabPage()
+        Me.Guna2Panel81 = New Guna.UI2.WinForms.Guna2Panel()
+        Me.BTNSAVEEMAILSETTINGS = New Guna.UI2.WinForms.Guna2Button()
+        Me.Guna2HtmlLabel43 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.Guna2TextBox10 = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.Guna2HtmlLabel39 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.Guna2TextBox9 = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.Guna2HtmlLabel36 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.Guna2TextBox8 = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.Guna2HtmlLabel35 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.Guna2TextBox7 = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.Guna2HtmlLabel32 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.TXTEMAILPASSWORDSETTINGS = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.Guna2HtmlLabel30 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.TXTEMAILSETTINGS = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.ServerSettingsTab = New System.Windows.Forms.TabPage()
         Me.AuditTrailTab = New System.Windows.Forms.TabPage()
         Me.AuditTrailPanels = New Guna.UI2.WinForms.Guna2TabControl()
         Me.ActivityLogTab = New System.Windows.Forms.TabPage()
@@ -675,6 +723,7 @@ Partial Class DashboardForm
         Me.DataGridViewTextBoxColumn59 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewCheckBoxColumn15 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.DataGridViewTextBoxColumn60 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column63 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ActiveLogs = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel28 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel78 = New Guna.UI2.WinForms.Guna2Panel()
@@ -691,6 +740,7 @@ Partial Class DashboardForm
         Me.DataGridViewTextBoxColumn61 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewCheckBoxColumn16 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.DataGridViewTextBoxColumn62 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column62 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Guna2Panel1 = New Guna.UI2.WinForms.Guna2Panel()
         Me.Guna2Panel2 = New Guna.UI2.WinForms.Guna2Panel()
         Me.BTNLOGOUT = New Guna.UI2.WinForms.Guna2Button()
@@ -862,9 +912,13 @@ Partial Class DashboardForm
         Me.Guna2Panel73.SuspendLayout
         Me.Guna2Panel74.SuspendLayout
         CType(Me.DGBORROWEDREPORT, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.AccountTab.SuspendLayout
+        Me.Guna2Panel82.SuspendLayout
         Me.SettingsTab.SuspendLayout
         Me.SettingsPanels.SuspendLayout
         Me.GeneralSettingsTab.SuspendLayout
+        Me.EmailSettingsTab.SuspendLayout
+        Me.Guna2Panel81.SuspendLayout
         Me.AuditTrailTab.SuspendLayout
         Me.AuditTrailPanels.SuspendLayout
         Me.ActivityLogTab.SuspendLayout
@@ -982,7 +1036,7 @@ Partial Class DashboardForm
         'ListView1
         '
         Me.ListView1.HideSelection = False
-        Me.ListView1.Location = New System.Drawing.Point(16, 133)
+        Me.ListView1.Location = New System.Drawing.Point(17, 131)
         Me.ListView1.Name = "ListView1"
         Me.ListView1.Size = New System.Drawing.Size(329, 439)
         Me.ListView1.TabIndex = 0
@@ -993,13 +1047,14 @@ Partial Class DashboardForm
         Me.TableLayoutPanel30.ColumnCount = 2
         Me.TableLayoutPanel30.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel30.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel30.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel30.Location = New System.Drawing.Point(0, 0)
         Me.TableLayoutPanel30.Margin = New System.Windows.Forms.Padding(0)
         Me.TableLayoutPanel30.Name = "TableLayoutPanel30"
         Me.TableLayoutPanel30.RowCount = 2
-        Me.TableLayoutPanel30.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel30.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel30.Size = New System.Drawing.Size(200, 100)
+        Me.TableLayoutPanel30.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 23.28767!))
+        Me.TableLayoutPanel30.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 76.71233!))
+        Me.TableLayoutPanel30.Size = New System.Drawing.Size(1212, 657)
         Me.TableLayoutPanel30.TabIndex = 1
         '
         'MaintenanceTab
@@ -7467,7 +7522,6 @@ Partial Class DashboardForm
         DataGridViewCellStyle61.BackColor = System.Drawing.Color.FromArgb(CType(CType(63, Byte), Integer), CType(CType(81, Byte), Integer), CType(CType(181, Byte), Integer))
         DataGridViewCellStyle61.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle61.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle61.SelectionBackColor = System.Drawing.Color.Empty
         DataGridViewCellStyle61.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle61.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DGTRANSACTION.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle61
@@ -7492,7 +7546,6 @@ Partial Class DashboardForm
         DataGridViewCellStyle63.BackColor = System.Drawing.SystemColors.Control
         DataGridViewCellStyle63.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle63.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle63.SelectionBackColor = System.Drawing.Color.Empty
         DataGridViewCellStyle63.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle63.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DGTRANSACTION.RowHeadersDefaultCellStyle = DataGridViewCellStyle63
@@ -7817,7 +7870,7 @@ Partial Class DashboardForm
         DataGridViewCellStyle65.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DGBOOKREPORT.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle65
         Me.DGBOOKREPORT.ColumnHeadersHeight = 48
-        Me.DGBOOKREPORT.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn49, Me.DataGridViewCheckBoxColumn5, Me.DataGridViewTextBoxColumn50})
+        Me.DGBOOKREPORT.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn49, Me.DataGridViewCheckBoxColumn5, Me.DataGridViewTextBoxColumn50, Me.Column64, Me.Column65, Me.Column22})
         Me.DGBOOKREPORT.ContextMenuStrip = Me.DGMAINTENANCECONTEXTMENU
         DataGridViewCellStyle66.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle66.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(239, Byte), Integer))
@@ -7879,11 +7932,26 @@ Partial Class DashboardForm
         'DataGridViewTextBoxColumn50
         '
         Me.DataGridViewTextBoxColumn50.DataPropertyName = "department_name"
-        Me.DataGridViewTextBoxColumn50.HeaderText = "Department Name"
+        Me.DataGridViewTextBoxColumn50.HeaderText = "Book Title"
         Me.DataGridViewTextBoxColumn50.MaxInputLength = 50
         Me.DataGridViewTextBoxColumn50.Name = "DataGridViewTextBoxColumn50"
         Me.DataGridViewTextBoxColumn50.ReadOnly = True
         Me.DataGridViewTextBoxColumn50.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
+        'Column64
+        '
+        Me.Column64.HeaderText = "Genre"
+        Me.Column64.Name = "Column64"
+        '
+        'Column65
+        '
+        Me.Column65.HeaderText = "Classification"
+        Me.Column65.Name = "Column65"
+        '
+        'Column22
+        '
+        Me.Column22.HeaderText = "Borrowed Count"
+        Me.Column22.Name = "Column22"
         '
         'ExpenditureReportTab
         '
@@ -8084,7 +8152,7 @@ Partial Class DashboardForm
         DataGridViewCellStyle68.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DGEXPENDITUREREPORT.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle68
         Me.DGEXPENDITUREREPORT.ColumnHeadersHeight = 48
-        Me.DGEXPENDITUREREPORT.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn51, Me.DataGridViewCheckBoxColumn11, Me.DataGridViewTextBoxColumn52})
+        Me.DGEXPENDITUREREPORT.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn51, Me.DataGridViewCheckBoxColumn11, Me.DataGridViewTextBoxColumn52, Me.Column30, Me.Column29})
         Me.DGEXPENDITUREREPORT.ContextMenuStrip = Me.DGMAINTENANCECONTEXTMENU
         DataGridViewCellStyle69.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle69.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(239, Byte), Integer))
@@ -8146,11 +8214,21 @@ Partial Class DashboardForm
         'DataGridViewTextBoxColumn52
         '
         Me.DataGridViewTextBoxColumn52.DataPropertyName = "department_name"
-        Me.DataGridViewTextBoxColumn52.HeaderText = "Department Name"
+        Me.DataGridViewTextBoxColumn52.HeaderText = "Book Title"
         Me.DataGridViewTextBoxColumn52.MaxInputLength = 50
         Me.DataGridViewTextBoxColumn52.Name = "DataGridViewTextBoxColumn52"
         Me.DataGridViewTextBoxColumn52.ReadOnly = True
         Me.DataGridViewTextBoxColumn52.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
+        'Column30
+        '
+        Me.Column30.HeaderText = "Total Copies"
+        Me.Column30.Name = "Column30"
+        '
+        'Column29
+        '
+        Me.Column29.HeaderText = "Total Price"
+        Me.Column29.Name = "Column29"
         '
         'FinesReportTab
         '
@@ -8350,7 +8428,7 @@ Partial Class DashboardForm
         DataGridViewCellStyle71.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DGFINESREPORT.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle71
         Me.DGFINESREPORT.ColumnHeadersHeight = 48
-        Me.DGFINESREPORT.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn53, Me.DataGridViewCheckBoxColumn12, Me.DataGridViewTextBoxColumn54})
+        Me.DGFINESREPORT.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn53, Me.DataGridViewCheckBoxColumn12, Me.DataGridViewTextBoxColumn54, Me.Column55, Me.Column56, Me.Column57, Me.Column59, Me.Column60, Me.Column58})
         Me.DGFINESREPORT.ContextMenuStrip = Me.DGMAINTENANCECONTEXTMENU
         DataGridViewCellStyle72.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle72.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(239, Byte), Integer))
@@ -8412,11 +8490,41 @@ Partial Class DashboardForm
         'DataGridViewTextBoxColumn54
         '
         Me.DataGridViewTextBoxColumn54.DataPropertyName = "department_name"
-        Me.DataGridViewTextBoxColumn54.HeaderText = "Department Name"
+        Me.DataGridViewTextBoxColumn54.HeaderText = "Circulation No."
         Me.DataGridViewTextBoxColumn54.MaxInputLength = 50
         Me.DataGridViewTextBoxColumn54.Name = "DataGridViewTextBoxColumn54"
         Me.DataGridViewTextBoxColumn54.ReadOnly = True
         Me.DataGridViewTextBoxColumn54.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
+        'Column55
+        '
+        Me.Column55.HeaderText = "Borrower Name"
+        Me.Column55.Name = "Column55"
+        '
+        'Column56
+        '
+        Me.Column56.HeaderText = "Borrowed Date"
+        Me.Column56.Name = "Column56"
+        '
+        'Column57
+        '
+        Me.Column57.HeaderText = "Overdue Date"
+        Me.Column57.Name = "Column57"
+        '
+        'Column59
+        '
+        Me.Column59.HeaderText = "Overdue Days"
+        Me.Column59.Name = "Column59"
+        '
+        'Column60
+        '
+        Me.Column60.HeaderText = "Penalty Per Day"
+        Me.Column60.Name = "Column60"
+        '
+        'Column58
+        '
+        Me.Column58.HeaderText = "Total Penalty"
+        Me.Column58.Name = "Column58"
         '
         'BorrowerReportTab
         '
@@ -8616,7 +8724,7 @@ Partial Class DashboardForm
         DataGridViewCellStyle74.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DGBORROWERERREPORT.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle74
         Me.DGBORROWERERREPORT.ColumnHeadersHeight = 48
-        Me.DGBORROWERERREPORT.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn55, Me.DataGridViewCheckBoxColumn13, Me.DataGridViewTextBoxColumn56})
+        Me.DGBORROWERERREPORT.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn55, Me.DataGridViewCheckBoxColumn13, Me.DataGridViewTextBoxColumn56, Me.Column61})
         Me.DGBORROWERERREPORT.ContextMenuStrip = Me.DGMAINTENANCECONTEXTMENU
         DataGridViewCellStyle75.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle75.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(239, Byte), Integer))
@@ -8678,11 +8786,16 @@ Partial Class DashboardForm
         'DataGridViewTextBoxColumn56
         '
         Me.DataGridViewTextBoxColumn56.DataPropertyName = "department_name"
-        Me.DataGridViewTextBoxColumn56.HeaderText = "Department Name"
+        Me.DataGridViewTextBoxColumn56.HeaderText = "Borrower Name"
         Me.DataGridViewTextBoxColumn56.MaxInputLength = 50
         Me.DataGridViewTextBoxColumn56.Name = "DataGridViewTextBoxColumn56"
         Me.DataGridViewTextBoxColumn56.ReadOnly = True
         Me.DataGridViewTextBoxColumn56.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
+        'Column61
+        '
+        Me.Column61.HeaderText = "Total Borrowed Books"
+        Me.Column61.Name = "Column61"
         '
         'BorrowedBookReport
         '
@@ -8953,12 +9066,383 @@ Partial Class DashboardForm
         '
         'AccountTab
         '
+        Me.AccountTab.Controls.Add(Me.Guna2Panel82)
         Me.AccountTab.Location = New System.Drawing.Point(204, 4)
         Me.AccountTab.Name = "AccountTab"
         Me.AccountTab.Size = New System.Drawing.Size(1566, 657)
         Me.AccountTab.TabIndex = 9
         Me.AccountTab.Text = "Profile"
         Me.AccountTab.UseVisualStyleBackColor = True
+        '
+        'Guna2Panel82
+        '
+        Me.Guna2Panel82.Controls.Add(Me.Guna2Button5)
+        Me.Guna2Panel82.Controls.Add(Me.Guna2HtmlLabel58)
+        Me.Guna2Panel82.Controls.Add(Me.Guna2TextBox21)
+        Me.Guna2Panel82.Controls.Add(Me.Guna2HtmlLabel57)
+        Me.Guna2Panel82.Controls.Add(Me.Guna2TextBox20)
+        Me.Guna2Panel82.Controls.Add(Me.Guna2HtmlLabel55)
+        Me.Guna2Panel82.Controls.Add(Me.Guna2TextBox19)
+        Me.Guna2Panel82.Controls.Add(Me.Guna2HtmlLabel54)
+        Me.Guna2Panel82.Controls.Add(Me.Guna2TextBox18)
+        Me.Guna2Panel82.Controls.Add(Me.Guna2HtmlLabel52)
+        Me.Guna2Panel82.Controls.Add(Me.Guna2TextBox17)
+        Me.Guna2Panel82.Controls.Add(Me.Guna2HtmlLabel51)
+        Me.Guna2Panel82.Controls.Add(Me.Guna2TextBox16)
+        Me.Guna2Panel82.Controls.Add(Me.Guna2HtmlLabel49)
+        Me.Guna2Panel82.Controls.Add(Me.Guna2TextBox15)
+        Me.Guna2Panel82.Controls.Add(Me.Guna2HtmlLabel48)
+        Me.Guna2Panel82.Controls.Add(Me.Guna2TextBox12)
+        Me.Guna2Panel82.Controls.Add(Me.Guna2HtmlLabel46)
+        Me.Guna2Panel82.Controls.Add(Me.Guna2TextBox11)
+        Me.Guna2Panel82.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Guna2Panel82.Location = New System.Drawing.Point(0, 0)
+        Me.Guna2Panel82.Margin = New System.Windows.Forms.Padding(0)
+        Me.Guna2Panel82.Name = "Guna2Panel82"
+        Me.Guna2Panel82.Padding = New System.Windows.Forms.Padding(20)
+        Me.Guna2Panel82.Size = New System.Drawing.Size(1566, 657)
+        Me.Guna2Panel82.TabIndex = 0
+        '
+        'Guna2Button5
+        '
+        Me.Guna2Button5.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Guna2Button5.BorderRadius = 4
+        Me.Guna2Button5.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.Guna2Button5.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.Guna2Button5.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.Guna2Button5.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.Guna2Button5.FillColor = System.Drawing.Color.Green
+        Me.Guna2Button5.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.Guna2Button5.ForeColor = System.Drawing.Color.White
+        Me.Guna2Button5.Location = New System.Drawing.Point(1415, 594)
+        Me.Guna2Button5.Name = "Guna2Button5"
+        Me.Guna2Button5.Size = New System.Drawing.Size(128, 40)
+        Me.Guna2Button5.TabIndex = 119
+        Me.Guna2Button5.Text = "Save"
+        '
+        'Guna2HtmlLabel58
+        '
+        Me.Guna2HtmlLabel58.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2HtmlLabel58.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Guna2HtmlLabel58.Location = New System.Drawing.Point(344, 186)
+        Me.Guna2HtmlLabel58.Margin = New System.Windows.Forms.Padding(0, 0, 0, 4)
+        Me.Guna2HtmlLabel58.Name = "Guna2HtmlLabel58"
+        Me.Guna2HtmlLabel58.Size = New System.Drawing.Size(81, 23)
+        Me.Guna2HtmlLabel58.TabIndex = 118
+        Me.Guna2HtmlLabel58.Text = "Year Level:"
+        '
+        'Guna2TextBox21
+        '
+        Me.Guna2TextBox21.BorderColor = System.Drawing.Color.Gray
+        Me.Guna2TextBox21.BorderRadius = 4
+        Me.Guna2TextBox21.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.Guna2TextBox21.DefaultText = ""
+        Me.Guna2TextBox21.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.Guna2TextBox21.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.Guna2TextBox21.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.Guna2TextBox21.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.Guna2TextBox21.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Guna2TextBox21.Font = New System.Drawing.Font("Segoe UI", 11.25!)
+        Me.Guna2TextBox21.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Guna2TextBox21.Location = New System.Drawing.Point(344, 213)
+        Me.Guna2TextBox21.Margin = New System.Windows.Forms.Padding(0, 0, 0, 16)
+        Me.Guna2TextBox21.MaxLength = 5
+        Me.Guna2TextBox21.Name = "Guna2TextBox21"
+        Me.Guna2TextBox21.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.Guna2TextBox21.PlaceholderForeColor = System.Drawing.Color.DarkGray
+        Me.Guna2TextBox21.PlaceholderText = "Enter Penalty"
+        Me.Guna2TextBox21.SelectedText = ""
+        Me.Guna2TextBox21.ShortcutsEnabled = False
+        Me.Guna2TextBox21.Size = New System.Drawing.Size(280, 40)
+        Me.Guna2TextBox21.TabIndex = 117
+        '
+        'Guna2HtmlLabel57
+        '
+        Me.Guna2HtmlLabel57.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2HtmlLabel57.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Guna2HtmlLabel57.Location = New System.Drawing.Point(344, 103)
+        Me.Guna2HtmlLabel57.Margin = New System.Windows.Forms.Padding(0, 0, 0, 4)
+        Me.Guna2HtmlLabel57.Name = "Guna2HtmlLabel57"
+        Me.Guna2HtmlLabel57.Size = New System.Drawing.Size(81, 23)
+        Me.Guna2HtmlLabel57.TabIndex = 116
+        Me.Guna2HtmlLabel57.Text = "Year Level:"
+        '
+        'Guna2TextBox20
+        '
+        Me.Guna2TextBox20.BorderColor = System.Drawing.Color.Gray
+        Me.Guna2TextBox20.BorderRadius = 4
+        Me.Guna2TextBox20.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.Guna2TextBox20.DefaultText = ""
+        Me.Guna2TextBox20.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.Guna2TextBox20.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.Guna2TextBox20.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.Guna2TextBox20.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.Guna2TextBox20.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Guna2TextBox20.Font = New System.Drawing.Font("Segoe UI", 11.25!)
+        Me.Guna2TextBox20.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Guna2TextBox20.Location = New System.Drawing.Point(344, 130)
+        Me.Guna2TextBox20.Margin = New System.Windows.Forms.Padding(0, 0, 0, 16)
+        Me.Guna2TextBox20.MaxLength = 5
+        Me.Guna2TextBox20.Name = "Guna2TextBox20"
+        Me.Guna2TextBox20.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.Guna2TextBox20.PlaceholderForeColor = System.Drawing.Color.DarkGray
+        Me.Guna2TextBox20.PlaceholderText = "Enter Penalty"
+        Me.Guna2TextBox20.SelectedText = ""
+        Me.Guna2TextBox20.ShortcutsEnabled = False
+        Me.Guna2TextBox20.Size = New System.Drawing.Size(280, 40)
+        Me.Guna2TextBox20.TabIndex = 115
+        '
+        'Guna2HtmlLabel55
+        '
+        Me.Guna2HtmlLabel55.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2HtmlLabel55.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Guna2HtmlLabel55.Location = New System.Drawing.Point(344, 20)
+        Me.Guna2HtmlLabel55.Margin = New System.Windows.Forms.Padding(0, 0, 0, 4)
+        Me.Guna2HtmlLabel55.Name = "Guna2HtmlLabel55"
+        Me.Guna2HtmlLabel55.Size = New System.Drawing.Size(81, 23)
+        Me.Guna2HtmlLabel55.TabIndex = 114
+        Me.Guna2HtmlLabel55.Text = "Year Level:"
+        '
+        'Guna2TextBox19
+        '
+        Me.Guna2TextBox19.BorderColor = System.Drawing.Color.Gray
+        Me.Guna2TextBox19.BorderRadius = 4
+        Me.Guna2TextBox19.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.Guna2TextBox19.DefaultText = ""
+        Me.Guna2TextBox19.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.Guna2TextBox19.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.Guna2TextBox19.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.Guna2TextBox19.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.Guna2TextBox19.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Guna2TextBox19.Font = New System.Drawing.Font("Segoe UI", 11.25!)
+        Me.Guna2TextBox19.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Guna2TextBox19.Location = New System.Drawing.Point(344, 47)
+        Me.Guna2TextBox19.Margin = New System.Windows.Forms.Padding(0, 0, 0, 16)
+        Me.Guna2TextBox19.MaxLength = 5
+        Me.Guna2TextBox19.Name = "Guna2TextBox19"
+        Me.Guna2TextBox19.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.Guna2TextBox19.PlaceholderForeColor = System.Drawing.Color.DarkGray
+        Me.Guna2TextBox19.PlaceholderText = "Enter Penalty"
+        Me.Guna2TextBox19.SelectedText = ""
+        Me.Guna2TextBox19.ShortcutsEnabled = False
+        Me.Guna2TextBox19.Size = New System.Drawing.Size(280, 40)
+        Me.Guna2TextBox19.TabIndex = 113
+        '
+        'Guna2HtmlLabel54
+        '
+        Me.Guna2HtmlLabel54.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2HtmlLabel54.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Guna2HtmlLabel54.Location = New System.Drawing.Point(20, 435)
+        Me.Guna2HtmlLabel54.Margin = New System.Windows.Forms.Padding(0, 0, 0, 4)
+        Me.Guna2HtmlLabel54.Name = "Guna2HtmlLabel54"
+        Me.Guna2HtmlLabel54.Size = New System.Drawing.Size(81, 23)
+        Me.Guna2HtmlLabel54.TabIndex = 112
+        Me.Guna2HtmlLabel54.Text = "Year Level:"
+        '
+        'Guna2TextBox18
+        '
+        Me.Guna2TextBox18.BorderColor = System.Drawing.Color.Gray
+        Me.Guna2TextBox18.BorderRadius = 4
+        Me.Guna2TextBox18.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.Guna2TextBox18.DefaultText = ""
+        Me.Guna2TextBox18.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.Guna2TextBox18.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.Guna2TextBox18.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.Guna2TextBox18.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.Guna2TextBox18.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Guna2TextBox18.Font = New System.Drawing.Font("Segoe UI", 11.25!)
+        Me.Guna2TextBox18.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Guna2TextBox18.Location = New System.Drawing.Point(20, 462)
+        Me.Guna2TextBox18.Margin = New System.Windows.Forms.Padding(0, 0, 0, 16)
+        Me.Guna2TextBox18.MaxLength = 5
+        Me.Guna2TextBox18.Name = "Guna2TextBox18"
+        Me.Guna2TextBox18.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.Guna2TextBox18.PlaceholderForeColor = System.Drawing.Color.DarkGray
+        Me.Guna2TextBox18.PlaceholderText = "Enter Penalty"
+        Me.Guna2TextBox18.SelectedText = ""
+        Me.Guna2TextBox18.ShortcutsEnabled = False
+        Me.Guna2TextBox18.Size = New System.Drawing.Size(280, 40)
+        Me.Guna2TextBox18.TabIndex = 111
+        '
+        'Guna2HtmlLabel52
+        '
+        Me.Guna2HtmlLabel52.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2HtmlLabel52.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Guna2HtmlLabel52.Location = New System.Drawing.Point(20, 352)
+        Me.Guna2HtmlLabel52.Margin = New System.Windows.Forms.Padding(0, 0, 0, 4)
+        Me.Guna2HtmlLabel52.Name = "Guna2HtmlLabel52"
+        Me.Guna2HtmlLabel52.Size = New System.Drawing.Size(37, 23)
+        Me.Guna2HtmlLabel52.TabIndex = 110
+        Me.Guna2HtmlLabel52.Text = "LRN:"
+        '
+        'Guna2TextBox17
+        '
+        Me.Guna2TextBox17.BorderColor = System.Drawing.Color.Gray
+        Me.Guna2TextBox17.BorderRadius = 4
+        Me.Guna2TextBox17.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.Guna2TextBox17.DefaultText = ""
+        Me.Guna2TextBox17.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.Guna2TextBox17.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.Guna2TextBox17.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.Guna2TextBox17.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.Guna2TextBox17.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Guna2TextBox17.Font = New System.Drawing.Font("Segoe UI", 11.25!)
+        Me.Guna2TextBox17.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Guna2TextBox17.Location = New System.Drawing.Point(20, 379)
+        Me.Guna2TextBox17.Margin = New System.Windows.Forms.Padding(0, 0, 0, 16)
+        Me.Guna2TextBox17.MaxLength = 5
+        Me.Guna2TextBox17.Name = "Guna2TextBox17"
+        Me.Guna2TextBox17.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.Guna2TextBox17.PlaceholderForeColor = System.Drawing.Color.DarkGray
+        Me.Guna2TextBox17.PlaceholderText = "Enter Penalty"
+        Me.Guna2TextBox17.SelectedText = ""
+        Me.Guna2TextBox17.ShortcutsEnabled = False
+        Me.Guna2TextBox17.Size = New System.Drawing.Size(280, 40)
+        Me.Guna2TextBox17.TabIndex = 109
+        '
+        'Guna2HtmlLabel51
+        '
+        Me.Guna2HtmlLabel51.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2HtmlLabel51.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Guna2HtmlLabel51.Location = New System.Drawing.Point(20, 269)
+        Me.Guna2HtmlLabel51.Margin = New System.Windows.Forms.Padding(0, 0, 0, 4)
+        Me.Guna2HtmlLabel51.Name = "Guna2HtmlLabel51"
+        Me.Guna2HtmlLabel51.Size = New System.Drawing.Size(45, 23)
+        Me.Guna2HtmlLabel51.TabIndex = 108
+        Me.Guna2HtmlLabel51.Text = "Email:"
+        '
+        'Guna2TextBox16
+        '
+        Me.Guna2TextBox16.BorderColor = System.Drawing.Color.Gray
+        Me.Guna2TextBox16.BorderRadius = 4
+        Me.Guna2TextBox16.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.Guna2TextBox16.DefaultText = ""
+        Me.Guna2TextBox16.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.Guna2TextBox16.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.Guna2TextBox16.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.Guna2TextBox16.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.Guna2TextBox16.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Guna2TextBox16.Font = New System.Drawing.Font("Segoe UI", 11.25!)
+        Me.Guna2TextBox16.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Guna2TextBox16.Location = New System.Drawing.Point(20, 296)
+        Me.Guna2TextBox16.Margin = New System.Windows.Forms.Padding(0, 0, 0, 16)
+        Me.Guna2TextBox16.MaxLength = 5
+        Me.Guna2TextBox16.Name = "Guna2TextBox16"
+        Me.Guna2TextBox16.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.Guna2TextBox16.PlaceholderForeColor = System.Drawing.Color.DarkGray
+        Me.Guna2TextBox16.PlaceholderText = "Enter Penalty"
+        Me.Guna2TextBox16.SelectedText = ""
+        Me.Guna2TextBox16.ShortcutsEnabled = False
+        Me.Guna2TextBox16.Size = New System.Drawing.Size(280, 40)
+        Me.Guna2TextBox16.TabIndex = 107
+        '
+        'Guna2HtmlLabel49
+        '
+        Me.Guna2HtmlLabel49.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2HtmlLabel49.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Guna2HtmlLabel49.Location = New System.Drawing.Point(20, 186)
+        Me.Guna2HtmlLabel49.Margin = New System.Windows.Forms.Padding(0, 0, 0, 4)
+        Me.Guna2HtmlLabel49.Name = "Guna2HtmlLabel49"
+        Me.Guna2HtmlLabel49.Size = New System.Drawing.Size(62, 23)
+        Me.Guna2HtmlLabel49.TabIndex = 106
+        Me.Guna2HtmlLabel49.Text = "Section:"
+        '
+        'Guna2TextBox15
+        '
+        Me.Guna2TextBox15.BorderColor = System.Drawing.Color.Gray
+        Me.Guna2TextBox15.BorderRadius = 4
+        Me.Guna2TextBox15.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.Guna2TextBox15.DefaultText = ""
+        Me.Guna2TextBox15.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.Guna2TextBox15.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.Guna2TextBox15.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.Guna2TextBox15.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.Guna2TextBox15.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Guna2TextBox15.Font = New System.Drawing.Font("Segoe UI", 11.25!)
+        Me.Guna2TextBox15.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Guna2TextBox15.Location = New System.Drawing.Point(20, 213)
+        Me.Guna2TextBox15.Margin = New System.Windows.Forms.Padding(0, 0, 0, 16)
+        Me.Guna2TextBox15.MaxLength = 5
+        Me.Guna2TextBox15.Name = "Guna2TextBox15"
+        Me.Guna2TextBox15.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.Guna2TextBox15.PlaceholderForeColor = System.Drawing.Color.DarkGray
+        Me.Guna2TextBox15.PlaceholderText = "Enter Penalty"
+        Me.Guna2TextBox15.SelectedText = ""
+        Me.Guna2TextBox15.ShortcutsEnabled = False
+        Me.Guna2TextBox15.Size = New System.Drawing.Size(280, 40)
+        Me.Guna2TextBox15.TabIndex = 105
+        '
+        'Guna2HtmlLabel48
+        '
+        Me.Guna2HtmlLabel48.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2HtmlLabel48.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Guna2HtmlLabel48.Location = New System.Drawing.Point(20, 103)
+        Me.Guna2HtmlLabel48.Margin = New System.Windows.Forms.Padding(0, 0, 0, 4)
+        Me.Guna2HtmlLabel48.Name = "Guna2HtmlLabel48"
+        Me.Guna2HtmlLabel48.Size = New System.Drawing.Size(81, 23)
+        Me.Guna2HtmlLabel48.TabIndex = 104
+        Me.Guna2HtmlLabel48.Text = "Year Level:"
+        '
+        'Guna2TextBox12
+        '
+        Me.Guna2TextBox12.BorderColor = System.Drawing.Color.Gray
+        Me.Guna2TextBox12.BorderRadius = 4
+        Me.Guna2TextBox12.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.Guna2TextBox12.DefaultText = ""
+        Me.Guna2TextBox12.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.Guna2TextBox12.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.Guna2TextBox12.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.Guna2TextBox12.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.Guna2TextBox12.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Guna2TextBox12.Font = New System.Drawing.Font("Segoe UI", 11.25!)
+        Me.Guna2TextBox12.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Guna2TextBox12.Location = New System.Drawing.Point(20, 130)
+        Me.Guna2TextBox12.Margin = New System.Windows.Forms.Padding(0, 0, 0, 16)
+        Me.Guna2TextBox12.MaxLength = 5
+        Me.Guna2TextBox12.Name = "Guna2TextBox12"
+        Me.Guna2TextBox12.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.Guna2TextBox12.PlaceholderForeColor = System.Drawing.Color.DarkGray
+        Me.Guna2TextBox12.PlaceholderText = "Enter Penalty"
+        Me.Guna2TextBox12.SelectedText = ""
+        Me.Guna2TextBox12.ShortcutsEnabled = False
+        Me.Guna2TextBox12.Size = New System.Drawing.Size(280, 40)
+        Me.Guna2TextBox12.TabIndex = 103
+        '
+        'Guna2HtmlLabel46
+        '
+        Me.Guna2HtmlLabel46.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2HtmlLabel46.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Guna2HtmlLabel46.Location = New System.Drawing.Point(20, 20)
+        Me.Guna2HtmlLabel46.Margin = New System.Windows.Forms.Padding(0, 0, 0, 4)
+        Me.Guna2HtmlLabel46.Name = "Guna2HtmlLabel46"
+        Me.Guna2HtmlLabel46.Size = New System.Drawing.Size(79, 23)
+        Me.Guna2HtmlLabel46.TabIndex = 102
+        Me.Guna2HtmlLabel46.Text = "Full Name:"
+        '
+        'Guna2TextBox11
+        '
+        Me.Guna2TextBox11.BorderColor = System.Drawing.Color.Gray
+        Me.Guna2TextBox11.BorderRadius = 4
+        Me.Guna2TextBox11.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.Guna2TextBox11.DefaultText = ""
+        Me.Guna2TextBox11.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.Guna2TextBox11.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.Guna2TextBox11.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.Guna2TextBox11.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.Guna2TextBox11.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Guna2TextBox11.Font = New System.Drawing.Font("Segoe UI", 11.25!)
+        Me.Guna2TextBox11.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Guna2TextBox11.Location = New System.Drawing.Point(20, 47)
+        Me.Guna2TextBox11.Margin = New System.Windows.Forms.Padding(0, 0, 0, 16)
+        Me.Guna2TextBox11.MaxLength = 5
+        Me.Guna2TextBox11.Name = "Guna2TextBox11"
+        Me.Guna2TextBox11.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.Guna2TextBox11.PlaceholderForeColor = System.Drawing.Color.DarkGray
+        Me.Guna2TextBox11.PlaceholderText = "Enter Penalty"
+        Me.Guna2TextBox11.SelectedText = ""
+        Me.Guna2TextBox11.ShortcutsEnabled = False
+        Me.Guna2TextBox11.Size = New System.Drawing.Size(280, 40)
+        Me.Guna2TextBox11.TabIndex = 101
         '
         'SettingsTab
         '
@@ -8975,6 +9459,7 @@ Partial Class DashboardForm
         '
         Me.SettingsPanels.Controls.Add(Me.GeneralSettingsTab)
         Me.SettingsPanels.Controls.Add(Me.EmailSettingsTab)
+        Me.SettingsPanels.Controls.Add(Me.ServerSettingsTab)
         Me.SettingsPanels.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SettingsPanels.ItemSize = New System.Drawing.Size(180, 48)
         Me.SettingsPanels.Location = New System.Drawing.Point(0, 0)
@@ -9005,6 +9490,7 @@ Partial Class DashboardForm
         '
         'GeneralSettingsTab
         '
+        Me.GeneralSettingsTab.Controls.Add(Me.BTNSAVE)
         Me.GeneralSettingsTab.Controls.Add(Me.Guna2CheckBox1)
         Me.GeneralSettingsTab.Controls.Add(Me.chkEmail)
         Me.GeneralSettingsTab.Controls.Add(Me.Guna2Button27)
@@ -9026,6 +9512,23 @@ Partial Class DashboardForm
         Me.GeneralSettingsTab.TabIndex = 0
         Me.GeneralSettingsTab.Text = "General Settings"
         Me.GeneralSettingsTab.UseVisualStyleBackColor = True
+        '
+        'BTNSAVE
+        '
+        Me.BTNSAVE.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.BTNSAVE.BorderRadius = 4
+        Me.BTNSAVE.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.BTNSAVE.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.BTNSAVE.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.BTNSAVE.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTNSAVE.FillColor = System.Drawing.Color.Green
+        Me.BTNSAVE.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.BTNSAVE.ForeColor = System.Drawing.Color.White
+        Me.BTNSAVE.Location = New System.Drawing.Point(1407, 538)
+        Me.BTNSAVE.Name = "BTNSAVE"
+        Me.BTNSAVE.Size = New System.Drawing.Size(128, 40)
+        Me.BTNSAVE.TabIndex = 112
+        Me.BTNSAVE.Text = "Save"
         '
         'Guna2CheckBox1
         '
@@ -9265,6 +9768,7 @@ Partial Class DashboardForm
         '
         'EmailSettingsTab
         '
+        Me.EmailSettingsTab.Controls.Add(Me.Guna2Panel81)
         Me.EmailSettingsTab.Location = New System.Drawing.Point(4, 52)
         Me.EmailSettingsTab.Margin = New System.Windows.Forms.Padding(0)
         Me.EmailSettingsTab.Name = "EmailSettingsTab"
@@ -9272,6 +9776,276 @@ Partial Class DashboardForm
         Me.EmailSettingsTab.TabIndex = 1
         Me.EmailSettingsTab.Text = "Email Settings"
         Me.EmailSettingsTab.UseVisualStyleBackColor = True
+        '
+        'Guna2Panel81
+        '
+        Me.Guna2Panel81.Controls.Add(Me.BTNSAVEEMAILSETTINGS)
+        Me.Guna2Panel81.Controls.Add(Me.Guna2HtmlLabel43)
+        Me.Guna2Panel81.Controls.Add(Me.Guna2TextBox10)
+        Me.Guna2Panel81.Controls.Add(Me.Guna2HtmlLabel39)
+        Me.Guna2Panel81.Controls.Add(Me.Guna2TextBox9)
+        Me.Guna2Panel81.Controls.Add(Me.Guna2HtmlLabel36)
+        Me.Guna2Panel81.Controls.Add(Me.Guna2TextBox8)
+        Me.Guna2Panel81.Controls.Add(Me.Guna2HtmlLabel35)
+        Me.Guna2Panel81.Controls.Add(Me.Guna2TextBox7)
+        Me.Guna2Panel81.Controls.Add(Me.Guna2HtmlLabel32)
+        Me.Guna2Panel81.Controls.Add(Me.TXTEMAILPASSWORDSETTINGS)
+        Me.Guna2Panel81.Controls.Add(Me.Guna2HtmlLabel30)
+        Me.Guna2Panel81.Controls.Add(Me.TXTEMAILSETTINGS)
+        Me.Guna2Panel81.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Guna2Panel81.Location = New System.Drawing.Point(0, 0)
+        Me.Guna2Panel81.Margin = New System.Windows.Forms.Padding(0)
+        Me.Guna2Panel81.Name = "Guna2Panel81"
+        Me.Guna2Panel81.Padding = New System.Windows.Forms.Padding(20)
+        Me.Guna2Panel81.Size = New System.Drawing.Size(1558, 601)
+        Me.Guna2Panel81.TabIndex = 0
+        '
+        'BTNSAVEEMAILSETTINGS
+        '
+        Me.BTNSAVEEMAILSETTINGS.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.BTNSAVEEMAILSETTINGS.BorderRadius = 4
+        Me.BTNSAVEEMAILSETTINGS.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.BTNSAVEEMAILSETTINGS.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.BTNSAVEEMAILSETTINGS.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.BTNSAVEEMAILSETTINGS.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTNSAVEEMAILSETTINGS.FillColor = System.Drawing.Color.Green
+        Me.BTNSAVEEMAILSETTINGS.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.BTNSAVEEMAILSETTINGS.ForeColor = System.Drawing.Color.White
+        Me.BTNSAVEEMAILSETTINGS.Location = New System.Drawing.Point(1407, 538)
+        Me.BTNSAVEEMAILSETTINGS.Name = "BTNSAVEEMAILSETTINGS"
+        Me.BTNSAVEEMAILSETTINGS.Size = New System.Drawing.Size(128, 40)
+        Me.BTNSAVEEMAILSETTINGS.TabIndex = 113
+        Me.BTNSAVEEMAILSETTINGS.Text = "Save"
+        '
+        'Guna2HtmlLabel43
+        '
+        Me.Guna2HtmlLabel43.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2HtmlLabel43.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Guna2HtmlLabel43.Location = New System.Drawing.Point(466, 186)
+        Me.Guna2HtmlLabel43.Margin = New System.Windows.Forms.Padding(0, 0, 0, 4)
+        Me.Guna2HtmlLabel43.Name = "Guna2HtmlLabel43"
+        Me.Guna2HtmlLabel43.Size = New System.Drawing.Size(139, 23)
+        Me.Guna2HtmlLabel43.TabIndex = 112
+        Me.Guna2HtmlLabel43.Text = "Overdue Message:"
+        '
+        'Guna2TextBox10
+        '
+        Me.Guna2TextBox10.BorderColor = System.Drawing.Color.Gray
+        Me.Guna2TextBox10.BorderRadius = 4
+        Me.Guna2TextBox10.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.Guna2TextBox10.DefaultText = ""
+        Me.Guna2TextBox10.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.Guna2TextBox10.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.Guna2TextBox10.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.Guna2TextBox10.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.Guna2TextBox10.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Guna2TextBox10.Font = New System.Drawing.Font("Segoe UI", 11.25!)
+        Me.Guna2TextBox10.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Guna2TextBox10.Location = New System.Drawing.Point(466, 213)
+        Me.Guna2TextBox10.Margin = New System.Windows.Forms.Padding(0, 0, 0, 16)
+        Me.Guna2TextBox10.MaxLength = 5
+        Me.Guna2TextBox10.Multiline = True
+        Me.Guna2TextBox10.Name = "Guna2TextBox10"
+        Me.Guna2TextBox10.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.Guna2TextBox10.PlaceholderForeColor = System.Drawing.Color.DarkGray
+        Me.Guna2TextBox10.PlaceholderText = "Enter Penalty"
+        Me.Guna2TextBox10.SelectedText = ""
+        Me.Guna2TextBox10.ShortcutsEnabled = False
+        Me.Guna2TextBox10.Size = New System.Drawing.Size(526, 123)
+        Me.Guna2TextBox10.TabIndex = 111
+        '
+        'Guna2HtmlLabel39
+        '
+        Me.Guna2HtmlLabel39.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2HtmlLabel39.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Guna2HtmlLabel39.Location = New System.Drawing.Point(1012, 186)
+        Me.Guna2HtmlLabel39.Margin = New System.Windows.Forms.Padding(0, 0, 0, 4)
+        Me.Guna2HtmlLabel39.Name = "Guna2HtmlLabel39"
+        Me.Guna2HtmlLabel39.Size = New System.Drawing.Size(193, 23)
+        Me.Guna2HtmlLabel39.TabIndex = 110
+        Me.Guna2HtmlLabel39.Text = "Before Overdue Message:"
+        '
+        'Guna2TextBox9
+        '
+        Me.Guna2TextBox9.BorderColor = System.Drawing.Color.Gray
+        Me.Guna2TextBox9.BorderRadius = 4
+        Me.Guna2TextBox9.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.Guna2TextBox9.DefaultText = ""
+        Me.Guna2TextBox9.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.Guna2TextBox9.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.Guna2TextBox9.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.Guna2TextBox9.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.Guna2TextBox9.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Guna2TextBox9.Font = New System.Drawing.Font("Segoe UI", 11.25!)
+        Me.Guna2TextBox9.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Guna2TextBox9.Location = New System.Drawing.Point(1012, 213)
+        Me.Guna2TextBox9.Margin = New System.Windows.Forms.Padding(0, 0, 0, 16)
+        Me.Guna2TextBox9.MaxLength = 5
+        Me.Guna2TextBox9.Multiline = True
+        Me.Guna2TextBox9.Name = "Guna2TextBox9"
+        Me.Guna2TextBox9.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.Guna2TextBox9.PlaceholderForeColor = System.Drawing.Color.DarkGray
+        Me.Guna2TextBox9.PlaceholderText = "Enter Penalty"
+        Me.Guna2TextBox9.SelectedText = ""
+        Me.Guna2TextBox9.ShortcutsEnabled = False
+        Me.Guna2TextBox9.Size = New System.Drawing.Size(526, 123)
+        Me.Guna2TextBox9.TabIndex = 109
+        '
+        'Guna2HtmlLabel36
+        '
+        Me.Guna2HtmlLabel36.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2HtmlLabel36.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Guna2HtmlLabel36.Location = New System.Drawing.Point(466, 20)
+        Me.Guna2HtmlLabel36.Margin = New System.Windows.Forms.Padding(0, 0, 0, 4)
+        Me.Guna2HtmlLabel36.Name = "Guna2HtmlLabel36"
+        Me.Guna2HtmlLabel36.Size = New System.Drawing.Size(130, 23)
+        Me.Guna2HtmlLabel36.TabIndex = 108
+        Me.Guna2HtmlLabel36.Text = "Borrow Message:"
+        '
+        'Guna2TextBox8
+        '
+        Me.Guna2TextBox8.BorderColor = System.Drawing.Color.Gray
+        Me.Guna2TextBox8.BorderRadius = 4
+        Me.Guna2TextBox8.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.Guna2TextBox8.DefaultText = ""
+        Me.Guna2TextBox8.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.Guna2TextBox8.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.Guna2TextBox8.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.Guna2TextBox8.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.Guna2TextBox8.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Guna2TextBox8.Font = New System.Drawing.Font("Segoe UI", 11.25!)
+        Me.Guna2TextBox8.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Guna2TextBox8.Location = New System.Drawing.Point(466, 47)
+        Me.Guna2TextBox8.Margin = New System.Windows.Forms.Padding(0, 0, 20, 16)
+        Me.Guna2TextBox8.MaxLength = 5
+        Me.Guna2TextBox8.Multiline = True
+        Me.Guna2TextBox8.Name = "Guna2TextBox8"
+        Me.Guna2TextBox8.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.Guna2TextBox8.PlaceholderForeColor = System.Drawing.Color.DarkGray
+        Me.Guna2TextBox8.PlaceholderText = "Enter Penalty"
+        Me.Guna2TextBox8.SelectedText = ""
+        Me.Guna2TextBox8.ShortcutsEnabled = False
+        Me.Guna2TextBox8.Size = New System.Drawing.Size(526, 123)
+        Me.Guna2TextBox8.TabIndex = 107
+        '
+        'Guna2HtmlLabel35
+        '
+        Me.Guna2HtmlLabel35.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2HtmlLabel35.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Guna2HtmlLabel35.Location = New System.Drawing.Point(1012, 20)
+        Me.Guna2HtmlLabel35.Margin = New System.Windows.Forms.Padding(0, 0, 0, 4)
+        Me.Guna2HtmlLabel35.Name = "Guna2HtmlLabel35"
+        Me.Guna2HtmlLabel35.Size = New System.Drawing.Size(125, 23)
+        Me.Guna2HtmlLabel35.TabIndex = 106
+        Me.Guna2HtmlLabel35.Text = "Return Message:"
+        '
+        'Guna2TextBox7
+        '
+        Me.Guna2TextBox7.BorderColor = System.Drawing.Color.Gray
+        Me.Guna2TextBox7.BorderRadius = 4
+        Me.Guna2TextBox7.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.Guna2TextBox7.DefaultText = ""
+        Me.Guna2TextBox7.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.Guna2TextBox7.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.Guna2TextBox7.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.Guna2TextBox7.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.Guna2TextBox7.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Guna2TextBox7.Font = New System.Drawing.Font("Segoe UI", 11.25!)
+        Me.Guna2TextBox7.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Guna2TextBox7.Location = New System.Drawing.Point(1012, 47)
+        Me.Guna2TextBox7.Margin = New System.Windows.Forms.Padding(0, 0, 0, 16)
+        Me.Guna2TextBox7.MaxLength = 5
+        Me.Guna2TextBox7.Multiline = True
+        Me.Guna2TextBox7.Name = "Guna2TextBox7"
+        Me.Guna2TextBox7.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.Guna2TextBox7.PlaceholderForeColor = System.Drawing.Color.DarkGray
+        Me.Guna2TextBox7.PlaceholderText = "Enter Penalty"
+        Me.Guna2TextBox7.SelectedText = ""
+        Me.Guna2TextBox7.ShortcutsEnabled = False
+        Me.Guna2TextBox7.Size = New System.Drawing.Size(526, 123)
+        Me.Guna2TextBox7.TabIndex = 105
+        '
+        'Guna2HtmlLabel32
+        '
+        Me.Guna2HtmlLabel32.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2HtmlLabel32.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Guna2HtmlLabel32.Location = New System.Drawing.Point(20, 103)
+        Me.Guna2HtmlLabel32.Margin = New System.Windows.Forms.Padding(0, 0, 0, 4)
+        Me.Guna2HtmlLabel32.Name = "Guna2HtmlLabel32"
+        Me.Guna2HtmlLabel32.Size = New System.Drawing.Size(118, 23)
+        Me.Guna2HtmlLabel32.TabIndex = 104
+        Me.Guna2HtmlLabel32.Text = "Email Password:"
+        '
+        'TXTEMAILPASSWORDSETTINGS
+        '
+        Me.TXTEMAILPASSWORDSETTINGS.BorderColor = System.Drawing.Color.Gray
+        Me.TXTEMAILPASSWORDSETTINGS.BorderRadius = 4
+        Me.TXTEMAILPASSWORDSETTINGS.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TXTEMAILPASSWORDSETTINGS.DefaultText = ""
+        Me.TXTEMAILPASSWORDSETTINGS.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TXTEMAILPASSWORDSETTINGS.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TXTEMAILPASSWORDSETTINGS.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTEMAILPASSWORDSETTINGS.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTEMAILPASSWORDSETTINGS.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTEMAILPASSWORDSETTINGS.Font = New System.Drawing.Font("Segoe UI", 11.25!)
+        Me.TXTEMAILPASSWORDSETTINGS.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTEMAILPASSWORDSETTINGS.Location = New System.Drawing.Point(20, 130)
+        Me.TXTEMAILPASSWORDSETTINGS.Margin = New System.Windows.Forms.Padding(0, 0, 0, 16)
+        Me.TXTEMAILPASSWORDSETTINGS.MaxLength = 5
+        Me.TXTEMAILPASSWORDSETTINGS.Name = "TXTEMAILPASSWORDSETTINGS"
+        Me.TXTEMAILPASSWORDSETTINGS.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TXTEMAILPASSWORDSETTINGS.PlaceholderForeColor = System.Drawing.Color.DarkGray
+        Me.TXTEMAILPASSWORDSETTINGS.PlaceholderText = "Enter Password"
+        Me.TXTEMAILPASSWORDSETTINGS.SelectedText = ""
+        Me.TXTEMAILPASSWORDSETTINGS.ShortcutsEnabled = False
+        Me.TXTEMAILPASSWORDSETTINGS.Size = New System.Drawing.Size(280, 40)
+        Me.TXTEMAILPASSWORDSETTINGS.TabIndex = 103
+        '
+        'Guna2HtmlLabel30
+        '
+        Me.Guna2HtmlLabel30.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2HtmlLabel30.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Guna2HtmlLabel30.Location = New System.Drawing.Point(20, 20)
+        Me.Guna2HtmlLabel30.Margin = New System.Windows.Forms.Padding(0, 0, 0, 4)
+        Me.Guna2HtmlLabel30.Name = "Guna2HtmlLabel30"
+        Me.Guna2HtmlLabel30.Size = New System.Drawing.Size(45, 23)
+        Me.Guna2HtmlLabel30.TabIndex = 102
+        Me.Guna2HtmlLabel30.Text = "Email:"
+        '
+        'TXTEMAILSETTINGS
+        '
+        Me.TXTEMAILSETTINGS.BorderColor = System.Drawing.Color.Gray
+        Me.TXTEMAILSETTINGS.BorderRadius = 4
+        Me.TXTEMAILSETTINGS.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TXTEMAILSETTINGS.DefaultText = ""
+        Me.TXTEMAILSETTINGS.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TXTEMAILSETTINGS.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TXTEMAILSETTINGS.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTEMAILSETTINGS.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTEMAILSETTINGS.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTEMAILSETTINGS.Font = New System.Drawing.Font("Segoe UI", 11.25!)
+        Me.TXTEMAILSETTINGS.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTEMAILSETTINGS.Location = New System.Drawing.Point(20, 47)
+        Me.TXTEMAILSETTINGS.Margin = New System.Windows.Forms.Padding(0, 0, 0, 16)
+        Me.TXTEMAILSETTINGS.MaxLength = 5
+        Me.TXTEMAILSETTINGS.Name = "TXTEMAILSETTINGS"
+        Me.TXTEMAILSETTINGS.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TXTEMAILSETTINGS.PlaceholderForeColor = System.Drawing.Color.DarkGray
+        Me.TXTEMAILSETTINGS.PlaceholderText = "e.g., example@gmail.com"
+        Me.TXTEMAILSETTINGS.SelectedText = ""
+        Me.TXTEMAILSETTINGS.ShortcutsEnabled = False
+        Me.TXTEMAILSETTINGS.Size = New System.Drawing.Size(280, 40)
+        Me.TXTEMAILSETTINGS.TabIndex = 101
+        '
+        'ServerSettingsTab
+        '
+        Me.ServerSettingsTab.Location = New System.Drawing.Point(4, 52)
+        Me.ServerSettingsTab.Name = "ServerSettingsTab"
+        Me.ServerSettingsTab.Padding = New System.Windows.Forms.Padding(3)
+        Me.ServerSettingsTab.Size = New System.Drawing.Size(1558, 601)
+        Me.ServerSettingsTab.TabIndex = 2
+        Me.ServerSettingsTab.Text = "Server Settings"
+        Me.ServerSettingsTab.UseVisualStyleBackColor = True
         '
         'AuditTrailTab
         '
@@ -9515,7 +10289,7 @@ Partial Class DashboardForm
         DataGridViewCellStyle80.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.Guna2DataGridView10.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle80
         Me.Guna2DataGridView10.ColumnHeadersHeight = 48
-        Me.Guna2DataGridView10.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn59, Me.DataGridViewCheckBoxColumn15, Me.DataGridViewTextBoxColumn60})
+        Me.Guna2DataGridView10.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn59, Me.DataGridViewCheckBoxColumn15, Me.DataGridViewTextBoxColumn60, Me.Column63})
         Me.Guna2DataGridView10.ContextMenuStrip = Me.DGMAINTENANCECONTEXTMENU
         DataGridViewCellStyle81.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle81.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(239, Byte), Integer))
@@ -9577,11 +10351,16 @@ Partial Class DashboardForm
         'DataGridViewTextBoxColumn60
         '
         Me.DataGridViewTextBoxColumn60.DataPropertyName = "department_name"
-        Me.DataGridViewTextBoxColumn60.HeaderText = "Department Name"
+        Me.DataGridViewTextBoxColumn60.HeaderText = "Name"
         Me.DataGridViewTextBoxColumn60.MaxInputLength = 50
         Me.DataGridViewTextBoxColumn60.Name = "DataGridViewTextBoxColumn60"
         Me.DataGridViewTextBoxColumn60.ReadOnly = True
         Me.DataGridViewTextBoxColumn60.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
+        'Column63
+        '
+        Me.Column63.HeaderText = "Action"
+        Me.Column63.Name = "Column63"
         '
         'ActiveLogs
         '
@@ -9782,7 +10561,7 @@ Partial Class DashboardForm
         DataGridViewCellStyle83.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.Guna2DataGridView11.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle83
         Me.Guna2DataGridView11.ColumnHeadersHeight = 48
-        Me.Guna2DataGridView11.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn61, Me.DataGridViewCheckBoxColumn16, Me.DataGridViewTextBoxColumn62})
+        Me.Guna2DataGridView11.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn61, Me.DataGridViewCheckBoxColumn16, Me.DataGridViewTextBoxColumn62, Me.Column62})
         Me.Guna2DataGridView11.ContextMenuStrip = Me.DGMAINTENANCECONTEXTMENU
         DataGridViewCellStyle84.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle84.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(239, Byte), Integer))
@@ -9844,11 +10623,16 @@ Partial Class DashboardForm
         'DataGridViewTextBoxColumn62
         '
         Me.DataGridViewTextBoxColumn62.DataPropertyName = "department_name"
-        Me.DataGridViewTextBoxColumn62.HeaderText = "Department Name"
+        Me.DataGridViewTextBoxColumn62.HeaderText = "Name"
         Me.DataGridViewTextBoxColumn62.MaxInputLength = 50
         Me.DataGridViewTextBoxColumn62.Name = "DataGridViewTextBoxColumn62"
         Me.DataGridViewTextBoxColumn62.ReadOnly = True
         Me.DataGridViewTextBoxColumn62.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
+        'Column62
+        '
+        Me.Column62.HeaderText = "Action"
+        Me.Column62.Name = "Column62"
         '
         'Guna2Panel1
         '
@@ -10176,10 +10960,16 @@ Partial Class DashboardForm
         Me.Guna2Panel73.PerformLayout
         Me.Guna2Panel74.ResumeLayout(False)
         CType(Me.DGBORROWEDREPORT, System.ComponentModel.ISupportInitialize).EndInit
+        Me.AccountTab.ResumeLayout(False)
+        Me.Guna2Panel82.ResumeLayout(False)
+        Me.Guna2Panel82.PerformLayout
         Me.SettingsTab.ResumeLayout(False)
         Me.SettingsPanels.ResumeLayout(False)
         Me.GeneralSettingsTab.ResumeLayout(False)
         Me.GeneralSettingsTab.PerformLayout
+        Me.EmailSettingsTab.ResumeLayout(False)
+        Me.Guna2Panel81.ResumeLayout(False)
+        Me.Guna2Panel81.PerformLayout
         Me.AuditTrailTab.ResumeLayout(False)
         Me.AuditTrailPanels.ResumeLayout(False)
         Me.ActivityLogTab.ResumeLayout(False)
@@ -10535,9 +11325,6 @@ Partial Class DashboardForm
     Friend WithEvents BTNBOOKREPORTNEXT As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Guna2Panel62 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents DGBOOKREPORT As Guna.UI2.WinForms.Guna2DataGridView
-    Friend WithEvents DataGridViewTextBoxColumn49 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewCheckBoxColumn5 As DataGridViewCheckBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn50 As DataGridViewTextBoxColumn
     Friend WithEvents TableLayoutPanel23 As TableLayoutPanel
     Friend WithEvents Guna2Panel63 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents TXTEXPENDITUREREPORTSEARCH As Guna.UI2.WinForms.Guna2TextBox
@@ -10549,9 +11336,6 @@ Partial Class DashboardForm
     Friend WithEvents BTNEXPENDITUREREPORTNEXT As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Guna2Panel65 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents DGEXPENDITUREREPORT As Guna.UI2.WinForms.Guna2DataGridView
-    Friend WithEvents DataGridViewTextBoxColumn51 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewCheckBoxColumn11 As DataGridViewCheckBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn52 As DataGridViewTextBoxColumn
     Friend WithEvents TableLayoutPanel24 As TableLayoutPanel
     Friend WithEvents Guna2Panel66 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents TXTFINESREPORTSSEARCH As Guna.UI2.WinForms.Guna2TextBox
@@ -10563,9 +11347,6 @@ Partial Class DashboardForm
     Friend WithEvents BTNFINESREPORTNEXT As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Guna2Panel68 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents DGFINESREPORT As Guna.UI2.WinForms.Guna2DataGridView
-    Friend WithEvents DataGridViewTextBoxColumn53 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewCheckBoxColumn12 As DataGridViewCheckBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn54 As DataGridViewTextBoxColumn
     Friend WithEvents TableLayoutPanel25 As TableLayoutPanel
     Friend WithEvents Guna2Panel69 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents TXTBORROWERREPORTSEARH As Guna.UI2.WinForms.Guna2TextBox
@@ -10577,9 +11358,6 @@ Partial Class DashboardForm
     Friend WithEvents BTNBORROWERREPORTNEXT As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Guna2Panel71 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents DGBORROWERERREPORT As Guna.UI2.WinForms.Guna2DataGridView
-    Friend WithEvents DataGridViewTextBoxColumn55 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewCheckBoxColumn13 As DataGridViewCheckBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn56 As DataGridViewTextBoxColumn
     Friend WithEvents TableLayoutPanel26 As TableLayoutPanel
     Friend WithEvents Guna2Panel72 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents TXTBORROWEDREPORTSSEARCH As Guna.UI2.WinForms.Guna2TextBox
@@ -10605,9 +11383,6 @@ Partial Class DashboardForm
     Friend WithEvents Guna2Button24 As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Guna2Panel77 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents Guna2DataGridView10 As Guna.UI2.WinForms.Guna2DataGridView
-    Friend WithEvents DataGridViewTextBoxColumn59 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewCheckBoxColumn15 As DataGridViewCheckBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn60 As DataGridViewTextBoxColumn
     Friend WithEvents TableLayoutPanel28 As TableLayoutPanel
     Friend WithEvents Guna2Panel78 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents Guna2TextBox14 As Guna.UI2.WinForms.Guna2TextBox
@@ -10619,9 +11394,6 @@ Partial Class DashboardForm
     Friend WithEvents Guna2Button26 As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Guna2Panel80 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents Guna2DataGridView11 As Guna.UI2.WinForms.Guna2DataGridView
-    Friend WithEvents DataGridViewTextBoxColumn61 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewCheckBoxColumn16 As DataGridViewCheckBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn62 As DataGridViewTextBoxColumn
     Friend WithEvents CMBSTUDENTFILTER As Guna.UI2.WinForms.Guna2ComboBox
     Friend WithEvents TXTQUANTITY As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Guna2HtmlLabel41 As Guna.UI2.WinForms.Guna2HtmlLabel
@@ -10799,4 +11571,72 @@ Partial Class DashboardForm
     Friend WithEvents Column28 As DataGridViewTextBoxColumn
     Friend WithEvents Column31 As DataGridViewTextBoxColumn
     Friend WithEvents ColumnOverdueDate As DataGridViewTextBoxColumn
+    Friend WithEvents Guna2Panel81 As Guna.UI2.WinForms.Guna2Panel
+    Friend WithEvents Guna2HtmlLabel43 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Guna2TextBox10 As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents Guna2HtmlLabel39 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Guna2TextBox9 As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents Guna2HtmlLabel36 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Guna2TextBox8 As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents Guna2HtmlLabel35 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Guna2TextBox7 As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents Guna2HtmlLabel32 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents TXTEMAILPASSWORDSETTINGS As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents Guna2HtmlLabel30 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents TXTEMAILSETTINGS As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents BTNSAVE As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents BTNSAVEEMAILSETTINGS As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents ServerSettingsTab As TabPage
+    Friend WithEvents DataGridViewTextBoxColumn51 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewCheckBoxColumn11 As DataGridViewCheckBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn52 As DataGridViewTextBoxColumn
+    Friend WithEvents Column30 As DataGridViewTextBoxColumn
+    Friend WithEvents Column29 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn53 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewCheckBoxColumn12 As DataGridViewCheckBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn54 As DataGridViewTextBoxColumn
+    Friend WithEvents Column55 As DataGridViewTextBoxColumn
+    Friend WithEvents Column56 As DataGridViewTextBoxColumn
+    Friend WithEvents Column57 As DataGridViewTextBoxColumn
+    Friend WithEvents Column59 As DataGridViewTextBoxColumn
+    Friend WithEvents Column60 As DataGridViewTextBoxColumn
+    Friend WithEvents Column58 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn55 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewCheckBoxColumn13 As DataGridViewCheckBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn56 As DataGridViewTextBoxColumn
+    Friend WithEvents Column61 As DataGridViewTextBoxColumn
+    Friend WithEvents Guna2Panel82 As Guna.UI2.WinForms.Guna2Panel
+    Friend WithEvents Guna2Button5 As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents Guna2HtmlLabel58 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Guna2TextBox21 As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents Guna2HtmlLabel57 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Guna2TextBox20 As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents Guna2HtmlLabel55 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Guna2TextBox19 As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents Guna2HtmlLabel54 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Guna2TextBox18 As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents Guna2HtmlLabel52 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Guna2TextBox17 As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents Guna2HtmlLabel51 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Guna2TextBox16 As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents Guna2HtmlLabel49 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Guna2TextBox15 As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents Guna2HtmlLabel48 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Guna2TextBox12 As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents Guna2HtmlLabel46 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Guna2TextBox11 As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents DataGridViewTextBoxColumn59 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewCheckBoxColumn15 As DataGridViewCheckBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn60 As DataGridViewTextBoxColumn
+    Friend WithEvents Column63 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn61 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewCheckBoxColumn16 As DataGridViewCheckBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn62 As DataGridViewTextBoxColumn
+    Friend WithEvents Column62 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn49 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewCheckBoxColumn5 As DataGridViewCheckBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn50 As DataGridViewTextBoxColumn
+    Friend WithEvents Column64 As DataGridViewTextBoxColumn
+    Friend WithEvents Column65 As DataGridViewTextBoxColumn
+    Friend WithEvents Column22 As DataGridViewTextBoxColumn
 End Class

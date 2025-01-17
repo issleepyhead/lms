@@ -1706,6 +1706,7 @@ Public Class DashboardForm
             CMBTRANSACTIONFILTER_SelectedIndexChanged(CMBTRANSACTIONFILTER, Nothing)
         End If
     End Sub
+
 #End Region
 
 End Class
