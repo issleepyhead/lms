@@ -1639,6 +1639,22 @@ Public Class DashboardForm
 
                 CMBDONATORCOPIES.DataSource = dtDonator
                 CMBSUPPLIERCOPIES.DataSource = dtSupplier
+            Case MainFormPanels.SelectedTab.Equals(SettingsTab)
+                Dim dt As DataTable = ExecFetch("SELECT * FROM tblappsettings")
+
+                If dt.Rows.Count = 0 Then
+                    Return
+                End If
+                With dt.Rows.Item(0)
+                    CHCKSETNOTIF.Checked = If(.Item("enable_notification") > 0, True, False)
+                    CHCKSETGLOBALP.Checked = If(.Item("gpenalty") > 0, True, False)
+                    TXTSETSPENALTY.Text = .Item("spenalty")
+                    TXTSETFPENALTY.Text = .Item("fpenalty")
+                    TXTSETSDAYS.Text = .Item("sdays")
+                    TXTSETFDAYS.Text = .Item("fdays")
+                    TXTSETSCOUNT.Text = .Item("s_count")
+                    TXTSETFCOUNT.Text = .Item("f_count")
+                End With
         End Select
     End Sub
 
@@ -1660,8 +1676,8 @@ Public Class DashboardForm
     Private Sub TXTTRANSACTIONSEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTTRANSACTIONSEARCH.TextChanged
         Select Case True
             Case MainFormPanels.SelectedTab.Equals(BookTransactionTab)
-                TransactionTimer.Enabled = True
-                TransactionTimer.Start()
+                'TransactionTimer.Enabled = True
+                'TransactionTimer.Start()
                 If CMBTRANSACTIONFILTER.Text = "Active" Then
                     DGTRANSACTION.DataSource = FetchTransactions(1, TXTTRANSACTIONSEARCH.Text)
                 ElseIf CMBTRANSACTIONFILTER.Text = "Overdue" Then
@@ -1672,8 +1688,8 @@ Public Class DashboardForm
                 LBLTRANSACTIONNEXT.Text = BaseMaintenance.PMAX
                 LBLTRANSACTIONPREV.Text = BaseMaintenance.PPrev
             Case Else
-                TransactionTimer.Enabled = False
-                TransactionTimer.Stop()
+                'TransactionTimer.Enabled = False
+                'TransactionTimer.Stop()
         End Select
     End Sub
 
@@ -1702,9 +1718,103 @@ Public Class DashboardForm
     End Sub
 
     Private Sub TransactionTimer_Tick(sender As Object, e As EventArgs) Handles TransactionTimer.Tick
-        If MainFormPanels.SelectedTab.Equals(BookTransactionTab) Then
-            CMBTRANSACTIONFILTER_SelectedIndexChanged(CMBTRANSACTIONFILTER, Nothing)
+        'If MainFormPanels.SelectedTab.Equals(BookTransactionTab) Then
+        '    CMBTRANSACTIONFILTER_SelectedIndexChanged(CMBTRANSACTIONFILTER, Nothing)
+        'End If
+    End Sub
+
+    Private Sub BTNSAVEGENSET_Click(sender As Object, e As EventArgs) Handles BTNSAVEGENSET.Click
+        Dim params As New Dictionary(Of String, String) From {
+            {"@gp", If(CHCKSETGLOBALP.Checked, 1, 0)},
+            {"@en", If(CHCKSETNOTIF.Checked, 1, 0)},
+            {"@sp", TXTSETFPENALTY.Text},
+            {"@fp", TXTSETFPENALTY.Text},
+            {"@sd", TXTSETSDAYS.Text},
+            {"@fd", TXTSETFDAYS.Text},
+            {"@sc", TXTSETSCOUNT.Text},
+            {"@fc", TXTSETFCOUNT.Text}
+        }
+        If ExecNonQuery("UPDATE tblappsettings SET gpenalty = @gp, spenalty = @sp, fpenalty = @fp, s_count = @sc, f_count = @fc, enable_notification = @en, sdays = @sd, fdays = @fd WHERE id > 0", params) > 0 Then
+            MessageBox.Show("General settings has been updated.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Else
+            MessageBox.Show("Failed to update General settings.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
         End If
+    End Sub
+
+    Private Sub SettingsPanels_SelectedIndexChanged(sender As Object, e As EventArgs) Handles SettingsPanels.SelectedIndexChanged
+        Dim dt As DataTable = ExecFetch("SELECT * FROM tblappsettings")
+
+        If dt.Rows.Count = 0 Then
+            Return
+        End If
+        With dt.Rows.Item(0)
+            Select Case True
+                Case SettingsPanels.SelectedTab.Equals(GeneralSettingsTab)
+
+                    CHCKSETNOTIF.Checked = If(.Item("enable_notification") > 0, True, False)
+                    CHCKSETGLOBALP.Checked = If(.Item("gpenalty") > 0, True, False)
+                    TXTSETSPENALTY.Text = .Item("spenalty")
+                    TXTSETFPENALTY.Text = .Item("fpenalty")
+                    TXTSETSDAYS.Text = .Item("sdays")
+                    TXTSETFDAYS.Text = .Item("fdays")
+                    TXTSETSCOUNT.Text = .Item("s_count")
+                    TXTSETFCOUNT.Text = .Item("f_count")
+                Case SettingsPanels.SelectedTab.Equals(EmailSettingsTab)
+                    TXTEMAILPASSWORDSETTINGS.Text = .Item("e_pass")
+                    TXTSETRETURN.Text = .Item("return_message")
+                    TXTSETOVERDUE.Text = .Item("overdue_message")
+                    TXTSETBORROW.Text = .Item("borrow_message")
+                    TXTEMAILSETTINGS.Text = .Item("app_email")
+                    TXTSETBEFORE.Text = .Item("boverdue_message")
+                Case SettingsPanels.SelectedTab.Equals(ServerSettingsTab)
+                    TXTSETIP.Text = My.Settings.server_name
+                    TXTSETUSERNAME.Text = My.Settings.server_username
+                    TXTSETSERPASS.Text = My.Settings.server_password
+                    TXTSETPORT.Text = My.Settings.server_port
+
+            End Select
+        End With
+    End Sub
+
+    Private Sub BTNEMAILSET_Click(sender As Object, e As EventArgs) Handles BTNEMAILSET.Click
+        Dim params As New Dictionary(Of String, String) From {
+            {"@email", TXTEMAILSETTINGS.Text},
+            {"@pass", TXTEMAILPASSWORDSETTINGS.Text},
+            {"@overdue", TXTSETOVERDUE.Text},
+            {"@borrow", TXTSETBORROW.Text},
+            {"@before", TXTSETBEFORE.Text},
+            {"@return", TXTSETRETURN.Text}
+        }
+
+        If ExecNonQuery("UPDATE tblappsettings SET app_email = @email, e_pass = @pass, return_message = @return, overdue_message = @overdue, borrow_message = @borrow, boverdue_message = @before WHERE id > 0", params) > 0 Then
+            MessageBox.Show("Email settings has been updated.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Else
+            MessageBox.Show("Failed to update Email settings.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        End If
+    End Sub
+
+    Private Sub BTNSAVEPATH_Click(sender As Object, e As EventArgs) Handles BTNSAVEPATH.Click
+        Using dialog As New FolderBrowserDialog()
+            If dialog.ShowDialog() = DialogResult.OK Then
+                My.Settings.backup_folder = dialog.SelectedPath
+                TXTSETPATH.Text = dialog.SelectedPath
+            End If
+        End Using
+    End Sub
+
+    Private Sub BTNSETSERVER_Click(sender As Object, e As EventArgs) Handles BTNSETSERVER.Click
+        MsgBox(My.Settings.server_password)
+        If TestConnection(TXTSETIP.Text, TXTSETUSERNAME.Text, TXTSETPORT.Text, TXTSETSERPASS.Text) Then
+            My.Settings.server_name = TXTSETIP.Text
+            My.Settings.server_username = TXTSETUSERNAME.Text
+            My.Settings.server_password = TXTSETSERPASS.Text
+            My.Settings.server_port = TXTSETPORT.Text
+            My.Settings.Save()
+            MessageBox.Show("Server Settings has been updated.", "Successs!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Else
+            MessageBox.Show("Faild to update server settings.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        End If
+
     End Sub
 
 #End Region

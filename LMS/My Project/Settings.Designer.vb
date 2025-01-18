@@ -384,6 +384,18 @@ Namespace My
                 Me("before_overdue_message") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property backup_folder() As String
+            Get
+                Return CType(Me("backup_folder"),String)
+            End Get
+            Set
+                Me("backup_folder") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

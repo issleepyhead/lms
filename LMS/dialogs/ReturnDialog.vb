@@ -96,6 +96,18 @@ Public Class ReturnDialog
                 row.Cells(NameOf(chckBoxBorrowCopies)).ReadOnly = True
             End If
         Next
+
+        Dim saveEnable As Boolean = False
+        For Each row As DataGridViewRow In DGBORROWEDCOPIES.Rows
+            Dim bound As DataRowView = TryCast(row.DataBoundItem, DataRowView)
+            If IsDBNull(bound.Item("returned_condition")) Then
+                saveEnable = True
+                Exit For
+            End If
+        Next
+
+        BTNSAVE.Enabled = saveEnable
+        ReturnAllToolStripMenuItem.Enabled = saveEnable
     End Sub
 
     Private Sub DGBORROWEDCOPIES_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles DGBORROWEDCOPIES.CellFormatting
@@ -112,7 +124,9 @@ Public Class ReturnDialog
 
     Private Sub SelectAllToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SelectAllToolStripMenuItem.Click
         For Each row As DataGridViewRow In DGBORROWEDCOPIES.Rows
-            row.Cells(NameOf(chckBoxBorrowCopies)).Value = True
+            If Not row.Cells(NameOf(chckBoxBorrowCopies)).ReadOnly Then
+                row.Cells(NameOf(chckBoxBorrowCopies)).Value = True
+            End If
         Next
         DGBORROWEDCOPIES.EndEdit()
     End Sub
@@ -126,6 +140,19 @@ Public Class ReturnDialog
 
     Private Sub ReturnAllToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReturnAllToolStripMenuItem.Click
         DGBORROWEDCOPIES.EndEdit()
+        Dim hasSelected As Boolean = False
+        For Each row As DataGridViewRow In DGBORROWEDCOPIES.Rows
+            If CBool(row.Cells(NameOf(chckBoxBorrowCopies)).Value) Then
+                hasSelected = True
+                Exit For
+            End If
+        Next
+
+        If Not hasSelected Then
+            MessageBox.Show("Please select a book to return.", "No Books Selected!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Exit Sub
+        End If
+
         Dim collection As New List(Of Dictionary(Of String, String))
         For Each dt As DataGridViewRow In DGBORROWEDCOPIES.Rows
             If CBool(dt.Cells(NameOf(chckBoxBorrowCopies)).Value) Then
@@ -142,6 +169,10 @@ Public Class ReturnDialog
 
         If ReturnBooks(_id, collection) Then
             MessageBox.Show("The books borrowed have been returned successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            For Each row As DataGridViewRow In DGBORROWEDCOPIES.Rows
+                row.Cells.Item("ColumnReturnCondition").ReadOnly = True
+                row.Cells(NameOf(chckBoxBorrowCopies)).ReadOnly = True
+            Next
         End If
     End Sub
 
@@ -159,6 +190,19 @@ Public Class ReturnDialog
 
     Private Sub BTNSAVE_Click(sender As Object, e As EventArgs) Handles BTNSAVE.Click
         DGBORROWEDCOPIES.EndEdit()
+        Dim hasSelected As Boolean = False
+        For Each row As DataGridViewRow In DGBORROWEDCOPIES.Rows
+            If CBool(row.Cells(NameOf(chckBoxBorrowCopies)).Value) Then
+                hasSelected = True
+                Exit For
+            End If
+        Next
+
+        If Not hasSelected Then
+            MessageBox.Show("Please select a book to return.", "No Books Selected!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Exit Sub
+        End If
+
         Dim collection As New List(Of Dictionary(Of String, String))
         For Each dt As DataGridViewRow In DGBORROWEDCOPIES.Rows
             If IsDBNull(dt.Cells(NameOf(ColumnReturnCond)).Value) AndAlso Not IsNothing(dt.Cells("ColumnReturnCondition").Value) Then

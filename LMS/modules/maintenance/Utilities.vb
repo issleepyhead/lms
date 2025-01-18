@@ -167,6 +167,19 @@ Module Utilities
         End Try
     End Function
 
+    Public Function TestConnection(host As String, uname As String, port As String, pwd As String) As Boolean
+        Dim dt As New DataTable
+        Try
+            Using conn As New MySqlConnection($"Server={host};User={uname};Port={port};Password={pwd};")
+                conn.Open()
+                Return conn.State = ConnectionState.Open
+            End Using
+        Catch ex As Exception
+            Logger.Logger(ex)
+            Return False
+        End Try
+    End Function
+
     Public Function InsertBorrow(header As Dictionary(Of String, String), copies As List(Of Dictionary(Of String, String))) As Boolean
         Dim trans As MySqlTransaction = Nothing
         Try

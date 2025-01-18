@@ -47,11 +47,11 @@ Module Connection
 
             Using cmd As New MySqlCommand(query, GetConnectionInstance())
                 If Not IsNothing(params) Then
-                    For Each item In params
-                        With cmd.Parameters
+                    With cmd.Parameters
+                        For Each item In params
                             .AddWithValue(item.Key, If(String.IsNullOrEmpty(item.Value), DBNull.Value, item.Value))
-                        End With
-                    Next
+                        Next
+                    End With
                 End If
                 res = cmd.ExecuteNonQuery()
             End Using

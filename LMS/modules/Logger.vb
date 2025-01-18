@@ -13,12 +13,16 @@ Module Logger
     End Sub
 
     Public Function CreateLogErrorInfo(ex As Exception) As String
-        Dim stackFrame As New StackTrace(ex, True)
-        Return $"{Date.Now:dd/MM/yyyy - hh:mm:ss tt}" & vbLf &
-               $"FUNCTION_NAME: {stackFrame.GetFrame(0).GetMethod()}" & vbLf &
-               $"EXCEPTION_MESSAGE: {ex.Message}" & vbLf &
-               $"LINE: {stackFrame.GetFrame(0).GetFileLineNumber()}" & vbLf &
-               $"FILE: {stackFrame.GetFrame(0).GetFileName}" & vbLf
+        Try
+            Dim stackFrame As New StackTrace(ex, True)
+            Return $"{Date.Now:dd/MM/yyyy - hh:mm:ss tt}" & vbLf &
+                   $"FUNCTION_NAME: {stackFrame.GetFrame(0).GetMethod()}" & vbLf &
+                   $"EXCEPTION_MESSAGE: {ex.Message}" & vbLf &
+                   $"LINE: {stackFrame.GetFrame(0).GetFileLineNumber()}" & vbLf &
+                   $"FILE: {stackFrame.GetFrame(0).GetFileName}" & vbLf
+        Catch exm As Exception
+            Return String.Empty
+        End Try
     End Function
 
     Public Sub LogWriter(message As String)

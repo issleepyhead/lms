@@ -92,7 +92,7 @@ Public Class BorrowDialog
         Dim header As New Dictionary(Of String, String) From {
             {"@isby", My.Settings.user_id},
             {"@cno", GenerateCirculation()},
-            {"@odate", DateTime.Now.AddDays(5).ToString("yyyy-MM-dd HH:mm:ss")},
+            {"@odate", DateTime.Now.AddDays(If(RBSTUDENT.Checked, My.Settings.scount, My.Settings.fcount)).ToString("yyyy-MM-dd HH:mm:ss")},
             {"@bdate", Date.Now.ToString("yyyy-MM-dd HH:mm:ss")}
         }
 

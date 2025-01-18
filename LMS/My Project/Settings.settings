@@ -117,5 +117,8 @@ Please return them by the due date to avoid overdue fines.
 Thank you,
 Librarian: @librarian</Value>
     </Setting>
+    <Setting Name="backup_folder" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -362,6 +362,12 @@
       <DependentUpon>BorrowStudentReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="reports\CardReport.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CardReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="reports\ExpenditureReport.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -473,6 +479,10 @@
     <EmbeddedResource Include="reports\BorrowStudentReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>BorrowStudentReport.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reports\CardReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CardReport.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="reports\ExpenditureReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
