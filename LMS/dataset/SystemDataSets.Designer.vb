@@ -1515,6 +1515,14 @@ Partial Public Class SystemDataSets
     Partial Public Class DTBorrowedBooksDataTable
         Inherits Global.System.Data.TypedTableBase(Of DTBorrowedBooksRow)
         
+        Private columnTitle As Global.System.Data.DataColumn
+        
+        Private columngenre As Global.System.Data.DataColumn
+        
+        Private columnclassification As Global.System.Data.DataColumn
+        
+        Private columnborrowed_count As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub New()
@@ -1549,6 +1557,38 @@ Partial Public Class SystemDataSets
             MyBase.New(info, context)
             Me.InitVars
         End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property TitleColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTitle
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property genreColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columngenre
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property classificationColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnclassification
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property borrowed_countColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnborrowed_count
+            End Get
+        End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
@@ -1587,9 +1627,9 @@ Partial Public Class SystemDataSets
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function AddDTBorrowedBooksRow() As DTBorrowedBooksRow
+        Public Overloads Function AddDTBorrowedBooksRow(ByVal Title As String, ByVal genre As String, ByVal classification As String, ByVal borrowed_count As UInteger) As DTBorrowedBooksRow
             Dim rowDTBorrowedBooksRow As DTBorrowedBooksRow = CType(Me.NewRow,DTBorrowedBooksRow)
-            Dim columnValuesArray(-1) As Object
+            Dim columnValuesArray() As Object = New Object() {Title, genre, classification, borrowed_count}
             rowDTBorrowedBooksRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowDTBorrowedBooksRow)
             Return rowDTBorrowedBooksRow
@@ -1612,11 +1652,27 @@ Partial Public Class SystemDataSets
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Friend Sub InitVars()
+            Me.columnTitle = MyBase.Columns("title")
+            Me.columngenre = MyBase.Columns("genre")
+            Me.columnclassification = MyBase.Columns("classification")
+            Me.columnborrowed_count = MyBase.Columns("borrowed_count")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitClass()
+            Me.columnTitle = New Global.System.Data.DataColumn("title", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnTitle.ExtendedProperties.Add("Generator_ColumnPropNameInRow", "Title")
+            Me.columnTitle.ExtendedProperties.Add("Generator_ColumnPropNameInTable", "TitleColumn")
+            Me.columnTitle.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "columnTitle")
+            Me.columnTitle.ExtendedProperties.Add("Generator_UserColumnName", "title")
+            MyBase.Columns.Add(Me.columnTitle)
+            Me.columngenre = New Global.System.Data.DataColumn("genre", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columngenre)
+            Me.columnclassification = New Global.System.Data.DataColumn("classification", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnclassification)
+            Me.columnborrowed_count = New Global.System.Data.DataColumn("borrowed_count", GetType(UInteger), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnborrowed_count)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3620,6 +3676,114 @@ Partial Public Class SystemDataSets
         Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
             MyBase.New(rb)
             Me.tableDTBorrowedBooks = CType(Me.Table,DTBorrowedBooksDataTable)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property Title() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableDTBorrowedBooks.TitleColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'title' in table 'DTBorrowedBooks' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDTBorrowedBooks.TitleColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property genre() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableDTBorrowedBooks.genreColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'genre' in table 'DTBorrowedBooks' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDTBorrowedBooks.genreColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property classification() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableDTBorrowedBooks.classificationColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'classification' in table 'DTBorrowedBooks' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDTBorrowedBooks.classificationColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property borrowed_count() As UInteger
+            Get
+                Try 
+                    Return CType(Me(Me.tableDTBorrowedBooks.borrowed_countColumn),UInteger)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'borrowed_count' in table 'DTBorrowedBooks' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDTBorrowedBooks.borrowed_countColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsTitleNull() As Boolean
+            Return Me.IsNull(Me.tableDTBorrowedBooks.TitleColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetTitleNull()
+            Me(Me.tableDTBorrowedBooks.TitleColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsgenreNull() As Boolean
+            Return Me.IsNull(Me.tableDTBorrowedBooks.genreColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetgenreNull()
+            Me(Me.tableDTBorrowedBooks.genreColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsclassificationNull() As Boolean
+            Return Me.IsNull(Me.tableDTBorrowedBooks.classificationColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetclassificationNull()
+            Me(Me.tableDTBorrowedBooks.classificationColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Isborrowed_countNull() As Boolean
+            Return Me.IsNull(Me.tableDTBorrowedBooks.borrowed_countColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setborrowed_countNull()
+            Me(Me.tableDTBorrowedBooks.borrowed_countColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     

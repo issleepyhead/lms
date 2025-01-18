@@ -350,10 +350,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="reports\BorrowBookReport.vb">
+    <Compile Include="reports\BorrowedBookReport.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BorrowBookReport.rpt</DependentUpon>
+      <DependentUpon>BorrowedBookReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="reports\BorrowStudentReport.vb">
@@ -472,9 +472,9 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="reports\BorrowBookReport.rpt">
+    <EmbeddedResource Include="reports\BorrowedBookReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>BorrowBookReport.vb</LastGenOutput>
+      <LastGenOutput>BorrowedBookReport.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="reports\BorrowStudentReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
