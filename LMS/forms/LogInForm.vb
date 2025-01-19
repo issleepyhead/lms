@@ -30,6 +30,8 @@
                     My.Settings.remember_user = True
                     My.Settings.user_username = TXTUSERNAME.Text
                     My.Settings.session_login = Date.Now.AddDays(1)
+                Else
+                    My.Settings.user_username = TXTUSERNAME.Text
                 End If
                 My.Settings.Save()
                 MessageBox.Show("You have been logged in.", "Login Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)

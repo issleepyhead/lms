@@ -9,6 +9,28 @@ Public Class DashboardForm
     Private Sub DashboardForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         BookInventoryPanels_SelectedIndexChanged(BookInventoryPanels, Nothing)
         DGTRANSACTION.Columns(NameOf(ColumnOverdueDate)).DisplayIndex = DGTRANSACTION.Columns.Count - 1
+
+        Try
+            If ExecScalar("SELECT COUNT(*) FROM tblstudents WHERE lrn = @lrn", New Dictionary(Of String, String) From {{"@lrn", My.Settings.user_username}}) > 0 Then
+                Dim dt As DataTable = ExecFetch("SELECT full_name FROM tblstudents WHERE lrn = @lrn", New Dictionary(Of String, String) From {{"@lrn", My.Settings.user_username}})
+                LBLPROFILENAME.Text = dt.Rows(0).Item("full_name")
+                If ExecScalar("SELECT COUNT(*) FROM tbladmins WHERE student_id = @id", New Dictionary(Of String, String) From {{"@id", My.Settings.user_id}}) Then
+                    LBLPROFILEROLE.Text = "Assistant Admin"
+                End If
+            Else
+                Dim dt As DataTable = ExecFetch("SELECT full_name FROM tblfaculties WHERE username = @uname", New Dictionary(Of String, String) From {{"@uname", My.Settings.user_username}})
+                LBLPROFILENAME.Text = dt.Rows(0).Item("full_name")
+                If ExecScalar("SELECT COUNT(*) FROM tbladmins WHERE faculty_id = @id", New Dictionary(Of String, String) From {{"@id", My.Settings.user_id}}) > 0 Then
+                    If ExecScalar("SELECT role FROM tbladmins WHERE faculty_id = @id", New Dictionary(Of String, String) From {{"@id", My.Settings.user_id}}) = 0 Then
+                        LBLPROFILEROLE.Text = "Superadmin"
+                    Else
+                        LBLPROFILEROLE.Text = "Assistant Admin"
+                    End If
+                End If
+            End If
+        Catch ex As Exception
+
+        End Try
     End Sub
 
     Private Sub BTNLOGOUT_Click(sender As Object, e As EventArgs) Handles BTNLOGOUT.Click
@@ -1655,6 +1677,24 @@ Public Class DashboardForm
                     TXTSETSCOUNT.Text = .Item("s_count")
                     TXTSETFCOUNT.Text = .Item("f_count")
                 End With
+            Case MainFormPanels.SelectedTab.Equals(AccountTab)
+                If ExecScalar("SELECT COUNT(*) FROM tblstudents WHERE lrn = @lrn", New Dictionary(Of String, String) From {{"@lrn", My.Settings.user_username}}) > 0 Then
+                    Dim dt As DataTable = ExecFetch("SELECT full_name FROM tblstudents WHERE lrn = @lrn", New Dictionary(Of String, String) From {{"@lrn", My.Settings.user_username}})
+                    LBLPROFILENAME.Text = dt.Rows(0).Item("full_name")
+                    If ExecScalar("SELECT COUNT(*) FROM tbladmins WHERE student_id = @id", New Dictionary(Of String, String) From {{"@id", My.Settings.user_id}}) Then
+                        LBLPROFILEROLE.Text = "Assistant Admin"
+                    End If
+                Else
+                    Dim dt As DataTable = ExecFetch("SELECT full_name FROM tblfaculties WHERE username = @uname", New Dictionary(Of String, String) From {{"@uname", My.Settings.user_username}})
+                    LBLPROFILENAME.Text = dt.Rows(0).Item("full_name")
+                    If ExecScalar("SELECT COUNT(*) FROM tbladmins WHERE faculty_id = @id", New Dictionary(Of String, String) From {{"@id", My.Settings.user_id}}) Then
+                        If dt.Rows(0).Item("role") = 0 Then
+                            LBLPROFILEROLE.Text = "Superadmin"
+                        Else
+                            LBLPROFILEROLE.Text = "Assistant Admin"
+                        End If
+                    End If
+                End If
         End Select
     End Sub
 
