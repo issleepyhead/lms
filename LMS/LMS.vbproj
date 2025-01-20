@@ -156,12 +156,6 @@
     <Compile Include="dialogs\ReportDialog.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="dialogs\AdministratorDialog.Designer.vb">
-      <DependentUpon>AdministratorDialog.vb</DependentUpon>
-    </Compile>
-    <Compile Include="dialogs\AdministratorDialog.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="dialogs\AuthorDialog.Designer.vb">
       <DependentUpon>AuthorDialog.vb</DependentUpon>
     </Compile>
@@ -274,12 +268,6 @@
       <DependentUpon>SupplierDialog.vb</DependentUpon>
     </Compile>
     <Compile Include="dialogs\SupplierDialog.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="dialogs\UserDialog.Designer.vb">
-      <DependentUpon>UserDialog.vb</DependentUpon>
-    </Compile>
-    <Compile Include="dialogs\UserDialog.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="dialogs\ViewBooksDialog.Designer.vb">
@@ -446,9 +434,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="dialogs\SupplierDialog.resx">
       <DependentUpon>SupplierDialog.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="dialogs\UserDialog.resx">
-      <DependentUpon>UserDialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="dialogs\ViewBooksDialog.resx">
       <DependentUpon>ViewBooksDialog.vb</DependentUpon>

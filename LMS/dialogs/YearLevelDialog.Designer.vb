@@ -37,16 +37,16 @@ Partial Class YearLevelDialog
         'BTNSAVE
         '
         Me.BTNSAVE.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BTNSAVE.BorderRadius = 8
+        Me.BTNSAVE.BorderRadius = 4
         Me.BTNSAVE.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTNSAVE.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTNSAVE.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTNSAVE.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
         Me.BTNSAVE.Font = New System.Drawing.Font("Segoe UI", 12.0!)
         Me.BTNSAVE.ForeColor = System.Drawing.Color.White
-        Me.BTNSAVE.Location = New System.Drawing.Point(197, 207)
+        Me.BTNSAVE.Location = New System.Drawing.Point(197, 182)
         Me.BTNSAVE.Name = "BTNSAVE"
-        Me.BTNSAVE.Size = New System.Drawing.Size(128, 48)
+        Me.BTNSAVE.Size = New System.Drawing.Size(128, 40)
         Me.BTNSAVE.TabIndex = 26
         Me.BTNSAVE.Text = "Save"
         '
@@ -56,7 +56,7 @@ Partial Class YearLevelDialog
         Me.Guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent
         Me.Guna2HtmlLabel3.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Guna2HtmlLabel3.ForeColor = System.Drawing.Color.Red
-        Me.Guna2HtmlLabel3.Location = New System.Drawing.Point(100, 116)
+        Me.Guna2HtmlLabel3.Location = New System.Drawing.Point(105, 99)
         Me.Guna2HtmlLabel3.Margin = New System.Windows.Forms.Padding(0)
         Me.Guna2HtmlLabel3.Name = "Guna2HtmlLabel3"
         Me.Guna2HtmlLabel3.Size = New System.Drawing.Size(10, 23)
@@ -76,14 +76,14 @@ Partial Class YearLevelDialog
         Me.TXTNAME.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXTNAME.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TXTNAME.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTNAME.Location = New System.Drawing.Point(19, 139)
-        Me.TXTNAME.Margin = New System.Windows.Forms.Padding(0)
+        Me.TXTNAME.Location = New System.Drawing.Point(20, 122)
+        Me.TXTNAME.Margin = New System.Windows.Forms.Padding(0, 0, 0, 16)
         Me.TXTNAME.MaxLength = 45
         Me.TXTNAME.Name = "TXTNAME"
         Me.TXTNAME.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TXTNAME.PlaceholderText = "e.g., 7-12"
         Me.TXTNAME.SelectedText = ""
-        Me.TXTNAME.Size = New System.Drawing.Size(306, 48)
+        Me.TXTNAME.Size = New System.Drawing.Size(305, 40)
         Me.TXTNAME.TabIndex = 22
         '
         'Guna2HtmlLabel1
@@ -91,7 +91,7 @@ Partial Class YearLevelDialog
         Me.Guna2HtmlLabel1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent
         Me.Guna2HtmlLabel1.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Guna2HtmlLabel1.Location = New System.Drawing.Point(20, 116)
+        Me.Guna2HtmlLabel1.Location = New System.Drawing.Point(20, 99)
         Me.Guna2HtmlLabel1.Margin = New System.Windows.Forms.Padding(0)
         Me.Guna2HtmlLabel1.Name = "Guna2HtmlLabel1"
         Me.Guna2HtmlLabel1.Size = New System.Drawing.Size(81, 23)
@@ -100,7 +100,7 @@ Partial Class YearLevelDialog
         '
         'CMBDEPARTMENT
         '
-        Me.CMBDEPARTMENT.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.CMBDEPARTMENT.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.CMBDEPARTMENT.BackColor = System.Drawing.Color.Transparent
         Me.CMBDEPARTMENT.BorderRadius = 4
         Me.CMBDEPARTMENT.DisplayMember = "department_name"
@@ -110,10 +110,11 @@ Partial Class YearLevelDialog
         Me.CMBDEPARTMENT.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.CMBDEPARTMENT.Font = New System.Drawing.Font("Segoe UI", 10.0!)
         Me.CMBDEPARTMENT.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
-        Me.CMBDEPARTMENT.ItemHeight = 40
-        Me.CMBDEPARTMENT.Location = New System.Drawing.Point(19, 51)
+        Me.CMBDEPARTMENT.ItemHeight = 34
+        Me.CMBDEPARTMENT.Location = New System.Drawing.Point(20, 43)
+        Me.CMBDEPARTMENT.Margin = New System.Windows.Forms.Padding(0, 0, 0, 16)
         Me.CMBDEPARTMENT.Name = "CMBDEPARTMENT"
-        Me.CMBDEPARTMENT.Size = New System.Drawing.Size(306, 46)
+        Me.CMBDEPARTMENT.Size = New System.Drawing.Size(305, 40)
         Me.CMBDEPARTMENT.TabIndex = 29
         Me.CMBDEPARTMENT.ValueMember = "id"
         '
@@ -123,7 +124,7 @@ Partial Class YearLevelDialog
         Me.Guna2HtmlLabel5.BackColor = System.Drawing.Color.Transparent
         Me.Guna2HtmlLabel5.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Guna2HtmlLabel5.ForeColor = System.Drawing.Color.Red
-        Me.Guna2HtmlLabel5.Location = New System.Drawing.Point(114, 25)
+        Me.Guna2HtmlLabel5.Location = New System.Drawing.Point(117, 21)
         Me.Guna2HtmlLabel5.Margin = New System.Windows.Forms.Padding(0)
         Me.Guna2HtmlLabel5.Name = "Guna2HtmlLabel5"
         Me.Guna2HtmlLabel5.Size = New System.Drawing.Size(10, 23)
@@ -135,7 +136,7 @@ Partial Class YearLevelDialog
         Me.Guna2HtmlLabel6.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Guna2HtmlLabel6.BackColor = System.Drawing.Color.Transparent
         Me.Guna2HtmlLabel6.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Guna2HtmlLabel6.Location = New System.Drawing.Point(19, 25)
+        Me.Guna2HtmlLabel6.Location = New System.Drawing.Point(20, 20)
         Me.Guna2HtmlLabel6.Margin = New System.Windows.Forms.Padding(0)
         Me.Guna2HtmlLabel6.Name = "Guna2HtmlLabel6"
         Me.Guna2HtmlLabel6.Size = New System.Drawing.Size(95, 23)
@@ -151,7 +152,7 @@ Partial Class YearLevelDialog
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(345, 275)
+        Me.ClientSize = New System.Drawing.Size(348, 245)
         Me.Controls.Add(Me.CMBDEPARTMENT)
         Me.Controls.Add(Me.Guna2HtmlLabel5)
         Me.Controls.Add(Me.Guna2HtmlLabel6)

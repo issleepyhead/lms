@@ -42,6 +42,7 @@ Partial Class NoteDialog
         '
         'TXTNOTE
         '
+        Me.TXTNOTE.BorderColor = System.Drawing.Color.Gray
         Me.TXTNOTE.BorderRadius = 4
         Me.TXTNOTE.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.TXTNOTE.DefaultText = ""
@@ -50,7 +51,7 @@ Partial Class NoteDialog
         Me.TXTNOTE.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXTNOTE.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXTNOTE.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTNOTE.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TXTNOTE.Font = New System.Drawing.Font("Segoe UI", 12.0!)
         Me.TXTNOTE.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXTNOTE.Location = New System.Drawing.Point(20, 47)
         Me.TXTNOTE.Margin = New System.Windows.Forms.Padding(0, 0, 0, 16)
@@ -58,7 +59,7 @@ Partial Class NoteDialog
         Me.TXTNOTE.Multiline = True
         Me.TXTNOTE.Name = "TXTNOTE"
         Me.TXTNOTE.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXTNOTE.PlaceholderText = "e.g., J.K."
+        Me.TXTNOTE.PlaceholderText = "Enter Note"
         Me.TXTNOTE.SelectedText = ""
         Me.TXTNOTE.Size = New System.Drawing.Size(307, 156)
         Me.TXTNOTE.TabIndex = 17

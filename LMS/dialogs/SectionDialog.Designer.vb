@@ -37,16 +37,17 @@ Partial Class SectionDialog
         'BTNSAVE
         '
         Me.BTNSAVE.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BTNSAVE.BorderRadius = 8
+        Me.BTNSAVE.BorderRadius = 4
         Me.BTNSAVE.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTNSAVE.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTNSAVE.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTNSAVE.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
         Me.BTNSAVE.Font = New System.Drawing.Font("Segoe UI", 12.0!)
         Me.BTNSAVE.ForeColor = System.Drawing.Color.White
-        Me.BTNSAVE.Location = New System.Drawing.Point(201, 196)
+        Me.BTNSAVE.Location = New System.Drawing.Point(204, 177)
+        Me.BTNSAVE.Margin = New System.Windows.Forms.Padding(0)
         Me.BTNSAVE.Name = "BTNSAVE"
-        Me.BTNSAVE.Size = New System.Drawing.Size(128, 48)
+        Me.BTNSAVE.Size = New System.Drawing.Size(128, 40)
         Me.BTNSAVE.TabIndex = 27
         Me.BTNSAVE.Text = "Save"
         '
@@ -61,10 +62,11 @@ Partial Class SectionDialog
         Me.CMBYEARLEVEL.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.CMBYEARLEVEL.Font = New System.Drawing.Font("Segoe UI", 10.0!)
         Me.CMBYEARLEVEL.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
-        Me.CMBYEARLEVEL.ItemHeight = 40
+        Me.CMBYEARLEVEL.ItemHeight = 35
         Me.CMBYEARLEVEL.Location = New System.Drawing.Point(23, 41)
+        Me.CMBYEARLEVEL.Margin = New System.Windows.Forms.Padding(0, 0, 0, 16)
         Me.CMBYEARLEVEL.Name = "CMBYEARLEVEL"
-        Me.CMBYEARLEVEL.Size = New System.Drawing.Size(306, 46)
+        Me.CMBYEARLEVEL.Size = New System.Drawing.Size(306, 41)
         Me.CMBYEARLEVEL.TabIndex = 26
         Me.CMBYEARLEVEL.ValueMember = "id"
         '
@@ -96,7 +98,7 @@ Partial Class SectionDialog
         Me.Guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent
         Me.Guna2HtmlLabel2.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Guna2HtmlLabel2.ForeColor = System.Drawing.Color.Red
-        Me.Guna2HtmlLabel2.Location = New System.Drawing.Point(132, 106)
+        Me.Guna2HtmlLabel2.Location = New System.Drawing.Point(129, 98)
         Me.Guna2HtmlLabel2.Margin = New System.Windows.Forms.Padding(0)
         Me.Guna2HtmlLabel2.Name = "Guna2HtmlLabel2"
         Me.Guna2HtmlLabel2.Size = New System.Drawing.Size(10, 23)
@@ -115,21 +117,21 @@ Partial Class SectionDialog
         Me.TXTSECTIONNAME.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXTSECTIONNAME.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TXTSECTIONNAME.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTSECTIONNAME.Location = New System.Drawing.Point(23, 129)
-        Me.TXTSECTIONNAME.Margin = New System.Windows.Forms.Padding(0)
+        Me.TXTSECTIONNAME.Location = New System.Drawing.Point(23, 121)
+        Me.TXTSECTIONNAME.Margin = New System.Windows.Forms.Padding(0, 0, 0, 16)
         Me.TXTSECTIONNAME.MaxLength = 45
         Me.TXTSECTIONNAME.Name = "TXTSECTIONNAME"
         Me.TXTSECTIONNAME.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TXTSECTIONNAME.PlaceholderText = "e.g., Rowling"
         Me.TXTSECTIONNAME.SelectedText = ""
-        Me.TXTSECTIONNAME.Size = New System.Drawing.Size(306, 48)
+        Me.TXTSECTIONNAME.Size = New System.Drawing.Size(306, 40)
         Me.TXTSECTIONNAME.TabIndex = 22
         '
         'Guna2HtmlLabel4
         '
         Me.Guna2HtmlLabel4.BackColor = System.Drawing.Color.Transparent
         Me.Guna2HtmlLabel4.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Guna2HtmlLabel4.Location = New System.Drawing.Point(23, 106)
+        Me.Guna2HtmlLabel4.Location = New System.Drawing.Point(20, 98)
         Me.Guna2HtmlLabel4.Margin = New System.Windows.Forms.Padding(0)
         Me.Guna2HtmlLabel4.Name = "Guna2HtmlLabel4"
         Me.Guna2HtmlLabel4.Size = New System.Drawing.Size(109, 23)
@@ -145,7 +147,7 @@ Partial Class SectionDialog
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(352, 249)
+        Me.ClientSize = New System.Drawing.Size(352, 237)
         Me.Controls.Add(Me.BTNSAVE)
         Me.Controls.Add(Me.CMBYEARLEVEL)
         Me.Controls.Add(Me.Guna2HtmlLabel5)

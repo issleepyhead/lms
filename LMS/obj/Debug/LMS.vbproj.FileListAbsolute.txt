@@ -180,7 +180,6 @@ C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.SearchAccountDailog.resour
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.SearchBooksDialog.resources
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.ViewBooksDialog.resources
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.UserForm.resources
-C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.vbproj.AssemblyReference.cache
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.ReturnDialog.resources
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.NoteDialog.resources
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll
@@ -201,3 +200,4 @@ C:\Users\jteno\OneDrive\Desktop\lms\LMS\bin\Debug\CrystalDecisions.ReportAppServ
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\bin\Debug\stdole.dll
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\bin\Debug\CrystalDecisions.Windows.Forms.dll
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.ReportDialog.resources
+C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.vbproj.AssemblyReference.cache
