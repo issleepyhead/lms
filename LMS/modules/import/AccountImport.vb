@@ -5,6 +5,8 @@ Public Class AccountImport
 
     Sub New(acctype As QueryTableType)
         DBHANDLER = New ImportDBHandler()
+
+        _requiredFields = {acctype}
         If acctype = QueryTableType.STUDENT_QUERY_TABLE Then
             _requiredFields = {DEPARTMENT_QUERY_TABLE, YEARLEVEL_QUERY_TABLE, SECTION_QUERY_TABLE, acctype}
         Else

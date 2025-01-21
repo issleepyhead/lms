@@ -150,6 +150,12 @@
     <Compile Include="dataset\SystemDataSets.vb">
       <DependentUpon>SystemDataSets.xsd</DependentUpon>
     </Compile>
+    <Compile Include="dialogs\ChangePasswordDialog.Designer.vb">
+      <DependentUpon>ChangePasswordDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="dialogs\ChangePasswordDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="dialogs\ReportDialog.Designer.vb">
       <DependentUpon>ReportDialog.vb</DependentUpon>
     </Compile>
@@ -378,6 +384,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="dialogs\AuthPasswordDialog.resx">
+      <DependentUpon>AuthPasswordDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dialogs\ChangePasswordDialog.resx">
+      <DependentUpon>ChangePasswordDialog.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="dialogs\ReportDialog.resx">
       <DependentUpon>ReportDialog.vb</DependentUpon>
     </EmbeddedResource>
