@@ -173,7 +173,6 @@ C:\Users\jteno\OneDrive\Desktop\lms\LMS\bin\Debug\Spire.XLS.dll
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\bin\Debug\Spire.XLS.xml
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.StudentDialog.resources
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.ImportDataDialog.resources
-C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.AccountDialog.resources
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.FacultyDialog.resources
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.UserDialog.resources
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.BorrowDialog.resources
@@ -200,3 +199,5 @@ C:\Users\jteno\OneDrive\Desktop\lms\LMS\bin\Debug\CrystalDecisions.ReportAppServ
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\bin\Debug\CrystalDecisions.ReportAppServer.ObjectFactory.dll
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\bin\Debug\stdole.dll
+C:\Users\jteno\OneDrive\Desktop\lms\LMS\bin\Debug\CrystalDecisions.Windows.Forms.dll
+C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.ReportDialog.resources

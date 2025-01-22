@@ -57,6 +57,7 @@
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="Google.Protobuf, Version=3.26.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Protobuf.3.26.1\lib\net45\Google.Protobuf.dll</HintPath>
     </Reference>
@@ -149,10 +150,10 @@
     <Compile Include="dataset\SystemDataSets.vb">
       <DependentUpon>SystemDataSets.xsd</DependentUpon>
     </Compile>
-    <Compile Include="dialogs\AccountDialog.Designer.vb">
-      <DependentUpon>AccountDialog.vb</DependentUpon>
+    <Compile Include="dialogs\ReportDialog.Designer.vb">
+      <DependentUpon>ReportDialog.vb</DependentUpon>
     </Compile>
-    <Compile Include="dialogs\AccountDialog.vb">
+    <Compile Include="dialogs\ReportDialog.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="dialogs\AdministratorDialog.Designer.vb">
@@ -332,6 +333,7 @@
     <Compile Include="modules\maintenance\QueryTableFactory.vb" />
     <Compile Include="modules\maintenance\QueryTableType.vb" />
     <Compile Include="modules\maintenance\Utilities.vb" />
+    <Compile Include="modules\ReportHandler.vb" />
     <Compile Include="modules\SheetNameMapping.vb" />
     <Compile Include="modules\Validator.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -388,8 +390,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="dialogs\AccountDialog.resx">
-      <DependentUpon>AccountDialog.vb</DependentUpon>
+    <EmbeddedResource Include="dialogs\ReportDialog.resx">
+      <DependentUpon>ReportDialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="dialogs\AuthorDialog.resx">
       <DependentUpon>AuthorDialog.vb</DependentUpon>

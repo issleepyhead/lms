@@ -1817,6 +1817,23 @@ Public Class DashboardForm
 
     End Sub
 
+    Private Sub BTNREPORTBORROWED_Click(sender As Object, e As EventArgs) Handles BTNREPORTBORROWED.Click
+        Using dialog As New ReportDialog(1)
+            dialog.ShowDialog()
+        End Using
+    End Sub
+
+    Private Sub ReportsPanel_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ReportsPanel.SelectedIndexChanged
+        Select Case True
+            Case ReportsPanel.SelectedTab.Equals(BooksReportTab)
+                LoadTabData(DGBOOKREPORT, LBLBOOKREPORTPREV, LBLBOOKREPORTNEXT, QueryTableType.BORROWED_BOOKS_REPORT, TXTBOOKREPORTSEARCH)
+            Case ReportsPanel.SelectedTab.Equals(ExpenditureReportTab)
+                LoadTabData(DGEXPENDITUREREPORT, LBLEXPENDITUREREPORTPREV, LBLEXPENDITUREREPORTNEXT, QueryTableType.EXPENDITURE_REPORT, TXTEXPENDITUREREPORTSEARCH)
+            Case ReportsPanel.SelectedTab.Equals(FinesReportTab)
+                LoadTabData(DGFINESREPORT, LBLFINESREPORTPREV, LBLFINESREPORTNEXT, QueryTableType.FINES_REPORT, TXTFINESREPORTSSEARCH)
+        End Select
+    End Sub
+
 #End Region
 
 End Class

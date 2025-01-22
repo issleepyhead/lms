@@ -286,6 +286,112 @@
                     .FETCH_TOTAL_COUNT_QUERY = "SELECT COUNT(*) FROM tbladmins a LEFT JOIN tblfaculties f ON a.faculty_id = f.id LEFT JOIN tblstudents s ON a.student_id = s.id",
                     .FETCH_TOTAL_COUNT_QUERY_SEARCH = "SELECT COUNT(*) FROM tbladmins a LEFT JOIN tblfaculties f ON a.faculty_id = f.id LEFT JOIN tblstudents s ON a.student_id = s.id WHERE full_name LIKE @search OR phone LIKE @search OR email LIKE @search"
                 }
+
+            Case QueryTableType.BORROWED_BOOKS_REPORT
+                Return New MaintenanceQueries With {
+                    .FETCH_LIMIT_QUERY = "SELECT b.title, g.name genre, c.classification, COUNT(bbc.copy_id) borrowed_count
+                            FROM tblbooks b
+                            JOIN tblgenres g ON b.genre_id = g.id
+                            JOIN tblclassifications c ON b.classification_id = c.id
+                            LEFT JOIN tblbookcopies bc ON b.id = bc.book_id
+                            LEFT JOIN tblborrowedcopies bbc ON bc.id = bbc.copy_id
+                            GROUP BY b.title, g.name, c.classification
+                            ORDER BY b.title LIMIT @page, 30;",
+                    .FETCH_TOTAL_COUNT_QUERY = "SELECT COUNT(DISTINCT b.title)
+                            FROM tblbooks b
+                            JOIN tblgenres g ON b.genre_id = g.id
+                            JOIN tblclassifications c ON b.classification_id = c.id
+                            LEFT JOIN tblbookcopies bc ON b.id = bc.book_id
+                            LEFT JOIN tblborrowedcopies bbc ON bc.id = bbc.copy_id
+                            ORDER BY b.title",
+                    .FETCH_TOTAL_COUNT_QUERY_SEARCH = "SELECT COUNT(DISTINCT b.title)
+                            FROM tblbooks b
+                            JOIN tblgenres g ON b.genre_id = g.id
+                            JOIN tblclassifications c ON b.classification_id = c.id
+                            LEFT JOIN tblbookcopies bc ON b.id = bc.book_id
+                            LEFT JOIN tblborrowedcopies bbc ON bc.id = bbc.copy_id
+                            WHERE b.title LIKE @search OR g.name LIKE @search OR c.classification LIKE @search
+                            ORDER BY b.title",
+                    .FETCH_LIMIT_QUERY_SEARCH = "SELECT b.title, g.name genre, c.classification, COUNT(bbc.copy_id) borrowed_count
+                            FROM tblbooks b
+                            JOIN tblgenres g ON b.genre_id = g.id
+                            JOIN tblclassifications c ON b.classification_id = c.id
+                            LEFT JOIN tblbookcopies bc ON b.id = bc.book_id
+                            LEFT JOIN tblborrowedcopies bbc ON bc.id = bbc.copy_id
+                            WHERE b.title LIKE @search OR g.name LIKE @search OR c.classification LIKE @search
+                            GROUP BY b.title, g.name, c.classification
+                            ORDER BY b.title LIMIT @page, 30;"
+                }
+            Case QueryTableType.EXPENDITURE_REPORT
+                Return New MaintenanceQueries With {
+                    .FETCH_LIMIT_QUERY = "SELECT b.title, COUNT(b.id) total_copies, SUM(bc.price) total_price
+                                                FROM tblbooks b
+                                                JOIN tblbookcopies bc ON b.id = bc.book_id
+                                                GROUP BY b.title LIMIT @page, 30;",
+                    .FETCH_TOTAL_COUNT_QUERY = "SELECT COUNT(DISTINCT b.title)
+                                                FROM tblbooks b
+                                                JOIN tblbookcopies bc ON b.id = bc.book_id
+                                                GROUP BY b.title",
+                    .FETCH_LIMIT_QUERY_SEARCH = "SELECT b.title, COUNT(b.id) total_copies, SUM(bc.price) total_price
+                                                FROM tblbooks b
+                                                JOIN tblbookcopies bc ON b.id = bc.book_id
+                                                WHERE b.title LIKE @search
+                                                GROUP BY b.title LIMIT @page, 30;",
+                    .FETCH_TOTAL_COUNT_QUERY_SEARCH = "SELECT COUNT(DISTINCT b.title)
+                                                FROM tblbooks b
+                                                JOIN tblbookcopies bc ON b.id = bc.book_id
+                                                WHERE b.title LIKE @search
+                                                GROUP BY b.title"
+                }
+            Case QueryTableType.FINES_REPORT
+                Return New MaintenanceQueries With {
+                    .FETCH_LIMIT_QUERY = "SELECT bc.accession_no,
+	                                               CASE WHEN bh.student_id IS NULL THEN f.full_name ELSE s.full_name END AS full_name,
+                                                   bh.borrow_date,
+                                                   bh.overdue_date,
+                                                   DATEDIFF(NOW(), DATE_ADD(bh.overdue_date, INTERVAL 1 DAY)) overdue_days,
+                                                   CASE WHEN (SELECT gpenalty FROM tblappsettings LIMIT 1) = 1 THEN (CASE WHEN bh.student_id IS NULL THEN (SELECT fpenalty FROM tblappsettings) ELSE (SELECT spenalty FROM tblappsettings) END) ELSE (CASE WHEN bh.student_id IS NULL THEN b.fpenalty ELSE b.spenalty END) END AS penalty,
+                                                   DATEDIFF(NOW(), DATE_ADD(bh.overdue_date, INTERVAL 1 DAY)) * CASE WHEN (SELECT gpenalty FROM tblappsettings LIMIT 1) = 1 THEN (CASE WHEN bh.student_id IS NULL THEN (SELECT fpenalty FROM tblappsettings) ELSE (SELECT spenalty FROM tblappsettings) END) ELSE (CASE WHEN bh.student_id IS NULL THEN b.fpenalty ELSE b.spenalty END) END total_penalty
+                                            FROM tblborrowheaders bh
+                                            LEFT JOIN tblstudents s ON bh.student_id = s.id
+                                            LEFT JOIN tblfaculties f ON bh.faculty_id = s.id
+                                            JOIN tblborrowedcopies bbc ON bh.id = bbc.header_id
+                                            JOIN tblbookcopies bc ON bbc.copy_id = bc.id 
+                                            JOIN tblbooks b ON bc.book_id = b.id
+                                            HAVING DATEDIFF(NOW(), DATE_ADD(bh.overdue_date, INTERVAL 1 DAY)) > 0 LIMIT @page, 30;",
+                    .FETCH_TOTAL_COUNT_QUERY = "SELECT COUNT(*)
+                                                FROM tblborrowheaders bh
+                                                LEFT JOIN tblstudents s ON bh.student_id = s.id
+                                                LEFT JOIN tblfaculties f ON bh.faculty_id = s.id
+                                                JOIN tblborrowedcopies bbc ON bh.id = bbc.header_id
+                                                JOIN tblbookcopies bc ON bbc.copy_id = bc.id 
+                                                JOIN tblbooks b ON bc.book_id = b.id
+                                                HAVING DATEDIFF(NOW(), DATE_ADD(bh.overdue_date, INTERVAL 1 DAY)) > 0",
+                    .FETCH_LIMIT_QUERY_SEARCH = "SELECT bc.accession_no,
+	                                                CASE WHEN bh.student_id IS NULL THEN f.full_name ELSE s.full_name END AS full_name,
+                                                    bh.borrow_date,
+                                                    bh.overdue_date,
+                                                    DATEDIFF(NOW(), DATE_ADD(bh.overdue_date, INTERVAL 1 DAY)) overdue_days,
+                                                    CASE WHEN (SELECT gpenalty FROM tblappsettings LIMIT 1) = 1 THEN (CASE WHEN bh.student_id IS NULL THEN (SELECT fpenalty FROM tblappsettings) ELSE (SELECT spenalty FROM tblappsettings) END) ELSE (CASE WHEN bh.student_id IS NULL THEN b.fpenalty ELSE b.spenalty END) END AS penalty,
+                                                    DATEDIFF(NOW(), DATE_ADD(bh.overdue_date, INTERVAL 1 DAY)) * CASE WHEN (SELECT gpenalty FROM tblappsettings LIMIT 1) = 1 THEN (CASE WHEN bh.student_id IS NULL THEN (SELECT fpenalty FROM tblappsettings) ELSE (SELECT spenalty FROM tblappsettings) END) ELSE (CASE WHEN bh.student_id IS NULL THEN b.fpenalty ELSE b.spenalty END) END total_penalty
+                                            FROM tblborrowheaders bh
+                                            LEFT JOIN tblstudents s ON bh.student_id = s.id
+                                            LEFT JOIN tblfaculties f ON bh.faculty_id = s.id
+                                            JOIN tblborrowedcopies bbc ON bh.id = bbc.header_id
+                                            JOIN tblbookcopies bc ON bbc.copy_id = bc.id 
+                                            JOIN tblbooks b ON bc.book_id = b.id
+                                            WHERE f.full_name LIKE @search OR s.full_name LIKE @search
+                                            HAVING DATEDIFF(NOW(), DATE_ADD(bh.overdue_date, INTERVAL 1 DAY)) > 0 LIMIT @page, 30;",
+                    .FETCH_TOTAL_COUNT_QUERY_SEARCH = "SELECT COUNT(*)
+                                                    FROM tblborrowheaders bh
+                                                    LEFT JOIN tblstudents s ON bh.student_id = s.id
+                                                    LEFT JOIN tblfaculties f ON bh.faculty_id = s.id
+                                                    JOIN tblborrowedcopies bbc ON bh.id = bbc.header_id
+                                                    JOIN tblbookcopies bc ON bbc.copy_id = bc.id 
+                                                    JOIN tblbooks b ON bc.book_id = b.id
+                                                    WHERE f.full_name LIKE @search OR s.full_name LIKE @search
+                                                    HAVING DATEDIFF(NOW(), DATE_ADD(bh.overdue_date, INTERVAL 1 DAY)) > 0"
+                }
         End Select
         Return New MaintenanceQueries
     End Function

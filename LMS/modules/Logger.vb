@@ -15,11 +15,19 @@ Module Logger
     Public Function CreateLogErrorInfo(ex As Exception) As String
         Try
             Dim stackFrame As New StackTrace(ex, True)
-            Return $"{Date.Now:dd/MM/yyyy - hh:mm:ss tt}" & vbLf &
+            If Not IsNothing(stackFrame) AndAlso Not IsNothing(ex) AndAlso Not IsNothing(ex.InnerException) Then
+                Return $"{Date.Now:dd/MM/yyyy - hh:mm:ss tt}" & vbLf &
                    $"FUNCTION_NAME: {stackFrame.GetFrame(0).GetMethod()}" & vbLf &
-                   $"EXCEPTION_MESSAGE: {ex.Message}" & vbLf &
+                   $"EXCEPTION_MESSAGE: {ex.InnerException.Message}" & vbLf &
                    $"LINE: {stackFrame.GetFrame(0).GetFileLineNumber()}" & vbLf &
                    $"FILE: {stackFrame.GetFrame(0).GetFileName}" & vbLf
+            Else
+                Return $"{Date.Now:dd/MM/yyyy - hh:mm:ss tt}" & vbLf &
+                       $"FUNCTION_NAME: {stackFrame.GetFrame(0).GetMethod()}" & vbLf &
+                       $"EXCEPTION_MESSAGE: {ex.Message}" & vbLf &
+                       $"LINE: {stackFrame.GetFrame(0).GetFileLineNumber()}" & vbLf &
+                       $"FILE: {stackFrame.GetFrame(0).GetFileName}" & vbLf
+            End If
         Catch exm As Exception
             Return String.Empty
         End Try
