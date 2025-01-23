@@ -1,12 +1,12 @@
 ﻿Imports LMS.QueryTableType
-Imports Spire.Xls
 
 Public Class BookImport
     Inherits ExcelDataLoader
 
     Sub New()
         DBHANDLER = New ImportDBHandler()
-        _requiredFields = {GENRE_QUERY_TABLE, AUTHOR_QUERY_TABLE, PUBLISHER_QUERY_TABLE, CLASSIFICATION_QUERY_TABLE, LANGUAGES_QUERY_TABLE, BOOK_QUERY_TABLE}
+        requiredSheet = BOOK_QUERY_TABLE
+        _otherSheets = {GENRE_QUERY_TABLE, AUTHOR_QUERY_TABLE, PUBLISHER_QUERY_TABLE, CLASSIFICATION_QUERY_TABLE, LANGUAGES_QUERY_TABLE}
     End Sub
 
     Public Overrides Function DataFactory(type As QueryTableType, drow As DataRow) As Dictionary(Of String, String)
@@ -18,7 +18,6 @@ Public Class BookImport
         Try
             Select Case type
                 Case GENRE_QUERY_TABLE, AUTHOR_QUERY_TABLE, PUBLISHER_QUERY_TABLE, LANGUAGES_QUERY_TABLE, CLASSIFICATION_QUERY_TABLE
-
                     For i As Integer = 0 To colAttrib.Columns.Length - 1
                         tempt.Add(colAttrib.Names(i), drow.Item(colAttrib.Columns(i)))
                     Next
@@ -40,8 +39,24 @@ Public Class BookImport
                     tempt.Item("@cid") = cid
                     tempt.Item("@aid") = aid
 
-                    tempt.Add("@spenalty", "0")
-                    tempt.Add("@fpenalty", "0")
+                    If drow.Table.Columns.Contains("Student Penalty") Then
+                        tempt.Add("@spenalty", drow.Item("Student Penalty"))
+                        If drow.Table.Columns.Contains("Faculty Penalty") Then
+                            tempt.Add("@fpenalty", drow.Item("Faculty Penalty"))
+                        Else
+                            tempt.Add("@fpenalty", "0")
+                        End If
+                    ElseIf drow.Table.Columns.Contains("Faculty Penalty") Then
+                        tempt.Add("@fpenalty", drow.Item("Faculty Penalty"))
+                        If drow.Table.Columns.Contains("Student Penalty") Then
+                            tempt.Add("@spenalty", drow.Item("Student Penalty"))
+                        Else
+                            tempt.Add("@spenalty", "0")
+                        End If
+                    Else
+                        tempt.Add("@spenalty", "0")
+                        tempt.Add("@fpenalty", "0")
+                    End If
             End Select
         Catch ex As Exception
             Logger.Logger(ex)

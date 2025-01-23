@@ -3,7 +3,8 @@
 Public MustInherit Class ExcelDataLoader
 
     Public DBHANDLER As ImportDBHandler
-    Protected _requiredFields As QueryTableType()
+    Protected _otherSheets As QueryTableType()
+    Protected requiredSheet As QueryTableType
 
     ''' <summary>
     ''' Loads all the data from the excel file.
@@ -53,18 +54,15 @@ Public MustInherit Class ExcelDataLoader
                     sheetNames.Add(wsheet.Name.ToLower)
                 Next
 
-                Return _requiredFields.All(Function(type)
-                                               Dim typeField = GetType(QueryTableType).GetField(type.ToString())
-                                               Dim sheetAttrib As SheetNameMapping = CType(Attribute.GetCustomAttribute(typeField, GetType(SheetNameMapping)), SheetNameMapping)
-                                               Dim colAttrib As ColumnMapping = CType(Attribute.GetCustomAttribute(typeField, GetType(ColumnMapping)), ColumnMapping)
+                Dim typeField = GetType(QueryTableType).GetField(requiredSheet.ToString())
+                Dim sheetAttrib As SheetNameMapping = CType(Attribute.GetCustomAttribute(typeField, GetType(SheetNameMapping)), SheetNameMapping)
+                Dim colAttrib As ColumnMapping = CType(Attribute.GetCustomAttribute(typeField, GetType(ColumnMapping)), ColumnMapping)
 
-                                               If sheetNames.Contains(sheetAttrib.SheetName.ToLower) Then
-                                                   Dim dt As DataTable = workbook.Worksheets(sheetAttrib.SheetName).ExportDataTable
-                                                   Return colAttrib.Columns.All(Function(x) dt.Columns.Contains(x))
-                                               Else
-                                                   Return False
-                                               End If
-                                           End Function)
+                If Not sheetNames.Contains(sheetAttrib.SheetName.ToLower()) Then
+                    Return False
+                Else
+                    Return True
+                End If
             Catch ex As Exception
                 Logger.Logger(ex)
             End Try

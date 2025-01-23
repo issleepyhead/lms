@@ -174,7 +174,6 @@ C:\Users\jteno\OneDrive\Desktop\lms\LMS\bin\Debug\Spire.XLS.xml
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.StudentDialog.resources
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.ImportDataDialog.resources
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.FacultyDialog.resources
-C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.UserDialog.resources
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.BorrowDialog.resources
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.SearchAccountDailog.resources
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.SearchBooksDialog.resources
@@ -201,3 +200,5 @@ C:\Users\jteno\OneDrive\Desktop\lms\LMS\bin\Debug\stdole.dll
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\bin\Debug\CrystalDecisions.Windows.Forms.dll
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.ReportDialog.resources
 C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.vbproj.AssemblyReference.cache
+C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.AuthPasswordDialog.resources
+C:\Users\jteno\OneDrive\Desktop\lms\LMS\obj\Debug\LMS.ChangePasswordDialog.resources
