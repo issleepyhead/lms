@@ -313,6 +313,7 @@
     <Compile Include="forms\UserForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="handlers\DBOperations.vb" />
     <Compile Include="modules\import\AccountImport.vb" />
     <Compile Include="modules\ApplicationModule.vb" />
     <Compile Include="modules\ColumnMapping.vb" />
@@ -322,11 +323,13 @@
     <Compile Include="modules\import\ExcelDataLoader.vb" />
     <Compile Include="modules\Logger.vb" />
     <Compile Include="modules\maintenance\BaseMaintenance.vb" />
-    <Compile Include="modules\maintenance\Types.vb" />
+    <Compile Include="handlers\Types.vb" />
     <Compile Include="modules\maintenance\MaintenanceQueries.vb" />
     <Compile Include="modules\maintenance\QueryTableFactory.vb" />
     <Compile Include="modules\maintenance\QueryTableType.vb" />
     <Compile Include="modules\maintenance\Utilities.vb" />
+    <Compile Include="handlers\QueryTable.vb" />
+    <Compile Include="handlers\QueryTableRegistry.vb" />
     <Compile Include="modules\ReportHandler.vb" />
     <Compile Include="modules\SheetNameMapping.vb" />
     <Compile Include="modules\Validator.vb" />
@@ -559,5 +562,6 @@
   <ItemGroup>
     <None Include="Resources\user_icon.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

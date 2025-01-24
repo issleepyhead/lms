@@ -1,14 +1,27 @@
 ﻿Imports LMS.My
+Imports LMS.QueryType
 
 Public Class DashboardForm
+    Private Delegate Sub UpdateHandler(type As QueryType, ByRef lblprev As Object, ByRef lbl As Object, ByRef dg As Object, query As String)
+    Private Event RequestUpdate As UpdateHandler
 
     Private SELECTED_BOOKS As New SystemDataSets.DTBookDataTable
     Private SELECTED_STUDENTS As New SystemDataSets.DTStudentDataTable
     Private SELECTED_FACULTY As New SystemDataSets.DTFacultyDataTable
 
     Private Sub DashboardForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        AddHandler RequestUpdate, New UpdateHandler(AddressOf UpdateUIComponents)
         BookInventoryPanels_SelectedIndexChanged(BookInventoryPanels, Nothing)
         DGTRANSACTION.Columns(NameOf(ColumnOverdueDate)).DisplayIndex = DGTRANSACTION.Columns.Count - 1
+    End Sub
+
+    Public Sub UpdateUIComponents(type As QueryType, ByRef lblprev As Object, ByRef lblNext As Object, ByRef dg As Object, query As String)
+        If Not String.IsNullOrEmpty(query) Then
+            DBOperations.PREV_PAGE_NUMBER = 1
+        End If
+        dg.DataSource = DBOperations.Search(type, query)
+        lblprev.Text = DBOperations.PREV_PAGE_NUMBER
+        lblNext.Text = DBOperations.NEXT_PAGE_NUMBER
     End Sub
 
     Private Sub BTNLOGOUT_Click(sender As Object, e As EventArgs) Handles BTNLOGOUT.Click
@@ -53,7 +66,8 @@ Public Class DashboardForm
     End Sub
 
     Private Sub TXTGENRESEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTGENRESEARCH.TextChanged
-        SearchHelper(MaintenancePanels, GenresTab, DGGENRE, LBLGENRENEXT, LBLGENREPREV, QueryTableType.GENRE_QUERY_TABLE, TXTGENRESEARCH)
+        'SearchHelper(MaintenancePanels, GenresTab, DGGENRE, LBLGENRENEXT, LBLGENREPREV, QueryTableType.GENRE_QUERY_TABLE, TXTGENRESEARCH)
+        RaiseEvent RequestUpdate(GENRE, LBLGENREPREV, LBLGENRENEXT, DGGENRE, TXTGENRESEARCH.Text)
     End Sub
 #End Region
 
