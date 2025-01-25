@@ -6,12 +6,15 @@ Module DBOperations
 
     Public PREV_PAGE_NUMBER As Integer = 1
     Public NEXT_PAGE_NUMBER As Integer = 0
+    Public QUERY_SEARCH As String = String.Empty
 
     Private Sub SetQueryType(type As QueryType)
         ' The previous query executed no longer match the new query to be executed
         ' Reset the PPREV and PMAX because we are no longer in the same tab.
         If QueryType <> type Then
             QueryType = type
+            QUERY_SEARCH = String.Empty
+            PREV_PAGE_NUMBER = 1
         End If
         QueryTable = QueryTableRegistry.CreateQueryTable(type)
     End Sub
@@ -35,10 +38,10 @@ Module DBOperations
         Return ExecNonQuery(QueryTable.ADD_QUERY, params) > 0
     End Function
 
-    Public Function Search(type As QueryType, query As String) As DataTable
+    Public Function Search(type As QueryType) As DataTable
         SetQueryType(type)
         Dim searchQuery As New Dictionary(Of String, String) From {
-            {"@search", "%" & query & "%"}
+            {"@search", "%" & QUERY_SEARCH & "%"}
         }
         NEXT_PAGE_NUMBER = ExecScalar(QueryTable.SEARCH_COUNT_QUERY, searchQuery)
         If NEXT_PAGE_NUMBER Mod 30 <> 0 Then
@@ -59,10 +62,10 @@ Module DBOperations
         Return ExecNonQueryTrans(QueryTable.DELETE_QUERY, params)
     End Function
 
-    Public Function SearchArchive(type As QueryType, query As String) As DataTable
+    Public Function SearchArchive(type As QueryType) As DataTable
         SetQueryType(type)
         Dim searchQuery As New Dictionary(Of String, String) From {
-            {"@search", "%" & query & "%"}
+            {"@search", "%" & QUERY_SEARCH & "%"}
         }
         NEXT_PAGE_NUMBER = ExecScalar(QueryTable.ARCHIVE_SEARCH_COUNT_QUERY, searchQuery)
         If NEXT_PAGE_NUMBER Mod 30 <> 0 Then

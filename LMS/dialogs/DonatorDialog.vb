@@ -1,4 +1,4 @@
-﻿Imports System.Windows.Forms
+﻿Imports LMS.QueryType
 
 Public Class DonatorDialog
     Private _data As DataRowView
@@ -26,20 +26,20 @@ Public Class DonatorDialog
                 {"@id", If(IsNothing(_data), 0, _data.Item("id").ToString)}
         }
 
-        If BaseMaintenance.Exists(QueryTableType.DONATOR_QUERY_TABLE, data) Then
+        If DBOperations.Exists(DONATOR, data) Then
             errProvider.SetError(TXTNAME, "This donator already exits.")
             Exit Sub
         End If
 
         If IsNothing(_data) Then
-            If BaseMaintenance.Add(QueryTableType.DONATOR_QUERY_TABLE, data) Then
+            If DBOperations.Add(DONATOR, data) Then
                 MessageBox.Show("Donator has been added successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
                 MessageBox.Show("Failed adding the donator.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 Exit Sub
             End If
         Else
-            If BaseMaintenance.Update(QueryTableType.DONATOR_QUERY_TABLE, data) Then
+            If DBOperations.Update(DONATOR, data) Then
                 MessageBox.Show("Donator has been updated successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
                 MessageBox.Show("Failed updating the donator.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)

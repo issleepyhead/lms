@@ -1,4 +1,4 @@
-﻿Imports System.Windows.Forms
+﻿Imports LMS.QueryType
 
 Public Class ClassificationDialog
     Private _data As DataRowView
@@ -47,21 +47,21 @@ Public Class ClassificationDialog
                 {"@id", If(IsNothing(_data), 0, _data.Item("id").ToString)}
         }
 
-        If BaseMaintenance.Exists(QueryTableType.CLASSIFICATION_QUERY_TABLE, data) Then
+        If DBOperations.Exists(CLASSIFICATION, data) Then
             errProvider.SetError(TXTDEWEYNUMBER, "This dewey decimal already exits.")
             errProvider.SetError(TXTDEWEYNAME, "This dewey name already exits.")
             Exit Sub
         End If
 
         If IsNothing(_data) Then
-            If BaseMaintenance.Add(QueryTableType.CLASSIFICATION_QUERY_TABLE, data) Then
+            If DBOperations.Add(CLASSIFICATION, data) Then
                 MessageBox.Show("Dewey Classification has been added successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
                 MessageBox.Show("Failed adding the dewey classification.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 Exit Sub
             End If
         Else
-            If BaseMaintenance.Update(QueryTableType.CLASSIFICATION_QUERY_TABLE, data) Then
+            If DBOperations.Update(CLASSIFICATION, data) Then
                 MessageBox.Show("Dewey classification has been updated successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
                 MessageBox.Show("Failed updating the Dewey classification.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)

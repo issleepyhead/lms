@@ -1,5 +1,4 @@
-﻿Imports System.Windows.Forms
-
+﻿Imports LMS.QueryType
 Public Class LanguageDialog
     Private _data As DataRowView
     Private _id As Integer
@@ -29,20 +28,20 @@ Public Class LanguageDialog
                 {"@id", If(IsNothing(_data), 0, _data.Item("id").ToString)}
         }
 
-        If BaseMaintenance.Exists(QueryTableType.LANGUAGES_QUERY_TABLE, data) Then
+        If DBOperations.Exists(LANGUAGES, data) Then
             errProvider.SetError(TXTLANGUAGE, "This language already exits.")
             Exit Sub
         End If
 
         If IsNothing(_data) Then
-            If BaseMaintenance.Add(QueryTableType.LANGUAGES_QUERY_TABLE, data) Then
+            If DBOperations.Add(LANGUAGES, data) Then
                 MessageBox.Show("Language has been added successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
                 MessageBox.Show("Failed adding the language.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 Exit Sub
             End If
         Else
-            If BaseMaintenance.Update(QueryTableType.LANGUAGES_QUERY_TABLE, data) Then
+            If DBOperations.Update(LANGUAGES, data) Then
                 MessageBox.Show("Language has been updated successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
                 MessageBox.Show("Failed updating the language.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)

@@ -2,26 +2,27 @@
 Imports LMS.QueryType
 
 Public Class DashboardForm
-    Private Delegate Sub UpdateHandler(type As QueryType, ByRef lblprev As Object, ByRef lbl As Object, ByRef dg As Object, query As String)
-    Private Event RequestUpdate As UpdateHandler
 
     Private SELECTED_BOOKS As New SystemDataSets.DTBookDataTable
     Private SELECTED_STUDENTS As New SystemDataSets.DTStudentDataTable
     Private SELECTED_FACULTY As New SystemDataSets.DTFacultyDataTable
+    Private ControlsMap As Dictionary(Of String, ControlMapping)
 
     Private Sub DashboardForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        AddHandler RequestUpdate, New UpdateHandler(AddressOf UpdateUIComponents)
+        ControlsMap = New Dictionary(Of String, ControlMapping) From {
+            {NameOf(GENRE), New ControlMapping With {.DG = DGGENRE, .LBLNEXT = LBLGENRENEXT, .LBLPREV = LBLGENREPREV, .TXTSEARCH = TXTGENRESEARCH, .DIALOG_NAME = GenreDialog.GetType(), .QUERY_TYPE = GENRE}},
+            {NameOf(AUTHOR), New ControlMapping With {.DG = DGAUTHORS, .LBLNEXT = LBLAUTHORNEXT, .LBLPREV = LBLAUTHORPREV, .TXTSEARCH = TXTSEARCHAUTHOR, .DIALOG_NAME = AuthorDialog.GetType(), .QUERY_TYPE = AUTHOR}},
+            {NameOf(PUBLISHER), New ControlMapping With {.DG = DGPUBLISHER, .LBLNEXT = LBLPUBLISHERNEXT, .LBLPREV = LBLPUBLISHERPREV, .TXTSEARCH = TXTPUBLISHERSEARCH, .DIALOG_NAME = PublisherDialog.GetType(), .QUERY_TYPE = PUBLISHER}},
+            {NameOf(CLASSIFICATION), New ControlMapping With {.DG = DGCLASSIFICATIONS, .LBLNEXT = LBLCLASSIFICATIONNEXT, .LBLPREV = LBLCLASSIFICATIONPREV, .TXTSEARCH = TXTCLASSIFICATIONSEARCH, .DIALOG_NAME = ClassificationDialog.GetType(), .QUERY_TYPE = CLASSIFICATION}},
+            {NameOf(LANGUAGES), New ControlMapping With {.DG = DGLANGUAGE, .LBLNEXT = LBLLANGUAGENEXT, .LBLPREV = LBLLANGUAGEPREV, .TXTSEARCH = TXTLANGUAGESEARCH, .DIALOG_NAME = LanguageDialog.GetType(), .QUERY_TYPE = LANGUAGES}},
+            {NameOf(DONATOR), New ControlMapping With {.DG = DGDONATOR, .LBLNEXT = LBLDONATORNEXT, .LBLPREV = LBLDONATORRPREV, .TXTSEARCH = TXTDONATORSEARCH, .DIALOG_NAME = DonatorDialog.GetType(), .QUERY_TYPE = DONATOR}},
+            {NameOf(SUPPLIER), New ControlMapping With {.DG = DGSUPPLIER, .LBLNEXT = LBLSUPPLIERNEXT, .LBLPREV = LBLSUPPLIERPREV, .TXTSEARCH = TXTSUPPLIERSEARCH, .DIALOG_NAME = SupplierDialog.GetType(), .QUERY_TYPE = SUPPLIER}},
+            {NameOf(BOOK), New ControlMapping With {.DG = DGBOOKS, .LBLNEXT = LBLBOOKNEXT, .LBLPREV = LBLBOOKPREV, .TXTSEARCH = TXTBOOKSEARCH, .DIALOG_NAME = BookDialog.GetType(), .QUERY_TYPE = BOOK}}
+        }
+
+
         BookInventoryPanels_SelectedIndexChanged(BookInventoryPanels, Nothing)
         DGTRANSACTION.Columns(NameOf(ColumnOverdueDate)).DisplayIndex = DGTRANSACTION.Columns.Count - 1
-    End Sub
-
-    Public Sub UpdateUIComponents(type As QueryType, ByRef lblprev As Object, ByRef lblNext As Object, ByRef dg As Object, query As String)
-        If Not String.IsNullOrEmpty(query) Then
-            DBOperations.PREV_PAGE_NUMBER = 1
-        End If
-        dg.DataSource = DBOperations.Search(type, query)
-        lblprev.Text = DBOperations.PREV_PAGE_NUMBER
-        lblNext.Text = DBOperations.NEXT_PAGE_NUMBER
     End Sub
 
     Private Sub BTNLOGOUT_Click(sender As Object, e As EventArgs) Handles BTNLOGOUT.Click
@@ -33,467 +34,478 @@ Public Class DashboardForm
         End Using
     End Sub
 
-#Region "Genre Module"
-    Private Sub BTNADDGENRE_Click(sender As Object, e As EventArgs) Handles BTNADDGENRE.Click
-        Using dialog = GenreDialog
-            dialog.ShowDialog()
-        End Using
-        DGGENRE.DataSource = BaseMaintenance.Fetch(QueryTableType.GENRE_QUERY_TABLE)
-        LBLGENRENEXT.Text = BaseMaintenance.PMAX
-        LBLGENREPREV.Text = BaseMaintenance.PPrev
+    Private Sub BTNADD_Click(sender As Object, e As EventArgs) Handles BTNADDGENRE.Click, BTNADDAUTHOR.Click, BTNADDPUBLISHER.Click, BTNADDCLASSIFICATION.Click,
+            BTNADDLANGUAGE.Click, BTNADDDONATOR.Click, BTNADDSUPPLIER.Click, BTNADDBOOK.Click
+        ControlsMap.Item(sender.Tag).OpenDialog()
     End Sub
 
-    Private Sub BTNGENRENEXT_Click(sender As Object, e As EventArgs) Handles BTNGENRENEXT.Click
-        NextPageHelper(LBLGENREPREV, LBLGENRENEXT, DGGENRE, QueryTableType.GENRE_QUERY_TABLE, TXTGENRESEARCH)
+    Private Sub MaintenancePanels_Selected(sender As Object, e As TabControlEventArgs) Handles MaintenancePanels.Selected
+        ControlsMap.Item(sender.SelectedTab.Tag).Upate()
     End Sub
 
-    Private Sub BTNGENREPREV_Click(sender As Object, e As EventArgs) Handles BTNGENREPREV.Click
-        PrevPageHelper(LBLGENREPREV, LBLGENRENEXT, DGGENRE, QueryTableType.GENRE_QUERY_TABLE, TXTGENRESEARCH)
+    Private Sub BTNNEXT_Click(sender As Object, e As EventArgs) Handles BTNGENRENEXT.Click, BTNAUTHORNEXT.Click, BTNPUBLISHERNEXT.Click,
+            BTNCLASSIFICATIONNEXT.Click, BTNLANGUAGENEXT.Click, BTNDONATORNEXT.Click, BTNSUPPLIERNEXT.Click, BTNBOOKNEXT.Click
+        ControlsMap.Item(sender.Tag).NextPage()
     End Sub
 
-    Private Sub DGGENRE_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGGENRE.CellMouseClick
-        If e.ColumnIndex <> 0 AndAlso e.RowIndex <> -1 Then
-            If DGGENRE.SelectedRows.Count > 0 Then
-                Dim datarow As DataRowView = DGGENRE.SelectedRows.Item(0).DataBoundItem
-                Using dialog As New GenreDialog(datarow)
-                    dialog.ShowDialog()
-                End Using
-            End If
-            DGGENRE.DataSource = BaseMaintenance.Fetch(QueryTableType.GENRE_QUERY_TABLE)
-            LBLGENRENEXT.Text = BaseMaintenance.PMAX
-            LBLGENREPREV.Text = BaseMaintenance.PPrev
-        End If
+    Private Sub BTNPREV_Click(sender As Object, e As EventArgs) Handles BTNGENREPREV.Click, BTNAUTHORPREV.Click, BTNPUBLISHERPREV.Click,
+            BTNCLASSIFICATIONPREV.Click, BTNLANGUAGEPREV.Click, BTNDONATORRPREV.Click, BTNSUPPLIERPREV.Click, BTNBOOKPREV.Click
+        ControlsMap.Item(sender.Tag).PrevPage()
     End Sub
 
-    Private Sub TXTGENRESEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTGENRESEARCH.TextChanged
-        'SearchHelper(MaintenancePanels, GenresTab, DGGENRE, LBLGENRENEXT, LBLGENREPREV, QueryTableType.GENRE_QUERY_TABLE, TXTGENRESEARCH)
-        RaiseEvent RequestUpdate(GENRE, LBLGENREPREV, LBLGENRENEXT, DGGENRE, TXTGENRESEARCH.Text)
-    End Sub
-#End Region
+    '#Region "Genre Module"
 
-#Region "Author Module"
-    Private Sub BTNADDAUTHOR_Click(sender As Object, e As EventArgs) Handles BTNADDAUTHOR.Click
-        Using dialog = New AuthorDialog
-            dialog.ShowDialog()
-        End Using
-        LBLAUTHORNEXT.Text = BaseMaintenance.PMAX
-        LBLAUTHORPREV.Text = BaseMaintenance.PPrev
-        DGAUTHORS.DataSource = BaseMaintenance.Fetch(QueryTableType.AUTHOR_QUERY_TABLE)
-    End Sub
 
-    Private Sub BTNAUTHORPNEXT_Click(sender As Object, e As EventArgs) Handles BTNAUTHORNEXT.Click
-        NextPageHelper(LBLAUTHORPREV, LBLAUTHORNEXT, DGAUTHORS, QueryTableType.AUTHOR_QUERY_TABLE, TXTSEARCHAUTHOR)
-    End Sub
+    '    Private Sub BTNGENRENEXT_Click(sender As Object, e As EventArgs) Handles BTNGENRENEXT.Click
+    '        NextPageHelper(LBLGENREPREV, LBLGENRENEXT, DGGENRE, QueryTableType.GENRE_QUERY_TABLE, TXTGENRESEARCH)
+    '    End Sub
 
-    Private Sub DGAUTHOR_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGAUTHORS.CellMouseClick
-        If e.ColumnIndex <> 0 AndAlso e.RowIndex <> -1 Then
-            If DGAUTHORS.SelectedRows.Count > 0 Then
-                Dim datarow As DataRowView = DGAUTHORS.SelectedRows.Item(0).DataBoundItem
-                Using dialog As New AuthorDialog(datarow)
-                    dialog.ShowDialog()
-                End Using
-            End If
-            DGAUTHORS.DataSource = BaseMaintenance.Fetch(QueryTableType.AUTHOR_QUERY_TABLE)
-            LBLAUTHORNEXT.Text = BaseMaintenance.PMAX
-            LBLAUTHORPREV.Text = BaseMaintenance.PPrev
-        End If
-    End Sub
+    '    Private Sub BTNGENREPREV_Click(sender As Object, e As EventArgs) Handles BTNGENREPREV.Click
+    '        PrevPageHelper(LBLGENREPREV, LBLGENRENEXT, DGGENRE, QueryTableType.GENRE_QUERY_TABLE, TXTGENRESEARCH)
+    '    End Sub
 
-    Private Sub TXTAUTHORSEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTSEARCHAUTHOR.TextChanged
-        SearchHelper(MaintenancePanels, AuthorTab, DGAUTHORS, LBLAUTHORNEXT, LBLAUTHORPREV, QueryTableType.AUTHOR_QUERY_TABLE, TXTSEARCHAUTHOR)
-    End Sub
+    '    Private Sub DGGENRE_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGGENRE.CellMouseClick
+    '        If e.ColumnIndex <> 0 AndAlso e.RowIndex <> -1 Then
+    '            If DGGENRE.SelectedRows.Count > 0 Then
+    '                Dim datarow As DataRowView = DGGENRE.SelectedRows.Item(0).DataBoundItem
+    '                Using dialog As New GenreDialog(datarow)
+    '                    dialog.ShowDialog()
+    '                End Using
+    '            End If
+    '            DGGENRE.DataSource = BaseMaintenance.Fetch(QueryTableType.GENRE_QUERY_TABLE)
+    '            LBLGENRENEXT.Text = BaseMaintenance.PMAX
+    '            LBLGENREPREV.Text = BaseMaintenance.PPrev
+    '        End If
+    '    End Sub
 
-    Private Sub BTNAUTHORPREV_Click(sender As Object, e As EventArgs) Handles BTNAUTHORPREV.Click
-        PrevPageHelper(LBLAUTHORPREV, LBLAUTHORNEXT, DGAUTHORS, QueryTableType.AUTHOR_QUERY_TABLE, TXTSEARCHAUTHOR)
-    End Sub
-#End Region
+    '    Private Sub TXTGENRESEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTGENRESEARCH.TextChanged
+    '        SearchHelper(MaintenancePanels, GenresTab, DGGENRE, LBLGENRENEXT, LBLGENREPREV, QueryTableType.GENRE_QUERY_TABLE, TXTGENRESEARCH)
+    '    End Sub
+    '#End Region
 
-#Region "Publisher Module"
-    Private Sub BTNADDPUBLISHER_Click(sender As Object, e As EventArgs) Handles BTNADDPUBLISHER.Click
-        Using dialog = PublisherDialog
-            dialog.ShowDialog()
-        End Using
-        DGPUBLISHER.DataSource = BaseMaintenance.Fetch(QueryTableType.PUBLISHER_QUERY_TABLE)
-        LBLPUBLISHERNEXT.Text = BaseMaintenance.PMAX
-        LBLPUBLISHERPREV.Text = BaseMaintenance.PPrev
-    End Sub
+    '#Region "Author Module"
+    '    'Private Sub BTNADDAUTHOR_Click(sender As Object, e As EventArgs) Handles BTNADDAUTHOR.Click
+    '    '    Using dialog = New AuthorDialog
+    '    '        dialog.ShowDialog()
+    '    '    End Using
+    '    '    LBLAUTHORNEXT.Text = BaseMaintenance.PMAX
+    '    '    LBLAUTHORPREV.Text = BaseMaintenance.PPrev
+    '    '    DGAUTHORS.DataSource = BaseMaintenance.Fetch(QueryTableType.AUTHOR_QUERY_TABLE)
+    '    'End Sub
 
-    Private Sub BTNPUBLISHERNEXT_Click(sender As Object, e As EventArgs) Handles BTNPUBLISHERNEXT.Click
-        NextPageHelper(LBLPUBLISHERPREV, LBLPUBLISHERNEXT, DGPUBLISHER, QueryTableType.PUBLISHER_QUERY_TABLE, TXTPUBLISHERSEARCH)
-    End Sub
+    '    Private Sub BTNAUTHORPNEXT_Click(sender As Object, e As EventArgs) Handles BTNAUTHORNEXT.Click
+    '        NextPageHelper(LBLAUTHORPREV, LBLAUTHORNEXT, DGAUTHORS, QueryTableType.AUTHOR_QUERY_TABLE, TXTSEARCHAUTHOR)
+    '    End Sub
 
-    Private Sub BTNPUBLISHERPREV_Click(sender As Object, e As EventArgs) Handles BTNPUBLISHERPREV.Click
-        PrevPageHelper(LBLPUBLISHERPREV, LBLPUBLISHERNEXT, DGPUBLISHER, QueryTableType.PUBLISHER_QUERY_TABLE, TXTPUBLISHERSEARCH)
-    End Sub
+    '    Private Sub DGAUTHOR_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGAUTHORS.CellMouseClick
+    '        If e.ColumnIndex <> 0 AndAlso e.RowIndex <> -1 Then
+    '            If DGAUTHORS.SelectedRows.Count > 0 Then
+    '                Dim datarow As DataRowView = DGAUTHORS.SelectedRows.Item(0).DataBoundItem
+    '                Using dialog As New AuthorDialog(datarow)
+    '                    dialog.ShowDialog()
+    '                End Using
+    '            End If
+    '            DGAUTHORS.DataSource = BaseMaintenance.Fetch(QueryTableType.AUTHOR_QUERY_TABLE)
+    '            LBLAUTHORNEXT.Text = BaseMaintenance.PMAX
+    '            LBLAUTHORPREV.Text = BaseMaintenance.PPrev
+    '        End If
+    '    End Sub
 
-    Private Sub DGPUBLISHER_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGPUBLISHER.CellMouseClick
-        If e.ColumnIndex <> 0 AndAlso e.RowIndex <> -1 Then
-            If DGPUBLISHER.SelectedRows.Count > 0 Then
-                Dim datarow As DataRowView = DGPUBLISHER.SelectedRows.Item(0).DataBoundItem
-                Using dialog As New PublisherDialog(datarow)
-                    dialog.ShowDialog()
-                End Using
-            End If
-            DGPUBLISHER.DataSource = BaseMaintenance.Fetch(QueryTableType.PUBLISHER_QUERY_TABLE)
-            LBLPUBLISHERNEXT.Text = BaseMaintenance.PMAX
-            LBLPUBLISHERPREV.Text = BaseMaintenance.PPrev
-        End If
-    End Sub
+    '    Private Sub TXTAUTHORSEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTSEARCHAUTHOR.TextChanged
+    '        SearchHelper(MaintenancePanels, AuthorTab, DGAUTHORS, LBLAUTHORNEXT, LBLAUTHORPREV, QueryTableType.AUTHOR_QUERY_TABLE, TXTSEARCHAUTHOR)
+    '    End Sub
 
-    Private Sub TXTPUBLSHERSEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTPUBLISHERSEARCH.TextChanged
-        SearchHelper(MaintenancePanels, PublishhersTab, DGPUBLISHER, LBLPUBLISHERNEXT, LBLPUBLISHERPREV, QueryTableType.PUBLISHER_QUERY_TABLE, TXTPUBLISHERSEARCH)
-    End Sub
-#End Region
+    '    Private Sub BTNAUTHORPREV_Click(sender As Object, e As EventArgs) Handles BTNAUTHORPREV.Click
+    '        PrevPageHelper(LBLAUTHORPREV, LBLAUTHORNEXT, DGAUTHORS, QueryTableType.AUTHOR_QUERY_TABLE, TXTSEARCHAUTHOR)
+    '    End Sub
+    '#End Region
 
-#Region "Classification Module"
-    Private Sub BTNADDCLASSIFICATION_Click(sender As Object, e As EventArgs) Handles BTNADDCLASSIFICATION.Click
-        Using dialog = ClassificationDialog
-            dialog.ShowDialog()
-        End Using
-        DGCLASSIFICATIONS.DataSource = BaseMaintenance.Fetch(QueryTableType.CLASSIFICATION_QUERY_TABLE)
-        LBLCLASSIFICATIONNEXT.Text = BaseMaintenance.PMAX
-        LBLCLASSIFICATIONPREV.Text = BaseMaintenance.PPrev
-    End Sub
+    '#Region "Publisher Module"
+    '    Private Sub BTNADDPUBLISHER_Click(sender As Object, e As EventArgs) Handles BTNADDPUBLISHER.Click
+    '        Using dialog = PublisherDialog
+    '            dialog.ShowDialog()
+    '        End Using
+    '        DGPUBLISHER.DataSource = BaseMaintenance.Fetch(QueryTableType.PUBLISHER_QUERY_TABLE)
+    '        LBLPUBLISHERNEXT.Text = BaseMaintenance.PMAX
+    '        LBLPUBLISHERPREV.Text = BaseMaintenance.PPrev
+    '    End Sub
 
-    Private Sub BTNCLASSIFICATIONNEXT_Click(sender As Object, e As EventArgs) Handles BTNCLASSIFICATIONNEXT.Click
-        NextPageHelper(LBLCLASSIFICATIONPREV, LBLCLASSIFICATIONNEXT, DGCLASSIFICATIONS, QueryTableType.CLASSIFICATION_QUERY_TABLE, TXTCLASSIFICATIONSEARCH)
-    End Sub
+    '    Private Sub BTNPUBLISHERNEXT_Click(sender As Object, e As EventArgs) Handles BTNPUBLISHERNEXT.Click
+    '        NextPageHelper(LBLPUBLISHERPREV, LBLPUBLISHERNEXT, DGPUBLISHER, QueryTableType.PUBLISHER_QUERY_TABLE, TXTPUBLISHERSEARCH)
+    '    End Sub
 
-    Private Sub BTNCLASSIFICATIONPREV_Click(sender As Object, e As EventArgs) Handles BTNCLASSIFICATIONPREV.Click
-        PrevPageHelper(LBLCLASSIFICATIONPREV, LBLCLASSIFICATIONNEXT, DGCLASSIFICATIONS, QueryTableType.CLASSIFICATION_QUERY_TABLE, TXTCLASSIFICATIONSEARCH)
-    End Sub
+    '    Private Sub BTNPUBLISHERPREV_Click(sender As Object, e As EventArgs) Handles BTNPUBLISHERPREV.Click
+    '        PrevPageHelper(LBLPUBLISHERPREV, LBLPUBLISHERNEXT, DGPUBLISHER, QueryTableType.PUBLISHER_QUERY_TABLE, TXTPUBLISHERSEARCH)
+    '    End Sub
 
-    Private Sub DGCLASSIFICATION_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGCLASSIFICATIONS.CellMouseClick
-        If e.ColumnIndex <> 0 AndAlso e.RowIndex <> -1 Then
-            If DGCLASSIFICATIONS.SelectedRows.Count > 0 Then
-                Dim datarow As DataRowView = DGCLASSIFICATIONS.SelectedRows.Item(0).DataBoundItem
-                Using dialog As New ClassificationDialog(datarow)
-                    dialog.ShowDialog()
-                End Using
-            End If
-            DGCLASSIFICATIONS.DataSource = BaseMaintenance.Fetch(QueryTableType.CLASSIFICATION_QUERY_TABLE)
-            LBLCLASSIFICATIONNEXT.Text = BaseMaintenance.PMAX
-            LBLCLASSIFICATIONPREV.Text = BaseMaintenance.PPrev
-        End If
-    End Sub
+    '    Private Sub DGPUBLISHER_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGPUBLISHER.CellMouseClick
+    '        If e.ColumnIndex <> 0 AndAlso e.RowIndex <> -1 Then
+    '            If DGPUBLISHER.SelectedRows.Count > 0 Then
+    '                Dim datarow As DataRowView = DGPUBLISHER.SelectedRows.Item(0).DataBoundItem
+    '                Using dialog As New PublisherDialog(datarow)
+    '                    dialog.ShowDialog()
+    '                End Using
+    '            End If
+    '            DGPUBLISHER.DataSource = BaseMaintenance.Fetch(QueryTableType.PUBLISHER_QUERY_TABLE)
+    '            LBLPUBLISHERNEXT.Text = BaseMaintenance.PMAX
+    '            LBLPUBLISHERPREV.Text = BaseMaintenance.PPrev
+    '        End If
+    '    End Sub
 
-    Private Sub TXTCLASSIFICATIONSEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTCLASSIFICATIONSEARCH.TextChanged
-        SearchHelper(MaintenancePanels, ClassificationTab, DGCLASSIFICATIONS, LBLCLASSIFICATIONNEXT, LBLCLASSIFICATIONPREV, QueryTableType.CLASSIFICATION_QUERY_TABLE, TXTCLASSIFICATIONSEARCH)
-    End Sub
-#End Region
+    '    Private Sub TXTPUBLSHERSEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTPUBLISHERSEARCH.TextChanged
+    '        SearchHelper(MaintenancePanels, PublishhersTab, DGPUBLISHER, LBLPUBLISHERNEXT, LBLPUBLISHERPREV, QueryTableType.PUBLISHER_QUERY_TABLE, TXTPUBLISHERSEARCH)
+    '    End Sub
+    '#End Region
 
-#Region "Donator Module"
-    Private Sub BTNADDDONATOR_Click(sender As Object, e As EventArgs) Handles BTNADDDONATOR.Click
-        Using dialog = DonatorDialog
-            dialog.ShowDialog()
-        End Using
-        DGDONATOR.DataSource = BaseMaintenance.Fetch(QueryTableType.DONATOR_QUERY_TABLE)
-        LBLDONATORNEXT.Text = BaseMaintenance.PMAX
-        LBLDONATORRPREV.Text = BaseMaintenance.PPrev
-    End Sub
+    '#Region "Classification Module"
+    '    Private Sub BTNADDCLASSIFICATION_Click(sender As Object, e As EventArgs) Handles BTNADDCLASSIFICATION.Click
+    '        Using dialog = ClassificationDialog
+    '            dialog.ShowDialog()
+    '        End Using
+    '        DGCLASSIFICATIONS.DataSource = BaseMaintenance.Fetch(QueryTableType.CLASSIFICATION_QUERY_TABLE)
+    '        LBLCLASSIFICATIONNEXT.Text = BaseMaintenance.PMAX
+    '        LBLCLASSIFICATIONPREV.Text = BaseMaintenance.PPrev
+    '    End Sub
 
-    Private Sub BTNDONATORNEXT_Click(sender As Object, e As EventArgs) Handles BTNDONATORNEXT.Click
-        NextPageHelper(LBLDONATORRPREV, LBLDONATORNEXT, DGDONATOR, QueryTableType.DONATOR_QUERY_TABLE, TXTDONATORSEARCH)
-    End Sub
+    '    Private Sub BTNCLASSIFICATIONNEXT_Click(sender As Object, e As EventArgs) Handles BTNCLASSIFICATIONNEXT.Click
+    '        NextPageHelper(LBLCLASSIFICATIONPREV, LBLCLASSIFICATIONNEXT, DGCLASSIFICATIONS, QueryTableType.CLASSIFICATION_QUERY_TABLE, TXTCLASSIFICATIONSEARCH)
+    '    End Sub
 
-    Private Sub BTNDONATORPREV_Click(sender As Object, e As EventArgs) Handles BTNDONATORRPREV.Click
-        PrevPageHelper(LBLDONATORRPREV, LBLDONATORNEXT, DGDONATOR, QueryTableType.DONATOR_QUERY_TABLE, TXTDONATORSEARCH)
-    End Sub
+    '    Private Sub BTNCLASSIFICATIONPREV_Click(sender As Object, e As EventArgs) Handles BTNCLASSIFICATIONPREV.Click
+    '        PrevPageHelper(LBLCLASSIFICATIONPREV, LBLCLASSIFICATIONNEXT, DGCLASSIFICATIONS, QueryTableType.CLASSIFICATION_QUERY_TABLE, TXTCLASSIFICATIONSEARCH)
+    '    End Sub
 
-    Private Sub DGDONATOR_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGDONATOR.CellMouseClick
-        If e.ColumnIndex <> 0 AndAlso e.RowIndex <> -1 Then
-            If DGDONATOR.SelectedRows.Count > 0 Then
-                Dim datarow As DataRowView = DGDONATOR.SelectedRows.Item(0).DataBoundItem
-                Using dialog As New DonatorDialog(datarow)
-                    dialog.ShowDialog()
-                End Using
-            End If
-            DGDONATOR.DataSource = BaseMaintenance.Fetch(QueryTableType.DONATOR_QUERY_TABLE)
-            LBLDONATORNEXT.Text = BaseMaintenance.PMAX
-            LBLDONATORRPREV.Text = BaseMaintenance.PPrev
-        End If
-    End Sub
+    '    Private Sub DGCLASSIFICATION_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGCLASSIFICATIONS.CellMouseClick
+    '        If e.ColumnIndex <> 0 AndAlso e.RowIndex <> -1 Then
+    '            If DGCLASSIFICATIONS.SelectedRows.Count > 0 Then
+    '                Dim datarow As DataRowView = DGCLASSIFICATIONS.SelectedRows.Item(0).DataBoundItem
+    '                Using dialog As New ClassificationDialog(datarow)
+    '                    dialog.ShowDialog()
+    '                End Using
+    '            End If
+    '            DGCLASSIFICATIONS.DataSource = BaseMaintenance.Fetch(QueryTableType.CLASSIFICATION_QUERY_TABLE)
+    '            LBLCLASSIFICATIONNEXT.Text = BaseMaintenance.PMAX
+    '            LBLCLASSIFICATIONPREV.Text = BaseMaintenance.PPrev
+    '        End If
+    '    End Sub
 
-    Private Sub TXTDONATORSEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTDONATORSEARCH.TextChanged
-        SearchHelper(MaintenancePanels, DonatorsTab, DGDONATOR, LBLDONATORNEXT, LBLDONATORRPREV, QueryTableType.DONATOR_QUERY_TABLE, TXTDONATORSEARCH)
-    End Sub
-#End Region
+    '    Private Sub TXTCLASSIFICATIONSEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTCLASSIFICATIONSEARCH.TextChanged
+    '        SearchHelper(MaintenancePanels, ClassificationTab, DGCLASSIFICATIONS, LBLCLASSIFICATIONNEXT, LBLCLASSIFICATIONPREV, QueryTableType.CLASSIFICATION_QUERY_TABLE, TXTCLASSIFICATIONSEARCH)
+    '    End Sub
+    '#End Region
 
-#Region "Supplier Module"
-    Private Sub BTNADDSUPPLIER_Click(sender As Object, e As EventArgs) Handles BTNADDSUPPLIER.Click
-        Using dialog = SupplierDialog
-            dialog.ShowDialog()
-        End Using
-        DGSUPPLIER.DataSource = BaseMaintenance.Fetch(QueryTableType.SUPPLIER_QUERY_TABLE)
-        LBLSUPPLIERNEXT.Text = BaseMaintenance.PMAX
-        LBLSUPPLIERPREV.Text = BaseMaintenance.PPrev
-    End Sub
+    '#Region "Donator Module"
+    '    Private Sub BTNADDDONATOR_Click(sender As Object, e As EventArgs) Handles BTNADDDONATOR.Click
+    '        Using dialog = DonatorDialog
+    '            dialog.ShowDialog()
+    '        End Using
+    '        DGDONATOR.DataSource = BaseMaintenance.Fetch(QueryTableType.DONATOR_QUERY_TABLE)
+    '        LBLDONATORNEXT.Text = BaseMaintenance.PMAX
+    '        LBLDONATORRPREV.Text = BaseMaintenance.PPrev
+    '    End Sub
 
-    Private Sub BTNSUPPLIERNEXT_Click(sender As Object, e As EventArgs) Handles BTNSUPPLIERNEXT.Click
-        NextPageHelper(LBLSUPPLIERPREV, LBLSUPPLIERNEXT, DGSUPPLIER, QueryTableType.SUPPLIER_QUERY_TABLE, TXTSUPPLIERSEARCH)
-    End Sub
+    '    Private Sub BTNDONATORNEXT_Click(sender As Object, e As EventArgs) Handles BTNDONATORNEXT.Click
+    '        NextPageHelper(LBLDONATORRPREV, LBLDONATORNEXT, DGDONATOR, QueryTableType.DONATOR_QUERY_TABLE, TXTDONATORSEARCH)
+    '    End Sub
 
-    Private Sub BTNSUPPLIERPREV_Click(sender As Object, e As EventArgs) Handles BTNSUPPLIERPREV.Click
-        PrevPageHelper(LBLSUPPLIERPREV, LBLSUPPLIERNEXT, DGSUPPLIER, QueryTableType.SUPPLIER_QUERY_TABLE, TXTSUPPLIERSEARCH)
-    End Sub
+    '    Private Sub BTNDONATORPREV_Click(sender As Object, e As EventArgs) Handles BTNDONATORRPREV.Click
+    '        PrevPageHelper(LBLDONATORRPREV, LBLDONATORNEXT, DGDONATOR, QueryTableType.DONATOR_QUERY_TABLE, TXTDONATORSEARCH)
+    '    End Sub
 
-    Private Sub DGSUPPLIER_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGSUPPLIER.CellMouseClick
-        If e.ColumnIndex <> 0 AndAlso e.RowIndex <> -1 Then
-            If DGSUPPLIER.SelectedRows.Count > 0 Then
-                Dim datarow As DataRowView = DGSUPPLIER.SelectedRows.Item(0).DataBoundItem
-                Using dialog As New SupplierDialog(datarow)
-                    dialog.ShowDialog()
-                End Using
-            End If
-            DGSUPPLIER.DataSource = BaseMaintenance.Fetch(QueryTableType.SUPPLIER_QUERY_TABLE)
-            LBLSUPPLIERNEXT.Text = BaseMaintenance.PMAX
-            LBLSUPPLIERPREV.Text = BaseMaintenance.PPrev
-        End If
-    End Sub
+    '    Private Sub DGDONATOR_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGDONATOR.CellMouseClick
+    '        If e.ColumnIndex <> 0 AndAlso e.RowIndex <> -1 Then
+    '            If DGDONATOR.SelectedRows.Count > 0 Then
+    '                Dim datarow As DataRowView = DGDONATOR.SelectedRows.Item(0).DataBoundItem
+    '                Using dialog As New DonatorDialog(datarow)
+    '                    dialog.ShowDialog()
+    '                End Using
+    '            End If
+    '            DGDONATOR.DataSource = BaseMaintenance.Fetch(QueryTableType.DONATOR_QUERY_TABLE)
+    '            LBLDONATORNEXT.Text = BaseMaintenance.PMAX
+    '            LBLDONATORRPREV.Text = BaseMaintenance.PPrev
+    '        End If
+    '    End Sub
 
-    Private Sub TXTSUPPLIERSEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTSUPPLIERSEARCH.TextChanged
-        SearchHelper(MaintenancePanels, SuppliersTab, DGSUPPLIER, LBLSUPPLIERNEXT, LBLSUPPLIERPREV, QueryTableType.SUPPLIER_QUERY_TABLE, TXTSUPPLIERSEARCH)
-    End Sub
-#End Region
+    '    Private Sub TXTDONATORSEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTDONATORSEARCH.TextChanged
+    '        SearchHelper(MaintenancePanels, DonatorsTab, DGDONATOR, LBLDONATORNEXT, LBLDONATORRPREV, QueryTableType.DONATOR_QUERY_TABLE, TXTDONATORSEARCH)
+    '    End Sub
+    '#End Region
 
-#Region "Department Module"
-    Private Sub BTNADDDEPARTMENT_Click(sender As Object, e As EventArgs) Handles BTNADDDEPARTMENT.Click
-        Using dialog = DepartmentDialog
-            dialog.ShowDialog()
-        End Using
-        DGDEPARTMENT.DataSource = BaseMaintenance.Fetch(QueryTableType.DEPARTMENT_QUERY_TABLE)
-        LBLDEPARTMENTNEXT.Text = BaseMaintenance.PMAX
-        LBLDEPARTMENTPREV.Text = BaseMaintenance.PPrev
-    End Sub
+    '#Region "Supplier Module"
+    '    Private Sub BTNADDSUPPLIER_Click(sender As Object, e As EventArgs) Handles BTNADDSUPPLIER.Click
+    '        Using dialog = SupplierDialog
+    '            dialog.ShowDialog()
+    '        End Using
+    '        DGSUPPLIER.DataSource = BaseMaintenance.Fetch(QueryTableType.SUPPLIER_QUERY_TABLE)
+    '        LBLSUPPLIERNEXT.Text = BaseMaintenance.PMAX
+    '        LBLSUPPLIERPREV.Text = BaseMaintenance.PPrev
+    '    End Sub
 
-    Private Sub BTNDEPARTMENTNEXT_Click(sender As Object, e As EventArgs) Handles BTNDEPARTMENTNEXT.Click
-        NextPageHelper(LBLDEPARTMENTPREV, LBLDEPARTMENTNEXT, DGDEPARTMENT, QueryTableType.DEPARTMENT_QUERY_TABLE, TXTDEPARTMENTSEARCH)
-    End Sub
+    '    Private Sub BTNSUPPLIERNEXT_Click(sender As Object, e As EventArgs) Handles BTNSUPPLIERNEXT.Click
+    '        NextPageHelper(LBLSUPPLIERPREV, LBLSUPPLIERNEXT, DGSUPPLIER, QueryTableType.SUPPLIER_QUERY_TABLE, TXTSUPPLIERSEARCH)
+    '    End Sub
 
-    Private Sub BTNDEPARTMENTPREV_Click(sender As Object, e As EventArgs) Handles BTNDEPARTMENTPREV.Click
-        PrevPageHelper(LBLDEPARTMENTPREV, LBLDEPARTMENTNEXT, DGDEPARTMENT, QueryTableType.DEPARTMENT_QUERY_TABLE, TXTDEPARTMENTSEARCH)
-    End Sub
+    '    Private Sub BTNSUPPLIERPREV_Click(sender As Object, e As EventArgs) Handles BTNSUPPLIERPREV.Click
+    '        PrevPageHelper(LBLSUPPLIERPREV, LBLSUPPLIERNEXT, DGSUPPLIER, QueryTableType.SUPPLIER_QUERY_TABLE, TXTSUPPLIERSEARCH)
+    '    End Sub
 
-    Private Sub DGDEPARTMENT_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGDEPARTMENT.CellMouseClick
-        If e.ColumnIndex <> 0 AndAlso e.RowIndex <> -1 Then
-            If DGDEPARTMENT.SelectedRows.Count > 0 Then
-                Dim datarow As DataRowView = DGDEPARTMENT.SelectedRows.Item(0).DataBoundItem
-                Using dialog As New DepartmentDialog(datarow)
-                    dialog.ShowDialog()
-                End Using
-            End If
-            DGDEPARTMENT.DataSource = BaseMaintenance.Fetch(QueryTableType.DEPARTMENT_QUERY_TABLE)
-            LBLDEPARTMENTNEXT.Text = BaseMaintenance.PMAX
-            LBLDEPARTMENTPREV.Text = BaseMaintenance.PPrev
-        End If
-    End Sub
+    '    Private Sub DGSUPPLIER_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGSUPPLIER.CellMouseClick
+    '        If e.ColumnIndex <> 0 AndAlso e.RowIndex <> -1 Then
+    '            If DGSUPPLIER.SelectedRows.Count > 0 Then
+    '                Dim datarow As DataRowView = DGSUPPLIER.SelectedRows.Item(0).DataBoundItem
+    '                Using dialog As New SupplierDialog(datarow)
+    '                    dialog.ShowDialog()
+    '                End Using
+    '            End If
+    '            DGSUPPLIER.DataSource = BaseMaintenance.Fetch(QueryTableType.SUPPLIER_QUERY_TABLE)
+    '            LBLSUPPLIERNEXT.Text = BaseMaintenance.PMAX
+    '            LBLSUPPLIERPREV.Text = BaseMaintenance.PPrev
+    '        End If
+    '    End Sub
 
-    Private Sub TXTDEPARTMENTSEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTDEPARTMENTSEARCH.TextChanged
-        SearchHelper(AccountsPanel, DepartmentTab, DGDEPARTMENT, LBLDEPARTMENTNEXT, LBLDEPARTMENTPREV, QueryTableType.DEPARTMENT_QUERY_TABLE, TXTDEPARTMENTSEARCH)
-    End Sub
-#End Region
+    '    Private Sub TXTSUPPLIERSEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTSUPPLIERSEARCH.TextChanged
+    '        SearchHelper(MaintenancePanels, SuppliersTab, DGSUPPLIER, LBLSUPPLIERNEXT, LBLSUPPLIERPREV, QueryTableType.SUPPLIER_QUERY_TABLE, TXTSUPPLIERSEARCH)
+    '    End Sub
+    '#End Region
 
-#Region "Year Level Module"
-    Private Sub BTNADDYEARLEVEL_Click(sender As Object, e As EventArgs) Handles BTNADDYEARLEVEL.Click
-        Using dialog = YearLevelDialog
-            dialog.ShowDialog()
-        End Using
-        DGYEARLEVEL.DataSource = BaseMaintenance.Fetch(QueryTableType.YEARLEVEL_QUERY_TABLE)
-        LBLYEARLEVELNEXT.Text = BaseMaintenance.PMAX
-        LBLYEARLEVELPREV.Text = BaseMaintenance.PPrev
-    End Sub
+    '#Region "Department Module"
+    '    Private Sub BTNADDDEPARTMENT_Click(sender As Object, e As EventArgs) Handles BTNADDDEPARTMENT.Click
+    '        Using dialog = DepartmentDialog
+    '            dialog.ShowDialog()
+    '        End Using
+    '        DGDEPARTMENT.DataSource = BaseMaintenance.Fetch(QueryTableType.DEPARTMENT_QUERY_TABLE)
+    '        LBLDEPARTMENTNEXT.Text = BaseMaintenance.PMAX
+    '        LBLDEPARTMENTPREV.Text = BaseMaintenance.PPrev
+    '    End Sub
 
-    Private Sub BTNYEARLEVELNEXT_Click(sender As Object, e As EventArgs) Handles BTNYEARLEVELNEXT.Click
-        NextPageHelper(LBLYEARLEVELPREV, LBLYEARLEVELNEXT, DGYEARLEVEL, QueryTableType.YEARLEVEL_QUERY_TABLE, TXTYEARLEVELSEARCH)
-    End Sub
+    '    Private Sub BTNDEPARTMENTNEXT_Click(sender As Object, e As EventArgs) Handles BTNDEPARTMENTNEXT.Click
+    '        NextPageHelper(LBLDEPARTMENTPREV, LBLDEPARTMENTNEXT, DGDEPARTMENT, QueryTableType.DEPARTMENT_QUERY_TABLE, TXTDEPARTMENTSEARCH)
+    '    End Sub
 
-    Private Sub BTNYEARLEVELPREV_Click(sender As Object, e As EventArgs) Handles BTNYEARLEVELPREV.Click
-        PrevPageHelper(LBLYEARLEVELPREV, LBLYEARLEVELNEXT, DGYEARLEVEL, QueryTableType.YEARLEVEL_QUERY_TABLE, TXTYEARLEVELSEARCH)
-    End Sub
+    '    Private Sub BTNDEPARTMENTPREV_Click(sender As Object, e As EventArgs) Handles BTNDEPARTMENTPREV.Click
+    '        PrevPageHelper(LBLDEPARTMENTPREV, LBLDEPARTMENTNEXT, DGDEPARTMENT, QueryTableType.DEPARTMENT_QUERY_TABLE, TXTDEPARTMENTSEARCH)
+    '    End Sub
 
-    Private Sub DGYEARLEVEL_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGYEARLEVEL.CellMouseClick
-        If e.ColumnIndex <> 0 AndAlso e.RowIndex <> -1 Then
-            If DGYEARLEVEL.SelectedRows.Count > 0 Then
-                Dim datarow As DataRowView = DGYEARLEVEL.SelectedRows.Item(0).DataBoundItem
-                Using dialog As New YearLevelDialog(datarow)
-                    dialog.ShowDialog()
-                End Using
-            End If
-            DGYEARLEVEL.DataSource = BaseMaintenance.Fetch(QueryTableType.YEARLEVEL_QUERY_TABLE)
-            LBLYEARLEVELNEXT.Text = BaseMaintenance.PMAX
-            LBLYEARLEVELPREV.Text = BaseMaintenance.PPrev
-        End If
-    End Sub
+    '    Private Sub DGDEPARTMENT_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGDEPARTMENT.CellMouseClick
+    '        If e.ColumnIndex <> 0 AndAlso e.RowIndex <> -1 Then
+    '            If DGDEPARTMENT.SelectedRows.Count > 0 Then
+    '                Dim datarow As DataRowView = DGDEPARTMENT.SelectedRows.Item(0).DataBoundItem
+    '                Using dialog As New DepartmentDialog(datarow)
+    '                    dialog.ShowDialog()
+    '                End Using
+    '            End If
+    '            DGDEPARTMENT.DataSource = BaseMaintenance.Fetch(QueryTableType.DEPARTMENT_QUERY_TABLE)
+    '            LBLDEPARTMENTNEXT.Text = BaseMaintenance.PMAX
+    '            LBLDEPARTMENTPREV.Text = BaseMaintenance.PPrev
+    '        End If
+    '    End Sub
 
-    Private Sub TXTYEARLEVELSEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTYEARLEVELSEARCH.TextChanged
-        SearchHelper(AccountsPanel, YearLevelTab, DGYEARLEVEL, LBLYEARLEVELNEXT, LBLYEARLEVELPREV, QueryTableType.YEARLEVEL_QUERY_TABLE, TXTYEARLEVELSEARCH)
-    End Sub
-#End Region
+    '    Private Sub TXTDEPARTMENTSEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTDEPARTMENTSEARCH.TextChanged
+    '        SearchHelper(AccountsPanel, DepartmentTab, DGDEPARTMENT, LBLDEPARTMENTNEXT, LBLDEPARTMENTPREV, QueryTableType.DEPARTMENT_QUERY_TABLE, TXTDEPARTMENTSEARCH)
+    '    End Sub
+    '#End Region
 
-#Region "Language Module"
-    Private Sub BTNADDLANGUAGE_Click(sender As Object, e As EventArgs) Handles BTNADDLANGUAGE.Click
-        Using dialog = LanguageDialog
-            dialog.ShowDialog()
-        End Using
-        DGLANGUAGE.DataSource = BaseMaintenance.Fetch(QueryTableType.LANGUAGES_QUERY_TABLE)
-        LBLLANGUAGENEXT.Text = BaseMaintenance.PMAX
-        LBLLANGUAGEPREV.Text = BaseMaintenance.PPrev
-    End Sub
+    '#Region "Year Level Module"
+    '    Private Sub BTNADDYEARLEVEL_Click(sender As Object, e As EventArgs) Handles BTNADDYEARLEVEL.Click
+    '        Using dialog = YearLevelDialog
+    '            dialog.ShowDialog()
+    '        End Using
+    '        DGYEARLEVEL.DataSource = BaseMaintenance.Fetch(QueryTableType.YEARLEVEL_QUERY_TABLE)
+    '        LBLYEARLEVELNEXT.Text = BaseMaintenance.PMAX
+    '        LBLYEARLEVELPREV.Text = BaseMaintenance.PPrev
+    '    End Sub
 
-    Private Sub BTNLANGUAGENEXT_Click(sender As Object, e As EventArgs) Handles BTNLANGUAGENEXT.Click
-        NextPageHelper(LBLLANGUAGEPREV, LBLLANGUAGENEXT, DGLANGUAGE, QueryTableType.LANGUAGES_QUERY_TABLE, TXTLANGUAGESEARCH)
-    End Sub
+    '    Private Sub BTNYEARLEVELNEXT_Click(sender As Object, e As EventArgs) Handles BTNYEARLEVELNEXT.Click
+    '        NextPageHelper(LBLYEARLEVELPREV, LBLYEARLEVELNEXT, DGYEARLEVEL, QueryTableType.YEARLEVEL_QUERY_TABLE, TXTYEARLEVELSEARCH)
+    '    End Sub
 
-    Private Sub BTNLANGUAGEPREV_Click(sender As Object, e As EventArgs) Handles BTNLANGUAGEPREV.Click
-        PrevPageHelper(LBLLANGUAGEPREV, LBLLANGUAGENEXT, DGLANGUAGE, QueryTableType.LANGUAGES_QUERY_TABLE, TXTLANGUAGESEARCH)
-    End Sub
+    '    Private Sub BTNYEARLEVELPREV_Click(sender As Object, e As EventArgs) Handles BTNYEARLEVELPREV.Click
+    '        PrevPageHelper(LBLYEARLEVELPREV, LBLYEARLEVELNEXT, DGYEARLEVEL, QueryTableType.YEARLEVEL_QUERY_TABLE, TXTYEARLEVELSEARCH)
+    '    End Sub
 
-    Private Sub DGLANGUAGE_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGLANGUAGE.CellMouseClick
-        If e.ColumnIndex <> 0 AndAlso e.RowIndex <> -1 Then
-            If DGLANGUAGE.SelectedRows.Count > 0 Then
-                Dim datarow As DataRowView = DGLANGUAGE.SelectedRows.Item(0).DataBoundItem
-                Using dialog As New LanguageDialog(datarow)
-                    dialog.ShowDialog()
-                End Using
-            End If
-            DGLANGUAGE.DataSource = BaseMaintenance.Fetch(QueryTableType.LANGUAGES_QUERY_TABLE)
-            LBLLANGUAGENEXT.Text = BaseMaintenance.PMAX
-            LBLLANGUAGEPREV.Text = BaseMaintenance.PPrev
-        End If
-    End Sub
+    '    Private Sub DGYEARLEVEL_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGYEARLEVEL.CellMouseClick
+    '        If e.ColumnIndex <> 0 AndAlso e.RowIndex <> -1 Then
+    '            If DGYEARLEVEL.SelectedRows.Count > 0 Then
+    '                Dim datarow As DataRowView = DGYEARLEVEL.SelectedRows.Item(0).DataBoundItem
+    '                Using dialog As New YearLevelDialog(datarow)
+    '                    dialog.ShowDialog()
+    '                End Using
+    '            End If
+    '            DGYEARLEVEL.DataSource = BaseMaintenance.Fetch(QueryTableType.YEARLEVEL_QUERY_TABLE)
+    '            LBLYEARLEVELNEXT.Text = BaseMaintenance.PMAX
+    '            LBLYEARLEVELPREV.Text = BaseMaintenance.PPrev
+    '        End If
+    '    End Sub
 
-    Private Sub TXLANGUAGESEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTLANGUAGESEARCH.TextChanged
-        SearchHelper(MaintenancePanels, LanguagesTab, DGLANGUAGE, LBLLANGUAGENEXT, LBLLANGUAGEPREV, QueryTableType.LANGUAGES_QUERY_TABLE, TXTLANGUAGESEARCH)
-    End Sub
-#End Region
+    '    Private Sub TXTYEARLEVELSEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTYEARLEVELSEARCH.TextChanged
+    '        SearchHelper(AccountsPanel, YearLevelTab, DGYEARLEVEL, LBLYEARLEVELNEXT, LBLYEARLEVELPREV, QueryTableType.YEARLEVEL_QUERY_TABLE, TXTYEARLEVELSEARCH)
+    '    End Sub
+    '#End Region
 
-#Region "Book Module"
-    Private Sub BTNADDBOOK_Click(sender As Object, e As EventArgs) Handles BTNADDBOOK.Click
-        Using dialog = BookDialog
-            dialog.ShowDialog()
-        End Using
-        If CMBBOOKFILTER.SelectedIndex = 0 Then
-            DGBOOKS.DataSource = BaseMaintenance.Search(QueryTableType.BOOK_QUERY_TABLE, TXTBOOKSEARCH.Text)
-            LBLBOOKNEXT.Text = BaseMaintenance.PMAX
-            LBLBOOKPREV.Text = BaseMaintenance.PPrev
-        Else
-            DGBOOKS.DataSource = BaseMaintenance.SearchArchive(QueryTableType.BOOK_QUERY_TABLE, TXTBOOKSEARCH.Text)
-            LBLBOOKNEXT.Text = BaseMaintenance.PMAX
-            LBLBOOKPREV.Text = BaseMaintenance.PPrev
-        End If
-    End Sub
+    '#Region "Language Module"
+    '    Private Sub BTNADDLANGUAGE_Click(sender As Object, e As EventArgs) Handles BTNADDLANGUAGE.Click
+    '        Using dialog = LanguageDialog
+    '            dialog.ShowDialog()
+    '        End Using
+    '        DGLANGUAGE.DataSource = BaseMaintenance.Fetch(QueryTableType.LANGUAGES_QUERY_TABLE)
+    '        LBLLANGUAGENEXT.Text = BaseMaintenance.PMAX
+    '        LBLLANGUAGEPREV.Text = BaseMaintenance.PPrev
+    '    End Sub
 
-    Private Sub BTNBOOKNEXT_Click(sender As Object, e As EventArgs) Handles BTNBOOKNEXT.Click
-        If BaseMaintenance.PPrev < BaseMaintenance.PMAX Then
-            BaseMaintenance.PPrev += 1
-            LBLBOOKPREV.Text = BaseMaintenance.PPrev
-            If CMBBOOKFILTER.SelectedIndex = 0 Then
-                DGBOOKS.DataSource = BaseMaintenance.Search(QueryTableType.BOOK_QUERY_TABLE, TXTBOOKSEARCH.Text)
-            Else
-                DGBOOKS.DataSource = BaseMaintenance.SearchArchive(QueryTableType.BOOK_QUERY_TABLE, TXTBOOKSEARCH.Text)
-            End If
-        End If
+    '    Private Sub BTNLANGUAGENEXT_Click(sender As Object, e As EventArgs) Handles BTNLANGUAGENEXT.Click
+    '        NextPageHelper(LBLLANGUAGEPREV, LBLLANGUAGENEXT, DGLANGUAGE, QueryTableType.LANGUAGES_QUERY_TABLE, TXTLANGUAGESEARCH)
+    '    End Sub
 
-        ' Retain the previously selected rows
-        For Each item As DataGridViewRow In DGBOOKS.Rows
-            For Each drow As DataRow In SELECTED_BOOKS.Rows
-                Dim boundItem As DataRowView = TryCast(item.DataBoundItem, DataRowView)
-                If boundItem.Row.Item("id") = drow.Item("id") Then
-                    item.Cells(NameOf(chckBoxBooks)).Value = True
-                End If
-            Next
-        Next
-        DGBOOKS.EndEdit()
-    End Sub
+    '    Private Sub BTNLANGUAGEPREV_Click(sender As Object, e As EventArgs) Handles BTNLANGUAGEPREV.Click
+    '        PrevPageHelper(LBLLANGUAGEPREV, LBLLANGUAGENEXT, DGLANGUAGE, QueryTableType.LANGUAGES_QUERY_TABLE, TXTLANGUAGESEARCH)
+    '    End Sub
 
-    Private Sub BTNBOOKPREV_Click(sender As Object, e As EventArgs) Handles BTNBOOKPREV.Click
-        If BaseMaintenance.PPrev > 1 Then
-            BaseMaintenance.PPrev -= 1
-            LBLBOOKPREV.Text = BaseMaintenance.PPrev
-            If CMBBOOKFILTER.SelectedIndex = 0 Then
-                DGBOOKS.DataSource = BaseMaintenance.Search(QueryTableType.BOOK_QUERY_TABLE, TXTBOOKSEARCH.Text)
-            Else
-                DGBOOKS.DataSource = BaseMaintenance.SearchArchive(QueryTableType.BOOK_QUERY_TABLE, TXTBOOKSEARCH.Text)
-            End If
-        End If
+    '    Private Sub DGLANGUAGE_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGLANGUAGE.CellMouseClick
+    '        If e.ColumnIndex <> 0 AndAlso e.RowIndex <> -1 Then
+    '            If DGLANGUAGE.SelectedRows.Count > 0 Then
+    '                Dim datarow As DataRowView = DGLANGUAGE.SelectedRows.Item(0).DataBoundItem
+    '                Using dialog As New LanguageDialog(datarow)
+    '                    dialog.ShowDialog()
+    '                End Using
+    '            End If
+    '            DGLANGUAGE.DataSource = BaseMaintenance.Fetch(QueryTableType.LANGUAGES_QUERY_TABLE)
+    '            LBLLANGUAGENEXT.Text = BaseMaintenance.PMAX
+    '            LBLLANGUAGEPREV.Text = BaseMaintenance.PPrev
+    '        End If
+    '    End Sub
 
-        ' Retain the previously selected rows
-        For Each item As DataGridViewRow In DGBOOKS.Rows
-            For Each drow As DataRow In SELECTED_BOOKS.Rows
-                Dim boundItem As DataRowView = TryCast(item.DataBoundItem, DataRowView)
-                If boundItem.Row.Item("id") = drow.Item("id") Then
-                    item.Cells(NameOf(chckBoxBooks)).Value = True
-                End If
-            Next
-        Next
-        DGBOOKS.EndEdit()
-    End Sub
+    '    Private Sub TXLANGUAGESEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTLANGUAGESEARCH.TextChanged
+    '        SearchHelper(MaintenancePanels, LanguagesTab, DGLANGUAGE, LBLLANGUAGENEXT, LBLLANGUAGEPREV, QueryTableType.LANGUAGES_QUERY_TABLE, TXTLANGUAGESEARCH)
+    '    End Sub
+    '#End Region
 
-    Private Sub DGBOOK_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGBOOKS.CellMouseClick
-        If e.ColumnIndex <> 0 AndAlso e.RowIndex <> -1 Then
-            If DGBOOKS.SelectedRows.Count > 0 Then
-                Dim datarow As DataRowView = DGBOOKS.SelectedRows.Item(0).DataBoundItem
-                Using dialog As New BookDialog(datarow)
-                    dialog.ShowDialog()
-                End Using
-            End If
-            If CMBBOOKFILTER.SelectedIndex = 0 Then
-                DGBOOKS.DataSource = BaseMaintenance.Search(QueryTableType.BOOK_QUERY_TABLE, TXTBOOKSEARCH.Text)
-            Else
-                DGBOOKS.DataSource = BaseMaintenance.SearchArchive(QueryTableType.BOOK_QUERY_TABLE, TXTBOOKSEARCH.Text)
-            End If
-            LBLBOOKNEXT.Text = BaseMaintenance.PMAX
-            LBLBOOKPREV.Text = BaseMaintenance.PPrev
-        End If
-    End Sub
+    '#Region "Book Module"
+    '    Private Sub BTNADDBOOK_Click(sender As Object, e As EventArgs) Handles BTNADDBOOK.Click
+    '        Using dialog = BookDialog
+    '            dialog.ShowDialog()
+    '        End Using
+    '        If CMBBOOKFILTER.SelectedIndex = 0 Then
+    '            DGBOOKS.DataSource = BaseMaintenance.Search(QueryTableType.BOOK_QUERY_TABLE, TXTBOOKSEARCH.Text)
+    '            LBLBOOKNEXT.Text = BaseMaintenance.PMAX
+    '            LBLBOOKPREV.Text = BaseMaintenance.PPrev
+    '        Else
+    '            DGBOOKS.DataSource = BaseMaintenance.SearchArchive(QueryTableType.BOOK_QUERY_TABLE, TXTBOOKSEARCH.Text)
+    '            LBLBOOKNEXT.Text = BaseMaintenance.PMAX
+    '            LBLBOOKPREV.Text = BaseMaintenance.PPrev
+    '        End If
+    '    End Sub
 
-    Private Sub TXBOOKSEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTBOOKSEARCH.TextChanged
-        If MaintenancePanels.SelectedTab.Equals(BooksTab) Then
-            BaseMaintenance.PPrev = 1
-            If CMBBOOKFILTER.SelectedIndex = 0 Then
-                DGBOOKS.DataSource = BaseMaintenance.Search(QueryTableType.BOOK_QUERY_TABLE, TXTBOOKSEARCH.Text)
-            Else
-                DGBOOKS.DataSource = BaseMaintenance.SearchArchive(QueryTableType.BOOK_QUERY_TABLE, TXTBOOKSEARCH.Text)
-            End If
-            LBLBOOKNEXT.Text = BaseMaintenance.PMAX
-            LBLBOOKPREV.Text = BaseMaintenance.PPrev
-        End If
-    End Sub
+    '    Private Sub BTNBOOKNEXT_Click(sender As Object, e As EventArgs) Handles BTNBOOKNEXT.Click
+    '        If BaseMaintenance.PPrev < BaseMaintenance.PMAX Then
+    '            BaseMaintenance.PPrev += 1
+    '            LBLBOOKPREV.Text = BaseMaintenance.PPrev
+    '            If CMBBOOKFILTER.SelectedIndex = 0 Then
+    '                DGBOOKS.DataSource = BaseMaintenance.Search(QueryTableType.BOOK_QUERY_TABLE, TXTBOOKSEARCH.Text)
+    '            Else
+    '                DGBOOKS.DataSource = BaseMaintenance.SearchArchive(QueryTableType.BOOK_QUERY_TABLE, TXTBOOKSEARCH.Text)
+    '            End If
+    '        End If
 
-    Private Sub CMBBOOKFILTER_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CMBBOOKFILTER.SelectedIndexChanged
-        If MaintenancePanels.SelectedTab.Equals(BooksTab) Then
-            BaseMaintenance.PPrev = 1
-            If CMBBOOKFILTER.SelectedIndex = 0 Then
-                DGBOOKS.DataSource = BaseMaintenance.Search(QueryTableType.BOOK_QUERY_TABLE, TXTBOOKSEARCH.Text)
-            Else
-                DGBOOKS.DataSource = BaseMaintenance.SearchArchive(QueryTableType.BOOK_QUERY_TABLE, TXTBOOKSEARCH.Text)
-            End If
-            LBLBOOKNEXT.Text = BaseMaintenance.PMAX
-            LBLBOOKPREV.Text = BaseMaintenance.PPrev
-        End If
-    End Sub
+    '        ' Retain the previously selected rows
+    '        For Each item As DataGridViewRow In DGBOOKS.Rows
+    '            For Each drow As DataRow In SELECTED_BOOKS.Rows
+    '                Dim boundItem As DataRowView = TryCast(item.DataBoundItem, DataRowView)
+    '                If boundItem.Row.Item("id") = drow.Item("id") Then
+    '                    item.Cells(NameOf(chckBoxBooks)).Value = True
+    '                End If
+    '            Next
+    '        Next
+    '        DGBOOKS.EndEdit()
+    '    End Sub
 
-    Private Sub DGBOOKS_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGBOOKS.CellContentClick
-        If e.ColumnIndex = chckBoxBooks.Index Then
-            DGBOOKS.EndEdit()
-            Dim boundItem As DataRowView = TryCast(DGBOOKS.Rows(e.RowIndex).DataBoundItem, DataRowView)
-            If CBool(DGBOOKS.Rows(e.RowIndex).Cells(e.ColumnIndex).Value) AndAlso Not SELECTED_BOOKS.Rows.Contains(boundItem.Row.Item("id")) Then
-                SELECTED_BOOKS.Rows.Add(boundItem.Row.ItemArray)
-            Else
-                If SELECTED_BOOKS.Rows.Contains(boundItem.Row.Item("id")) Then
-                    Dim row As DataRow = Nothing
-                    For Each item As DataRow In SELECTED_BOOKS.Rows
-                        If item.Item("id") = boundItem.Row.Item("id") Then
-                            row = item
-                            Exit For
-                        End If
-                    Next
-                    SELECTED_BOOKS.Rows.Remove(row)
-                End If
-            End If
-        End If
-    End Sub
-#End Region
+    '    Private Sub BTNBOOKPREV_Click(sender As Object, e As EventArgs) Handles BTNBOOKPREV.Click
+    '        If BaseMaintenance.PPrev > 1 Then
+    '            BaseMaintenance.PPrev -= 1
+    '            LBLBOOKPREV.Text = BaseMaintenance.PPrev
+    '            If CMBBOOKFILTER.SelectedIndex = 0 Then
+    '                DGBOOKS.DataSource = BaseMaintenance.Search(QueryTableType.BOOK_QUERY_TABLE, TXTBOOKSEARCH.Text)
+    '            Else
+    '                DGBOOKS.DataSource = BaseMaintenance.SearchArchive(QueryTableType.BOOK_QUERY_TABLE, TXTBOOKSEARCH.Text)
+    '            End If
+    '        End If
+
+    '        ' Retain the previously selected rows
+    '        For Each item As DataGridViewRow In DGBOOKS.Rows
+    '            For Each drow As DataRow In SELECTED_BOOKS.Rows
+    '                Dim boundItem As DataRowView = TryCast(item.DataBoundItem, DataRowView)
+    '                If boundItem.Row.Item("id") = drow.Item("id") Then
+    '                    item.Cells(NameOf(chckBoxBooks)).Value = True
+    '                End If
+    '            Next
+    '        Next
+    '        DGBOOKS.EndEdit()
+    '    End Sub
+
+    '    Private Sub DGBOOK_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGBOOKS.CellMouseClick
+    '        If e.ColumnIndex <> 0 AndAlso e.RowIndex <> -1 Then
+    '            If DGBOOKS.SelectedRows.Count > 0 Then
+    '                Dim datarow As DataRowView = DGBOOKS.SelectedRows.Item(0).DataBoundItem
+    '                Using dialog As New BookDialog(datarow)
+    '                    dialog.ShowDialog()
+    '                End Using
+    '            End If
+    '            If CMBBOOKFILTER.SelectedIndex = 0 Then
+    '                DGBOOKS.DataSource = BaseMaintenance.Search(QueryTableType.BOOK_QUERY_TABLE, TXTBOOKSEARCH.Text)
+    '            Else
+    '                DGBOOKS.DataSource = BaseMaintenance.SearchArchive(QueryTableType.BOOK_QUERY_TABLE, TXTBOOKSEARCH.Text)
+    '            End If
+    '            LBLBOOKNEXT.Text = BaseMaintenance.PMAX
+    '            LBLBOOKPREV.Text = BaseMaintenance.PPrev
+    '        End If
+    '    End Sub
+
+    '    Private Sub TXBOOKSEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTBOOKSEARCH.TextChanged
+    '        If MaintenancePanels.SelectedTab.Equals(BooksTab) Then
+    '            BaseMaintenance.PPrev = 1
+    '            If CMBBOOKFILTER.SelectedIndex = 0 Then
+    '                DGBOOKS.DataSource = BaseMaintenance.Search(QueryTableType.BOOK_QUERY_TABLE, TXTBOOKSEARCH.Text)
+    '            Else
+    '                DGBOOKS.DataSource = BaseMaintenance.SearchArchive(QueryTableType.BOOK_QUERY_TABLE, TXTBOOKSEARCH.Text)
+    '            End If
+    '            LBLBOOKNEXT.Text = BaseMaintenance.PMAX
+    '            LBLBOOKPREV.Text = BaseMaintenance.PPrev
+    '        End If
+    '    End Sub
+
+    '    Private Sub CMBBOOKFILTER_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CMBBOOKFILTER.SelectedIndexChanged
+    '        If MaintenancePanels.SelectedTab.Equals(BooksTab) Then
+    '            BaseMaintenance.PPrev = 1
+    '            If CMBBOOKFILTER.SelectedIndex = 0 Then
+    '                DGBOOKS.DataSource = BaseMaintenance.Search(QueryTableType.BOOK_QUERY_TABLE, TXTBOOKSEARCH.Text)
+    '            Else
+    '                DGBOOKS.DataSource = BaseMaintenance.SearchArchive(QueryTableType.BOOK_QUERY_TABLE, TXTBOOKSEARCH.Text)
+    '            End If
+    '            LBLBOOKNEXT.Text = BaseMaintenance.PMAX
+    '            LBLBOOKPREV.Text = BaseMaintenance.PPrev
+    '        End If
+    '    End Sub
+
+    '    Private Sub DGBOOKS_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGBOOKS.CellContentClick
+    '        If e.ColumnIndex = chckBoxBooks.Index Then
+    '            DGBOOKS.EndEdit()
+    '            Dim boundItem As DataRowView = TryCast(DGBOOKS.Rows(e.RowIndex).DataBoundItem, DataRowView)
+    '            If CBool(DGBOOKS.Rows(e.RowIndex).Cells(e.ColumnIndex).Value) AndAlso Not SELECTED_BOOKS.Rows.Contains(boundItem.Row.Item("id")) Then
+    '                SELECTED_BOOKS.Rows.Add(boundItem.Row.ItemArray)
+    '            Else
+    '                If SELECTED_BOOKS.Rows.Contains(boundItem.Row.Item("id")) Then
+    '                    Dim row As DataRow = Nothing
+    '                    For Each item As DataRow In SELECTED_BOOKS.Rows
+    '                        If item.Item("id") = boundItem.Row.Item("id") Then
+    '                            row = item
+    '                            Exit For
+    '                        End If
+    '                    Next
+    '                    SELECTED_BOOKS.Rows.Remove(row)
+    '                End If
+    '            End If
+    '        End If
+    '    End Sub
+    '#End Region
 
 #Region "Section Module"
     Private Sub BTNADDSECTION_Click(sender As Object, e As EventArgs) Handles BTNADDSECTION.Click
@@ -868,36 +880,36 @@ Public Class DashboardForm
     End Sub
 #End Region
 
-#Region "Maintenance Tab"
-    Private Sub MaintenancePanels_SelectedIndexChanged(sender As Object, e As EventArgs) Handles MaintenancePanels.SelectedIndexChanged
-        Select Case True
-            Case MaintenancePanels.SelectedTab.Equals(GenresTab)
-                LoadTabData(DGGENRE, LBLGENREPREV, LBLGENRENEXT, QueryTableType.GENRE_QUERY_TABLE, TXTGENRESEARCH)
+    '#Region "Maintenance Tab"
+    '    Private Sub MaintenancePanels_SelectedIndexChanged(sender As Object, e As EventArgs) Handles MaintenancePanels.SelectedIndexChanged
+    '        Select Case True
+    '            Case MaintenancePanels.SelectedTab.Equals(GenresTab)
+    '                LoadTabData(DGGENRE, LBLGENREPREV, LBLGENRENEXT, QueryTableType.GENRE_QUERY_TABLE, TXTGENRESEARCH)
 
-            Case MaintenancePanels.SelectedTab.Equals(AuthorTab)
-                LoadTabData(DGAUTHORS, LBLAUTHORPREV, LBLAUTHORNEXT, QueryTableType.AUTHOR_QUERY_TABLE, TXTSEARCHAUTHOR)
+    '            Case MaintenancePanels.SelectedTab.Equals(AuthorTab)
+    '                LoadTabData(DGAUTHORS, LBLAUTHORPREV, LBLAUTHORNEXT, QueryTableType.AUTHOR_QUERY_TABLE, TXTSEARCHAUTHOR)
 
-            Case MaintenancePanels.SelectedTab.Equals(PublishhersTab)
-                LoadTabData(DGPUBLISHER, LBLPUBLISHERPREV, LBLPUBLISHERNEXT, QueryTableType.PUBLISHER_QUERY_TABLE, TXTPUBLISHERSEARCH)
+    '            Case MaintenancePanels.SelectedTab.Equals(PublishhersTab)
+    '                LoadTabData(DGPUBLISHER, LBLPUBLISHERPREV, LBLPUBLISHERNEXT, QueryTableType.PUBLISHER_QUERY_TABLE, TXTPUBLISHERSEARCH)
 
-            Case MaintenancePanels.SelectedTab.Equals(ClassificationTab)
-                LoadTabData(DGCLASSIFICATIONS, LBLCLASSIFICATIONPREV, LBLCLASSIFICATIONNEXT, QueryTableType.CLASSIFICATION_QUERY_TABLE, TXTCLASSIFICATIONSEARCH)
+    '            Case MaintenancePanels.SelectedTab.Equals(ClassificationTab)
+    '                LoadTabData(DGCLASSIFICATIONS, LBLCLASSIFICATIONPREV, LBLCLASSIFICATIONNEXT, QueryTableType.CLASSIFICATION_QUERY_TABLE, TXTCLASSIFICATIONSEARCH)
 
-            Case MaintenancePanels.SelectedTab.Equals(DonatorsTab)
-                LoadTabData(DGDONATOR, LBLDONATORRPREV, LBLDONATORNEXT, QueryTableType.DONATOR_QUERY_TABLE, TXTDONATORSEARCH)
+    '            Case MaintenancePanels.SelectedTab.Equals(DonatorsTab)
+    '                LoadTabData(DGDONATOR, LBLDONATORRPREV, LBLDONATORNEXT, QueryTableType.DONATOR_QUERY_TABLE, TXTDONATORSEARCH)
 
-            Case MaintenancePanels.SelectedTab.Equals(SuppliersTab)
-                LoadTabData(DGSUPPLIER, LBLSUPPLIERPREV, LBLSUPPLIERNEXT, QueryTableType.SUPPLIER_QUERY_TABLE, TXTSUPPLIERSEARCH)
+    '            Case MaintenancePanels.SelectedTab.Equals(SuppliersTab)
+    '                LoadTabData(DGSUPPLIER, LBLSUPPLIERPREV, LBLSUPPLIERNEXT, QueryTableType.SUPPLIER_QUERY_TABLE, TXTSUPPLIERSEARCH)
 
-            Case MaintenancePanels.SelectedTab.Equals(LanguagesTab)
-                LoadTabData(DGLANGUAGE, LBLLANGUAGEPREV, LBLLANGUAGENEXT, QueryTableType.LANGUAGES_QUERY_TABLE, TXTLANGUAGESEARCH)
+    '            Case MaintenancePanels.SelectedTab.Equals(LanguagesTab)
+    '                LoadTabData(DGLANGUAGE, LBLLANGUAGEPREV, LBLLANGUAGENEXT, QueryTableType.LANGUAGES_QUERY_TABLE, TXTLANGUAGESEARCH)
 
-            Case MaintenancePanels.SelectedTab.Equals(BooksTab)
-                SELECTED_BOOKS = New SystemDataSets.DTBookDataTable
-                LoadTabData(DGBOOKS, LBLBOOKPREV, LBLBOOKNEXT, QueryTableType.BOOK_QUERY_TABLE, TXTBOOKSEARCH)
-        End Select
-    End Sub
-#End Region
+    '            Case MaintenancePanels.SelectedTab.Equals(BooksTab)
+    '                SELECTED_BOOKS = New SystemDataSets.DTBookDataTable
+    '                LoadTabData(DGBOOKS, LBLBOOKPREV, LBLBOOKNEXT, QueryTableType.BOOK_QUERY_TABLE, TXTBOOKSEARCH)
+    '        End Select
+    '    End Sub
+    '#End Region
 
 #Region "Import Module"
     Private Sub BTNIMPORTS_Click(sender As Object, e As EventArgs) Handles BTNIMPORTBOOKS.Click, BTNIMPORTFACULTY.Click, BTNIMPORTSTUDENTS.Click
@@ -1301,7 +1313,7 @@ Public Class DashboardForm
             End If
         End If
         DGBOOKS.EndEdit()
-        CMBBOOKFILTER_SelectedIndexChanged(CMBBOOKFILTER, Nothing)
+        'CMBBOOKFILTER_SelectedIndexChanged(CMBBOOKFILTER, Nothing)
         SELECTED_BOOKS = New SystemDataSets.DTBookDataTable
     End Sub
 
@@ -1322,7 +1334,7 @@ Public Class DashboardForm
             End If
         End If
         DGBOOKS.EndEdit()
-        CMBBOOKFILTER_SelectedIndexChanged(CMBBOOKFILTER, Nothing)
+        'CMBBOOKFILTER_SelectedIndexChanged(CMBBOOKFILTER, Nothing)
         SELECTED_BOOKS = New SystemDataSets.DTBookDataTable
     End Sub
 
@@ -1348,7 +1360,7 @@ Public Class DashboardForm
         Else
             MessageBox.Show("Cannot delete the selected items. Some items are being used to other resources. Please remove the them before deleting.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
-        CMBBOOKFILTER_SelectedIndexChanged(CMBBOOKFILTER, Nothing)
+        'CMBBOOKFILTER_SelectedIndexChanged(CMBBOOKFILTER, Nothing)
         SELECTED_BOOKS = New SystemDataSets.DTBookDataTable
     End Sub
 
@@ -1516,7 +1528,7 @@ Public Class DashboardForm
             BTNSECTIONREFRESH.Click, BTNSTUDENTREFRESH.Click, BTNSUPPLIERREFRESH.Click, BTNTRANSACTIONREFRESH.Click, BTNYEARLEVELREFRESH.Click
         ' TODO ADD ALL THE NECESSARY REFRESH
         AccountsPanel_SelectedIndexChanged(AccountsPanel, Nothing)
-        MaintenancePanels_SelectedIndexChanged(MaintenancePanels, Nothing)
+        'MaintenancePanels_SelectedIndexChanged(MaintenancePanels, Nothing)
         BookInventoryPanels_SelectedIndexChanged(BookInventoryPanels, Nothing)
     End Sub
 
@@ -1805,6 +1817,8 @@ Public Class DashboardForm
             TXTINVPRICE.Text = If(IsDBNull(boundItem.Item("price")), Nothing, boundItem.Item("price"))
         End If
     End Sub
+
+
 #End Region
 
 End Class

@@ -1,4 +1,5 @@
-﻿Public Class AuthorDialog
+﻿Imports LMS.QueryType
+Public Class AuthorDialog
     Private _data As DataRowView
     Private _id As Integer
 
@@ -28,21 +29,21 @@
                 {"@id", If(IsNothing(_data), 0, _data.Item("id").ToString)}
         }
 
-        If BaseMaintenance.Exists(QueryTableType.AUTHOR_QUERY_TABLE, data) Then
+        If DBOperations.Exists(QueryTableType.AUTHOR_QUERY_TABLE, data) Then
             errProvider.SetError(TXTFIRSTNAME, "This author already exits.")
             errProvider.SetError(TXTLASTNAME, "This author already exits.")
             Exit Sub
         End If
 
         If IsNothing(_data) Then
-            If BaseMaintenance.Add(QueryTableType.AUTHOR_QUERY_TABLE, data) Then
+            If DBOperations.Add(AUTHOR, data) Then
                 MessageBox.Show("Author has been added successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
                 MessageBox.Show("Failed adding the author.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 Exit Sub
             End If
         Else
-            If BaseMaintenance.Update(QueryTableType.AUTHOR_QUERY_TABLE, data) Then
+            If DBOperations.Update(AUTHOR, data) Then
                 MessageBox.Show("Author has been updated successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
                 MessageBox.Show("Failed updating the author.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)

@@ -1,4 +1,4 @@
-﻿Imports System.Windows.Forms
+﻿Imports LMS.QueryType
 
 Public Class BookDialog
     Private _data As DataRowView
@@ -56,20 +56,20 @@ Public Class BookDialog
                 {"@id", If(IsNothing(_data), 0, _data.Item("id").ToString)}
         }
 
-        If BaseMaintenance.Exists(QueryTableType.BOOK_QUERY_TABLE, data) Then
+        If DBOperations.Exists(BOOK, data) Then
             errProvider.SetError(TXTISBN, "This book already exists.")
             Exit Sub
         End If
 
         If IsNothing(_data) Then
-            If BaseMaintenance.Add(QueryTableType.BOOK_QUERY_TABLE, data) Then
+            If DBOperations.Add(BOOK, data) Then
                 MessageBox.Show("Book has been added successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
                 MessageBox.Show("Failed adding the book.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 Exit Sub
             End If
         Else
-            If BaseMaintenance.Update(QueryTableType.BOOK_QUERY_TABLE, data) Then
+            If DBOperations.Update(BOOK, data) Then
                 MessageBox.Show("Book has been updated successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
                 MessageBox.Show("Failed updating the book.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)

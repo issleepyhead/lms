@@ -1,4 +1,4 @@
-﻿Imports System.Windows.Forms
+﻿Imports LMS.QueryType
 
 Public Class SupplierDialog
     Private _data As DataRowView
@@ -26,20 +26,20 @@ Public Class SupplierDialog
                 {"@id", If(IsNothing(_data), 0, _data.Item("id").ToString)}
         }
 
-        If BaseMaintenance.Exists(QueryTableType.SUPPLIER_QUERY_TABLE, data) Then
+        If DBOperations.Exists(SUPPLIER, data) Then
             errProvider.SetError(TXTNAME, "This supplier already exists.")
             Exit Sub
         End If
 
         If IsNothing(_data) Then
-            If BaseMaintenance.Add(QueryTableType.SUPPLIER_QUERY_TABLE, data) Then
+            If DBOperations.Add(SUPPLIER, data) Then
                 MessageBox.Show("Supplier has been added successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
                 MessageBox.Show("Failed adding the supplier.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 Exit Sub
             End If
         Else
-            If BaseMaintenance.Update(QueryTableType.SUPPLIER_QUERY_TABLE, data) Then
+            If DBOperations.Update(SUPPLIER, data) Then
                 MessageBox.Show("Supplier has been updated successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
                 MessageBox.Show("Failed updating the supplier.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)

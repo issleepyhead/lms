@@ -7,8 +7,6 @@
     Property SEARCH_COUNT_QUERY As String
     Property SEARCH_RESULT_QUERY As String
     Property FETCH_ALL_QUERY As String
-    Property ARCHIVE_COUNT_QUERY As String
-    Property ARCHIVE_RESULT_QUERY As String
     Property ARCHIVE_SEARCH_COUNT_QUERY As String
     Property ARCHIVE_SEARCH_RESULT_QUERY As String
 End Class

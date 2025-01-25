@@ -1,4 +1,4 @@
-﻿Imports System.Windows.Forms
+﻿Imports LMS.QueryType
 
 Public Class PublisherDialog
     Private _data As DataRowView
@@ -27,20 +27,20 @@ Public Class PublisherDialog
                 {"@id", If(IsNothing(_data), 0, _data.Item("id").ToString)}
         }
 
-        If BaseMaintenance.Exists(QueryTableType.PUBLISHER_QUERY_TABLE, data) Then
+        If DBOperations.Exists(PUBLISHER, data) Then
             errProvider.SetError(TXTPUBLISHERNAME, "This publisher already exits.")
             Exit Sub
         End If
 
         If IsNothing(_data) Then
-            If BaseMaintenance.Add(QueryTableType.PUBLISHER_QUERY_TABLE, data) Then
+            If DBOperations.Add(PUBLISHER, data) Then
                 MessageBox.Show("Publisher has been added successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
                 MessageBox.Show("Failed adding the Publisher.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 Exit Sub
             End If
         Else
-            If BaseMaintenance.Update(QueryTableType.PUBLISHER_QUERY_TABLE, data) Then
+            If DBOperations.Update(PUBLISHER, data) Then
                 MessageBox.Show("Publisher has been updated successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
                 MessageBox.Show("Failed updating the publisher.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)

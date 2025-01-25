@@ -8,8 +8,88 @@ Module QueryTableRegistry
             .EXISTS_UPDATE_QUERY = "SELECT COUNT(*) FROM tblgenres WHERE LOWER(name) = LOWER(@name) AND id != @id",
             .SEARCH_COUNT_QUERY = "SELECT COUNT(*) FROM tblgenres WHERE name LIKE @search",
             .SEARCH_RESULT_QUERY = "SELECT name, description, id FROM tblgenres WHERE name LIKE @search ORDER BY name ASC LIMIT @page, 30;",
-            .FETCH_ALL_QUERY = "UPDATE tblgenres SET name = @name, description = @desc WHERE id = @id",
-            .UPDATE_QUERY = "SELECT name, description, id FROM tblgenres ORDER BY name ASC"
+            .FETCH_ALL_QUERY = "SELECT name, description, id FROM tblgenres ORDER BY name ASC",
+            .UPDATE_QUERY = "UPDATE tblgenres SET name = @name, description = @desc WHERE id = @id"
+        }},
+        {AUTHOR, New QueryTable With {
+            .ADD_QUERY = "INSERT INTO tblauthors (first_name, last_name, gender) VALUES (@first_name, @last_name, @gender)",
+            .DELETE_QUERY = "DELETE FROM tblauthors WHERE id = @id",
+            .EXISTS_ADD_QUERY = "SELECT COUNT(*) FROM tblauthors WHERE LOWER(first_name) = LOWER(@first_name) AND LOWER(last_name) = LOWER(@last_name)",
+            .EXISTS_UPDATE_QUERY = "SELECT COUNT(*) FROM tblauthors WHERE LOWER(first_name) = LOWER(@first_name) AND LOWER(last_name) = LOWER(@last_name) AND id != @id",
+            .SEARCH_COUNT_QUERY = "SELECT COUNT(*) FROM tblauthors WHERE first_name LIKE @search OR last_name LIKE @search",
+            .SEARCH_RESULT_QUERY = "SELECT first_name, last_name, gender, id FROM tblauthors WHERE first_name LIKE @search OR last_name LIKE @search ORDER BY first_name ASC LIMIT @page, 30;",
+            .FETCH_ALL_QUERY = "SELECT id, CONCAT(first_name, ' ', last_name) AS name FROM tblauthors ORDER BY first_name ASC",
+            .UPDATE_QUERY = "UPDATE tblauthors SET first_name = @first_name, last_name = @last_name, gender = @gender WHERE id = @id"
+        }},
+        {PUBLISHER, New QueryTable With {
+            .ADD_QUERY = "INSERT INTO tblpublishers (publisher_name) VALUES (@name)",
+            .DELETE_QUERY = "DELETE FROM tblpublishers WHERE id = @id",
+            .EXISTS_ADD_QUERY = "SELECT COUNT(*) FROM tblpublishers WHERE LOWER(publisher_name) = LOWER(@name)",
+            .EXISTS_UPDATE_QUERY = "SELECT COUNT(*) FROM tblpublishers WHERE LOWER(publisher_name) = LOWER(@name) AND id != @id",
+            .SEARCH_COUNT_QUERY = "SELECT COUNT(*) FROM tblpublishers WHERE publisher_name LIKE @search",
+            .SEARCH_RESULT_QUERY = "SELECT id, publisher_name FROM tblpublishers WHERE publisher_name LIKE @search ORDER BY publisher_name ASC LIMIT @page, 30",
+            .FETCH_ALL_QUERY = "SELECT id, publisher_name FROM tblpublishers ORDER BY publisher_name ASC",
+            .UPDATE_QUERY = "UPDATE tblpublishers SET publisher_name = @name WHERE id = @id"
+        }},
+        {CLASSIFICATION, New QueryTable With {
+            .ADD_QUERY = "INSERT INTO tblclassifications (dewey_decimal, classification) VALUES (@dewey_no, @classification)",
+            .DELETE_QUERY = "DELETE FROM tblclassifications WHERE id = @id",
+            .EXISTS_ADD_QUERY = "SELECT COUNT(*) FROM tblclassifications WHERE LOWER(classification) = LOWER(@classification) AND LOWER(dewey_decimal) = LOWER(@dewey_no)",
+            .EXISTS_UPDATE_QUERY = "SELECT COUNT(*) FROM tblclassifications WHERE (LOWER(classification) = LOWER(@classification) OR LOWER(dewey_decimal) = LOWER(@dewey_no)) AND id != @id",
+            .SEARCH_COUNT_QUERY = "SELECT COUNT(*) FROM tblclassifications WHERE dewey_decimal LIKE @search OR classification LIKE @search",
+            .SEARCH_RESULT_QUERY = "SELECT id, classification, dewey_decimal FROM tblclassifications WHERE dewey_decimal LIKE @search OR classification LIKE @search ORDER BY dewey_decimal ASC LIMIT @page, 30",
+            .FETCH_ALL_QUERY = "SELECT id, classification FROM tblclassifications ORDER BY classification ASC",
+            .UPDATE_QUERY = "UPDATE tblclassifications SET classification = @classification, dewey_decimal = @dewey_no WHERE id = @id"
+        }},
+        {DONATOR, New QueryTable With {
+            .ADD_QUERY = "INSERT INTO tbldonators (name, address) VALUES (@name, @address)",
+            .DELETE_QUERY = "DELETE FROM tbldonators WHERE id = @id",
+            .EXISTS_ADD_QUERY = "SELECT COUNT(*) FROM tbldonators WHERE LOWER(name) = LOWER(@name) AND LOWER(address) = LOWER(@address)",
+            .EXISTS_UPDATE_QUERY = "SELECT COUNT(*) FROM tbldonators WHERE LOWER(name) = LOWER(@name) AND LOWER(address) = LOWER(@address) AND id != @id",
+            .SEARCH_COUNT_QUERY = "SELECT COUNT(*) FROM tbldonators WHERE name LIKE @search",
+            .SEARCH_RESULT_QUERY = "SELECT id, name, address FROM tbldonators WHERE name LIKE @search ORDER BY name ASC LIMIT @page, 30",
+            .FETCH_ALL_QUERY = "SELECT id, name, address FROM tbldonators ORDER BY name ASC",
+            .UPDATE_QUERY = "UPDATE tbldonators SET name = @name, address = @address WHERE id = @id"
+        }},
+        {SUPPLIER, New QueryTable With {
+            .ADD_QUERY = "INSERT INTO tblsuppliers (name, address) VALUES (@name, @address)",
+            .DELETE_QUERY = "DELETE FROM tblsuppliers WHERE id = @id",
+            .EXISTS_ADD_QUERY = "SELECT COUNT(*) FROM tblsuppliers WHERE LOWER(name) = LOWER(@name) AND LOWER(address) = LOWER(@address)",
+            .EXISTS_UPDATE_QUERY = "SELECT COUNT(*) FROM tblsuppliers WHERE LOWER(name) = LOWER(@name) OR LOWER(address) = LOWER(@address) AND id != @id",
+            .SEARCH_COUNT_QUERY = "SELECT COUNT(*) FROM tblsuppliers WHERE name LIKE @search",
+            .SEARCH_RESULT_QUERY = "SELECT id, name, address FROM tblsuppliers WHERE name LIKE @search ORDER BY name ASC LIMIT @page, 30",
+            .FETCH_ALL_QUERY = "SELECT id, name, address FROM tblsuppliers ORDER BY name ASC",
+            .UPDATE_QUERY = "UPDATE tblsuppliers SET name = @name, address = @address WHERE id = @id"
+        }},
+        {LANGUAGES, New QueryTable With {
+            .ADD_QUERY = "INSERT INTO tbllanguages (language, code) VALUES (@language, @code)",
+            .DELETE_QUERY = "DELETE FROM tbllanguages WHERE id = @id",
+            .EXISTS_ADD_QUERY = "SELECT COUNT(*) FROM tbllanguages WHERE LOWER(language) = LOWER(@language)",
+            .EXISTS_UPDATE_QUERY = "SELECT COUNT(*) FROM tbllanguages WHERE LOWER(language) = LOWER(@language) AND id != @id",
+            .SEARCH_COUNT_QUERY = "SELECT COUNT(*) FROM tbllanguages WHERE language LIKE @search OR code LIKE @search ORDER BY language ASC",
+            .SEARCH_RESULT_QUERY = "SELECT language, code, id FROM tbllanguages WHERE language LIKE @search OR code LIKE @search ORDER BY language ASC LIMIT @page, 30;",
+            .FETCH_ALL_QUERY = "SELECT language, code, id FROM tbllanguages ORDER BY language ASC",
+            .UPDATE_QUERY = "UPDATE tbllanguages SET language = @language, code = @code WHERE id = @id"
+        }},
+        {BOOK, New QueryTable With {
+            .ADD_QUERY = "INSERT INTO tblbooks (isbn, title, book_cover, genre_id, author_id, publisher_id, language_id, classification_id, reserve_copy, spenalty, fpenalty) VALUES (@isbn, @title, @cover, @gid, @aid, @pid, @lid, @cid, @rcopy, @spenalty, @fpenalty)",
+            .DELETE_QUERY = "DELETE FROM tblbooks WHERE id = @id",
+            .EXISTS_ADD_QUERY = "SELECT COUNT(*) FROM tblbooks WHERE LOWER(isbn) = LOWER(@isbn)",
+            .EXISTS_UPDATE_QUERY = "SELECT COUNT(*) FROM tblbooks WHERE LOWER(isbn) = LOWER(@isbn) AND id != @id",
+            .SEARCH_COUNT_QUERY = "SELECT COUNT(*) FROM tblbooks b JOIN tblgenres g ON genre_id = g.id JOIN tblauthors a ON author_id = a.id WHERE status = 1 AND title LIKE @search OR isbn LIKE @search OR g.name LIKE @search OR a.first_name LIKE @search OR a.last_name LIKE @search ORDER BY title ASC",
+            .SEARCH_RESULT_QUERY = "SELECT b.id, b.title, b.isbn, b.book_cover, b.fpenalty, b.spenalty, b.publisher_id, b.genre_id, b.language_id, b.author_id,
+                                    b.classification_id, b.reserve_copy, g.name genre_name, concat(a.first_name, ' ', a.last_name) name
+                                    FROM tblbooks b
+                                    JOIN tblgenres g ON genre_id = g.id
+                                    JOIN tblauthors a ON author_id = a.id WHERE status = 1 AND title LIKE @search OR isbn LIKE @search OR g.name LIKE @search OR a.first_name LIKE @search OR a.last_name LIKE @search ORDER BY title ASC LIMIT @page, 30;",
+            .FETCH_ALL_QUERY = "SELECT language, code, id FROM tbllanguages ORDER BY language ASC",
+            .UPDATE_QUERY = "UPDATE tblbooks SET isbn = @isbn, title = @title, book_cover = @cover, genre_id = @gid, author_id = @aid, publisher_id = @pid, language_id = @lid, classification_id = @cid, reserve_copy = @rcopy, spenalty = @spenalty, fpenalty = @fpenalty, status = 1 WHERE id = @id",
+            .ARCHIVE_SEARCH_COUNT_QUERY = "SELECT COUNT(*) FROM tblbooks b JOIN tblgenres g ON genre_id = g.id JOIN tblauthors a ON author_id = a.id WHERE status = 0 AND (title LIKE @search OR isbn LIKE @search OR g.name LIKE @search OR a.first_name LIKE @search OR a.last_name LIKE @search) ORDER BY title ASC",
+            .ARCHIVE_SEARCH_RESULT_QUERY = "SELECT b.id, b.title, b.isbn, b.book_cover, b.fpenalty, b.spenalty, b.publisher_id, b.genre_id, b.language_id, b.author_id,
+                                                b.classification_id, b.reserve_copy, g.name genre_name, concat(a.first_name, ' ', a.last_name) name
+                                                FROM tblbooks b
+                                                JOIN tblgenres g ON genre_id = g.id
+                                                JOIN tblauthors a ON author_id = a.id WHERE status = 0 AND (title LIKE @search OR isbn LIKE @search OR g.name LIKE @search OR a.first_name LIKE @search OR a.last_name LIKE @search) ORDER BY title ASC LIMIT @page, 30;"
         }}
     }
 

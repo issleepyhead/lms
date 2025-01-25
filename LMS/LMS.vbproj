@@ -313,6 +313,7 @@
     <Compile Include="forms\UserForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="handlers\ControlMapping.vb" />
     <Compile Include="handlers\DBOperations.vb" />
     <Compile Include="modules\import\AccountImport.vb" />
     <Compile Include="modules\ApplicationModule.vb" />

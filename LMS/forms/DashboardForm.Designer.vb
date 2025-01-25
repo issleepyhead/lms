@@ -1126,6 +1126,7 @@ Partial Class DashboardForm
         Me.GenresTab.Name = "GenresTab"
         Me.GenresTab.Size = New System.Drawing.Size(1534, 707)
         Me.GenresTab.TabIndex = 2
+        Me.GenresTab.Tag = "GENRE"
         Me.GenresTab.Text = "Genres"
         '
         'TableLayoutPanel2
@@ -1200,6 +1201,7 @@ Partial Class DashboardForm
         Me.BTNADDGENRE.Name = "BTNADDGENRE"
         Me.BTNADDGENRE.Size = New System.Drawing.Size(141, 40)
         Me.BTNADDGENRE.TabIndex = 0
+        Me.BTNADDGENRE.Tag = "GENRE"
         Me.BTNADDGENRE.Text = "New Genre"
         '
         'Guna2Panel4
@@ -1232,6 +1234,7 @@ Partial Class DashboardForm
         Me.BTNGENREREFRESH.Name = "BTNGENREREFRESH"
         Me.BTNGENREREFRESH.Size = New System.Drawing.Size(141, 40)
         Me.BTNGENREREFRESH.TabIndex = 7
+        Me.BTNGENREREFRESH.Tag = "GENRE"
         Me.BTNGENREREFRESH.Text = "Refresh"
         '
         'LBLGENRENEXT
@@ -1285,6 +1288,7 @@ Partial Class DashboardForm
         Me.BTNGENREPREV.Name = "BTNGENREPREV"
         Me.BTNGENREPREV.Size = New System.Drawing.Size(79, 40)
         Me.BTNGENREPREV.TabIndex = 2
+        Me.BTNGENREPREV.Tag = "GENRE"
         Me.BTNGENREPREV.Text = "Previous"
         '
         'BTNGENRENEXT
@@ -1302,6 +1306,7 @@ Partial Class DashboardForm
         Me.BTNGENRENEXT.Name = "BTNGENRENEXT"
         Me.BTNGENRENEXT.Size = New System.Drawing.Size(79, 40)
         Me.BTNGENRENEXT.TabIndex = 1
+        Me.BTNGENRENEXT.Tag = "GENRE"
         Me.BTNGENRENEXT.Text = "Next"
         '
         'Guna2Panel5
@@ -1456,6 +1461,7 @@ Partial Class DashboardForm
         Me.AuthorTab.Name = "AuthorTab"
         Me.AuthorTab.Size = New System.Drawing.Size(1534, 707)
         Me.AuthorTab.TabIndex = 3
+        Me.AuthorTab.Tag = "AUTHOR"
         Me.AuthorTab.Text = "Authors"
         Me.AuthorTab.UseVisualStyleBackColor = True
         '
@@ -1531,6 +1537,7 @@ Partial Class DashboardForm
         Me.BTNADDAUTHOR.Name = "BTNADDAUTHOR"
         Me.BTNADDAUTHOR.Size = New System.Drawing.Size(141, 40)
         Me.BTNADDAUTHOR.TabIndex = 0
+        Me.BTNADDAUTHOR.Tag = "AUTHOR"
         Me.BTNADDAUTHOR.Text = "New Author"
         '
         'Guna2Panel8
@@ -1616,6 +1623,7 @@ Partial Class DashboardForm
         Me.BTNAUTHORPREV.Name = "BTNAUTHORPREV"
         Me.BTNAUTHORPREV.Size = New System.Drawing.Size(79, 40)
         Me.BTNAUTHORPREV.TabIndex = 2
+        Me.BTNAUTHORPREV.Tag = "AUTHOR"
         Me.BTNAUTHORPREV.Text = "Previous"
         '
         'BTNAUTHORNEXT
@@ -1633,6 +1641,7 @@ Partial Class DashboardForm
         Me.BTNAUTHORNEXT.Name = "BTNAUTHORNEXT"
         Me.BTNAUTHORNEXT.Size = New System.Drawing.Size(79, 40)
         Me.BTNAUTHORNEXT.TabIndex = 1
+        Me.BTNAUTHORNEXT.Tag = "AUTHOR"
         Me.BTNAUTHORNEXT.Text = "Next"
         '
         'Guna2Panel9
@@ -1758,6 +1767,7 @@ Partial Class DashboardForm
         Me.PublishhersTab.Name = "PublishhersTab"
         Me.PublishhersTab.Size = New System.Drawing.Size(1534, 707)
         Me.PublishhersTab.TabIndex = 6
+        Me.PublishhersTab.Tag = "PUBLISHER"
         Me.PublishhersTab.Text = "Publishers"
         Me.PublishhersTab.UseVisualStyleBackColor = True
         '
@@ -1833,6 +1843,7 @@ Partial Class DashboardForm
         Me.BTNADDPUBLISHER.Name = "BTNADDPUBLISHER"
         Me.BTNADDPUBLISHER.Size = New System.Drawing.Size(141, 40)
         Me.BTNADDPUBLISHER.TabIndex = 0
+        Me.BTNADDPUBLISHER.Tag = "PUBLISHER"
         Me.BTNADDPUBLISHER.Text = "New Publisher"
         '
         'Guna2Panel11
@@ -1918,6 +1929,7 @@ Partial Class DashboardForm
         Me.BTNPUBLISHERPREV.Name = "BTNPUBLISHERPREV"
         Me.BTNPUBLISHERPREV.Size = New System.Drawing.Size(79, 40)
         Me.BTNPUBLISHERPREV.TabIndex = 2
+        Me.BTNPUBLISHERPREV.Tag = "PUBLISHER"
         Me.BTNPUBLISHERPREV.Text = "Previous"
         '
         'BTNPUBLISHERNEXT
@@ -1935,6 +1947,7 @@ Partial Class DashboardForm
         Me.BTNPUBLISHERNEXT.Name = "BTNPUBLISHERNEXT"
         Me.BTNPUBLISHERNEXT.Size = New System.Drawing.Size(79, 40)
         Me.BTNPUBLISHERNEXT.TabIndex = 1
+        Me.BTNPUBLISHERNEXT.Tag = "PUBLISHER"
         Me.BTNPUBLISHERNEXT.Text = "Next"
         '
         'Guna2Panel12
@@ -2043,6 +2056,7 @@ Partial Class DashboardForm
         Me.ClassificationTab.Name = "ClassificationTab"
         Me.ClassificationTab.Size = New System.Drawing.Size(1534, 707)
         Me.ClassificationTab.TabIndex = 5
+        Me.ClassificationTab.Tag = "CLASSIFICATION"
         Me.ClassificationTab.Text = "Classification"
         Me.ClassificationTab.UseVisualStyleBackColor = True
         '
@@ -2118,6 +2132,7 @@ Partial Class DashboardForm
         Me.BTNADDCLASSIFICATION.Name = "BTNADDCLASSIFICATION"
         Me.BTNADDCLASSIFICATION.Size = New System.Drawing.Size(141, 40)
         Me.BTNADDCLASSIFICATION.TabIndex = 0
+        Me.BTNADDCLASSIFICATION.Tag = "CLASSIFICATION"
         Me.BTNADDCLASSIFICATION.Text = "New Classification"
         '
         'Guna2Panel14
@@ -2203,6 +2218,7 @@ Partial Class DashboardForm
         Me.BTNCLASSIFICATIONPREV.Name = "BTNCLASSIFICATIONPREV"
         Me.BTNCLASSIFICATIONPREV.Size = New System.Drawing.Size(79, 40)
         Me.BTNCLASSIFICATIONPREV.TabIndex = 2
+        Me.BTNCLASSIFICATIONPREV.Tag = "CLASSIFICATION"
         Me.BTNCLASSIFICATIONPREV.Text = "Previous"
         '
         'BTNCLASSIFICATIONNEXT
@@ -2220,6 +2236,7 @@ Partial Class DashboardForm
         Me.BTNCLASSIFICATIONNEXT.Name = "BTNCLASSIFICATIONNEXT"
         Me.BTNCLASSIFICATIONNEXT.Size = New System.Drawing.Size(79, 40)
         Me.BTNCLASSIFICATIONNEXT.TabIndex = 1
+        Me.BTNCLASSIFICATIONNEXT.Tag = "CLASSIFICATION"
         Me.BTNCLASSIFICATIONNEXT.Text = "Next"
         '
         'Guna2Panel15
@@ -2339,6 +2356,7 @@ Partial Class DashboardForm
         Me.LanguagesTab.Name = "LanguagesTab"
         Me.LanguagesTab.Size = New System.Drawing.Size(1534, 707)
         Me.LanguagesTab.TabIndex = 7
+        Me.LanguagesTab.Tag = "LANGUAGES"
         Me.LanguagesTab.Text = "Languages"
         Me.LanguagesTab.UseVisualStyleBackColor = True
         '
@@ -2414,6 +2432,7 @@ Partial Class DashboardForm
         Me.BTNADDLANGUAGE.Name = "BTNADDLANGUAGE"
         Me.BTNADDLANGUAGE.Size = New System.Drawing.Size(141, 40)
         Me.BTNADDLANGUAGE.TabIndex = 0
+        Me.BTNADDLANGUAGE.Tag = "LANGUAGES"
         Me.BTNADDLANGUAGE.Text = "New Language"
         '
         'Guna2Panel46
@@ -2499,6 +2518,7 @@ Partial Class DashboardForm
         Me.BTNLANGUAGEPREV.Name = "BTNLANGUAGEPREV"
         Me.BTNLANGUAGEPREV.Size = New System.Drawing.Size(79, 40)
         Me.BTNLANGUAGEPREV.TabIndex = 2
+        Me.BTNLANGUAGEPREV.Tag = "LANGUAGES"
         Me.BTNLANGUAGEPREV.Text = "Previous"
         '
         'BTNLANGUAGENEXT
@@ -2516,6 +2536,7 @@ Partial Class DashboardForm
         Me.BTNLANGUAGENEXT.Name = "BTNLANGUAGENEXT"
         Me.BTNLANGUAGENEXT.Size = New System.Drawing.Size(79, 40)
         Me.BTNLANGUAGENEXT.TabIndex = 1
+        Me.BTNLANGUAGENEXT.Tag = "LANGUAGES"
         Me.BTNLANGUAGENEXT.Text = "Next"
         '
         'Guna2Panel47
@@ -2635,6 +2656,7 @@ Partial Class DashboardForm
         Me.BooksTab.Name = "BooksTab"
         Me.BooksTab.Size = New System.Drawing.Size(1534, 707)
         Me.BooksTab.TabIndex = 0
+        Me.BooksTab.Tag = "BOOK"
         Me.BooksTab.Text = "Books"
         Me.BooksTab.UseVisualStyleBackColor = True
         '
@@ -2749,6 +2771,7 @@ Partial Class DashboardForm
         Me.BTNADDBOOK.Name = "BTNADDBOOK"
         Me.BTNADDBOOK.Size = New System.Drawing.Size(141, 40)
         Me.BTNADDBOOK.TabIndex = 0
+        Me.BTNADDBOOK.Tag = "BOOK"
         Me.BTNADDBOOK.Text = "New Book"
         '
         'Guna2Panel17
@@ -2835,6 +2858,7 @@ Partial Class DashboardForm
         Me.BTNBOOKPREV.Name = "BTNBOOKPREV"
         Me.BTNBOOKPREV.Size = New System.Drawing.Size(79, 40)
         Me.BTNBOOKPREV.TabIndex = 2
+        Me.BTNBOOKPREV.Tag = "BOOK"
         Me.BTNBOOKPREV.Text = "Previous"
         '
         'BTNBOOKNEXT
@@ -2852,6 +2876,7 @@ Partial Class DashboardForm
         Me.BTNBOOKNEXT.Name = "BTNBOOKNEXT"
         Me.BTNBOOKNEXT.Size = New System.Drawing.Size(79, 40)
         Me.BTNBOOKNEXT.TabIndex = 1
+        Me.BTNBOOKNEXT.Tag = "BOOK"
         Me.BTNBOOKNEXT.Text = "Next"
         '
         'Guna2Panel18
@@ -3100,6 +3125,7 @@ Partial Class DashboardForm
         Me.DonatorsTab.Name = "DonatorsTab"
         Me.DonatorsTab.Size = New System.Drawing.Size(1534, 707)
         Me.DonatorsTab.TabIndex = 1
+        Me.DonatorsTab.Tag = "DONATOR"
         Me.DonatorsTab.Text = "Donators"
         Me.DonatorsTab.UseVisualStyleBackColor = True
         '
@@ -3175,6 +3201,7 @@ Partial Class DashboardForm
         Me.BTNADDDONATOR.Name = "BTNADDDONATOR"
         Me.BTNADDDONATOR.Size = New System.Drawing.Size(141, 40)
         Me.BTNADDDONATOR.TabIndex = 0
+        Me.BTNADDDONATOR.Tag = "DONATOR"
         Me.BTNADDDONATOR.Text = "New Donator"
         '
         'Guna2Panel20
@@ -3260,6 +3287,7 @@ Partial Class DashboardForm
         Me.BTNDONATORRPREV.Name = "BTNDONATORRPREV"
         Me.BTNDONATORRPREV.Size = New System.Drawing.Size(79, 40)
         Me.BTNDONATORRPREV.TabIndex = 2
+        Me.BTNDONATORRPREV.Tag = "DONATOR"
         Me.BTNDONATORRPREV.Text = "Previous"
         '
         'BTNDONATORNEXT
@@ -3277,6 +3305,7 @@ Partial Class DashboardForm
         Me.BTNDONATORNEXT.Name = "BTNDONATORNEXT"
         Me.BTNDONATORNEXT.Size = New System.Drawing.Size(79, 40)
         Me.BTNDONATORNEXT.TabIndex = 1
+        Me.BTNDONATORNEXT.Tag = "DONATOR"
         Me.BTNDONATORNEXT.Text = "Next"
         '
         'Guna2Panel21
@@ -3385,6 +3414,7 @@ Partial Class DashboardForm
         Me.SuppliersTab.Name = "SuppliersTab"
         Me.SuppliersTab.Size = New System.Drawing.Size(1534, 707)
         Me.SuppliersTab.TabIndex = 4
+        Me.SuppliersTab.Tag = "SUPPLIER"
         Me.SuppliersTab.Text = "Suppliers"
         Me.SuppliersTab.UseVisualStyleBackColor = True
         '
@@ -3460,6 +3490,7 @@ Partial Class DashboardForm
         Me.BTNADDSUPPLIER.Name = "BTNADDSUPPLIER"
         Me.BTNADDSUPPLIER.Size = New System.Drawing.Size(141, 40)
         Me.BTNADDSUPPLIER.TabIndex = 0
+        Me.BTNADDSUPPLIER.Tag = "SUPPLIER"
         Me.BTNADDSUPPLIER.Text = "New Supplier"
         '
         'Guna2Panel23
@@ -3545,6 +3576,7 @@ Partial Class DashboardForm
         Me.BTNSUPPLIERPREV.Name = "BTNSUPPLIERPREV"
         Me.BTNSUPPLIERPREV.Size = New System.Drawing.Size(79, 40)
         Me.BTNSUPPLIERPREV.TabIndex = 2
+        Me.BTNSUPPLIERPREV.Tag = "SUPPLIER"
         Me.BTNSUPPLIERPREV.Text = "Previous"
         '
         'BTNSUPPLIERNEXT
@@ -3562,6 +3594,7 @@ Partial Class DashboardForm
         Me.BTNSUPPLIERNEXT.Name = "BTNSUPPLIERNEXT"
         Me.BTNSUPPLIERNEXT.Size = New System.Drawing.Size(79, 40)
         Me.BTNSUPPLIERNEXT.TabIndex = 1
+        Me.BTNSUPPLIERNEXT.Tag = "SUPPLIER"
         Me.BTNSUPPLIERNEXT.Text = "Next"
         '
         'Guna2Panel24
