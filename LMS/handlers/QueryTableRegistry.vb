@@ -129,6 +129,18 @@ Module QueryTableRegistry
             .SEARCH_COUNT_QUERY = "SELECT COUNT(*) FROM tblstudents WHERE status = 1 AND (lrn LIKE @search OR email LIKE @search OR full_name LIKE @search)",
             .SEARCH_RESULT_QUERY = "SELECT st.id, lrn, full_name, gender, address, phone, email, section_id, s.name section, s.year_id, y.year_level FROM tblstudents st JOIN tblsections s ON st.section_id = s.id JOIN tblyearlevels y ON s.year_id = y.id WHERE status = 1 AND (lrn LIKE @search OR email LIKE @search OR full_name LIKE @search) ORDER BY full_name ASC LIMIT @page, 30",
             .UPDATE_QUERY = "UPDATE tblstudents SET lrn = @lrn, full_name = @full_name, gender = @gender, address = @address, email = @email, section_id = @sid, status = 1 WHERE id = @id"
+        }},
+        {FACULTY, New QueryTable With {
+            .ADD_QUERY = "INSERT INTO tblfaculties (full_name, gender, address, phone, email, department_id, password, username) VALUES (@full_name, @gender, @address, @phone, @email, @did, @passwd, @username)",
+            .DELETE_QUERY = "DELETE FROM tblfaculties WHERE id = @id",
+            .EXISTS_ADD_QUERY = "SELECT COUNT(*) FROM tblfaculties WHERE username = @username",
+            .EXISTS_UPDATE_QUERY = "SELECT COUNT(*) FROM tblfaculties WHERE username = @username AND id != @id",
+            .SEARCH_COUNT_QUERY = "SELECT COUNT(*) FROM tblfaculties WHERE status = 1 AND (email LIKE @search OR full_name LIKE @search)",
+            .SEARCH_RESULT_QUERY = "SELECT st.id, st.username, full_name, gender, address, phone, email, department_id, d.department_name FROM tblfaculties st JOIN tbldepartments d ON st.department_id = d.id WHERE status = 1 AND (email LIKE @search OR full_name LIKE @search) ORDER BY full_name ASC LIMIT @page, 30",
+            .FETCH_ALL_QUERY = "SELECT id, department_name FROM tblfaculties ORDER BY department_name",
+            .ARCHIVE_SEARCH_COUNT_QUERY = "SELECT COUNT(*) FROM tblfaculties WHERE status = 0 AND (email LIKE @search OR full_name LIKE @search)",
+            .ARCHIVE_SEARCH_RESULT_QUERY = "SELECT st.id, st.username, full_name, gender, address, phone, email, department_id, d.department_name FROM tblfaculties st JOIN tbldepartments d ON st.department_id = d.id WHERE status = 0 AND (email LIKE @search OR full_name LIKE @search) ORDER BY full_name ASC LIMIT @page, 30",
+            .UPDATE_QUERY = "UPDATE tblfaculties SET full_name = @full_name, gender = @gender, address = @address, email = @email, department_id = @did, status = 1 WHERE id = @id"
         }}
     }
 

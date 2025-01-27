@@ -4789,6 +4789,7 @@ Partial Class DashboardForm
         Me.BTNADDSTUDENTS.Name = "BTNADDSTUDENTS"
         Me.BTNADDSTUDENTS.Size = New System.Drawing.Size(141, 40)
         Me.BTNADDSTUDENTS.TabIndex = 0
+        Me.BTNADDSTUDENTS.Tag = "STUDENT"
         Me.BTNADDSTUDENTS.Text = "New Student"
         '
         'Guna2Panel32
@@ -4875,6 +4876,7 @@ Partial Class DashboardForm
         Me.BTNSTUDENTPREV.Name = "BTNSTUDENTPREV"
         Me.BTNSTUDENTPREV.Size = New System.Drawing.Size(79, 40)
         Me.BTNSTUDENTPREV.TabIndex = 2
+        Me.BTNSTUDENTPREV.Tag = "STUDENT"
         Me.BTNSTUDENTPREV.Text = "Previous"
         '
         'BTNSTUDENTNEXT
@@ -4892,6 +4894,7 @@ Partial Class DashboardForm
         Me.BTNSTUDENTNEXT.Name = "BTNSTUDENTNEXT"
         Me.BTNSTUDENTNEXT.Size = New System.Drawing.Size(79, 40)
         Me.BTNSTUDENTNEXT.TabIndex = 1
+        Me.BTNSTUDENTNEXT.Tag = "STUDENT"
         Me.BTNSTUDENTNEXT.Text = "Next"
         '
         'Guna2Panel33
@@ -4945,6 +4948,7 @@ Partial Class DashboardForm
         Me.DGSTUDENT.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DGSTUDENT.Size = New System.Drawing.Size(1494, 567)
         Me.DGSTUDENT.TabIndex = 0
+        Me.DGSTUDENT.Tag = "STUDENT"
         Me.DGSTUDENT.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Indigo
         Me.DGSTUDENT.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(197, Byte), Integer), CType(CType(203, Byte), Integer), CType(CType(232, Byte), Integer))
         Me.DGSTUDENT.ThemeStyle.AlternatingRowsStyle.Font = Nothing
@@ -5233,6 +5237,7 @@ Partial Class DashboardForm
         Me.BTNADDFACULTY.Name = "BTNADDFACULTY"
         Me.BTNADDFACULTY.Size = New System.Drawing.Size(141, 40)
         Me.BTNADDFACULTY.TabIndex = 0
+        Me.BTNADDFACULTY.Tag = "FACULTY"
         Me.BTNADDFACULTY.Text = "New Teacher/Faculty"
         '
         'Guna2Panel35
@@ -5319,6 +5324,7 @@ Partial Class DashboardForm
         Me.BTNFACULTYPREV.Name = "BTNFACULTYPREV"
         Me.BTNFACULTYPREV.Size = New System.Drawing.Size(79, 40)
         Me.BTNFACULTYPREV.TabIndex = 2
+        Me.BTNFACULTYPREV.Tag = "FACULTY"
         Me.BTNFACULTYPREV.Text = "Previous"
         '
         'BTNFACULTYNEXT
@@ -5336,6 +5342,7 @@ Partial Class DashboardForm
         Me.BTNFACULTYNEXT.Name = "BTNFACULTYNEXT"
         Me.BTNFACULTYNEXT.Size = New System.Drawing.Size(79, 40)
         Me.BTNFACULTYNEXT.TabIndex = 1
+        Me.BTNFACULTYNEXT.Tag = "FACULTY"
         Me.BTNFACULTYNEXT.Text = "Next"
         '
         'Guna2Panel36
@@ -5389,6 +5396,7 @@ Partial Class DashboardForm
         Me.DGFACULTY.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DGFACULTY.Size = New System.Drawing.Size(1494, 567)
         Me.DGFACULTY.TabIndex = 0
+        Me.DGFACULTY.Tag = "FACULTY"
         Me.DGFACULTY.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Indigo
         Me.DGFACULTY.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(197, Byte), Integer), CType(CType(203, Byte), Integer), CType(CType(232, Byte), Integer))
         Me.DGFACULTY.ThemeStyle.AlternatingRowsStyle.Font = Nothing
