@@ -21,10 +21,10 @@
         End Using
     End Sub
 
-    Public Sub Upate(Optional CallBack As Action = Nothing) Handles Me.UpdateEvent
+    Public Sub Upate(Optional filter As STATUSTYPE = STATUSTYPE.ACTIVE) Handles Me.UpdateEvent
         DBOperations.QUERY_SEARCH = TXTSEARCH.Text
-        If Not IsNothing(CallBack) Then
-            CallBack.Invoke()
+        If filter = STATUSTYPE.INACTIVE Then
+            DG.DataSource = DBOperations.SearchArchive(QUERY_TYPE)
         Else
             DG.DataSource = DBOperations.Search(QUERY_TYPE)
         End If

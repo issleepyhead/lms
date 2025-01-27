@@ -76,12 +76,12 @@ Module QueryTableRegistry
             .DELETE_QUERY = "DELETE FROM tblbooks WHERE id = @id",
             .EXISTS_ADD_QUERY = "SELECT COUNT(*) FROM tblbooks WHERE LOWER(isbn) = LOWER(@isbn)",
             .EXISTS_UPDATE_QUERY = "SELECT COUNT(*) FROM tblbooks WHERE LOWER(isbn) = LOWER(@isbn) AND id != @id",
-            .SEARCH_COUNT_QUERY = "SELECT COUNT(*) FROM tblbooks b JOIN tblgenres g ON genre_id = g.id JOIN tblauthors a ON author_id = a.id WHERE status = 1 AND title LIKE @search OR isbn LIKE @search OR g.name LIKE @search OR a.first_name LIKE @search OR a.last_name LIKE @search ORDER BY title ASC",
+            .SEARCH_COUNT_QUERY = "SELECT COUNT(*) FROM tblbooks b JOIN tblgenres g ON genre_id = g.id JOIN tblauthors a ON author_id = a.id WHERE status = 1 AND (title LIKE @search OR isbn LIKE @search OR g.name LIKE @search OR a.first_name LIKE @search OR a.last_name) LIKE @search ORDER BY title ASC",
             .SEARCH_RESULT_QUERY = "SELECT b.id, b.title, b.isbn, b.book_cover, b.fpenalty, b.spenalty, b.publisher_id, b.genre_id, b.language_id, b.author_id,
                                     b.classification_id, b.reserve_copy, g.name genre_name, concat(a.first_name, ' ', a.last_name) name
                                     FROM tblbooks b
                                     JOIN tblgenres g ON genre_id = g.id
-                                    JOIN tblauthors a ON author_id = a.id WHERE status = 1 AND title LIKE @search OR isbn LIKE @search OR g.name LIKE @search OR a.first_name LIKE @search OR a.last_name LIKE @search ORDER BY title ASC LIMIT @page, 30;",
+                                    JOIN tblauthors a ON author_id = a.id WHERE status = 1 AND (title LIKE @search OR isbn LIKE @search OR g.name LIKE @search OR a.first_name LIKE @search OR a.last_name LIKE @search) ORDER BY title ASC LIMIT @page, 30;",
             .FETCH_ALL_QUERY = "SELECT language, code, id FROM tbllanguages ORDER BY language ASC",
             .UPDATE_QUERY = "UPDATE tblbooks SET isbn = @isbn, title = @title, book_cover = @cover, genre_id = @gid, author_id = @aid, publisher_id = @pid, language_id = @lid, classification_id = @cid, reserve_copy = @rcopy, spenalty = @spenalty, fpenalty = @fpenalty, status = 1 WHERE id = @id",
             .ARCHIVE_SEARCH_COUNT_QUERY = "SELECT COUNT(*) FROM tblbooks b JOIN tblgenres g ON genre_id = g.id JOIN tblauthors a ON author_id = a.id WHERE status = 0 AND (title LIKE @search OR isbn LIKE @search OR g.name LIKE @search OR a.first_name LIKE @search OR a.last_name LIKE @search) ORDER BY title ASC",
@@ -120,6 +120,15 @@ Module QueryTableRegistry
             .SEARCH_RESULT_QUERY = "SELECT id, department_name FROM tbldepartments WHERE department_name LIKE @search ORDER BY department_name ASC LIMIT @page, 30",
             .FETCH_ALL_QUERY = "SELECT id, department_name FROM tbldepartments ORDER BY department_name",
             .UPDATE_QUERY = "UPDATE tbldepartments SET department_name = @name WHERE id = @id"
+        }},
+        {STUDENT, New QueryTable With {
+            .ADD_QUERY = "INSERT INTO tblstudents (lrn, full_name, gender, address, phone, email, section_id, password) VALUES (@lrn, @full_name, @gender, @address, @phone, @email, @sid, @passwd)",
+            .DELETE_QUERY = "DELETE FROM tblstudents WHERE id = @id",
+            .EXISTS_UPDATE_QUERY = "SELECT COUNT(*) FROM tblstudents WHERE lrn = @lrn AND id != @id",
+            .EXISTS_ADD_QUERY = "SELECT COUNT(*) FROM tblstudents WHERE lrn = @lrn",
+            .SEARCH_COUNT_QUERY = "SELECT COUNT(*) FROM tblstudents WHERE status = 1 AND (lrn LIKE @search OR email LIKE @search OR full_name LIKE @search)",
+            .SEARCH_RESULT_QUERY = "SELECT st.id, lrn, full_name, gender, address, phone, email, section_id, s.name section, s.year_id, y.year_level FROM tblstudents st JOIN tblsections s ON st.section_id = s.id JOIN tblyearlevels y ON s.year_id = y.id WHERE status = 1 AND (lrn LIKE @search OR email LIKE @search OR full_name LIKE @search) ORDER BY full_name ASC LIMIT @page, 30",
+            .UPDATE_QUERY = "UPDATE tblstudents SET lrn = @lrn, full_name = @full_name, gender = @gender, address = @address, email = @email, section_id = @sid, status = 1 WHERE id = @id"
         }}
     }
 

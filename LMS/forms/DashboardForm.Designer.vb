@@ -2735,6 +2735,7 @@ Partial Class DashboardForm
         Me.CMBBOOKFILTER.Size = New System.Drawing.Size(171, 40)
         Me.CMBBOOKFILTER.StartIndex = 0
         Me.CMBBOOKFILTER.TabIndex = 21
+        Me.CMBBOOKFILTER.Tag = "BOOK"
         '
         'TXTBOOKSEARCH
         '
@@ -3755,6 +3756,7 @@ Partial Class DashboardForm
         Me.AccountsPanel.TabIndex = 2
         Me.AccountsPanel.TabMenuBackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(42, Byte), Integer), CType(CType(57, Byte), Integer))
         Me.AccountsPanel.TabMenuOrientation = Guna.UI2.WinForms.TabMenuOrientation.HorizontalTop
+        Me.AccountsPanel.Tag = "FACULTY"
         '
         'DepartmentTab
         '
@@ -4746,6 +4748,7 @@ Partial Class DashboardForm
         Me.CMBSTUDENTFILTER.Size = New System.Drawing.Size(171, 40)
         Me.CMBSTUDENTFILTER.StartIndex = 0
         Me.CMBSTUDENTFILTER.TabIndex = 21
+        Me.CMBSTUDENTFILTER.Tag = "STUDENT"
         '
         'TXTSTUDENTSEARCH
         '
