@@ -90,6 +90,36 @@ Module QueryTableRegistry
                                                 FROM tblbooks b
                                                 JOIN tblgenres g ON genre_id = g.id
                                                 JOIN tblauthors a ON author_id = a.id WHERE status = 0 AND (title LIKE @search OR isbn LIKE @search OR g.name LIKE @search OR a.first_name LIKE @search OR a.last_name LIKE @search) ORDER BY title ASC LIMIT @page, 30;"
+        }},
+        {SECTION, New QueryTable With {
+            .ADD_QUERY = "INSERT INTO tblsections (name, year_id) VALUES (@name, @yid)",
+            .DELETE_QUERY = "DELETE FROM tblsections WHERE id = @id",
+            .EXISTS_ADD_QUERY = "SELECT COUNT(*) FROM tblsections WHERE LOWER(name) = LOWER(@name)",
+            .EXISTS_UPDATE_QUERY = "SELECT COUNT(*) FROM tblsections WHERE LOWER(name) = LOWER(@name) AND id != @id",
+            .SEARCH_COUNT_QUERY = "SELECT COUNT(*) FROM tblsections WHERE name LIKE @search",
+            .SEARCH_RESULT_QUERY = "SELECT s.id, s.name, s.year_id, y.year_level, y.department_id FROM tblsections s JOIN tblyearlevels y ON s.year_id = y.id WHERE name LIKE @search ORDER BY name ASC LIMIT @page, 30",
+            .FETCH_ALL_QUERY = "SELECT id, `name` FROM tblsections WHERE year_id = @yid ORDER BY `name`",
+            .UPDATE_QUERY = "UPDATE tblsections SET name = @name, year_id = @yid WHERE id = @id"
+        }},
+        {YEARLEVEL, New QueryTable With {
+            .ADD_QUERY = "INSERT INTO tblyearlevels (year_level, department_id) VALUES (@name, @did)",
+            .DELETE_QUERY = "DELETE FROM tblyearlevels WHERE id = @id",
+            .EXISTS_ADD_QUERY = "SELECT COUNT(*) FROM tblyearlevels WHERE LOWER(year_level) = LOWER(@name)",
+            .EXISTS_UPDATE_QUERY = "SELECT COUNT(*) FROM tblyearlevels WHERE LOWER(yearl_level) = LOWER(@name) AND id != @id",
+            .SEARCH_COUNT_QUERY = "SELECT COUNT(*) FROM tblyearlevels WHERE year_level LIKE @search",
+            .SEARCH_RESULT_QUERY = "SELECT y.id, y.year_level, d.department_name, y.department_id FROM tblyearlevels y JOIN tbldepartments d ON y.department_id = d.id WHERE year_level LIKE @search ORDER BY year_level ASC LIMIT @page, 30",
+            .FETCH_ALL_QUERY = "SELECT id, year_level FROM tblyearlevels ORDER BY year_level",
+            .UPDATE_QUERY = "UPDATE tblyearlevels SET year_level = @name, department_id = @did WHERE id = @id"
+        }},
+        {DEPARTMENT, New QueryTable With {
+            .ADD_QUERY = "INSERT INTO tbldepartments (department_name) VALUES (@name)",
+            .DELETE_QUERY = "DELETE FROM tbldepartments WHERE id = @id",
+            .EXISTS_ADD_QUERY = "SELECT COUNT(*) FROM tbldepartments WHERE LOWER(department_name) = LOWER(@name)",
+            .EXISTS_UPDATE_QUERY = "SELECT COUNT(*) FROM tbldepartments WHERE LOWER(department_name) = LOWER(@name) AND id != @id",
+            .SEARCH_COUNT_QUERY = "SELECT COUNT(*) FROM tbldepartments WHERE department_name LIKE @search",
+            .SEARCH_RESULT_QUERY = "SELECT id, department_name FROM tbldepartments WHERE department_name LIKE @search ORDER BY department_name ASC LIMIT @page, 30",
+            .FETCH_ALL_QUERY = "SELECT id, department_name FROM tbldepartments ORDER BY department_name",
+            .UPDATE_QUERY = "UPDATE tbldepartments SET department_name = @name WHERE id = @id"
         }}
     }
 
