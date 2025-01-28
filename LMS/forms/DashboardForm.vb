@@ -24,8 +24,9 @@ Public Class DashboardForm
             {NameOf(YEARLEVEL), New ControlMapping With {.DG = DGYEARLEVEL, .LBLNEXT = LBLYEARLEVELNEXT, .LBLPREV = LBLYEARLEVELPREV, .TXTSEARCH = TXTYEARLEVELSEARCH, .DIALOG_NAME = YearLevelDialog.GetType(), .QUERY_TYPE = YEARLEVEL}},
             {NameOf(DEPARTMENT), New ControlMapping With {.DG = DGDEPARTMENT, .LBLNEXT = LBLDEPARTMENTNEXT, .LBLPREV = LBLDEPARTMENTPREV, .TXTSEARCH = TXTDEPARTMENTSEARCH, .DIALOG_NAME = DepartmentDialog.GetType(), .QUERY_TYPE = DEPARTMENT}},
             {NameOf(STUDENT), New ControlMapping With {.DG = DGSTUDENT, .LBLNEXT = LBLSTUDENTNEXT, .LBLPREV = LBLSTUDENTPREV, .TXTSEARCH = TXTSTUDENTSEARCH, .DIALOG_NAME = StudentDialog.GetType(), .QUERY_TYPE = STUDENT}},
-            {NameOf(FACULTY), New ControlMapping With {.DG = DGFACULTY, .LBLNEXT = LBLFACULTYNEXT, .LBLPREV = LBLFACULTYPREV, .TXTSEARCH = TXTFACULTYSEARCH, .DIALOG_NAME = FacultyDialog.GetType(), .QUERY_TYPE = FACULTY}}
-        }
+            {NameOf(FACULTY), New ControlMapping With {.DG = DGFACULTY, .LBLNEXT = LBLFACULTYNEXT, .LBLPREV = LBLFACULTYPREV, .TXTSEARCH = TXTFACULTYSEARCH, .DIALOG_NAME = FacultyDialog.GetType(), .QUERY_TYPE = FACULTY}},
+            {NameOf(ADMIN), New ControlMapping With {.DG = DGADMINISTRATOR, .LBLNEXT = LBLADMINNEXT, .LBLPREV = LBLADMINPREV, .TXTSEARCH = TXTADMINSEARCH, .DIALOG_NAME = FacultyDialog.GetType(), .QUERY_TYPE = ADMIN}}
+        } ' NO ADMIN DIALOG HAHAHAHA
 
 
         BookInventoryPanels_SelectedIndexChanged(BookInventoryPanels, Nothing)
@@ -61,7 +62,8 @@ Public Class DashboardForm
     End Sub
 
     Private Sub BTNNEXT_Click(sender As Object, e As EventArgs) Handles BTNGENRENEXT.Click, BTNAUTHORNEXT.Click, BTNPUBLISHERNEXT.Click,
-            BTNCLASSIFICATIONNEXT.Click, BTNLANGUAGENEXT.Click, BTNDONATORNEXT.Click, BTNSUPPLIERNEXT.Click, BTNBOOKNEXT.Click, BTNSECTIONNEXT.Click, BTNYEARLEVELNEXT.Click, BTNDEPARTMENTNEXT.Click
+            BTNCLASSIFICATIONNEXT.Click, BTNLANGUAGENEXT.Click, BTNDONATORNEXT.Click, BTNSUPPLIERNEXT.Click, BTNBOOKNEXT.Click, BTNSECTIONNEXT.Click, BTNYEARLEVELNEXT.Click, BTNDEPARTMENTNEXT.Click,
+            BTNSTUDENTNEXT.Click, BTNFACULTYNEXT.Click, BTNADMINNEXT.Click
         If sender.Tag = NameOf(BOOK) Then
             ControlsMap.Item(sender.Tag).NextPage(If(CMBBOOKFILTER.SelectedText.ToLower = NameOf(ACTIVE).ToLower, ACTIVE, INACTIVE), AddressOf RetrieveBookSelection)
         ElseIf sender.Tag = NameOf(STUDENT) Then
@@ -74,7 +76,8 @@ Public Class DashboardForm
     End Sub
 
     Private Sub BTNPREV_Click(sender As Object, e As EventArgs) Handles BTNGENREPREV.Click, BTNAUTHORPREV.Click, BTNPUBLISHERPREV.Click,
-            BTNCLASSIFICATIONPREV.Click, BTNLANGUAGEPREV.Click, BTNDONATORRPREV.Click, BTNSUPPLIERPREV.Click, BTNBOOKPREV.Click, BTNSECTIONPREV.Click, BTNYEARLEVELPREV.Click, BTNDEPARTMENTPREV.Click
+            BTNCLASSIFICATIONPREV.Click, BTNLANGUAGEPREV.Click, BTNDONATORRPREV.Click, BTNSUPPLIERPREV.Click, BTNBOOKPREV.Click, BTNSECTIONPREV.Click, BTNYEARLEVELPREV.Click, BTNDEPARTMENTPREV.Click,
+            BTNSTUDENTPREV.Click, BTNFACULTYPREV.Click, BTNADMINPREV.Click
         If sender.Tag = NameOf(BOOK) Then
             ControlsMap.Item(sender.Tag).PrevPage(If(CMBBOOKFILTER.SelectedText.ToLower = NameOf(ACTIVE).ToLower, ACTIVE, INACTIVE), AddressOf RetrieveBookSelection)
         ElseIf sender.Tag = NameOf(STUDENT) Then
@@ -87,15 +90,21 @@ Public Class DashboardForm
     End Sub
 
     Private Sub CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGGENRE.CellClick, DGAUTHORS.CellClick, DGPUBLISHER.CellClick, DGCLASSIFICATIONS.CellClick,
-            DGLANGUAGE.CellClick, DGBOOKS.CellClick, DGDONATOR.CellClick, DGSUPPLIER.CellClick, DGSECTIONS.CellClick, DGYEARLEVEL.CellClick, DGDEPARTMENT.CellClick
+            DGLANGUAGE.CellClick, DGBOOKS.CellClick, DGDONATOR.CellClick, DGSUPPLIER.CellClick, DGSECTIONS.CellClick, DGYEARLEVEL.CellClick, DGDEPARTMENT.CellClick, DGSTUDENT.CellClick,
+            DGFACULTY.CellClick
         ControlsMap.Item(sender.Tag).CellClick(e)
     End Sub
 
     Private Sub TextSearch(sender As Object, e As EventArgs) Handles TXTGENRESEARCH.TextChanged, TXTSEARCHAUTHOR.TextChanged, TXTPUBLISHERSEARCH.TextChanged, TXTCLASSIFICATIONSEARCH.TextChanged,
-            TXTLANGUAGESEARCH.TextChanged, TXTBOOKSEARCH.TextChanged, TXTDONATORSEARCH.TextChanged, TXTSUPPLIERSEARCH.TextChanged
+            TXTLANGUAGESEARCH.TextChanged, TXTBOOKSEARCH.TextChanged, TXTDONATORSEARCH.TextChanged, TXTSUPPLIERSEARCH.TextChanged, TXTFACULTYSEARCH.TextChanged, TXTSTUDENTSEARCH.TextChanged,
+            TXTADMINSEARCH.TextChanged
         If IS_LOADED Then
             ' TO-DO ADD LOGIC
-            TabSelected(MaintenancePanels, Nothing)
+            If MainFormPanels.SelectedTab.Equals(MaintenanceTab) Then
+                TabSelected(MaintenancePanels, Nothing)
+            ElseIf MainFormPanels.SelectedTab.Equals(AccountTab) Then
+                TabSelected(AccountsPanel, Nothing)
+            End If
         End If
     End Sub
 
@@ -133,7 +142,7 @@ Public Class DashboardForm
         Next
     End Sub
 
-    Private Sub CMBFILTER(sender As Object, e As EventArgs) Handles CMBBOOKFILTER.SelectedIndexChanged
+    Private Sub CMBFILTER(sender As Object, e As EventArgs) Handles CMBBOOKFILTER.SelectedIndexChanged, CMBSTUDENTFILTER.SelectedIndexChanged, CMBFACULTYFILTER.SelectedIndexChanged
         If IS_LOADED Then
             If sender.SelectedIndex = 0 Then
                 ControlsMap.Item(sender.Tag).Update(STATUSTYPE.ACTIVE)
@@ -165,84 +174,6 @@ Public Class DashboardForm
     End Sub
 
 #Region "Student Module"
-
-    Private Sub BTNSTUDENTNEXT_Click(sender As Object, e As EventArgs) Handles BTNSTUDENTNEXT.Click
-        If BaseMaintenance.PPrev < BaseMaintenance.PMAX Then
-            BaseMaintenance.PPrev += 1
-            If AccountsPanel.SelectedTab.Equals(StudentsTab) Then
-                If CMBSTUDENTFILTER.SelectedIndex = 0 Then
-                    DGSTUDENT.DataSource = BaseMaintenance.Search(QueryTableType.STUDENT_QUERY_TABLE, TXTSTUDENTSEARCH.Text)
-                Else
-                    DGSTUDENT.DataSource = BaseMaintenance.SearchArchive(QueryTableType.STUDENT_QUERY_TABLE, TXTSTUDENTSEARCH.Text)
-                End If
-                LBLSTUDENTNEXT.Text = BaseMaintenance.PMAX
-                LBLSTUDENTPREV.Text = BaseMaintenance.PPrev
-            End If
-        End If
-
-        ' Retain the previously selected rows
-        For Each item As DataGridViewRow In DGSTUDENT.Rows
-            For Each drow As DataRow In SELECTED_STUDENTS.Rows
-                Dim boundItem As DataRowView = TryCast(item.DataBoundItem, DataRowView)
-                If boundItem.Row.Item("id") = drow.Item("id") Then
-                    item.Cells(NameOf(chckBoxStudent)).Value = True
-                End If
-            Next
-        Next
-    End Sub
-
-    Private Sub BTNSTUDENTPREV_Click(sender As Object, e As EventArgs) Handles BTNSTUDENTPREV.Click
-        If BaseMaintenance.PPrev > 1 Then
-            BaseMaintenance.PPrev -= 1
-            If AccountsPanel.SelectedTab.Equals(StudentsTab) Then
-                If CMBSTUDENTFILTER.SelectedIndex = 0 Then
-                    DGSTUDENT.DataSource = BaseMaintenance.Search(QueryTableType.STUDENT_QUERY_TABLE, TXTSTUDENTSEARCH.Text)
-                Else
-                    DGSTUDENT.DataSource = BaseMaintenance.SearchArchive(QueryTableType.STUDENT_QUERY_TABLE, TXTSTUDENTSEARCH.Text)
-                End If
-                LBLSTUDENTNEXT.Text = BaseMaintenance.PMAX
-                LBLSTUDENTPREV.Text = BaseMaintenance.PPrev
-            End If
-        End If
-
-        ' Retain the previously selected rows
-        For Each item As DataGridViewRow In DGSTUDENT.Rows
-            For Each drow As DataRow In SELECTED_STUDENTS.Rows
-                Dim boundItem As DataRowView = TryCast(item.DataBoundItem, DataRowView)
-                If boundItem.Row.Item("id") = drow.Item("id") Then
-                    item.Cells(NameOf(chckBoxStudent)).Value = True
-                End If
-            Next
-        Next
-    End Sub
-
-    Private Sub DGSTUDENT_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGSTUDENT.CellMouseClick
-        If e.ColumnIndex <> 0 AndAlso e.RowIndex <> -1 Then
-            If DGSTUDENT.SelectedRows.Count > 0 Then
-                Dim datarow As DataRowView = DGSTUDENT.SelectedRows.Item(0).DataBoundItem
-                Using dialog As New StudentDialog(datarow)
-                    dialog.ShowDialog()
-                End Using
-            End If
-            DGSTUDENT.DataSource = BaseMaintenance.Fetch(QueryTableType.STUDENT_QUERY_TABLE)
-            LBLSTUDENTNEXT.Text = BaseMaintenance.PMAX
-            LBLSTUDENTPREV.Text = BaseMaintenance.PPrev
-        End If
-    End Sub
-
-    Private Sub TXTSTUDENTSEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTSTUDENTSEARCH.TextChanged
-        If AccountsPanel.SelectedTab.Equals(StudentsTab) Then
-            BaseMaintenance.PPrev = 1
-            If CMBSTUDENTFILTER.SelectedIndex = 0 Then
-                DGSTUDENT.DataSource = BaseMaintenance.Search(QueryTableType.STUDENT_QUERY_TABLE, TXTSTUDENTSEARCH.Text)
-            Else
-                DGSTUDENT.DataSource = BaseMaintenance.SearchArchive(QueryTableType.STUDENT_QUERY_TABLE, TXTSTUDENTSEARCH.Text)
-            End If
-            LBLSTUDENTNEXT.Text = BaseMaintenance.PMAX
-            LBLSTUDENTPREV.Text = BaseMaintenance.PPrev
-        End If
-    End Sub
-
     Private Sub DGSTUDENT_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGSTUDENT.CellContentClick
         If e.ColumnIndex = chckBoxStudent.Index Then
             DGSTUDENT.EndEdit()
@@ -263,66 +194,9 @@ Public Class DashboardForm
             End If
         End If
     End Sub
-
-
 #End Region
 
 #Region "Faculty/Teacher Module"
-
-    Private Sub BTNFACULTYNEXT_Click(sender As Object, e As EventArgs) Handles BTNFACULTYNEXT.Click
-        If BaseMaintenance.PPrev < BaseMaintenance.PMAX Then
-            BaseMaintenance.PPrev += 1
-            LBLFACULTYPREV.Text = BaseMaintenance.PPrev
-            DGFACULTY.DataSource = BaseMaintenance.Fetch(QueryTableType.FACULTY_QUERY_TABLE)
-        End If
-
-        ' Retain the previously selected rows
-        For Each item As DataGridViewRow In DGFACULTY.Rows
-            For Each drow As DataRow In SELECTED_FACULTY.Rows
-                Dim boundItem As DataRowView = TryCast(item.DataBoundItem, DataRowView)
-                If boundItem.Row.Item("id") = drow.Item("id") Then
-                    item.Cells(NameOf(chckBoxFaculty)).Value = True
-                End If
-            Next
-        Next
-    End Sub
-
-    Private Sub BTNFACULTYPREV_Click(sender As Object, e As EventArgs) Handles BTNFACULTYPREV.Click
-        If BaseMaintenance.PPrev > 1 Then
-            BaseMaintenance.PPrev -= 1
-            LBLFACULTYPREV.Text = BaseMaintenance.PPrev
-            DGFACULTY.DataSource = BaseMaintenance.Fetch(QueryTableType.FACULTY_QUERY_TABLE)
-        End If
-
-
-    End Sub
-
-    Private Sub DGFACULTY_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DGFACULTY.CellMouseClick
-        If e.ColumnIndex <> 0 AndAlso e.RowIndex <> -1 Then
-            If DGFACULTY.SelectedRows.Count > 0 Then
-                Dim datarow As DataRowView = DGFACULTY.SelectedRows.Item(0).DataBoundItem
-                Using dialog As New FacultyDialog(datarow)
-                    dialog.ShowDialog()
-                End Using
-            End If
-            DGFACULTY.DataSource = BaseMaintenance.Fetch(QueryTableType.FACULTY_QUERY_TABLE)
-            LBLFACULTYNEXT.Text = BaseMaintenance.PMAX
-            LBLFACULTYPREV.Text = BaseMaintenance.PPrev
-        End If
-    End Sub
-
-    Private Sub TXTFACULTYSEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTFACULTYSEARCH.TextChanged
-        If AccountsPanel.SelectedTab.Equals(FacultyTab) Then
-            BaseMaintenance.PPrev = 1
-            If CMBFACULTYFILTER.SelectedIndex = 0 Then
-                DGFACULTY.DataSource = BaseMaintenance.Search(QueryTableType.FACULTY_QUERY_TABLE, TXTFACULTYSEARCH.Text)
-            Else
-                DGFACULTY.DataSource = BaseMaintenance.SearchArchive(QueryTableType.FACULTY_QUERY_TABLE, TXTFACULTYSEARCH.Text)
-            End If
-            LBLFACULTYNEXT.Text = BaseMaintenance.PMAX
-            LBLFACULTYPREV.Text = BaseMaintenance.PPrev
-        End If
-    End Sub
     Private Sub DGFACULTY_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGFACULTY.CellContentClick
         If e.ColumnIndex = chckBoxFaculty.Index Then
             DGFACULTY.EndEdit()
@@ -341,18 +215,6 @@ Public Class DashboardForm
                     SELECTED_FACULTY.Rows.Remove(row)
                 End If
             End If
-        End If
-    End Sub
-    Private Sub CMBFACULTYFILTER_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CMBFACULTYFILTER.SelectedIndexChanged
-        If AccountsPanel.SelectedTab.Equals(FacultyTab) Then
-            BaseMaintenance.PPrev = 1
-            If CMBFACULTYFILTER.SelectedIndex = 0 Then
-                DGFACULTY.DataSource = BaseMaintenance.Search(QueryTableType.FACULTY_QUERY_TABLE, TXTFACULTYSEARCH.Text)
-            Else
-                DGFACULTY.DataSource = BaseMaintenance.SearchArchive(QueryTableType.FACULTY_QUERY_TABLE, TXTFACULTYSEARCH.Text)
-            End If
-            LBLFACULTYNEXT.Text = BaseMaintenance.PMAX
-            LBLFACULTYPREV.Text = BaseMaintenance.PPrev
         End If
     End Sub
 #End Region
@@ -484,20 +346,6 @@ Public Class DashboardForm
                     MyApplication.DialogInstances.Item(NameOf(StudentDialog)).Show()
                 End If
         End Select
-    End Sub
-#End Region
-
-#Region "Admin Module"
-    Private Sub BTNADMINPNEXT_Click(sender As Object, e As EventArgs) Handles BTNADMINNEXT.Click
-        NextPageHelper(LBLADMINPREV, LBLADMINNEXT, DGADMINISTRATOR, QueryTableType.ADMIN_QUERY_TABLE, TXTADMINSEARCH)
-    End Sub
-
-    Private Sub BTNADMINPPREV_Click(sender As Object, e As EventArgs) Handles BTNADMINPREV.Click
-        PrevPageHelper(LBLADMINPREV, LBLADMINNEXT, DGADMINISTRATOR, QueryTableType.ADMIN_QUERY_TABLE, TXTADMINSEARCH)
-    End Sub
-
-    Private Sub TXTADMINISTRATORSEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTADMINSEARCH.TextChanged
-        SearchHelper(AccountsPanel, AdminTab, DGADMINISTRATOR, LBLADMINNEXT, LBLADMINPREV, QueryTableType.ADMIN_QUERY_TABLE, TXTADMINSEARCH)
     End Sub
 #End Region
 
@@ -756,7 +604,7 @@ Public Class DashboardForm
         Else
             MessageBox.Show("Cannot delete the selected items. Some items are being used to other resources. Please remove the them before deleting.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
-        CMBFACULTYFILTER_SelectedIndexChanged(CMBFACULTYFILTER, Nothing)
+        'CMBFACULTYFILTER_SelectedIndexChanged(CMBFACULTYFILTER, Nothing)
         SELECTED_FACULTY = New SystemDataSets.DTFacultyDataTable
     End Sub
 
@@ -780,7 +628,7 @@ Public Class DashboardForm
             End If
         End If
         DGFACULTY.EndEdit()
-        CMBFACULTYFILTER_SelectedIndexChanged(CMBFACULTYFILTER, Nothing)
+        'CMBFACULTYFILTER_SelectedIndexChanged(CMBFACULTYFILTER, Nothing)
         SELECTED_FACULTY = New SystemDataSets.DTFacultyDataTable
     End Sub
 
@@ -800,7 +648,7 @@ Public Class DashboardForm
                 MessageBox.Show("Unarchive failed.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             End If
         End If
-        CMBFACULTYFILTER_SelectedIndexChanged(CMBFACULTYFILTER, Nothing)
+        'CMBFACULTYFILTER_SelectedIndexChanged(CMBFACULTYFILTER, Nothing)
         SELECTED_FACULTY = New SystemDataSets.DTFacultyDataTable
     End Sub
 
@@ -828,7 +676,7 @@ Public Class DashboardForm
             End If
         End If
         DGFACULTY.EndEdit()
-        CMBFACULTYFILTER_SelectedIndexChanged(CMBFACULTYFILTER, Nothing)
+        'CMBFACULTYFILTER_SelectedIndexChanged(CMBFACULTYFILTER, Nothing)
         SELECTED_FACULTY = New SystemDataSets.DTFacultyDataTable
     End Sub
 #End Region

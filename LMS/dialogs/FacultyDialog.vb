@@ -21,7 +21,7 @@ Public Class FacultyDialog
             TXTADDRESS.Text = If(IsDBNull(_data.Row("address")), Nothing, _data.Row("address"))
             TXTPHONE.Text = If(IsDBNull(_data.Row("phone")), Nothing, _data.Row("phone"))
             CMBDEPARTMENT.SelectedValue = _data.Item("department_id")
-            TXTEMAIL.Text = _data.Item("email")
+            TXTEMAIL.Text = If(IsDBNull(_data.Item("email")), Nothing, _data.Item("email"))
             TXTUSERNAME.Text = _data.Item("username")
         End If
     End Sub
