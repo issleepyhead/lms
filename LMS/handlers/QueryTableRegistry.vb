@@ -148,9 +148,52 @@ Module QueryTableRegistry
             .SEARCH_RESULT_QUERY = "SELECT a.id, full_name, CASE WHEN `role` = 0 THEN 'Super Admin' ELSE 'Assistant Librarian' END AS `role` FROM tbladmins a JOIN tblstudents s ON a.student_id = s.id UNION SELECT a.id, full_name, CASE WHEN `role` = 0 THEN 'Super Admin' ELSE 'Assistant Librarian' END AS `role` FROM tbladmins a JOIN tblfaculties f ON a.faculty_id = f.id WHERE full_name LIKE @search OR phone LIKE @search OR email LIKE @search ORDER BY full_name LIMIT @page, 30;",
             .SEARCH_COUNT_QUERY = "SELECT COUNT(*) FROM tbladmins a LEFT JOIN tblfaculties f ON a.faculty_id = f.id LEFT JOIN tblstudents s ON a.student_id = s.id WHERE full_name LIKE @search OR phone LIKE @search OR email LIKE @search"
         }},
-        {BOOKCOPIES, New QueryTable},
-        {BOOKINVENTORY, New QueryTable},
-        {TRANSACTION, New QueryTable}
+        {BOOKCOPIES, New QueryTable With {
+            .SEARCH_COUNT_QUERY = "SELECT COUNT(DISTINCT b.title) FROM tblbookcopies bc JOIN tblbooks b ON bc.book_id = b.id WHERE b.title LIKE @search OR b.isbn LIKE @search GROUP BY b.title, b.isbn ORDER BY b.title",
+            .SEARCH_RESULT_QUERY = "SELECT 
+                                            b.title,
+	                                        b.isbn,
+                                            COUNT(CASE WHEN bc.condition = 0 THEN 1 END) good,
+                                            COUNT(CASE WHEN bc.condition = 1 THEN 1 END) damaged,
+                                            COUNT(CASE WHEN bc.condition = 2 THEN 1 END) lost,
+                                            COUNT(CASE WHEN bc.status = 0 THEN 1 END) borrowed,
+                                            COUNT(CASE WHEN bc.status = 1 THEN 1 END) available,
+	                                        COUNT(book_id) total
+                                        FROM
+                                            tblbookcopies bc
+                                                JOIN
+                                            tblbooks b ON bc.book_id = b.id
+                                        WHERE b.title LIKE @search OR b.isbn LIKE @search
+                                        GROUP BY b.title, b.isbn
+                                        ORDER BY b.title LIMIT @page, 30;"
+        }},
+        {BOOKINVENTORY, New QueryTable With {
+            .SEARCH_COUNT_QUERY = "SELECT COUNT(*) FROM tblbookcopies bc JOIN tblbooks b ON bc.book_id = b.id LEFT JOIN tbldonators d ON bc.donator_id = d.id LEFT JOIN tblsuppliers s ON bc.supplier_id = s.id WHERE b.title LIKE @search OR b.isbn LIKE @search ORDER BY b.title",
+            .SEARCH_RESULT_QUERY = "SELECT bc.id, b.title, b.isbn, bc.accession_no, d.name donator_name, s.name supplier_name, price FROM tblbookcopies bc JOIN tblbooks b ON bc.book_id = b.id LEFT JOIN tbldonators d ON bc.donator_id = d.id LEFT JOIN tblsuppliers s ON bc.supplier_id = s.id WHERE b.title LIKE @search OR b.isbn LIKE @search ORDER BY b.title ASC LIMIT @page, 30;",
+            .UPDATE_QUERY = "UPDATE tblbookcopies SET price = @price WHERE id = @id"
+        }},
+        {TRANSACTION, New QueryTable},
+        {BOOKLOSTDAMAGE, New QueryTable With {
+            .SEARCH_COUNT_QUERY = "SELECT COUNT(*)
+                                    FROM tblborrowheaders bh
+                                    JOIN tblborrowedcopies bc ON bh.id = bc.header_id
+                                    JOIN tblbookcopies c ON bc.copy_id = c.id
+                                    JOIN tblbooks b ON c.book_id = b.id
+                                    LEFT JOIN tblstudents s ON bh.student_id = s.id
+                                    LEFT JOIN tblfaculties f ON bh.faculty_id = f.id
+                                    WHERE bc.returned_condition = 2 OR bc.returned_condition = 1;",
+            .SEARCH_RESULT_QUERY = "SELECT c.accession_no, bh.circulation_no , b.title,
+                                    CASE WHEN bc.borrowed_condition = 0 THEN 'Good' ELSE (CASE WHEN bc.borrowed_condition = 1 THEN 'Damaged' ELSE 'Lost' END) END AS borrowed_condition,
+                                    CASE WHEN bc.returned_condition = 0 THEN 'Good' ELSE (CASE WHEN bc.returned_condition = 1 THEN 'Damaged' ELSE 'Lost' END) END AS returned_condition,
+                                    CASE WHEN bh.student_id IS NULL THEN f.full_name ELSE s.full_name END AS borrower_name
+                                    FROM tblborrowheaders bh
+                                    JOIN tblborrowedcopies bc ON bh.id = bc.header_id
+                                    JOIN tblbookcopies c ON bc.copy_id = c.id
+                                    JOIN tblbooks b ON c.book_id = b.id
+                                    LEFT JOIN tblstudents s ON bh.student_id = s.id
+                                    LEFT JOIN tblfaculties f ON bh.faculty_id = f.id
+                                    WHERE bc.returned_condition = 2 OR bc.returned_condition = 1;"
+        }}
     }
 
     Public Function CreateQueryTable(type As QueryType) As QueryTable

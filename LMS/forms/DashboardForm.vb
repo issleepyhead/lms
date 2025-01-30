@@ -4,11 +4,21 @@ Imports LMS.STATUSTYPE
 
 Public Class DashboardForm
 
+    ' Maintenancce selection collection
     Private SELECTED_BOOKS As New SystemDataSets.DTBookDataTable
     Private SELECTED_STUDENTS As New SystemDataSets.DTStudentDataTable
     Private SELECTED_FACULTY As New SystemDataSets.DTFacultyDataTable
+
+    'Report selection collection
+    Private SELECTED_BOOKSR As DataTable
+    Private SELECTED_EXPENDITURE As DataTable
+    Private SELECTED_FINES As DataTable
+    Private SELECTED_BORROWER As DataTable
+    Private SELECTED_BORROWED As DataTable
+
     Private ControlsMap As Dictionary(Of String, ControlMapping)
     Private IS_LOADED As Boolean = False
+    Private CURRENT_TAG As String = String.Empty
 
     Private Sub DashboardForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ControlsMap = New Dictionary(Of String, ControlMapping) From {
@@ -25,7 +35,10 @@ Public Class DashboardForm
             {NameOf(DEPARTMENT), New ControlMapping With {.DG = DGDEPARTMENT, .LBLNEXT = LBLDEPARTMENTNEXT, .LBLPREV = LBLDEPARTMENTPREV, .TXTSEARCH = TXTDEPARTMENTSEARCH, .DIALOG_NAME = DepartmentDialog.GetType(), .QUERY_TYPE = DEPARTMENT}},
             {NameOf(STUDENT), New ControlMapping With {.DG = DGSTUDENT, .LBLNEXT = LBLSTUDENTNEXT, .LBLPREV = LBLSTUDENTPREV, .TXTSEARCH = TXTSTUDENTSEARCH, .DIALOG_NAME = StudentDialog.GetType(), .QUERY_TYPE = STUDENT}},
             {NameOf(FACULTY), New ControlMapping With {.DG = DGFACULTY, .LBLNEXT = LBLFACULTYNEXT, .LBLPREV = LBLFACULTYPREV, .TXTSEARCH = TXTFACULTYSEARCH, .DIALOG_NAME = FacultyDialog.GetType(), .QUERY_TYPE = FACULTY}},
-            {NameOf(ADMIN), New ControlMapping With {.DG = DGADMINISTRATOR, .LBLNEXT = LBLADMINNEXT, .LBLPREV = LBLADMINPREV, .TXTSEARCH = TXTADMINSEARCH, .QUERY_TYPE = ADMIN}}
+            {NameOf(ADMIN), New ControlMapping With {.DG = DGADMINISTRATOR, .LBLNEXT = LBLADMINNEXT, .LBLPREV = LBLADMINPREV, .TXTSEARCH = TXTADMINSEARCH, .QUERY_TYPE = ADMIN}},
+            {NameOf(BOOKCOPIES), New ControlMapping With {.DG = DGBOOKCOPIES, .LBLNEXT = LBLCOPIESNEXT, .LBLPREV = LBLCOPIESPREV, .TXTSEARCH = TXTCOPIESSEARCH, .QUERY_TYPE = BOOKCOPIES}},
+            {NameOf(BOOKINVENTORY), New ControlMapping With {.DG = DGINVENTORY, .LBLNEXT = LBLINVENTORYNEXT, .LBLPREV = LBLINVENTORYPREV, .TXTSEARCH = TXTINVENTORYSEARCH, .QUERY_TYPE = BOOKINVENTORY}},
+            {NameOf(BOOKLOSTDAMAGE), New ControlMapping With {.DG = DGBOOK, .LBLNEXT = LBLINVENTORYNEXT, .LBLPREV = LBLINVENTORYPREV, .TXTSEARCH = TXTINVENTORYSEARCH, .QUERY_TYPE = BOOKINVENTORY}}
         }
 
 
@@ -52,7 +65,7 @@ Public Class DashboardForm
 
     Private Sub BTNNEXT_Click(sender As Object, e As EventArgs) Handles BTNGENRENEXT.Click, BTNAUTHORNEXT.Click, BTNPUBLISHERNEXT.Click,
             BTNCLASSIFICATIONNEXT.Click, BTNLANGUAGENEXT.Click, BTNDONATORNEXT.Click, BTNSUPPLIERNEXT.Click, BTNBOOKNEXT.Click, BTNSECTIONNEXT.Click, BTNYEARLEVELNEXT.Click, BTNDEPARTMENTNEXT.Click,
-            BTNSTUDENTNEXT.Click, BTNFACULTYNEXT.Click, BTNADMINNEXT.Click
+            BTNSTUDENTNEXT.Click, BTNFACULTYNEXT.Click, BTNADMINNEXT.Click, BTNCOPIESNEXT.Click, BTNINVENTORYNEXT.Click
         If sender.Tag = NameOf(BOOK) Then
             ControlsMap.Item(sender.Tag).NextPage(If(CMBBOOKFILTER.SelectedText.ToLower = NameOf(ACTIVE).ToLower, ACTIVE, INACTIVE), AddressOf RetrieveBookSelection)
         ElseIf sender.Tag = NameOf(STUDENT) Then
@@ -66,7 +79,7 @@ Public Class DashboardForm
 
     Private Sub BTNPREV_Click(sender As Object, e As EventArgs) Handles BTNGENREPREV.Click, BTNAUTHORPREV.Click, BTNPUBLISHERPREV.Click,
             BTNCLASSIFICATIONPREV.Click, BTNLANGUAGEPREV.Click, BTNDONATORRPREV.Click, BTNSUPPLIERPREV.Click, BTNBOOKPREV.Click, BTNSECTIONPREV.Click, BTNYEARLEVELPREV.Click, BTNDEPARTMENTPREV.Click,
-            BTNSTUDENTPREV.Click, BTNFACULTYPREV.Click, BTNADMINPREV.Click
+            BTNSTUDENTPREV.Click, BTNFACULTYPREV.Click, BTNADMINPREV.Click, BTNCOPIESPREV.Click, BTNINVENTORYPREV.Click
         If sender.Tag = NameOf(BOOK) Then
             ControlsMap.Item(sender.Tag).PrevPage(If(CMBBOOKFILTER.SelectedText.ToLower = NameOf(ACTIVE).ToLower, ACTIVE, INACTIVE), AddressOf RetrieveBookSelection)
         ElseIf sender.Tag = NameOf(STUDENT) Then
@@ -86,13 +99,15 @@ Public Class DashboardForm
 
     Private Sub TextSearch(sender As Object, e As EventArgs) Handles TXTGENRESEARCH.TextChanged, TXTSEARCHAUTHOR.TextChanged, TXTPUBLISHERSEARCH.TextChanged, TXTCLASSIFICATIONSEARCH.TextChanged,
             TXTLANGUAGESEARCH.TextChanged, TXTBOOKSEARCH.TextChanged, TXTDONATORSEARCH.TextChanged, TXTSUPPLIERSEARCH.TextChanged, TXTFACULTYSEARCH.TextChanged, TXTSTUDENTSEARCH.TextChanged,
-            TXTADMINSEARCH.TextChanged
+            TXTADMINSEARCH.TextChanged, TXTCOPIESSEARCH.TextChanged, TXTINVENTORYSEARCH.TextChanged, TXTDEPARTMENTSEARCH.TextChanged, TXTSECTIONSEARCH.TextChanged, TXTYEARLEVELSEARCH.TextChanged
         If IS_LOADED Then
             ' TO-DO ADD LOGIC
             If MainFormPanels.SelectedTab.Equals(MaintenanceTab) Then
                 TabSelected(MaintenancePanels, Nothing)
             ElseIf MainFormPanels.SelectedTab.Equals(AccountsMaintenanceTab) Then
                 TabSelected(AccountsPanel, Nothing)
+            ElseIf MainFormPanels.SelectedTab.Equals(BookInventoryTab) Then
+                TabSelected(BookInventoryPanels, Nothing)
             End If
         End If
     End Sub
@@ -176,7 +191,12 @@ Public Class DashboardForm
         End Select
     End Sub
 
-    Private Sub TabSelected(sender As Object, e As TabControlEventArgs) Handles MaintenancePanels.Selected, AccountsPanel.Selected
+    Private Sub TabSelected(sender As Object, e As TabControlEventArgs) Handles MaintenancePanels.Selected, AccountsPanel.Selected, BookInventoryPanels.Selected
+        If CURRENT_TAG <> sender.Tag Then
+            ControlsMap.Item(sender.SelectedTab.Tag).TXTSEARCH.Text = String.Empty
+            CURRENT_TAG = sender.Tag
+        End If
+
         If sender.Tag = NameOf(BOOK) Then
             ControlsMap.Item(sender.SelectedTab.Tag).Update(If(CMBBOOKFILTER.SelectedText.ToLower = NameOf(ACTIVE).ToLower, ACTIVE, INACTIVE))
         ElseIf sender.Tag = NameOf(STUDENT) Then
@@ -459,46 +479,6 @@ Public Class DashboardForm
         End Select
     End Sub
 #End Region
-
-    '#Region "Book Copies"
-    '    'Private Sub TXTCOPIESSEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTCOPIESSEARCH.TextChanged
-    '    '    If BookInventoryPanels.SelectedTab.Equals(CopiesTab) Then
-    '    '        If Not String.IsNullOrEmpty(TXTCOPIESSEARCH.Text) Then
-    '    '            DGBOOKCOPIES.DataSource = BaseMaintenance.Search(QueryTableType.BOOKCOPIES_QUERY_TABLE, TXTCOPIESSEARCH.Text)
-    '    '            LBLCOPIESNEXT.Text = BaseMaintenance.PMAX
-    '    '            LBLCOPIESPREV.Text = BaseMaintenance.PPrev
-    '    '        Else
-    '    '            DGBOOKCOPIES.DataSource = BaseMaintenance.Fetch(QueryTableType.BOOKCOPIES_QUERY_TABLE)
-    '    '            LBLCOPIESNEXT.Text = BaseMaintenance.PMAX
-    '    '            LBLCOPIESPREV.Text = BaseMaintenance.PPrev
-    '    '        End If
-    '    '    End If
-    '    'End Sub
-
-    '    'Private Sub BTNCOPIESPREV_Click(sender As Object, e As EventArgs) Handles BTNCOPIESPREV.Click
-    '    '    If BaseMaintenance.PPrev > 1 Then
-    '    '        BaseMaintenance.PPrev -= 1
-    '    '        LBLCOPIESPREV.Text = BaseMaintenance.PPrev
-    '    '        If String.IsNullOrEmpty(TXTCOPIESSEARCH.Text) Then
-    '    '            DGBOOKCOPIES.DataSource = BaseMaintenance.Fetch(QueryTableType.BOOKCOPIES_QUERY_TABLE)
-    '    '        Else
-    '    '            DGBOOKCOPIES.DataSource = BaseMaintenance.Search(QueryTableType.BOOKCOPIES_QUERY_TABLE, TXTCOPIESSEARCH.Text)
-    '    '        End If
-    '    '    End If
-    '    'End Sub
-
-    '    'Private Sub BTNCOPIESNEXT_Click(sender As Object, e As EventArgs) Handles BTNCOPIESNEXT.Click
-    '    '    If BaseMaintenance.PPrev < BaseMaintenance.PMAX Then
-    '    '        BaseMaintenance.PPrev += 1
-    '    '        LBLCOPIESPREV.Text = BaseMaintenance.PPrev
-    '    '        If String.IsNullOrEmpty(TXTCOPIESSEARCH.Text) Then
-    '    '            DGBOOKCOPIES.DataSource = BaseMaintenance.Fetch(QueryTableType.BOOKCOPIES_QUERY_TABLE)
-    '    '        Else
-    '    '            DGBOOKCOPIES.DataSource = BaseMaintenance.Search(QueryTableType.BOOKCOPIES_QUERY_TABLE, TXTCOPIESSEARCH.Text)
-    '    '        End If
-    '    '    End If
-    '    'End Sub
-    '#End Region
 
 #Region "BookInventory Panels"
     Private Sub BookInventoryPanels_SelectedIndexChanged(sender As Object, e As EventArgs) Handles BookInventoryPanels.SelectedIndexChanged

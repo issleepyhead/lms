@@ -523,15 +523,7 @@ Partial Class DashboardForm
         Me.BTNLOSTDAMAGEPREV = New Guna.UI2.WinForms.Guna2Button()
         Me.BTNLOSTDAMAGENEXT = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Panel50 = New Guna.UI2.WinForms.Guna2Panel()
-        Me.Guna2DataGridView1 = New Guna.UI2.WinForms.Guna2DataGridView()
-        Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.Column54 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column53 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column50 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column51 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column52 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DGLOSTDAMAGE = New Guna.UI2.WinForms.Guna2DataGridView()
         Me.BookTransactionTab = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel21 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel57 = New Guna.UI2.WinForms.Guna2Panel()
@@ -765,6 +757,13 @@ Partial Class DashboardForm
         Me.LBLPROFILEROLE = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.LBLPROFILENAME = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.errProvider = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column54 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column53 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column50 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column51 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column52 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TableLayoutPanel1.SuspendLayout
         Me.MainFormPanels.SuspendLayout
         Me.DashboardTab.SuspendLayout
@@ -886,7 +885,7 @@ Partial Class DashboardForm
         Me.Guna2Panel48.SuspendLayout
         Me.Guna2Panel49.SuspendLayout
         Me.Guna2Panel50.SuspendLayout
-        CType(Me.Guna2DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.DGLOSTDAMAGE, System.ComponentModel.ISupportInitialize).BeginInit
         Me.BookTransactionTab.SuspendLayout
         Me.TableLayoutPanel21.SuspendLayout
         Me.Guna2Panel57.SuspendLayout
@@ -5956,6 +5955,7 @@ Partial Class DashboardForm
         Me.Guna2Button1.Name = "Guna2Button1"
         Me.Guna2Button1.Size = New System.Drawing.Size(141, 40)
         Me.Guna2Button1.TabIndex = 10
+        Me.Guna2Button1.Tag = "BOOKCOPIES"
         Me.Guna2Button1.Text = "Refresh"
         '
         'TXTCOPIESSEARCH
@@ -5982,6 +5982,7 @@ Partial Class DashboardForm
         Me.TXTCOPIESSEARCH.SelectedText = ""
         Me.TXTCOPIESSEARCH.Size = New System.Drawing.Size(258, 40)
         Me.TXTCOPIESSEARCH.TabIndex = 6
+        Me.TXTCOPIESSEARCH.Tag = "BOOKCOPIES"
         '
         'Guna2Panel55
         '
@@ -6008,6 +6009,7 @@ Partial Class DashboardForm
         Me.LBLCOPIESNEXT.Name = "LBLCOPIESNEXT"
         Me.LBLCOPIESNEXT.Size = New System.Drawing.Size(17, 22)
         Me.LBLCOPIESNEXT.TabIndex = 5
+        Me.LBLCOPIESNEXT.Tag = "BOOKCOPIES"
         Me.LBLCOPIESNEXT.Text = "10"
         '
         'Guna2HtmlLabel42
@@ -6032,6 +6034,7 @@ Partial Class DashboardForm
         Me.LBLCOPIESPREV.Name = "LBLCOPIESPREV"
         Me.LBLCOPIESPREV.Size = New System.Drawing.Size(9, 22)
         Me.LBLCOPIESPREV.TabIndex = 3
+        Me.LBLCOPIESPREV.Tag = "BOOKCOPIES"
         Me.LBLCOPIESPREV.Text = "1"
         '
         'BTNCOPIESPREV
@@ -6049,6 +6052,7 @@ Partial Class DashboardForm
         Me.BTNCOPIESPREV.Name = "BTNCOPIESPREV"
         Me.BTNCOPIESPREV.Size = New System.Drawing.Size(79, 40)
         Me.BTNCOPIESPREV.TabIndex = 2
+        Me.BTNCOPIESPREV.Tag = "BOOKCOPIES"
         Me.BTNCOPIESPREV.Text = "Previous"
         '
         'BTNCOPIESNEXT
@@ -6066,6 +6070,7 @@ Partial Class DashboardForm
         Me.BTNCOPIESNEXT.Name = "BTNCOPIESNEXT"
         Me.BTNCOPIESNEXT.Size = New System.Drawing.Size(79, 40)
         Me.BTNCOPIESNEXT.TabIndex = 1
+        Me.BTNCOPIESNEXT.Tag = "BOOKCOPIES"
         Me.BTNCOPIESNEXT.Text = "Next"
         '
         'Guna2Panel56
@@ -6119,6 +6124,7 @@ Partial Class DashboardForm
         Me.DGBOOKCOPIES.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DGBOOKCOPIES.Size = New System.Drawing.Size(924, 491)
         Me.DGBOOKCOPIES.TabIndex = 0
+        Me.DGBOOKCOPIES.Tag = "BOOKCOPIES"
         Me.DGBOOKCOPIES.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Indigo
         Me.DGBOOKCOPIES.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(197, Byte), Integer), CType(CType(203, Byte), Integer), CType(CType(232, Byte), Integer))
         Me.DGBOOKCOPIES.ThemeStyle.AlternatingRowsStyle.Font = Nothing
@@ -6558,6 +6564,7 @@ Partial Class DashboardForm
         Me.Guna2Button2.Name = "Guna2Button2"
         Me.Guna2Button2.Size = New System.Drawing.Size(141, 40)
         Me.Guna2Button2.TabIndex = 10
+        Me.Guna2Button2.Tag = "BOOKINVENTORY"
         Me.Guna2Button2.Text = "Refresh"
         '
         'TXTINVENTORYSEARCH
@@ -6584,6 +6591,7 @@ Partial Class DashboardForm
         Me.TXTINVENTORYSEARCH.SelectedText = ""
         Me.TXTINVENTORYSEARCH.Size = New System.Drawing.Size(258, 40)
         Me.TXTINVENTORYSEARCH.TabIndex = 6
+        Me.TXTINVENTORYSEARCH.Tag = "BOOKINVENTORY"
         '
         'Guna2Panel51
         '
@@ -6610,6 +6618,7 @@ Partial Class DashboardForm
         Me.LBLINVENTORYNEXT.Name = "LBLINVENTORYNEXT"
         Me.LBLINVENTORYNEXT.Size = New System.Drawing.Size(17, 22)
         Me.LBLINVENTORYNEXT.TabIndex = 5
+        Me.LBLINVENTORYNEXT.Tag = "BOOKINVENTORY"
         Me.LBLINVENTORYNEXT.Text = "10"
         '
         'Guna2HtmlLabel8
@@ -6634,6 +6643,7 @@ Partial Class DashboardForm
         Me.LBLINVENTORYPREV.Name = "LBLINVENTORYPREV"
         Me.LBLINVENTORYPREV.Size = New System.Drawing.Size(9, 22)
         Me.LBLINVENTORYPREV.TabIndex = 3
+        Me.LBLINVENTORYPREV.Tag = "BOOKINVENTORY"
         Me.LBLINVENTORYPREV.Text = "1"
         '
         'BTNINVENTORYPREV
@@ -6651,6 +6661,7 @@ Partial Class DashboardForm
         Me.BTNINVENTORYPREV.Name = "BTNINVENTORYPREV"
         Me.BTNINVENTORYPREV.Size = New System.Drawing.Size(79, 40)
         Me.BTNINVENTORYPREV.TabIndex = 2
+        Me.BTNINVENTORYPREV.Tag = "BOOKINVENTORY"
         Me.BTNINVENTORYPREV.Text = "Previous"
         '
         'BTNINVENTORYNEXT
@@ -6668,6 +6679,7 @@ Partial Class DashboardForm
         Me.BTNINVENTORYNEXT.Name = "BTNINVENTORYNEXT"
         Me.BTNINVENTORYNEXT.Size = New System.Drawing.Size(79, 40)
         Me.BTNINVENTORYNEXT.TabIndex = 1
+        Me.BTNINVENTORYNEXT.Tag = "BOOKINVENTORY"
         Me.BTNINVENTORYNEXT.Text = "Next"
         '
         'Guna2Panel52
@@ -6721,6 +6733,7 @@ Partial Class DashboardForm
         Me.DGINVENTORY.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DGINVENTORY.Size = New System.Drawing.Size(924, 491)
         Me.DGINVENTORY.TabIndex = 0
+        Me.DGINVENTORY.Tag = "BOOKINVENTORY"
         Me.DGINVENTORY.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Indigo
         Me.DGINVENTORY.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(197, Byte), Integer), CType(CType(203, Byte), Integer), CType(CType(232, Byte), Integer))
         Me.DGINVENTORY.ThemeStyle.AlternatingRowsStyle.Font = Nothing
@@ -7075,6 +7088,7 @@ Partial Class DashboardForm
         Me.Guna2Button3.Name = "Guna2Button3"
         Me.Guna2Button3.Size = New System.Drawing.Size(141, 40)
         Me.Guna2Button3.TabIndex = 22
+        Me.Guna2Button3.Tag = "BOOKLOSTDAMAGE"
         Me.Guna2Button3.Text = "Refresh"
         '
         'TXTLOSTDAMAGESEARCH
@@ -7101,6 +7115,7 @@ Partial Class DashboardForm
         Me.TXTLOSTDAMAGESEARCH.SelectedText = ""
         Me.TXTLOSTDAMAGESEARCH.Size = New System.Drawing.Size(258, 40)
         Me.TXTLOSTDAMAGESEARCH.TabIndex = 6
+        Me.TXTLOSTDAMAGESEARCH.Tag = "BOOKLOSTDAMAGE"
         '
         'Guna2Panel49
         '
@@ -7168,6 +7183,7 @@ Partial Class DashboardForm
         Me.BTNLOSTDAMAGEPREV.Name = "BTNLOSTDAMAGEPREV"
         Me.BTNLOSTDAMAGEPREV.Size = New System.Drawing.Size(79, 40)
         Me.BTNLOSTDAMAGEPREV.TabIndex = 2
+        Me.BTNLOSTDAMAGEPREV.Tag = "BOOKLOSTDAMAGE"
         Me.BTNLOSTDAMAGEPREV.Text = "Previous"
         '
         'BTNLOSTDAMAGENEXT
@@ -7185,12 +7201,13 @@ Partial Class DashboardForm
         Me.BTNLOSTDAMAGENEXT.Name = "BTNLOSTDAMAGENEXT"
         Me.BTNLOSTDAMAGENEXT.Size = New System.Drawing.Size(79, 40)
         Me.BTNLOSTDAMAGENEXT.TabIndex = 1
+        Me.BTNLOSTDAMAGENEXT.Tag = "BOOKLOSTDAMAGE"
         Me.BTNLOSTDAMAGENEXT.Text = "Next"
         '
         'Guna2Panel50
         '
         Me.Guna2Panel50.BackColor = System.Drawing.SystemColors.Window
-        Me.Guna2Panel50.Controls.Add(Me.Guna2DataGridView1)
+        Me.Guna2Panel50.Controls.Add(Me.DGLOSTDAMAGE)
         Me.Guna2Panel50.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Guna2Panel50.Location = New System.Drawing.Point(0, 120)
         Me.Guna2Panel50.Margin = New System.Windows.Forms.Padding(0)
@@ -7199,15 +7216,15 @@ Partial Class DashboardForm
         Me.Guna2Panel50.Size = New System.Drawing.Size(1324, 511)
         Me.Guna2Panel50.TabIndex = 2
         '
-        'Guna2DataGridView1
+        'DGLOSTDAMAGE
         '
-        Me.Guna2DataGridView1.AllowUserToAddRows = False
-        Me.Guna2DataGridView1.AllowUserToDeleteRows = False
-        Me.Guna2DataGridView1.AllowUserToResizeColumns = False
-        Me.Guna2DataGridView1.AllowUserToResizeRows = False
+        Me.DGLOSTDAMAGE.AllowUserToAddRows = False
+        Me.DGLOSTDAMAGE.AllowUserToDeleteRows = False
+        Me.DGLOSTDAMAGE.AllowUserToResizeColumns = False
+        Me.DGLOSTDAMAGE.AllowUserToResizeRows = False
         DataGridViewCellStyle57.BackColor = System.Drawing.Color.FromArgb(CType(CType(197, Byte), Integer), CType(CType(203, Byte), Integer), CType(CType(232, Byte), Integer))
-        Me.Guna2DataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle57
-        Me.Guna2DataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        Me.DGLOSTDAMAGE.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle57
+        Me.DGLOSTDAMAGE.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         DataGridViewCellStyle58.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle58.BackColor = System.Drawing.Color.FromArgb(CType(CType(63, Byte), Integer), CType(CType(81, Byte), Integer), CType(CType(181, Byte), Integer))
         DataGridViewCellStyle58.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -7215,10 +7232,10 @@ Partial Class DashboardForm
         DataGridViewCellStyle58.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle58.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle58.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Guna2DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle58
-        Me.Guna2DataGridView1.ColumnHeadersHeight = 48
-        Me.Guna2DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn11, Me.DataGridViewCheckBoxColumn1, Me.Column54, Me.Column53, Me.DataGridViewTextBoxColumn18, Me.Column50, Me.Column51, Me.Column52})
-        Me.Guna2DataGridView1.ContextMenuStrip = Me.DGMAINTENANCECONTEXTMENU
+        Me.DGLOSTDAMAGE.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle58
+        Me.DGLOSTDAMAGE.ColumnHeadersHeight = 48
+        Me.DGLOSTDAMAGE.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn11, Me.Column54, Me.Column53, Me.DataGridViewTextBoxColumn18, Me.Column50, Me.Column51, Me.Column52})
+        Me.DGLOSTDAMAGE.ContextMenuStrip = Me.DGMAINTENANCECONTEXTMENU
         DataGridViewCellStyle59.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle59.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(239, Byte), Integer))
         DataGridViewCellStyle59.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -7226,94 +7243,41 @@ Partial Class DashboardForm
         DataGridViewCellStyle59.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(205, Byte), Integer))
         DataGridViewCellStyle59.SelectionForeColor = System.Drawing.Color.Black
         DataGridViewCellStyle59.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.Guna2DataGridView1.DefaultCellStyle = DataGridViewCellStyle59
-        Me.Guna2DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Guna2DataGridView1.GridColor = System.Drawing.Color.FromArgb(CType(CType(194, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(231, Byte), Integer))
-        Me.Guna2DataGridView1.Location = New System.Drawing.Point(20, 0)
-        Me.Guna2DataGridView1.Margin = New System.Windows.Forms.Padding(0)
-        Me.Guna2DataGridView1.Name = "Guna2DataGridView1"
-        Me.Guna2DataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        Me.Guna2DataGridView1.RowHeadersVisible = False
-        Me.Guna2DataGridView1.RowTemplate.Height = 48
-        Me.Guna2DataGridView1.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.Guna2DataGridView1.Size = New System.Drawing.Size(1284, 491)
-        Me.Guna2DataGridView1.TabIndex = 0
-        Me.Guna2DataGridView1.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Indigo
-        Me.Guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(197, Byte), Integer), CType(CType(203, Byte), Integer), CType(CType(232, Byte), Integer))
-        Me.Guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.Font = Nothing
-        Me.Guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty
-        Me.Guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty
-        Me.Guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty
-        Me.Guna2DataGridView1.ThemeStyle.BackColor = System.Drawing.Color.White
-        Me.Guna2DataGridView1.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(CType(CType(194, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(231, Byte), Integer))
-        Me.Guna2DataGridView1.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(63, Byte), Integer), CType(CType(81, Byte), Integer), CType(CType(181, Byte), Integer))
-        Me.Guna2DataGridView1.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        Me.Guna2DataGridView1.ThemeStyle.HeaderStyle.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Guna2DataGridView1.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White
-        Me.Guna2DataGridView1.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.Guna2DataGridView1.ThemeStyle.HeaderStyle.Height = 48
-        Me.Guna2DataGridView1.ThemeStyle.ReadOnly = False
-        Me.Guna2DataGridView1.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(239, Byte), Integer))
-        Me.Guna2DataGridView1.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
-        Me.Guna2DataGridView1.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Guna2DataGridView1.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Black
-        Me.Guna2DataGridView1.ThemeStyle.RowsStyle.Height = 48
-        Me.Guna2DataGridView1.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(205, Byte), Integer))
-        Me.Guna2DataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
-        '
-        'DataGridViewTextBoxColumn11
-        '
-        Me.DataGridViewTextBoxColumn11.DataPropertyName = "id"
-        Me.DataGridViewTextBoxColumn11.HeaderText = "id"
-        Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
-        Me.DataGridViewTextBoxColumn11.Visible = False
-        '
-        'DataGridViewCheckBoxColumn1
-        '
-        Me.DataGridViewCheckBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.DataGridViewCheckBoxColumn1.HeaderText = ""
-        Me.DataGridViewCheckBoxColumn1.Name = "DataGridViewCheckBoxColumn1"
-        Me.DataGridViewCheckBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewCheckBoxColumn1.Width = 40
-        '
-        'Column54
-        '
-        Me.Column54.HeaderText = "Accession No."
-        Me.Column54.Name = "Column54"
-        Me.Column54.ReadOnly = True
-        '
-        'Column53
-        '
-        Me.Column53.HeaderText = "Circulation No."
-        Me.Column53.Name = "Column53"
-        Me.Column53.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn18
-        '
-        Me.DataGridViewTextBoxColumn18.DataPropertyName = "department_name"
-        Me.DataGridViewTextBoxColumn18.HeaderText = "Title"
-        Me.DataGridViewTextBoxColumn18.MaxInputLength = 50
-        Me.DataGridViewTextBoxColumn18.Name = "DataGridViewTextBoxColumn18"
-        Me.DataGridViewTextBoxColumn18.ReadOnly = True
-        Me.DataGridViewTextBoxColumn18.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        '
-        'Column50
-        '
-        Me.Column50.HeaderText = "ISBN"
-        Me.Column50.Name = "Column50"
-        Me.Column50.ReadOnly = True
-        '
-        'Column51
-        '
-        Me.Column51.HeaderText = "Borrowed Condition"
-        Me.Column51.Name = "Column51"
-        Me.Column51.ReadOnly = True
-        '
-        'Column52
-        '
-        Me.Column52.HeaderText = "Returned Condition"
-        Me.Column52.Name = "Column52"
-        Me.Column52.ReadOnly = True
+        Me.DGLOSTDAMAGE.DefaultCellStyle = DataGridViewCellStyle59
+        Me.DGLOSTDAMAGE.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.DGLOSTDAMAGE.GridColor = System.Drawing.Color.FromArgb(CType(CType(194, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(231, Byte), Integer))
+        Me.DGLOSTDAMAGE.Location = New System.Drawing.Point(20, 0)
+        Me.DGLOSTDAMAGE.Margin = New System.Windows.Forms.Padding(0)
+        Me.DGLOSTDAMAGE.Name = "DGLOSTDAMAGE"
+        Me.DGLOSTDAMAGE.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        Me.DGLOSTDAMAGE.RowHeadersVisible = False
+        Me.DGLOSTDAMAGE.RowTemplate.Height = 48
+        Me.DGLOSTDAMAGE.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGLOSTDAMAGE.Size = New System.Drawing.Size(1284, 491)
+        Me.DGLOSTDAMAGE.TabIndex = 0
+        Me.DGLOSTDAMAGE.Tag = "BOOKLOSTDAMAGE"
+        Me.DGLOSTDAMAGE.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Indigo
+        Me.DGLOSTDAMAGE.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(197, Byte), Integer), CType(CType(203, Byte), Integer), CType(CType(232, Byte), Integer))
+        Me.DGLOSTDAMAGE.ThemeStyle.AlternatingRowsStyle.Font = Nothing
+        Me.DGLOSTDAMAGE.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty
+        Me.DGLOSTDAMAGE.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty
+        Me.DGLOSTDAMAGE.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty
+        Me.DGLOSTDAMAGE.ThemeStyle.BackColor = System.Drawing.Color.White
+        Me.DGLOSTDAMAGE.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(CType(CType(194, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(231, Byte), Integer))
+        Me.DGLOSTDAMAGE.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(63, Byte), Integer), CType(CType(81, Byte), Integer), CType(CType(181, Byte), Integer))
+        Me.DGLOSTDAMAGE.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        Me.DGLOSTDAMAGE.ThemeStyle.HeaderStyle.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGLOSTDAMAGE.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White
+        Me.DGLOSTDAMAGE.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        Me.DGLOSTDAMAGE.ThemeStyle.HeaderStyle.Height = 48
+        Me.DGLOSTDAMAGE.ThemeStyle.ReadOnly = False
+        Me.DGLOSTDAMAGE.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(239, Byte), Integer))
+        Me.DGLOSTDAMAGE.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
+        Me.DGLOSTDAMAGE.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGLOSTDAMAGE.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Black
+        Me.DGLOSTDAMAGE.ThemeStyle.RowsStyle.Height = 48
+        Me.DGLOSTDAMAGE.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(205, Byte), Integer))
+        Me.DGLOSTDAMAGE.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
         '
         'BookTransactionTab
         '
@@ -11185,6 +11149,57 @@ Partial Class DashboardForm
         Me.errProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink
         Me.errProvider.ContainerControl = Me
         '
+        'DataGridViewTextBoxColumn11
+        '
+        Me.DataGridViewTextBoxColumn11.DataPropertyName = "id"
+        Me.DataGridViewTextBoxColumn11.HeaderText = "id"
+        Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
+        Me.DataGridViewTextBoxColumn11.Visible = False
+        '
+        'Column54
+        '
+        Me.Column54.DataPropertyName = "accession_no"
+        Me.Column54.HeaderText = "Accession No."
+        Me.Column54.Name = "Column54"
+        Me.Column54.ReadOnly = True
+        '
+        'Column53
+        '
+        Me.Column53.DataPropertyName = "circulation_no"
+        Me.Column53.HeaderText = "Circulation No."
+        Me.Column53.Name = "Column53"
+        Me.Column53.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn18
+        '
+        Me.DataGridViewTextBoxColumn18.DataPropertyName = "title"
+        Me.DataGridViewTextBoxColumn18.HeaderText = "Title"
+        Me.DataGridViewTextBoxColumn18.MaxInputLength = 50
+        Me.DataGridViewTextBoxColumn18.Name = "DataGridViewTextBoxColumn18"
+        Me.DataGridViewTextBoxColumn18.ReadOnly = True
+        Me.DataGridViewTextBoxColumn18.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
+        'Column50
+        '
+        Me.Column50.DataPropertyName = "borrower_condition"
+        Me.Column50.HeaderText = "Borrower Name"
+        Me.Column50.Name = "Column50"
+        Me.Column50.ReadOnly = True
+        '
+        'Column51
+        '
+        Me.Column51.DataPropertyName = "borrowed_condition"
+        Me.Column51.HeaderText = "Borrowed Condition"
+        Me.Column51.Name = "Column51"
+        Me.Column51.ReadOnly = True
+        '
+        'Column52
+        '
+        Me.Column52.DataPropertyName = "returned_condition"
+        Me.Column52.HeaderText = "Returned Condition"
+        Me.Column52.Name = "Column52"
+        Me.Column52.ReadOnly = True
+        '
         'DashboardForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -11338,7 +11353,7 @@ Partial Class DashboardForm
         Me.Guna2Panel49.ResumeLayout(False)
         Me.Guna2Panel49.PerformLayout
         Me.Guna2Panel50.ResumeLayout(False)
-        CType(Me.Guna2DataGridView1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.DGLOSTDAMAGE, System.ComponentModel.ISupportInitialize).EndInit
         Me.BookTransactionTab.ResumeLayout(False)
         Me.TableLayoutPanel21.ResumeLayout(False)
         Me.Guna2Panel57.ResumeLayout(False)
@@ -11697,7 +11712,7 @@ Partial Class DashboardForm
     Friend WithEvents BTNLOSTDAMAGEPREV As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents BTNLOSTDAMAGENEXT As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Guna2Panel50 As Guna.UI2.WinForms.Guna2Panel
-    Friend WithEvents Guna2DataGridView1 As Guna.UI2.WinForms.Guna2DataGridView
+    Friend WithEvents DGLOSTDAMAGE As Guna.UI2.WinForms.Guna2DataGridView
     Friend WithEvents TXTPRICECOPIES As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Guna2HtmlLabel45 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents TableLayoutPanel17 As TableLayoutPanel
@@ -11958,14 +11973,6 @@ Partial Class DashboardForm
     Friend WithEvents Column24 As DataGridViewTextBoxColumn
     Friend WithEvents Column26 As DataGridViewTextBoxColumn
     Friend WithEvents Column27 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn11 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewCheckBoxColumn1 As DataGridViewCheckBoxColumn
-    Friend WithEvents Column54 As DataGridViewTextBoxColumn
-    Friend WithEvents Column53 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn18 As DataGridViewTextBoxColumn
-    Friend WithEvents Column50 As DataGridViewTextBoxColumn
-    Friend WithEvents Column51 As DataGridViewTextBoxColumn
-    Friend WithEvents Column52 As DataGridViewTextBoxColumn
     Friend WithEvents ColumnInventoryID As DataGridViewTextBoxColumn
     Friend WithEvents chckBoxInventory As DataGridViewCheckBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn45 As DataGridViewTextBoxColumn
@@ -12078,4 +12085,11 @@ Partial Class DashboardForm
     Friend WithEvents Guna2Button6 As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Guna2Button7 As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Guna2Button8 As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents DataGridViewTextBoxColumn11 As DataGridViewTextBoxColumn
+    Friend WithEvents Column54 As DataGridViewTextBoxColumn
+    Friend WithEvents Column53 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn18 As DataGridViewTextBoxColumn
+    Friend WithEvents Column50 As DataGridViewTextBoxColumn
+    Friend WithEvents Column51 As DataGridViewTextBoxColumn
+    Friend WithEvents Column52 As DataGridViewTextBoxColumn
 End Class
