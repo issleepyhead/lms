@@ -26,11 +26,12 @@ Public Class DashboardForm
             {NameOf(STUDENT), New ControlMapping With {.DG = DGSTUDENT, .LBLNEXT = LBLSTUDENTNEXT, .LBLPREV = LBLSTUDENTPREV, .TXTSEARCH = TXTSTUDENTSEARCH, .DIALOG_NAME = StudentDialog.GetType(), .QUERY_TYPE = STUDENT}},
             {NameOf(FACULTY), New ControlMapping With {.DG = DGFACULTY, .LBLNEXT = LBLFACULTYNEXT, .LBLPREV = LBLFACULTYPREV, .TXTSEARCH = TXTFACULTYSEARCH, .DIALOG_NAME = FacultyDialog.GetType(), .QUERY_TYPE = FACULTY}},
             {NameOf(ADMIN), New ControlMapping With {.DG = DGADMINISTRATOR, .LBLNEXT = LBLADMINNEXT, .LBLPREV = LBLADMINPREV, .TXTSEARCH = TXTADMINSEARCH, .QUERY_TYPE = ADMIN}}
-        } ' NO ADMIN DIALOG HAHAHAHA
+        }
 
 
         BookInventoryPanels_SelectedIndexChanged(BookInventoryPanels, Nothing)
         DGTRANSACTION.Columns(NameOf(ColumnOverdueDate)).DisplayIndex = DGTRANSACTION.Columns.Count - 1
+        IS_LOADED = True
     End Sub
 
     Private Sub BTNLOGOUT_Click(sender As Object, e As EventArgs) Handles BTNLOGOUT.Click
@@ -42,23 +43,11 @@ Public Class DashboardForm
         End Using
     End Sub
 
+#Region "Shared Functions"
     Private Sub BTNADD_Click(sender As Object, e As EventArgs) Handles BTNADDGENRE.Click, BTNADDAUTHOR.Click, BTNADDPUBLISHER.Click, BTNADDCLASSIFICATION.Click,
             BTNADDLANGUAGE.Click, BTNADDDONATOR.Click, BTNADDSUPPLIER.Click, BTNADDBOOK.Click, BTNADDSECTION.Click, BTNADDYEARLEVEL.Click, BTNADDDEPARTMENT.Click,
             BTNADDSTUDENTS.Click, BTNADDFACULTY.Click
         ControlsMap.Item(sender.Tag).OpenDialog()
-
-    End Sub
-
-    Private Sub TabSelected(sender As Object, e As TabControlEventArgs) Handles MaintenancePanels.Selected, AccountsPanel.Selected
-        If sender.Tag = NameOf(BOOK) Then
-            ControlsMap.Item(sender.SelectedTab.Tag).Update(If(CMBBOOKFILTER.SelectedText.ToLower = NameOf(ACTIVE).ToLower, ACTIVE, INACTIVE))
-        ElseIf sender.Tag = NameOf(STUDENT) Then
-            ControlsMap.Item(sender.SelectedTab.Tag).Update(If(CMBSTUDENTFILTER.SelectedText.ToLower = NameOf(ACTIVE).ToLower, ACTIVE, INACTIVE))
-        ElseIf sender.Tag = NameOf(FACULTY) Then
-            ControlsMap.Item(sender.SelectedTab.Tag).Update(If(CMBSTUDENTFILTER.SelectedText.ToLower = NameOf(ACTIVE).ToLower, ACTIVE, INACTIVE))
-        Else
-            ControlsMap.Item(sender.SelectedTab.Tag).Update()
-        End If
     End Sub
 
     Private Sub BTNNEXT_Click(sender As Object, e As EventArgs) Handles BTNGENRENEXT.Click, BTNAUTHORNEXT.Click, BTNPUBLISHERNEXT.Click,
@@ -102,12 +91,105 @@ Public Class DashboardForm
             ' TO-DO ADD LOGIC
             If MainFormPanels.SelectedTab.Equals(MaintenanceTab) Then
                 TabSelected(MaintenancePanels, Nothing)
-            ElseIf MainFormPanels.SelectedTab.Equals(AccountTab) Then
+            ElseIf MainFormPanels.SelectedTab.Equals(AccountsMaintenanceTab) Then
                 TabSelected(AccountsPanel, Nothing)
             End If
         End If
     End Sub
+#End Region
 
+#Region "Tab Selection"
+    Private Sub MainFormPanels_SelectedIndexChanged(sender As Object, e As EventArgs) Handles MainFormPanels.SelectedIndexChanged
+        Select Case True
+            Case MainFormPanels.SelectedTab.Equals(BookTransactionTab)
+                'BaseMaintenance.PPrev = 1
+                'CMBTRANSACTIONFILTER.SelectedIndex = 0
+                'TXTTRANSACTIONSEARCH.Clear()
+                'DGTRANSACTION.DataSource = FetchTransactions(1)
+                'LBLTRANSACTIONNEXT.Text = BaseMaintenance.PMAX
+                'LBLTRANSACTIONPREV.Text = BaseMaintenance.PPrev
+            Case MainFormPanels.SelectedTab.Equals(BookInventoryTab)
+                DGBOOKCOPIES.DataSource = BaseMaintenance.Fetch(QueryTableType.BOOKCOPIES_QUERY_TABLE)
+                LBLCOPIESPREV.Text = BaseMaintenance.PPrev
+                LBLCOPIESNEXT.Text = BaseMaintenance.PMAX
+
+                Dim dtDonator As DataTable = BaseMaintenance.FetchAll(QueryTableType.DONATOR_QUERY_TABLE)
+                Dim newRow As DataRow = dtDonator.NewRow()
+                newRow("id") = 0
+                newRow("name") = "None"
+                dtDonator.Rows.InsertAt(newRow, 0)
+
+                Dim dtSupplier As DataTable = BaseMaintenance.FetchAll(QueryTableType.SUPPLIER_QUERY_TABLE)
+                newRow = dtSupplier.NewRow()
+                newRow("id") = 0
+                newRow("name") = "None"
+                dtSupplier.Rows.InsertAt(newRow, 0)
+
+                TXTACCESSION.Text = GenerateAccession()
+
+                CMBDONATORCOPIES.DataSource = dtDonator
+                CMBSUPPLIERCOPIES.DataSource = dtSupplier
+                'Case MainFormPanels.SelectedTab.Equals(SettingsTab)
+                '    Dim dt As DataTable = ExecFetch("SELECT * FROM tblappsettings")
+
+                '    If dt.Rows.Count = 0 Then
+                '        Return
+                '    End If
+                '    With dt.Rows.Item(0)
+                '        CHCKSETNOTIF.Checked = If(.Item("enable_notification") > 0, True, False)
+                '        CHCKSETGLOBALP.Checked = If(.Item("gpenalty") > 0, True, False)
+                '        TXTSETSPENALTY.Text = .Item("spenalty")
+                '        TXTSETFPENALTY.Text = .Item("fpenalty")
+                '        TXTSETSDAYS.Text = .Item("sdays")
+                '        TXTSETFDAYS.Text = .Item("fdays")
+                '        TXTSETSCOUNT.Text = .Item("s_count")
+                '        TXTSETFCOUNT.Text = .Item("f_count")
+                '    End With
+                'Case MainFormPanels.SelectedTab.Equals(AccountTab)
+                'Try
+                '    If ExecScalar("SELECT COUNT(*) FROM tblstudents WHERE lrn = @lrn", New Dictionary(Of String, String) From {{"@lrn", My.Settings.user_username}}) > 0 Then
+                '        Dim dt As DataTable = ExecFetch("SELECT full_name FROM tblstudents WHERE lrn = @lrn", New Dictionary(Of String, String) From {{"@lrn", My.Settings.user_username}})
+                '        LBLPROFILENAME.Text = dt.Rows(0).Item("full_name")
+                '        If ExecScalar("SELECT COUNT(*) FROM tbladmins WHERE student_id = @id", New Dictionary(Of String, String) From {{"@id", My.Settings.user_id}}) Then
+                '            LBLPROFILEROLE.Text = "Assistant Admin"
+                '        End If
+                '    Else
+                '        Dim dt As DataTable = ExecFetch("SELECT full_name FROM tblfaculties WHERE username = @uname", New Dictionary(Of String, String) From {{"@uname", My.Settings.user_username}})
+                '        LBLPROFILENAME.Text = dt.Rows(0).Item("full_name")
+                '        If ExecScalar("SELECT COUNT(*) FROM tbladmins WHERE faculty_id = @id", New Dictionary(Of String, String) From {{"@id", My.Settings.user_id}}) Then
+                '            If dt.Rows(0).Item("role") = 0 Then
+                '                LBLPROFILEROLE.Text = "Superadmin"
+                '            Else
+                '                LBLPROFILEROLE.Text = "Assistant Admin"
+                '            End If
+                '        End If
+                '    End If
+                'Catch ex As Exception
+
+                'End Try
+            Case Else
+                If MainFormPanels.SelectedTab.Equals(MaintenanceTab) Then
+                    TabSelected(MaintenancePanels, Nothing)
+                ElseIf MainFormPanels.SelectedTab.Equals(AccountsMaintenanceTab) Then
+                    TabSelected(AccountsPanel, Nothing)
+                End If
+        End Select
+    End Sub
+
+    Private Sub TabSelected(sender As Object, e As TabControlEventArgs) Handles MaintenancePanels.Selected, AccountsPanel.Selected
+        If sender.Tag = NameOf(BOOK) Then
+            ControlsMap.Item(sender.SelectedTab.Tag).Update(If(CMBBOOKFILTER.SelectedText.ToLower = NameOf(ACTIVE).ToLower, ACTIVE, INACTIVE))
+        ElseIf sender.Tag = NameOf(STUDENT) Then
+            ControlsMap.Item(sender.SelectedTab.Tag).Update(If(CMBSTUDENTFILTER.SelectedText.ToLower = NameOf(ACTIVE).ToLower, ACTIVE, INACTIVE))
+        ElseIf sender.Tag = NameOf(FACULTY) Then
+            ControlsMap.Item(sender.SelectedTab.Tag).Update(If(CMBSTUDENTFILTER.SelectedText.ToLower = NameOf(ACTIVE).ToLower, ACTIVE, INACTIVE))
+        Else
+            ControlsMap.Item(sender.SelectedTab.Tag).Update()
+        End If
+    End Sub
+#End Region
+
+#Region "Retrieve Selection"
     Private Sub RetrieveBookSelection()
         For Each item As DataGridViewRow In DGBOOKS.Rows
             For Each drow As DataRow In SELECTED_BOOKS.Rows
@@ -141,7 +223,9 @@ Public Class DashboardForm
             Next
         Next
     End Sub
+#End Region
 
+#Region "Combobox Filter"
     Private Sub CMBFILTER(sender As Object, e As EventArgs) Handles CMBBOOKFILTER.SelectedIndexChanged, CMBSTUDENTFILTER.SelectedIndexChanged, CMBFACULTYFILTER.SelectedIndexChanged
         If IS_LOADED Then
             If sender.SelectedIndex = 0 Then
@@ -151,27 +235,7 @@ Public Class DashboardForm
             End If
         End If
     End Sub
-
-    Private Sub DGBOOKS_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGBOOKS.CellContentClick
-        If e.ColumnIndex = chckBoxBooks.Index Then
-            DGBOOKS.EndEdit()
-            Dim boundItem As DataRowView = TryCast(DGBOOKS.Rows(e.RowIndex).DataBoundItem, DataRowView)
-            If CBool(DGBOOKS.Rows(e.RowIndex).Cells(e.ColumnIndex).Value) AndAlso Not SELECTED_BOOKS.Rows.Contains(boundItem.Row.Item("id")) Then
-                SELECTED_BOOKS.Rows.Add(boundItem.Row.ItemArray)
-            Else
-                If SELECTED_BOOKS.Rows.Contains(boundItem.Row.Item("id")) Then
-                    Dim row As DataRow = Nothing
-                    For Each item As DataRow In SELECTED_BOOKS.Rows
-                        If item.Item("id") = boundItem.Row.Item("id") Then
-                            row = item
-                            Exit For
-                        End If
-                    Next
-                    SELECTED_BOOKS.Rows.Remove(row)
-                End If
-            End If
-        End If
-    End Sub
+#End Region
 
 #Region "Student Module"
     Private Sub DGSTUDENT_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGSTUDENT.CellContentClick
@@ -197,6 +261,26 @@ Public Class DashboardForm
 #End Region
 
 #Region "Faculty/Teacher Module"
+    Private Sub DGBOOKS_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGBOOKS.CellContentClick
+        If e.ColumnIndex = chckBoxBooks.Index Then
+            DGBOOKS.EndEdit()
+            Dim boundItem As DataRowView = TryCast(DGBOOKS.Rows(e.RowIndex).DataBoundItem, DataRowView)
+            If CBool(DGBOOKS.Rows(e.RowIndex).Cells(e.ColumnIndex).Value) AndAlso Not SELECTED_BOOKS.Rows.Contains(boundItem.Row.Item("id")) Then
+                SELECTED_BOOKS.Rows.Add(boundItem.Row.ItemArray)
+            Else
+                If SELECTED_BOOKS.Rows.Contains(boundItem.Row.Item("id")) Then
+                    Dim row As DataRow = Nothing
+                    For Each item As DataRow In SELECTED_BOOKS.Rows
+                        If item.Item("id") = boundItem.Row.Item("id") Then
+                            row = item
+                            Exit For
+                        End If
+                    Next
+                    SELECTED_BOOKS.Rows.Remove(row)
+                End If
+            End If
+        End If
+    End Sub
     Private Sub DGFACULTY_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGFACULTY.CellContentClick
         If e.ColumnIndex = chckBoxFaculty.Index Then
             DGFACULTY.EndEdit()
@@ -376,45 +460,45 @@ Public Class DashboardForm
     End Sub
 #End Region
 
-#Region "Book Copies"
-    Private Sub TXTCOPIESSEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTCOPIESSEARCH.TextChanged
-        If BookInventoryPanels.SelectedTab.Equals(CopiesTab) Then
-            If Not String.IsNullOrEmpty(TXTCOPIESSEARCH.Text) Then
-                DGBOOKCOPIES.DataSource = BaseMaintenance.Search(QueryTableType.BOOKCOPIES_QUERY_TABLE, TXTCOPIESSEARCH.Text)
-                LBLCOPIESNEXT.Text = BaseMaintenance.PMAX
-                LBLCOPIESPREV.Text = BaseMaintenance.PPrev
-            Else
-                DGBOOKCOPIES.DataSource = BaseMaintenance.Fetch(QueryTableType.BOOKCOPIES_QUERY_TABLE)
-                LBLCOPIESNEXT.Text = BaseMaintenance.PMAX
-                LBLCOPIESPREV.Text = BaseMaintenance.PPrev
-            End If
-        End If
-    End Sub
+    '#Region "Book Copies"
+    '    'Private Sub TXTCOPIESSEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTCOPIESSEARCH.TextChanged
+    '    '    If BookInventoryPanels.SelectedTab.Equals(CopiesTab) Then
+    '    '        If Not String.IsNullOrEmpty(TXTCOPIESSEARCH.Text) Then
+    '    '            DGBOOKCOPIES.DataSource = BaseMaintenance.Search(QueryTableType.BOOKCOPIES_QUERY_TABLE, TXTCOPIESSEARCH.Text)
+    '    '            LBLCOPIESNEXT.Text = BaseMaintenance.PMAX
+    '    '            LBLCOPIESPREV.Text = BaseMaintenance.PPrev
+    '    '        Else
+    '    '            DGBOOKCOPIES.DataSource = BaseMaintenance.Fetch(QueryTableType.BOOKCOPIES_QUERY_TABLE)
+    '    '            LBLCOPIESNEXT.Text = BaseMaintenance.PMAX
+    '    '            LBLCOPIESPREV.Text = BaseMaintenance.PPrev
+    '    '        End If
+    '    '    End If
+    '    'End Sub
 
-    Private Sub BTNCOPIESPREV_Click(sender As Object, e As EventArgs) Handles BTNCOPIESPREV.Click
-        If BaseMaintenance.PPrev > 1 Then
-            BaseMaintenance.PPrev -= 1
-            LBLCOPIESPREV.Text = BaseMaintenance.PPrev
-            If String.IsNullOrEmpty(TXTCOPIESSEARCH.Text) Then
-                DGBOOKCOPIES.DataSource = BaseMaintenance.Fetch(QueryTableType.BOOKCOPIES_QUERY_TABLE)
-            Else
-                DGBOOKCOPIES.DataSource = BaseMaintenance.Search(QueryTableType.BOOKCOPIES_QUERY_TABLE, TXTCOPIESSEARCH.Text)
-            End If
-        End If
-    End Sub
+    '    'Private Sub BTNCOPIESPREV_Click(sender As Object, e As EventArgs) Handles BTNCOPIESPREV.Click
+    '    '    If BaseMaintenance.PPrev > 1 Then
+    '    '        BaseMaintenance.PPrev -= 1
+    '    '        LBLCOPIESPREV.Text = BaseMaintenance.PPrev
+    '    '        If String.IsNullOrEmpty(TXTCOPIESSEARCH.Text) Then
+    '    '            DGBOOKCOPIES.DataSource = BaseMaintenance.Fetch(QueryTableType.BOOKCOPIES_QUERY_TABLE)
+    '    '        Else
+    '    '            DGBOOKCOPIES.DataSource = BaseMaintenance.Search(QueryTableType.BOOKCOPIES_QUERY_TABLE, TXTCOPIESSEARCH.Text)
+    '    '        End If
+    '    '    End If
+    '    'End Sub
 
-    Private Sub BTNCOPIESNEXT_Click(sender As Object, e As EventArgs) Handles BTNCOPIESNEXT.Click
-        If BaseMaintenance.PPrev < BaseMaintenance.PMAX Then
-            BaseMaintenance.PPrev += 1
-            LBLCOPIESPREV.Text = BaseMaintenance.PPrev
-            If String.IsNullOrEmpty(TXTCOPIESSEARCH.Text) Then
-                DGBOOKCOPIES.DataSource = BaseMaintenance.Fetch(QueryTableType.BOOKCOPIES_QUERY_TABLE)
-            Else
-                DGBOOKCOPIES.DataSource = BaseMaintenance.Search(QueryTableType.BOOKCOPIES_QUERY_TABLE, TXTCOPIESSEARCH.Text)
-            End If
-        End If
-    End Sub
-#End Region
+    '    'Private Sub BTNCOPIESNEXT_Click(sender As Object, e As EventArgs) Handles BTNCOPIESNEXT.Click
+    '    '    If BaseMaintenance.PPrev < BaseMaintenance.PMAX Then
+    '    '        BaseMaintenance.PPrev += 1
+    '    '        LBLCOPIESPREV.Text = BaseMaintenance.PPrev
+    '    '        If String.IsNullOrEmpty(TXTCOPIESSEARCH.Text) Then
+    '    '            DGBOOKCOPIES.DataSource = BaseMaintenance.Fetch(QueryTableType.BOOKCOPIES_QUERY_TABLE)
+    '    '        Else
+    '    '            DGBOOKCOPIES.DataSource = BaseMaintenance.Search(QueryTableType.BOOKCOPIES_QUERY_TABLE, TXTCOPIESSEARCH.Text)
+    '    '        End If
+    '    '    End If
+    '    'End Sub
+    '#End Region
 
 #Region "BookInventory Panels"
     Private Sub BookInventoryPanels_SelectedIndexChanged(sender As Object, e As EventArgs) Handles BookInventoryPanels.SelectedIndexChanged
@@ -652,10 +736,6 @@ Public Class DashboardForm
         SELECTED_FACULTY = New SystemDataSets.DTFacultyDataTable
     End Sub
 
-    Private Sub SuperAdminToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SuperAdminToolStripMenuItem.Click
-
-    End Sub
-
     Private Sub AssistLibrarianToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AssistLibrarianToolStripMenuItem.Click
         If SELECTED_FACULTY.Rows.Count = 0 Then
             MessageBox.Show("Please select an item to continue.", "No Item Selected!", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -682,29 +762,29 @@ Public Class DashboardForm
 #End Region
 
 #Region "Book Copies Module"
-    Private Sub ArchiveSelectedToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles ArchiveSelectedToolStripMenuItem2.Click
-        If SELECTED_BOOKS.Rows.Count = 0 Then
-            MessageBox.Show("Please select an item to continue.", "No Item Selected!", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Exit Sub
-        Else
-            If MessageBox.Show("Archiving the selected item(s) will make the copies unavailable to inventory." & vbLf & "Are you sure you want to archive the selected item(s)?", "Archive Selected?", MessageBoxButtons.YesNo, MessageBoxIcon.Information) <> DialogResult.Yes Then
-                Exit Sub
-            End If
+    'Private Sub ArchiveSelectedToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles ArchiveSelectedToolStripMenuItem2.Click
+    '    If SELECTED_BOOKS.Rows.Count = 0 Then
+    '        MessageBox.Show("Please select an item to continue.", "No Item Selected!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    '        Exit Sub
+    '    Else
+    '        If MessageBox.Show("Archiving the selected item(s) will make the copies unavailable to inventory." & vbLf & "Are you sure you want to archive the selected item(s)?", "Archive Selected?", MessageBoxButtons.YesNo, MessageBoxIcon.Information) <> DialogResult.Yes Then
+    '            Exit Sub
+    '        End If
 
-            Dim collection As New List(Of Dictionary(Of String, String))
-            For Each item As DataRow In SELECTED_BOOKS.Rows
-                collection.Add(New Dictionary(Of String, String) From {{"@id", item.Item("id")}})
-            Next
-            If ExecTransactionNonQuery(ARCHIVE_BOOKS_QUERY, collection) Then
-                MessageBox.Show("Archived Successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Else
-                MessageBox.Show("Archiving failed.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            End If
-        End If
-        DGBOOKS.EndEdit()
-        'CMBBOOKFILTER_SelectedIndexChanged(CMBBOOKFILTER, Nothing)
-        SELECTED_BOOKS = New SystemDataSets.DTBookDataTable
-    End Sub
+    '        Dim collection As New List(Of Dictionary(Of String, String))
+    '        For Each item As DataRow In SELECTED_BOOKS.Rows
+    '            collection.Add(New Dictionary(Of String, String) From {{"@id", item.Item("id")}})
+    '        Next
+    '        If ExecTransactionNonQuery(ARCHIVE_BOOKS_QUERY, collection) Then
+    '            MessageBox.Show("Archived Successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    '        Else
+    '            MessageBox.Show("Archiving failed.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+    '        End If
+    '    End If
+    '    DGBOOKS.EndEdit()
+    '    'CMBBOOKFILTER_SelectedIndexChanged(CMBBOOKFILTER, Nothing)
+    '    SELECTED_BOOKS = New SystemDataSets.DTBookDataTable
+    'End Sub
 
     Private Sub UnarchiveSelectedToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles UnarchiveSelectedToolStripMenuItem2.Click
         If SELECTED_BOOKS.Rows.Count = 0 Then
@@ -910,93 +990,19 @@ Public Class DashboardForm
     End Sub
 #End Region
 
-#Region "Refresh Buttons"
-    Private Sub BTNREFRESH_Click(sender As Object, e As EventArgs) Handles BTNGENREREFRESH.Click, BTNADMINREFRESH.Click, BTNAUTHORREFRESH.Click, BTNBOOKREFRESH.Click,
-            BTNBOOKREPORTREFRESH.Click, BTNBORROWEDREPORTREFRESH.Click, BTNBORROWERREPORTREFRESH.Click, BTNCLASSIFICATIONREFRESH.Click, BTNDEPARTMENTREFRESH.Click,
-            BTNDONATORREFRESH.Click, BTNEXPENDITUREREPORTREFRESH.Click, BTNFACULTYREFRESH.Click, BTNFINESREPORTREFRESH.Click, BTNLANGUAGEREFRESH.Click, BTNPUBLISHERREFRESH.Click,
-            BTNSECTIONREFRESH.Click, BTNSTUDENTREFRESH.Click, BTNSUPPLIERREFRESH.Click, BTNTRANSACTIONREFRESH.Click, BTNYEARLEVELREFRESH.Click
-        ' TODO ADD ALL THE NECESSARY REFRESH
-        AccountsPanel_SelectedIndexChanged(AccountsPanel, Nothing)
-        'MaintenancePanels_SelectedIndexChanged(MaintenancePanels, Nothing)
-        BookInventoryPanels_SelectedIndexChanged(BookInventoryPanels, Nothing)
-    End Sub
+    '#Region "Refresh Buttons"
+    '    Private Sub BTNREFRESH_Click(sender As Object, e As EventArgs) Handles BTNGENREREFRESH.Click, BTNADMINREFRESH.Click, BTNAUTHORREFRESH.Click, BTNBOOKREFRESH.Click,
+    '            BTNBOOKREPORTREFRESH.Click, BTNBORROWEDREPORTREFRESH.Click, BTNBORROWERREPORTREFRESH.Click, BTNCLASSIFICATIONREFRESH.Click, BTNDEPARTMENTREFRESH.Click,
+    '            BTNDONATORREFRESH.Click, BTNEXPENDITUREREPORTREFRESH.Click, BTNFACULTYREFRESH.Click, BTNFINESREPORTREFRESH.Click, BTNLANGUAGEREFRESH.Click, BTNPUBLISHERREFRESH.Click,
+    '            BTNSECTIONREFRESH.Click, BTNSTUDENTREFRESH.Click, BTNSUPPLIERREFRESH.Click, BTNTRANSACTIONREFRESH.Click, BTNYEARLEVELREFRESH.Click
+    '        ' TODO ADD ALL THE NECESSARY REFRESH
+    '        AccountsPanel_SelectedIndexChanged(AccountsPanel, Nothing)
+    '        'MaintenancePanels_SelectedIndexChanged(MaintenancePanels, Nothing)
+    '        BookInventoryPanels_SelectedIndexChanged(BookInventoryPanels, Nothing)
+    '    End Sub
 
 
-#End Region
-
-#Region "Mainform Panel"
-    ' TODO LOL U GOTTA FIX THIS !
-    Private Sub MainFormPanels_SelectedIndexChanged(sender As Object, e As EventArgs) Handles MainFormPanels.SelectedIndexChanged
-        Select Case True
-            Case MainFormPanels.SelectedTab.Equals(BookTransactionTab)
-                BaseMaintenance.PPrev = 1
-                CMBTRANSACTIONFILTER.SelectedIndex = 0
-                TXTTRANSACTIONSEARCH.Clear()
-                DGTRANSACTION.DataSource = FetchTransactions(1)
-                LBLTRANSACTIONNEXT.Text = BaseMaintenance.PMAX
-                LBLTRANSACTIONPREV.Text = BaseMaintenance.PPrev
-            Case MainFormPanels.SelectedTab.Equals(BookInventoryTab)
-                DGBOOKCOPIES.DataSource = BaseMaintenance.Fetch(QueryTableType.BOOKCOPIES_QUERY_TABLE)
-                LBLCOPIESPREV.Text = BaseMaintenance.PPrev
-                LBLCOPIESNEXT.Text = BaseMaintenance.PMAX
-
-                Dim dtDonator As DataTable = BaseMaintenance.FetchAll(QueryTableType.DONATOR_QUERY_TABLE)
-                Dim newRow As DataRow = dtDonator.NewRow()
-                newRow("id") = 0
-                newRow("name") = "None"
-                dtDonator.Rows.InsertAt(newRow, 0)
-
-                Dim dtSupplier As DataTable = BaseMaintenance.FetchAll(QueryTableType.SUPPLIER_QUERY_TABLE)
-                newRow = dtSupplier.NewRow()
-                newRow("id") = 0
-                newRow("name") = "None"
-                dtSupplier.Rows.InsertAt(newRow, 0)
-
-                TXTACCESSION.Text = GenerateAccession()
-
-                CMBDONATORCOPIES.DataSource = dtDonator
-                CMBSUPPLIERCOPIES.DataSource = dtSupplier
-            Case MainFormPanels.SelectedTab.Equals(SettingsTab)
-                Dim dt As DataTable = ExecFetch("SELECT * FROM tblappsettings")
-
-                If dt.Rows.Count = 0 Then
-                    Return
-                End If
-                With dt.Rows.Item(0)
-                    CHCKSETNOTIF.Checked = If(.Item("enable_notification") > 0, True, False)
-                    CHCKSETGLOBALP.Checked = If(.Item("gpenalty") > 0, True, False)
-                    TXTSETSPENALTY.Text = .Item("spenalty")
-                    TXTSETFPENALTY.Text = .Item("fpenalty")
-                    TXTSETSDAYS.Text = .Item("sdays")
-                    TXTSETFDAYS.Text = .Item("fdays")
-                    TXTSETSCOUNT.Text = .Item("s_count")
-                    TXTSETFCOUNT.Text = .Item("f_count")
-                End With
-            Case MainFormPanels.SelectedTab.Equals(AccountTab)
-                Try
-                    If ExecScalar("SELECT COUNT(*) FROM tblstudents WHERE lrn = @lrn", New Dictionary(Of String, String) From {{"@lrn", My.Settings.user_username}}) > 0 Then
-                        Dim dt As DataTable = ExecFetch("SELECT full_name FROM tblstudents WHERE lrn = @lrn", New Dictionary(Of String, String) From {{"@lrn", My.Settings.user_username}})
-                        LBLPROFILENAME.Text = dt.Rows(0).Item("full_name")
-                        If ExecScalar("SELECT COUNT(*) FROM tbladmins WHERE student_id = @id", New Dictionary(Of String, String) From {{"@id", My.Settings.user_id}}) Then
-                            LBLPROFILEROLE.Text = "Assistant Admin"
-                        End If
-                    Else
-                        Dim dt As DataTable = ExecFetch("SELECT full_name FROM tblfaculties WHERE username = @uname", New Dictionary(Of String, String) From {{"@uname", My.Settings.user_username}})
-                        LBLPROFILENAME.Text = dt.Rows(0).Item("full_name")
-                        If ExecScalar("SELECT COUNT(*) FROM tbladmins WHERE faculty_id = @id", New Dictionary(Of String, String) From {{"@id", My.Settings.user_id}}) Then
-                            If dt.Rows(0).Item("role") = 0 Then
-                                LBLPROFILEROLE.Text = "Superadmin"
-                            Else
-                                LBLPROFILEROLE.Text = "Assistant Admin"
-                            End If
-                        End If
-                    End If
-                Catch ex As Exception
-
-                End Try
-        End Select
-    End Sub
-#End Region
+    '#End Region
 
 #Region "Settings Panel"
 
@@ -1096,24 +1102,24 @@ Public Class DashboardForm
     End Sub
 #End Region
 
-#Region "Report Module"
+    '#Region "Report Module"
 
-    Private Sub BTNREPORTBORROWED_Click(sender As Object, e As EventArgs) Handles BTNREPORTBORROWED.Click
-        Using dialog As New ReportDialog(1)
-            dialog.ShowDialog()
-        End Using
-    End Sub
-    Private Sub ReportsPanel_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ReportsPanel.SelectedIndexChanged
-        Select Case True
-            Case ReportsPanel.SelectedTab.Equals(BooksReportTab)
-                LoadTabData(DGBOOKREPORT, LBLBOOKREPORTPREV, LBLBOOKREPORTNEXT, QueryTableType.BORROWED_BOOKS_REPORT, TXTBOOKREPORTSEARCH)
-            Case ReportsPanel.SelectedTab.Equals(ExpenditureReportTab)
-                LoadTabData(DGEXPENDITUREREPORT, LBLEXPENDITUREREPORTPREV, LBLEXPENDITUREREPORTNEXT, QueryTableType.EXPENDITURE_REPORT, TXTEXPENDITUREREPORTSEARCH)
-            Case ReportsPanel.SelectedTab.Equals(FinesReportTab)
-                LoadTabData(DGFINESREPORT, LBLFINESREPORTPREV, LBLFINESREPORTNEXT, QueryTableType.FINES_REPORT, TXTFINESREPORTSSEARCH)
-        End Select
-    End Sub
-#End Region
+    '    'Private Sub BTNREPORTBORROWED_Click(sender As Object, e As EventArgs) Handles BTNREPORTBORROWED.Click
+    '    '    Using dialog As New ReportDialog(1)
+    '    '        dialog.ShowDialog()
+    '    '    End Using
+    '    'End Sub
+    '    'Private Sub ReportsPanel_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ReportsPanel.SelectedIndexChanged
+    '    '    Select Case True
+    '    '        Case ReportsPanel.SelectedTab.Equals(BooksReportTab)
+    '    '            LoadTabData(DGBOOKREPORT, LBLBOOKREPORTPREV, LBLBOOKREPORTNEXT, QueryTableType.BORROWED_BOOKS_REPORT, TXTBOOKREPORTSEARCH)
+    '    '        Case ReportsPanel.SelectedTab.Equals(ExpenditureReportTab)
+    '    '            LoadTabData(DGEXPENDITUREREPORT, LBLEXPENDITUREREPORTPREV, LBLEXPENDITUREREPORTNEXT, QueryTableType.EXPENDITURE_REPORT, TXTEXPENDITUREREPORTSEARCH)
+    '    '        Case ReportsPanel.SelectedTab.Equals(FinesReportTab)
+    '    '            LoadTabData(DGFINESREPORT, LBLFINESREPORTPREV, LBLFINESREPORTNEXT, QueryTableType.FINES_REPORT, TXTFINESREPORTSSEARCH)
+    '    '    End Select
+    '    'End Sub
+    '#End Region
 
 #Region "Transaction Module"
     Private Sub CMBTRANSACTIONFILTER_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CMBTRANSACTIONFILTER.SelectedIndexChanged
@@ -1205,10 +1211,6 @@ Public Class DashboardForm
             LBLINVSUPPLIER.Text = If(IsDBNull(boundItem.Item("supplier_name")), "None", boundItem.Item("supplier_name"))
             TXTINVPRICE.Text = If(IsDBNull(boundItem.Item("price")), Nothing, boundItem.Item("price"))
         End If
-    End Sub
-
-    Private Sub DashboardForm_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
-        IS_LOADED = True
     End Sub
 #End Region
 

@@ -141,7 +141,16 @@ Module QueryTableRegistry
             .ARCHIVE_SEARCH_COUNT_QUERY = "SELECT COUNT(*) FROM tblfaculties WHERE status = 0 AND (email LIKE @search OR full_name LIKE @search)",
             .ARCHIVE_SEARCH_RESULT_QUERY = "SELECT st.id, st.username, full_name, gender, address, phone, email, department_id, d.department_name FROM tblfaculties st JOIN tbldepartments d ON st.department_id = d.id WHERE status = 0 AND (email LIKE @search OR full_name LIKE @search) ORDER BY full_name ASC LIMIT @page, 30",
             .UPDATE_QUERY = "UPDATE tblfaculties SET full_name = @full_name, gender = @gender, address = @address, email = @email, department_id = @did, status = 1 WHERE id = @id"
-        }}
+        }},
+        {ADMIN, New QueryTable With {
+            .ADD_QUERY = "INSERT INTO tbladmins (student_id, faculty_id) VALUES (@sid, @fid)",
+            .DELETE_QUERY = "DELETE FROM tbladmins WHERE id = @id",
+            .SEARCH_RESULT_QUERY = "SELECT a.id, full_name, CASE WHEN `role` = 0 THEN 'Super Admin' ELSE 'Assistant Librarian' END AS `role` FROM tbladmins a JOIN tblstudents s ON a.student_id = s.id UNION SELECT a.id, full_name, CASE WHEN `role` = 0 THEN 'Super Admin' ELSE 'Assistant Librarian' END AS `role` FROM tbladmins a JOIN tblfaculties f ON a.faculty_id = f.id WHERE full_name LIKE @search OR phone LIKE @search OR email LIKE @search ORDER BY full_name LIMIT @page, 30;",
+            .SEARCH_COUNT_QUERY = "SELECT COUNT(*) FROM tbladmins a LEFT JOIN tblfaculties f ON a.faculty_id = f.id LEFT JOIN tblstudents s ON a.student_id = s.id WHERE full_name LIKE @search OR phone LIKE @search OR email LIKE @search"
+        }},
+        {BOOKCOPIES, New QueryTable},
+        {BOOKINVENTORY, New QueryTable},
+        {TRANSACTION, New QueryTable}
     }
 
     Public Function CreateQueryTable(type As QueryType) As QueryTable

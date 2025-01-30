@@ -9,4 +9,6 @@
     Property FETCH_ALL_QUERY As String
     Property ARCHIVE_SEARCH_COUNT_QUERY As String
     Property ARCHIVE_SEARCH_RESULT_QUERY As String
+    Property ARCHIVE_QUERY As String
+    Property UNARCHIVE_QUERY As String
 End Class
