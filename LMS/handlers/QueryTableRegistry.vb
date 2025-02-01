@@ -181,7 +181,7 @@ Module QueryTableRegistry
                             LEFT JOIN tblstudents ad ON a.student_id = ad.id
                             LEFT JOIN tblfaculties af ON a.faculty_id = af.id
                             WHERE bt.status = @stat AND (st.full_name LIKE @search OR ft.full_name LIKE @search OR ad.full_name LIKE @search OR af.full_name LIKE @search OR bt.circulation_no LIKE @search)",
-            .SEARCH_RESULT_QUERY = "SELECT bt.id, CASE WHEN bt.student_id IS NULL THEN ft.full_name ELSE st.full_name END AS full_name, circulation_no, overdue_date, borrow_date,
+            .SEARCH_RESULT_QUERY = "SELECT bt.id, CASE WHEN bt.student_id IS NULL THEN ft.full_name ELSE st.full_name END AS full_name, bt.circulation_no, overdue_date, borrow_date,
                             CASE WHEN a.student_id IS NULL THEN af.full_name ELSE ad.full_name END AS issued_by
                             FROM tblborrowheaders bt
                             LEFT JOIN tblstudents st ON bt.student_id = st.id
@@ -189,7 +189,8 @@ Module QueryTableRegistry
                             LEFT JOIN tbladmins a ON bt.issued_by = a.id
                             LEFT JOIN tblstudents ad ON a.student_id = ad.id
                             LEFT JOIN tblfaculties af ON a.faculty_id = af.id
-                            WHERE bt.status = @stat AND (st.full_name LIKE @search OR ft.full_name LIKE @search OR ad.full_name LIKE @search OR af.full_name LIKE @search OR bt.circulation_no LIKE @search)",
+                            WHERE bt.status = @stat AND (st.full_name LIKE @search OR ft.full_name LIKE @search OR ad.full_name LIKE @search OR af.full_name LIKE @search OR bt.circulation_no LIKE @search)
+                            ORDER BY bt.circulation_no LIMIT @page, 30;",
             .ADVANCE_SEARCH_COUNT_QUERY = "SELECT COUNT(*)
                             FROM tblborrowheaders bt
                             LEFT JOIN tblstudents st ON bt.student_id = st.id
@@ -206,7 +207,8 @@ Module QueryTableRegistry
                             LEFT JOIN tbladmins a ON bt.issued_by = a.id
                             LEFT JOIN tblstudents ad ON a.student_id = ad.id
                             LEFT JOIN tblfaculties af ON a.faculty_id = af.id
-                            WHERE bt.status = @stat AND (st.full_name LIKE @search OR ft.full_name LIKE @search OR ad.full_name LIKE @search OR af.full_name LIKE @search OR bt.circulation_no LIKE @search) AND (borrow_date BETWEEN @sdate AND @edate OR overdue_date BETWEEN @sdate AND @edate)"
+                            WHERE bt.status = @stat AND (st.full_name LIKE @search OR ft.full_name LIKE @search OR ad.full_name LIKE @search OR af.full_name LIKE @search OR bt.circulation_no LIKE @search) AND (borrow_date BETWEEN @sdate AND @edate OR overdue_date BETWEEN @sdate AND @edate)
+                            ORDER BY bt.circulation_no LIMIT @page, 30;"
         }},
         {BOOKLOSTDAMAGE, New QueryTable With {
             .SEARCH_COUNT_QUERY = "SELECT COUNT(*)

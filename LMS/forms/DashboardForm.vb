@@ -66,7 +66,7 @@ Public Class DashboardForm
 
     Private Sub BTNNEXT_Click(sender As Object, e As EventArgs) Handles BTNGENRENEXT.Click, BTNAUTHORNEXT.Click, BTNPUBLISHERNEXT.Click,
             BTNCLASSIFICATIONNEXT.Click, BTNLANGUAGENEXT.Click, BTNDONATORNEXT.Click, BTNSUPPLIERNEXT.Click, BTNBOOKNEXT.Click, BTNSECTIONNEXT.Click, BTNYEARLEVELNEXT.Click, BTNDEPARTMENTNEXT.Click,
-            BTNSTUDENTNEXT.Click, BTNFACULTYNEXT.Click, BTNADMINNEXT.Click, BTNCOPIESNEXT.Click, BTNINVENTORYNEXT.Click, BTNLOSTDAMAGENEXT.Click
+            BTNSTUDENTNEXT.Click, BTNFACULTYNEXT.Click, BTNADMINNEXT.Click, BTNCOPIESNEXT.Click, BTNINVENTORYNEXT.Click, BTNLOSTDAMAGENEXT.Click, BTNTRANSACTIONNEXT.Click
         If sender.Tag = NameOf(BOOK) Then
             ControlsMap.Item(sender.Tag).NextPage(If(CMBBOOKFILTER.SelectedText.ToLower = NameOf(ACTIVE).ToLower, ACTIVE, INACTIVE), AddressOf RetrieveBookSelection)
         ElseIf sender.Tag = NameOf(STUDENT) Then
@@ -80,7 +80,7 @@ Public Class DashboardForm
 
     Private Sub BTNPREV_Click(sender As Object, e As EventArgs) Handles BTNGENREPREV.Click, BTNAUTHORPREV.Click, BTNPUBLISHERPREV.Click,
             BTNCLASSIFICATIONPREV.Click, BTNLANGUAGEPREV.Click, BTNDONATORRPREV.Click, BTNSUPPLIERPREV.Click, BTNBOOKPREV.Click, BTNSECTIONPREV.Click, BTNYEARLEVELPREV.Click, BTNDEPARTMENTPREV.Click,
-            BTNSTUDENTPREV.Click, BTNFACULTYPREV.Click, BTNADMINPREV.Click, BTNCOPIESPREV.Click, BTNINVENTORYPREV.Click, BTNLOSTDAMAGEPREV.Click
+            BTNSTUDENTPREV.Click, BTNFACULTYPREV.Click, BTNADMINPREV.Click, BTNCOPIESPREV.Click, BTNINVENTORYPREV.Click, BTNLOSTDAMAGEPREV.Click, BTNTRANSACTIONPREV.Click
         If sender.Tag = NameOf(BOOK) Then
             ControlsMap.Item(sender.Tag).PrevPage(If(CMBBOOKFILTER.SelectedText.ToLower = NameOf(ACTIVE).ToLower, ACTIVE, INACTIVE), AddressOf RetrieveBookSelection)
         ElseIf sender.Tag = NameOf(STUDENT) Then
@@ -101,7 +101,7 @@ Public Class DashboardForm
     Private Sub TextSearch(sender As Object, e As EventArgs) Handles TXTGENRESEARCH.TextChanged, TXTSEARCHAUTHOR.TextChanged, TXTPUBLISHERSEARCH.TextChanged, TXTCLASSIFICATIONSEARCH.TextChanged,
             TXTLANGUAGESEARCH.TextChanged, TXTBOOKSEARCH.TextChanged, TXTDONATORSEARCH.TextChanged, TXTSUPPLIERSEARCH.TextChanged, TXTFACULTYSEARCH.TextChanged, TXTSTUDENTSEARCH.TextChanged,
             TXTADMINSEARCH.TextChanged, TXTCOPIESSEARCH.TextChanged, TXTINVENTORYSEARCH.TextChanged, TXTDEPARTMENTSEARCH.TextChanged, TXTSECTIONSEARCH.TextChanged, TXTYEARLEVELSEARCH.TextChanged,
-            TXTLOSTDAMAGESEARCH.TextChanged
+            TXTLOSTDAMAGESEARCH.TextChanged, TXTTRANSACTIONSEARCH.TextChanged
         If IS_LOADED Then
             ' TO-DO ADD LOGIC
             If MainFormPanels.SelectedTab.Equals(MaintenanceTab) Then
@@ -110,6 +110,16 @@ Public Class DashboardForm
                 TabSelected(AccountsPanel, Nothing)
             ElseIf MainFormPanels.SelectedTab.Equals(BookInventoryTab) Then
                 TabSelected(BookInventoryPanels, Nothing)
+            Else
+                Dim type As TRANSACTIONSTATE
+                If CMBTRANSACTIONFILTER.Text.ToLower() = NameOf(TRANSACTIONSTATE.ACTIVE).ToLower() Then
+                    type = TRANSACTIONSTATE.ACTIVE
+                ElseIf CMBTRANSACTIONFILTER.Text.ToLower() = NameOf(TRANSACTIONSTATE.OVERDUE).ToLower() Then
+                    type = TRANSACTIONSTATE.OVERDUE
+                Else
+                    type = TRANSACTIONSTATE.RETURNED
+                End If
+                ControlsMap.Item(BookTransactionTab.Tag).Update(type)
             End If
         End If
     End Sub
@@ -1120,6 +1130,20 @@ Public Class DashboardForm
             LBLINVISBN.Text = boundItem.Item("isbn")
             LBLINVSUPPLIER.Text = If(IsDBNull(boundItem.Item("supplier_name")), "None", boundItem.Item("supplier_name"))
             TXTINVPRICE.Text = If(IsDBNull(boundItem.Item("price")), Nothing, boundItem.Item("price"))
+        End If
+    End Sub
+
+    Private Sub CMBTRANSACTIONFILTER_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CMBTRANSACTIONFILTER.SelectedIndexChanged
+        If IS_LOADED Then
+            Dim type As TRANSACTIONSTATE
+            If CMBTRANSACTIONFILTER.Text.ToLower() = NameOf(TRANSACTIONSTATE.ACTIVE).ToLower() Then
+                type = TRANSACTIONSTATE.ACTIVE
+            ElseIf CMBTRANSACTIONFILTER.Text.ToLower() = NameOf(TRANSACTIONSTATE.OVERDUE).ToLower() Then
+                type = TRANSACTIONSTATE.OVERDUE
+            Else
+                type = TRANSACTIONSTATE.RETURNED
+            End If
+            ControlsMap.Item(BookTransactionTab.Tag).Update(type)
         End If
     End Sub
 #End Region

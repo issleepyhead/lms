@@ -7395,6 +7395,7 @@ Partial Class DashboardForm
         Me.CMBTRANSACTIONFILTER.Size = New System.Drawing.Size(171, 40)
         Me.CMBTRANSACTIONFILTER.StartIndex = 0
         Me.CMBTRANSACTIONFILTER.TabIndex = 23
+        Me.CMBTRANSACTIONFILTER.Tag = "TRANSACTION"
         '
         'BTNTRANSACTIONREFRESH
         '
@@ -7410,6 +7411,7 @@ Partial Class DashboardForm
         Me.BTNTRANSACTIONREFRESH.Name = "BTNTRANSACTIONREFRESH"
         Me.BTNTRANSACTIONREFRESH.Size = New System.Drawing.Size(141, 40)
         Me.BTNTRANSACTIONREFRESH.TabIndex = 21
+        Me.BTNTRANSACTIONREFRESH.Tag = "TRANSACTION"
         Me.BTNTRANSACTIONREFRESH.Text = "Refresh"
         '
         'BTNADDTRANSACTION
@@ -7426,6 +7428,7 @@ Partial Class DashboardForm
         Me.BTNADDTRANSACTION.Name = "BTNADDTRANSACTION"
         Me.BTNADDTRANSACTION.Size = New System.Drawing.Size(141, 40)
         Me.BTNADDTRANSACTION.TabIndex = 7
+        Me.BTNADDTRANSACTION.Tag = "TRANSACTION"
         Me.BTNADDTRANSACTION.Text = "Borrow Book"
         '
         'TXTTRANSACTIONSEARCH
@@ -7452,6 +7455,7 @@ Partial Class DashboardForm
         Me.TXTTRANSACTIONSEARCH.SelectedText = ""
         Me.TXTTRANSACTIONSEARCH.Size = New System.Drawing.Size(258, 40)
         Me.TXTTRANSACTIONSEARCH.TabIndex = 6
+        Me.TXTTRANSACTIONSEARCH.Tag = "TRANSACTION"
         '
         'Guna2Panel58
         '
@@ -7486,6 +7490,7 @@ Partial Class DashboardForm
         Me.BTNTRANSACTIONSEARCH.Name = "BTNTRANSACTIONSEARCH"
         Me.BTNTRANSACTIONSEARCH.Size = New System.Drawing.Size(109, 40)
         Me.BTNTRANSACTIONSEARCH.TabIndex = 32
+        Me.BTNTRANSACTIONSEARCH.Tag = "TRANSACTION"
         Me.BTNTRANSACTIONSEARCH.Text = "Search"
         '
         'Guna2HtmlLabel44
@@ -7541,6 +7546,7 @@ Partial Class DashboardForm
         Me.LBLTRANSACTIONNEXT.Name = "LBLTRANSACTIONNEXT"
         Me.LBLTRANSACTIONNEXT.Size = New System.Drawing.Size(17, 22)
         Me.LBLTRANSACTIONNEXT.TabIndex = 5
+        Me.LBLTRANSACTIONNEXT.Tag = "TRANSACTION"
         Me.LBLTRANSACTIONNEXT.Text = "10"
         '
         'Guna2HtmlLabel38
@@ -7565,6 +7571,7 @@ Partial Class DashboardForm
         Me.LBLTRANSACTIONPREV.Name = "LBLTRANSACTIONPREV"
         Me.LBLTRANSACTIONPREV.Size = New System.Drawing.Size(9, 22)
         Me.LBLTRANSACTIONPREV.TabIndex = 3
+        Me.LBLTRANSACTIONPREV.Tag = "TRANSACTION"
         Me.LBLTRANSACTIONPREV.Text = "1"
         '
         'BTNTRANSACTIONPREV
@@ -7582,6 +7589,7 @@ Partial Class DashboardForm
         Me.BTNTRANSACTIONPREV.Name = "BTNTRANSACTIONPREV"
         Me.BTNTRANSACTIONPREV.Size = New System.Drawing.Size(79, 40)
         Me.BTNTRANSACTIONPREV.TabIndex = 2
+        Me.BTNTRANSACTIONPREV.Tag = "TRANSACTION"
         Me.BTNTRANSACTIONPREV.Text = "Previous"
         '
         'BTNTRANSACTIONNEXT
@@ -7599,6 +7607,7 @@ Partial Class DashboardForm
         Me.BTNTRANSACTIONNEXT.Name = "BTNTRANSACTIONNEXT"
         Me.BTNTRANSACTIONNEXT.Size = New System.Drawing.Size(79, 40)
         Me.BTNTRANSACTIONNEXT.TabIndex = 1
+        Me.BTNTRANSACTIONNEXT.Tag = "TRANSACTION"
         Me.BTNTRANSACTIONNEXT.Text = "Next"
         '
         'Guna2Panel59
@@ -7658,6 +7667,7 @@ Partial Class DashboardForm
         Me.DGTRANSACTION.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DGTRANSACTION.Size = New System.Drawing.Size(1292, 541)
         Me.DGTRANSACTION.TabIndex = 0
+        Me.DGTRANSACTION.Tag = "TRANSACTION"
         Me.DGTRANSACTION.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Indigo
         Me.DGTRANSACTION.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(197, Byte), Integer), CType(CType(203, Byte), Integer), CType(CType(232, Byte), Integer))
         Me.DGTRANSACTION.ThemeStyle.AlternatingRowsStyle.Font = Nothing
