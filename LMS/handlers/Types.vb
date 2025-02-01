@@ -28,6 +28,11 @@
     BORROWER
 End Enum
 
+Public Enum TRANSACTIONSTATE
+    RETURNED = 0
+    ACTIVE = 1
+    OVERDUE = 2
+End Enum
 
 
 
@@ -88,10 +93,4 @@ End Enum
 Public Enum ROLETYPE
     SUPERADMIN = 0
     ASSIST_LIB = 1
-End Enum
-
-Public Enum TRANSACTIONSTATE
-    RETURNED = 0
-    ACTIVE = 1
-    OVERDUE = 2
 End Enum

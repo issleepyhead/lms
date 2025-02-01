@@ -11,4 +11,6 @@
     Property ARCHIVE_SEARCH_RESULT_QUERY As String
     Property ARCHIVE_QUERY As String
     Property UNARCHIVE_QUERY As String
+    Property ADVANCE_SEARCH_COUNT_QUERY As String
+    Property ADVANCE_SEARCH_RESULT_QUERY As String
 End Class

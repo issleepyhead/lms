@@ -55,4 +55,21 @@
             End If
         End If
     End Sub
+
+    Public Sub Update(filter As TRANSACTIONSTATE, Optional sdate As Date = Nothing, Optional edate As Date = Nothing)
+        DBOperations.QUERY_SEARCH = TXTSEARCH.Text
+        DBOperations.ADVANCE_SEARCH_QUERIES = New Dictionary(Of String, String) From {
+            {"@stat", filter}
+        }
+
+        If sdate = Date.MinValue Then
+            DG.DataSource = DBOperations.Search(QUERY_TYPE)
+        Else
+            ADVANCE_SEARCH_QUERIES.Add("@sdate", sdate.ToShortDateString)
+            ADVANCE_SEARCH_QUERIES.Add("@edate", edate.ToShortDateString)
+            DG.DataSource = DBOperations.AdvanceSearch(QUERY_TYPE)
+        End If
+        LBLNEXT.Text = DBOperations.NEXT_PAGE_NUMBER
+        LBLPREV.Text = DBOperations.PREV_PAGE_NUMBER
+    End Sub
 End Class

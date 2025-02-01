@@ -145,8 +145,8 @@ Module QueryTableRegistry
         {ADMIN, New QueryTable With {
             .ADD_QUERY = "INSERT INTO tbladmins (student_id, faculty_id) VALUES (@sid, @fid)",
             .DELETE_QUERY = "DELETE FROM tbladmins WHERE id = @id",
-            .SEARCH_RESULT_QUERY = "SELECT a.id, full_name, CASE WHEN `role` = 0 THEN 'Super Admin' ELSE 'Assistant Librarian' END AS `role` FROM tbladmins a JOIN tblstudents s ON a.student_id = s.id UNION SELECT a.id, full_name, CASE WHEN `role` = 0 THEN 'Super Admin' ELSE 'Assistant Librarian' END AS `role` FROM tbladmins a JOIN tblfaculties f ON a.faculty_id = f.id WHERE full_name LIKE @search OR phone LIKE @search OR email LIKE @search ORDER BY full_name LIMIT @page, 30;",
-            .SEARCH_COUNT_QUERY = "SELECT COUNT(*) FROM tbladmins a LEFT JOIN tblfaculties f ON a.faculty_id = f.id LEFT JOIN tblstudents s ON a.student_id = s.id WHERE full_name LIKE @search OR phone LIKE @search OR email LIKE @search"
+            .SEARCH_RESULT_QUERY = "SELECT a.id, CASE WHEN a.student_id IS NULL THEN f.full_name ELSE s.full_name END AS full_name, CASE WHEN `role` = 0 THEN 'Super Admin' ELSE 'Assistant Librarian' END AS `role` FROM tbladmins a LEFT JOIN tblfaculties f ON a.faculty_id = f.id LEFT JOIN tblstudents s ON a.student_id = s.id WHERE f.full_name LIKE @search OR f.username LIKE @search OR s.full_name LIKE @search OR s.lrn LIKE @search ORDER BY f.full_name, s.full_name LIMIT @page, 30;",
+            .SEARCH_COUNT_QUERY = "SELECT COUNT(*) FROM tbladmins a LEFT JOIN tblfaculties f ON a.faculty_id = f.id LEFT JOIN tblstudents s ON a.student_id = s.id WHERE f.full_name LIKE @search OR f.username LIKE @search OR s.full_name LIKE @search OR s.lrn LIKE @search"
         }},
         {BOOKCOPIES, New QueryTable With {
             .SEARCH_COUNT_QUERY = "SELECT COUNT(DISTINCT b.title) FROM tblbookcopies bc JOIN tblbooks b ON bc.book_id = b.id WHERE b.title LIKE @search OR b.isbn LIKE @search GROUP BY b.title, b.isbn ORDER BY b.title",
@@ -172,7 +172,42 @@ Module QueryTableRegistry
             .SEARCH_RESULT_QUERY = "SELECT bc.id, b.title, b.isbn, bc.accession_no, d.name donator_name, s.name supplier_name, price FROM tblbookcopies bc JOIN tblbooks b ON bc.book_id = b.id LEFT JOIN tbldonators d ON bc.donator_id = d.id LEFT JOIN tblsuppliers s ON bc.supplier_id = s.id WHERE b.title LIKE @search OR b.isbn LIKE @search ORDER BY b.title ASC LIMIT @page, 30;",
             .UPDATE_QUERY = "UPDATE tblbookcopies SET price = @price WHERE id = @id"
         }},
-        {TRANSACTION, New QueryTable},
+        {TRANSACTION, New QueryTable With {
+            .SEARCH_COUNT_QUERY = "SELECT COUNT(*)
+                            FROM tblborrowheaders bt
+                            LEFT JOIN tblstudents st ON bt.student_id = st.id
+                            LEFT JOIN tblfaculties ft ON bt.faculty_id = ft.id
+                            LEFT JOIN tbladmins a ON bt.issued_by = a.id
+                            LEFT JOIN tblstudents ad ON a.student_id = ad.id
+                            LEFT JOIN tblfaculties af ON a.faculty_id = af.id
+                            WHERE bt.status = @stat AND (st.full_name LIKE @search OR ft.full_name LIKE @search OR ad.full_name LIKE @search OR af.full_name LIKE @search OR bt.circulation_no LIKE @search)",
+            .SEARCH_RESULT_QUERY = "SELECT bt.id, CASE WHEN bt.student_id IS NULL THEN ft.full_name ELSE st.full_name END AS full_name, circulation_no, overdue_date, borrow_date,
+                            CASE WHEN a.student_id IS NULL THEN af.full_name ELSE ad.full_name END AS issued_by
+                            FROM tblborrowheaders bt
+                            LEFT JOIN tblstudents st ON bt.student_id = st.id
+                            LEFT JOIN tblfaculties ft ON bt.faculty_id = ft.id
+                            LEFT JOIN tbladmins a ON bt.issued_by = a.id
+                            LEFT JOIN tblstudents ad ON a.student_id = ad.id
+                            LEFT JOIN tblfaculties af ON a.faculty_id = af.id
+                            WHERE bt.status = @stat AND (st.full_name LIKE @search OR ft.full_name LIKE @search OR ad.full_name LIKE @search OR af.full_name LIKE @search OR bt.circulation_no LIKE @search)",
+            .ADVANCE_SEARCH_COUNT_QUERY = "SELECT COUNT(*)
+                            FROM tblborrowheaders bt
+                            LEFT JOIN tblstudents st ON bt.student_id = st.id
+                            LEFT JOIN tblfaculties ft ON bt.faculty_id = ft.id
+                            LEFT JOIN tbladmins a ON bt.issued_by = a.id
+                            LEFT JOIN tblstudents ad ON a.student_id = ad.id
+                            LEFT JOIN tblfaculties af ON a.faculty_id = af.id
+                            WHERE bt.status = @stat AND (st.full_name LIKE @search OR ft.full_name LIKE @search OR ad.full_name LIKE @search OR af.full_name LIKE @search OR bt.circulation_no LIKE @search) AND (borrow_date BETWEEN @sdate AND @edate OR overdue_date BETWEEN @sdate AND @edate)",
+            .ADVANCE_SEARCH_RESULT_QUERY = "SELECT bt.id, CASE WHEN bt.student_id IS NULL THEN ft.full_name ELSE st.full_name END AS full_name, circulation_no, overdue_date, borrow_date,
+                            CASE WHEN a.student_id IS NULL THEN af.full_name ELSE ad.full_name END AS issued_by
+                            FROM tblborrowheaders bt
+                            LEFT JOIN tblstudents st ON bt.student_id = st.id
+                            LEFT JOIN tblfaculties ft ON bt.faculty_id = ft.id
+                            LEFT JOIN tbladmins a ON bt.issued_by = a.id
+                            LEFT JOIN tblstudents ad ON a.student_id = ad.id
+                            LEFT JOIN tblfaculties af ON a.faculty_id = af.id
+                            WHERE bt.status = @stat AND (st.full_name LIKE @search OR ft.full_name LIKE @search OR ad.full_name LIKE @search OR af.full_name LIKE @search OR bt.circulation_no LIKE @search) AND (borrow_date BETWEEN @sdate AND @edate OR overdue_date BETWEEN @sdate AND @edate)"
+        }},
         {BOOKLOSTDAMAGE, New QueryTable With {
             .SEARCH_COUNT_QUERY = "SELECT COUNT(*)
                                     FROM tblborrowheaders bh
@@ -181,7 +216,7 @@ Module QueryTableRegistry
                                     JOIN tblbooks b ON c.book_id = b.id
                                     LEFT JOIN tblstudents s ON bh.student_id = s.id
                                     LEFT JOIN tblfaculties f ON bh.faculty_id = f.id
-                                    WHERE bc.returned_condition = 2 OR bc.returned_condition = 1;",
+                                    WHERE (bc.returned_condition = 2 OR bc.returned_condition = 1) AND (b.title LIKE @search OR c.accession_no LIKE @search OR bh.circulation_no LIKE @search);",
             .SEARCH_RESULT_QUERY = "SELECT c.accession_no, bh.circulation_no , b.title,
                                     CASE WHEN bc.borrowed_condition = 0 THEN 'Good' ELSE (CASE WHEN bc.borrowed_condition = 1 THEN 'Damaged' ELSE 'Lost' END) END AS borrowed_condition,
                                     CASE WHEN bc.returned_condition = 0 THEN 'Good' ELSE (CASE WHEN bc.returned_condition = 1 THEN 'Damaged' ELSE 'Lost' END) END AS returned_condition,
@@ -192,7 +227,7 @@ Module QueryTableRegistry
                                     JOIN tblbooks b ON c.book_id = b.id
                                     LEFT JOIN tblstudents s ON bh.student_id = s.id
                                     LEFT JOIN tblfaculties f ON bh.faculty_id = f.id
-                                    WHERE bc.returned_condition = 2 OR bc.returned_condition = 1;"
+                                    WHERE (bc.returned_condition = 2 OR bc.returned_condition = 1) AND (b.title LIKE @search OR c.accession_no LIKE @search OR bh.circulation_no LIKE @search);"
         }}
     }
 

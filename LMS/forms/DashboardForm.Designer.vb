@@ -524,6 +524,13 @@ Partial Class DashboardForm
         Me.BTNLOSTDAMAGENEXT = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Panel50 = New Guna.UI2.WinForms.Guna2Panel()
         Me.DGLOSTDAMAGE = New Guna.UI2.WinForms.Guna2DataGridView()
+        Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column54 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column53 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column50 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column51 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column52 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.BookTransactionTab = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel21 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel57 = New Guna.UI2.WinForms.Guna2Panel()
@@ -757,13 +764,6 @@ Partial Class DashboardForm
         Me.LBLPROFILEROLE = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.LBLPROFILENAME = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.errProvider = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column54 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column53 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column50 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column51 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column52 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TableLayoutPanel1.SuspendLayout
         Me.MainFormPanels.SuspendLayout
         Me.DashboardTab.SuspendLayout
@@ -7279,6 +7279,57 @@ Partial Class DashboardForm
         Me.DGLOSTDAMAGE.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(205, Byte), Integer))
         Me.DGLOSTDAMAGE.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
         '
+        'DataGridViewTextBoxColumn11
+        '
+        Me.DataGridViewTextBoxColumn11.DataPropertyName = "id"
+        Me.DataGridViewTextBoxColumn11.HeaderText = "id"
+        Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
+        Me.DataGridViewTextBoxColumn11.Visible = False
+        '
+        'Column54
+        '
+        Me.Column54.DataPropertyName = "accession_no"
+        Me.Column54.HeaderText = "Accession No."
+        Me.Column54.Name = "Column54"
+        Me.Column54.ReadOnly = True
+        '
+        'Column53
+        '
+        Me.Column53.DataPropertyName = "circulation_no"
+        Me.Column53.HeaderText = "Circulation No."
+        Me.Column53.Name = "Column53"
+        Me.Column53.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn18
+        '
+        Me.DataGridViewTextBoxColumn18.DataPropertyName = "title"
+        Me.DataGridViewTextBoxColumn18.HeaderText = "Title"
+        Me.DataGridViewTextBoxColumn18.MaxInputLength = 50
+        Me.DataGridViewTextBoxColumn18.Name = "DataGridViewTextBoxColumn18"
+        Me.DataGridViewTextBoxColumn18.ReadOnly = True
+        Me.DataGridViewTextBoxColumn18.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
+        'Column50
+        '
+        Me.Column50.DataPropertyName = "borrower_name"
+        Me.Column50.HeaderText = "Borrower Name"
+        Me.Column50.Name = "Column50"
+        Me.Column50.ReadOnly = True
+        '
+        'Column51
+        '
+        Me.Column51.DataPropertyName = "borrowed_condition"
+        Me.Column51.HeaderText = "Borrowed Condition"
+        Me.Column51.Name = "Column51"
+        Me.Column51.ReadOnly = True
+        '
+        'Column52
+        '
+        Me.Column52.DataPropertyName = "returned_condition"
+        Me.Column52.HeaderText = "Returned Condition"
+        Me.Column52.Name = "Column52"
+        Me.Column52.ReadOnly = True
+        '
         'BookTransactionTab
         '
         Me.BookTransactionTab.BackColor = System.Drawing.SystemColors.MenuHighlight
@@ -7288,6 +7339,7 @@ Partial Class DashboardForm
         Me.BookTransactionTab.Name = "BookTransactionTab"
         Me.BookTransactionTab.Size = New System.Drawing.Size(1332, 681)
         Me.BookTransactionTab.TabIndex = 4
+        Me.BookTransactionTab.Tag = "TRANSACTION"
         Me.BookTransactionTab.Text = "Book Transaction"
         '
         'TableLayoutPanel21
@@ -11148,57 +11200,6 @@ Partial Class DashboardForm
         '
         Me.errProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink
         Me.errProvider.ContainerControl = Me
-        '
-        'DataGridViewTextBoxColumn11
-        '
-        Me.DataGridViewTextBoxColumn11.DataPropertyName = "id"
-        Me.DataGridViewTextBoxColumn11.HeaderText = "id"
-        Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
-        Me.DataGridViewTextBoxColumn11.Visible = False
-        '
-        'Column54
-        '
-        Me.Column54.DataPropertyName = "accession_no"
-        Me.Column54.HeaderText = "Accession No."
-        Me.Column54.Name = "Column54"
-        Me.Column54.ReadOnly = True
-        '
-        'Column53
-        '
-        Me.Column53.DataPropertyName = "circulation_no"
-        Me.Column53.HeaderText = "Circulation No."
-        Me.Column53.Name = "Column53"
-        Me.Column53.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn18
-        '
-        Me.DataGridViewTextBoxColumn18.DataPropertyName = "title"
-        Me.DataGridViewTextBoxColumn18.HeaderText = "Title"
-        Me.DataGridViewTextBoxColumn18.MaxInputLength = 50
-        Me.DataGridViewTextBoxColumn18.Name = "DataGridViewTextBoxColumn18"
-        Me.DataGridViewTextBoxColumn18.ReadOnly = True
-        Me.DataGridViewTextBoxColumn18.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        '
-        'Column50
-        '
-        Me.Column50.DataPropertyName = "borrower_condition"
-        Me.Column50.HeaderText = "Borrower Name"
-        Me.Column50.Name = "Column50"
-        Me.Column50.ReadOnly = True
-        '
-        'Column51
-        '
-        Me.Column51.DataPropertyName = "borrowed_condition"
-        Me.Column51.HeaderText = "Borrowed Condition"
-        Me.Column51.Name = "Column51"
-        Me.Column51.ReadOnly = True
-        '
-        'Column52
-        '
-        Me.Column52.DataPropertyName = "returned_condition"
-        Me.Column52.HeaderText = "Returned Condition"
-        Me.Column52.Name = "Column52"
-        Me.Column52.ReadOnly = True
         '
         'DashboardForm
         '

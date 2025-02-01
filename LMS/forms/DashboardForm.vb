@@ -38,7 +38,8 @@ Public Class DashboardForm
             {NameOf(ADMIN), New ControlMapping With {.DG = DGADMINISTRATOR, .LBLNEXT = LBLADMINNEXT, .LBLPREV = LBLADMINPREV, .TXTSEARCH = TXTADMINSEARCH, .QUERY_TYPE = ADMIN}},
             {NameOf(BOOKCOPIES), New ControlMapping With {.DG = DGBOOKCOPIES, .LBLNEXT = LBLCOPIESNEXT, .LBLPREV = LBLCOPIESPREV, .TXTSEARCH = TXTCOPIESSEARCH, .QUERY_TYPE = BOOKCOPIES}},
             {NameOf(BOOKINVENTORY), New ControlMapping With {.DG = DGINVENTORY, .LBLNEXT = LBLINVENTORYNEXT, .LBLPREV = LBLINVENTORYPREV, .TXTSEARCH = TXTINVENTORYSEARCH, .QUERY_TYPE = BOOKINVENTORY}},
-            {NameOf(BOOKLOSTDAMAGE), New ControlMapping With {.DG = DGBOOK, .LBLNEXT = LBLINVENTORYNEXT, .LBLPREV = LBLINVENTORYPREV, .TXTSEARCH = TXTINVENTORYSEARCH, .QUERY_TYPE = BOOKINVENTORY}}
+            {NameOf(BOOKLOSTDAMAGE), New ControlMapping With {.DG = DGLOSTDAMAGE, .LBLNEXT = LBLLOSTDAMAGENEXT, .LBLPREV = LBLLOSTDAMAGEPREV, .TXTSEARCH = TXTLOSTDAMAGESEARCH, .QUERY_TYPE = BOOKLOSTDAMAGE}},
+            {NameOf(TRANSACTION), New ControlMapping With {.DG = DGTRANSACTION, .LBLNEXT = LBLTRANSACTIONNEXT, .LBLPREV = LBLTRANSACTIONPREV, .TXTSEARCH = TXTTRANSACTIONSEARCH, .QUERY_TYPE = TRANSACTION}}
         }
 
 
@@ -65,7 +66,7 @@ Public Class DashboardForm
 
     Private Sub BTNNEXT_Click(sender As Object, e As EventArgs) Handles BTNGENRENEXT.Click, BTNAUTHORNEXT.Click, BTNPUBLISHERNEXT.Click,
             BTNCLASSIFICATIONNEXT.Click, BTNLANGUAGENEXT.Click, BTNDONATORNEXT.Click, BTNSUPPLIERNEXT.Click, BTNBOOKNEXT.Click, BTNSECTIONNEXT.Click, BTNYEARLEVELNEXT.Click, BTNDEPARTMENTNEXT.Click,
-            BTNSTUDENTNEXT.Click, BTNFACULTYNEXT.Click, BTNADMINNEXT.Click, BTNCOPIESNEXT.Click, BTNINVENTORYNEXT.Click
+            BTNSTUDENTNEXT.Click, BTNFACULTYNEXT.Click, BTNADMINNEXT.Click, BTNCOPIESNEXT.Click, BTNINVENTORYNEXT.Click, BTNLOSTDAMAGENEXT.Click
         If sender.Tag = NameOf(BOOK) Then
             ControlsMap.Item(sender.Tag).NextPage(If(CMBBOOKFILTER.SelectedText.ToLower = NameOf(ACTIVE).ToLower, ACTIVE, INACTIVE), AddressOf RetrieveBookSelection)
         ElseIf sender.Tag = NameOf(STUDENT) Then
@@ -79,7 +80,7 @@ Public Class DashboardForm
 
     Private Sub BTNPREV_Click(sender As Object, e As EventArgs) Handles BTNGENREPREV.Click, BTNAUTHORPREV.Click, BTNPUBLISHERPREV.Click,
             BTNCLASSIFICATIONPREV.Click, BTNLANGUAGEPREV.Click, BTNDONATORRPREV.Click, BTNSUPPLIERPREV.Click, BTNBOOKPREV.Click, BTNSECTIONPREV.Click, BTNYEARLEVELPREV.Click, BTNDEPARTMENTPREV.Click,
-            BTNSTUDENTPREV.Click, BTNFACULTYPREV.Click, BTNADMINPREV.Click, BTNCOPIESPREV.Click, BTNINVENTORYPREV.Click
+            BTNSTUDENTPREV.Click, BTNFACULTYPREV.Click, BTNADMINPREV.Click, BTNCOPIESPREV.Click, BTNINVENTORYPREV.Click, BTNLOSTDAMAGEPREV.Click
         If sender.Tag = NameOf(BOOK) Then
             ControlsMap.Item(sender.Tag).PrevPage(If(CMBBOOKFILTER.SelectedText.ToLower = NameOf(ACTIVE).ToLower, ACTIVE, INACTIVE), AddressOf RetrieveBookSelection)
         ElseIf sender.Tag = NameOf(STUDENT) Then
@@ -99,7 +100,8 @@ Public Class DashboardForm
 
     Private Sub TextSearch(sender As Object, e As EventArgs) Handles TXTGENRESEARCH.TextChanged, TXTSEARCHAUTHOR.TextChanged, TXTPUBLISHERSEARCH.TextChanged, TXTCLASSIFICATIONSEARCH.TextChanged,
             TXTLANGUAGESEARCH.TextChanged, TXTBOOKSEARCH.TextChanged, TXTDONATORSEARCH.TextChanged, TXTSUPPLIERSEARCH.TextChanged, TXTFACULTYSEARCH.TextChanged, TXTSTUDENTSEARCH.TextChanged,
-            TXTADMINSEARCH.TextChanged, TXTCOPIESSEARCH.TextChanged, TXTINVENTORYSEARCH.TextChanged, TXTDEPARTMENTSEARCH.TextChanged, TXTSECTIONSEARCH.TextChanged, TXTYEARLEVELSEARCH.TextChanged
+            TXTADMINSEARCH.TextChanged, TXTCOPIESSEARCH.TextChanged, TXTINVENTORYSEARCH.TextChanged, TXTDEPARTMENTSEARCH.TextChanged, TXTSECTIONSEARCH.TextChanged, TXTYEARLEVELSEARCH.TextChanged,
+            TXTLOSTDAMAGESEARCH.TextChanged
         If IS_LOADED Then
             ' TO-DO ADD LOGIC
             If MainFormPanels.SelectedTab.Equals(MaintenanceTab) Then
@@ -117,12 +119,15 @@ Public Class DashboardForm
     Private Sub MainFormPanels_SelectedIndexChanged(sender As Object, e As EventArgs) Handles MainFormPanels.SelectedIndexChanged
         Select Case True
             Case MainFormPanels.SelectedTab.Equals(BookTransactionTab)
-                'BaseMaintenance.PPrev = 1
-                'CMBTRANSACTIONFILTER.SelectedIndex = 0
-                'TXTTRANSACTIONSEARCH.Clear()
-                'DGTRANSACTION.DataSource = FetchTransactions(1)
-                'LBLTRANSACTIONNEXT.Text = BaseMaintenance.PMAX
-                'LBLTRANSACTIONPREV.Text = BaseMaintenance.PPrev
+                Dim type As TRANSACTIONSTATE
+                If CMBTRANSACTIONFILTER.Text.ToLower() = NameOf(TRANSACTIONSTATE.ACTIVE).ToLower() Then
+                    type = TRANSACTIONSTATE.ACTIVE
+                ElseIf CMBTRANSACTIONFILTER.Text.ToLower() = NameOf(TRANSACTIONSTATE.OVERDUE).ToLower() Then
+                    type = TRANSACTIONSTATE.OVERDUE
+                Else
+                    type = TRANSACTIONSTATE.RETURNED
+                End If
+                ControlsMap.Item(BookTransactionTab.Tag).Update(type)
             Case MainFormPanels.SelectedTab.Equals(BookInventoryTab)
                 DGBOOKCOPIES.DataSource = BaseMaintenance.Fetch(QueryTableType.BOOKCOPIES_QUERY_TABLE)
                 LBLCOPIESPREV.Text = BaseMaintenance.PPrev
@@ -144,44 +149,8 @@ Public Class DashboardForm
 
                 CMBDONATORCOPIES.DataSource = dtDonator
                 CMBSUPPLIERCOPIES.DataSource = dtSupplier
-                'Case MainFormPanels.SelectedTab.Equals(SettingsTab)
-                '    Dim dt As DataTable = ExecFetch("SELECT * FROM tblappsettings")
-
-                '    If dt.Rows.Count = 0 Then
-                '        Return
-                '    End If
-                '    With dt.Rows.Item(0)
-                '        CHCKSETNOTIF.Checked = If(.Item("enable_notification") > 0, True, False)
-                '        CHCKSETGLOBALP.Checked = If(.Item("gpenalty") > 0, True, False)
-                '        TXTSETSPENALTY.Text = .Item("spenalty")
-                '        TXTSETFPENALTY.Text = .Item("fpenalty")
-                '        TXTSETSDAYS.Text = .Item("sdays")
-                '        TXTSETFDAYS.Text = .Item("fdays")
-                '        TXTSETSCOUNT.Text = .Item("s_count")
-                '        TXTSETFCOUNT.Text = .Item("f_count")
-                '    End With
-                'Case MainFormPanels.SelectedTab.Equals(AccountTab)
-                'Try
-                '    If ExecScalar("SELECT COUNT(*) FROM tblstudents WHERE lrn = @lrn", New Dictionary(Of String, String) From {{"@lrn", My.Settings.user_username}}) > 0 Then
-                '        Dim dt As DataTable = ExecFetch("SELECT full_name FROM tblstudents WHERE lrn = @lrn", New Dictionary(Of String, String) From {{"@lrn", My.Settings.user_username}})
-                '        LBLPROFILENAME.Text = dt.Rows(0).Item("full_name")
-                '        If ExecScalar("SELECT COUNT(*) FROM tbladmins WHERE student_id = @id", New Dictionary(Of String, String) From {{"@id", My.Settings.user_id}}) Then
-                '            LBLPROFILEROLE.Text = "Assistant Admin"
-                '        End If
-                '    Else
-                '        Dim dt As DataTable = ExecFetch("SELECT full_name FROM tblfaculties WHERE username = @uname", New Dictionary(Of String, String) From {{"@uname", My.Settings.user_username}})
-                '        LBLPROFILENAME.Text = dt.Rows(0).Item("full_name")
-                '        If ExecScalar("SELECT COUNT(*) FROM tbladmins WHERE faculty_id = @id", New Dictionary(Of String, String) From {{"@id", My.Settings.user_id}}) Then
-                '            If dt.Rows(0).Item("role") = 0 Then
-                '                LBLPROFILEROLE.Text = "Superadmin"
-                '            Else
-                '                LBLPROFILEROLE.Text = "Assistant Admin"
-                '            End If
-                '        End If
-                '    End If
-                'Catch ex As Exception
-
-                'End Try
+            Case MainFormPanels.SelectedTab.Equals(SettingsTab)
+                ' TODO FIX THE SETTINGS FETCH
             Case Else
                 If MainFormPanels.SelectedTab.Equals(MaintenanceTab) Then
                     TabSelected(MaintenancePanels, Nothing)
@@ -453,32 +422,32 @@ Public Class DashboardForm
     End Sub
 #End Region
 
-#Region "Account Panel"
-    Private Sub AccountsPanel_SelectedIndexChanged(sender As Object, e As EventArgs) Handles AccountsPanel.SelectedIndexChanged
-        Select Case True
-            Case AccountsPanel.SelectedTab.Equals(DepartmentTab)
-                LoadTabData(DGDEPARTMENT, LBLDEPARTMENTPREV, LBLDEPARTMENTNEXT, QueryTableType.DEPARTMENT_QUERY_TABLE, TXTDEPARTMENTSEARCH)
+    '#Region "Account Panel"
+    '    Private Sub AccountsPanel_SelectedIndexChanged(sender As Object, e As EventArgs) Handles AccountsPanel.SelectedIndexChanged
+    '        Select Case True
+    '            Case AccountsPanel.SelectedTab.Equals(DepartmentTab)
+    '                LoadTabData(DGDEPARTMENT, LBLDEPARTMENTPREV, LBLDEPARTMENTNEXT, QueryTableType.DEPARTMENT_QUERY_TABLE, TXTDEPARTMENTSEARCH)
 
-            Case AccountsPanel.SelectedTab.Equals(YearLevelTab)
-                LoadTabData(DGYEARLEVEL, LBLYEARLEVELPREV, LBLYEARLEVELNEXT, QueryTableType.YEARLEVEL_QUERY_TABLE, TXTYEARLEVELSEARCH)
+    '            Case AccountsPanel.SelectedTab.Equals(YearLevelTab)
+    '                LoadTabData(DGYEARLEVEL, LBLYEARLEVELPREV, LBLYEARLEVELNEXT, QueryTableType.YEARLEVEL_QUERY_TABLE, TXTYEARLEVELSEARCH)
 
-            Case AccountsPanel.SelectedTab.Equals(SectionTab)
-                LoadTabData(DGSECTIONS, LBLSECTIONPREV, LBLSECTIONNEXT, QueryTableType.SECTION_QUERY_TABLE, TXTSECTIONSEARCH)
+    '            Case AccountsPanel.SelectedTab.Equals(SectionTab)
+    '                LoadTabData(DGSECTIONS, LBLSECTIONPREV, LBLSECTIONNEXT, QueryTableType.SECTION_QUERY_TABLE, TXTSECTIONSEARCH)
 
-            Case AccountsPanel.SelectedTab.Equals(StudentsTab)
-                SELECTED_STUDENTS = New SystemDataSets.DTStudentDataTable
-                LoadTabData(DGSTUDENT, LBLSTUDENTPREV, LBLSTUDENTNEXT, QueryTableType.STUDENT_QUERY_TABLE, TXTSTUDENTSEARCH)
+    '            Case AccountsPanel.SelectedTab.Equals(StudentsTab)
+    '                SELECTED_STUDENTS = New SystemDataSets.DTStudentDataTable
+    '                LoadTabData(DGSTUDENT, LBLSTUDENTPREV, LBLSTUDENTNEXT, QueryTableType.STUDENT_QUERY_TABLE, TXTSTUDENTSEARCH)
 
-            Case AccountsPanel.SelectedTab.Equals(FacultyTab)
-                SELECTED_FACULTY = New SystemDataSets.DTFacultyDataTable
-                LoadTabData(DGFACULTY, LBLFACULTYPREV, LBLFACULTYNEXT, QueryTableType.FACULTY_QUERY_TABLE, TXTFACULTYSEARCH)
+    '            Case AccountsPanel.SelectedTab.Equals(FacultyTab)
+    '                SELECTED_FACULTY = New SystemDataSets.DTFacultyDataTable
+    '                LoadTabData(DGFACULTY, LBLFACULTYPREV, LBLFACULTYNEXT, QueryTableType.FACULTY_QUERY_TABLE, TXTFACULTYSEARCH)
 
-            Case AccountsPanel.SelectedTab.Equals(AdminTab)
-                LoadTabData(DGADMINISTRATOR, LBLADMINPREV, LBLADMINNEXT, QueryTableType.ADMIN_QUERY_TABLE, TXTADMINSEARCH)
+    '            Case AccountsPanel.SelectedTab.Equals(AdminTab)
+    '                LoadTabData(DGADMINISTRATOR, LBLADMINPREV, LBLADMINNEXT, QueryTableType.ADMIN_QUERY_TABLE, TXTADMINSEARCH)
 
-        End Select
-    End Sub
-#End Region
+    '        End Select
+    '    End Sub
+    '#End Region
 
 #Region "BookInventory Panels"
     Private Sub BookInventoryPanels_SelectedIndexChanged(sender As Object, e As EventArgs) Handles BookInventoryPanels.SelectedIndexChanged
@@ -987,40 +956,40 @@ Public Class DashboardForm
 #Region "Settings Panel"
 
     Private Sub BTNSAVEGENSET_Click(sender As Object, e As EventArgs) Handles BTNSAVEGENSET.Click
-        Dim params As New Dictionary(Of String, String) From {
-            {"@gp", If(CHCKSETGLOBALP.Checked, 1, 0)},
-            {"@en", If(CHCKSETNOTIF.Checked, 1, 0)},
-            {"@sp", TXTSETFPENALTY.Text},
-            {"@fp", TXTSETFPENALTY.Text},
-            {"@sd", TXTSETSDAYS.Text},
-            {"@fd", TXTSETFDAYS.Text},
-            {"@sc", TXTSETSCOUNT.Text},
-            {"@fc", TXTSETFCOUNT.Text}
-        }
-        If ExecNonQuery("UPDATE tblappsettings SET gpenalty = @gp, spenalty = @sp, fpenalty = @fp, s_count = @sc, f_count = @fc, enable_notification = @en, sdays = @sd, fdays = @fd WHERE id > 0", params) > 0 Then
-            MessageBox.Show("General settings has been updated.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        Else
-            MessageBox.Show("Failed to update General settings.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-        End If
+        'Dim params As New Dictionary(Of String, String) From {
+        '    {"@gp", If(CHCKSETGLOBALP.Checked, 1, 0)},
+        '    {"@en", If(CHCKSETNOTIF.Checked, 1, 0)},
+        '    {"@sp", TXTSETFPENALTY.Text},
+        '    {"@fp", TXTSETFPENALTY.Text},
+        '    {"@sd", TXTSETSDAYS.Text},
+        '    {"@fd", TXTSETFDAYS.Text},
+        '    {"@sc", TXTSETSCOUNT.Text},
+        '    {"@fc", TXTSETFCOUNT.Text}
+        '}
+        'If ExecNonQuery("UPDATE tblappsettings SET gpenalty = @gp, spenalty = @sp, fpenalty = @fp, s_count = @sc, f_count = @fc, enable_notification = @en, sdays = @sd, fdays = @fd WHERE id > 0", params) > 0 Then
+        '    MessageBox.Show("General settings has been updated.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        'Else
+        '    MessageBox.Show("Failed to update General settings.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        'End If
     End Sub
 
 
 
     Private Sub BTNEMAILSET_Click(sender As Object, e As EventArgs) Handles BTNEMAILSET.Click
-        Dim params As New Dictionary(Of String, String) From {
-            {"@email", TXTEMAILSETTINGS.Text},
-            {"@pass", TXTEMAILPASSWORDSETTINGS.Text},
-            {"@overdue", TXTSETOVERDUE.Text},
-            {"@borrow", TXTSETBORROW.Text},
-            {"@before", TXTSETBEFORE.Text},
-            {"@return", TXTSETRETURN.Text}
-        }
+        'Dim params As New Dictionary(Of String, String) From {
+        '    {"@email", TXTEMAILSETTINGS.Text},
+        '    {"@pass", TXTEMAILPASSWORDSETTINGS.Text},
+        '    {"@overdue", TXTSETOVERDUE.Text},
+        '    {"@borrow", TXTSETBORROW.Text},
+        '    {"@before", TXTSETBEFORE.Text},
+        '    {"@return", TXTSETRETURN.Text}
+        '}
 
-        If ExecNonQuery("UPDATE tblappsettings SET app_email = @email, e_pass = @pass, return_message = @return, overdue_message = @overdue, borrow_message = @borrow, boverdue_message = @before WHERE id > 0", params) > 0 Then
-            MessageBox.Show("Email settings has been updated.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        Else
-            MessageBox.Show("Failed to update Email settings.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-        End If
+        'If ExecNonQuery("UPDATE tblappsettings SET app_email = @email, e_pass = @pass, return_message = @return, overdue_message = @overdue, borrow_message = @borrow, boverdue_message = @before WHERE id > 0", params) > 0 Then
+        '    MessageBox.Show("Email settings has been updated.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        'Else
+        '    MessageBox.Show("Failed to update Email settings.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        'End If
     End Sub
 
     Private Sub BTNSAVEPATH_Click(sender As Object, e As EventArgs) Handles BTNSAVEPATH.Click
@@ -1082,40 +1051,21 @@ Public Class DashboardForm
     End Sub
 #End Region
 
-    '#Region "Report Module"
-
-    '    'Private Sub BTNREPORTBORROWED_Click(sender As Object, e As EventArgs) Handles BTNREPORTBORROWED.Click
-    '    '    Using dialog As New ReportDialog(1)
-    '    '        dialog.ShowDialog()
-    '    '    End Using
-    '    'End Sub
-    '    'Private Sub ReportsPanel_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ReportsPanel.SelectedIndexChanged
-    '    '    Select Case True
-    '    '        Case ReportsPanel.SelectedTab.Equals(BooksReportTab)
-    '    '            LoadTabData(DGBOOKREPORT, LBLBOOKREPORTPREV, LBLBOOKREPORTNEXT, QueryTableType.BORROWED_BOOKS_REPORT, TXTBOOKREPORTSEARCH)
-    '    '        Case ReportsPanel.SelectedTab.Equals(ExpenditureReportTab)
-    '    '            LoadTabData(DGEXPENDITUREREPORT, LBLEXPENDITUREREPORTPREV, LBLEXPENDITUREREPORTNEXT, QueryTableType.EXPENDITURE_REPORT, TXTEXPENDITUREREPORTSEARCH)
-    '    '        Case ReportsPanel.SelectedTab.Equals(FinesReportTab)
-    '    '            LoadTabData(DGFINESREPORT, LBLFINESREPORTPREV, LBLFINESREPORTNEXT, QueryTableType.FINES_REPORT, TXTFINESREPORTSSEARCH)
-    '    '    End Select
-    '    'End Sub
-    '#End Region
-
 #Region "Transaction Module"
-    Private Sub CMBTRANSACTIONFILTER_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CMBTRANSACTIONFILTER.SelectedIndexChanged
-        Select Case True
-            Case MainFormPanels.SelectedTab.Equals(BookTransactionTab)
-                If CMBTRANSACTIONFILTER.Text = "Active" Then
-                    DGTRANSACTION.DataSource = FetchTransactions(1, TXTTRANSACTIONSEARCH.Text)
-                ElseIf CMBTRANSACTIONFILTER.Text = "Overdue" Then
-                    DGTRANSACTION.DataSource = FetchTransactions(2, TXTTRANSACTIONSEARCH.Text)
-                Else
-                    DGTRANSACTION.DataSource = FetchTransactions(0, TXTTRANSACTIONSEARCH.Text)
-                End If
-                LBLTRANSACTIONNEXT.Text = BaseMaintenance.PMAX
-                LBLTRANSACTIONPREV.Text = BaseMaintenance.PPrev
-        End Select
-    End Sub
+    'Private Sub CMBTRANSACTIONFILTER_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CMBTRANSACTIONFILTER.SelectedIndexChanged
+    '    Select Case True
+    '        Case MainFormPanels.SelectedTab.Equals(BookTransactionTab)
+    '            If CMBTRANSACTIONFILTER.Text = "Active" Then
+    '                DGTRANSACTION.DataSource = FetchTransactions(1, TXTTRANSACTIONSEARCH.Text)
+    '            ElseIf CMBTRANSACTIONFILTER.Text = "Overdue" Then
+    '                DGTRANSACTION.DataSource = FetchTransactions(2, TXTTRANSACTIONSEARCH.Text)
+    '            Else
+    '                DGTRANSACTION.DataSource = FetchTransactions(0, TXTTRANSACTIONSEARCH.Text)
+    '            End If
+    '            LBLTRANSACTIONNEXT.Text = BaseMaintenance.PMAX
+    '            LBLTRANSACTIONPREV.Text = BaseMaintenance.PPrev
+    '    End Select
+    'End Sub
 
     Private Sub DGTRANSACTION_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGTRANSACTION.CellClick
         If DGTRANSACTION.SelectedRows.Count > 0 AndAlso e.RowIndex <> -1 Then
@@ -1125,63 +1075,43 @@ Public Class DashboardForm
             End Using
         End If
     End Sub
-    Private Sub TXTTRANSACTIONSEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTTRANSACTIONSEARCH.TextChanged
-        Select Case True
-            Case MainFormPanels.SelectedTab.Equals(BookTransactionTab)
-                'TransactionTimer.Enabled = True
-                'TransactionTimer.Start()
-                If CMBTRANSACTIONFILTER.Text = "Active" Then
-                    DGTRANSACTION.DataSource = FetchTransactions(1, TXTTRANSACTIONSEARCH.Text)
-                ElseIf CMBTRANSACTIONFILTER.Text = "Overdue" Then
-                    DGTRANSACTION.DataSource = FetchTransactions(2, TXTTRANSACTIONSEARCH.Text)
-                Else
-                    DGTRANSACTION.DataSource = FetchTransactions(0, TXTTRANSACTIONSEARCH.Text)
-                End If
-                LBLTRANSACTIONNEXT.Text = BaseMaintenance.PMAX
-                LBLTRANSACTIONPREV.Text = BaseMaintenance.PPrev
-            Case Else
-                'TransactionTimer.Enabled = False
-                'TransactionTimer.Stop()
-        End Select
-    End Sub
+    'Private Sub TXTTRANSACTIONSEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTTRANSACTIONSEARCH.TextChanged
+    '    Select Case True
+    '        Case MainFormPanels.SelectedTab.Equals(BookTransactionTab)
+    '            'TransactionTimer.Enabled = True
+    '            'TransactionTimer.Start()
+    '            If CMBTRANSACTIONFILTER.Text = "Active" Then
+    '                DGTRANSACTION.DataSource = FetchTransactions(1, TXTTRANSACTIONSEARCH.Text)
+    '            ElseIf CMBTRANSACTIONFILTER.Text = "Overdue" Then
+    '                DGTRANSACTION.DataSource = FetchTransactions(2, TXTTRANSACTIONSEARCH.Text)
+    '            Else
+    '                DGTRANSACTION.DataSource = FetchTransactions(0, TXTTRANSACTIONSEARCH.Text)
+    '            End If
+    '            LBLTRANSACTIONNEXT.Text = BaseMaintenance.PMAX
+    '            LBLTRANSACTIONPREV.Text = BaseMaintenance.PPrev
+    '        Case Else
+    '            'TransactionTimer.Enabled = False
+    '            'TransactionTimer.Stop()
+    '    End Select
+    'End Sub
 
-    Private Sub BTNTRANSACTIONSEARCH_Click(sender As Object, e As EventArgs) Handles BTNTRANSACTIONSEARCH.Click
-        Select Case True
-            Case MainFormPanels.SelectedTab.Equals(BookTransactionTab)
-                If CMBTRANSACTIONFILTER.Text = "Active" Then
-                    DGTRANSACTION.DataSource = FetchTransactions(1, TXTTRANSACTIONSEARCH.Text, DTTRANSACTIONS.Value, DTTRANSACTIONE.Value)
-                ElseIf CMBTRANSACTIONFILTER.Text = "Overdue" Then
-                    DGTRANSACTION.DataSource = FetchTransactions(2, TXTTRANSACTIONSEARCH.Text, DTTRANSACTIONS.Value, DTTRANSACTIONE.Value)
-                Else
-                    DGTRANSACTION.DataSource = FetchTransactions(0, TXTTRANSACTIONSEARCH.Text, DTTRANSACTIONS.Value, DTTRANSACTIONE.Value)
-                End If
-                LBLTRANSACTIONNEXT.Text = BaseMaintenance.PMAX
-                LBLTRANSACTIONPREV.Text = BaseMaintenance.PPrev
-        End Select
-    End Sub
+    'Private Sub BTNTRANSACTIONSEARCH_Click(sender As Object, e As EventArgs) Handles BTNTRANSACTIONSEARCH.Click
+    '    Select Case True
+    '        Case MainFormPanels.SelectedTab.Equals(BookTransactionTab)
+    '            If CMBTRANSACTIONFILTER.Text = "Active" Then
+    '                DGTRANSACTION.DataSource = FetchTransactions(1, TXTTRANSACTIONSEARCH.Text, DTTRANSACTIONS.Value, DTTRANSACTIONE.Value)
+    '            ElseIf CMBTRANSACTIONFILTER.Text = "Overdue" Then
+    '                DGTRANSACTION.DataSource = FetchTransactions(2, TXTTRANSACTIONSEARCH.Text, DTTRANSACTIONS.Value, DTTRANSACTIONE.Value)
+    '            Else
+    '                DGTRANSACTION.DataSource = FetchTransactions(0, TXTTRANSACTIONSEARCH.Text, DTTRANSACTIONS.Value, DTTRANSACTIONE.Value)
+    '            End If
+    '            LBLTRANSACTIONNEXT.Text = BaseMaintenance.PMAX
+    '            LBLTRANSACTIONPREV.Text = BaseMaintenance.PPrev
+    '    End Select
+    'End Sub
 #End Region
 
 #Region "Book Inventory Module"
-    Private Sub BTNINVENTORYPREV_Click(sender As Object, e As EventArgs) Handles BTNINVENTORYPREV.Click
-        If BaseMaintenance.PPrev > 1 Then
-            BaseMaintenance.PPrev -= 1
-            LBLINVENTORYPREV.Text = BaseMaintenance.PPrev
-            DGINVENTORY.DataSource = BaseMaintenance.Search(QueryTableType.BOOKINVENTORY_QUERY_TABLE, TXTINVENTORYSEARCH.Text)
-        End If
-    End Sub
-
-    Private Sub BTNINVENTORYNEXT_Click(sender As Object, e As EventArgs) Handles BTNINVENTORYNEXT.Click
-        If BaseMaintenance.PPrev < BaseMaintenance.PMAX Then
-            BaseMaintenance.PPrev += 1
-            LBLINVENTORYPREV.Text = BaseMaintenance.PPrev
-            If String.IsNullOrEmpty(TXTINVENTORYSEARCH.Text) Then
-                DGINVENTORY.DataSource = BaseMaintenance.Fetch(QueryTableType.BOOKINVENTORY_QUERY_TABLE)
-            Else
-                DGINVENTORY.DataSource = BaseMaintenance.Search(QueryTableType.BOOKINVENTORY_QUERY_TABLE, TXTINVENTORYSEARCH.Text)
-            End If
-        End If
-    End Sub
-
     Private Sub DGINVENTORY_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGINVENTORY.CellClick
         If e.ColumnIndex <> chckBoxInventory.Index AndAlso e.RowIndex <> -1 Then
             Dim boundItem As DataRowView = TryCast(DGINVENTORY.Rows(e.RowIndex).DataBoundItem, DataRowView)
