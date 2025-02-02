@@ -14,7 +14,7 @@ Module DBOperations
 
     Private Sub SetQueryType(type As QueryType)
         ' The previous query executed no longer match the new query to be executed
-        ' Reset the PPREV and PMAX because we are no longer in the same tab.
+        ' Reset the PREV_PAGE_NUMBER and NEXT_PAGE_NUMBER because we are no longer in the same tab.
         If QueryType <> type Then
             QueryType = type
             QUERY_SEARCH = String.Empty
@@ -40,6 +40,11 @@ Module DBOperations
     Public Function Add(type As QueryType, params As Dictionary(Of String, String)) As Boolean
         SetQueryType(type)
         Return ExecNonQuery(QueryTable.ADD_QUERY, params) > 0
+    End Function
+
+    Public Function FetchAll(type As QueryType, Optional params As Dictionary(Of String, String) = Nothing) As DataTable
+        SetQueryType(type)
+        Return ExecFetch(QueryTable.FETCH_ALL_QUERY, params)
     End Function
 
     Public Function Search(type As QueryType) As DataTable
@@ -72,7 +77,7 @@ Module DBOperations
         }
 
         If Not IsNothing(ADVANCE_SEARCH_QUERIES) Then
-            ' Add the advance queries to search queries then clear it so the next call we will check the query again.
+            ' Collect the advance queries to search queries then clear it so the next call we will check the query again.
             For Each kv As KeyValuePair(Of String, String) In ADVANCE_SEARCH_QUERIES
                 searchQuery.Add(kv.Key, If(String.IsNullOrEmpty(kv.Value), DBNull.Value, kv.Value))
             Next
@@ -85,7 +90,7 @@ Module DBOperations
         Else
             NEXT_PAGE_NUMBER \= 30
         End If
-        Return ExecFetch(QueryTable.ADVANCE_SEARCH_COUNT_QUERY, params:=searchQuery, paginate:=PREV_PAGE_NUMBER - 1, isPaginate:=True)
+        Return ExecFetch(QueryTable.ADVANCE_SEARCH_RESULT_QUERY, params:=searchQuery, paginate:=PREV_PAGE_NUMBER - 1, isPaginate:=True)
     End Function
 
     Public Function Update(type As QueryType, params As Dictionary(Of String, String)) As Boolean
@@ -109,6 +114,6 @@ Module DBOperations
         Else
             NEXT_PAGE_NUMBER \= 30
         End If
-        Return ExecFetch(QueryTable.ARCHIVE_SEARCH_RESULT_QUERY, params:=searchQuery, paginate:=PPrev - 1, isPaginate:=True)
+        Return ExecFetch(QueryTable.ARCHIVE_SEARCH_RESULT_QUERY, params:=searchQuery, paginate:=PREV_PAGE_NUMBER - 1, isPaginate:=True)
     End Function
 End Module

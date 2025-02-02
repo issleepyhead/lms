@@ -2,6 +2,14 @@
 Imports MySql.Data.MySqlClient
 
 Module Utilities
+
+    Public Function GenerateISBN() As String
+        Dim highestISBN As Integer = ExecScalar("SELECT CAST(isbn AS SIGNED) isbn FROM tblbooks  WHERE isbn LIKE '00%' ORDER BY isbn DESC LIMIT 1")
+        If highestISBN = 0 Then
+            highestISBN += 1
+        End If
+        Return highestISBN.ToString.PadLeft(10, "0")
+    End Function
     Public Function GenerateAccession() As String
         Dim highestAccession As Integer = ExecScalar("SELECT CAST(accession_no AS SIGNED) accession FROM tblbookcopies ORDER BY accession_no DESC LIMIT 1")
         If highestAccession = 0 Then
@@ -126,45 +134,19 @@ Module Utilities
 
     Public Function FetchFacultyBorrower() As DataTable
         ' TODO Change the limit
-        Dim dt As New DataTable
-        Try
-            Dim adapter As MySqlDataAdapter
-            Using conn As New MySqlConnection(My.Settings.connection_string)
-                conn.Open()
-                Dim cmd As New MySqlCommand("SELECT st.id, full_name `Full Name`, dp.department_name `Department`
-                                                FROM tblfaculties st
-                                                LEFT JOIN tbldepartments dp ON st.department_id = dp.id
-                                                LEFT JOIN tblborrowheaders bh ON st.id = bh.faculty_id
-                                                LEFT JOIN tblborrowedcopies bc ON bh.id = bc.header_id
-                                                WHERE st.status = 1
-                                                GROUP BY full_name, dp.department_name, st.id
-                                                HAVING COUNT(bc.copy_id) < (SELECT f_count FROM tblappsettings)", conn)
-                adapter = New MySqlDataAdapter(cmd)
-                adapter.Fill(dt)
-                Return dt
-            End Using
-        Catch ex As Exception
-            Return New DataTable
-        End Try
+        Return ExecFetch("SELECT st.id, full_name `Full Name`, dp.department_name `Department`
+                            FROM tblfaculties st
+                            LEFT JOIN tbldepartments dp ON st.department_id = dp.id
+                            LEFT JOIN tblborrowheaders bh ON st.id = bh.faculty_id
+                            LEFT JOIN tblborrowedcopies bc ON bh.id = bc.header_id
+                            WHERE st.status = 1
+                            GROUP BY full_name, dp.department_name, st.id
+                            HAVING COUNT(bc.copy_id) < (SELECT f_count FROM tblappsettings)")
     End Function
 
     Public Function CheckStudent(query As String) As Integer
-        Try
-            Using conn As New MySqlConnection(My.Settings.connection_string)
-                conn.Open()
-                Dim cmd As New MySqlCommand("SELECT st.id
-                                                FROM tblstudents st
-                                                LEFT JOIN tblborrowheaders bh ON bh.student_id = st.id
-                                                LEFT JOIN tblborrowedcopies bc ON bh.id = bc.header_id
-                                                GROUP BY st.id, st.lrn, st.full_name
-                                                HAVING COUNT(CASE WHEN bc.returned_condition IS NULL THEN 1 END) < (SELECT s_count FROM tblappsettings)", conn)
-                cmd.Parameters.AddWithValue("@query", query)
-                Return cmd.ExecuteScalar()
-            End Using
-        Catch ex As Exception
-            Logger.Logger(ex)
-            Return 0
-        End Try
+        Return ExecScalar("SELECT st.id FROM tblstudents st LEFT JOIN tblborrowheaders bh ON bh.student_id = st.id LEFT JOIN tblborrowedcopies bc ON bh.id = bc.header_id GROUP BY st.id, st.lrn, st.full_name HAVING COUNT(CASE WHEN bc.returned_condition IS NULL THEN 1 END) < (SELECT s_count FROM tblappsettings)",
+                         New Dictionary(Of String, String) From {{"@query", "%" & query & "%"}})
     End Function
 
     Public Sub MarkOverDue()
@@ -234,131 +216,13 @@ Module Utilities
     End Function
 
     Public Function SearchBooksCopies(query As String) As DataTable
-        Dim dt As New DataTable
-        Try
-            Using conn As New MySqlConnection(My.Settings.connection_string)
-                conn.Open()
-                Dim cmd As New MySqlCommand("SELECT bc.id, accession_no ,title FROM tblbookcopies bc JOIN tblbooks b ON bc.book_id = b.id LEFT JOIN tbldonators d ON bc.donator_id = d.id LEFT JOIN tblsuppliers s ON bc.supplier_id = s.id WHERE bc.status = 1 AND (isbn LIKE @query OR accession_no LIKE @query OR title LIKE @query) ORDER BY b.title, accession_no", conn)
-                cmd.Parameters.AddWithValue("@query", "%" & query & "%")
-                Dim adapter As New MySqlDataAdapter(cmd)
-                adapter.Fill(dt)
-                Return dt
-            End Using
-        Catch ex As Exception
-            Return dt
-        End Try
+        Return ExecFetch("SELECT bc.id, accession_no ,title FROM tblbookcopies bc JOIN tblbooks b ON bc.book_id = b.id LEFT JOIN tbldonators d ON bc.donator_id = d.id LEFT JOIN tblsuppliers s ON bc.supplier_id = s.id WHERE bc.status = 1 AND (isbn LIKE @query OR accession_no LIKE @query OR title LIKE @query) ORDER BY b.title, accession_no",
+                        New Dictionary(Of String, String) From {{"@query", "%" & query & "%"}})
     End Function
 
     Public Function SearchBooksAccession(query As String) As DataTable
         Return ExecFetch("SELECT bc.id, accession_no ,title FROM tblbookcopies bc JOIN tblbooks b ON bc.book_id = b.id LEFT JOIN tbldonators d ON bc.donator_id = d.id LEFT JOIN tblsuppliers s ON bc.supplier_id = s.id WHERE bc.status = 1 AND accession_no = @query", New Dictionary(Of String, String) From {{"@query", query}})
     End Function
-
-    'Public Function FetchTransactions(status As Integer, Optional query As String = Nothing, Optional sdate As Date = Nothing, Optional edate As Date = Nothing) As DataTable
-    '    ' TODO WRONG FETCH
-    '    Dim params As New Dictionary(Of String, String) From {
-    '        {"@stat", status}
-    '    }
-    '    If Not String.IsNullOrEmpty(query) AndAlso sdate = Date.MinValue Then
-    '        params.Add("@query", "%" & query & "%")
-    '        DBOperations.NEXT_PAGE_NUMBER = ExecScalar("SELECT COUNT(*)
-    '                        FROM tblborrowheaders bt
-    '                        LEFT JOIN tblstudents st ON bt.student_id = st.id
-    '                        LEFT JOIN tblfaculties ft ON bt.faculty_id = ft.id
-    '                        LEFT JOIN tbladmins a ON bt.issued_by = a.id
-    '                        LEFT JOIN tblstudents ad ON a.student_id = ad.id
-    '                        LEFT JOIN tblfaculties af ON a.faculty_id = af.id
-    '                        WHERE bt.status = @stat AND (st.full_name LIKE @query OR ft.full_name LIKE @query OR ad.full_name LIKE @query OR af.full_name LIKE @query OR bt.circulation_no LIKE @query)", params)
-    '        If DBOperations.NEXT_PAGE_NUMBER Mod 30 <> 0 Then
-    '            DBOperations.NEXT_PAGE_NUMBER = (DBOperations.NEXT_PAGE_NUMBER \ 30) + 1
-    '        Else
-    '            DBOperations.NEXT_PAGE_NUMBER \= 30
-    '        End If
-    '        Return ExecFetch("SELECT bt.id, CASE WHEN bt.student_id IS NULL THEN ft.full_name ELSE st.full_name END AS full_name, circulation_no, overdue_date, borrow_date,
-    '                        CASE WHEN a.student_id IS NULL THEN af.full_name ELSE ad.full_name END AS issued_by
-    '                        FROM tblborrowheaders bt
-    '                        LEFT JOIN tblstudents st ON bt.student_id = st.id
-    '                        LEFT JOIN tblfaculties ft ON bt.faculty_id = ft.id
-    '                        LEFT JOIN tbladmins a ON bt.issued_by = a.id
-    '                        LEFT JOIN tblstudents ad ON a.student_id = ad.id
-    '                        LEFT JOIN tblfaculties af ON a.faculty_id = af.id
-    '                        WHERE bt.status = @stat AND (st.full_name LIKE @query OR ft.full_name LIKE @query OR ad.full_name LIKE @query OR af.full_name LIKE @query OR bt.circulation_no LIKE @query)", params)
-    '    ElseIf Not String.IsNullOrEmpty(query) AndAlso sdate <> Date.MinValue Then
-    '        params.Add("@query", "%" & query & "%")
-    '        params.Add("@sdate", sdate.ToString("yyyy-MM-dd"))
-    '        params.Add("@edate", edate.ToString("yyyy-MM-dd"))
-    '        DBOperations.NEXT_PAGE_NUMBER = ExecScalar("SELECT COUNT(*)
-    '                        FROM tblborrowheaders bt
-    '                        LEFT JOIN tblstudents st ON bt.student_id = st.id
-    '                        LEFT JOIN tblfaculties ft ON bt.faculty_id = ft.id
-    '                        LEFT JOIN tbladmins a ON bt.issued_by = a.id
-    '                        LEFT JOIN tblstudents ad ON a.student_id = ad.id
-    '                        LEFT JOIN tblfaculties af ON a.faculty_id = af.id
-    '                        WHERE bt.status = @stat AND (st.full_name LIKE @query OR ft.full_name LIKE @query OR ad.full_name LIKE @query OR af.full_name LIKE @query OR bt.circulation_no LIKE @query) AND (borrow_date BETWEEN @sdate AND @edate OR overdue_date BETWEEN @sdate AND @edate)", params)
-    '        If DBOperations.NEXT_PAGE_NUMBER Mod 30 <> 0 Then
-    '            DBOperations.NEXT_PAGE_NUMBER = (DBOperations.NEXT_PAGE_NUMBER \ 30) + 1
-    '        Else
-    '            DBOperations.NEXT_PAGE_NUMBER \= 30
-    '        End If
-    '        Return ExecFetch("SELECT bt.id, CASE WHEN bt.student_id IS NULL THEN ft.full_name ELSE st.full_name END AS full_name, circulation_no, overdue_date, borrow_date,
-    '                        CASE WHEN a.student_id IS NULL THEN af.full_name ELSE ad.full_name END AS issued_by
-    '                        FROM tblborrowheaders bt
-    '                        LEFT JOIN tblstudents st ON bt.student_id = st.id
-    '                        LEFT JOIN tblfaculties ft ON bt.faculty_id = ft.id
-    '                        LEFT JOIN tbladmins a ON bt.issued_by = a.id
-    '                        LEFT JOIN tblstudents ad ON a.student_id = ad.id
-    '                        LEFT JOIN tblfaculties af ON a.faculty_id = af.id
-    '                        WHERE bt.status = @stat AND (st.full_name LIKE @query OR ft.full_name LIKE @query OR ad.full_name LIKE @query OR af.full_name LIKE @query OR bt.circulation_no LIKE @query) AND (borrow_date BETWEEN @sdate AND @edate OR overdue_date BETWEEN @sdate AND @edate)", params)
-    '    ElseIf String.IsNullOrEmpty(query) AndAlso sdate <> Date.MinValue Then
-    '        params.Add("@sdate", sdate.ToString("yyyy-MM-dd"))
-    '        params.Add("@edate", edate.ToString("yyyy-MM-dd"))
-    '        DBOperations.NEXT_PAGE_NUMBER = ExecScalar("SELECT COUNT(*)
-    '                        FROM tblborrowheaders bt
-    '                        LEFT JOIN tblstudents st ON bt.student_id = st.id
-    '                        LEFT JOIN tblfaculties ft ON bt.faculty_id = ft.id
-    '                        LEFT JOIN tbladmins a ON bt.issued_by = a.id
-    '                        LEFT JOIN tblstudents ad ON a.student_id = ad.id
-    '                        LEFT JOIN tblfaculties af ON a.faculty_id = af.id
-    '                        WHERE bt.status = @stat AND (borrow_date BETWEEN @sdate AND @edate OR overdue_date BETWEEN @sdate AND @edate)", params)
-    '        If DBOperations.NEXT_PAGE_NUMBER Mod 30 <> 0 Then
-    '            DBOperations.NEXT_PAGE_NUMBER = (DBOperations.NEXT_PAGE_NUMBER \ 30) + 1
-    '        Else
-    '            DBOperations.NEXT_PAGE_NUMBER \= 30
-    '        End If
-    '        Return ExecFetch("SELECT bt.id, CASE WHEN bt.student_id IS NULL THEN ft.full_name ELSE st.full_name END AS full_name, circulation_no, overdue_date, borrow_date,
-    '                        CASE WHEN a.student_id IS NULL THEN af.full_name ELSE ad.full_name END AS issued_by
-    '                        FROM tblborrowheaders bt
-    '                        LEFT JOIN tblstudents st ON bt.student_id = st.id
-    '                        LEFT JOIN tblfaculties ft ON bt.faculty_id = ft.id
-    '                        LEFT JOIN tbladmins a ON bt.issued_by = a.id
-    '                        LEFT JOIN tblstudents ad ON a.student_id = ad.id
-    '                        LEFT JOIN tblfaculties af ON a.faculty_id = af.id
-    '                        WHERE bt.status = @stat AND (borrow_date BETWEEN @sdate AND @edate OR overdue_date BETWEEN @sdate AND @edate)", params)
-    '    Else
-    '        DBOperations.NEXT_PAGE_NUMBER = ExecScalar("SELECT COUNT(*)
-    '                        FROM tblborrowheaders bt
-    '                        LEFT JOIN tblstudents st ON bt.student_id = st.id
-    '                        LEFT JOIN tblfaculties ft ON bt.faculty_id = ft.id
-    '                        LEFT JOIN tbladmins a ON bt.issued_by = a.id
-    '                        LEFT JOIN tblstudents ad ON a.student_id = ad.id
-    '                        LEFT JOIN tblfaculties af ON a.faculty_id = af.id
-    '                        WHERE bt.status = @stat", params)
-    '        If DBOperations.NEXT_PAGE_NUMBER Mod 30 <> 0 Then
-    '            DBOperations.NEXT_PAGE_NUMBER = (DBOperations.NEXT_PAGE_NUMBER \ 30) + 1
-    '        Else
-    '            DBOperations.NEXT_PAGE_NUMBER \= 30
-    '        End If
-    '        Return ExecFetch("SELECT bt.id, CASE WHEN bt.student_id IS NULL THEN ft.full_name ELSE st.full_name END AS full_name, circulation_no, overdue_date, borrow_date,
-    '                        CASE WHEN a.student_id IS NULL THEN af.full_name ELSE ad.full_name END AS issued_by
-    '                        FROM tblborrowheaders bt
-    '                        LEFT JOIN tblstudents st ON bt.student_id = st.id
-    '                        LEFT JOIN tblfaculties ft ON bt.faculty_id = ft.id
-    '                        LEFT JOIN tbladmins a ON bt.issued_by = a.id
-    '                        LEFT JOIN tblstudents ad ON a.student_id = ad.id
-    '                        LEFT JOIN tblfaculties af ON a.faculty_id = af.id
-    '                        WHERE bt.status = @stat", params, DBOperations.PREV_PAGE_NUMBER - 1, True)
-    '    End If
-    'End Function
-
     Public Function CountBooksBorrowedStudent(sid As Integer) As Integer
         Return ExecScalar("SELECT COUNT(CASE WHEN bc.returned_condition IS NULL THEN 1 END) AS borrowed
                             FROM tblborrowheaders bh

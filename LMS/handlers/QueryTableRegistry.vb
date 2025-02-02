@@ -198,7 +198,7 @@ Module QueryTableRegistry
                             LEFT JOIN tbladmins a ON bt.issued_by = a.id
                             LEFT JOIN tblstudents ad ON a.student_id = ad.id
                             LEFT JOIN tblfaculties af ON a.faculty_id = af.id
-                            WHERE bt.status = @stat AND (st.full_name LIKE @search OR ft.full_name LIKE @search OR ad.full_name LIKE @search OR af.full_name LIKE @search OR bt.circulation_no LIKE @search) AND (borrow_date BETWEEN @sdate AND @edate OR overdue_date BETWEEN @sdate AND @edate)",
+                            WHERE bt.status = @stat AND (st.full_name LIKE @search OR ft.full_name LIKE @search OR ad.full_name LIKE @search OR af.full_name LIKE @search OR bt.circulation_no LIKE @search) AND (borrow_date BETWEEN @sdate AND DATE_ADD(@edate, INTERVAL 1 DAY))",
             .ADVANCE_SEARCH_RESULT_QUERY = "SELECT bt.id, CASE WHEN bt.student_id IS NULL THEN ft.full_name ELSE st.full_name END AS full_name, circulation_no, overdue_date, borrow_date,
                             CASE WHEN a.student_id IS NULL THEN af.full_name ELSE ad.full_name END AS issued_by
                             FROM tblborrowheaders bt
@@ -207,7 +207,7 @@ Module QueryTableRegistry
                             LEFT JOIN tbladmins a ON bt.issued_by = a.id
                             LEFT JOIN tblstudents ad ON a.student_id = ad.id
                             LEFT JOIN tblfaculties af ON a.faculty_id = af.id
-                            WHERE bt.status = @stat AND (st.full_name LIKE @search OR ft.full_name LIKE @search OR ad.full_name LIKE @search OR af.full_name LIKE @search OR bt.circulation_no LIKE @search) AND (borrow_date BETWEEN @sdate AND @edate OR overdue_date BETWEEN @sdate AND @edate)
+                            WHERE bt.status = @stat AND (st.full_name LIKE @search OR ft.full_name LIKE @search OR ad.full_name LIKE @search OR af.full_name LIKE @search OR bt.circulation_no LIKE @search) AND (borrow_date BETWEEN @sdate AND DATE_ADD(@edate, INTERVAL 1 DAY))
                             ORDER BY bt.circulation_no LIMIT @page, 30;"
         }},
         {BOOKLOSTDAMAGE, New QueryTable With {
@@ -230,6 +230,13 @@ Module QueryTableRegistry
                                     LEFT JOIN tblstudents s ON bh.student_id = s.id
                                     LEFT JOIN tblfaculties f ON bh.faculty_id = f.id
                                     WHERE (bc.returned_condition = 2 OR bc.returned_condition = 1) AND (b.title LIKE @search OR c.accession_no LIKE @search OR bh.circulation_no LIKE @search);"
+        }},
+        {SETTINGS, New QueryTable With {
+            .UPDATE_QUERY = "UPDATE tblappsettings SET gpenalty = @gp, spenalty = @sp, fpenalty = @fp, s_count = @sc, f_count = @fc, enable_notification = @en, sdays = @sd, fdays = @fd WHERE id > 0",
+            .FETCH_ALL_QUERY = "SELECT * FROM tblappsettings"
+        }},
+        {EMAILSETTINGS, New QueryTable With {
+            .UPDATE_QUERY = "UPDATE tblappsettings SET app_email = @email, e_pass = @pass, return_message = @return, overdue_message = @overdue, borrow_message = @borrow, boverdue_message = @before WHERE id > 0"
         }}
     }
 

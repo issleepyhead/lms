@@ -1,4 +1,4 @@
-﻿Imports System.Windows.Forms
+﻿Imports LMS.QueryType
 
 Public Class SectionDialog
     Private _data As DataRowView
@@ -25,20 +25,20 @@ Public Class SectionDialog
                 {"@id", If(IsNothing(_data), 0, _data.Item("id").ToString)}
         }
 
-        If BaseMaintenance.Exists(QueryTableType.SECTION_QUERY_TABLE, data) Then
+        If DBOperations.Exists(SECTION, data) Then
             errProvider.SetError(TXTSECTIONNAME, "This section already exists.")
             Exit Sub
         End If
 
         If IsNothing(_data) Then
-            If BaseMaintenance.Add(QueryTableType.SECTION_QUERY_TABLE, data) Then
+            If DBOperations.Add(SECTION, data) Then
                 MessageBox.Show("Section has been added successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
                 MessageBox.Show("Failed adding the section.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 Exit Sub
             End If
         Else
-            If BaseMaintenance.Update(QueryTableType.SECTION_QUERY_TABLE, data) Then
+            If DBOperations.Update(SECTION, data) Then
                 MessageBox.Show("Section has been updated successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
                 MessageBox.Show("Failed updating the section.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -49,7 +49,7 @@ Public Class SectionDialog
     End Sub
 
     Private Sub SectionDialog_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        CMBYEARLEVEL.DataSource = BaseMaintenance.FetchAll(QueryTableType.YEARLEVEL_QUERY_TABLE)
+        CMBYEARLEVEL.DataSource = DBOperations.FetchAll(YEARLEVEL)
         If Not IsNothing(_data) Then
             TXTSECTIONNAME.Text = _data.Item("name")
             CMBYEARLEVEL.SelectedValue = _data.Item("year_id")

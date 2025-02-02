@@ -6,6 +6,7 @@
     Property TXTSEARCH As Guna.UI2.WinForms.Guna2TextBox
     Property DIALOG_NAME As Type
 
+
     Public Sub OpenDialog(Optional filter As STATUSTYPE = STATUSTYPE.ACTIVE)
         Using dialog As Form = Activator.CreateInstance(DIALOG_NAME)
             dialog.ShowDialog()
@@ -65,11 +66,51 @@
         If sdate = Date.MinValue Then
             DG.DataSource = DBOperations.Search(QUERY_TYPE)
         Else
-            ADVANCE_SEARCH_QUERIES.Add("@sdate", sdate.ToShortDateString)
-            ADVANCE_SEARCH_QUERIES.Add("@edate", edate.ToShortDateString)
+            ADVANCE_SEARCH_QUERIES.Add("@sdate", sdate.ToString("yyyy-MM-dd"))
+            ADVANCE_SEARCH_QUERIES.Add("@edate", edate.ToString("yyyy-MM-dd"))
             DG.DataSource = DBOperations.AdvanceSearch(QUERY_TYPE)
         End If
         LBLNEXT.Text = DBOperations.NEXT_PAGE_NUMBER
         LBLPREV.Text = DBOperations.PREV_PAGE_NUMBER
+    End Sub
+
+    Private Sub GetCMBName()
+        For Each item As DataGridViewColumn In DG.Columns
+            If item.GetType() Is GetType(DataGridViewCheckBoxColumn) Then
+                'CHECKBOX_NAME = item.Name
+            End If
+        Next
+    End Sub
+
+    Public Sub Delete(action As Action(Of List(Of Dictionary(Of String, String)), QueryType))
+        DG.EndEdit()
+        Dim cboxName As String = Nothing
+        Dim cellName As String = Nothing
+        Dim params As New List(Of Dictionary(Of String, String))
+
+        For Each item As DataGridViewColumn In DG.Columns
+            If item.GetType() Is GetType(DataGridViewCheckBoxColumn) Then
+                cboxName = item.Name
+            End If
+
+            If item.DataPropertyName = "id" Then
+                cellName = item.Name
+            End If
+        Next
+
+        For Each data As DataGridViewRow In DG.Rows
+            If data.Cells(cboxName).Value Then
+                Dim temp As New Dictionary(Of String, String) From {
+                    {"@id", data.Cells(cellName).Value.ToString}
+                }
+                params.Add(temp)
+            End If
+        Next
+
+        If Not IsNothing(action) Then
+            action.Invoke(params, QUERY_TYPE)
+        End If
+
+        Update()
     End Sub
 End Class

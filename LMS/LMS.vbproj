@@ -323,7 +323,6 @@
     <Compile Include="modules\import\ImportDBHandler.vb" />
     <Compile Include="modules\import\ExcelDataLoader.vb" />
     <Compile Include="modules\Logger.vb" />
-    <Compile Include="modules\maintenance\BaseMaintenance.vb" />
     <Compile Include="handlers\Types.vb" />
     <Compile Include="modules\maintenance\MaintenanceQueries.vb" />
     <Compile Include="modules\maintenance\QueryTableFactory.vb" />

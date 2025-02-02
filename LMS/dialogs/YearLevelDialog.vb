@@ -1,4 +1,4 @@
-﻿Imports System.Windows.Forms
+﻿Imports LMS.QueryType
 
 Public Class YearLevelDialog
     Private _data As DataRowView
@@ -14,7 +14,7 @@ Public Class YearLevelDialog
     End Sub
 
     Private Sub YearLevelDialog_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        CMBDEPARTMENT.DataSource = BaseMaintenance.FetchAll(QueryTableType.DEPARTMENT_QUERY_TABLE)
+        CMBDEPARTMENT.DataSource = DBOperations.FetchAll(DEPARTMENT)
         If Not IsNothing(_data) Then
             TXTNAME.Text = _data.Item("year_level")
             CMBDEPARTMENT.SelectedValue = _data.Item("department_id")
@@ -35,20 +35,20 @@ Public Class YearLevelDialog
                 {"@id", If(IsNothing(_data), 0, _data.Item("id").ToString)}
         }
 
-        If BaseMaintenance.Exists(QueryTableType.YEARLEVEL_QUERY_TABLE, data) Then
+        If DBOperations.Exists(YEARLEVEL, data) Then
             errProvider.SetError(TXTNAME, "This year level already exists.")
             Exit Sub
         End If
 
         If IsNothing(_data) Then
-            If BaseMaintenance.Add(QueryTableType.YEARLEVEL_QUERY_TABLE, data) Then
+            If DBOperations.Add(YEARLEVEL, data) Then
                 MessageBox.Show("Year level has been added successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
                 MessageBox.Show("Failed adding the year level.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 Exit Sub
             End If
         Else
-            If BaseMaintenance.Update(QueryTableType.YEARLEVEL_QUERY_TABLE, data) Then
+            If DBOperations.Update(YEARLEVEL, data) Then
                 MessageBox.Show("Year level has been updated successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
                 MessageBox.Show("Failed updating the year level.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)

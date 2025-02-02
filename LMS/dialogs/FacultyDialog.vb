@@ -1,4 +1,4 @@
-﻿Imports System.Windows.Forms
+﻿Imports LMS.QueryType
 
 Public Class FacultyDialog
     Private _data As DataRowView
@@ -13,7 +13,7 @@ Public Class FacultyDialog
     End Sub
 
     Private Sub StudentDialog_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        CMBDEPARTMENT.DataSource = BaseMaintenance.FetchAll(QueryTableType.DEPARTMENT_QUERY_TABLE)
+        CMBDEPARTMENT.DataSource = DBOperations.FetchAll(DEPARTMENT)
         If Not IsNothing(_data) Then
             TXTUSERNAME.Enabled = False
             TXTFULLNAME.Text = _data.Row("full_name")
@@ -49,20 +49,20 @@ Public Class FacultyDialog
                 {"@passwd", BCrypt.Net.BCrypt.HashPassword(firstLetterName & lastName & year)}
         }
 
-        If BaseMaintenance.Exists(QueryTableType.FACULTY_QUERY_TABLE, data) Then
+        If DBOperations.Exists(FACULTY, data) Then
             errProvider.SetError(TXTEMAIL, "This email already exists.")
             Exit Sub
         End If
 
         If IsNothing(_data) Then
-            If BaseMaintenance.Add(QueryTableType.FACULTY_QUERY_TABLE, data) Then
+            If DBOperations.Add(FACULTY, data) Then
                 MessageBox.Show("Faculty/Teacher has been added successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
                 MessageBox.Show("Failed adding the faculty/teacher.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 Exit Sub
             End If
         Else
-            If BaseMaintenance.Update(QueryTableType.FACULTY_QUERY_TABLE, data) Then
+            If DBOperations.Update(FACULTY, data) Then
                 MessageBox.Show("Faculty/Teacher has been updated successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
                 MessageBox.Show("Failed updating the faculty/teacher.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)

@@ -20,7 +20,8 @@ Public Class DashboardForm
     Private IS_LOADED As Boolean = False
     Private CURRENT_TAG As String = String.Empty
 
-    Private Sub DashboardForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Sub New()
+        InitializeComponent()
         ControlsMap = New Dictionary(Of String, ControlMapping) From {
             {NameOf(GENRE), New ControlMapping With {.DG = DGGENRE, .LBLNEXT = LBLGENRENEXT, .LBLPREV = LBLGENREPREV, .TXTSEARCH = TXTGENRESEARCH, .DIALOG_NAME = GenreDialog.GetType(), .QUERY_TYPE = GENRE}},
             {NameOf(AUTHOR), New ControlMapping With {.DG = DGAUTHORS, .LBLNEXT = LBLAUTHORNEXT, .LBLPREV = LBLAUTHORPREV, .TXTSEARCH = TXTSEARCHAUTHOR, .DIALOG_NAME = AuthorDialog.GetType(), .QUERY_TYPE = AUTHOR}},
@@ -41,8 +42,9 @@ Public Class DashboardForm
             {NameOf(BOOKLOSTDAMAGE), New ControlMapping With {.DG = DGLOSTDAMAGE, .LBLNEXT = LBLLOSTDAMAGENEXT, .LBLPREV = LBLLOSTDAMAGEPREV, .TXTSEARCH = TXTLOSTDAMAGESEARCH, .QUERY_TYPE = BOOKLOSTDAMAGE}},
             {NameOf(TRANSACTION), New ControlMapping With {.DG = DGTRANSACTION, .LBLNEXT = LBLTRANSACTIONNEXT, .LBLPREV = LBLTRANSACTIONPREV, .TXTSEARCH = TXTTRANSACTIONSEARCH, .QUERY_TYPE = TRANSACTION}}
         }
+    End Sub
 
-
+    Private Sub DashboardForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         BookInventoryPanels_SelectedIndexChanged(BookInventoryPanels, Nothing)
         DGTRANSACTION.Columns(NameOf(ColumnOverdueDate)).DisplayIndex = DGTRANSACTION.Columns.Count - 1
         IS_LOADED = True
@@ -111,45 +113,37 @@ Public Class DashboardForm
             ElseIf MainFormPanels.SelectedTab.Equals(BookInventoryTab) Then
                 TabSelected(BookInventoryPanels, Nothing)
             Else
-                Dim type As TRANSACTIONSTATE
-                If CMBTRANSACTIONFILTER.Text.ToLower() = NameOf(TRANSACTIONSTATE.ACTIVE).ToLower() Then
-                    type = TRANSACTIONSTATE.ACTIVE
-                ElseIf CMBTRANSACTIONFILTER.Text.ToLower() = NameOf(TRANSACTIONSTATE.OVERDUE).ToLower() Then
-                    type = TRANSACTIONSTATE.OVERDUE
-                Else
-                    type = TRANSACTIONSTATE.RETURNED
-                End If
-                ControlsMap.Item(BookTransactionTab.Tag).Update(type)
+                FilterTransactionHelper()
             End If
         End If
     End Sub
 #End Region
-
+    Private Sub FilterTransactionHelper()
+        Dim type As TRANSACTIONSTATE
+        If CMBTRANSACTIONFILTER.Text.ToLower() = NameOf(TRANSACTIONSTATE.ACTIVE).ToLower() Then
+            type = TRANSACTIONSTATE.ACTIVE
+        ElseIf CMBTRANSACTIONFILTER.Text.ToLower() = NameOf(TRANSACTIONSTATE.OVERDUE).ToLower() Then
+            type = TRANSACTIONSTATE.OVERDUE
+        Else
+            type = TRANSACTIONSTATE.RETURNED
+        End If
+        ControlsMap.Item(BookTransactionTab.Tag).Update(type)
+    End Sub
 #Region "Tab Selection"
     Private Sub MainFormPanels_SelectedIndexChanged(sender As Object, e As EventArgs) Handles MainFormPanels.SelectedIndexChanged
         Select Case True
             Case MainFormPanels.SelectedTab.Equals(BookTransactionTab)
-                Dim type As TRANSACTIONSTATE
-                If CMBTRANSACTIONFILTER.Text.ToLower() = NameOf(TRANSACTIONSTATE.ACTIVE).ToLower() Then
-                    type = TRANSACTIONSTATE.ACTIVE
-                ElseIf CMBTRANSACTIONFILTER.Text.ToLower() = NameOf(TRANSACTIONSTATE.OVERDUE).ToLower() Then
-                    type = TRANSACTIONSTATE.OVERDUE
-                Else
-                    type = TRANSACTIONSTATE.RETURNED
-                End If
-                ControlsMap.Item(BookTransactionTab.Tag).Update(type)
+                FilterTransactionHelper()
             Case MainFormPanels.SelectedTab.Equals(BookInventoryTab)
-                DGBOOKCOPIES.DataSource = BaseMaintenance.Fetch(QueryTableType.BOOKCOPIES_QUERY_TABLE)
-                LBLCOPIESPREV.Text = BaseMaintenance.PPrev
-                LBLCOPIESNEXT.Text = BaseMaintenance.PMAX
+                ControlsMap.Item(CopiesTab.Tag).Update()
 
-                Dim dtDonator As DataTable = BaseMaintenance.FetchAll(QueryTableType.DONATOR_QUERY_TABLE)
+                Dim dtDonator As DataTable = DBOperations.FetchAll(DONATOR)
                 Dim newRow As DataRow = dtDonator.NewRow()
                 newRow("id") = 0
                 newRow("name") = "None"
                 dtDonator.Rows.InsertAt(newRow, 0)
 
-                Dim dtSupplier As DataTable = BaseMaintenance.FetchAll(QueryTableType.SUPPLIER_QUERY_TABLE)
+                Dim dtSupplier As DataTable = DBOperations.FetchAll(SUPPLIER)
                 newRow = dtSupplier.NewRow()
                 newRow("id") = 0
                 newRow("name") = "None"
@@ -188,6 +182,7 @@ Public Class DashboardForm
     End Sub
 #End Region
 
+    ' TODO FIX THIS SAME ROUTINE
 #Region "Retrieve Selection"
     Private Sub RetrieveBookSelection()
         For Each item As DataGridViewRow In DGBOOKS.Rows
@@ -232,6 +227,20 @@ Public Class DashboardForm
             ElseIf sender.SelectedIndex = 1 Then
                 ControlsMap.Item(sender.Tag).Update(STATUSTYPE.INACTIVE)
             End If
+        End If
+    End Sub
+
+    Private Sub CMBTRANSACTIONFILTER_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CMBTRANSACTIONFILTER.SelectedIndexChanged
+        If IS_LOADED Then
+            Dim type As TRANSACTIONSTATE
+            If CMBTRANSACTIONFILTER.Text.ToLower() = NameOf(TRANSACTIONSTATE.ACTIVE).ToLower() Then
+                type = TRANSACTIONSTATE.ACTIVE
+            ElseIf CMBTRANSACTIONFILTER.Text.ToLower() = NameOf(TRANSACTIONSTATE.OVERDUE).ToLower() Then
+                type = TRANSACTIONSTATE.OVERDUE
+            Else
+                type = TRANSACTIONSTATE.RETURNED
+            End If
+            ControlsMap.Item(BookTransactionTab.Tag).Update(type)
         End If
     End Sub
 #End Region
@@ -302,6 +311,7 @@ Public Class DashboardForm
     End Sub
 #End Region
 
+    ' ALL FIXED
 #Region "Select All Datagrid"
     Public Sub SelectionHelper(dg As Object, chckName As String)
         For Each item As DataGridViewRow In dg.Rows
@@ -332,6 +342,7 @@ Public Class DashboardForm
     End Sub
 #End Region
 
+    ' ALL FIXED
 #Region "Unselect All"
     Public Sub UnselectHelper(dg As Object, chckName As String)
         For Each item As DataGridViewRow In dg.Rows
@@ -362,45 +373,19 @@ Public Class DashboardForm
     End Sub
 #End Region
 
+    ' ALL FIXED
 #Region "Remove Selected"
     Private Sub RemoveSelectedToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RemoveToolStripMenuItem.Click
         ' TODO PERFORM A CHECK BEFORE DELETING THE DATA
         If MainFormPanels.SelectedTab.Equals(MaintenanceTab) Then
-            Select Case True
-                Case MaintenancePanels.SelectedTab.Equals(GenresTab)
-                    DeleteHelper(DGGENRE, QueryTableType.GENRE_QUERY_TABLE, NameOf(chckBoxGenre), NameOf(ColumnGenreID))
-
-                Case MaintenancePanels.SelectedTab.Equals(AuthorTab)
-                    DeleteHelper(DGAUTHORS, QueryTableType.AUTHOR_QUERY_TABLE, NameOf(chckBoxAuthor), NameOf(ColumnAuthorID))
-
-                Case MaintenancePanels.SelectedTab.Equals(PublishhersTab)
-                    DeleteHelper(DGPUBLISHER, QueryTableType.PUBLISHER_QUERY_TABLE, NameOf(chckBoxPublisher), NameOf(ColumnPublisherID))
-
-                Case MaintenancePanels.SelectedTab.Equals(ClassificationTab)
-                    DeleteHelper(DGCLASSIFICATIONS, QueryTableType.CLASSIFICATION_QUERY_TABLE, NameOf(chckBoxClassification), NameOf(ColumnClassificationID))
-
-                Case MaintenancePanels.SelectedTab.Equals(LanguagesTab)
-                    DeleteHelper(DGLANGUAGE, QueryTableType.LANGUAGES_QUERY_TABLE, NameOf(chckBoxLanguage), NameOf(ColumnLanguageID))
-
-                Case MaintenancePanels.SelectedTab.Equals(DonatorsTab)
-                    DeleteHelper(DGDONATOR, QueryTableType.DONATOR_QUERY_TABLE, NameOf(chckBoxDonator), NameOf(ColumnDonatorID))
-
-                Case MaintenancePanels.SelectedTab.Equals(SuppliersTab)
-                    DeleteHelper(DGSUPPLIER, QueryTableType.SUPPLIER_QUERY_TABLE, NameOf(chckBoxSupplier), NameOf(ColumnSupplierID))
-            End Select
+            ControlsMap.Item(MaintenancePanels.SelectedTab.Tag).Delete(AddressOf DeleteHelper)
         Else
-            Select Case True
-                Case AccountsPanel.SelectedTab.Equals(DepartmentTab)
-                    DeleteHelper(DGDEPARTMENT, QueryTableType.DEPARTMENT_QUERY_TABLE, NameOf(chckBoxDepartment), NameOf(ColumnDepartmentID))
-                Case AccountsPanel.SelectedTab.Equals(YearLevelTab)
-                    DeleteHelper(DGYEARLEVEL, QueryTableType.YEARLEVEL_QUERY_TABLE, NameOf(chckBoxYearLevel), NameOf(ColumnYearLevelID))
-                Case AccountsPanel.SelectedTab.Equals(SectionTab)
-                    DeleteHelper(DGSECTIONS, QueryTableType.SECTION_QUERY_TABLE, NameOf(chckBoxSection), NameOf(ColumnSectionID))
-            End Select
+            ControlsMap.Item(AccountsPanel.SelectedTab.Tag).Delete(AddressOf DeleteHelper)
         End If
     End Sub
 #End Region
 
+    ' ALL FIXED
 #Region "Import Module"
     Private Sub BTNIMPORTS_Click(sender As Object, e As EventArgs) Handles BTNIMPORTBOOKS.Click, BTNIMPORTFACULTY.Click, BTNIMPORTSTUDENTS.Click
         Select Case True
@@ -432,48 +417,19 @@ Public Class DashboardForm
     End Sub
 #End Region
 
-    '#Region "Account Panel"
-    '    Private Sub AccountsPanel_SelectedIndexChanged(sender As Object, e As EventArgs) Handles AccountsPanel.SelectedIndexChanged
-    '        Select Case True
-    '            Case AccountsPanel.SelectedTab.Equals(DepartmentTab)
-    '                LoadTabData(DGDEPARTMENT, LBLDEPARTMENTPREV, LBLDEPARTMENTNEXT, QueryTableType.DEPARTMENT_QUERY_TABLE, TXTDEPARTMENTSEARCH)
-
-    '            Case AccountsPanel.SelectedTab.Equals(YearLevelTab)
-    '                LoadTabData(DGYEARLEVEL, LBLYEARLEVELPREV, LBLYEARLEVELNEXT, QueryTableType.YEARLEVEL_QUERY_TABLE, TXTYEARLEVELSEARCH)
-
-    '            Case AccountsPanel.SelectedTab.Equals(SectionTab)
-    '                LoadTabData(DGSECTIONS, LBLSECTIONPREV, LBLSECTIONNEXT, QueryTableType.SECTION_QUERY_TABLE, TXTSECTIONSEARCH)
-
-    '            Case AccountsPanel.SelectedTab.Equals(StudentsTab)
-    '                SELECTED_STUDENTS = New SystemDataSets.DTStudentDataTable
-    '                LoadTabData(DGSTUDENT, LBLSTUDENTPREV, LBLSTUDENTNEXT, QueryTableType.STUDENT_QUERY_TABLE, TXTSTUDENTSEARCH)
-
-    '            Case AccountsPanel.SelectedTab.Equals(FacultyTab)
-    '                SELECTED_FACULTY = New SystemDataSets.DTFacultyDataTable
-    '                LoadTabData(DGFACULTY, LBLFACULTYPREV, LBLFACULTYNEXT, QueryTableType.FACULTY_QUERY_TABLE, TXTFACULTYSEARCH)
-
-    '            Case AccountsPanel.SelectedTab.Equals(AdminTab)
-    '                LoadTabData(DGADMINISTRATOR, LBLADMINPREV, LBLADMINNEXT, QueryTableType.ADMIN_QUERY_TABLE, TXTADMINSEARCH)
-
-    '        End Select
-    '    End Sub
-    '#End Region
-
 #Region "BookInventory Panels"
     Private Sub BookInventoryPanels_SelectedIndexChanged(sender As Object, e As EventArgs) Handles BookInventoryPanels.SelectedIndexChanged
         Select Case True
             Case BookInventoryPanels.SelectedTab.Equals(CopiesTab)
-                DGBOOKCOPIES.DataSource = BaseMaintenance.Fetch(QueryTableType.BOOKCOPIES_QUERY_TABLE)
-                LBLCOPIESPREV.Text = BaseMaintenance.PPrev
-                LBLCOPIESNEXT.Text = BaseMaintenance.PMAX
+                ControlsMap.Item(CopiesTab.Tag).Update()
 
-                Dim dtDonator As DataTable = BaseMaintenance.FetchAll(QueryTableType.DONATOR_QUERY_TABLE)
+                Dim dtDonator As DataTable = DBOperations.FetchAll(DONATOR)
                 Dim newRow As DataRow = dtDonator.NewRow()
                 newRow("id") = 0
                 newRow("name") = "None"
                 dtDonator.Rows.InsertAt(newRow, 0)
 
-                Dim dtSupplier As DataTable = BaseMaintenance.FetchAll(QueryTableType.SUPPLIER_QUERY_TABLE)
+                Dim dtSupplier As DataTable = DBOperations.FetchAll(SUPPLIER)
                 newRow = dtSupplier.NewRow()
                 newRow("id") = 0
                 newRow("name") = "None"
@@ -484,9 +440,7 @@ Public Class DashboardForm
                 CMBDONATORCOPIES.DataSource = dtDonator
                 CMBSUPPLIERCOPIES.DataSource = dtSupplier
             Case BookInventoryPanels.SelectedTab.Equals(InventoryTab)
-                DGINVENTORY.DataSource = BaseMaintenance.Fetch(QueryTableType.BOOKINVENTORY_QUERY_TABLE)
-                LBLINVENTORYPREV.Text = BaseMaintenance.PPrev
-                LBLINVENTORYNEXT.Text = BaseMaintenance.PMAX
+                ControlsMap.Item(InventoryTab.Tag).Update()
         End Select
     End Sub
 #End Region
@@ -512,7 +466,6 @@ Public Class DashboardForm
             End If
         End If
         DGSTUDENT.EndEdit()
-        'CMBSTUDENTFILTER_SelectedIndexChanged(CMBSTUDENTFILTER, Nothing)
         SELECTED_STUDENTS = New SystemDataSets.DTStudentDataTable
     End Sub
 
@@ -548,14 +501,13 @@ Public Class DashboardForm
             For Each item As DataRow In SELECTED_STUDENTS.Rows
                 collection.Add(New Dictionary(Of String, String) From {{"@id", item.Item("id")}})
             Next
-            If ExecTransactionNonQuery(ARCHIVE_STUDENT_QUERY, collection) Then
-                MessageBox.Show("Archived Successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Else
-                MessageBox.Show("Archiving failed.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            End If
+            'If ExecTransactionNonQuery(ARCHIVE_STUDENT_QUERY, collection) Then
+            '    MessageBox.Show("Archived Successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            'Else
+            '    MessageBox.Show("Archiving failed.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            'End If
         End If
         DGSTUDENT.EndEdit()
-        'CMBSTUDENTFILTER_SelectedIndexChanged(CMBSTUDENTFILTER, Nothing)
         SELECTED_STUDENTS = New SystemDataSets.DTStudentDataTable
     End Sub
 
@@ -569,11 +521,11 @@ Public Class DashboardForm
             For Each item As DataRow In SELECTED_STUDENTS.Rows
                 collection.Add(New Dictionary(Of String, String) From {{"@id", item.Item("id")}})
             Next
-            If ExecTransactionNonQuery(UNARCHIVE_STUDENT_QUERY, collection) Then
-                MessageBox.Show("Unarchived Successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Else
-                MessageBox.Show("Unarchive failed.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            End If
+            'If ExecTransactionNonQuery(UNARCHIVE_STUDENT_QUERY, collection) Then
+            '    MessageBox.Show("Unarchived Successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            'Else
+            '    MessageBox.Show("Unarchive failed.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            'End If
         End If
         'CMBSTUDENTFILTER_SelectedIndexChanged(CMBSTUDENTFILTER, Nothing)
         SELECTED_STUDENTS = New SystemDataSets.DTStudentDataTable
@@ -595,11 +547,11 @@ Public Class DashboardForm
             collection.Add(New Dictionary(Of String, String) From {{"@id", item.Item("id")}})
         Next
 
-        If BaseMaintenance.Delete(QueryTableType.STUDENT_QUERY_TABLE, collection) Then
-            MessageBox.Show("Deleted Successfully!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        Else
-            MessageBox.Show("Cannot delete the selected items. Some items are being used to other resources. Please remove the them before deleting.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        End If
+        'If BaseMaintenance.Delete(QueryTableType.STUDENT_QUERY_TABLE, collection) Then
+        '    MessageBox.Show("Deleted Successfully!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        'Else
+        '    MessageBox.Show("Cannot delete the selected items. Some items are being used to other resources. Please remove the them before deleting.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        'End If
         'CMBSTUDENTFILTER_SelectedIndexChanged(CMBSTUDENTFILTER, Nothing)
         SELECTED_STUDENTS = New SystemDataSets.DTStudentDataTable
     End Sub
@@ -642,12 +594,11 @@ Public Class DashboardForm
             collection.Add(New Dictionary(Of String, String) From {{"@id", item.Item("id")}})
         Next
 
-        If BaseMaintenance.Delete(QueryTableType.FACULTY_QUERY_TABLE, collection) Then
-            MessageBox.Show("Deleted Successfully!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        Else
-            MessageBox.Show("Cannot delete the selected items. Some items are being used to other resources. Please remove the them before deleting.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        End If
-        'CMBFACULTYFILTER_SelectedIndexChanged(CMBFACULTYFILTER, Nothing)
+        'If BaseMaintenance.Delete(QueryTableType.FACULTY_QUERY_TABLE, collection) Then
+        '    MessageBox.Show("Deleted Successfully!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        'Else
+        '    MessageBox.Show("Cannot delete the selected items. Some items are being used to other resources. Please remove the them before deleting.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        'End If
         SELECTED_FACULTY = New SystemDataSets.DTFacultyDataTable
     End Sub
 
@@ -664,14 +615,13 @@ Public Class DashboardForm
             For Each item As DataRow In SELECTED_FACULTY.Rows
                 collection.Add(New Dictionary(Of String, String) From {{"@id", item.Item("id")}})
             Next
-            If ExecTransactionNonQuery(ARCHIVE_FACULTY_QUERY, collection) Then
-                MessageBox.Show("Archived Successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Else
-                MessageBox.Show("Archiving failed.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            End If
+            'If ExecTransactionNonQuery(ARCHIVE_FACULTY_QUERY, collection) Then
+            '    MessageBox.Show("Archived Successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            'Else
+            '    MessageBox.Show("Archiving failed.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            'End If
         End If
         DGFACULTY.EndEdit()
-        'CMBFACULTYFILTER_SelectedIndexChanged(CMBFACULTYFILTER, Nothing)
         SELECTED_FACULTY = New SystemDataSets.DTFacultyDataTable
     End Sub
 
@@ -685,13 +635,12 @@ Public Class DashboardForm
             For Each item As DataRow In SELECTED_FACULTY.Rows
                 collection.Add(New Dictionary(Of String, String) From {{"@id", item.Item("id")}})
             Next
-            If ExecTransactionNonQuery(UNARCHIVE_FACULTY_QUERY, collection) Then
-                MessageBox.Show("Unarchived Successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Else
-                MessageBox.Show("Unarchive failed.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            End If
+            'If ExecTransactionNonQuery(UNARCHIVE_FACULTY_QUERY, collection) Then
+            '    MessageBox.Show("Unarchived Successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            'Else
+            '    MessageBox.Show("Unarchive failed.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            'End If
         End If
-        'CMBFACULTYFILTER_SelectedIndexChanged(CMBFACULTYFILTER, Nothing)
         SELECTED_FACULTY = New SystemDataSets.DTFacultyDataTable
     End Sub
 
@@ -715,7 +664,6 @@ Public Class DashboardForm
             End If
         End If
         DGFACULTY.EndEdit()
-        'CMBFACULTYFILTER_SelectedIndexChanged(CMBFACULTYFILTER, Nothing)
         SELECTED_FACULTY = New SystemDataSets.DTFacultyDataTable
     End Sub
 #End Region
@@ -755,14 +703,13 @@ Public Class DashboardForm
             For Each item As DataRow In SELECTED_BOOKS.Rows
                 collection.Add(New Dictionary(Of String, String) From {{"@id", item.Item("id")}})
             Next
-            If ExecTransactionNonQuery(UNARCHIVE_BOOKS_QUERY, collection) Then
-                MessageBox.Show("Unarchived Successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Else
-                MessageBox.Show("Unarchive failed.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            End If
+            'If ExecTransactionNonQuery(UNARCHIVE_BOOKS_QUERY, collection) Then
+            '    MessageBox.Show("Unarchived Successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            'Else
+            '    MessageBox.Show("Unarchive failed.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            'End If
         End If
         DGBOOKS.EndEdit()
-        'CMBBOOKFILTER_SelectedIndexChanged(CMBBOOKFILTER, Nothing)
         SELECTED_BOOKS = New SystemDataSets.DTBookDataTable
     End Sub
 
@@ -783,12 +730,11 @@ Public Class DashboardForm
             collection.Add(New Dictionary(Of String, String) From {{"@id", item.Item("id")}})
         Next
 
-        If BaseMaintenance.Delete(QueryTableType.BOOK_QUERY_TABLE, collection) Then
+        If DBOperations.Delete(BOOK, collection) Then
             MessageBox.Show("Deleted Successfully!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Else
             MessageBox.Show("Cannot delete the selected items. Some items are being used to other resources. Please remove the them before deleting.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
-        'CMBBOOKFILTER_SelectedIndexChanged(CMBBOOKFILTER, Nothing)
         SELECTED_BOOKS = New SystemDataSets.DTBookDataTable
     End Sub
 
@@ -815,7 +761,6 @@ Public Class DashboardForm
 
     Private Sub BTNADDCOPIES_Click(sender As Object, e As EventArgs) Handles BTNADDCOPIES.Click
         ' TODO ADD SANITIZE THIS
-
         Dim price_copy As String = If(String.IsNullOrEmpty(TXTPRICECOPIES.Text), "0", TXTPRICECOPIES.Text)
         Dim hasErrors As Boolean = False
         If Not Validator.MatchPattern(TXTQUANTITY.Text, "^\d+$") Then
@@ -869,82 +814,15 @@ Public Class DashboardForm
 #End Region
 
 #Region "Helper Functions"
-    Private Sub DeleteHelper(dg As Object, qtype As QueryTableType, cboxName As String, cellName As String)
-        dg.EndEdit()
-        Dim params As New List(Of Dictionary(Of String, String))
-        For Each data As DataGridViewRow In dg.Rows
-            If data.Cells(cboxName).Value Then
-                Dim temp As New Dictionary(Of String, String) From {
-                    {"@id", data.Cells(cellName).Value.ToString}
-                }
-                params.Add(temp)
-            End If
-        Next
-
-        If params.Count = 0 Then
-            MessageBox.Show("Please select an item to continue.", "No Item Selected!", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Exit Sub
-        End If
-
+    Private Sub DeleteHelper(params As List(Of Dictionary(Of String, String)), qtype As QueryType)
         If MessageBox.Show("Are you sure you want to delete the selected item(s)?", "Delete Selected Items?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.No Then
             Exit Sub
         End If
 
-        If BaseMaintenance.Delete(qtype, params) Then
+        If DBOperations.Delete(qtype, params) Then
             MessageBox.Show("Deleted Successfully!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Else
             MessageBox.Show("Cannot delete the selected items. Some items are being used to other resources. Please remove the them before deleting.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-        End If
-        dg.DataSource = BaseMaintenance.Fetch(qtype)
-    End Sub
-
-    Private Sub LoadTabData(dg As Object, lblPrev As Object, lblNext As Object, qtype As QueryTableType, txtSearch As Object)
-        txtSearch.Clear()
-        dg.DataSource = BaseMaintenance.Fetch(qtype)
-        lblPrev.Text = BaseMaintenance.PPrev
-        lblNext.Text = BaseMaintenance.PMAX
-    End Sub
-
-    Private Sub NextPageHelper(lblPrev As Object, lblNext As Object, dg As Object, qtype As QueryTableType, txtSearch As Object)
-        If BaseMaintenance.PPrev < BaseMaintenance.PMAX Then
-            BaseMaintenance.PPrev += 1
-            lblPrev.Text = BaseMaintenance.PPrev
-            If Not String.IsNullOrEmpty(txtSearch.Text) Then
-                BaseMaintenance.PPrev = 1
-                dg.DataSource = BaseMaintenance.Search(qtype, txtSearch.Text)
-            Else
-                dg.DataSource = BaseMaintenance.Fetch(qtype)
-            End If
-            lblNext.Text = BaseMaintenance.PMAX
-            lblPrev.Text = BaseMaintenance.PPrev
-        End If
-    End Sub
-
-    Private Sub PrevPageHelper(lblPrev As Object, lblNext As Object, dg As Object, qtype As QueryTableType, txtSearch As Object)
-        If BaseMaintenance.PPrev > 1 Then
-            BaseMaintenance.PPrev -= 1
-            lblPrev.Text = BaseMaintenance.PPrev
-            If Not String.IsNullOrEmpty(txtSearch.Text) Then
-                BaseMaintenance.PPrev = 1
-                dg.DataSource = BaseMaintenance.Search(qtype, txtSearch.Text)
-            Else
-                dg.DataSource = BaseMaintenance.Fetch(qtype)
-            End If
-            lblNext.Text = BaseMaintenance.PMAX
-            lblPrev.Text = BaseMaintenance.PPrev
-        End If
-    End Sub
-
-    Private Sub SearchHelper(panel As Object, tab As Object, dg As Object, lblNext As Object, lblPrev As Object, qtype As QueryTableType, txtSearch As Object)
-        If panel.SelectedTab.Equals(tab) Then
-            BaseMaintenance.PPrev = 1
-            If Not String.IsNullOrEmpty(txtSearch.Text) Then
-                dg.DataSource = BaseMaintenance.Search(qtype, txtSearch.Text)
-            Else
-                dg.DataSource = BaseMaintenance.Fetch(qtype)
-            End If
-            lblNext.Text = BaseMaintenance.PMAX
-            lblPrev.Text = BaseMaintenance.PPrev
         End If
     End Sub
 #End Region
@@ -959,47 +837,42 @@ Public Class DashboardForm
     '        'MaintenancePanels_SelectedIndexChanged(MaintenancePanels, Nothing)
     '        BookInventoryPanels_SelectedIndexChanged(BookInventoryPanels, Nothing)
     '    End Sub
-
-
     '#End Region
 
 #Region "Settings Panel"
-
     Private Sub BTNSAVEGENSET_Click(sender As Object, e As EventArgs) Handles BTNSAVEGENSET.Click
-        'Dim params As New Dictionary(Of String, String) From {
-        '    {"@gp", If(CHCKSETGLOBALP.Checked, 1, 0)},
-        '    {"@en", If(CHCKSETNOTIF.Checked, 1, 0)},
-        '    {"@sp", TXTSETFPENALTY.Text},
-        '    {"@fp", TXTSETFPENALTY.Text},
-        '    {"@sd", TXTSETSDAYS.Text},
-        '    {"@fd", TXTSETFDAYS.Text},
-        '    {"@sc", TXTSETSCOUNT.Text},
-        '    {"@fc", TXTSETFCOUNT.Text}
-        '}
-        'If ExecNonQuery("UPDATE tblappsettings SET gpenalty = @gp, spenalty = @sp, fpenalty = @fp, s_count = @sc, f_count = @fc, enable_notification = @en, sdays = @sd, fdays = @fd WHERE id > 0", params) > 0 Then
-        '    MessageBox.Show("General settings has been updated.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        'Else
-        '    MessageBox.Show("Failed to update General settings.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-        'End If
+        Dim params As New Dictionary(Of String, String) From {
+            {"@gp", If(CHCKSETGLOBALP.Checked, 1, 0)},
+            {"@en", If(CHCKSETNOTIF.Checked, 1, 0)},
+            {"@sp", TXTSETFPENALTY.Text},
+            {"@fp", TXTSETFPENALTY.Text},
+            {"@sd", TXTSETSDAYS.Text},
+            {"@fd", TXTSETFDAYS.Text},
+            {"@sc", TXTSETSCOUNT.Text},
+            {"@fc", TXTSETFCOUNT.Text}
+        }
+        If DBOperations.Update(SETTINGS, params) > 0 Then
+            MessageBox.Show("General settings has been updated.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Else
+            MessageBox.Show("Failed to update General settings.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        End If
     End Sub
 
-
-
     Private Sub BTNEMAILSET_Click(sender As Object, e As EventArgs) Handles BTNEMAILSET.Click
-        'Dim params As New Dictionary(Of String, String) From {
-        '    {"@email", TXTEMAILSETTINGS.Text},
-        '    {"@pass", TXTEMAILPASSWORDSETTINGS.Text},
-        '    {"@overdue", TXTSETOVERDUE.Text},
-        '    {"@borrow", TXTSETBORROW.Text},
-        '    {"@before", TXTSETBEFORE.Text},
-        '    {"@return", TXTSETRETURN.Text}
-        '}
+        Dim params As New Dictionary(Of String, String) From {
+            {"@email", TXTEMAILSETTINGS.Text},
+            {"@pass", TXTEMAILPASSWORDSETTINGS.Text},
+            {"@overdue", TXTSETOVERDUE.Text},
+            {"@borrow", TXTSETBORROW.Text},
+            {"@before", TXTSETBEFORE.Text},
+            {"@return", TXTSETRETURN.Text}
+        }
 
-        'If ExecNonQuery("UPDATE tblappsettings SET app_email = @email, e_pass = @pass, return_message = @return, overdue_message = @overdue, borrow_message = @borrow, boverdue_message = @before WHERE id > 0", params) > 0 Then
-        '    MessageBox.Show("Email settings has been updated.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        'Else
-        '    MessageBox.Show("Failed to update Email settings.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-        'End If
+        If DBOperations.Update(EMAILSETTINGS, params) > 0 Then
+            MessageBox.Show("Email settings has been updated.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Else
+            MessageBox.Show("Failed to update Email settings.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        End If
     End Sub
 
     Private Sub BTNSAVEPATH_Click(sender As Object, e As EventArgs) Handles BTNSAVEPATH.Click
@@ -1023,10 +896,10 @@ Public Class DashboardForm
         Else
             MessageBox.Show("Faild to update server settings.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         End If
-
     End Sub
+
     Private Sub SettingsPanels_SelectedIndexChanged(sender As Object, e As EventArgs) Handles SettingsPanels.SelectedIndexChanged
-        Dim dt As DataTable = ExecFetch("SELECT * FROM tblappsettings")
+        Dim dt As DataTable = DBOperations.FetchAll(SETTINGS)
 
         If dt.Rows.Count = 0 Then
             Return
@@ -1034,7 +907,6 @@ Public Class DashboardForm
         With dt.Rows.Item(0)
             Select Case True
                 Case SettingsPanels.SelectedTab.Equals(GeneralSettingsTab)
-
                     CHCKSETNOTIF.Checked = If(.Item("enable_notification") > 0, True, False)
                     CHCKSETGLOBALP.Checked = If(.Item("gpenalty") > 0, True, False)
                     TXTSETSPENALTY.Text = .Item("spenalty")
@@ -1062,21 +934,6 @@ Public Class DashboardForm
 #End Region
 
 #Region "Transaction Module"
-    'Private Sub CMBTRANSACTIONFILTER_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CMBTRANSACTIONFILTER.SelectedIndexChanged
-    '    Select Case True
-    '        Case MainFormPanels.SelectedTab.Equals(BookTransactionTab)
-    '            If CMBTRANSACTIONFILTER.Text = "Active" Then
-    '                DGTRANSACTION.DataSource = FetchTransactions(1, TXTTRANSACTIONSEARCH.Text)
-    '            ElseIf CMBTRANSACTIONFILTER.Text = "Overdue" Then
-    '                DGTRANSACTION.DataSource = FetchTransactions(2, TXTTRANSACTIONSEARCH.Text)
-    '            Else
-    '                DGTRANSACTION.DataSource = FetchTransactions(0, TXTTRANSACTIONSEARCH.Text)
-    '            End If
-    '            LBLTRANSACTIONNEXT.Text = BaseMaintenance.PMAX
-    '            LBLTRANSACTIONPREV.Text = BaseMaintenance.PPrev
-    '    End Select
-    'End Sub
-
     Private Sub DGTRANSACTION_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGTRANSACTION.CellClick
         If DGTRANSACTION.SelectedRows.Count > 0 AndAlso e.RowIndex <> -1 Then
             Dim boundItem As DataRowView = TryCast(DGTRANSACTION.SelectedRows(0).DataBoundItem, DataRowView)
@@ -1085,40 +942,18 @@ Public Class DashboardForm
             End Using
         End If
     End Sub
-    'Private Sub TXTTRANSACTIONSEARCH_TextChanged(sender As Object, e As EventArgs) Handles TXTTRANSACTIONSEARCH.TextChanged
-    '    Select Case True
-    '        Case MainFormPanels.SelectedTab.Equals(BookTransactionTab)
-    '            'TransactionTimer.Enabled = True
-    '            'TransactionTimer.Start()
-    '            If CMBTRANSACTIONFILTER.Text = "Active" Then
-    '                DGTRANSACTION.DataSource = FetchTransactions(1, TXTTRANSACTIONSEARCH.Text)
-    '            ElseIf CMBTRANSACTIONFILTER.Text = "Overdue" Then
-    '                DGTRANSACTION.DataSource = FetchTransactions(2, TXTTRANSACTIONSEARCH.Text)
-    '            Else
-    '                DGTRANSACTION.DataSource = FetchTransactions(0, TXTTRANSACTIONSEARCH.Text)
-    '            End If
-    '            LBLTRANSACTIONNEXT.Text = BaseMaintenance.PMAX
-    '            LBLTRANSACTIONPREV.Text = BaseMaintenance.PPrev
-    '        Case Else
-    '            'TransactionTimer.Enabled = False
-    '            'TransactionTimer.Stop()
-    '    End Select
-    'End Sub
 
-    'Private Sub BTNTRANSACTIONSEARCH_Click(sender As Object, e As EventArgs) Handles BTNTRANSACTIONSEARCH.Click
-    '    Select Case True
-    '        Case MainFormPanels.SelectedTab.Equals(BookTransactionTab)
-    '            If CMBTRANSACTIONFILTER.Text = "Active" Then
-    '                DGTRANSACTION.DataSource = FetchTransactions(1, TXTTRANSACTIONSEARCH.Text, DTTRANSACTIONS.Value, DTTRANSACTIONE.Value)
-    '            ElseIf CMBTRANSACTIONFILTER.Text = "Overdue" Then
-    '                DGTRANSACTION.DataSource = FetchTransactions(2, TXTTRANSACTIONSEARCH.Text, DTTRANSACTIONS.Value, DTTRANSACTIONE.Value)
-    '            Else
-    '                DGTRANSACTION.DataSource = FetchTransactions(0, TXTTRANSACTIONSEARCH.Text, DTTRANSACTIONS.Value, DTTRANSACTIONE.Value)
-    '            End If
-    '            LBLTRANSACTIONNEXT.Text = BaseMaintenance.PMAX
-    '            LBLTRANSACTIONPREV.Text = BaseMaintenance.PPrev
-    '    End Select
-    'End Sub
+    Private Sub BTNTRANSACTIONSEARCH_Click(sender As Object, e As EventArgs) Handles BTNTRANSACTIONSEARCH.Click
+        Dim type As TRANSACTIONSTATE
+        If CMBTRANSACTIONFILTER.Text.ToLower() = NameOf(TRANSACTIONSTATE.ACTIVE).ToLower() Then
+            type = TRANSACTIONSTATE.ACTIVE
+        ElseIf CMBTRANSACTIONFILTER.Text.ToLower() = NameOf(TRANSACTIONSTATE.OVERDUE).ToLower() Then
+            type = TRANSACTIONSTATE.OVERDUE
+        Else
+            type = TRANSACTIONSTATE.RETURNED
+        End If
+        ControlsMap.Item(sender.Tag).Update(type, DTTRANSACTIONS.Value, DTTRANSACTIONE.Value)
+    End Sub
 #End Region
 
 #Region "Book Inventory Module"
@@ -1132,20 +967,5 @@ Public Class DashboardForm
             TXTINVPRICE.Text = If(IsDBNull(boundItem.Item("price")), Nothing, boundItem.Item("price"))
         End If
     End Sub
-
-    Private Sub CMBTRANSACTIONFILTER_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CMBTRANSACTIONFILTER.SelectedIndexChanged
-        If IS_LOADED Then
-            Dim type As TRANSACTIONSTATE
-            If CMBTRANSACTIONFILTER.Text.ToLower() = NameOf(TRANSACTIONSTATE.ACTIVE).ToLower() Then
-                type = TRANSACTIONSTATE.ACTIVE
-            ElseIf CMBTRANSACTIONFILTER.Text.ToLower() = NameOf(TRANSACTIONSTATE.OVERDUE).ToLower() Then
-                type = TRANSACTIONSTATE.OVERDUE
-            Else
-                type = TRANSACTIONSTATE.RETURNED
-            End If
-            ControlsMap.Item(BookTransactionTab.Tag).Update(type)
-        End If
-    End Sub
 #End Region
-
 End Class

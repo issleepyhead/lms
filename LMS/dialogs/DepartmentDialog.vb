@@ -1,4 +1,4 @@
-﻿Imports System.Windows.Forms
+﻿Imports LMS.QueryType
 
 Public Class DepartmentDialog
     Private _data As DataRowView
@@ -25,20 +25,20 @@ Public Class DepartmentDialog
                 {"@id", If(IsNothing(_data), 0, _data.Item("id").ToString)}
         }
 
-        If BaseMaintenance.Exists(QueryTableType.DEPARTMENT_QUERY_TABLE, data) Then
+        If DBOperations.Exists(DEPARTMENT, data) Then
             errProvider.SetError(TXTNAME, "This department already exists.")
             Exit Sub
         End If
 
         If IsNothing(_data) Then
-            If BaseMaintenance.Add(QueryTableType.DEPARTMENT_QUERY_TABLE, data) Then
+            If DBOperations.Add(DEPARTMENT, data) Then
                 MessageBox.Show("Department has been added successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
                 MessageBox.Show("Failed adding the department.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 Exit Sub
             End If
         Else
-            If BaseMaintenance.Update(QueryTableType.DEPARTMENT_QUERY_TABLE, data) Then
+            If DBOperations.Update(DEPARTMENT, data) Then
                 MessageBox.Show("Department has been updated successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
                 MessageBox.Show("Failed updating the department.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)

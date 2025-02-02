@@ -13,11 +13,11 @@ Public Class BookDialog
     End Sub
 
     Private Sub BookDialog_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        CMBGENRE.DataSource = BaseMaintenance.FetchAll(QueryTableType.GENRE_QUERY_TABLE)
-        CMBPUBLISHER.DataSource = BaseMaintenance.FetchAll(QueryTableType.PUBLISHER_QUERY_TABLE)
-        CMBLANGUAGE.DataSource = BaseMaintenance.FetchAll(QueryTableType.LANGUAGES_QUERY_TABLE)
-        CMBAUTHOR.DataSource = BaseMaintenance.FetchAll(QueryTableType.AUTHOR_QUERY_TABLE)
-        CMBCLASSIFICATION.DataSource = BaseMaintenance.FetchAll(QueryTableType.CLASSIFICATION_QUERY_TABLE)
+        CMBGENRE.DataSource = DBOperations.FetchAll(GENRE)
+        CMBPUBLISHER.DataSource = DBOperations.FetchAll(PUBLISHER)
+        CMBLANGUAGE.DataSource = DBOperations.FetchAll(LANGUAGES)
+        CMBAUTHOR.DataSource = DBOperations.FetchAll(AUTHOR)
+        CMBCLASSIFICATION.DataSource = DBOperations.FetchAll(CLASSIFICATION)
 
         If Not IsNothing(_data) Then
             TXTISBN.Text = _data.Item("isbn")
@@ -77,5 +77,15 @@ Public Class BookDialog
             End If
         End If
         Close()
+    End Sub
+
+    Private Sub CHCKBOXNOISBN_CheckedChanged(sender As Object, e As EventArgs) Handles CHCKBOXNOISBN.CheckedChanged
+        If CHCKBOXNOISBN.Checked Then
+            TXTISBN.Text = GenerateISBN()
+            TXTISBN.Enabled = False
+        Else
+            TXTISBN.Text = String.Empty
+            TXTISBN.Enabled = True
+        End If
     End Sub
 End Class

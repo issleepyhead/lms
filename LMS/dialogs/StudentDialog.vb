@@ -1,4 +1,4 @@
-﻿Imports System.Windows.Forms
+﻿Imports LMS.QueryType
 
 Public Class StudentDialog
     Private _data As DataRowView
@@ -13,7 +13,7 @@ Public Class StudentDialog
     End Sub
 
     Private Sub StudentDialog_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        CMBYEARLEVEL.DataSource = BaseMaintenance.FetchAll(QueryTableType.YEARLEVEL_QUERY_TABLE)
+        CMBYEARLEVEL.DataSource = DBOperations.FetchAll(YEARLEVEL)
         If Not IsNothing(_data) Then
             TXTLRN.Text = _data.Row("lrn")
             TXTFULLNAME.Text = _data.Row("full_name")
@@ -28,7 +28,7 @@ Public Class StudentDialog
 
     Private Sub CMBYEARLEVEL_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CMBYEARLEVEL.SelectedIndexChanged
         If CMBYEARLEVEL.SelectedIndex <> -1 Then
-            CMBSECTION.DataSource = BaseMaintenance.FetchAll(QueryTableType.SECTION_QUERY_TABLE, New Dictionary(Of String, String) From {{"@yid", CMBYEARLEVEL.SelectedValue.ToString}})
+            CMBSECTION.DataSource = DBOperations.FetchAll(SECTION, New Dictionary(Of String, String) From {{"@yid", CMBYEARLEVEL.SelectedValue.ToString}})
         End If
     End Sub
 
@@ -55,20 +55,20 @@ Public Class StudentDialog
                 {"@passwd", BCrypt.Net.BCrypt.HashPassword(firstLetterName & lastName & year)}
         }
 
-        If BaseMaintenance.Exists(QueryTableType.STUDENT_QUERY_TABLE, data) Then
+        If DBOperations.Exists(STUDENT, data) Then
             errProvider.SetError(TXTLRN, "This LRN already exists.")
             Exit Sub
         End If
 
         If IsNothing(_data) Then
-            If BaseMaintenance.Add(QueryTableType.STUDENT_QUERY_TABLE, data) Then
+            If DBOperations.Add(STUDENT, data) Then
                 MessageBox.Show("Student has been added successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
                 MessageBox.Show("Failed adding the student.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 Exit Sub
             End If
         Else
-            If BaseMaintenance.Update(QueryTableType.STUDENT_QUERY_TABLE, data) Then
+            If DBOperations.Update(STUDENT, data) Then
                 MessageBox.Show("Student has been updated successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
                 MessageBox.Show("Failed updating the student.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)

@@ -554,7 +554,7 @@ Partial Class DashboardForm
         Me.DataGridViewTextBoxColumn48 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column32 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column28 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column31 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColumnBorrowDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColumnOverdueDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ReportsTab = New System.Windows.Forms.TabPage()
         Me.ReportsPanel = New Guna.UI2.WinForms.Guna2TabControl()
@@ -6345,7 +6345,7 @@ Partial Class DashboardForm
         'BTNADDCOPIES
         '
         Me.BTNADDCOPIES.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.BTNADDCOPIES.BorderRadius = 8
+        Me.BTNADDCOPIES.BorderRadius = 4
         Me.BTNADDCOPIES.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTNADDCOPIES.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTNADDCOPIES.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -7639,7 +7639,7 @@ Partial Class DashboardForm
         DataGridViewCellStyle61.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DGTRANSACTION.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle61
         Me.DGTRANSACTION.ColumnHeadersHeight = 48
-        Me.DGTRANSACTION.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn47, Me.DataGridViewTextBoxColumn48, Me.Column32, Me.Column28, Me.Column31, Me.ColumnOverdueDate})
+        Me.DGTRANSACTION.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn47, Me.DataGridViewTextBoxColumn48, Me.Column32, Me.Column28, Me.ColumnBorrowDate, Me.ColumnOverdueDate})
         DataGridViewCellStyle62.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle62.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(239, Byte), Integer))
         DataGridViewCellStyle62.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -7723,13 +7723,13 @@ Partial Class DashboardForm
         Me.Column28.ReadOnly = True
         Me.Column28.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         '
-        'Column31
+        'ColumnBorrowDate
         '
-        Me.Column31.DataPropertyName = "borrow_date"
-        Me.Column31.HeaderText = "Borrowed Date"
-        Me.Column31.Name = "Column31"
-        Me.Column31.ReadOnly = True
-        Me.Column31.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.ColumnBorrowDate.DataPropertyName = "borrow_date"
+        Me.ColumnBorrowDate.HeaderText = "Borrowed Date"
+        Me.ColumnBorrowDate.Name = "ColumnBorrowDate"
+        Me.ColumnBorrowDate.ReadOnly = True
+        Me.ColumnBorrowDate.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         '
         'ColumnOverdueDate
         '
@@ -12005,12 +12005,6 @@ Partial Class DashboardForm
     Friend WithEvents Column37 As DataGridViewTextBoxColumn
     Friend WithEvents Column36 As DataGridViewTextBoxColumn
     Friend WithEvents Column35 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn47 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn48 As DataGridViewTextBoxColumn
-    Friend WithEvents Column32 As DataGridViewTextBoxColumn
-    Friend WithEvents Column28 As DataGridViewTextBoxColumn
-    Friend WithEvents Column31 As DataGridViewTextBoxColumn
-    Friend WithEvents ColumnOverdueDate As DataGridViewTextBoxColumn
     Friend WithEvents Guna2Panel81 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents Guna2HtmlLabel43 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents TXTSETOVERDUE As Guna.UI2.WinForms.Guna2TextBox
@@ -12103,4 +12097,10 @@ Partial Class DashboardForm
     Friend WithEvents Column50 As DataGridViewTextBoxColumn
     Friend WithEvents Column51 As DataGridViewTextBoxColumn
     Friend WithEvents Column52 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn47 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn48 As DataGridViewTextBoxColumn
+    Friend WithEvents Column32 As DataGridViewTextBoxColumn
+    Friend WithEvents Column28 As DataGridViewTextBoxColumn
+    Friend WithEvents ColumnBorrowDate As DataGridViewTextBoxColumn
+    Friend WithEvents ColumnOverdueDate As DataGridViewTextBoxColumn
 End Class
