@@ -315,6 +315,7 @@
     </Compile>
     <Compile Include="handlers\ControlMapping.vb" />
     <Compile Include="handlers\DBOperations.vb" />
+    <Compile Include="handlers\NotificationHandler.vb" />
     <Compile Include="modules\import\AccountImport.vb" />
     <Compile Include="modules\ApplicationModule.vb" />
     <Compile Include="modules\ColumnMapping.vb" />

@@ -1,10 +1,50 @@
-﻿Public Enum QueryType
+﻿''' <summary>
+''' QueryType is an identifier for type of collection of query.
+''' </summary>
+Public Enum QueryType
+    <SheetNameMapping("Genres")>
+    <ColumnMapping({"Name", "Description"}, {"@name", "@desc"})>
     GENRE
+
+    <SheetNameMapping("Publishers")>
+    <ColumnMapping({"Publisher Name"}, {"@name"})>
     PUBLISHER
+
+    <SheetNameMapping("Authors")>
+    <ColumnMapping({"First Name", "Last Name", "Gender"}, {"@first_name", "@last_name", "@gender"})>
     AUTHOR
+
+    <SheetNameMapping("Classifications")>
+    <ColumnMapping({"Dewey Decimal", "Classification"}, {"@dewey_no", "@classification"})>
     CLASSIFICATION
-    BOOK
+
+    <SheetNameMapping("Languages")>
+    <ColumnMapping({"Language", "Code"}, {"@language", "@code"})>
     LANGUAGES
+
+    <SheetNameMapping("Books")>
+    <ColumnMapping(
+        {"Title",
+            "ISBN",
+            "Genre",
+            "Publisher",
+            "Language",
+            "Author",
+            "Classification",
+            "Book Cover",
+            "Reserve Copy"},
+        {"@title",
+            "@isbn",
+            "@gid",
+            "@pid",
+            "@lid",
+            "@aid",
+            "@cid",
+            "@cover",
+            "@rcopy"
+        })>
+    BOOK
+
     DONATOR
     SUPPLIER
 
@@ -31,38 +71,22 @@
     EMAILSETTINGS
 End Enum
 
+''' <summary>
+''' TRANSACTIONSTATE is for state of transactions in the system.
+''' 0 for transactions that are already returned,
+''' 1 for transactions that are still active,
+''' 2 for transactions that are overdued
+''' </summary>
 Public Enum TRANSACTIONSTATE
     RETURNED = 0
     ACTIVE = 1
     OVERDUE = 2
 End Enum
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ''' <summary>
-''' STATUS TYPE is for library resources that can be archived.
-''' ACTIVE = 0
-''' INACTIVE = 1
+''' STATUSTYPE is for library resources that can be archived.
+''' 0 for active resources in the system
+''' 1 for inactive or archived resources in the system
 ''' </summary>
 Public Enum STATUSTYPE
     ACTIVE = 1
@@ -82,10 +106,10 @@ Public Enum BOOKSTATE
 End Enum
 
 ''' <summary>
-''' Condition type of a book
-''' GOOD = 0
-''' DAMAGED = 1
-''' LOST = 2
+''' BOOKCONDITIONTYPE is an identifier of book's condition.
+''' 0 is for good book condition, it means the book is not damaged.
+''' 1 is for damaged books, books that lost its pages or anything
+''' 2 is for lost books, gone forever :(
 ''' </summary>
 Public Enum BOOKCONDITIONTYPE
     GOOD = 0
@@ -93,7 +117,12 @@ Public Enum BOOKCONDITIONTYPE
     LOST = 2
 End Enum
 
+''' <summary>
+''' Role Type
+''' 0 for super admin account
+''' 1 for assistant librarian accounts
+''' </summary>
 Public Enum ROLETYPE
     SUPERADMIN = 0
-    ASSIST_LIB = 1
+    ASSISTANT = 1
 End Enum

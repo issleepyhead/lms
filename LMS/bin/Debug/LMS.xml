@@ -312,11 +312,24 @@ Row event argument class
  <param name="path">Path to the excel file.</param>
  <returns></returns>
 </member>
+<member name="T:LMS.QueryType">
+ <summary>
+ QueryType is an identifier for type of collection of query.
+ </summary>
+</member>
+<member name="T:LMS.TRANSACTIONSTATE">
+ <summary>
+ TRANSACTIONSTATE is for state of transactions in the system.
+ 0 for transactions that are already returned,
+ 1 for transactions that are still active,
+ 2 for transactions that are overdued
+ </summary>
+</member>
 <member name="T:LMS.STATUSTYPE">
  <summary>
- STATUS TYPE is for library resources that can be archived.
- ACTIVE = 0
- INACTIVE = 1
+ STATUSTYPE is for library resources that can be archived.
+ 0 for active resources in the system
+ 1 for inactive or archived resources in the system
  </summary>
 </member>
 <member name="T:LMS.BOOKSTATE">
@@ -326,12 +339,11 @@ Row event argument class
  AVAILABLE = 1
  </summary>
 </member>
-<member name="T:LMS.BOOKCONDITIONTYPE">
+<member name="T:LMS.ROLETYPE">
  <summary>
- Condition type of a book
- GOOD = 0
- DAMAGED = 1
- LOST = 2
+ Role Type
+ 0 for super admin account
+ 1 for assistant librarian accounts
  </summary>
 </member>
 <member name="M:LMS.QueryTableFactory.QueryTableFactory(LMS.QueryTableType)">
