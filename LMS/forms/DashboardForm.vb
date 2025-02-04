@@ -40,7 +40,10 @@ Public Class DashboardForm
             {NameOf(BOOKCOPIES), New ControlMapping With {.DG = DGBOOKCOPIES, .LBLNEXT = LBLCOPIESNEXT, .LBLPREV = LBLCOPIESPREV, .TXTSEARCH = TXTCOPIESSEARCH, .QUERY_TYPE = BOOKCOPIES}},
             {NameOf(BOOKINVENTORY), New ControlMapping With {.DG = DGINVENTORY, .LBLNEXT = LBLINVENTORYNEXT, .LBLPREV = LBLINVENTORYPREV, .TXTSEARCH = TXTINVENTORYSEARCH, .QUERY_TYPE = BOOKINVENTORY}},
             {NameOf(BOOKLOSTDAMAGE), New ControlMapping With {.DG = DGLOSTDAMAGE, .LBLNEXT = LBLLOSTDAMAGENEXT, .LBLPREV = LBLLOSTDAMAGEPREV, .TXTSEARCH = TXTLOSTDAMAGESEARCH, .QUERY_TYPE = BOOKLOSTDAMAGE}},
-            {NameOf(TRANSACTION), New ControlMapping With {.DG = DGTRANSACTION, .LBLNEXT = LBLTRANSACTIONNEXT, .LBLPREV = LBLTRANSACTIONPREV, .TXTSEARCH = TXTTRANSACTIONSEARCH, .QUERY_TYPE = TRANSACTION}}
+            {NameOf(TRANSACTION), New ControlMapping With {.DG = DGTRANSACTION, .LBLNEXT = LBLTRANSACTIONNEXT, .LBLPREV = LBLTRANSACTIONPREV, .TXTSEARCH = TXTTRANSACTIONSEARCH, .QUERY_TYPE = TRANSACTION}},
+            {NameOf(BOOKREPORT), New ControlMapping With {.DG = DGBOOKREPORT, .LBLNEXT = LBLBOOKREPORTNEXT, .LBLPREV = LBLBOOKREPORTPREV, .TXTSEARCH = TXTBOOKREPORTSEARCH, .QUERY_TYPE = BOOKREPORT}},
+            {NameOf(QueryType.EXPENDITUREREPORT), New ControlMapping With {.DG = DGEXPENDITUREREPORT, .LBLNEXT = LBLEXPENDITUREREPORTNEXT, .LBLPREV = LBLEXPENDITUREREPORTPREV, .TXTSEARCH = TXTEXPENDITUREREPORTSEARCH, .QUERY_TYPE = QueryType.EXPENDITUREREPORT}},
+            {NameOf(QueryType.FINESREPORT), New ControlMapping With {.DG = DGFINESREPORT, .LBLNEXT = LBLFINESREPORTNEXT, .LBLPREV = LBLFINESREPORTPREV, .TXTSEARCH = TXTFINESREPORTSSEARCH, .QUERY_TYPE = QueryType.FINESREPORT}}
         }
     End Sub
 
@@ -68,7 +71,7 @@ Public Class DashboardForm
 
     Private Sub BTNNEXT_Click(sender As Object, e As EventArgs) Handles BTNGENRENEXT.Click, BTNAUTHORNEXT.Click, BTNPUBLISHERNEXT.Click,
             BTNCLASSIFICATIONNEXT.Click, BTNLANGUAGENEXT.Click, BTNDONATORNEXT.Click, BTNSUPPLIERNEXT.Click, BTNBOOKNEXT.Click, BTNSECTIONNEXT.Click, BTNYEARLEVELNEXT.Click, BTNDEPARTMENTNEXT.Click,
-            BTNSTUDENTNEXT.Click, BTNFACULTYNEXT.Click, BTNADMINNEXT.Click, BTNCOPIESNEXT.Click, BTNINVENTORYNEXT.Click, BTNLOSTDAMAGENEXT.Click, BTNTRANSACTIONNEXT.Click
+            BTNSTUDENTNEXT.Click, BTNFACULTYNEXT.Click, BTNADMINNEXT.Click, BTNCOPIESNEXT.Click, BTNINVENTORYNEXT.Click, BTNLOSTDAMAGENEXT.Click, BTNTRANSACTIONNEXT.Click, BTNBORROWEDREPORTNEXT.Click
         If sender.Tag = NameOf(BOOK) Then
             ControlsMap.Item(sender.Tag).NextPage(If(CMBBOOKFILTER.SelectedText.ToLower = NameOf(ACTIVE).ToLower, ACTIVE, INACTIVE), AddressOf RetrieveBookSelection)
         ElseIf sender.Tag = NameOf(STUDENT) Then
@@ -82,7 +85,7 @@ Public Class DashboardForm
 
     Private Sub BTNPREV_Click(sender As Object, e As EventArgs) Handles BTNGENREPREV.Click, BTNAUTHORPREV.Click, BTNPUBLISHERPREV.Click,
             BTNCLASSIFICATIONPREV.Click, BTNLANGUAGEPREV.Click, BTNDONATORRPREV.Click, BTNSUPPLIERPREV.Click, BTNBOOKPREV.Click, BTNSECTIONPREV.Click, BTNYEARLEVELPREV.Click, BTNDEPARTMENTPREV.Click,
-            BTNSTUDENTPREV.Click, BTNFACULTYPREV.Click, BTNADMINPREV.Click, BTNCOPIESPREV.Click, BTNINVENTORYPREV.Click, BTNLOSTDAMAGEPREV.Click, BTNTRANSACTIONPREV.Click
+            BTNSTUDENTPREV.Click, BTNFACULTYPREV.Click, BTNADMINPREV.Click, BTNCOPIESPREV.Click, BTNINVENTORYPREV.Click, BTNLOSTDAMAGEPREV.Click, BTNTRANSACTIONPREV.Click, BTNBORROWEDREPORTPREV.Click
         If sender.Tag = NameOf(BOOK) Then
             ControlsMap.Item(sender.Tag).PrevPage(If(CMBBOOKFILTER.SelectedText.ToLower = NameOf(ACTIVE).ToLower, ACTIVE, INACTIVE), AddressOf RetrieveBookSelection)
         ElseIf sender.Tag = NameOf(STUDENT) Then
@@ -103,7 +106,7 @@ Public Class DashboardForm
     Private Sub TextSearch(sender As Object, e As EventArgs) Handles TXTGENRESEARCH.TextChanged, TXTSEARCHAUTHOR.TextChanged, TXTPUBLISHERSEARCH.TextChanged, TXTCLASSIFICATIONSEARCH.TextChanged,
             TXTLANGUAGESEARCH.TextChanged, TXTBOOKSEARCH.TextChanged, TXTDONATORSEARCH.TextChanged, TXTSUPPLIERSEARCH.TextChanged, TXTFACULTYSEARCH.TextChanged, TXTSTUDENTSEARCH.TextChanged,
             TXTADMINSEARCH.TextChanged, TXTCOPIESSEARCH.TextChanged, TXTINVENTORYSEARCH.TextChanged, TXTDEPARTMENTSEARCH.TextChanged, TXTSECTIONSEARCH.TextChanged, TXTYEARLEVELSEARCH.TextChanged,
-            TXTLOSTDAMAGESEARCH.TextChanged, TXTTRANSACTIONSEARCH.TextChanged
+            TXTLOSTDAMAGESEARCH.TextChanged, TXTTRANSACTIONSEARCH.TextChanged, TXTBORROWEDREPORTSSEARCH.TextChanged
         If IS_LOADED Then
             ' TO-DO ADD LOGIC
             If MainFormPanels.SelectedTab.Equals(MaintenanceTab) Then
@@ -112,6 +115,8 @@ Public Class DashboardForm
                 TabSelected(AccountsPanel, Nothing)
             ElseIf MainFormPanels.SelectedTab.Equals(BookInventoryTab) Then
                 TabSelected(BookInventoryPanels, Nothing)
+            ElseIf MainFormPanels.SelectedTab.Equals(ReportsTab) Then
+                TabSelected(ReportsPanel, Nothing)
             Else
                 FilterTransactionHelper()
             End If
@@ -153,6 +158,8 @@ Public Class DashboardForm
 
                 CMBDONATORCOPIES.DataSource = dtDonator
                 CMBSUPPLIERCOPIES.DataSource = dtSupplier
+            Case MainFormPanels.SelectedTab.Equals(ReportsTab)
+                ControlsMap.Item(BooksReportTab.Tag).Update()
             Case MainFormPanels.SelectedTab.Equals(SettingsTab)
                 ' TODO FIX THE SETTINGS FETCH
             Case Else
@@ -164,7 +171,7 @@ Public Class DashboardForm
         End Select
     End Sub
 
-    Private Sub TabSelected(sender As Object, e As TabControlEventArgs) Handles MaintenancePanels.Selected, AccountsPanel.Selected, BookInventoryPanels.Selected
+    Private Sub TabSelected(sender As Object, e As TabControlEventArgs) Handles MaintenancePanels.Selected, AccountsPanel.Selected, BookInventoryPanels.Selected, ReportsPanel.Selected
         If CURRENT_TAG <> sender.Tag Then
             ControlsMap.Item(sender.SelectedTab.Tag).TXTSEARCH.Text = String.Empty
             CURRENT_TAG = sender.Tag
