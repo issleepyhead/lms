@@ -13,4 +13,5 @@
     Property UNARCHIVE_QUERY As String
     Property ADVANCE_SEARCH_COUNT_QUERY As String
     Property ADVANCE_SEARCH_RESULT_QUERY As String
+    Property LOG_QUERY As String = "INSERT INTO tbllogs (name, action, `type`) VALUES (@name, @action, @type);"
 End Class

@@ -1,4 +1,5 @@
 ﻿Imports LMS.QueryType
+Imports LMS.LOGTYPE
 
 Public Class GenreDialog
     Private _data As DataRowView
@@ -15,6 +16,7 @@ Public Class GenreDialog
     End Sub
 
     Private Sub BTNSAVE_Click(sender As Object, e As EventArgs) Handles BTNSAVE.Click
+
         Dim inputs As Object() = {TXTNAME, TXTDESCRIPTION}
         For Each item In inputs
             errProvider.SetError(item, String.Empty)
@@ -23,12 +25,23 @@ Public Class GenreDialog
         TXTNAME.Text = Validator.RemoveSpaces(TXTNAME.Text)
         TXTDESCRIPTION.Text = Validator.RemoveSpaces(TXTDESCRIPTION.Text)
 
-
         Dim data As New Dictionary(Of String, String) From {
                 {"@name", TXTNAME.Text},
                 {"@desc", TXTDESCRIPTION.Text},
                 {"@id", If(IsNothing(_data), 0, _data.Item("id").ToString)}
         }
+
+        DBOperations.ACTION_PARAMS = New Dictionary(Of String, String) From {
+            {"@name", My.Settings.user_name}
+        }
+
+        If IsNothing(_data) Then
+            DBOperations.ACTION_PARAMS.Add("@action", "Added a new genre " & TXTNAME.Text)
+            DBOperations.ACTION_PARAMS.Add("@type", LOGTYPE.ADD)
+        Else
+            DBOperations.ACTION_PARAMS.Add("@action", "Updated a genre " & TXTNAME.Text)
+            DBOperations.ACTION_PARAMS.Add("@type", LOGTYPE.UPDATE)
+        End If
 
         If DBOperations.Exists(GENRE, data) Then
             errProvider.SetError(TXTNAME, "This genre already exits.")

@@ -396,6 +396,18 @@ Namespace My
                 Me("backup_folder") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property user_name() As String
+            Get
+                Return CType(Me("user_name"),String)
+            End Get
+            Set
+                Me("user_name") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

@@ -128,6 +128,8 @@ Module QueryTableRegistry
             .EXISTS_ADD_QUERY = "SELECT COUNT(*) FROM tblstudents WHERE lrn = @lrn",
             .SEARCH_COUNT_QUERY = "SELECT COUNT(*) FROM tblstudents WHERE status = 1 AND (lrn LIKE @search OR email LIKE @search OR full_name LIKE @search)",
             .SEARCH_RESULT_QUERY = "SELECT st.id, lrn, full_name, gender, address, phone, email, section_id, s.name section, s.year_id, y.year_level FROM tblstudents st JOIN tblsections s ON st.section_id = s.id JOIN tblyearlevels y ON s.year_id = y.id WHERE status = 1 AND (lrn LIKE @search OR email LIKE @search OR full_name LIKE @search) ORDER BY full_name ASC LIMIT @page, 30",
+            .ARCHIVE_SEARCH_COUNT_QUERY = "SELECT COUNT(*) FROM tblstudents WHERE status = 0 AND (lrn LIKE @search OR email LIKE @search OR full_name LIKE @search)",
+            .ARCHIVE_SEARCH_RESULT_QUERY = "SELECT st.id, lrn, full_name, gender, address, phone, email, section_id, s.name section, s.year_id, y.year_level FROM tblstudents st JOIN tblsections s ON st.section_id = s.id JOIN tblyearlevels y ON s.year_id = y.id WHERE status = 0 AND (lrn LIKE @search OR email LIKE @search OR full_name LIKE @search) ORDER BY full_name ASC LIMIT @page, 30;",
             .UPDATE_QUERY = "UPDATE tblstudents SET lrn = @lrn, full_name = @full_name, gender = @gender, address = @address, email = @email, section_id = @sid, status = 1 WHERE id = @id"
         }},
         {FACULTY, New QueryTable With {
@@ -296,7 +298,11 @@ Module QueryTableRegistry
                                     HAVING DATEDIFF(NOW(), DATE_ADD(bh.overdue_date, INTERVAL 1 DAY)) > 0"
         }},
         {CLSSIFICATIONREPORT, New QueryTable},
-        {BORROWERREPORT, New QueryTable}
+        {BORROWERREPORT, New QueryTable},
+        {LOGS, New QueryTable With {
+            .SEARCH_COUNT_QUERY = "SELECT COUNT(*) FROM tbllogs WHERE name LIKE @search",
+            .SEARCH_RESULT_QUERY = "SELECT id, name, action, date_created FROM tbllogs WHERE name LIKE @search ORDER BY date_created DESC LIMIT @page, 30;"
+        }}
     }
 
     Public Function CreateQueryTable(type As QueryType) As QueryTable

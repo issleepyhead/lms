@@ -119,8 +119,10 @@ Module Utilities
                 cmd.CommandText = "SELECT COUNT(*) FROM tblborrowedcopies WHERE header_id = @tid AND returned_condition IS NULL"
                 cmd.Parameters.AddWithValue("@tid", header_id)
                 If cmd.ExecuteScalar() = 0 Then
-                    cmd.CommandText = "UPDATE tblborrowheaders SET `status` = 0 WHERE id = @tid"
-                    cmd.ExecuteNonQuery()
+                    If ExecScalar("SELECT `status` FROM tblborrowheaders WHERE id = @tid") <> TRANSACTIONSTATE.OVERDUE Then
+                        cmd.CommandText = "UPDATE tblborrowheaders SET `status` = 0 WHERE id = @tid"
+                        cmd.ExecuteNonQuery()
+                    End If
                 End If
                 transac.Commit()
                 Return True

@@ -69,6 +69,17 @@ Public Enum QueryType
 
     SETTINGS
     EMAILSETTINGS
+
+    LOGS
+End Enum
+
+Public Enum LOGTYPE
+    ADD
+    UPDATE
+    DELETE
+    ARCHIVE
+    LOGGEDIN
+    LOGGEDOUT
 End Enum
 
 ''' <summary>

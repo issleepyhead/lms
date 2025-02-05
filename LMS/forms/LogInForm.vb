@@ -5,11 +5,12 @@
         Dim params As New Dictionary(Of String, String) From {
             {"@username", TXTUSERNAME.Text}
         }
+        ' TODO REMOVE THE USERNAME IN THE TABLE OF FACULTY
         Dim data As DataTable = ExecFetch("SELECT id, password FROM tblfaculties WHERE username = @username OR email = @username", params)
         Dim fromStudent As Boolean = False
         If data.Rows.Count = 0 Then
             fromStudent = True
-            data = ExecScalar("SELECT id, password FROM tblstudents WHERE lrn = @username", params)
+            data = ExecFetch("SELECT id, password FROM tblstudents WHERE lrn = @username", params)
         End If
         If data.Rows.Count > 0 Then
             If BCrypt.Net.BCrypt.Verify(TXTPASSWORD.Text, data.Rows.Item(0).Item("password")) Then

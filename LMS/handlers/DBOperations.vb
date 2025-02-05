@@ -7,6 +7,7 @@ Module DBOperations
     Public PREV_PAGE_NUMBER As Integer = 1
     Public NEXT_PAGE_NUMBER As Integer = 0
     Public QUERY_SEARCH As String = String.Empty
+    Public ACTION_PARAMS As Dictionary(Of String, String)
 
     ' For advance search
     Public ADVANCE_SEARCH_QUERIES As Dictionary(Of String, String)
@@ -39,6 +40,10 @@ Module DBOperations
 
     Public Function Add(type As QueryType, params As Dictionary(Of String, String)) As Boolean
         SetQueryType(type)
+        If Not IsNothing(ACTION_PARAMS) Then
+            ExecNonQuery(QueryTable.LOG_QUERY, ACTION_PARAMS)
+            ACTION_PARAMS = Nothing
+        End If
         Return ExecNonQuery(QueryTable.ADD_QUERY, params) > 0
     End Function
 
@@ -95,10 +100,14 @@ Module DBOperations
 
     Public Function Update(type As QueryType, params As Dictionary(Of String, String)) As Boolean
         SetQueryType(type)
-        Return CInt(ExecNonQuery(QueryTable.UPDATE_QUERY, params)) > 0
+        If Not IsNothing(ACTION_PARAMS) Then
+            ExecNonQuery(QueryTable.LOG_QUERY, ACTION_PARAMS)
+        End If
+        Return ExecNonQuery(QueryTable.UPDATE_QUERY, params) > 0
     End Function
 
     Public Function Delete(type As QueryType, params As List(Of Dictionary(Of String, String))) As Boolean
+        ' TODO HOW WILL YOU LOG THIS?
         SetQueryType(type)
         Return ExecNonQueryTrans(QueryTable.DELETE_QUERY, params)
     End Function
