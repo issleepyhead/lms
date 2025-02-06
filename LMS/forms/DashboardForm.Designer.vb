@@ -724,15 +724,15 @@ Partial Class DashboardForm
         Me.TableLayoutPanel27 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel75 = New Guna.UI2.WinForms.Guna2Panel()
         Me.Guna2Button10 = New Guna.UI2.WinForms.Guna2Button()
-        Me.Guna2TextBox13 = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.TXTACTIVITYSEARCH = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2Panel76 = New Guna.UI2.WinForms.Guna2Panel()
-        Me.Guna2HtmlLabel61 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.LBLACTIVITYNEXT = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2HtmlLabel62 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.Guna2HtmlLabel63 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.Guna2Button23 = New Guna.UI2.WinForms.Guna2Button()
-        Me.Guna2Button24 = New Guna.UI2.WinForms.Guna2Button()
+        Me.LBLACTIVITYPREV = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.BTNACTIVITYPREV = New Guna.UI2.WinForms.Guna2Button()
+        Me.BTNACTIVITYNEXT = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Panel77 = New Guna.UI2.WinForms.Guna2Panel()
-        Me.Guna2DataGridView10 = New Guna.UI2.WinForms.Guna2DataGridView()
+        Me.DGACTIVITY = New Guna.UI2.WinForms.Guna2DataGridView()
         Me.ActiveLogs = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel28 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel78 = New Guna.UI2.WinForms.Guna2Panel()
@@ -761,7 +761,6 @@ Partial Class DashboardForm
         Me.LBLPROFILENAME = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.errProvider = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.DataGridViewTextBoxColumn59 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewCheckBoxColumn15 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.DataGridViewTextBoxColumn60 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column63 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column31 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -941,7 +940,7 @@ Partial Class DashboardForm
         Me.Guna2Panel75.SuspendLayout
         Me.Guna2Panel76.SuspendLayout
         Me.Guna2Panel77.SuspendLayout
-        CType(Me.Guna2DataGridView10, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.DGACTIVITY, System.ComponentModel.ISupportInitialize).BeginInit
         Me.ActiveLogs.SuspendLayout
         Me.TableLayoutPanel28.SuspendLayout
         Me.Guna2Panel78.SuspendLayout
@@ -10544,6 +10543,7 @@ Partial Class DashboardForm
         Me.AuditTrailTab.Name = "AuditTrailTab"
         Me.AuditTrailTab.Size = New System.Drawing.Size(1332, 681)
         Me.AuditTrailTab.TabIndex = 7
+        Me.AuditTrailTab.Tag = "LOGS"
         Me.AuditTrailTab.Text = "Audit Trail"
         '
         'AuditTrailPanels
@@ -10586,6 +10586,7 @@ Partial Class DashboardForm
         Me.ActivityLogTab.Name = "ActivityLogTab"
         Me.ActivityLogTab.Size = New System.Drawing.Size(1324, 631)
         Me.ActivityLogTab.TabIndex = 0
+        Me.ActivityLogTab.Tag = "LOGS"
         Me.ActivityLogTab.Text = "Activity Logs"
         Me.ActivityLogTab.UseVisualStyleBackColor = True
         '
@@ -10612,7 +10613,7 @@ Partial Class DashboardForm
         '
         Me.Guna2Panel75.BackColor = System.Drawing.SystemColors.Window
         Me.Guna2Panel75.Controls.Add(Me.Guna2Button10)
-        Me.Guna2Panel75.Controls.Add(Me.Guna2TextBox13)
+        Me.Guna2Panel75.Controls.Add(Me.TXTACTIVITYSEARCH)
         Me.Guna2Panel75.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Guna2Panel75.Location = New System.Drawing.Point(0, 0)
         Me.Guna2Panel75.Margin = New System.Windows.Forms.Padding(0)
@@ -10635,41 +10636,43 @@ Partial Class DashboardForm
         Me.Guna2Button10.Name = "Guna2Button10"
         Me.Guna2Button10.Size = New System.Drawing.Size(120, 40)
         Me.Guna2Button10.TabIndex = 10
+        Me.Guna2Button10.Tag = "LOGS"
         Me.Guna2Button10.Text = "Refresh"
         '
-        'Guna2TextBox13
+        'TXTACTIVITYSEARCH
         '
-        Me.Guna2TextBox13.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Guna2TextBox13.BorderRadius = 4
-        Me.Guna2TextBox13.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.Guna2TextBox13.DefaultText = ""
-        Me.Guna2TextBox13.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.Guna2TextBox13.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.Guna2TextBox13.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.Guna2TextBox13.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.Guna2TextBox13.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Guna2TextBox13.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.Guna2TextBox13.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Guna2TextBox13.IconRight = Global.LMS.My.Resources.Resources.search
-        Me.Guna2TextBox13.IconRightOffset = New System.Drawing.Point(8, 0)
-        Me.Guna2TextBox13.Location = New System.Drawing.Point(1046, 10)
-        Me.Guna2TextBox13.Margin = New System.Windows.Forms.Padding(0)
-        Me.Guna2TextBox13.MaxLength = 8
-        Me.Guna2TextBox13.Name = "Guna2TextBox13"
-        Me.Guna2TextBox13.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.Guna2TextBox13.PlaceholderText = "Search Name"
-        Me.Guna2TextBox13.SelectedText = ""
-        Me.Guna2TextBox13.Size = New System.Drawing.Size(258, 40)
-        Me.Guna2TextBox13.TabIndex = 6
+        Me.TXTACTIVITYSEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TXTACTIVITYSEARCH.BorderRadius = 4
+        Me.TXTACTIVITYSEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TXTACTIVITYSEARCH.DefaultText = ""
+        Me.TXTACTIVITYSEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TXTACTIVITYSEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TXTACTIVITYSEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTACTIVITYSEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTACTIVITYSEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTACTIVITYSEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.TXTACTIVITYSEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTACTIVITYSEARCH.IconRight = Global.LMS.My.Resources.Resources.search
+        Me.TXTACTIVITYSEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
+        Me.TXTACTIVITYSEARCH.Location = New System.Drawing.Point(1046, 10)
+        Me.TXTACTIVITYSEARCH.Margin = New System.Windows.Forms.Padding(0)
+        Me.TXTACTIVITYSEARCH.MaxLength = 8
+        Me.TXTACTIVITYSEARCH.Name = "TXTACTIVITYSEARCH"
+        Me.TXTACTIVITYSEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TXTACTIVITYSEARCH.PlaceholderText = "Search Name"
+        Me.TXTACTIVITYSEARCH.SelectedText = ""
+        Me.TXTACTIVITYSEARCH.Size = New System.Drawing.Size(258, 40)
+        Me.TXTACTIVITYSEARCH.TabIndex = 6
+        Me.TXTACTIVITYSEARCH.Tag = "LOGS"
         '
         'Guna2Panel76
         '
         Me.Guna2Panel76.BackColor = System.Drawing.SystemColors.Window
-        Me.Guna2Panel76.Controls.Add(Me.Guna2HtmlLabel61)
+        Me.Guna2Panel76.Controls.Add(Me.LBLACTIVITYNEXT)
         Me.Guna2Panel76.Controls.Add(Me.Guna2HtmlLabel62)
-        Me.Guna2Panel76.Controls.Add(Me.Guna2HtmlLabel63)
-        Me.Guna2Panel76.Controls.Add(Me.Guna2Button23)
-        Me.Guna2Panel76.Controls.Add(Me.Guna2Button24)
+        Me.Guna2Panel76.Controls.Add(Me.LBLACTIVITYPREV)
+        Me.Guna2Panel76.Controls.Add(Me.BTNACTIVITYPREV)
+        Me.Guna2Panel76.Controls.Add(Me.BTNACTIVITYNEXT)
         Me.Guna2Panel76.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Guna2Panel76.Location = New System.Drawing.Point(0, 60)
         Me.Guna2Panel76.Margin = New System.Windows.Forms.Padding(0)
@@ -10677,17 +10680,17 @@ Partial Class DashboardForm
         Me.Guna2Panel76.Size = New System.Drawing.Size(1324, 60)
         Me.Guna2Panel76.TabIndex = 1
         '
-        'Guna2HtmlLabel61
+        'LBLACTIVITYNEXT
         '
-        Me.Guna2HtmlLabel61.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Guna2HtmlLabel61.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2HtmlLabel61.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Guna2HtmlLabel61.Location = New System.Drawing.Point(1195, 22)
-        Me.Guna2HtmlLabel61.Margin = New System.Windows.Forms.Padding(0)
-        Me.Guna2HtmlLabel61.Name = "Guna2HtmlLabel61"
-        Me.Guna2HtmlLabel61.Size = New System.Drawing.Size(17, 17)
-        Me.Guna2HtmlLabel61.TabIndex = 5
-        Me.Guna2HtmlLabel61.Text = "10"
+        Me.LBLACTIVITYNEXT.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LBLACTIVITYNEXT.BackColor = System.Drawing.Color.Transparent
+        Me.LBLACTIVITYNEXT.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LBLACTIVITYNEXT.Location = New System.Drawing.Point(1195, 22)
+        Me.LBLACTIVITYNEXT.Margin = New System.Windows.Forms.Padding(0)
+        Me.LBLACTIVITYNEXT.Name = "LBLACTIVITYNEXT"
+        Me.LBLACTIVITYNEXT.Size = New System.Drawing.Size(17, 17)
+        Me.LBLACTIVITYNEXT.TabIndex = 5
+        Me.LBLACTIVITYNEXT.Text = "10"
         '
         'Guna2HtmlLabel62
         '
@@ -10701,56 +10704,58 @@ Partial Class DashboardForm
         Me.Guna2HtmlLabel62.TabIndex = 4
         Me.Guna2HtmlLabel62.Text = "OF"
         '
-        'Guna2HtmlLabel63
+        'LBLACTIVITYPREV
         '
-        Me.Guna2HtmlLabel63.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Guna2HtmlLabel63.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2HtmlLabel63.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Guna2HtmlLabel63.Location = New System.Drawing.Point(1138, 23)
-        Me.Guna2HtmlLabel63.Margin = New System.Windows.Forms.Padding(0)
-        Me.Guna2HtmlLabel63.Name = "Guna2HtmlLabel63"
-        Me.Guna2HtmlLabel63.Size = New System.Drawing.Size(9, 15)
-        Me.Guna2HtmlLabel63.TabIndex = 3
-        Me.Guna2HtmlLabel63.Text = "1"
+        Me.LBLACTIVITYPREV.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LBLACTIVITYPREV.BackColor = System.Drawing.Color.Transparent
+        Me.LBLACTIVITYPREV.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LBLACTIVITYPREV.Location = New System.Drawing.Point(1138, 23)
+        Me.LBLACTIVITYPREV.Margin = New System.Windows.Forms.Padding(0)
+        Me.LBLACTIVITYPREV.Name = "LBLACTIVITYPREV"
+        Me.LBLACTIVITYPREV.Size = New System.Drawing.Size(9, 15)
+        Me.LBLACTIVITYPREV.TabIndex = 3
+        Me.LBLACTIVITYPREV.Text = "1"
         '
-        'Guna2Button23
+        'BTNACTIVITYPREV
         '
-        Me.Guna2Button23.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Guna2Button23.BorderRadius = 4
-        Me.Guna2Button23.DisabledState.BorderColor = System.Drawing.Color.DarkGray
-        Me.Guna2Button23.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
-        Me.Guna2Button23.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
-        Me.Guna2Button23.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.Guna2Button23.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Guna2Button23.ForeColor = System.Drawing.Color.White
-        Me.Guna2Button23.Location = New System.Drawing.Point(1046, 11)
-        Me.Guna2Button23.Margin = New System.Windows.Forms.Padding(0)
-        Me.Guna2Button23.Name = "Guna2Button23"
-        Me.Guna2Button23.Size = New System.Drawing.Size(72, 40)
-        Me.Guna2Button23.TabIndex = 2
-        Me.Guna2Button23.Text = "Previous"
+        Me.BTNACTIVITYPREV.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.BTNACTIVITYPREV.BorderRadius = 4
+        Me.BTNACTIVITYPREV.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.BTNACTIVITYPREV.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.BTNACTIVITYPREV.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.BTNACTIVITYPREV.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTNACTIVITYPREV.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.BTNACTIVITYPREV.ForeColor = System.Drawing.Color.White
+        Me.BTNACTIVITYPREV.Location = New System.Drawing.Point(1046, 11)
+        Me.BTNACTIVITYPREV.Margin = New System.Windows.Forms.Padding(0)
+        Me.BTNACTIVITYPREV.Name = "BTNACTIVITYPREV"
+        Me.BTNACTIVITYPREV.Size = New System.Drawing.Size(72, 40)
+        Me.BTNACTIVITYPREV.TabIndex = 2
+        Me.BTNACTIVITYPREV.Tag = "LOGS"
+        Me.BTNACTIVITYPREV.Text = "Previous"
         '
-        'Guna2Button24
+        'BTNACTIVITYNEXT
         '
-        Me.Guna2Button24.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Guna2Button24.BorderRadius = 4
-        Me.Guna2Button24.DisabledState.BorderColor = System.Drawing.Color.DarkGray
-        Me.Guna2Button24.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
-        Me.Guna2Button24.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
-        Me.Guna2Button24.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.Guna2Button24.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Guna2Button24.ForeColor = System.Drawing.Color.White
-        Me.Guna2Button24.Location = New System.Drawing.Point(1232, 11)
-        Me.Guna2Button24.Margin = New System.Windows.Forms.Padding(0)
-        Me.Guna2Button24.Name = "Guna2Button24"
-        Me.Guna2Button24.Size = New System.Drawing.Size(72, 40)
-        Me.Guna2Button24.TabIndex = 1
-        Me.Guna2Button24.Text = "Next"
+        Me.BTNACTIVITYNEXT.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.BTNACTIVITYNEXT.BorderRadius = 4
+        Me.BTNACTIVITYNEXT.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.BTNACTIVITYNEXT.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.BTNACTIVITYNEXT.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.BTNACTIVITYNEXT.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTNACTIVITYNEXT.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.BTNACTIVITYNEXT.ForeColor = System.Drawing.Color.White
+        Me.BTNACTIVITYNEXT.Location = New System.Drawing.Point(1232, 11)
+        Me.BTNACTIVITYNEXT.Margin = New System.Windows.Forms.Padding(0)
+        Me.BTNACTIVITYNEXT.Name = "BTNACTIVITYNEXT"
+        Me.BTNACTIVITYNEXT.Size = New System.Drawing.Size(72, 40)
+        Me.BTNACTIVITYNEXT.TabIndex = 1
+        Me.BTNACTIVITYNEXT.Tag = "LOGS"
+        Me.BTNACTIVITYNEXT.Text = "Next"
         '
         'Guna2Panel77
         '
         Me.Guna2Panel77.BackColor = System.Drawing.SystemColors.Window
-        Me.Guna2Panel77.Controls.Add(Me.Guna2DataGridView10)
+        Me.Guna2Panel77.Controls.Add(Me.DGACTIVITY)
         Me.Guna2Panel77.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Guna2Panel77.Location = New System.Drawing.Point(0, 120)
         Me.Guna2Panel77.Margin = New System.Windows.Forms.Padding(0)
@@ -10759,15 +10764,15 @@ Partial Class DashboardForm
         Me.Guna2Panel77.Size = New System.Drawing.Size(1324, 511)
         Me.Guna2Panel77.TabIndex = 2
         '
-        'Guna2DataGridView10
+        'DGACTIVITY
         '
-        Me.Guna2DataGridView10.AllowUserToAddRows = False
-        Me.Guna2DataGridView10.AllowUserToDeleteRows = False
-        Me.Guna2DataGridView10.AllowUserToResizeColumns = False
-        Me.Guna2DataGridView10.AllowUserToResizeRows = False
+        Me.DGACTIVITY.AllowUserToAddRows = False
+        Me.DGACTIVITY.AllowUserToDeleteRows = False
+        Me.DGACTIVITY.AllowUserToResizeColumns = False
+        Me.DGACTIVITY.AllowUserToResizeRows = False
         DataGridViewCellStyle79.BackColor = System.Drawing.Color.FromArgb(CType(CType(197, Byte), Integer), CType(CType(203, Byte), Integer), CType(CType(232, Byte), Integer))
-        Me.Guna2DataGridView10.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle79
-        Me.Guna2DataGridView10.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        Me.DGACTIVITY.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle79
+        Me.DGACTIVITY.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         DataGridViewCellStyle80.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle80.BackColor = System.Drawing.Color.FromArgb(CType(CType(63, Byte), Integer), CType(CType(81, Byte), Integer), CType(CType(181, Byte), Integer))
         DataGridViewCellStyle80.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -10775,10 +10780,10 @@ Partial Class DashboardForm
         DataGridViewCellStyle80.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle80.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle80.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Guna2DataGridView10.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle80
-        Me.Guna2DataGridView10.ColumnHeadersHeight = 48
-        Me.Guna2DataGridView10.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn59, Me.DataGridViewCheckBoxColumn15, Me.DataGridViewTextBoxColumn60, Me.Column63, Me.Column31})
-        Me.Guna2DataGridView10.ContextMenuStrip = Me.DGMAINTENANCECONTEXTMENU
+        Me.DGACTIVITY.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle80
+        Me.DGACTIVITY.ColumnHeadersHeight = 48
+        Me.DGACTIVITY.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn59, Me.DataGridViewTextBoxColumn60, Me.Column63, Me.Column31})
+        Me.DGACTIVITY.ContextMenuStrip = Me.DGMAINTENANCECONTEXTMENU
         DataGridViewCellStyle81.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle81.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(239, Byte), Integer))
         DataGridViewCellStyle81.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -10786,40 +10791,41 @@ Partial Class DashboardForm
         DataGridViewCellStyle81.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(205, Byte), Integer))
         DataGridViewCellStyle81.SelectionForeColor = System.Drawing.Color.Black
         DataGridViewCellStyle81.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.Guna2DataGridView10.DefaultCellStyle = DataGridViewCellStyle81
-        Me.Guna2DataGridView10.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Guna2DataGridView10.GridColor = System.Drawing.Color.FromArgb(CType(CType(194, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(231, Byte), Integer))
-        Me.Guna2DataGridView10.Location = New System.Drawing.Point(20, 0)
-        Me.Guna2DataGridView10.Margin = New System.Windows.Forms.Padding(0)
-        Me.Guna2DataGridView10.Name = "Guna2DataGridView10"
-        Me.Guna2DataGridView10.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        Me.Guna2DataGridView10.RowHeadersVisible = False
-        Me.Guna2DataGridView10.RowTemplate.Height = 48
-        Me.Guna2DataGridView10.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.Guna2DataGridView10.Size = New System.Drawing.Size(1284, 491)
-        Me.Guna2DataGridView10.TabIndex = 0
-        Me.Guna2DataGridView10.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Indigo
-        Me.Guna2DataGridView10.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(197, Byte), Integer), CType(CType(203, Byte), Integer), CType(CType(232, Byte), Integer))
-        Me.Guna2DataGridView10.ThemeStyle.AlternatingRowsStyle.Font = Nothing
-        Me.Guna2DataGridView10.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty
-        Me.Guna2DataGridView10.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty
-        Me.Guna2DataGridView10.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty
-        Me.Guna2DataGridView10.ThemeStyle.BackColor = System.Drawing.Color.White
-        Me.Guna2DataGridView10.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(CType(CType(194, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(231, Byte), Integer))
-        Me.Guna2DataGridView10.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(63, Byte), Integer), CType(CType(81, Byte), Integer), CType(CType(181, Byte), Integer))
-        Me.Guna2DataGridView10.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        Me.Guna2DataGridView10.ThemeStyle.HeaderStyle.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Guna2DataGridView10.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White
-        Me.Guna2DataGridView10.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.Guna2DataGridView10.ThemeStyle.HeaderStyle.Height = 48
-        Me.Guna2DataGridView10.ThemeStyle.ReadOnly = False
-        Me.Guna2DataGridView10.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(239, Byte), Integer))
-        Me.Guna2DataGridView10.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
-        Me.Guna2DataGridView10.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Guna2DataGridView10.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Black
-        Me.Guna2DataGridView10.ThemeStyle.RowsStyle.Height = 48
-        Me.Guna2DataGridView10.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(205, Byte), Integer))
-        Me.Guna2DataGridView10.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
+        Me.DGACTIVITY.DefaultCellStyle = DataGridViewCellStyle81
+        Me.DGACTIVITY.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.DGACTIVITY.GridColor = System.Drawing.Color.FromArgb(CType(CType(194, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(231, Byte), Integer))
+        Me.DGACTIVITY.Location = New System.Drawing.Point(20, 0)
+        Me.DGACTIVITY.Margin = New System.Windows.Forms.Padding(0)
+        Me.DGACTIVITY.Name = "DGACTIVITY"
+        Me.DGACTIVITY.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        Me.DGACTIVITY.RowHeadersVisible = False
+        Me.DGACTIVITY.RowTemplate.Height = 48
+        Me.DGACTIVITY.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGACTIVITY.Size = New System.Drawing.Size(1284, 491)
+        Me.DGACTIVITY.TabIndex = 0
+        Me.DGACTIVITY.Tag = "LOGS"
+        Me.DGACTIVITY.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Indigo
+        Me.DGACTIVITY.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(197, Byte), Integer), CType(CType(203, Byte), Integer), CType(CType(232, Byte), Integer))
+        Me.DGACTIVITY.ThemeStyle.AlternatingRowsStyle.Font = Nothing
+        Me.DGACTIVITY.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty
+        Me.DGACTIVITY.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty
+        Me.DGACTIVITY.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty
+        Me.DGACTIVITY.ThemeStyle.BackColor = System.Drawing.Color.White
+        Me.DGACTIVITY.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(CType(CType(194, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(231, Byte), Integer))
+        Me.DGACTIVITY.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(63, Byte), Integer), CType(CType(81, Byte), Integer), CType(CType(181, Byte), Integer))
+        Me.DGACTIVITY.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        Me.DGACTIVITY.ThemeStyle.HeaderStyle.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGACTIVITY.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White
+        Me.DGACTIVITY.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        Me.DGACTIVITY.ThemeStyle.HeaderStyle.Height = 48
+        Me.DGACTIVITY.ThemeStyle.ReadOnly = False
+        Me.DGACTIVITY.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(239, Byte), Integer))
+        Me.DGACTIVITY.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
+        Me.DGACTIVITY.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGACTIVITY.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Black
+        Me.DGACTIVITY.ThemeStyle.RowsStyle.Height = 48
+        Me.DGACTIVITY.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(205, Byte), Integer))
+        Me.DGACTIVITY.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
         '
         'ActiveLogs
         '
@@ -11223,17 +11229,9 @@ Partial Class DashboardForm
         Me.DataGridViewTextBoxColumn59.Name = "DataGridViewTextBoxColumn59"
         Me.DataGridViewTextBoxColumn59.Visible = False
         '
-        'DataGridViewCheckBoxColumn15
-        '
-        Me.DataGridViewCheckBoxColumn15.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.DataGridViewCheckBoxColumn15.HeaderText = ""
-        Me.DataGridViewCheckBoxColumn15.Name = "DataGridViewCheckBoxColumn15"
-        Me.DataGridViewCheckBoxColumn15.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewCheckBoxColumn15.Width = 40
-        '
         'DataGridViewTextBoxColumn60
         '
-        Me.DataGridViewTextBoxColumn60.DataPropertyName = "name"
+        Me.DataGridViewTextBoxColumn60.DataPropertyName = "full_name"
         Me.DataGridViewTextBoxColumn60.HeaderText = "Name"
         Me.DataGridViewTextBoxColumn60.MaxInputLength = 50
         Me.DataGridViewTextBoxColumn60.Name = "DataGridViewTextBoxColumn60"
@@ -11475,7 +11473,7 @@ Partial Class DashboardForm
         Me.Guna2Panel76.ResumeLayout(False)
         Me.Guna2Panel76.PerformLayout
         Me.Guna2Panel77.ResumeLayout(False)
-        CType(Me.Guna2DataGridView10, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.DGACTIVITY, System.ComponentModel.ISupportInitialize).EndInit
         Me.ActiveLogs.ResumeLayout(False)
         Me.TableLayoutPanel28.ResumeLayout(False)
         Me.Guna2Panel78.ResumeLayout(False)
@@ -11871,15 +11869,15 @@ Partial Class DashboardForm
     Friend WithEvents DataGridViewTextBoxColumn58 As DataGridViewTextBoxColumn
     Friend WithEvents TableLayoutPanel27 As TableLayoutPanel
     Friend WithEvents Guna2Panel75 As Guna.UI2.WinForms.Guna2Panel
-    Friend WithEvents Guna2TextBox13 As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents TXTACTIVITYSEARCH As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Guna2Panel76 As Guna.UI2.WinForms.Guna2Panel
-    Friend WithEvents Guna2HtmlLabel61 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents LBLACTIVITYNEXT As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2HtmlLabel62 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents Guna2HtmlLabel63 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents Guna2Button23 As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents Guna2Button24 As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents LBLACTIVITYPREV As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents BTNACTIVITYPREV As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents BTNACTIVITYNEXT As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Guna2Panel77 As Guna.UI2.WinForms.Guna2Panel
-    Friend WithEvents Guna2DataGridView10 As Guna.UI2.WinForms.Guna2DataGridView
+    Friend WithEvents DGACTIVITY As Guna.UI2.WinForms.Guna2DataGridView
     Friend WithEvents TableLayoutPanel28 As TableLayoutPanel
     Friend WithEvents Guna2Panel78 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents Guna2TextBox14 As Guna.UI2.WinForms.Guna2TextBox
@@ -12145,7 +12143,6 @@ Partial Class DashboardForm
     Friend WithEvents ColumnBorrowDate As DataGridViewTextBoxColumn
     Friend WithEvents ColumnOverdueDate As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn59 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewCheckBoxColumn15 As DataGridViewCheckBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn60 As DataGridViewTextBoxColumn
     Friend WithEvents Column63 As DataGridViewTextBoxColumn
     Friend WithEvents Column31 As DataGridViewTextBoxColumn

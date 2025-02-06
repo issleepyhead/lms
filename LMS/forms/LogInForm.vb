@@ -15,18 +15,12 @@
         If data.Rows.Count > 0 Then
             If BCrypt.Net.BCrypt.Verify(TXTPASSWORD.Text, data.Rows.Item(0).Item("password")) Then
                 Dim id As Integer = data.Rows.Item(0).Item("id")
-                Dim aid As Integer
                 If fromStudent Then
-                    aid = ExecScalar("SELECT id FROM tbladmins WHERE student_id = @id", New Dictionary(Of String, String) From {{"@id", id}})
+                    My.Settings.student_id = id
                 Else
-                    aid = ExecScalar("SELECT id FROM tbladmins WHERE faculty_id = @id", New Dictionary(Of String, String) From {{"@id", id}})
+                    My.Settings.faculty_id = id
                 End If
 
-                If aid <> 0 Then
-                    My.Settings.user_id = aid
-                Else
-                    My.Settings.user_id = id
-                End If
                 If CHKREMEMBER.Checked Then
                     My.Settings.remember_user = True
                     My.Settings.user_username = TXTUSERNAME.Text
@@ -34,8 +28,8 @@
                 Else
                     My.Settings.user_username = TXTUSERNAME.Text
                 End If
+
                 My.Settings.Save()
-                MessageBox.Show("You have been logged in.", "Login Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Using Me
                     DashboardForm.Show()
                 End Using

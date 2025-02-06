@@ -76,7 +76,7 @@ Namespace My
                     ExecNonQuery("INSERT INTO tbladmins (faculty_id, role) SELECT id, 0 FROM tblfaculties WHERE email = 'example@email.com' AND username = 'sa'")
                 End If
 
-                If My.Settings.user_id <> 0 AndAlso My.Settings.session_login > Date.Now Then
+                If My.Settings.student_id <> 0 AndAlso My.Settings.session_login > Date.Now Then
                     ' This will go the userdashboard without authentication
                     MainForm = DashboardForm
                 Else

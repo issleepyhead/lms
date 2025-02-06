@@ -55,6 +55,19 @@ Public Class StudentDialog
                 {"@passwd", BCrypt.Net.BCrypt.HashPassword(firstLetterName & lastName & year)}
         }
 
+        DBOperations.ACTION_PARAMS = New Dictionary(Of String, String) From {
+            {"@sid", If(My.Settings.student_id > 0, My.Settings.student_id, String.Empty)},
+            {"@fid", If(My.Settings.faculty_id > 0, My.Settings.faculty_id, String.Empty)}
+        }
+
+        If IsNothing(_data) Then
+            DBOperations.ACTION_PARAMS.Add("@action", "Added a new student " & TXTFULLNAME.Text)
+            DBOperations.ACTION_PARAMS.Add("@type", LOGTYPE.ADD)
+        Else
+            DBOperations.ACTION_PARAMS.Add("@action", "Updated a student " & TXTFULLNAME.Text)
+            DBOperations.ACTION_PARAMS.Add("@type", LOGTYPE.UPDATE)
+        End If
+
         If DBOperations.Exists(STUDENT, data) Then
             errProvider.SetError(TXTLRN, "This LRN already exists.")
             Exit Sub

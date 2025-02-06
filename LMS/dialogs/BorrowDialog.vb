@@ -90,7 +90,7 @@ Public Class BorrowDialog
         End If
 
         Dim header As New Dictionary(Of String, String) From {
-            {"@isby", My.Settings.user_id},
+            {"@isby", My.Settings.student_id},
             {"@cno", GenerateCirculation()},
             {"@odate", DateTime.Now.AddDays(If(RBSTUDENT.Checked, My.Settings.scount, My.Settings.fcount)).ToString("yyyy-MM-dd HH:mm:ss")},
             {"@bdate", Date.Now.ToString("yyyy-MM-dd HH:mm:ss")}

@@ -43,7 +43,8 @@ Public Class DashboardForm
             {NameOf(TRANSACTION), New ControlMapping With {.DG = DGTRANSACTION, .LBLNEXT = LBLTRANSACTIONNEXT, .LBLPREV = LBLTRANSACTIONPREV, .TXTSEARCH = TXTTRANSACTIONSEARCH, .QUERY_TYPE = TRANSACTION}},
             {NameOf(BOOKREPORT), New ControlMapping With {.DG = DGBOOKREPORT, .LBLNEXT = LBLBOOKREPORTNEXT, .LBLPREV = LBLBOOKREPORTPREV, .TXTSEARCH = TXTBOOKREPORTSEARCH, .QUERY_TYPE = BOOKREPORT}},
             {NameOf(QueryType.EXPENDITUREREPORT), New ControlMapping With {.DG = DGEXPENDITUREREPORT, .LBLNEXT = LBLEXPENDITUREREPORTNEXT, .LBLPREV = LBLEXPENDITUREREPORTPREV, .TXTSEARCH = TXTEXPENDITUREREPORTSEARCH, .QUERY_TYPE = QueryType.EXPENDITUREREPORT}},
-            {NameOf(QueryType.FINESREPORT), New ControlMapping With {.DG = DGFINESREPORT, .LBLNEXT = LBLFINESREPORTNEXT, .LBLPREV = LBLFINESREPORTPREV, .TXTSEARCH = TXTFINESREPORTSSEARCH, .QUERY_TYPE = QueryType.FINESREPORT}}
+            {NameOf(QueryType.FINESREPORT), New ControlMapping With {.DG = DGFINESREPORT, .LBLNEXT = LBLFINESREPORTNEXT, .LBLPREV = LBLFINESREPORTPREV, .TXTSEARCH = TXTFINESREPORTSSEARCH, .QUERY_TYPE = QueryType.FINESREPORT}},
+            {NameOf(LOGS), New ControlMapping With {.DG = DGACTIVITY, .LBLNEXT = LBLACTIVITYNEXT, .LBLPREV = LBLACTIVITYPREV, .TXTSEARCH = TXTACTIVITYSEARCH, .QUERY_TYPE = LOGS}}
         }
     End Sub
 
@@ -55,7 +56,8 @@ Public Class DashboardForm
 
     Private Sub BTNLOGOUT_Click(sender As Object, e As EventArgs) Handles BTNLOGOUT.Click
         ' TODO LOG OUT LOGIC
-        My.Settings.user_id = 0
+        My.Settings.student_id = 0
+        My.Settings.faculty_id = 0
         My.Settings.Save()
         Using Me
             LogInForm.Show()
@@ -162,6 +164,8 @@ Public Class DashboardForm
                 ControlsMap.Item(BooksReportTab.Tag).Update()
             Case MainFormPanels.SelectedTab.Equals(SettingsTab)
                 ' TODO FIX THE SETTINGS FETCH
+            Case MainFormPanels.SelectedTab.Equals(AuditTrailTab)
+                ControlsMap.Item(AuditTrailTab.Tag).Update()
             Case Else
                 If MainFormPanels.SelectedTab.Equals(MaintenanceTab) Then
                     TabSelected(MaintenancePanels, Nothing)
@@ -171,7 +175,7 @@ Public Class DashboardForm
         End Select
     End Sub
 
-    Private Sub TabSelected(sender As Object, e As TabControlEventArgs) Handles MaintenancePanels.Selected, AccountsPanel.Selected, BookInventoryPanels.Selected, ReportsPanel.Selected
+    Private Sub TabSelected(sender As Object, e As TabControlEventArgs) Handles MaintenancePanels.Selected, AccountsPanel.Selected, BookInventoryPanels.Selected, ReportsPanel.Selected, AuditTrailPanels.Selected
         If CURRENT_TAG <> sender.Tag Then
             ControlsMap.Item(sender.SelectedTab.Tag).TXTSEARCH.Text = String.Empty
             CURRENT_TAG = sender.Tag

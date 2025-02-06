@@ -141,12 +141,12 @@ Namespace My
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
-        Public Property user_id() As Integer
+        Public Property student_id() As Integer
             Get
-                Return CType(Me("user_id"),Integer)
+                Return CType(Me("student_id"),Integer)
             End Get
             Set
-                Me("user_id") = value
+                Me("student_id") = value
             End Set
         End Property
         
@@ -399,13 +399,13 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property user_name() As String
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property faculty_id() As Integer
             Get
-                Return CType(Me("user_name"),String)
+                Return CType(Me("faculty_id"),Integer)
             End Get
             Set
-                Me("user_name") = value
+                Me("faculty_id") = value
             End Set
         End Property
     End Class

@@ -49,6 +49,19 @@ Public Class FacultyDialog
                 {"@passwd", BCrypt.Net.BCrypt.HashPassword(firstLetterName & lastName & year)}
         }
 
+        DBOperations.ACTION_PARAMS = New Dictionary(Of String, String) From {
+            {"@sid", If(My.Settings.student_id > 0, My.Settings.student_id, String.Empty)},
+            {"@fid", If(My.Settings.faculty_id > 0, My.Settings.faculty_id, String.Empty)}
+        }
+
+        If IsNothing(_data) Then
+            DBOperations.ACTION_PARAMS.Add("@action", "Added a new faculty " & TXTFULLNAME.Text)
+            DBOperations.ACTION_PARAMS.Add("@type", LOGTYPE.ADD)
+        Else
+            DBOperations.ACTION_PARAMS.Add("@action", "Updated a faculty " & TXTFULLNAME.Text)
+            DBOperations.ACTION_PARAMS.Add("@type", LOGTYPE.UPDATE)
+        End If
+
         If DBOperations.Exists(FACULTY, data) Then
             errProvider.SetError(TXTEMAIL, "This email already exists.")
             Exit Sub

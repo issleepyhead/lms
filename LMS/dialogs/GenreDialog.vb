@@ -32,7 +32,8 @@ Public Class GenreDialog
         }
 
         DBOperations.ACTION_PARAMS = New Dictionary(Of String, String) From {
-            {"@name", My.Settings.user_name}
+            {"@sid", If(My.Settings.student_id > 0, My.Settings.student_id, String.Empty)},
+            {"@fid", If(My.Settings.faculty_id > 0, My.Settings.faculty_id, String.Empty)}
         }
 
         If IsNothing(_data) Then

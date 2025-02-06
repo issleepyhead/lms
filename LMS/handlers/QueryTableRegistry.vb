@@ -300,8 +300,15 @@ Module QueryTableRegistry
         {CLSSIFICATIONREPORT, New QueryTable},
         {BORROWERREPORT, New QueryTable},
         {LOGS, New QueryTable With {
-            .SEARCH_COUNT_QUERY = "SELECT COUNT(*) FROM tbllogs WHERE name LIKE @search",
-            .SEARCH_RESULT_QUERY = "SELECT id, name, action, date_created FROM tbllogs WHERE name LIKE @search ORDER BY date_created DESC LIMIT @page, 30;"
+            .SEARCH_COUNT_QUERY = "SELECT COUNT(*) FROM tbllogs l
+                                        LEFT JOIN tblstudents s ON l.student_id = s.id
+                                        LEFT JOIN tblfaculties f ON l.faculty_id = f.id
+                                        WHERE s.full_name LIKE @search OR f.full_name LIKE @search",
+            .SEARCH_RESULT_QUERY = "SELECT l.id, CASE WHEN l.faculty_id IS NULL THEN s.full_name ELSE f.full_name END AS full_name, action, l.date_added
+                                        FROM tbllogs l
+                                        LEFT JOIN tblstudents s ON l.student_id = s.id
+                                        LEFT JOIN tblfaculties f ON l.faculty_id = f.id
+                                        WHERE s.full_name LIKE @search OR f.full_name LIKE @search ORDER BY l.date_added DESC LIMIT @page, 30;"
         }}
     }
 

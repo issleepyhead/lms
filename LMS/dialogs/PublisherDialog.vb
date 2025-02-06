@@ -27,6 +27,19 @@ Public Class PublisherDialog
                 {"@id", If(IsNothing(_data), 0, _data.Item("id").ToString)}
         }
 
+        DBOperations.ACTION_PARAMS = New Dictionary(Of String, String) From {
+            {"@sid", If(My.Settings.student_id > 0, My.Settings.student_id, String.Empty)},
+            {"@fid", If(My.Settings.faculty_id > 0, My.Settings.faculty_id, String.Empty)}
+        }
+
+        If IsNothing(_data) Then
+            DBOperations.ACTION_PARAMS.Add("@action", "Added a new publisher " & TXTPUBLISHERNAME.Text)
+            DBOperations.ACTION_PARAMS.Add("@type", LOGTYPE.ADD)
+        Else
+            DBOperations.ACTION_PARAMS.Add("@action", "Updated a publisher " & TXTPUBLISHERNAME.Text)
+            DBOperations.ACTION_PARAMS.Add("@type", LOGTYPE.UPDATE)
+        End If
+
         If DBOperations.Exists(PUBLISHER, data) Then
             errProvider.SetError(TXTPUBLISHERNAME, "This publisher already exits.")
             Exit Sub

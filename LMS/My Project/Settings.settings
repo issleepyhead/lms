@@ -23,7 +23,7 @@
     <Setting Name="remember_server" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="user_id" Type="System.Int32" Scope="User">
+    <Setting Name="student_id" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="last_run" Type="System.DateTime" Scope="User">
@@ -120,8 +120,8 @@ Librarian: @librarian</Value>
     <Setting Name="backup_folder" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="user_name" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="faculty_id" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
     </Setting>
   </Settings>
 </SettingsFile>
