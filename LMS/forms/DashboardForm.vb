@@ -73,7 +73,8 @@ Public Class DashboardForm
 
     Private Sub BTNNEXT_Click(sender As Object, e As EventArgs) Handles BTNGENRENEXT.Click, BTNAUTHORNEXT.Click, BTNPUBLISHERNEXT.Click,
             BTNCLASSIFICATIONNEXT.Click, BTNLANGUAGENEXT.Click, BTNDONATORNEXT.Click, BTNSUPPLIERNEXT.Click, BTNBOOKNEXT.Click, BTNSECTIONNEXT.Click, BTNYEARLEVELNEXT.Click, BTNDEPARTMENTNEXT.Click,
-            BTNSTUDENTNEXT.Click, BTNFACULTYNEXT.Click, BTNADMINNEXT.Click, BTNCOPIESNEXT.Click, BTNINVENTORYNEXT.Click, BTNLOSTDAMAGENEXT.Click, BTNTRANSACTIONNEXT.Click, BTNBORROWEDREPORTNEXT.Click
+            BTNSTUDENTNEXT.Click, BTNFACULTYNEXT.Click, BTNADMINNEXT.Click, BTNCOPIESNEXT.Click, BTNINVENTORYNEXT.Click, BTNLOSTDAMAGENEXT.Click, BTNTRANSACTIONNEXT.Click, BTNBORROWEDREPORTNEXT.Click,
+            BTNACTIVITYNEXT.Click
         If sender.Tag = NameOf(BOOK) Then
             ControlsMap.Item(sender.Tag).NextPage(If(CMBBOOKFILTER.SelectedText.ToLower = NameOf(ACTIVE).ToLower, ACTIVE, INACTIVE), AddressOf RetrieveBookSelection)
         ElseIf sender.Tag = NameOf(STUDENT) Then
@@ -87,7 +88,8 @@ Public Class DashboardForm
 
     Private Sub BTNPREV_Click(sender As Object, e As EventArgs) Handles BTNGENREPREV.Click, BTNAUTHORPREV.Click, BTNPUBLISHERPREV.Click,
             BTNCLASSIFICATIONPREV.Click, BTNLANGUAGEPREV.Click, BTNDONATORRPREV.Click, BTNSUPPLIERPREV.Click, BTNBOOKPREV.Click, BTNSECTIONPREV.Click, BTNYEARLEVELPREV.Click, BTNDEPARTMENTPREV.Click,
-            BTNSTUDENTPREV.Click, BTNFACULTYPREV.Click, BTNADMINPREV.Click, BTNCOPIESPREV.Click, BTNINVENTORYPREV.Click, BTNLOSTDAMAGEPREV.Click, BTNTRANSACTIONPREV.Click, BTNBORROWEDREPORTPREV.Click
+            BTNSTUDENTPREV.Click, BTNFACULTYPREV.Click, BTNADMINPREV.Click, BTNCOPIESPREV.Click, BTNINVENTORYPREV.Click, BTNLOSTDAMAGEPREV.Click, BTNTRANSACTIONPREV.Click, BTNBORROWEDREPORTPREV.Click,
+            BTNACTIVITYPREV.Click
         If sender.Tag = NameOf(BOOK) Then
             ControlsMap.Item(sender.Tag).PrevPage(If(CMBBOOKFILTER.SelectedText.ToLower = NameOf(ACTIVE).ToLower, ACTIVE, INACTIVE), AddressOf RetrieveBookSelection)
         ElseIf sender.Tag = NameOf(STUDENT) Then
@@ -108,7 +110,7 @@ Public Class DashboardForm
     Private Sub TextSearch(sender As Object, e As EventArgs) Handles TXTGENRESEARCH.TextChanged, TXTSEARCHAUTHOR.TextChanged, TXTPUBLISHERSEARCH.TextChanged, TXTCLASSIFICATIONSEARCH.TextChanged,
             TXTLANGUAGESEARCH.TextChanged, TXTBOOKSEARCH.TextChanged, TXTDONATORSEARCH.TextChanged, TXTSUPPLIERSEARCH.TextChanged, TXTFACULTYSEARCH.TextChanged, TXTSTUDENTSEARCH.TextChanged,
             TXTADMINSEARCH.TextChanged, TXTCOPIESSEARCH.TextChanged, TXTINVENTORYSEARCH.TextChanged, TXTDEPARTMENTSEARCH.TextChanged, TXTSECTIONSEARCH.TextChanged, TXTYEARLEVELSEARCH.TextChanged,
-            TXTLOSTDAMAGESEARCH.TextChanged, TXTTRANSACTIONSEARCH.TextChanged, TXTBORROWEDREPORTSSEARCH.TextChanged
+            TXTLOSTDAMAGESEARCH.TextChanged, TXTTRANSACTIONSEARCH.TextChanged, TXTBORROWEDREPORTSSEARCH.TextChanged, TXTACTIVITYSEARCH.TextChanged
         If IS_LOADED Then
             ' TO-DO ADD LOGIC
             If MainFormPanels.SelectedTab.Equals(MaintenanceTab) Then
@@ -136,6 +138,8 @@ Public Class DashboardForm
         End If
         ControlsMap.Item(BookTransactionTab.Tag).Update(type)
     End Sub
+
+    ' TODO THE FETCH OF THE TABS
 #Region "Tab Selection"
     Private Sub MainFormPanels_SelectedIndexChanged(sender As Object, e As EventArgs) Handles MainFormPanels.SelectedIndexChanged
         Select Case True
@@ -948,7 +952,7 @@ Public Class DashboardForm
     Private Sub DGTRANSACTION_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGTRANSACTION.CellClick
         If DGTRANSACTION.SelectedRows.Count > 0 AndAlso e.RowIndex <> -1 Then
             Dim boundItem As DataRowView = TryCast(DGTRANSACTION.SelectedRows(0).DataBoundItem, DataRowView)
-            Using dialog As New ReturnDialog(boundItem.Row.Item("id"))
+            Using dialog As New ReturnDialog(boundItem)
                 dialog.ShowDialog()
             End Using
         End If

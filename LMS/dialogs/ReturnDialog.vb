@@ -2,7 +2,7 @@
 Imports System.Windows.Forms
 
 Public Class ReturnDialog
-    Public _id As Integer
+    Public _data As DataRowView
     Private Class ConditionType
         Public Property id As Integer
         Public Property name As String
@@ -11,9 +11,9 @@ Public Class ReturnDialog
         InitializeComponent()
     End Sub
 
-    Sub New(id As Integer)
+    Sub New(dataRow As DataRowView)
         InitializeComponent()
-        _id = id
+        _data = dataRow
     End Sub
 
     Private Sub ReturnDialog_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -43,7 +43,7 @@ Public Class ReturnDialog
                                                 LEFT JOIN tbladmins a ON bt.issued_by = a.id
                                                 LEFT JOIN tblstudents ad ON a.student_id = ad.id
                                                 LEFT JOIN tblfaculties af ON a.faculty_id = af.id
-                                                WHERE bt.id = @id", New Dictionary(Of String, String) From {{"@id", _id}})
+                                                WHERE bt.id = @id", New Dictionary(Of String, String) From {{"@id", _data.Item("id")}})
 
         If header.Rows.Count > 0 Then
             With header.Rows(0)
@@ -80,7 +80,7 @@ Public Class ReturnDialog
                                             LEFT JOIN tblbookcopies bc ON bi.copy_id = bc.id
                                             LEFT JOIN tblbooks b ON bc.book_id = b.id
                                             WHERE bi.header_id = @id
-                                            ORDER BY bc.accession_no, b.title", New Dictionary(Of String, String) From {{"@id", _id}})
+                                            ORDER BY bc.accession_no, b.title", New Dictionary(Of String, String) From {{"@id", _data.Item("id")}})
         DGBORROWEDCOPIES.DataSource = dt
         DGBORROWEDCOPIES.Columns.Add(cmb)
         DGBORROWEDCOPIES.Columns(NameOf(ColumnDateReturned)).DisplayIndex = DGBORROWEDCOPIES.Columns.Count - 2
@@ -167,7 +167,7 @@ Public Class ReturnDialog
             End If
         Next
 
-        If ReturnBooks(_id, collection) Then
+        If ReturnBooks(_data.Item("id"), collection) Then
             MessageBox.Show("The books borrowed have been returned successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
             For Each row As DataGridViewRow In DGBORROWEDCOPIES.Rows
                 row.Cells.Item("ColumnReturnCondition").ReadOnly = True
@@ -215,7 +215,7 @@ Public Class ReturnDialog
             End If
         Next
 
-        If ReturnBooks(_id, collection) Then
+        If ReturnBooks(_data.Item("id"), collection) Then
             MessageBox.Show("The books borrowed have been returned successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
             For Each row As DataGridViewRow In DGBORROWEDCOPIES.Rows
                 row.Cells.Item("ColumnReturnCondition").ReadOnly = True

@@ -8,7 +8,7 @@ Public Class NoteDialog
 
     Sub New(dialog As ReturnDialog)
         InitializeComponent()
-        id = dialog._id
+        id = dialog._data.Item("id")
     End Sub
 
 

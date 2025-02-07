@@ -74,13 +74,13 @@
         LBLPREV.Text = DBOperations.PREV_PAGE_NUMBER
     End Sub
 
-    Private Sub GetCMBName()
-        For Each item As DataGridViewColumn In DG.Columns
-            If item.GetType() Is GetType(DataGridViewCheckBoxColumn) Then
-                'CHECKBOX_NAME = item.Name
-            End If
-        Next
-    End Sub
+    'Private Sub GetCMBName()
+    '    For Each item As DataGridViewColumn In DG.Columns
+    '        If item.GetType() Is GetType(DataGridViewCheckBoxColumn) Then
+    '            'CHECKBOX_NAME = item.Name
+    '        End If
+    '    Next
+    'End Sub
 
     Public Sub Delete(action As Action(Of List(Of Dictionary(Of String, String)), QueryType))
         DG.EndEdit()
