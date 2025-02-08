@@ -436,6 +436,7 @@ Public Class DashboardForm
 #End Region
 
 #Region "BookInventory Panels"
+    ' Change this logic
     Private Sub BookInventoryPanels_SelectedIndexChanged(sender As Object, e As EventArgs) Handles BookInventoryPanels.SelectedIndexChanged
         Select Case True
             Case BookInventoryPanels.SelectedTab.Equals(CopiesTab)
