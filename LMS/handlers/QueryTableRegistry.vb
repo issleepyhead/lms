@@ -297,8 +297,39 @@ Module QueryTableRegistry
                                     WHERE (f.full_name LIKE @search OR s.full_name LIKE @search) AND bh.status = 2
                                     HAVING DATEDIFF(NOW(), DATE_ADD(bh.overdue_date, INTERVAL 1 DAY)) > 0"
         }},
-        {CLSSIFICATIONREPORT, New QueryTable},
-        {BORROWERREPORT, New QueryTable},
+        {CLSSIFICATIONREPORT, New QueryTable With {
+            .SEARCH_RESULT_QUERY = "SELECT c.classification, COUNT(bdc.copy_id) total_borrowed
+                                        FROM tblborrowheaders bh 
+                                        LEFT JOIN tblborrowedcopies bdc ON bh.id = bdc.header_id
+                                        LEFT JOIN tblbookcopies bc ON bdc.copy_id = bc.id 
+                                        LEFT JOIN tblbooks b ON bc.book_id = b.id 
+                                        RIGHT JOIN tblclassifications c ON b.classification_id = c.id
+                                        WHERE c.classification LIKE @search
+                                        GROUP BY c.classification ORDER BY c.classification LIMIT @page, 30",
+            .SEARCH_COUNT_QUERY = "SELECT COUNT(DISTINCT c.classification)
+                                    FROM tblborrowheaders bh 
+                                    LEFT JOIN tblborrowedcopies bdc ON bh.id = bdc.header_id
+                                    LEFT JOIN tblbookcopies bc ON bdc.copy_id = bc.id 
+                                    LEFT JOIN tblbooks b ON bc.book_id = b.id 
+                                    RIGHT JOIN tblclassifications c ON b.classification_id = c.id
+                                    WHERE c.classification LIKE @search;"
+        }},
+        {BORROWERREPORT, New QueryTable With {
+            .SEARCH_COUNT_QUERY = "SELECT COUNT(DISTINCT CASE WHEN bh.student_id IS NULL THEN bh.faculty_id ELSE bh.student_id END) AS borrower
+                                    FROM tblborrowheaders bh
+                                    LEFT JOIN tblborrowedcopies bc ON bh.id = bc.header_id
+                                    LEFT JOIN tblfaculties f ON bh.faculty_id = f.id
+                                    LEFT JOIN tblstudents s ON bh.student_id = s.id WHERE f.full_name LIKE @search OR s.full_name LIKE @search",
+            .SEARCH_RESULT_QUERY = "SELECT CASE WHEN bh.student_id IS NULL THEN f.full_name ELSE s.full_name END AS full_name,
+                                        COUNT(DISTINCT bh.id) borrow_transaction, COUNT(bc.copy_id) borrowed_books
+                                        FROM tblborrowheaders bh
+                                        LEFT JOIN tblborrowedcopies bc ON bh.id = bc.header_id
+                                        LEFT JOIN tblfaculties f ON bh.faculty_id = f.id
+                                        LEFT JOIN tblstudents s ON bh.student_id = s.id
+                                        WHERE f.full_name LIKE @search OR s.full_name LIKE @search
+                                        GROUP BY s.full_name, f.full_name, bh.student_id
+                                        ORDER BY s.full_name, f.full_name LIMIT @page, 30;"
+        }},
         {LOGS, New QueryTable With {
             .SEARCH_COUNT_QUERY = "SELECT COUNT(*) FROM tbllogs l
                                         LEFT JOIN tblstudents s ON l.student_id = s.id

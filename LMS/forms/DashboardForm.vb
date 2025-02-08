@@ -44,7 +44,8 @@ Public Class DashboardForm
             {NameOf(BOOKREPORT), New ControlMapping With {.DG = DGBOOKREPORT, .LBLNEXT = LBLBOOKREPORTNEXT, .LBLPREV = LBLBOOKREPORTPREV, .TXTSEARCH = TXTBOOKREPORTSEARCH, .QUERY_TYPE = BOOKREPORT}},
             {NameOf(QueryType.EXPENDITUREREPORT), New ControlMapping With {.DG = DGEXPENDITUREREPORT, .LBLNEXT = LBLEXPENDITUREREPORTNEXT, .LBLPREV = LBLEXPENDITUREREPORTPREV, .TXTSEARCH = TXTEXPENDITUREREPORTSEARCH, .QUERY_TYPE = QueryType.EXPENDITUREREPORT}},
             {NameOf(QueryType.FINESREPORT), New ControlMapping With {.DG = DGFINESREPORT, .LBLNEXT = LBLFINESREPORTNEXT, .LBLPREV = LBLFINESREPORTPREV, .TXTSEARCH = TXTFINESREPORTSSEARCH, .QUERY_TYPE = QueryType.FINESREPORT}},
-            {NameOf(LOGS), New ControlMapping With {.DG = DGACTIVITY, .LBLNEXT = LBLACTIVITYNEXT, .LBLPREV = LBLACTIVITYPREV, .TXTSEARCH = TXTACTIVITYSEARCH, .QUERY_TYPE = LOGS}}
+            {NameOf(LOGS), New ControlMapping With {.DG = DGACTIVITY, .LBLNEXT = LBLACTIVITYNEXT, .LBLPREV = LBLACTIVITYPREV, .TXTSEARCH = TXTACTIVITYSEARCH, .QUERY_TYPE = LOGS}},
+            {NameOf(BORROWERREPORT), New ControlMapping With {.DG = DGBORROWERERREPORT, .LBLNEXT = LBLBORROWERREPORTNEXT, .LBLPREV = LBLBORROWERREPORTPREV, .TXTSEARCH = TXTBORROWERREPORTSEARH, .QUERY_TYPE = BORROWERREPORT}}
         }
     End Sub
 
@@ -167,7 +168,7 @@ Public Class DashboardForm
             Case MainFormPanels.SelectedTab.Equals(ReportsTab)
                 ControlsMap.Item(BooksReportTab.Tag).Update()
             Case MainFormPanels.SelectedTab.Equals(SettingsTab)
-                ' TODO FIX THE SETTINGS FETCH
+                SettingsPanels_SelectedIndexChanged(SettingsPanels, Nothing)
             Case MainFormPanels.SelectedTab.Equals(AuditTrailTab)
                 ControlsMap.Item(AuditTrailTab.Tag).Update()
             Case Else
