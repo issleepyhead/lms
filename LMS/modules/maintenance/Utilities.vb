@@ -1,8 +1,8 @@
 ﻿
 Imports MySql.Data.MySqlClient
 
-Module Utilities
-
+#Region "Book Utilities"
+Module BookUtils
     Public Function GenerateISBN() As String
         Dim highestISBN As Integer = ExecScalar("SELECT CAST(isbn AS SIGNED) isbn FROM tblbooks  WHERE isbn LIKE '00%' ORDER BY isbn DESC LIMIT 1")
         If highestISBN = 0 Then
@@ -17,13 +17,114 @@ Module Utilities
         End If
         Return highestAccession.ToString().PadLeft(10, "0")
     End Function
+End Module
+#End Region
 
+#Region "Transaction Utilities"
+Module TransactionUtils
     Public Function GenerateCirculation() As String
         Dim highestCirculation As Integer = ExecScalar("SELECT CAST(circulation_no AS SIGNED) circulation_no FROM tblborrowheaders ORDER BY CAST(circulation_no AS SIGNED) DESC LIMIT 1")
         highestCirculation += 1
         Return highestCirculation.ToString().PadLeft(10, "0")
     End Function
 
+    Public Function ReturnBooks(header_id As Integer, bookCopies As List(Of Dictionary(Of String, String))) As Boolean
+        ' TODO FIX THIS LATURRR
+        Dim transac As MySqlTransaction = Nothing
+        Try
+            Using conn As New MySqlConnection(My.Settings.connection_string)
+                conn.Open()
+                transac = conn.BeginTransaction
+
+                Dim cmd As New MySqlCommand()
+                cmd.Connection = conn
+                cmd.Transaction = transac
+
+                For Each item As Dictionary(Of String, String) In bookCopies
+                    cmd.Parameters.Clear()
+                    cmd.CommandText = "UPDATE tblborrowedcopies SET returned_condition = @rcond, date_returned = NOW() WHERE id = @id"
+                    For Each kv As KeyValuePair(Of String, String) In item
+                        cmd.Parameters.AddWithValue(kv.Key, If(String.IsNullOrEmpty(kv.Value), DBNull.Value, kv.Value))
+                    Next
+                    cmd.ExecuteNonQuery()
+
+                    If item.Item("@rcond") = BOOKCONDITIONTYPE.GOOD OrElse item.Item("@rcond") = BOOKCONDITIONTYPE.DAMAGED Then
+                        cmd.CommandText = "UPDATE tblbookcopies SET `condition` = @rcond, `status` = 1 WHERE id = @cid"
+                    Else
+                        cmd.CommandText = "UPDATE tblbookcopies SET `condition` = @rcond, `status` = 3 WHERE id = @cid"
+                    End If
+                    cmd.ExecuteNonQuery()
+                Next
+
+                cmd.Parameters.Clear()
+                cmd.CommandText = "SELECT COUNT(*) FROM tblborrowedcopies WHERE header_id = @tid AND returned_condition IS NULL"
+                cmd.Parameters.AddWithValue("@tid", header_id)
+                If cmd.ExecuteScalar() = 0 Then
+                    If ExecScalar("SELECT `status` FROM tblborrowheaders WHERE id = @tid") <> TRANSACTIONSTATE.OVERDUE Then
+                        cmd.CommandText = "UPDATE tblborrowheaders SET `status` = 0 WHERE id = @tid"
+                        cmd.ExecuteNonQuery()
+                    End If
+                End If
+                transac.Commit()
+                Return True
+            End Using
+        Catch ex As Exception
+            Logger.Logger(ex)
+            transac.Rollback()
+            Return False
+        End Try
+    End Function
+
+    Public Function InsertBorrow(header As Dictionary(Of String, String), copies As List(Of Dictionary(Of String, String))) As Boolean
+        Dim trans As MySqlTransaction = Nothing
+        Try
+            Using conn As New MySqlConnection(My.Settings.connection_string)
+                conn.Open()
+                trans = conn.BeginTransaction
+
+                Dim cmd As New MySqlCommand("INSERT INTO tblborrowheaders (student_id, faculty_id, circulation_no, issued_by, overdue_date, borrow_date)
+                                               VALUES (@sid, @fid, @cno, @isby, CAST(@odate AS DATETIME), CAST(@bdate AS DATETIME))", conn, trans)
+                With cmd.Parameters
+                    For Each kv In header
+                        .AddWithValue(kv.Key, If(String.IsNullOrEmpty(kv.Value), DBNull.Value, kv.Value))
+                    Next
+                    cmd.Parameters.Item("@odate").DbType = DbType.DateTime
+                    cmd.Parameters.Item("@bdate").DbType = DbType.DateTime
+                End With
+                Dim id As Integer = 0
+                If cmd.ExecuteNonQuery() > 0 Then
+                    cmd.CommandText = "SELECT last_insert_id() FROM tblborrowheaders"
+                    cmd.Parameters.Clear()
+                    id = cmd.ExecuteScalar()
+                    For Each item In copies
+                        cmd.Parameters.Clear()
+                        item.Add("@id", id)
+                        cmd.CommandText = "INSERT INTO tblborrowedcopies (header_id, copy_id, borrowed_condition) VALUES (@id, @cid, (SELECT `condition` FROM tblbookcopies WHERE id = @cid LIMIT 1))"
+
+                        With cmd.Parameters
+                            For Each kv In item
+                                .AddWithValue(kv.Key, If(String.IsNullOrEmpty(kv.Value), DBNull.Value, kv.Value))
+                            Next
+                        End With
+                        If cmd.ExecuteNonQuery() > 0 Then
+                            cmd.CommandText = "UPDATE tblbookcopies SET status = 0 WHERE id = @cid"
+                            cmd.ExecuteNonQuery()
+                        End If
+                    Next
+                    trans.Commit()
+                End If
+            End Using
+            Return True
+        Catch ex As Exception
+            Logger.Logger(ex)
+            trans.Rollback()
+            Return False
+        End Try
+    End Function
+End Module
+#End Region
+
+Module Utilities
     Public Function AddCopies(numOfCopies As Integer, isbn As String, price As Decimal, Optional donator_id As Integer = Nothing, Optional supplier_id As Integer = Nothing) As Boolean
         Dim book_id As Integer = ExecScalar("SELECT id FROM tblbooks WHERE isbn = @isbn", New Dictionary(Of String, String) From {{"@isbn", isbn}})
         Return ExecProcedure("AddBookCopies", New Dictionary(Of String, String) From {
@@ -87,52 +188,7 @@ Module Utilities
         End Try
     End Function
 
-    Public Function ReturnBooks(header_id As Integer, bookCopies As List(Of Dictionary(Of String, String))) As Boolean
-        ' TODO FIX THIS LATURRR
-        Dim transac As MySqlTransaction = Nothing
-        Try
-            Using conn As New MySqlConnection(My.Settings.connection_string)
-                conn.Open()
-                transac = conn.BeginTransaction
 
-                Dim cmd As New MySqlCommand()
-                cmd.Connection = conn
-                cmd.Transaction = transac
-
-                For Each item As Dictionary(Of String, String) In bookCopies
-                    cmd.Parameters.Clear()
-                    cmd.CommandText = "UPDATE tblborrowedcopies SET returned_condition = @rcond, date_returned = NOW() WHERE id = @id"
-                    For Each kv As KeyValuePair(Of String, String) In item
-                        cmd.Parameters.AddWithValue(kv.Key, If(String.IsNullOrEmpty(kv.Value), DBNull.Value, kv.Value))
-                    Next
-                    cmd.ExecuteNonQuery()
-
-                    If item.Item("@rcond") = BOOKCONDITIONTYPE.GOOD OrElse item.Item("@rcond") = BOOKCONDITIONTYPE.DAMAGED Then
-                        cmd.CommandText = "UPDATE tblbookcopies SET `condition` = @rcond, `status` = 1 WHERE id = @cid"
-                    Else
-                        cmd.CommandText = "UPDATE tblbookcopies SET `condition` = @rcond, `status` = 3 WHERE id = @cid"
-                    End If
-                    cmd.ExecuteNonQuery()
-                Next
-
-                cmd.Parameters.Clear()
-                cmd.CommandText = "SELECT COUNT(*) FROM tblborrowedcopies WHERE header_id = @tid AND returned_condition IS NULL"
-                cmd.Parameters.AddWithValue("@tid", header_id)
-                If cmd.ExecuteScalar() = 0 Then
-                    If ExecScalar("SELECT `status` FROM tblborrowheaders WHERE id = @tid") <> TRANSACTIONSTATE.OVERDUE Then
-                        cmd.CommandText = "UPDATE tblborrowheaders SET `status` = 0 WHERE id = @tid"
-                        cmd.ExecuteNonQuery()
-                    End If
-                End If
-                transac.Commit()
-                Return True
-            End Using
-        Catch ex As Exception
-            Logger.Logger(ex)
-            transac.Rollback()
-            Return False
-        End Try
-    End Function
 
     Public Function FetchFacultyBorrower() As DataTable
         ' TODO Change the limit
@@ -166,53 +222,6 @@ Module Utilities
             End Using
         Catch ex As Exception
             Logger.Logger(ex)
-            Return False
-        End Try
-    End Function
-
-    Public Function InsertBorrow(header As Dictionary(Of String, String), copies As List(Of Dictionary(Of String, String))) As Boolean
-        Dim trans As MySqlTransaction = Nothing
-        Try
-            Using conn As New MySqlConnection(My.Settings.connection_string)
-                conn.Open()
-                trans = conn.BeginTransaction
-
-                Dim cmd As New MySqlCommand("INSERT INTO tblborrowheaders (student_id, faculty_id, circulation_no, issued_by, overdue_date, borrow_date)
-                                               VALUES (@sid, @fid, @cno, @isby, CAST(@odate AS DATETIME), CAST(@bdate AS DATETIME))", conn, trans)
-                With cmd.Parameters
-                    For Each kv In header
-                        .AddWithValue(kv.Key, If(String.IsNullOrEmpty(kv.Value), DBNull.Value, kv.Value))
-                    Next
-                    cmd.Parameters.Item("@odate").DbType = DbType.DateTime
-                    cmd.Parameters.Item("@bdate").DbType = DbType.DateTime
-                End With
-                Dim id As Integer = 0
-                If cmd.ExecuteNonQuery() > 0 Then
-                    cmd.CommandText = "SELECT last_insert_id() FROM tblborrowheaders"
-                    cmd.Parameters.Clear()
-                    id = cmd.ExecuteScalar()
-                    For Each item In copies
-                        cmd.Parameters.Clear()
-                        item.Add("@id", id)
-                        cmd.CommandText = "INSERT INTO tblborrowedcopies (header_id, copy_id, borrowed_condition) VALUES (@id, @cid, (SELECT `condition` FROM tblbookcopies WHERE id = @cid LIMIT 1))"
-
-                        With cmd.Parameters
-                            For Each kv In item
-                                .AddWithValue(kv.Key, If(String.IsNullOrEmpty(kv.Value), DBNull.Value, kv.Value))
-                            Next
-                        End With
-                        If cmd.ExecuteNonQuery() > 0 Then
-                            cmd.CommandText = "UPDATE tblbookcopies SET status = 0 WHERE id = @cid"
-                            cmd.ExecuteNonQuery()
-                        End If
-                    Next
-                    trans.Commit()
-                End If
-            End Using
-            Return True
-        Catch ex As Exception
-            Logger.Logger(ex)
-            trans.Rollback()
             Return False
         End Try
     End Function

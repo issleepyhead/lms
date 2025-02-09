@@ -628,20 +628,25 @@ Partial Class DashboardForm
         Me.BTNBORROWERREPORTNEXT = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Panel71 = New Guna.UI2.WinForms.Guna2Panel()
         Me.DGBORROWERERREPORT = New Guna.UI2.WinForms.Guna2DataGridView()
-        Me.ClassificationReport = New System.Windows.Forms.TabPage()
+        Me.DataGridViewTextBoxColumn55 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewCheckBoxColumn13 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.DataGridViewTextBoxColumn56 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column66 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column61 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClassificationReportTab = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel26 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel72 = New Guna.UI2.WinForms.Guna2Panel()
-        Me.BTNBORROWEDREPORTREFRESH = New Guna.UI2.WinForms.Guna2Button()
-        Me.TXTBORROWEDREPORTSSEARCH = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.BTNCLASSIFICATIONREPORTREFRESH = New Guna.UI2.WinForms.Guna2Button()
+        Me.TXTCLASSIFICATIONREPORTSSEARCH = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2Panel73 = New Guna.UI2.WinForms.Guna2Panel()
         Me.Guna2Button8 = New Guna.UI2.WinForms.Guna2Button()
-        Me.LBLBORROWEDREPORTNEXT = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.LBLCLASSIFICATIONREPORTNEXT = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2HtmlLabel59 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.LBLBORROWEDREPORTPREV = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.BTNBORROWEDREPORTPREV = New Guna.UI2.WinForms.Guna2Button()
-        Me.BTNBORROWEDREPORTNEXT = New Guna.UI2.WinForms.Guna2Button()
+        Me.LBLCLASSIFICATIONREPORTPREV = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.BTNCLASSIFICATIONREPORTPREV = New Guna.UI2.WinForms.Guna2Button()
+        Me.BTNCLASSIFICATIONREPORTNEXT = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Panel74 = New Guna.UI2.WinForms.Guna2Panel()
-        Me.DGBORROWEDREPORT = New Guna.UI2.WinForms.Guna2DataGridView()
+        Me.DGCLASSIFICATIONREPORT = New Guna.UI2.WinForms.Guna2DataGridView()
         Me.AccountTab = New System.Windows.Forms.TabPage()
         Me.Guna2Panel82 = New Guna.UI2.WinForms.Guna2Panel()
         Me.LBLPROFILEDEPARTMENT = New Guna.UI2.WinForms.Guna2HtmlLabel()
@@ -757,11 +762,6 @@ Partial Class DashboardForm
         Me.LBLPROFILEROLE = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.LBLPROFILENAME = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.errProvider = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.DataGridViewTextBoxColumn55 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewCheckBoxColumn13 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.DataGridViewTextBoxColumn56 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column66 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column61 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn57 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewCheckBoxColumn14 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.DataGridViewTextBoxColumn58 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -920,12 +920,12 @@ Partial Class DashboardForm
         Me.Guna2Panel70.SuspendLayout
         Me.Guna2Panel71.SuspendLayout
         CType(Me.DGBORROWERERREPORT, System.ComponentModel.ISupportInitialize).BeginInit
-        Me.ClassificationReport.SuspendLayout
+        Me.ClassificationReportTab.SuspendLayout
         Me.TableLayoutPanel26.SuspendLayout
         Me.Guna2Panel72.SuspendLayout
         Me.Guna2Panel73.SuspendLayout
         Me.Guna2Panel74.SuspendLayout
-        CType(Me.DGBORROWEDREPORT, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.DGCLASSIFICATIONREPORT, System.ComponentModel.ISupportInitialize).BeginInit
         Me.AccountTab.SuspendLayout
         Me.Guna2Panel82.SuspendLayout
         Me.SettingsTab.SuspendLayout
@@ -7762,7 +7762,7 @@ Partial Class DashboardForm
         Me.ReportsPanel.Controls.Add(Me.ExpenditureReportTab)
         Me.ReportsPanel.Controls.Add(Me.FinesReportTab)
         Me.ReportsPanel.Controls.Add(Me.BorrowerReportTab)
-        Me.ReportsPanel.Controls.Add(Me.ClassificationReport)
+        Me.ReportsPanel.Controls.Add(Me.ClassificationReportTab)
         Me.ReportsPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ReportsPanel.ItemSize = New System.Drawing.Size(168, 42)
         Me.ReportsPanel.Location = New System.Drawing.Point(0, 0)
@@ -8960,16 +8960,54 @@ Partial Class DashboardForm
         Me.DGBORROWERERREPORT.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(205, Byte), Integer))
         Me.DGBORROWERERREPORT.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
         '
-        'ClassificationReport
+        'DataGridViewTextBoxColumn55
         '
-        Me.ClassificationReport.Controls.Add(Me.TableLayoutPanel26)
-        Me.ClassificationReport.Location = New System.Drawing.Point(4, 46)
-        Me.ClassificationReport.Margin = New System.Windows.Forms.Padding(0)
-        Me.ClassificationReport.Name = "ClassificationReport"
-        Me.ClassificationReport.Size = New System.Drawing.Size(1324, 631)
-        Me.ClassificationReport.TabIndex = 4
-        Me.ClassificationReport.Text = "Classification Report"
-        Me.ClassificationReport.UseVisualStyleBackColor = True
+        Me.DataGridViewTextBoxColumn55.DataPropertyName = "id"
+        Me.DataGridViewTextBoxColumn55.HeaderText = "id"
+        Me.DataGridViewTextBoxColumn55.Name = "DataGridViewTextBoxColumn55"
+        Me.DataGridViewTextBoxColumn55.Visible = False
+        '
+        'DataGridViewCheckBoxColumn13
+        '
+        Me.DataGridViewCheckBoxColumn13.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.DataGridViewCheckBoxColumn13.HeaderText = ""
+        Me.DataGridViewCheckBoxColumn13.Name = "DataGridViewCheckBoxColumn13"
+        Me.DataGridViewCheckBoxColumn13.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewCheckBoxColumn13.Width = 40
+        '
+        'DataGridViewTextBoxColumn56
+        '
+        Me.DataGridViewTextBoxColumn56.DataPropertyName = "full_name"
+        Me.DataGridViewTextBoxColumn56.HeaderText = "Borrower Name"
+        Me.DataGridViewTextBoxColumn56.MaxInputLength = 50
+        Me.DataGridViewTextBoxColumn56.Name = "DataGridViewTextBoxColumn56"
+        Me.DataGridViewTextBoxColumn56.ReadOnly = True
+        Me.DataGridViewTextBoxColumn56.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
+        'Column66
+        '
+        Me.Column66.DataPropertyName = "borrow_transaction"
+        Me.Column66.HeaderText = "Total Transaction"
+        Me.Column66.Name = "Column66"
+        Me.Column66.ReadOnly = True
+        '
+        'Column61
+        '
+        Me.Column61.DataPropertyName = "borrowed_books"
+        Me.Column61.HeaderText = "Total Borrowed Books"
+        Me.Column61.Name = "Column61"
+        '
+        'ClassificationReportTab
+        '
+        Me.ClassificationReportTab.Controls.Add(Me.TableLayoutPanel26)
+        Me.ClassificationReportTab.Location = New System.Drawing.Point(4, 46)
+        Me.ClassificationReportTab.Margin = New System.Windows.Forms.Padding(0)
+        Me.ClassificationReportTab.Name = "ClassificationReportTab"
+        Me.ClassificationReportTab.Size = New System.Drawing.Size(1324, 631)
+        Me.ClassificationReportTab.TabIndex = 4
+        Me.ClassificationReportTab.Tag = "CLSSIFICATIONREPORT"
+        Me.ClassificationReportTab.Text = "Classification Report"
+        Me.ClassificationReportTab.UseVisualStyleBackColor = True
         '
         'TableLayoutPanel26
         '
@@ -8993,8 +9031,8 @@ Partial Class DashboardForm
         'Guna2Panel72
         '
         Me.Guna2Panel72.BackColor = System.Drawing.SystemColors.Window
-        Me.Guna2Panel72.Controls.Add(Me.BTNBORROWEDREPORTREFRESH)
-        Me.Guna2Panel72.Controls.Add(Me.TXTBORROWEDREPORTSSEARCH)
+        Me.Guna2Panel72.Controls.Add(Me.BTNCLASSIFICATIONREPORTREFRESH)
+        Me.Guna2Panel72.Controls.Add(Me.TXTCLASSIFICATIONREPORTSSEARCH)
         Me.Guna2Panel72.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Guna2Panel72.Location = New System.Drawing.Point(0, 0)
         Me.Guna2Panel72.Margin = New System.Windows.Forms.Padding(0)
@@ -9003,56 +9041,58 @@ Partial Class DashboardForm
         Me.Guna2Panel72.Size = New System.Drawing.Size(1324, 60)
         Me.Guna2Panel72.TabIndex = 0
         '
-        'BTNBORROWEDREPORTREFRESH
+        'BTNCLASSIFICATIONREPORTREFRESH
         '
-        Me.BTNBORROWEDREPORTREFRESH.BorderRadius = 4
-        Me.BTNBORROWEDREPORTREFRESH.DisabledState.BorderColor = System.Drawing.Color.DarkGray
-        Me.BTNBORROWEDREPORTREFRESH.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
-        Me.BTNBORROWEDREPORTREFRESH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
-        Me.BTNBORROWEDREPORTREFRESH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.BTNBORROWEDREPORTREFRESH.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.BTNBORROWEDREPORTREFRESH.ForeColor = System.Drawing.Color.White
-        Me.BTNBORROWEDREPORTREFRESH.Location = New System.Drawing.Point(20, 10)
-        Me.BTNBORROWEDREPORTREFRESH.Margin = New System.Windows.Forms.Padding(0)
-        Me.BTNBORROWEDREPORTREFRESH.Name = "BTNBORROWEDREPORTREFRESH"
-        Me.BTNBORROWEDREPORTREFRESH.Size = New System.Drawing.Size(141, 40)
-        Me.BTNBORROWEDREPORTREFRESH.TabIndex = 10
-        Me.BTNBORROWEDREPORTREFRESH.Text = "Refresh"
+        Me.BTNCLASSIFICATIONREPORTREFRESH.BorderRadius = 4
+        Me.BTNCLASSIFICATIONREPORTREFRESH.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.BTNCLASSIFICATIONREPORTREFRESH.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.BTNCLASSIFICATIONREPORTREFRESH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.BTNCLASSIFICATIONREPORTREFRESH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTNCLASSIFICATIONREPORTREFRESH.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.BTNCLASSIFICATIONREPORTREFRESH.ForeColor = System.Drawing.Color.White
+        Me.BTNCLASSIFICATIONREPORTREFRESH.Location = New System.Drawing.Point(20, 10)
+        Me.BTNCLASSIFICATIONREPORTREFRESH.Margin = New System.Windows.Forms.Padding(0)
+        Me.BTNCLASSIFICATIONREPORTREFRESH.Name = "BTNCLASSIFICATIONREPORTREFRESH"
+        Me.BTNCLASSIFICATIONREPORTREFRESH.Size = New System.Drawing.Size(141, 40)
+        Me.BTNCLASSIFICATIONREPORTREFRESH.TabIndex = 10
+        Me.BTNCLASSIFICATIONREPORTREFRESH.Tag = "CLSSIFICATIONREPORT"
+        Me.BTNCLASSIFICATIONREPORTREFRESH.Text = "Refresh"
         '
-        'TXTBORROWEDREPORTSSEARCH
+        'TXTCLASSIFICATIONREPORTSSEARCH
         '
-        Me.TXTBORROWEDREPORTSSEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TXTBORROWEDREPORTSSEARCH.BorderRadius = 4
-        Me.TXTBORROWEDREPORTSSEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.TXTBORROWEDREPORTSSEARCH.DefaultText = ""
-        Me.TXTBORROWEDREPORTSSEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.TXTBORROWEDREPORTSSEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.TXTBORROWEDREPORTSSEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTBORROWEDREPORTSSEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXTBORROWEDREPORTSSEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTBORROWEDREPORTSSEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.TXTBORROWEDREPORTSSEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXTBORROWEDREPORTSSEARCH.IconRight = Global.LMS.My.Resources.Resources.search
-        Me.TXTBORROWEDREPORTSSEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
-        Me.TXTBORROWEDREPORTSSEARCH.Location = New System.Drawing.Point(1046, 10)
-        Me.TXTBORROWEDREPORTSSEARCH.Margin = New System.Windows.Forms.Padding(0)
-        Me.TXTBORROWEDREPORTSSEARCH.MaxLength = 8
-        Me.TXTBORROWEDREPORTSSEARCH.Name = "TXTBORROWEDREPORTSSEARCH"
-        Me.TXTBORROWEDREPORTSSEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXTBORROWEDREPORTSSEARCH.PlaceholderText = "Search Departments"
-        Me.TXTBORROWEDREPORTSSEARCH.SelectedText = ""
-        Me.TXTBORROWEDREPORTSSEARCH.Size = New System.Drawing.Size(258, 40)
-        Me.TXTBORROWEDREPORTSSEARCH.TabIndex = 6
+        Me.TXTCLASSIFICATIONREPORTSSEARCH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TXTCLASSIFICATIONREPORTSSEARCH.BorderRadius = 4
+        Me.TXTCLASSIFICATIONREPORTSSEARCH.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TXTCLASSIFICATIONREPORTSSEARCH.DefaultText = ""
+        Me.TXTCLASSIFICATIONREPORTSSEARCH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TXTCLASSIFICATIONREPORTSSEARCH.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TXTCLASSIFICATIONREPORTSSEARCH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTCLASSIFICATIONREPORTSSEARCH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXTCLASSIFICATIONREPORTSSEARCH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTCLASSIFICATIONREPORTSSEARCH.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.TXTCLASSIFICATIONREPORTSSEARCH.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXTCLASSIFICATIONREPORTSSEARCH.IconRight = Global.LMS.My.Resources.Resources.search
+        Me.TXTCLASSIFICATIONREPORTSSEARCH.IconRightOffset = New System.Drawing.Point(8, 0)
+        Me.TXTCLASSIFICATIONREPORTSSEARCH.Location = New System.Drawing.Point(1046, 10)
+        Me.TXTCLASSIFICATIONREPORTSSEARCH.Margin = New System.Windows.Forms.Padding(0)
+        Me.TXTCLASSIFICATIONREPORTSSEARCH.MaxLength = 8
+        Me.TXTCLASSIFICATIONREPORTSSEARCH.Name = "TXTCLASSIFICATIONREPORTSSEARCH"
+        Me.TXTCLASSIFICATIONREPORTSSEARCH.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TXTCLASSIFICATIONREPORTSSEARCH.PlaceholderText = "Search"
+        Me.TXTCLASSIFICATIONREPORTSSEARCH.SelectedText = ""
+        Me.TXTCLASSIFICATIONREPORTSSEARCH.Size = New System.Drawing.Size(258, 40)
+        Me.TXTCLASSIFICATIONREPORTSSEARCH.TabIndex = 6
+        Me.TXTCLASSIFICATIONREPORTSSEARCH.Tag = "CLSSIFICATIONREPORT"
         '
         'Guna2Panel73
         '
         Me.Guna2Panel73.BackColor = System.Drawing.SystemColors.Window
         Me.Guna2Panel73.Controls.Add(Me.Guna2Button8)
-        Me.Guna2Panel73.Controls.Add(Me.LBLBORROWEDREPORTNEXT)
+        Me.Guna2Panel73.Controls.Add(Me.LBLCLASSIFICATIONREPORTNEXT)
         Me.Guna2Panel73.Controls.Add(Me.Guna2HtmlLabel59)
-        Me.Guna2Panel73.Controls.Add(Me.LBLBORROWEDREPORTPREV)
-        Me.Guna2Panel73.Controls.Add(Me.BTNBORROWEDREPORTPREV)
-        Me.Guna2Panel73.Controls.Add(Me.BTNBORROWEDREPORTNEXT)
+        Me.Guna2Panel73.Controls.Add(Me.LBLCLASSIFICATIONREPORTPREV)
+        Me.Guna2Panel73.Controls.Add(Me.BTNCLASSIFICATIONREPORTPREV)
+        Me.Guna2Panel73.Controls.Add(Me.BTNCLASSIFICATIONREPORTNEXT)
         Me.Guna2Panel73.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Guna2Panel73.Location = New System.Drawing.Point(0, 60)
         Me.Guna2Panel73.Margin = New System.Windows.Forms.Padding(0)
@@ -9077,17 +9117,18 @@ Partial Class DashboardForm
         Me.Guna2Button8.TabIndex = 12
         Me.Guna2Button8.Text = "View Report"
         '
-        'LBLBORROWEDREPORTNEXT
+        'LBLCLASSIFICATIONREPORTNEXT
         '
-        Me.LBLBORROWEDREPORTNEXT.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.LBLBORROWEDREPORTNEXT.BackColor = System.Drawing.Color.Transparent
-        Me.LBLBORROWEDREPORTNEXT.Font = New System.Drawing.Font("Segoe UI Semibold", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LBLBORROWEDREPORTNEXT.Location = New System.Drawing.Point(1195, 19)
-        Me.LBLBORROWEDREPORTNEXT.Margin = New System.Windows.Forms.Padding(0)
-        Me.LBLBORROWEDREPORTNEXT.Name = "LBLBORROWEDREPORTNEXT"
-        Me.LBLBORROWEDREPORTNEXT.Size = New System.Drawing.Size(17, 22)
-        Me.LBLBORROWEDREPORTNEXT.TabIndex = 5
-        Me.LBLBORROWEDREPORTNEXT.Text = "10"
+        Me.LBLCLASSIFICATIONREPORTNEXT.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LBLCLASSIFICATIONREPORTNEXT.BackColor = System.Drawing.Color.Transparent
+        Me.LBLCLASSIFICATIONREPORTNEXT.Font = New System.Drawing.Font("Segoe UI Semibold", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LBLCLASSIFICATIONREPORTNEXT.Location = New System.Drawing.Point(1195, 19)
+        Me.LBLCLASSIFICATIONREPORTNEXT.Margin = New System.Windows.Forms.Padding(0)
+        Me.LBLCLASSIFICATIONREPORTNEXT.Name = "LBLCLASSIFICATIONREPORTNEXT"
+        Me.LBLCLASSIFICATIONREPORTNEXT.Size = New System.Drawing.Size(17, 22)
+        Me.LBLCLASSIFICATIONREPORTNEXT.TabIndex = 5
+        Me.LBLCLASSIFICATIONREPORTNEXT.Tag = "CLSSIFICATIONREPORT"
+        Me.LBLCLASSIFICATIONREPORTNEXT.Text = "10"
         '
         'Guna2HtmlLabel59
         '
@@ -9101,56 +9142,59 @@ Partial Class DashboardForm
         Me.Guna2HtmlLabel59.TabIndex = 4
         Me.Guna2HtmlLabel59.Text = "OF"
         '
-        'LBLBORROWEDREPORTPREV
+        'LBLCLASSIFICATIONREPORTPREV
         '
-        Me.LBLBORROWEDREPORTPREV.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.LBLBORROWEDREPORTPREV.BackColor = System.Drawing.Color.Transparent
-        Me.LBLBORROWEDREPORTPREV.Font = New System.Drawing.Font("Segoe UI Semibold", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LBLBORROWEDREPORTPREV.Location = New System.Drawing.Point(1138, 19)
-        Me.LBLBORROWEDREPORTPREV.Margin = New System.Windows.Forms.Padding(0)
-        Me.LBLBORROWEDREPORTPREV.Name = "LBLBORROWEDREPORTPREV"
-        Me.LBLBORROWEDREPORTPREV.Size = New System.Drawing.Size(9, 22)
-        Me.LBLBORROWEDREPORTPREV.TabIndex = 3
-        Me.LBLBORROWEDREPORTPREV.Text = "1"
+        Me.LBLCLASSIFICATIONREPORTPREV.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LBLCLASSIFICATIONREPORTPREV.BackColor = System.Drawing.Color.Transparent
+        Me.LBLCLASSIFICATIONREPORTPREV.Font = New System.Drawing.Font("Segoe UI Semibold", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LBLCLASSIFICATIONREPORTPREV.Location = New System.Drawing.Point(1138, 19)
+        Me.LBLCLASSIFICATIONREPORTPREV.Margin = New System.Windows.Forms.Padding(0)
+        Me.LBLCLASSIFICATIONREPORTPREV.Name = "LBLCLASSIFICATIONREPORTPREV"
+        Me.LBLCLASSIFICATIONREPORTPREV.Size = New System.Drawing.Size(9, 22)
+        Me.LBLCLASSIFICATIONREPORTPREV.TabIndex = 3
+        Me.LBLCLASSIFICATIONREPORTPREV.Tag = "CLSSIFICATIONREPORT"
+        Me.LBLCLASSIFICATIONREPORTPREV.Text = "1"
         '
-        'BTNBORROWEDREPORTPREV
+        'BTNCLASSIFICATIONREPORTPREV
         '
-        Me.BTNBORROWEDREPORTPREV.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BTNBORROWEDREPORTPREV.BorderRadius = 4
-        Me.BTNBORROWEDREPORTPREV.DisabledState.BorderColor = System.Drawing.Color.DarkGray
-        Me.BTNBORROWEDREPORTPREV.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
-        Me.BTNBORROWEDREPORTPREV.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
-        Me.BTNBORROWEDREPORTPREV.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.BTNBORROWEDREPORTPREV.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.BTNBORROWEDREPORTPREV.ForeColor = System.Drawing.Color.White
-        Me.BTNBORROWEDREPORTPREV.Location = New System.Drawing.Point(1046, 11)
-        Me.BTNBORROWEDREPORTPREV.Margin = New System.Windows.Forms.Padding(0)
-        Me.BTNBORROWEDREPORTPREV.Name = "BTNBORROWEDREPORTPREV"
-        Me.BTNBORROWEDREPORTPREV.Size = New System.Drawing.Size(79, 40)
-        Me.BTNBORROWEDREPORTPREV.TabIndex = 2
-        Me.BTNBORROWEDREPORTPREV.Text = "Previous"
+        Me.BTNCLASSIFICATIONREPORTPREV.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.BTNCLASSIFICATIONREPORTPREV.BorderRadius = 4
+        Me.BTNCLASSIFICATIONREPORTPREV.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.BTNCLASSIFICATIONREPORTPREV.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.BTNCLASSIFICATIONREPORTPREV.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.BTNCLASSIFICATIONREPORTPREV.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTNCLASSIFICATIONREPORTPREV.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.BTNCLASSIFICATIONREPORTPREV.ForeColor = System.Drawing.Color.White
+        Me.BTNCLASSIFICATIONREPORTPREV.Location = New System.Drawing.Point(1046, 11)
+        Me.BTNCLASSIFICATIONREPORTPREV.Margin = New System.Windows.Forms.Padding(0)
+        Me.BTNCLASSIFICATIONREPORTPREV.Name = "BTNCLASSIFICATIONREPORTPREV"
+        Me.BTNCLASSIFICATIONREPORTPREV.Size = New System.Drawing.Size(79, 40)
+        Me.BTNCLASSIFICATIONREPORTPREV.TabIndex = 2
+        Me.BTNCLASSIFICATIONREPORTPREV.Tag = "CLSSIFICATIONREPORT"
+        Me.BTNCLASSIFICATIONREPORTPREV.Text = "Previous"
         '
-        'BTNBORROWEDREPORTNEXT
+        'BTNCLASSIFICATIONREPORTNEXT
         '
-        Me.BTNBORROWEDREPORTNEXT.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BTNBORROWEDREPORTNEXT.BorderRadius = 4
-        Me.BTNBORROWEDREPORTNEXT.DisabledState.BorderColor = System.Drawing.Color.DarkGray
-        Me.BTNBORROWEDREPORTNEXT.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
-        Me.BTNBORROWEDREPORTNEXT.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
-        Me.BTNBORROWEDREPORTNEXT.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.BTNBORROWEDREPORTNEXT.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.BTNBORROWEDREPORTNEXT.ForeColor = System.Drawing.Color.White
-        Me.BTNBORROWEDREPORTNEXT.Location = New System.Drawing.Point(1225, 11)
-        Me.BTNBORROWEDREPORTNEXT.Margin = New System.Windows.Forms.Padding(0)
-        Me.BTNBORROWEDREPORTNEXT.Name = "BTNBORROWEDREPORTNEXT"
-        Me.BTNBORROWEDREPORTNEXT.Size = New System.Drawing.Size(79, 40)
-        Me.BTNBORROWEDREPORTNEXT.TabIndex = 1
-        Me.BTNBORROWEDREPORTNEXT.Text = "Next"
+        Me.BTNCLASSIFICATIONREPORTNEXT.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.BTNCLASSIFICATIONREPORTNEXT.BorderRadius = 4
+        Me.BTNCLASSIFICATIONREPORTNEXT.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.BTNCLASSIFICATIONREPORTNEXT.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.BTNCLASSIFICATIONREPORTNEXT.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.BTNCLASSIFICATIONREPORTNEXT.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTNCLASSIFICATIONREPORTNEXT.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.BTNCLASSIFICATIONREPORTNEXT.ForeColor = System.Drawing.Color.White
+        Me.BTNCLASSIFICATIONREPORTNEXT.Location = New System.Drawing.Point(1225, 11)
+        Me.BTNCLASSIFICATIONREPORTNEXT.Margin = New System.Windows.Forms.Padding(0)
+        Me.BTNCLASSIFICATIONREPORTNEXT.Name = "BTNCLASSIFICATIONREPORTNEXT"
+        Me.BTNCLASSIFICATIONREPORTNEXT.Size = New System.Drawing.Size(79, 40)
+        Me.BTNCLASSIFICATIONREPORTNEXT.TabIndex = 1
+        Me.BTNCLASSIFICATIONREPORTNEXT.Tag = "CLSSIFICATIONREPORT"
+        Me.BTNCLASSIFICATIONREPORTNEXT.Text = "Next"
         '
         'Guna2Panel74
         '
         Me.Guna2Panel74.BackColor = System.Drawing.SystemColors.Window
-        Me.Guna2Panel74.Controls.Add(Me.DGBORROWEDREPORT)
+        Me.Guna2Panel74.Controls.Add(Me.DGCLASSIFICATIONREPORT)
         Me.Guna2Panel74.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Guna2Panel74.Location = New System.Drawing.Point(0, 120)
         Me.Guna2Panel74.Margin = New System.Windows.Forms.Padding(0)
@@ -9159,15 +9203,15 @@ Partial Class DashboardForm
         Me.Guna2Panel74.Size = New System.Drawing.Size(1324, 511)
         Me.Guna2Panel74.TabIndex = 2
         '
-        'DGBORROWEDREPORT
+        'DGCLASSIFICATIONREPORT
         '
-        Me.DGBORROWEDREPORT.AllowUserToAddRows = False
-        Me.DGBORROWEDREPORT.AllowUserToDeleteRows = False
-        Me.DGBORROWEDREPORT.AllowUserToResizeColumns = False
-        Me.DGBORROWEDREPORT.AllowUserToResizeRows = False
+        Me.DGCLASSIFICATIONREPORT.AllowUserToAddRows = False
+        Me.DGCLASSIFICATIONREPORT.AllowUserToDeleteRows = False
+        Me.DGCLASSIFICATIONREPORT.AllowUserToResizeColumns = False
+        Me.DGCLASSIFICATIONREPORT.AllowUserToResizeRows = False
         DataGridViewCellStyle76.BackColor = System.Drawing.Color.FromArgb(CType(CType(197, Byte), Integer), CType(CType(203, Byte), Integer), CType(CType(232, Byte), Integer))
-        Me.DGBORROWEDREPORT.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle76
-        Me.DGBORROWEDREPORT.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        Me.DGCLASSIFICATIONREPORT.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle76
+        Me.DGCLASSIFICATIONREPORT.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         DataGridViewCellStyle77.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle77.BackColor = System.Drawing.Color.FromArgb(CType(CType(63, Byte), Integer), CType(CType(81, Byte), Integer), CType(CType(181, Byte), Integer))
         DataGridViewCellStyle77.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -9175,10 +9219,10 @@ Partial Class DashboardForm
         DataGridViewCellStyle77.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle77.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle77.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DGBORROWEDREPORT.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle77
-        Me.DGBORROWEDREPORT.ColumnHeadersHeight = 48
-        Me.DGBORROWEDREPORT.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn57, Me.DataGridViewCheckBoxColumn14, Me.DataGridViewTextBoxColumn58, Me.Column67})
-        Me.DGBORROWEDREPORT.ContextMenuStrip = Me.DGMAINTENANCECONTEXTMENU
+        Me.DGCLASSIFICATIONREPORT.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle77
+        Me.DGCLASSIFICATIONREPORT.ColumnHeadersHeight = 48
+        Me.DGCLASSIFICATIONREPORT.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn57, Me.DataGridViewCheckBoxColumn14, Me.DataGridViewTextBoxColumn58, Me.Column67})
+        Me.DGCLASSIFICATIONREPORT.ContextMenuStrip = Me.DGMAINTENANCECONTEXTMENU
         DataGridViewCellStyle78.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle78.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(239, Byte), Integer))
         DataGridViewCellStyle78.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -9186,40 +9230,41 @@ Partial Class DashboardForm
         DataGridViewCellStyle78.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(205, Byte), Integer))
         DataGridViewCellStyle78.SelectionForeColor = System.Drawing.Color.Black
         DataGridViewCellStyle78.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DGBORROWEDREPORT.DefaultCellStyle = DataGridViewCellStyle78
-        Me.DGBORROWEDREPORT.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.DGBORROWEDREPORT.GridColor = System.Drawing.Color.FromArgb(CType(CType(194, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(231, Byte), Integer))
-        Me.DGBORROWEDREPORT.Location = New System.Drawing.Point(20, 0)
-        Me.DGBORROWEDREPORT.Margin = New System.Windows.Forms.Padding(0)
-        Me.DGBORROWEDREPORT.Name = "DGBORROWEDREPORT"
-        Me.DGBORROWEDREPORT.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        Me.DGBORROWEDREPORT.RowHeadersVisible = False
-        Me.DGBORROWEDREPORT.RowTemplate.Height = 48
-        Me.DGBORROWEDREPORT.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DGBORROWEDREPORT.Size = New System.Drawing.Size(1284, 491)
-        Me.DGBORROWEDREPORT.TabIndex = 0
-        Me.DGBORROWEDREPORT.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Indigo
-        Me.DGBORROWEDREPORT.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(197, Byte), Integer), CType(CType(203, Byte), Integer), CType(CType(232, Byte), Integer))
-        Me.DGBORROWEDREPORT.ThemeStyle.AlternatingRowsStyle.Font = Nothing
-        Me.DGBORROWEDREPORT.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty
-        Me.DGBORROWEDREPORT.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty
-        Me.DGBORROWEDREPORT.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty
-        Me.DGBORROWEDREPORT.ThemeStyle.BackColor = System.Drawing.Color.White
-        Me.DGBORROWEDREPORT.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(CType(CType(194, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(231, Byte), Integer))
-        Me.DGBORROWEDREPORT.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(63, Byte), Integer), CType(CType(81, Byte), Integer), CType(CType(181, Byte), Integer))
-        Me.DGBORROWEDREPORT.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        Me.DGBORROWEDREPORT.ThemeStyle.HeaderStyle.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DGBORROWEDREPORT.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White
-        Me.DGBORROWEDREPORT.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.DGBORROWEDREPORT.ThemeStyle.HeaderStyle.Height = 48
-        Me.DGBORROWEDREPORT.ThemeStyle.ReadOnly = False
-        Me.DGBORROWEDREPORT.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(239, Byte), Integer))
-        Me.DGBORROWEDREPORT.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
-        Me.DGBORROWEDREPORT.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DGBORROWEDREPORT.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Black
-        Me.DGBORROWEDREPORT.ThemeStyle.RowsStyle.Height = 48
-        Me.DGBORROWEDREPORT.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(205, Byte), Integer))
-        Me.DGBORROWEDREPORT.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
+        Me.DGCLASSIFICATIONREPORT.DefaultCellStyle = DataGridViewCellStyle78
+        Me.DGCLASSIFICATIONREPORT.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.DGCLASSIFICATIONREPORT.GridColor = System.Drawing.Color.FromArgb(CType(CType(194, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(231, Byte), Integer))
+        Me.DGCLASSIFICATIONREPORT.Location = New System.Drawing.Point(20, 0)
+        Me.DGCLASSIFICATIONREPORT.Margin = New System.Windows.Forms.Padding(0)
+        Me.DGCLASSIFICATIONREPORT.Name = "DGCLASSIFICATIONREPORT"
+        Me.DGCLASSIFICATIONREPORT.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        Me.DGCLASSIFICATIONREPORT.RowHeadersVisible = False
+        Me.DGCLASSIFICATIONREPORT.RowTemplate.Height = 48
+        Me.DGCLASSIFICATIONREPORT.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGCLASSIFICATIONREPORT.Size = New System.Drawing.Size(1284, 491)
+        Me.DGCLASSIFICATIONREPORT.TabIndex = 0
+        Me.DGCLASSIFICATIONREPORT.Tag = "CLSSIFICATIONREPORT"
+        Me.DGCLASSIFICATIONREPORT.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Indigo
+        Me.DGCLASSIFICATIONREPORT.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(197, Byte), Integer), CType(CType(203, Byte), Integer), CType(CType(232, Byte), Integer))
+        Me.DGCLASSIFICATIONREPORT.ThemeStyle.AlternatingRowsStyle.Font = Nothing
+        Me.DGCLASSIFICATIONREPORT.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty
+        Me.DGCLASSIFICATIONREPORT.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty
+        Me.DGCLASSIFICATIONREPORT.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty
+        Me.DGCLASSIFICATIONREPORT.ThemeStyle.BackColor = System.Drawing.Color.White
+        Me.DGCLASSIFICATIONREPORT.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(CType(CType(194, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(231, Byte), Integer))
+        Me.DGCLASSIFICATIONREPORT.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(63, Byte), Integer), CType(CType(81, Byte), Integer), CType(CType(181, Byte), Integer))
+        Me.DGCLASSIFICATIONREPORT.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        Me.DGCLASSIFICATIONREPORT.ThemeStyle.HeaderStyle.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGCLASSIFICATIONREPORT.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White
+        Me.DGCLASSIFICATIONREPORT.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        Me.DGCLASSIFICATIONREPORT.ThemeStyle.HeaderStyle.Height = 48
+        Me.DGCLASSIFICATIONREPORT.ThemeStyle.ReadOnly = False
+        Me.DGCLASSIFICATIONREPORT.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(239, Byte), Integer))
+        Me.DGCLASSIFICATIONREPORT.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
+        Me.DGCLASSIFICATIONREPORT.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGCLASSIFICATIONREPORT.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Black
+        Me.DGCLASSIFICATIONREPORT.ThemeStyle.RowsStyle.Height = 48
+        Me.DGCLASSIFICATIONREPORT.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(205, Byte), Integer))
+        Me.DGCLASSIFICATIONREPORT.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
         '
         'AccountTab
         '
@@ -11120,7 +11165,7 @@ Partial Class DashboardForm
         '
         Me.BTNLOGOUT.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.BTNLOGOUT.BackColor = System.Drawing.Color.Transparent
-        Me.BTNLOGOUT.BorderRadius = 8
+        Me.BTNLOGOUT.BorderRadius = 4
         Me.BTNLOGOUT.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTNLOGOUT.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTNLOGOUT.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -11131,7 +11176,7 @@ Partial Class DashboardForm
         Me.BTNLOGOUT.Location = New System.Drawing.Point(1221, 81)
         Me.BTNLOGOUT.Margin = New System.Windows.Forms.Padding(0)
         Me.BTNLOGOUT.Name = "BTNLOGOUT"
-        Me.BTNLOGOUT.Size = New System.Drawing.Size(118, 24)
+        Me.BTNLOGOUT.Size = New System.Drawing.Size(118, 28)
         Me.BTNLOGOUT.TabIndex = 7
         Me.BTNLOGOUT.Text = "Log Out"
         '
@@ -11212,43 +11257,6 @@ Partial Class DashboardForm
         Me.errProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink
         Me.errProvider.ContainerControl = Me
         '
-        'DataGridViewTextBoxColumn55
-        '
-        Me.DataGridViewTextBoxColumn55.DataPropertyName = "id"
-        Me.DataGridViewTextBoxColumn55.HeaderText = "id"
-        Me.DataGridViewTextBoxColumn55.Name = "DataGridViewTextBoxColumn55"
-        Me.DataGridViewTextBoxColumn55.Visible = False
-        '
-        'DataGridViewCheckBoxColumn13
-        '
-        Me.DataGridViewCheckBoxColumn13.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.DataGridViewCheckBoxColumn13.HeaderText = ""
-        Me.DataGridViewCheckBoxColumn13.Name = "DataGridViewCheckBoxColumn13"
-        Me.DataGridViewCheckBoxColumn13.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewCheckBoxColumn13.Width = 40
-        '
-        'DataGridViewTextBoxColumn56
-        '
-        Me.DataGridViewTextBoxColumn56.DataPropertyName = "full_name"
-        Me.DataGridViewTextBoxColumn56.HeaderText = "Borrower Name"
-        Me.DataGridViewTextBoxColumn56.MaxInputLength = 50
-        Me.DataGridViewTextBoxColumn56.Name = "DataGridViewTextBoxColumn56"
-        Me.DataGridViewTextBoxColumn56.ReadOnly = True
-        Me.DataGridViewTextBoxColumn56.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        '
-        'Column66
-        '
-        Me.Column66.DataPropertyName = "borrow_transaction"
-        Me.Column66.HeaderText = "Total Transaction"
-        Me.Column66.Name = "Column66"
-        Me.Column66.ReadOnly = True
-        '
-        'Column61
-        '
-        Me.Column61.DataPropertyName = "borrowed_books"
-        Me.Column61.HeaderText = "Total Borrowed Books"
-        Me.Column61.Name = "Column61"
-        '
         'DataGridViewTextBoxColumn57
         '
         Me.DataGridViewTextBoxColumn57.DataPropertyName = "id"
@@ -11266,7 +11274,7 @@ Partial Class DashboardForm
         '
         'DataGridViewTextBoxColumn58
         '
-        Me.DataGridViewTextBoxColumn58.DataPropertyName = "department_name"
+        Me.DataGridViewTextBoxColumn58.DataPropertyName = "classification"
         Me.DataGridViewTextBoxColumn58.HeaderText = "Classification"
         Me.DataGridViewTextBoxColumn58.MaxInputLength = 50
         Me.DataGridViewTextBoxColumn58.Name = "DataGridViewTextBoxColumn58"
@@ -11275,6 +11283,7 @@ Partial Class DashboardForm
         '
         'Column67
         '
+        Me.Column67.DataPropertyName = "total_borrowed"
         Me.Column67.HeaderText = "Total Borrowed Books"
         Me.Column67.Name = "Column67"
         Me.Column67.ReadOnly = True
@@ -11470,13 +11479,13 @@ Partial Class DashboardForm
         Me.Guna2Panel70.PerformLayout
         Me.Guna2Panel71.ResumeLayout(False)
         CType(Me.DGBORROWERERREPORT, System.ComponentModel.ISupportInitialize).EndInit
-        Me.ClassificationReport.ResumeLayout(False)
+        Me.ClassificationReportTab.ResumeLayout(False)
         Me.TableLayoutPanel26.ResumeLayout(False)
         Me.Guna2Panel72.ResumeLayout(False)
         Me.Guna2Panel73.ResumeLayout(False)
         Me.Guna2Panel73.PerformLayout
         Me.Guna2Panel74.ResumeLayout(False)
-        CType(Me.DGBORROWEDREPORT, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.DGCLASSIFICATIONREPORT, System.ComponentModel.ISupportInitialize).EndInit
         Me.AccountTab.ResumeLayout(False)
         Me.Guna2Panel82.ResumeLayout(False)
         Me.Guna2Panel82.PerformLayout
@@ -11726,7 +11735,7 @@ Partial Class DashboardForm
     Friend WithEvents BTNIMPORTBOOKS As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents FinesReportTab As TabPage
     Friend WithEvents BorrowerReportTab As TabPage
-    Friend WithEvents ClassificationReport As TabPage
+    Friend WithEvents ClassificationReportTab As TabPage
     Friend WithEvents LostDamageTab As TabPage
     Friend WithEvents BTNIMPORTFACULTY As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents ColumnAuthorID As DataGridViewTextBoxColumn
@@ -11880,15 +11889,15 @@ Partial Class DashboardForm
     Friend WithEvents DGBORROWERERREPORT As Guna.UI2.WinForms.Guna2DataGridView
     Friend WithEvents TableLayoutPanel26 As TableLayoutPanel
     Friend WithEvents Guna2Panel72 As Guna.UI2.WinForms.Guna2Panel
-    Friend WithEvents TXTBORROWEDREPORTSSEARCH As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents TXTCLASSIFICATIONREPORTSSEARCH As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Guna2Panel73 As Guna.UI2.WinForms.Guna2Panel
-    Friend WithEvents LBLBORROWEDREPORTNEXT As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents LBLCLASSIFICATIONREPORTNEXT As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2HtmlLabel59 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents LBLBORROWEDREPORTPREV As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents BTNBORROWEDREPORTPREV As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents BTNBORROWEDREPORTNEXT As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents LBLCLASSIFICATIONREPORTPREV As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents BTNCLASSIFICATIONREPORTPREV As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents BTNCLASSIFICATIONREPORTNEXT As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Guna2Panel74 As Guna.UI2.WinForms.Guna2Panel
-    Friend WithEvents DGBORROWEDREPORT As Guna.UI2.WinForms.Guna2DataGridView
+    Friend WithEvents DGCLASSIFICATIONREPORT As Guna.UI2.WinForms.Guna2DataGridView
     Friend WithEvents TableLayoutPanel27 As TableLayoutPanel
     Friend WithEvents Guna2Panel75 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents TXTACTIVITYSEARCH As Guna.UI2.WinForms.Guna2TextBox
@@ -11961,7 +11970,7 @@ Partial Class DashboardForm
     Friend WithEvents BTNEXPENDITUREREPORTREFRESH As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents BTNFINESREPORTREFRESH As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents BTNBORROWERREPORTREFRESH As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents BTNBORROWEDREPORTREFRESH As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents BTNCLASSIFICATIONREPORTREFRESH As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents CHCKSETGLOBALP As Guna.UI2.WinForms.Guna2CheckBox
     Friend WithEvents CHCKSETNOTIF As Guna.UI2.WinForms.Guna2CheckBox
     Friend WithEvents Guna2HtmlLabel27 As Guna.UI2.WinForms.Guna2HtmlLabel
