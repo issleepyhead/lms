@@ -572,6 +572,11 @@ Partial Class DashboardForm
         Me.BTNBOOKREPORTNEXT = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Panel62 = New Guna.UI2.WinForms.Guna2Panel()
         Me.DGBOOKREPORT = New Guna.UI2.WinForms.Guna2DataGridView()
+        Me.Column68 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.DataGridViewTextBoxColumn50 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column64 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column65 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column22 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ExpenditureReportTab = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel23 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel63 = New Guna.UI2.WinForms.Guna2Panel()
@@ -586,6 +591,10 @@ Partial Class DashboardForm
         Me.BTNEXPENDITUREREPORTNEXT = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Panel65 = New Guna.UI2.WinForms.Guna2Panel()
         Me.DGEXPENDITUREREPORT = New Guna.UI2.WinForms.Guna2DataGridView()
+        Me.Column69 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.DataGridViewTextBoxColumn52 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column30 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column29 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.FinesReportTab = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel24 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel66 = New Guna.UI2.WinForms.Guna2Panel()
@@ -600,6 +609,14 @@ Partial Class DashboardForm
         Me.BTNFINESREPORTNEXT = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Panel68 = New Guna.UI2.WinForms.Guna2Panel()
         Me.DGFINESREPORT = New Guna.UI2.WinForms.Guna2DataGridView()
+        Me.Column70 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn54 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column55 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column56 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column57 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column59 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column60 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column58 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.BorrowerReportTab = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel25 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel69 = New Guna.UI2.WinForms.Guna2Panel()
@@ -752,23 +769,6 @@ Partial Class DashboardForm
         Me.LBLPROFILEROLE = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.LBLPROFILENAME = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.errProvider = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.Column68 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.DataGridViewTextBoxColumn50 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column64 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column65 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column22 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column69 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.DataGridViewTextBoxColumn52 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column30 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column29 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column70 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn54 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column55 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column56 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column57 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column59 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column60 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column58 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TableLayoutPanel1.SuspendLayout
         Me.MainFormPanels.SuspendLayout
         Me.DashboardTab.SuspendLayout
@@ -3089,42 +3089,49 @@ Partial Class DashboardForm
         Me.DGBOOKCONTEXTMENUSTRIP.RenderStyle.SelectionForeColor = System.Drawing.Color.White
         Me.DGBOOKCONTEXTMENUSTRIP.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro
         Me.DGBOOKCONTEXTMENUSTRIP.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
-        Me.DGBOOKCONTEXTMENUSTRIP.Size = New System.Drawing.Size(205, 148)
+        Me.DGBOOKCONTEXTMENUSTRIP.Size = New System.Drawing.Size(205, 170)
+        Me.DGBOOKCONTEXTMENUSTRIP.Tag = "BOOK"
         '
         'SelectAllToolStripMenuItem1
         '
         Me.SelectAllToolStripMenuItem1.Name = "SelectAllToolStripMenuItem1"
         Me.SelectAllToolStripMenuItem1.Size = New System.Drawing.Size(204, 24)
+        Me.SelectAllToolStripMenuItem1.Tag = "BOOK"
         Me.SelectAllToolStripMenuItem1.Text = "Select All"
         '
         'UnselectAllToolStripMenuItem1
         '
         Me.UnselectAllToolStripMenuItem1.Name = "UnselectAllToolStripMenuItem1"
         Me.UnselectAllToolStripMenuItem1.Size = New System.Drawing.Size(204, 24)
+        Me.UnselectAllToolStripMenuItem1.Tag = "BOOK"
         Me.UnselectAllToolStripMenuItem1.Text = "Unselect All"
         '
         'ArchiveSelectedToolStripMenuItem2
         '
         Me.ArchiveSelectedToolStripMenuItem2.Name = "ArchiveSelectedToolStripMenuItem2"
         Me.ArchiveSelectedToolStripMenuItem2.Size = New System.Drawing.Size(204, 24)
+        Me.ArchiveSelectedToolStripMenuItem2.Tag = "BOOK"
         Me.ArchiveSelectedToolStripMenuItem2.Text = "Archive Selected"
         '
         'UnarchiveSelectedToolStripMenuItem2
         '
         Me.UnarchiveSelectedToolStripMenuItem2.Name = "UnarchiveSelectedToolStripMenuItem2"
         Me.UnarchiveSelectedToolStripMenuItem2.Size = New System.Drawing.Size(204, 24)
+        Me.UnarchiveSelectedToolStripMenuItem2.Tag = "BOOK"
         Me.UnarchiveSelectedToolStripMenuItem2.Text = "Unarchive Selected"
         '
         'DeleteSelectedToolStripMenuItem
         '
         Me.DeleteSelectedToolStripMenuItem.Name = "DeleteSelectedToolStripMenuItem"
         Me.DeleteSelectedToolStripMenuItem.Size = New System.Drawing.Size(204, 24)
+        Me.DeleteSelectedToolStripMenuItem.Tag = "BOOK"
         Me.DeleteSelectedToolStripMenuItem.Text = "Delete Selected"
         '
         'ISBNToolStripMenuItem
         '
         Me.ISBNToolStripMenuItem.Name = "ISBNToolStripMenuItem"
         Me.ISBNToolStripMenuItem.Size = New System.Drawing.Size(204, 24)
+        Me.ISBNToolStripMenuItem.Tag = "BOOK"
         Me.ISBNToolStripMenuItem.Text = "Print ISBN"
         '
         'DonatorsTab
@@ -5073,47 +5080,55 @@ Partial Class DashboardForm
         Me.DGSTUDENTCONTEXTMENUSTRIP.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro
         Me.DGSTUDENTCONTEXTMENUSTRIP.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
         Me.DGSTUDENTCONTEXTMENUSTRIP.Size = New System.Drawing.Size(260, 172)
+        Me.DGSTUDENTCONTEXTMENUSTRIP.Tag = "STUDENT"
         '
         'SelectAllToolStripMenuItem2
         '
         Me.SelectAllToolStripMenuItem2.Name = "SelectAllToolStripMenuItem2"
         Me.SelectAllToolStripMenuItem2.Size = New System.Drawing.Size(259, 24)
+        Me.SelectAllToolStripMenuItem2.Tag = "STUDENT"
         Me.SelectAllToolStripMenuItem2.Text = "Select All"
         '
         'UnselectAllToolStripMenuItem2
         '
         Me.UnselectAllToolStripMenuItem2.Name = "UnselectAllToolStripMenuItem2"
         Me.UnselectAllToolStripMenuItem2.Size = New System.Drawing.Size(259, 24)
+        Me.UnselectAllToolStripMenuItem2.Tag = "STUDENT"
         Me.UnselectAllToolStripMenuItem2.Text = "Unselect All"
         '
         'ArchiveSelectedToolStripMenuItem1
         '
         Me.ArchiveSelectedToolStripMenuItem1.Name = "ArchiveSelectedToolStripMenuItem1"
         Me.ArchiveSelectedToolStripMenuItem1.Size = New System.Drawing.Size(259, 24)
+        Me.ArchiveSelectedToolStripMenuItem1.Tag = "STUDENT"
         Me.ArchiveSelectedToolStripMenuItem1.Text = "Archive Selected"
         '
         'UnarchiveSelectedToolStripMenuItem1
         '
         Me.UnarchiveSelectedToolStripMenuItem1.Name = "UnarchiveSelectedToolStripMenuItem1"
         Me.UnarchiveSelectedToolStripMenuItem1.Size = New System.Drawing.Size(259, 24)
+        Me.UnarchiveSelectedToolStripMenuItem1.Tag = "STUDENT"
         Me.UnarchiveSelectedToolStripMenuItem1.Text = "Unarchive Selected"
         '
         'DeleteSelectedToolStripMenuItem1
         '
         Me.DeleteSelectedToolStripMenuItem1.Name = "DeleteSelectedToolStripMenuItem1"
         Me.DeleteSelectedToolStripMenuItem1.Size = New System.Drawing.Size(259, 24)
+        Me.DeleteSelectedToolStripMenuItem1.Tag = "STUDENT"
         Me.DeleteSelectedToolStripMenuItem1.Text = "Delete Selected"
         '
         'PrintLibraryCardToolStripMenuItem
         '
         Me.PrintLibraryCardToolStripMenuItem.Name = "PrintLibraryCardToolStripMenuItem"
         Me.PrintLibraryCardToolStripMenuItem.Size = New System.Drawing.Size(259, 24)
+        Me.PrintLibraryCardToolStripMenuItem.Tag = "STUDENT"
         Me.PrintLibraryCardToolStripMenuItem.Text = "Print Library Card"
         '
         'PromoteAsAssistLibrarianToolStripMenuItem
         '
         Me.PromoteAsAssistLibrarianToolStripMenuItem.Name = "PromoteAsAssistLibrarianToolStripMenuItem"
         Me.PromoteAsAssistLibrarianToolStripMenuItem.Size = New System.Drawing.Size(259, 24)
+        Me.PromoteAsAssistLibrarianToolStripMenuItem.Tag = "STUDENT"
         Me.PromoteAsAssistLibrarianToolStripMenuItem.Text = "Promote as Assist. Librarian"
         '
         'FacultyTab
@@ -5515,35 +5530,41 @@ Partial Class DashboardForm
         Me.DGFACULTYCONTEXTMENUSTRIP.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro
         Me.DGFACULTYCONTEXTMENUSTRIP.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
         Me.DGFACULTYCONTEXTMENUSTRIP.Size = New System.Drawing.Size(205, 148)
+        Me.DGFACULTYCONTEXTMENUSTRIP.Tag = "FACULTY"
         '
         'SelectAllToolStripMenuItem3
         '
         Me.SelectAllToolStripMenuItem3.Name = "SelectAllToolStripMenuItem3"
         Me.SelectAllToolStripMenuItem3.Size = New System.Drawing.Size(204, 24)
+        Me.SelectAllToolStripMenuItem3.Tag = "FACULTY"
         Me.SelectAllToolStripMenuItem3.Text = "Select All"
         '
         'UnselectAllToolStripMenuItem3
         '
         Me.UnselectAllToolStripMenuItem3.Name = "UnselectAllToolStripMenuItem3"
         Me.UnselectAllToolStripMenuItem3.Size = New System.Drawing.Size(204, 24)
+        Me.UnselectAllToolStripMenuItem3.Tag = "FACULTY"
         Me.UnselectAllToolStripMenuItem3.Text = "Unselect All"
         '
         'DeleteSelectedToolStripMenuItem2
         '
         Me.DeleteSelectedToolStripMenuItem2.Name = "DeleteSelectedToolStripMenuItem2"
         Me.DeleteSelectedToolStripMenuItem2.Size = New System.Drawing.Size(204, 24)
+        Me.DeleteSelectedToolStripMenuItem2.Tag = "FACULTY"
         Me.DeleteSelectedToolStripMenuItem2.Text = "Delete Selected"
         '
         'ArchiveSelectedToolStripMenuItem
         '
         Me.ArchiveSelectedToolStripMenuItem.Name = "ArchiveSelectedToolStripMenuItem"
         Me.ArchiveSelectedToolStripMenuItem.Size = New System.Drawing.Size(204, 24)
+        Me.ArchiveSelectedToolStripMenuItem.Tag = "FACULTY"
         Me.ArchiveSelectedToolStripMenuItem.Text = "Archive Selected"
         '
         'UnarchiveSelectedToolStripMenuItem
         '
         Me.UnarchiveSelectedToolStripMenuItem.Name = "UnarchiveSelectedToolStripMenuItem"
         Me.UnarchiveSelectedToolStripMenuItem.Size = New System.Drawing.Size(204, 24)
+        Me.UnarchiveSelectedToolStripMenuItem.Tag = "FACULTY"
         Me.UnarchiveSelectedToolStripMenuItem.Text = "Unarchive Selected"
         '
         'PromoteAsSuperadminToolStripMenuItem
@@ -5551,6 +5572,7 @@ Partial Class DashboardForm
         Me.PromoteAsSuperadminToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SuperAdminToolStripMenuItem, Me.AssistLibrarianToolStripMenuItem})
         Me.PromoteAsSuperadminToolStripMenuItem.Name = "PromoteAsSuperadminToolStripMenuItem"
         Me.PromoteAsSuperadminToolStripMenuItem.Size = New System.Drawing.Size(204, 24)
+        Me.PromoteAsSuperadminToolStripMenuItem.Tag = "FACULTY"
         Me.PromoteAsSuperadminToolStripMenuItem.Text = "Promote To"
         '
         'SuperAdminToolStripMenuItem
@@ -8064,6 +8086,40 @@ Partial Class DashboardForm
         Me.DGBOOKREPORT.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(205, Byte), Integer))
         Me.DGBOOKREPORT.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
         '
+        'Column68
+        '
+        Me.Column68.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.Column68.HeaderText = ""
+        Me.Column68.Name = "Column68"
+        Me.Column68.Width = 40
+        '
+        'DataGridViewTextBoxColumn50
+        '
+        Me.DataGridViewTextBoxColumn50.DataPropertyName = "title"
+        Me.DataGridViewTextBoxColumn50.HeaderText = "Book Title"
+        Me.DataGridViewTextBoxColumn50.MaxInputLength = 50
+        Me.DataGridViewTextBoxColumn50.Name = "DataGridViewTextBoxColumn50"
+        Me.DataGridViewTextBoxColumn50.ReadOnly = True
+        Me.DataGridViewTextBoxColumn50.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
+        'Column64
+        '
+        Me.Column64.DataPropertyName = "genre"
+        Me.Column64.HeaderText = "Genre"
+        Me.Column64.Name = "Column64"
+        '
+        'Column65
+        '
+        Me.Column65.DataPropertyName = "classification"
+        Me.Column65.HeaderText = "Classification"
+        Me.Column65.Name = "Column65"
+        '
+        'Column22
+        '
+        Me.Column22.DataPropertyName = "borrowed_count"
+        Me.Column22.HeaderText = "Borrowed Count"
+        Me.Column22.Name = "Column22"
+        '
         'ExpenditureReportTab
         '
         Me.ExpenditureReportTab.Controls.Add(Me.TableLayoutPanel23)
@@ -8333,6 +8389,34 @@ Partial Class DashboardForm
         Me.DGEXPENDITUREREPORT.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(205, Byte), Integer))
         Me.DGEXPENDITUREREPORT.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
         '
+        'Column69
+        '
+        Me.Column69.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.Column69.HeaderText = ""
+        Me.Column69.Name = "Column69"
+        Me.Column69.Width = 40
+        '
+        'DataGridViewTextBoxColumn52
+        '
+        Me.DataGridViewTextBoxColumn52.DataPropertyName = "title"
+        Me.DataGridViewTextBoxColumn52.HeaderText = "Book Title"
+        Me.DataGridViewTextBoxColumn52.MaxInputLength = 50
+        Me.DataGridViewTextBoxColumn52.Name = "DataGridViewTextBoxColumn52"
+        Me.DataGridViewTextBoxColumn52.ReadOnly = True
+        Me.DataGridViewTextBoxColumn52.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
+        'Column30
+        '
+        Me.Column30.DataPropertyName = "total_copies"
+        Me.Column30.HeaderText = "Total Copies"
+        Me.Column30.Name = "Column30"
+        '
+        'Column29
+        '
+        Me.Column29.DataPropertyName = "total_price"
+        Me.Column29.HeaderText = "Total Price"
+        Me.Column29.Name = "Column29"
+        '
         'FinesReportTab
         '
         Me.FinesReportTab.Controls.Add(Me.TableLayoutPanel24)
@@ -8600,6 +8684,58 @@ Partial Class DashboardForm
         Me.DGFINESREPORT.ThemeStyle.RowsStyle.Height = 48
         Me.DGFINESREPORT.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(205, Byte), Integer))
         Me.DGFINESREPORT.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
+        '
+        'Column70
+        '
+        Me.Column70.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.Column70.HeaderText = ""
+        Me.Column70.Name = "Column70"
+        Me.Column70.Width = 40
+        '
+        'DataGridViewTextBoxColumn54
+        '
+        Me.DataGridViewTextBoxColumn54.DataPropertyName = "accession_no"
+        Me.DataGridViewTextBoxColumn54.HeaderText = "Accession No."
+        Me.DataGridViewTextBoxColumn54.MaxInputLength = 50
+        Me.DataGridViewTextBoxColumn54.Name = "DataGridViewTextBoxColumn54"
+        Me.DataGridViewTextBoxColumn54.ReadOnly = True
+        Me.DataGridViewTextBoxColumn54.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
+        'Column55
+        '
+        Me.Column55.DataPropertyName = "full_name"
+        Me.Column55.HeaderText = "Borrower Name"
+        Me.Column55.Name = "Column55"
+        '
+        'Column56
+        '
+        Me.Column56.DataPropertyName = "borrow_date"
+        Me.Column56.HeaderText = "Borrowed Date"
+        Me.Column56.Name = "Column56"
+        '
+        'Column57
+        '
+        Me.Column57.DataPropertyName = "overdue_date"
+        Me.Column57.HeaderText = "Overdue Date"
+        Me.Column57.Name = "Column57"
+        '
+        'Column59
+        '
+        Me.Column59.DataPropertyName = "overdue_days"
+        Me.Column59.HeaderText = "Overdue Days"
+        Me.Column59.Name = "Column59"
+        '
+        'Column60
+        '
+        Me.Column60.DataPropertyName = "penalty"
+        Me.Column60.HeaderText = "Penalty Per Day"
+        Me.Column60.Name = "Column60"
+        '
+        'Column58
+        '
+        Me.Column58.DataPropertyName = "total_penalty"
+        Me.Column58.HeaderText = "Total Penalty"
+        Me.Column58.Name = "Column58"
         '
         'BorrowerReportTab
         '
@@ -11197,120 +11333,6 @@ Partial Class DashboardForm
         '
         Me.errProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink
         Me.errProvider.ContainerControl = Me
-        '
-        'Column68
-        '
-        Me.Column68.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.Column68.HeaderText = ""
-        Me.Column68.Name = "Column68"
-        Me.Column68.Width = 40
-        '
-        'DataGridViewTextBoxColumn50
-        '
-        Me.DataGridViewTextBoxColumn50.DataPropertyName = "title"
-        Me.DataGridViewTextBoxColumn50.HeaderText = "Book Title"
-        Me.DataGridViewTextBoxColumn50.MaxInputLength = 50
-        Me.DataGridViewTextBoxColumn50.Name = "DataGridViewTextBoxColumn50"
-        Me.DataGridViewTextBoxColumn50.ReadOnly = True
-        Me.DataGridViewTextBoxColumn50.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        '
-        'Column64
-        '
-        Me.Column64.DataPropertyName = "genre"
-        Me.Column64.HeaderText = "Genre"
-        Me.Column64.Name = "Column64"
-        '
-        'Column65
-        '
-        Me.Column65.DataPropertyName = "classification"
-        Me.Column65.HeaderText = "Classification"
-        Me.Column65.Name = "Column65"
-        '
-        'Column22
-        '
-        Me.Column22.DataPropertyName = "borrowed_count"
-        Me.Column22.HeaderText = "Borrowed Count"
-        Me.Column22.Name = "Column22"
-        '
-        'Column69
-        '
-        Me.Column69.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.Column69.HeaderText = ""
-        Me.Column69.Name = "Column69"
-        Me.Column69.Width = 40
-        '
-        'DataGridViewTextBoxColumn52
-        '
-        Me.DataGridViewTextBoxColumn52.DataPropertyName = "title"
-        Me.DataGridViewTextBoxColumn52.HeaderText = "Book Title"
-        Me.DataGridViewTextBoxColumn52.MaxInputLength = 50
-        Me.DataGridViewTextBoxColumn52.Name = "DataGridViewTextBoxColumn52"
-        Me.DataGridViewTextBoxColumn52.ReadOnly = True
-        Me.DataGridViewTextBoxColumn52.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        '
-        'Column30
-        '
-        Me.Column30.DataPropertyName = "total_copies"
-        Me.Column30.HeaderText = "Total Copies"
-        Me.Column30.Name = "Column30"
-        '
-        'Column29
-        '
-        Me.Column29.DataPropertyName = "total_price"
-        Me.Column29.HeaderText = "Total Price"
-        Me.Column29.Name = "Column29"
-        '
-        'Column70
-        '
-        Me.Column70.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.Column70.HeaderText = ""
-        Me.Column70.Name = "Column70"
-        Me.Column70.Width = 40
-        '
-        'DataGridViewTextBoxColumn54
-        '
-        Me.DataGridViewTextBoxColumn54.DataPropertyName = "accession_no"
-        Me.DataGridViewTextBoxColumn54.HeaderText = "Accession No."
-        Me.DataGridViewTextBoxColumn54.MaxInputLength = 50
-        Me.DataGridViewTextBoxColumn54.Name = "DataGridViewTextBoxColumn54"
-        Me.DataGridViewTextBoxColumn54.ReadOnly = True
-        Me.DataGridViewTextBoxColumn54.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        '
-        'Column55
-        '
-        Me.Column55.DataPropertyName = "full_name"
-        Me.Column55.HeaderText = "Borrower Name"
-        Me.Column55.Name = "Column55"
-        '
-        'Column56
-        '
-        Me.Column56.DataPropertyName = "borrow_date"
-        Me.Column56.HeaderText = "Borrowed Date"
-        Me.Column56.Name = "Column56"
-        '
-        'Column57
-        '
-        Me.Column57.DataPropertyName = "overdue_date"
-        Me.Column57.HeaderText = "Overdue Date"
-        Me.Column57.Name = "Column57"
-        '
-        'Column59
-        '
-        Me.Column59.DataPropertyName = "overdue_days"
-        Me.Column59.HeaderText = "Overdue Days"
-        Me.Column59.Name = "Column59"
-        '
-        'Column60
-        '
-        Me.Column60.DataPropertyName = "penalty"
-        Me.Column60.HeaderText = "Penalty Per Day"
-        Me.Column60.Name = "Column60"
-        '
-        'Column58
-        '
-        Me.Column58.DataPropertyName = "total_penalty"
-        Me.Column58.HeaderText = "Total Penalty"
-        Me.Column58.Name = "Column58"
         '
         'DashboardForm
         '
