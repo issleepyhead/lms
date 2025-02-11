@@ -25,22 +25,22 @@
         LBLPREV.Text = DBOperations.PREV_PAGE_NUMBER
     End Sub
 
-    Public Sub NextPage(Optional filter As STATUSTYPE = STATUSTYPE.ACTIVE, Optional CallBack As Action = Nothing)
+    Public Sub NextPage(Optional filter As STATUSTYPE = STATUSTYPE.ACTIVE, Optional ByRef CallBack As Action(Of Dictionary(Of String, Object), Guna.UI2.WinForms.Guna2DataGridView) = Nothing, Optional data As Dictionary(Of String, Object) = Nothing)
         If DBOperations.PREV_PAGE_NUMBER < DBOperations.NEXT_PAGE_NUMBER Then
             DBOperations.PREV_PAGE_NUMBER += 1
-            Me.Update(filter)
             If Not IsNothing(CallBack) Then
-                CallBack.Invoke()
+                CallBack.Invoke(data, DG)
             End If
+            Me.Update(filter)
         End If
     End Sub
 
-    Public Sub PrevPage(Optional filter As STATUSTYPE = STATUSTYPE.ACTIVE, Optional CallBack As Action = Nothing)
+    Public Sub PrevPage(Optional filter As STATUSTYPE = STATUSTYPE.ACTIVE, Optional CallBack As Action(Of Dictionary(Of String, Object), Guna.UI2.WinForms.Guna2DataGridView) = Nothing, Optional data As Dictionary(Of String, Object) = Nothing)
         If DBOperations.PREV_PAGE_NUMBER > 1 Then
             DBOperations.PREV_PAGE_NUMBER -= 1
             Me.Update(filter)
             If Not IsNothing(CallBack) Then
-                CallBack.Invoke()
+                CallBack.Invoke(data, DG)
             End If
         End If
     End Sub
@@ -53,6 +53,35 @@
                     dialog.ShowDialog()
                     Me.Update(filter)
                 End Using
+            End If
+        End If
+    End Sub
+
+    Public Sub CellContentClick(e As DataGridViewCellEventArgs, Optional data As Dictionary(Of String, Object) = Nothing)
+        Dim chckBoxColumn As DataGridViewCheckBoxColumn = Nothing
+
+        For Each item As DataGridViewColumn In DG.Columns
+            If item.GetType() Is GetType(DataGridViewCheckBoxColumn) Then
+                chckBoxColumn = item
+            End If
+        Next
+
+        If e.ColumnIndex = chckBoxColumn.Index Then
+            DG.EndEdit()
+            Dim boundItem As DataRowView = TryCast(DG.Rows(e.RowIndex).DataBoundItem, DataRowView)
+            If CBool(DG.Rows(e.RowIndex).Cells(e.ColumnIndex).Value) AndAlso Not data.Item(NameOf(data)).Rows.Contains(boundItem.Row.Item("id")) Then
+                data.Item(NameOf(data)).Rows.Add(boundItem.Row.Item("id"))
+            Else
+                If data.Item(NameOf(data)).Rows.Contains(boundItem.Row.Item("id")) Then
+                    Dim row As DataRow = Nothing
+                    For Each item As DataRow In data.Item(NameOf(data)).Rows
+                        If item.Item("id") = boundItem.Row.Item("id") Then
+                            row = item
+                            Exit For
+                        End If
+                    Next
+                    data.Item(NameOf(data)).Rows.Remove(row)
+                End If
             End If
         End If
     End Sub
@@ -73,14 +102,6 @@
         LBLNEXT.Text = DBOperations.NEXT_PAGE_NUMBER
         LBLPREV.Text = DBOperations.PREV_PAGE_NUMBER
     End Sub
-
-    'Private Sub GetCMBName()
-    '    For Each item As DataGridViewColumn In DG.Columns
-    '        If item.GetType() Is GetType(DataGridViewCheckBoxColumn) Then
-    '            'CHECKBOX_NAME = item.Name
-    '        End If
-    '    Next
-    'End Sub
 
     Public Sub Delete(action As Action(Of List(Of Dictionary(Of String, String)), QueryType))
         DG.EndEdit()

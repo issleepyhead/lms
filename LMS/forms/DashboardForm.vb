@@ -10,13 +10,13 @@ Public Class DashboardForm
     Private SELECTED_FACULTY As New SystemDataSets.DTFacultyDataTable
 
     'Report selection collection
-    Private SELECTED_BOOKSR As DataTable
-    Private SELECTED_EXPENDITURE As DataTable
-    Private SELECTED_FINES As DataTable
-    Private SELECTED_BORROWER As DataTable
-    Private SELECTED_BORROWED As DataTable
+    Private SELECTED_BOOKSREPORT As SystemDataSets.BookReportDataTable
+    Private SELECTED_EXPENDITUREREPORT As SystemDataSets.ExpenditureReportDataTable
+    Private SELECTED_FINESREPORT As SystemDataSets.FinesReportDataTable
+    Private SELECTED_BORROWERREPORT As DataTable
+    Private SELECTED_CLASSIFICATIONREPORT As SystemDataSets.ClassifcationReportDataTable
 
-    Private ControlsMap As Dictionary(Of String, ControlMapping)
+    Private ReadOnly ControlsMap As Dictionary(Of String, ControlMapping)
     Private IS_LOADED As Boolean = False
     Private CURRENT_TAG As String = String.Empty
 
@@ -78,11 +78,14 @@ Public Class DashboardForm
             BTNSTUDENTNEXT.Click, BTNFACULTYNEXT.Click, BTNADMINNEXT.Click, BTNCOPIESNEXT.Click, BTNINVENTORYNEXT.Click, BTNLOSTDAMAGENEXT.Click, BTNTRANSACTIONNEXT.Click, BTNCLASSIFICATIONREPORTNEXT.Click,
             BTNACTIVITYNEXT.Click
         If sender.Tag = NameOf(BOOK) Then
-            ControlsMap.Item(sender.Tag).NextPage(If(CMBBOOKFILTER.SelectedText.ToLower = NameOf(ACTIVE).ToLower, ACTIVE, INACTIVE), AddressOf RetrieveBookSelection)
+            ControlsMap.Item(sender.Tag).NextPage(If(CMBBOOKFILTER.Text.ToLower = NameOf(ACTIVE).ToLower, ACTIVE, INACTIVE), AddressOf RetrieveSelection,
+                                                  New Dictionary(Of String, Object) From {{NameOf(Data).ToLower, SELECTED_BOOKS}})
         ElseIf sender.Tag = NameOf(STUDENT) Then
-            ControlsMap.Item(sender.Tag).NextPage(If(CMBSTUDENTFILTER.SelectedText.ToLower = NameOf(ACTIVE).ToLower, ACTIVE, INACTIVE), AddressOf RetrieveStudentSelection)
+            ControlsMap.Item(sender.Tag).NextPage(If(CMBSTUDENTFILTER.Text.ToLower = NameOf(ACTIVE).ToLower, ACTIVE, INACTIVE), AddressOf RetrieveSelection,
+                                                  New Dictionary(Of String, Object) From {{NameOf(Data).ToLower, SELECTED_STUDENTS}})
         ElseIf sender.Tag = NameOf(FACULTY) Then
-            ControlsMap.Item(sender.Tag).NextPage(If(CMBFACULTYFILTER.SelectedText.ToLower = NameOf(ACTIVE).ToLower, ACTIVE, INACTIVE), AddressOf RetrieveFacultySelection)
+            ControlsMap.Item(sender.Tag).NextPage(If(CMBFACULTYFILTER.Text.ToLower = NameOf(ACTIVE).ToLower, ACTIVE, INACTIVE), AddressOf RetrieveSelection,
+                                                  New Dictionary(Of String, Object) From {{NameOf(Data).ToLower, SELECTED_FACULTY}})
         Else
             ControlsMap.Item(sender.Tag).NextPage()
         End If
@@ -93,11 +96,14 @@ Public Class DashboardForm
             BTNSTUDENTPREV.Click, BTNFACULTYPREV.Click, BTNADMINPREV.Click, BTNCOPIESPREV.Click, BTNINVENTORYPREV.Click, BTNLOSTDAMAGEPREV.Click, BTNTRANSACTIONPREV.Click, BTNCLASSIFICATIONREPORTPREV.Click,
             BTNACTIVITYPREV.Click
         If sender.Tag = NameOf(BOOK) Then
-            ControlsMap.Item(sender.Tag).PrevPage(If(CMBBOOKFILTER.SelectedText.ToLower = NameOf(ACTIVE).ToLower, ACTIVE, INACTIVE), AddressOf RetrieveBookSelection)
+            ControlsMap.Item(sender.Tag).PrevPage(If(CMBBOOKFILTER.Text.ToLower = NameOf(ACTIVE).ToLower, ACTIVE, INACTIVE), AddressOf RetrieveSelection,
+                                                  New Dictionary(Of String, Object) From {{NameOf(Data).ToLower, SELECTED_BOOKS}})
         ElseIf sender.Tag = NameOf(STUDENT) Then
-            ControlsMap.Item(sender.Tag).PrevPage(If(CMBSTUDENTFILTER.SelectedText.ToLower = NameOf(ACTIVE).ToLower, ACTIVE, INACTIVE), AddressOf RetrieveStudentSelection)
+            ControlsMap.Item(sender.Tag).PrevPage(If(CMBSTUDENTFILTER.Text.ToLower = NameOf(ACTIVE).ToLower, ACTIVE, INACTIVE), AddressOf RetrieveSelection,
+                                                  New Dictionary(Of String, Object) From {{NameOf(Data).ToLower, SELECTED_STUDENTS}})
         ElseIf sender.Tag = NameOf(FACULTY) Then
-            ControlsMap.Item(sender.Tag).PrevPage(If(CMBFACULTYFILTER.SelectedText.ToLower = NameOf(ACTIVE).ToLower, ACTIVE, INACTIVE), AddressOf RetrieveFacultySelection)
+            ControlsMap.Item(sender.Tag).PrevPage(If(CMBFACULTYFILTER.Text.ToLower = NameOf(ACTIVE).ToLower, ACTIVE, INACTIVE), AddressOf RetrieveSelection,
+                                                  New Dictionary(Of String, Object) From {{NameOf(Data).ToLower, SELECTED_FACULTY}})
         Else
             ControlsMap.Item(sender.Tag).PrevPage()
         End If
@@ -200,40 +206,26 @@ Public Class DashboardForm
     End Sub
 #End Region
 
-    ' TODO FIX THIS SAME ROUTINE
 #Region "Retrieve Selection"
-    Private Sub RetrieveBookSelection()
-        For Each item As DataGridViewRow In DGBOOKS.Rows
-            For Each drow As DataRow In SELECTED_BOOKS.Rows
-                Dim boundItem As DataRowView = TryCast(item.DataBoundItem, DataRowView)
-                If boundItem.Row.Item("id") = drow.Item("id") Then
-                    item.Cells(NameOf(chckBoxBooks)).Value = True
-                End If
-            Next
-        Next
-        DGBOOKS.EndEdit()
-    End Sub
+    Private Sub RetrieveSelection(data As Dictionary(Of String, Object), DGRID As Guna.UI2.WinForms.Guna2DataGridView)
+        Dim cboxName As String = Nothing
 
-    Private Sub RetrieveStudentSelection()
-        For Each item As DataGridViewRow In DGSTUDENT.Rows
-            For Each drow As DataRow In SELECTED_STUDENTS.Rows
-                Dim boundItem As DataRowView = TryCast(item.DataBoundItem, DataRowView)
-                If boundItem.Row.Item("id") = drow.Item("id") Then
-                    item.Cells(NameOf(chckBoxStudent)).Value = True
-                End If
-            Next
+        For Each item As DataGridViewColumn In DGRID.Columns
+            If item.GetType() Is GetType(DataGridViewCheckBoxColumn) Then
+                cboxName = item.Name
+                Exit For
+            End If
         Next
-    End Sub
 
-    Public Sub RetrieveFacultySelection()
-        For Each item As DataGridViewRow In DGFACULTY.Rows
-            For Each drow As DataRow In SELECTED_FACULTY.Rows
+        For Each item As DataGridViewRow In DGRID.Rows
+            For Each drow As DataRow In data.Item(NameOf(data)).Rows
                 Dim boundItem As DataRowView = TryCast(item.DataBoundItem, DataRowView)
                 If boundItem.Row.Item("id") = drow.Item("id") Then
-                    item.Cells(NameOf(chckBoxFaculty)).Value = True
+                    item.Cells(cboxName).Value = True
                 End If
             Next
         Next
+        DGRID.EndEdit()
     End Sub
 #End Region
 
@@ -263,69 +255,16 @@ Public Class DashboardForm
     End Sub
 #End Region
 
-#Region "Student Module"
-    Private Sub DGSTUDENT_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGSTUDENT.CellContentClick
-        If e.ColumnIndex = chckBoxStudent.Index Then
-            DGSTUDENT.EndEdit()
-            Dim boundItem As DataRowView = TryCast(DGSTUDENT.Rows(e.RowIndex).DataBoundItem, DataRowView)
-            If CBool(DGSTUDENT.Rows(e.RowIndex).Cells(e.ColumnIndex).Value) AndAlso Not SELECTED_STUDENTS.Rows.Contains(boundItem.Row.Item("id")) Then
-                SELECTED_STUDENTS.Rows.Add(boundItem.Row.Item("id"))
-            Else
-                If SELECTED_STUDENTS.Rows.Contains(boundItem.Row.Item("id")) Then
-                    Dim row As DataRow = Nothing
-                    For Each item As DataRow In SELECTED_STUDENTS.Rows
-                        If item.Item("id") = boundItem.Row.Item("id") Then
-                            row = item
-                            Exit For
-                        End If
-                    Next
-                    SELECTED_STUDENTS.Rows.Remove(row)
-                End If
-            End If
-        End If
-    End Sub
-#End Region
-
-#Region "Faculty/Teacher Module"
-    Private Sub DGBOOKS_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGBOOKS.CellContentClick
-        If e.ColumnIndex = chckBoxBooks.Index Then
-            DGBOOKS.EndEdit()
-            Dim boundItem As DataRowView = TryCast(DGBOOKS.Rows(e.RowIndex).DataBoundItem, DataRowView)
-            If CBool(DGBOOKS.Rows(e.RowIndex).Cells(e.ColumnIndex).Value) AndAlso Not SELECTED_BOOKS.Rows.Contains(boundItem.Row.Item("id")) Then
-                SELECTED_BOOKS.Rows.Add(boundItem.Row.ItemArray)
-            Else
-                If SELECTED_BOOKS.Rows.Contains(boundItem.Row.Item("id")) Then
-                    Dim row As DataRow = Nothing
-                    For Each item As DataRow In SELECTED_BOOKS.Rows
-                        If item.Item("id") = boundItem.Row.Item("id") Then
-                            row = item
-                            Exit For
-                        End If
-                    Next
-                    SELECTED_BOOKS.Rows.Remove(row)
-                End If
-            End If
-        End If
-    End Sub
-    Private Sub DGFACULTY_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGFACULTY.CellContentClick
-        If e.ColumnIndex = chckBoxFaculty.Index Then
-            DGFACULTY.EndEdit()
-            Dim boundItem As DataRowView = TryCast(DGFACULTY.Rows(e.RowIndex).DataBoundItem, DataRowView)
-            If CBool(DGFACULTY.Rows(e.RowIndex).Cells(e.ColumnIndex).Value) AndAlso Not SELECTED_FACULTY.Rows.Contains(boundItem.Row.Item("id")) Then
-                SELECTED_FACULTY.Rows.Add(boundItem.Row.Item("id"))
-            Else
-                If SELECTED_FACULTY.Rows.Contains(boundItem.Row.Item("id")) Then
-                    Dim row As DataRow = Nothing
-                    For Each item As DataRow In SELECTED_FACULTY.Rows
-                        If item.Item("id") = boundItem.Row.Item("id") Then
-                            row = item
-                            Exit For
-                        End If
-                    Next
-                    SELECTED_FACULTY.Rows.Remove(row)
-                End If
-            End If
-        End If
+#Region "Cell Content Click"
+    Private Sub DGCellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGSTUDENT.CellContentClick, DGBOOKS.CellContentClick, DGFACULTY.CellContentClick
+        Select Case True
+            Case sender.Equals(DGSTUDENT)
+                ControlsMap.Item(sender.Tag).CellContentClick(e, New Dictionary(Of String, Object) From {{NameOf(Data).ToLower, SELECTED_STUDENTS}})
+            Case sender.Equals(DGBOOKS)
+                ControlsMap.Item(sender.Tag).CellContentClick(e, New Dictionary(Of String, Object) From {{NameOf(Data).ToLower, SELECTED_BOOKS}})
+            Case sender.Equals(DGFACULTY)
+                ControlsMap.Item(sender.Tag).CellContentClick(e, New Dictionary(Of String, Object) From {{NameOf(Data).ToLower, SELECTED_FACULTY}})
+        End Select
     End Sub
 #End Region
 
@@ -756,8 +695,6 @@ Public Class DashboardForm
         End If
         SELECTED_BOOKS = New SystemDataSets.DTBookDataTable
     End Sub
-
-
 
     Private Sub SelectAllToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles SelectAllToolStripMenuItem1.Click
         For Each item As DataGridViewRow In DGBOOKS.Rows

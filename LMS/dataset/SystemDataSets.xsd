@@ -12,6 +12,20 @@
   <xs:element name="SystemDataSets" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="SystemDataSets" msprop:Generator_UserDSName="SystemDataSets">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DTStudent" msprop:Generator_TableClassName="DTStudentDataTable" msprop:Generator_TableVarName="tableDTStudent" msprop:Generator_TablePropName="DTStudent" msprop:Generator_RowDeletingName="DTStudentRowDeleting" msprop:Generator_RowChangingName="DTStudentRowChanging" msprop:Generator_RowEvHandlerName="DTStudentRowChangeEventHandler" msprop:Generator_RowDeletedName="DTStudentRowDeleted" msprop:Generator_UserTableName="DTStudent" msprop:Generator_RowChangedName="DTStudentRowChanged" msprop:Generator_RowEvArgName="DTStudentRowChangeEvent" msprop:Generator_RowClassName="DTStudentRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DTFaculty" msprop:Generator_TableClassName="DTFacultyDataTable" msprop:Generator_TableVarName="tableDTFaculty" msprop:Generator_TablePropName="DTFaculty" msprop:Generator_RowDeletingName="DTFacultyRowDeleting" msprop:Generator_RowChangingName="DTFacultyRowChanging" msprop:Generator_RowEvHandlerName="DTFacultyRowChangeEventHandler" msprop:Generator_RowDeletedName="DTFacultyRowDeleted" msprop:Generator_UserTableName="DTFaculty" msprop:Generator_RowChangedName="DTFacultyRowChanged" msprop:Generator_RowEvArgName="DTFacultyRowChangeEvent" msprop:Generator_RowClassName="DTFacultyRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
         <xs:element name="DTBook" msprop:Generator_TableClassName="DTBookDataTable" msprop:Generator_TableVarName="tableDTBook" msprop:Generator_TablePropName="DTBook" msprop:Generator_RowDeletingName="DTBookRowDeleting" msprop:Generator_RowChangingName="DTBookRowChanging" msprop:Generator_RowEvHandlerName="DTBookRowChangeEventHandler" msprop:Generator_RowDeletedName="DTBookRowDeleted" msprop:Generator_UserTableName="DTBook" msprop:Generator_RowChangedName="DTBookRowChanged" msprop:Generator_RowEvArgName="DTBookRowChangeEvent" msprop:Generator_RowClassName="DTBookRow">
           <xs:complexType>
             <xs:sequence>
@@ -32,67 +46,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DTStudent" msprop:Generator_TableClassName="DTStudentDataTable" msprop:Generator_TableVarName="tableDTStudent" msprop:Generator_RowChangedName="DTStudentRowChanged" msprop:Generator_TablePropName="DTStudent" msprop:Generator_RowDeletingName="DTStudentRowDeleting" msprop:Generator_RowChangingName="DTStudentRowChanging" msprop:Generator_RowEvHandlerName="DTStudentRowChangeEventHandler" msprop:Generator_RowDeletedName="DTStudentRowDeleted" msprop:Generator_RowClassName="DTStudentRow" msprop:Generator_UserTableName="DTStudent" msprop:Generator_RowEvArgName="DTStudentRowChangeEvent">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:string" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="DTFaculty" msprop:Generator_TableClassName="DTFacultyDataTable" msprop:Generator_TableVarName="tableDTFaculty" msprop:Generator_RowChangedName="DTFacultyRowChanged" msprop:Generator_TablePropName="DTFaculty" msprop:Generator_RowDeletingName="DTFacultyRowDeleting" msprop:Generator_RowChangingName="DTFacultyRowChanging" msprop:Generator_RowEvHandlerName="DTFacultyRowChangeEventHandler" msprop:Generator_RowDeletedName="DTFacultyRowDeleted" msprop:Generator_RowClassName="DTFacultyRow" msprop:Generator_UserTableName="DTFaculty" msprop:Generator_RowEvArgName="DTFacultyRowChangeEvent">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:string" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="DTBorrowedBooks" msprop:Generator_TableClassName="DTBorrowedBooksDataTable" msprop:Generator_TableVarName="tableDTBorrowedBooks" msprop:Generator_RowChangedName="DTBorrowedBooksRowChanged" msprop:Generator_TablePropName="DTBorrowedBooks" msprop:Generator_RowDeletingName="DTBorrowedBooksRowDeleting" msprop:Generator_RowChangingName="DTBorrowedBooksRowChanging" msprop:Generator_RowEvHandlerName="DTBorrowedBooksRowChangeEventHandler" msprop:Generator_RowDeletedName="DTBorrowedBooksRowDeleted" msprop:Generator_RowClassName="DTBorrowedBooksRow" msprop:Generator_UserTableName="DTBorrowedBooks" msprop:Generator_RowEvArgName="DTBorrowedBooksRowChangeEvent">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="title" msprop:Generator_ColumnVarNameInTable="columnTitle" msprop:Generator_ColumnPropNameInRow="Title" msprop:Generator_ColumnPropNameInTable="TitleColumn" msprop:Generator_UserColumnName="title" type="xs:string" minOccurs="0" />
-              <xs:element name="genre" msprop:Generator_ColumnVarNameInTable="columngenre" msprop:Generator_ColumnPropNameInRow="genre" msprop:Generator_ColumnPropNameInTable="genreColumn" msprop:Generator_UserColumnName="genre" type="xs:string" minOccurs="0" />
-              <xs:element name="classification" msprop:Generator_ColumnVarNameInTable="columnclassification" msprop:Generator_ColumnPropNameInRow="classification" msprop:Generator_ColumnPropNameInTable="classificationColumn" msprop:Generator_UserColumnName="classification" type="xs:string" minOccurs="0" />
-              <xs:element name="borrowed_count" msprop:Generator_ColumnVarNameInTable="columnborrowed_count" msprop:Generator_ColumnPropNameInRow="borrowed_count" msprop:Generator_ColumnPropNameInTable="borrowed_countColumn" msprop:Generator_UserColumnName="borrowed_count" type="xs:unsignedInt" minOccurs="0" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="DTExpenditureReport" msprop:Generator_TableClassName="DTExpenditureReportDataTable" msprop:Generator_TableVarName="tableDTExpenditureReport" msprop:Generator_RowChangedName="DTExpenditureReportRowChanged" msprop:Generator_TablePropName="DTExpenditureReport" msprop:Generator_RowDeletingName="DTExpenditureReportRowDeleting" msprop:Generator_RowChangingName="DTExpenditureReportRowChanging" msprop:Generator_RowEvHandlerName="DTExpenditureReportRowChangeEventHandler" msprop:Generator_RowDeletedName="DTExpenditureReportRowDeleted" msprop:Generator_RowClassName="DTExpenditureReportRow" msprop:Generator_UserTableName="DTExpenditureReport" msprop:Generator_RowEvArgName="DTExpenditureReportRowChangeEvent">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="title" msprop:Generator_ColumnVarNameInTable="columntitle" msprop:Generator_ColumnPropNameInRow="title" msprop:Generator_ColumnPropNameInTable="titleColumn" msprop:Generator_UserColumnName="title" type="xs:string" minOccurs="0" />
-              <xs:element name="total_copies" msprop:Generator_ColumnVarNameInTable="columntotal_copies" msprop:Generator_ColumnPropNameInRow="total_copies" msprop:Generator_ColumnPropNameInTable="total_copiesColumn" msprop:Generator_UserColumnName="total_copies" type="xs:string" minOccurs="0" />
-              <xs:element name="total_price" msprop:Generator_ColumnVarNameInTable="columntotal_price" msprop:Generator_ColumnPropNameInRow="total_price" msprop:Generator_ColumnPropNameInTable="total_priceColumn" msprop:Generator_UserColumnName="total_price" type="xs:string" minOccurs="0" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="DTFinesReport" msprop:Generator_TableClassName="DTFinesReportDataTable" msprop:Generator_TableVarName="tableDTFinesReport" msprop:Generator_RowChangedName="DTFinesReportRowChanged" msprop:Generator_TablePropName="DTFinesReport" msprop:Generator_RowDeletingName="DTFinesReportRowDeleting" msprop:Generator_RowChangingName="DTFinesReportRowChanging" msprop:Generator_RowEvHandlerName="DTFinesReportRowChangeEventHandler" msprop:Generator_RowDeletedName="DTFinesReportRowDeleted" msprop:Generator_RowClassName="DTFinesReportRow" msprop:Generator_UserTableName="DTFinesReport" msprop:Generator_RowEvArgName="DTFinesReportRowChangeEvent">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:string" minOccurs="0" />
-              <xs:element name="accession_no" msprop:Generator_ColumnVarNameInTable="columnaccession_no" msprop:Generator_ColumnPropNameInRow="accession_no" msprop:Generator_ColumnPropNameInTable="accession_noColumn" msprop:Generator_UserColumnName="accession_no" type="xs:string" minOccurs="0" />
-              <xs:element name="full_name" msprop:Generator_ColumnVarNameInTable="columnfull_name" msprop:Generator_ColumnPropNameInRow="full_name" msprop:Generator_ColumnPropNameInTable="full_nameColumn" msprop:Generator_UserColumnName="full_name" type="xs:string" minOccurs="0" />
-              <xs:element name="borrowed_date" msprop:Generator_ColumnVarNameInTable="columnborrowed_date" msprop:Generator_ColumnPropNameInRow="borrowed_date" msprop:Generator_ColumnPropNameInTable="borrowed_dateColumn" msprop:Generator_UserColumnName="borrowed_date" type="xs:string" minOccurs="0" />
-              <xs:element name="overdue_date" msprop:Generator_ColumnVarNameInTable="columnoverdue_date" msprop:Generator_ColumnPropNameInRow="overdue_date" msprop:Generator_ColumnPropNameInTable="overdue_dateColumn" msprop:Generator_UserColumnName="overdue_date" type="xs:string" minOccurs="0" />
-              <xs:element name="penalty" msprop:Generator_ColumnVarNameInTable="columnpenalty" msprop:Generator_ColumnPropNameInRow="penalty" msprop:Generator_ColumnPropNameInTable="penaltyColumn" msprop:Generator_UserColumnName="penalty" type="xs:string" minOccurs="0" />
-              <xs:element name="total_penalty" msprop:Generator_ColumnVarNameInTable="columntotal_penalty" msprop:Generator_ColumnPropNameInRow="total_penalty" msprop:Generator_ColumnPropNameInTable="total_penaltyColumn" msprop:Generator_UserColumnName="total_penalty" type="xs:string" minOccurs="0" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="DTBorrowerStudentReport" msprop:Generator_TableClassName="DTBorrowerStudentReportDataTable" msprop:Generator_TableVarName="tableDTBorrowerStudentReport" msprop:Generator_RowChangedName="DTBorrowerStudentReportRowChanged" msprop:Generator_TablePropName="DTBorrowerStudentReport" msprop:Generator_RowDeletingName="DTBorrowerStudentReportRowDeleting" msprop:Generator_RowChangingName="DTBorrowerStudentReportRowChanging" msprop:Generator_RowEvHandlerName="DTBorrowerStudentReportRowChangeEventHandler" msprop:Generator_RowDeletedName="DTBorrowerStudentReportRowDeleted" msprop:Generator_RowClassName="DTBorrowerStudentReportRow" msprop:Generator_UserTableName="DTBorrowerStudentReport" msprop:Generator_RowEvArgName="DTBorrowerStudentReportRowChangeEvent">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:string" minOccurs="0" />
-              <xs:element name="full_name" msprop:Generator_ColumnVarNameInTable="columnfull_name" msprop:Generator_ColumnPropNameInRow="full_name" msprop:Generator_ColumnPropNameInTable="full_nameColumn" msprop:Generator_UserColumnName="full_name" type="xs:string" minOccurs="0" />
-              <xs:element name="lrn" msprop:Generator_ColumnVarNameInTable="columnlrn" msprop:Generator_ColumnPropNameInRow="lrn" msprop:Generator_ColumnPropNameInTable="lrnColumn" msprop:Generator_UserColumnName="lrn" type="xs:string" minOccurs="0" />
-              <xs:element name="borrowed_count" msprop:Generator_ColumnVarNameInTable="columnborrowed_count" msprop:Generator_ColumnPropNameInRow="borrowed_count" msprop:Generator_ColumnPropNameInTable="borrowed_countColumn" msprop:Generator_UserColumnName="borrowed_count" type="xs:string" minOccurs="0" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="DTClassifcationReport" msprop:Generator_TableClassName="DTClassifcationReportDataTable" msprop:Generator_TableVarName="tableDTClassifcationReport" msprop:Generator_RowChangedName="DTClassifcationReportRowChanged" msprop:Generator_TablePropName="DTClassifcationReport" msprop:Generator_RowDeletingName="DTClassifcationReportRowDeleting" msprop:Generator_RowChangingName="DTClassifcationReportRowChanging" msprop:Generator_RowEvHandlerName="DTClassifcationReportRowChangeEventHandler" msprop:Generator_RowDeletedName="DTClassifcationReportRowDeleted" msprop:Generator_RowClassName="DTClassifcationReportRow" msprop:Generator_UserTableName="DTClassifcationReport" msprop:Generator_RowEvArgName="DTClassifcationReportRowChangeEvent">
-          <xs:complexType>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="DTBorrowerFacultyReport" msprop:Generator_TableClassName="DTBorrowerFacultyReportDataTable" msprop:Generator_TableVarName="tableDTBorrowerFacultyReport" msprop:Generator_RowChangedName="DTBorrowerFacultyReportRowChanged" msprop:Generator_TablePropName="DTBorrowerFacultyReport" msprop:Generator_RowDeletingName="DTBorrowerFacultyReportRowDeleting" msprop:Generator_RowChangingName="DTBorrowerFacultyReportRowChanging" msprop:Generator_RowEvHandlerName="DTBorrowerFacultyReportRowChangeEventHandler" msprop:Generator_RowDeletedName="DTBorrowerFacultyReportRowDeleted" msprop:Generator_RowClassName="DTBorrowerFacultyReportRow" msprop:Generator_UserTableName="DTBorrowerFacultyReport" msprop:Generator_RowEvArgName="DTBorrowerFacultyReportRowChangeEvent">
+        <xs:element name="DTBorrowerFacultyReport" msprop:Generator_TableClassName="DTBorrowerFacultyReportDataTable" msprop:Generator_TableVarName="tableDTBorrowerFacultyReport" msprop:Generator_TablePropName="DTBorrowerFacultyReport" msprop:Generator_RowDeletingName="DTBorrowerFacultyReportRowDeleting" msprop:Generator_RowChangingName="DTBorrowerFacultyReportRowChanging" msprop:Generator_RowEvHandlerName="DTBorrowerFacultyReportRowChangeEventHandler" msprop:Generator_RowDeletedName="DTBorrowerFacultyReportRowDeleted" msprop:Generator_UserTableName="DTBorrowerFacultyReport" msprop:Generator_RowChangedName="DTBorrowerFacultyReportRowChanged" msprop:Generator_RowEvArgName="DTBorrowerFacultyReportRowChangeEvent" msprop:Generator_RowClassName="DTBorrowerFacultyReportRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:string" minOccurs="0" />
@@ -102,18 +56,77 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="FinesReport" msprop:Generator_TableClassName="FinesReportDataTable" msprop:Generator_TableVarName="tableFinesReport" msprop:Generator_TablePropName="FinesReport" msprop:Generator_RowDeletingName="FinesReportRowDeleting" msprop:Generator_RowChangingName="FinesReportRowChanging" msprop:Generator_RowEvHandlerName="FinesReportRowChangeEventHandler" msprop:Generator_RowDeletedName="FinesReportRowDeleted" msprop:Generator_UserTableName="FinesReport" msprop:Generator_RowChangedName="FinesReportRowChanged" msprop:Generator_RowEvArgName="FinesReportRowChangeEvent" msprop:Generator_RowClassName="FinesReportRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="accession_no" msprop:Generator_ColumnVarNameInTable="columnaccession_no" msprop:Generator_ColumnPropNameInRow="accession_no" msprop:Generator_ColumnPropNameInTable="accession_noColumn" msprop:Generator_UserColumnName="accession_no" type="xs:string" minOccurs="0" />
+              <xs:element name="full_name" msprop:Generator_ColumnVarNameInTable="columnfull_name" msprop:Generator_ColumnPropNameInRow="full_name" msprop:Generator_ColumnPropNameInTable="full_nameColumn" msprop:Generator_UserColumnName="full_name" type="xs:string" minOccurs="0" />
+              <xs:element name="borrowed_date" msprop:Generator_ColumnVarNameInTable="columnborrowed_date" msprop:Generator_ColumnPropNameInRow="borrowed_date" msprop:Generator_ColumnPropNameInTable="borrowed_dateColumn" msprop:Generator_UserColumnName="borrowed_date" type="xs:string" minOccurs="0" />
+              <xs:element name="overdue_date" msprop:Generator_ColumnVarNameInTable="columnoverdue_date" msprop:Generator_ColumnPropNameInRow="overdue_date" msprop:Generator_ColumnPropNameInTable="overdue_dateColumn" msprop:Generator_UserColumnName="overdue_date" type="xs:string" minOccurs="0" />
+              <xs:element name="penalty" msprop:Generator_ColumnVarNameInTable="columnpenalty" msprop:Generator_ColumnPropNameInRow="penalty" msprop:Generator_ColumnPropNameInTable="penaltyColumn" msprop:Generator_UserColumnName="penalty" type="xs:string" minOccurs="0" />
+              <xs:element name="total_penalty" msprop:Generator_ColumnVarNameInTable="columntotal_penalty" msprop:Generator_ColumnPropNameInRow="total_penalty" msprop:Generator_ColumnPropNameInTable="total_penaltyColumn" msprop:Generator_UserColumnName="total_penalty" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ClassifcationReport" msprop:Generator_TableClassName="ClassifcationReportDataTable" msprop:Generator_TableVarName="tableClassifcationReport" msprop:Generator_TablePropName="ClassifcationReport" msprop:Generator_RowDeletingName="ClassifcationReportRowDeleting" msprop:Generator_RowChangingName="ClassifcationReportRowChanging" msprop:Generator_RowEvHandlerName="ClassifcationReportRowChangeEventHandler" msprop:Generator_RowDeletedName="ClassifcationReportRowDeleted" msprop:Generator_UserTableName="ClassifcationReport" msprop:Generator_RowChangedName="ClassifcationReportRowChanged" msprop:Generator_RowEvArgName="ClassifcationReportRowChangeEvent" msprop:Generator_RowClassName="ClassifcationReportRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="classification" msprop:Generator_ColumnVarNameInTable="columnclassification" msprop:Generator_ColumnPropNameInRow="classification" msprop:Generator_ColumnPropNameInTable="classificationColumn" msprop:Generator_UserColumnName="classification" type="xs:string" minOccurs="0" />
+              <xs:element name="total_borrowed" msprop:Generator_ColumnVarNameInTable="columntotal_borrowed" msprop:Generator_ColumnPropNameInRow="total_borrowed" msprop:Generator_ColumnPropNameInTable="total_borrowedColumn" msprop:Generator_UserColumnName="total_borrowed" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DTBorrowedBooks" msprop:Generator_TableClassName="DTBorrowedBooksDataTable" msprop:Generator_TableVarName="tableDTBorrowedBooks" msprop:Generator_TablePropName="DTBorrowedBooks" msprop:Generator_RowDeletingName="DTBorrowedBooksRowDeleting" msprop:Generator_RowChangingName="DTBorrowedBooksRowChanging" msprop:Generator_RowEvHandlerName="DTBorrowedBooksRowChangeEventHandler" msprop:Generator_RowDeletedName="DTBorrowedBooksRowDeleted" msprop:Generator_UserTableName="DTBorrowedBooks" msprop:Generator_RowChangedName="DTBorrowedBooksRowChanged" msprop:Generator_RowEvArgName="DTBorrowedBooksRowChangeEvent" msprop:Generator_RowClassName="DTBorrowedBooksRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="title" msprop:Generator_ColumnVarNameInTable="columntitle" msprop:Generator_ColumnPropNameInRow="title" msprop:Generator_ColumnPropNameInTable="titleColumn" msprop:Generator_UserColumnName="title" type="xs:string" minOccurs="0" />
+              <xs:element name="genre" msprop:Generator_ColumnVarNameInTable="columngenre" msprop:Generator_ColumnPropNameInRow="genre" msprop:Generator_ColumnPropNameInTable="genreColumn" msprop:Generator_UserColumnName="genre" type="xs:string" minOccurs="0" />
+              <xs:element name="classification" msprop:Generator_ColumnVarNameInTable="columnclassification" msprop:Generator_ColumnPropNameInRow="classification" msprop:Generator_ColumnPropNameInTable="classificationColumn" msprop:Generator_UserColumnName="classification" type="xs:string" minOccurs="0" />
+              <xs:element name="borrowed_count" msprop:Generator_ColumnVarNameInTable="columnborrowed_count" msprop:Generator_ColumnPropNameInRow="borrowed_count" msprop:Generator_ColumnPropNameInTable="borrowed_countColumn" msprop:Generator_UserColumnName="borrowed_count" type="xs:unsignedInt" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="BorrowerReport" msprop:Generator_TableClassName="BorrowerReportDataTable" msprop:Generator_TableVarName="tableBorrowerReport" msprop:Generator_TablePropName="BorrowerReport" msprop:Generator_RowDeletingName="BorrowerReportRowDeleting" msprop:Generator_RowChangingName="BorrowerReportRowChanging" msprop:Generator_RowEvHandlerName="BorrowerReportRowChangeEventHandler" msprop:Generator_RowDeletedName="BorrowerReportRowDeleted" msprop:Generator_UserTableName="BorrowerReport" msprop:Generator_RowChangedName="BorrowerReportRowChanged" msprop:Generator_RowEvArgName="BorrowerReportRowChangeEvent" msprop:Generator_RowClassName="BorrowerReportRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:string" minOccurs="0" />
+              <xs:element name="full_name" msprop:Generator_ColumnVarNameInTable="columnfull_name" msprop:Generator_ColumnPropNameInRow="full_name" msprop:Generator_ColumnPropNameInTable="full_nameColumn" msprop:Generator_UserColumnName="full_name" type="xs:string" minOccurs="0" />
+              <xs:element name="borrow_transasction" msdata:Caption="lrn" msprop:Generator_ColumnVarNameInTable="columnborrow_transasction" msprop:Generator_ColumnPropNameInRow="borrow_transasction" msprop:Generator_ColumnPropNameInTable="borrow_transasctionColumn" msprop:Generator_UserColumnName="borrow_transasction" type="xs:string" minOccurs="0" />
+              <xs:element name="borrowed_books" msdata:Caption="borrowed_count" msprop:Generator_ColumnVarNameInTable="columnborrowed_books" msprop:Generator_ColumnPropNameInRow="borrowed_books" msprop:Generator_ColumnPropNameInTable="borrowed_booksColumn" msprop:Generator_UserColumnName="borrowed_books" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ExpenditureReport" msprop:Generator_TableClassName="ExpenditureReportDataTable" msprop:Generator_TableVarName="tableExpenditureReport" msprop:Generator_TablePropName="ExpenditureReport" msprop:Generator_RowDeletingName="ExpenditureReportRowDeleting" msprop:Generator_RowChangingName="ExpenditureReportRowChanging" msprop:Generator_RowEvHandlerName="ExpenditureReportRowChangeEventHandler" msprop:Generator_RowDeletedName="ExpenditureReportRowDeleted" msprop:Generator_UserTableName="ExpenditureReport" msprop:Generator_RowChangedName="ExpenditureReportRowChanged" msprop:Generator_RowEvArgName="ExpenditureReportRowChangeEvent" msprop:Generator_RowClassName="ExpenditureReportRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="title" msprop:Generator_ColumnVarNameInTable="columntitle" msprop:Generator_ColumnPropNameInRow="title" msprop:Generator_ColumnPropNameInTable="titleColumn" msprop:Generator_UserColumnName="title" type="xs:string" minOccurs="0" />
+              <xs:element name="total_copies" msprop:Generator_ColumnVarNameInTable="columntotal_copies" msprop:Generator_ColumnPropNameInRow="total_copies" msprop:Generator_ColumnPropNameInTable="total_copiesColumn" msprop:Generator_UserColumnName="total_copies" type="xs:string" minOccurs="0" />
+              <xs:element name="total_price" msprop:Generator_ColumnVarNameInTable="columntotal_price" msprop:Generator_ColumnPropNameInRow="total_price" msprop:Generator_ColumnPropNameInTable="total_priceColumn" msprop:Generator_UserColumnName="total_price" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="BookReport" msprop:Generator_TableClassName="BookReportDataTable" msprop:Generator_TableVarName="tableBookReport" msprop:Generator_TablePropName="BookReport" msprop:Generator_RowDeletingName="BookReportRowDeleting" msprop:Generator_RowChangingName="BookReportRowChanging" msprop:Generator_RowEvHandlerName="BookReportRowChangeEventHandler" msprop:Generator_RowDeletedName="BookReportRowDeleted" msprop:Generator_UserTableName="BookReport" msprop:Generator_RowChangedName="BookReportRowChanged" msprop:Generator_RowEvArgName="BookReportRowChangeEvent" msprop:Generator_RowClassName="BookReportRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="title" msprop:Generator_ColumnVarNameInTable="columntitle" msprop:Generator_ColumnPropNameInRow="title" msprop:Generator_ColumnPropNameInTable="titleColumn" msprop:Generator_UserColumnName="title" type="xs:string" minOccurs="0" />
+              <xs:element name="genre" msprop:Generator_ColumnVarNameInTable="columngenre" msprop:Generator_ColumnPropNameInRow="genre" msprop:Generator_ColumnPropNameInTable="genreColumn" msprop:Generator_UserColumnName="genre" type="xs:string" minOccurs="0" />
+              <xs:element name="classification" msprop:Generator_ColumnVarNameInTable="columnclassification" msprop:Generator_ColumnPropNameInRow="classification" msprop:Generator_ColumnPropNameInTable="classificationColumn" msprop:Generator_UserColumnName="classification" type="xs:string" minOccurs="0" />
+              <xs:element name="borrowed_count" msprop:Generator_ColumnVarNameInTable="columnborrowed_count" msprop:Generator_ColumnPropNameInRow="borrowed_count" msprop:Generator_ColumnPropNameInTable="borrowed_countColumn" msprop:Generator_UserColumnName="borrowed_count" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:DTBook" />
-      <xs:field xpath="mstns:id" />
-    </xs:unique>
-    <xs:unique name="DTStudent_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:DTStudent" />
       <xs:field xpath="mstns:id" />
     </xs:unique>
     <xs:unique name="DTFaculty_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:DTFaculty" />
+      <xs:field xpath="mstns:id" />
+    </xs:unique>
+    <xs:unique name="DTBook_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:DTBook" />
       <xs:field xpath="mstns:id" />
     </xs:unique>
   </xs:element>

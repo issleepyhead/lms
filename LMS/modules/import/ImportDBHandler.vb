@@ -99,8 +99,8 @@ Public Class ImportDBHandler
     ''' <param name="query"></param>
     ''' <param name="params"></param>
     ''' <returns></returns>
-    Public Function ExistsData(query As MaintenanceQueries, params As Dictionary(Of String, String)) As Boolean
-        Return CInt(Me.ExecScalar(query.EXISTS_QUERY_NO_ID, params)) > 0
+    Public Function ExistsData(query As QueryTable, params As Dictionary(Of String, String)) As Boolean
+        Return CInt(Me.ExecScalar(query.EXISTS_ADD_QUERY, params)) > 0
     End Function
 
     ''' <summary>
@@ -109,7 +109,7 @@ Public Class ImportDBHandler
     ''' <param name="query"></param>
     ''' <param name="params"></param>
     ''' <returns></returns>
-    Public Function AddData(query As MaintenanceQueries, params As Dictionary(Of String, String)) As Boolean
+    Public Function AddData(query As QueryTable, params As Dictionary(Of String, String)) As Boolean
         Return Me.ExecNonQuery(query.ADD_QUERY, params) > 0
     End Function
 
@@ -119,8 +119,8 @@ Public Class ImportDBHandler
     ''' <param name="query"></param>
     ''' <param name="params"></param>
     ''' <returns></returns>
-    Public Function UpdateData(query As MaintenanceQueries, params As Dictionary(Of String, String)) As Boolean
-        Return Me.ExecNonQuery(query.ADD_QUERY, params) > 0
+    Public Function UpdateData(query As QueryTable, params As Dictionary(Of String, String)) As Boolean
+        Return Me.ExecNonQuery(query.UPDATE_QUERY, params) > 0
     End Function
 
     ''' <summary>

@@ -153,7 +153,7 @@ Public Class ImportDataDialog
 
                     For Each drow As DataRow In dt.Rows
                         Dim rdata As Dictionary(Of String, String) = _importHandler.DataFactory(orderQuery(index), drow)
-                        Dim query As MaintenanceQueries = QueryTableFactory.QueryTableFactory(orderQuery(index))
+                        Dim query As QueryTable = Registry.Item(orderQuery(index))
                         If _importHandler.DBHANDLER.ExistsData(query, rdata) Then
                             drow.Item("Status") = "Duplicate"
                         Else

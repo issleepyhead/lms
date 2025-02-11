@@ -72,7 +72,7 @@ Namespace My
                         {"@username", "sa"},
                         {"@passwd", BCrypt.Net.BCrypt.HashPassword("sa")}
                     }
-                    ExecNonQuery(QueryTableFactory.QueryTableFactory(QueryTableType.FACULTY_QUERY_TABLE).ADD_QUERY, params)
+                    ExecNonQuery(Registry.Item(QueryType.FACULTY).ADD_QUERY, params)
                     ExecNonQuery("INSERT INTO tbladmins (faculty_id, role) SELECT id, 0 FROM tblfaculties WHERE email = 'example@email.com' AND username = 'sa'")
                 End If
 

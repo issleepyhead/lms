@@ -148,7 +148,7 @@ Module Utilities
                     Dim cmd As New MySqlCommand("SELECT COUNT(*) FROM tbladmins WHERE student_id = @id OR faculty_id = @id", conn, transac)
                     cmd.Parameters.AddWithValue("@id", If(String.IsNullOrEmpty(item.Item("@sid")), item.Item("@fid"), item.Item("@sid")))
                     If cmd.ExecuteScalar() = 0 Then
-                        cmd.CommandText = ADD_ADMIN_QUERY
+                        cmd.CommandText = "" ' TODO FIX THIS
                         With cmd.Parameters
                             For Each kv In item
                                 .AddWithValue(kv.Key, If(String.IsNullOrEmpty(kv.Value), DBNull.Value, kv.Value))

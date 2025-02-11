@@ -572,10 +572,6 @@ Partial Class DashboardForm
         Me.BTNBOOKREPORTNEXT = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Panel62 = New Guna.UI2.WinForms.Guna2Panel()
         Me.DGBOOKREPORT = New Guna.UI2.WinForms.Guna2DataGridView()
-        Me.DataGridViewTextBoxColumn50 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column64 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column65 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column22 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ExpenditureReportTab = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel23 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel63 = New Guna.UI2.WinForms.Guna2Panel()
@@ -590,9 +586,6 @@ Partial Class DashboardForm
         Me.BTNEXPENDITUREREPORTNEXT = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Panel65 = New Guna.UI2.WinForms.Guna2Panel()
         Me.DGEXPENDITUREREPORT = New Guna.UI2.WinForms.Guna2DataGridView()
-        Me.DataGridViewTextBoxColumn52 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column30 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column29 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.FinesReportTab = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel24 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel66 = New Guna.UI2.WinForms.Guna2Panel()
@@ -607,13 +600,6 @@ Partial Class DashboardForm
         Me.BTNFINESREPORTNEXT = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Panel68 = New Guna.UI2.WinForms.Guna2Panel()
         Me.DGFINESREPORT = New Guna.UI2.WinForms.Guna2DataGridView()
-        Me.DataGridViewTextBoxColumn54 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column55 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column56 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column57 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column59 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column60 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column58 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.BorrowerReportTab = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel25 = New System.Windows.Forms.TableLayoutPanel()
         Me.Guna2Panel69 = New Guna.UI2.WinForms.Guna2Panel()
@@ -647,6 +633,10 @@ Partial Class DashboardForm
         Me.BTNCLASSIFICATIONREPORTNEXT = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Panel74 = New Guna.UI2.WinForms.Guna2Panel()
         Me.DGCLASSIFICATIONREPORT = New Guna.UI2.WinForms.Guna2DataGridView()
+        Me.DataGridViewTextBoxColumn57 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewCheckBoxColumn14 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.DataGridViewTextBoxColumn58 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column67 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.AccountTab = New System.Windows.Forms.TabPage()
         Me.Guna2Panel82 = New Guna.UI2.WinForms.Guna2Panel()
         Me.LBLPROFILEDEPARTMENT = New Guna.UI2.WinForms.Guna2HtmlLabel()
@@ -762,10 +752,23 @@ Partial Class DashboardForm
         Me.LBLPROFILEROLE = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.LBLPROFILENAME = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.errProvider = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.DataGridViewTextBoxColumn57 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewCheckBoxColumn14 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.DataGridViewTextBoxColumn58 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column67 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column68 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.DataGridViewTextBoxColumn50 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column64 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column65 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column22 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column69 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.DataGridViewTextBoxColumn52 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column30 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column29 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column70 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn54 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column55 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column56 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column57 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column59 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column60 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column58 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TableLayoutPanel1.SuspendLayout
         Me.MainFormPanels.SuspendLayout
         Me.DashboardTab.SuspendLayout
@@ -8016,7 +8019,7 @@ Partial Class DashboardForm
         DataGridViewCellStyle65.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DGBOOKREPORT.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle65
         Me.DGBOOKREPORT.ColumnHeadersHeight = 48
-        Me.DGBOOKREPORT.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn50, Me.Column64, Me.Column65, Me.Column22})
+        Me.DGBOOKREPORT.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column68, Me.DataGridViewTextBoxColumn50, Me.Column64, Me.Column65, Me.Column22})
         Me.DGBOOKREPORT.ContextMenuStrip = Me.DGMAINTENANCECONTEXTMENU
         DataGridViewCellStyle66.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle66.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(239, Byte), Integer))
@@ -8060,33 +8063,6 @@ Partial Class DashboardForm
         Me.DGBOOKREPORT.ThemeStyle.RowsStyle.Height = 48
         Me.DGBOOKREPORT.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(205, Byte), Integer))
         Me.DGBOOKREPORT.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
-        '
-        'DataGridViewTextBoxColumn50
-        '
-        Me.DataGridViewTextBoxColumn50.DataPropertyName = "title"
-        Me.DataGridViewTextBoxColumn50.HeaderText = "Book Title"
-        Me.DataGridViewTextBoxColumn50.MaxInputLength = 50
-        Me.DataGridViewTextBoxColumn50.Name = "DataGridViewTextBoxColumn50"
-        Me.DataGridViewTextBoxColumn50.ReadOnly = True
-        Me.DataGridViewTextBoxColumn50.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        '
-        'Column64
-        '
-        Me.Column64.DataPropertyName = "genre"
-        Me.Column64.HeaderText = "Genre"
-        Me.Column64.Name = "Column64"
-        '
-        'Column65
-        '
-        Me.Column65.DataPropertyName = "classification"
-        Me.Column65.HeaderText = "Classification"
-        Me.Column65.Name = "Column65"
-        '
-        'Column22
-        '
-        Me.Column22.DataPropertyName = "borrowed_count"
-        Me.Column22.HeaderText = "Borrowed Count"
-        Me.Column22.Name = "Column22"
         '
         'ExpenditureReportTab
         '
@@ -8312,7 +8288,7 @@ Partial Class DashboardForm
         DataGridViewCellStyle68.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DGEXPENDITUREREPORT.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle68
         Me.DGEXPENDITUREREPORT.ColumnHeadersHeight = 48
-        Me.DGEXPENDITUREREPORT.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn52, Me.Column30, Me.Column29})
+        Me.DGEXPENDITUREREPORT.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column69, Me.DataGridViewTextBoxColumn52, Me.Column30, Me.Column29})
         Me.DGEXPENDITUREREPORT.ContextMenuStrip = Me.DGMAINTENANCECONTEXTMENU
         DataGridViewCellStyle69.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle69.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(239, Byte), Integer))
@@ -8356,27 +8332,6 @@ Partial Class DashboardForm
         Me.DGEXPENDITUREREPORT.ThemeStyle.RowsStyle.Height = 48
         Me.DGEXPENDITUREREPORT.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(205, Byte), Integer))
         Me.DGEXPENDITUREREPORT.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
-        '
-        'DataGridViewTextBoxColumn52
-        '
-        Me.DataGridViewTextBoxColumn52.DataPropertyName = "title"
-        Me.DataGridViewTextBoxColumn52.HeaderText = "Book Title"
-        Me.DataGridViewTextBoxColumn52.MaxInputLength = 50
-        Me.DataGridViewTextBoxColumn52.Name = "DataGridViewTextBoxColumn52"
-        Me.DataGridViewTextBoxColumn52.ReadOnly = True
-        Me.DataGridViewTextBoxColumn52.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        '
-        'Column30
-        '
-        Me.Column30.DataPropertyName = "total_copies"
-        Me.Column30.HeaderText = "Total Copies"
-        Me.Column30.Name = "Column30"
-        '
-        'Column29
-        '
-        Me.Column29.DataPropertyName = "total_price"
-        Me.Column29.HeaderText = "Total Price"
-        Me.Column29.Name = "Column29"
         '
         'FinesReportTab
         '
@@ -8601,7 +8556,7 @@ Partial Class DashboardForm
         DataGridViewCellStyle71.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DGFINESREPORT.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle71
         Me.DGFINESREPORT.ColumnHeadersHeight = 48
-        Me.DGFINESREPORT.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn54, Me.Column55, Me.Column56, Me.Column57, Me.Column59, Me.Column60, Me.Column58})
+        Me.DGFINESREPORT.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column70, Me.DataGridViewTextBoxColumn54, Me.Column55, Me.Column56, Me.Column57, Me.Column59, Me.Column60, Me.Column58})
         Me.DGFINESREPORT.ContextMenuStrip = Me.DGMAINTENANCECONTEXTMENU
         DataGridViewCellStyle72.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle72.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(239, Byte), Integer))
@@ -8645,51 +8600,6 @@ Partial Class DashboardForm
         Me.DGFINESREPORT.ThemeStyle.RowsStyle.Height = 48
         Me.DGFINESREPORT.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(205, Byte), Integer))
         Me.DGFINESREPORT.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
-        '
-        'DataGridViewTextBoxColumn54
-        '
-        Me.DataGridViewTextBoxColumn54.DataPropertyName = "accession_no"
-        Me.DataGridViewTextBoxColumn54.HeaderText = "Accession No."
-        Me.DataGridViewTextBoxColumn54.MaxInputLength = 50
-        Me.DataGridViewTextBoxColumn54.Name = "DataGridViewTextBoxColumn54"
-        Me.DataGridViewTextBoxColumn54.ReadOnly = True
-        Me.DataGridViewTextBoxColumn54.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        '
-        'Column55
-        '
-        Me.Column55.DataPropertyName = "full_name"
-        Me.Column55.HeaderText = "Borrower Name"
-        Me.Column55.Name = "Column55"
-        '
-        'Column56
-        '
-        Me.Column56.DataPropertyName = "borrow_date"
-        Me.Column56.HeaderText = "Borrowed Date"
-        Me.Column56.Name = "Column56"
-        '
-        'Column57
-        '
-        Me.Column57.DataPropertyName = "overdue_date"
-        Me.Column57.HeaderText = "Overdue Date"
-        Me.Column57.Name = "Column57"
-        '
-        'Column59
-        '
-        Me.Column59.DataPropertyName = "overdue_days"
-        Me.Column59.HeaderText = "Overdue Days"
-        Me.Column59.Name = "Column59"
-        '
-        'Column60
-        '
-        Me.Column60.DataPropertyName = "penalty"
-        Me.Column60.HeaderText = "Penalty Per Day"
-        Me.Column60.Name = "Column60"
-        '
-        'Column58
-        '
-        Me.Column58.DataPropertyName = "total_penalty"
-        Me.Column58.HeaderText = "Total Penalty"
-        Me.Column58.Name = "Column58"
         '
         'BorrowerReportTab
         '
@@ -9265,6 +9175,37 @@ Partial Class DashboardForm
         Me.DGCLASSIFICATIONREPORT.ThemeStyle.RowsStyle.Height = 48
         Me.DGCLASSIFICATIONREPORT.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(139, Byte), Integer), CType(CType(205, Byte), Integer))
         Me.DGCLASSIFICATIONREPORT.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
+        '
+        'DataGridViewTextBoxColumn57
+        '
+        Me.DataGridViewTextBoxColumn57.DataPropertyName = "id"
+        Me.DataGridViewTextBoxColumn57.HeaderText = "id"
+        Me.DataGridViewTextBoxColumn57.Name = "DataGridViewTextBoxColumn57"
+        Me.DataGridViewTextBoxColumn57.Visible = False
+        '
+        'DataGridViewCheckBoxColumn14
+        '
+        Me.DataGridViewCheckBoxColumn14.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.DataGridViewCheckBoxColumn14.HeaderText = ""
+        Me.DataGridViewCheckBoxColumn14.Name = "DataGridViewCheckBoxColumn14"
+        Me.DataGridViewCheckBoxColumn14.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewCheckBoxColumn14.Width = 40
+        '
+        'DataGridViewTextBoxColumn58
+        '
+        Me.DataGridViewTextBoxColumn58.DataPropertyName = "classification"
+        Me.DataGridViewTextBoxColumn58.HeaderText = "Classification"
+        Me.DataGridViewTextBoxColumn58.MaxInputLength = 50
+        Me.DataGridViewTextBoxColumn58.Name = "DataGridViewTextBoxColumn58"
+        Me.DataGridViewTextBoxColumn58.ReadOnly = True
+        Me.DataGridViewTextBoxColumn58.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
+        'Column67
+        '
+        Me.Column67.DataPropertyName = "total_borrowed"
+        Me.Column67.HeaderText = "Total Borrowed Books"
+        Me.Column67.Name = "Column67"
+        Me.Column67.ReadOnly = True
         '
         'AccountTab
         '
@@ -11257,36 +11198,119 @@ Partial Class DashboardForm
         Me.errProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink
         Me.errProvider.ContainerControl = Me
         '
-        'DataGridViewTextBoxColumn57
+        'Column68
         '
-        Me.DataGridViewTextBoxColumn57.DataPropertyName = "id"
-        Me.DataGridViewTextBoxColumn57.HeaderText = "id"
-        Me.DataGridViewTextBoxColumn57.Name = "DataGridViewTextBoxColumn57"
-        Me.DataGridViewTextBoxColumn57.Visible = False
+        Me.Column68.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.Column68.HeaderText = ""
+        Me.Column68.Name = "Column68"
+        Me.Column68.Width = 40
         '
-        'DataGridViewCheckBoxColumn14
+        'DataGridViewTextBoxColumn50
         '
-        Me.DataGridViewCheckBoxColumn14.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.DataGridViewCheckBoxColumn14.HeaderText = ""
-        Me.DataGridViewCheckBoxColumn14.Name = "DataGridViewCheckBoxColumn14"
-        Me.DataGridViewCheckBoxColumn14.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewCheckBoxColumn14.Width = 40
+        Me.DataGridViewTextBoxColumn50.DataPropertyName = "title"
+        Me.DataGridViewTextBoxColumn50.HeaderText = "Book Title"
+        Me.DataGridViewTextBoxColumn50.MaxInputLength = 50
+        Me.DataGridViewTextBoxColumn50.Name = "DataGridViewTextBoxColumn50"
+        Me.DataGridViewTextBoxColumn50.ReadOnly = True
+        Me.DataGridViewTextBoxColumn50.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         '
-        'DataGridViewTextBoxColumn58
+        'Column64
         '
-        Me.DataGridViewTextBoxColumn58.DataPropertyName = "classification"
-        Me.DataGridViewTextBoxColumn58.HeaderText = "Classification"
-        Me.DataGridViewTextBoxColumn58.MaxInputLength = 50
-        Me.DataGridViewTextBoxColumn58.Name = "DataGridViewTextBoxColumn58"
-        Me.DataGridViewTextBoxColumn58.ReadOnly = True
-        Me.DataGridViewTextBoxColumn58.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.Column64.DataPropertyName = "genre"
+        Me.Column64.HeaderText = "Genre"
+        Me.Column64.Name = "Column64"
         '
-        'Column67
+        'Column65
         '
-        Me.Column67.DataPropertyName = "total_borrowed"
-        Me.Column67.HeaderText = "Total Borrowed Books"
-        Me.Column67.Name = "Column67"
-        Me.Column67.ReadOnly = True
+        Me.Column65.DataPropertyName = "classification"
+        Me.Column65.HeaderText = "Classification"
+        Me.Column65.Name = "Column65"
+        '
+        'Column22
+        '
+        Me.Column22.DataPropertyName = "borrowed_count"
+        Me.Column22.HeaderText = "Borrowed Count"
+        Me.Column22.Name = "Column22"
+        '
+        'Column69
+        '
+        Me.Column69.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.Column69.HeaderText = ""
+        Me.Column69.Name = "Column69"
+        Me.Column69.Width = 40
+        '
+        'DataGridViewTextBoxColumn52
+        '
+        Me.DataGridViewTextBoxColumn52.DataPropertyName = "title"
+        Me.DataGridViewTextBoxColumn52.HeaderText = "Book Title"
+        Me.DataGridViewTextBoxColumn52.MaxInputLength = 50
+        Me.DataGridViewTextBoxColumn52.Name = "DataGridViewTextBoxColumn52"
+        Me.DataGridViewTextBoxColumn52.ReadOnly = True
+        Me.DataGridViewTextBoxColumn52.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
+        'Column30
+        '
+        Me.Column30.DataPropertyName = "total_copies"
+        Me.Column30.HeaderText = "Total Copies"
+        Me.Column30.Name = "Column30"
+        '
+        'Column29
+        '
+        Me.Column29.DataPropertyName = "total_price"
+        Me.Column29.HeaderText = "Total Price"
+        Me.Column29.Name = "Column29"
+        '
+        'Column70
+        '
+        Me.Column70.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.Column70.HeaderText = ""
+        Me.Column70.Name = "Column70"
+        Me.Column70.Width = 40
+        '
+        'DataGridViewTextBoxColumn54
+        '
+        Me.DataGridViewTextBoxColumn54.DataPropertyName = "accession_no"
+        Me.DataGridViewTextBoxColumn54.HeaderText = "Accession No."
+        Me.DataGridViewTextBoxColumn54.MaxInputLength = 50
+        Me.DataGridViewTextBoxColumn54.Name = "DataGridViewTextBoxColumn54"
+        Me.DataGridViewTextBoxColumn54.ReadOnly = True
+        Me.DataGridViewTextBoxColumn54.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
+        'Column55
+        '
+        Me.Column55.DataPropertyName = "full_name"
+        Me.Column55.HeaderText = "Borrower Name"
+        Me.Column55.Name = "Column55"
+        '
+        'Column56
+        '
+        Me.Column56.DataPropertyName = "borrow_date"
+        Me.Column56.HeaderText = "Borrowed Date"
+        Me.Column56.Name = "Column56"
+        '
+        'Column57
+        '
+        Me.Column57.DataPropertyName = "overdue_date"
+        Me.Column57.HeaderText = "Overdue Date"
+        Me.Column57.Name = "Column57"
+        '
+        'Column59
+        '
+        Me.Column59.DataPropertyName = "overdue_days"
+        Me.Column59.HeaderText = "Overdue Days"
+        Me.Column59.Name = "Column59"
+        '
+        'Column60
+        '
+        Me.Column60.DataPropertyName = "penalty"
+        Me.Column60.HeaderText = "Penalty Per Day"
+        Me.Column60.Name = "Column60"
+        '
+        'Column58
+        '
+        Me.Column58.DataPropertyName = "total_penalty"
+        Me.Column58.HeaderText = "Total Penalty"
+        Me.Column58.Name = "Column58"
         '
         'DashboardForm
         '
@@ -12135,20 +12159,6 @@ Partial Class DashboardForm
     Friend WithEvents Guna2HtmlLabel74 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents TXTSETSCOUNT As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents BTNREPORTBORROWED As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents DataGridViewTextBoxColumn50 As DataGridViewTextBoxColumn
-    Friend WithEvents Column64 As DataGridViewTextBoxColumn
-    Friend WithEvents Column65 As DataGridViewTextBoxColumn
-    Friend WithEvents Column22 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn52 As DataGridViewTextBoxColumn
-    Friend WithEvents Column30 As DataGridViewTextBoxColumn
-    Friend WithEvents Column29 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn54 As DataGridViewTextBoxColumn
-    Friend WithEvents Column55 As DataGridViewTextBoxColumn
-    Friend WithEvents Column56 As DataGridViewTextBoxColumn
-    Friend WithEvents Column57 As DataGridViewTextBoxColumn
-    Friend WithEvents Column59 As DataGridViewTextBoxColumn
-    Friend WithEvents Column60 As DataGridViewTextBoxColumn
-    Friend WithEvents Column58 As DataGridViewTextBoxColumn
     Friend WithEvents CMBPROFILEGENDER As Guna.UI2.WinForms.Guna2ComboBox
     Friend WithEvents LBLPROFILEDEPARTMENT As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents TXTPROFILEDEPARTMENT As Guna.UI2.WinForms.Guna2TextBox
@@ -12182,4 +12192,21 @@ Partial Class DashboardForm
     Friend WithEvents DataGridViewCheckBoxColumn14 As DataGridViewCheckBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn58 As DataGridViewTextBoxColumn
     Friend WithEvents Column67 As DataGridViewTextBoxColumn
+    Friend WithEvents Column68 As DataGridViewCheckBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn50 As DataGridViewTextBoxColumn
+    Friend WithEvents Column64 As DataGridViewTextBoxColumn
+    Friend WithEvents Column65 As DataGridViewTextBoxColumn
+    Friend WithEvents Column22 As DataGridViewTextBoxColumn
+    Friend WithEvents Column69 As DataGridViewCheckBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn52 As DataGridViewTextBoxColumn
+    Friend WithEvents Column30 As DataGridViewTextBoxColumn
+    Friend WithEvents Column29 As DataGridViewTextBoxColumn
+    Friend WithEvents Column70 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn54 As DataGridViewTextBoxColumn
+    Friend WithEvents Column55 As DataGridViewTextBoxColumn
+    Friend WithEvents Column56 As DataGridViewTextBoxColumn
+    Friend WithEvents Column57 As DataGridViewTextBoxColumn
+    Friend WithEvents Column59 As DataGridViewTextBoxColumn
+    Friend WithEvents Column60 As DataGridViewTextBoxColumn
+    Friend WithEvents Column58 As DataGridViewTextBoxColumn
 End Class
