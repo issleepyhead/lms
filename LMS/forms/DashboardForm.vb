@@ -8,21 +8,12 @@ Public Class DashboardForm
     Private ReadOnly SELECTED_DATA_COLLECTION As New Dictionary(Of String, DataTable) From {
         {NameOf(BOOK), New SystemDataSets.DTBookDataTable},
         {NameOf(STUDENT), New SystemDataSets.DTStudentDataTable},
-        {NameOf(FACULTY), New SystemDataSets.DTFacultyDataTable}
+        {NameOf(FACULTY), New SystemDataSets.DTFacultyDataTable},
+        {NameOf(BOOKREPORT), New SystemDataSets.BookReportDataTable},
+        {NameOf(QueryType.EXPENDITUREREPORT), New SystemDataSets.ExpenditureReportDataTable},
+        {NameOf(QueryType.FINESREPORT), New SystemDataSets.FinesReportDataTable},
+        {NameOf(CLSSIFICATIONREPORT), New SystemDataSets.ClassifcationReportDataTable}
     }
-
-    'Private ReadOnly SELECTED_DATA_TYPES As New Dictionary(Of String, Type) From {
-    '    {NameOf(BOOK), SystemDataSets.DTBookDataTable.},
-    '    {NameOf(STUDENT), New SystemDataSets.DTStudentDataTable},
-    '    {NameOf(FACULTY), New SystemDataSets.DTFacultyDataTable}
-    '}
-
-    'Report selection collection
-    'Private SELECTED_BOOKSREPORT As SystemDataSets.BookReportDataTable
-    'Private SELECTED_EXPENDITUREREPORT As SystemDataSets.ExpenditureReportDataTable
-    'Private SELECTED_FINESREPORT As SystemDataSets.FinesReportDataTable
-    'Private SELECTED_BORROWERREPORT As DataTable
-    'Private SELECTED_CLASSIFICATIONREPORT As SystemDataSets.ClassifcationReportDataTable
 
     Private ReadOnly ControlsMap As Dictionary(Of String, ControlMapping)
     Private IS_LOADED As Boolean = False
@@ -435,75 +426,74 @@ Public Class DashboardForm
         ControlsMap.Item(sender.Tag).DG.EndEdit()
     End Sub
 
-    Private Sub ArchiveSelectedToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ArchiveSelectedToolStripMenuItem1.Click
-        'If SELECTED_STUDENTS.Rows.Count = 0 Then
-        '    MessageBox.Show("Please select an item to continue.", "No Item Selected!", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        '    Exit Sub
-        'Else
-        '    If MessageBox.Show("Are you sure you want to archive the selected item(s)?", "Archive Selected?", MessageBoxButtons.YesNo, MessageBoxIcon.Information) <> DialogResult.Yes Then
-        '        Exit Sub
-        '    End If
+    Private Sub ArchiveSelectedToolStripMenuItemClick(sender As Object, e As EventArgs) Handles ArchiveSelectedToolStripMenuItem2.Click, ArchiveSelectedToolStripMenuItem.Click, ArchiveSelectedToolStripMenuItem1.Click
+        If SELECTED_DATA_COLLECTION.Item(sender.Tag).Rows.Count = 0 Then
+            MessageBox.Show("Please select an item to continue.", "No Item Selected!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Exit Sub
+        Else
+            If MessageBox.Show("Archiving the selected item(s) will make the copies unavailable to inventory." & vbLf & "Are you sure you want to archive the selected item(s)?", "Archive Selected?", MessageBoxButtons.YesNo, MessageBoxIcon.Information) <> DialogResult.Yes Then
+                Exit Sub
+            End If
 
-        '    Dim collection As New List(Of Dictionary(Of String, String))
-        '    For Each item As DataRow In SELECTED_STUDENTS.Rows
-        '        collection.Add(New Dictionary(Of String, String) From {{"@id", item.Item("id")}})
-        '    Next
-        '    'If ExecTransactionNonQuery(ARCHIVE_STUDENT_QUERY, collection) Then
-        '    '    MessageBox.Show("Archived Successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        '    'Else
-        '    '    MessageBox.Show("Archiving failed.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-        '    'End If
-        'End If
-        'DGSTUDENT.EndEdit()
-        'SELECTED_STUDENTS = New SystemDataSets.DTStudentDataTable
+            Dim collection As New List(Of Dictionary(Of String, String))
+            For Each item As DataRow In SELECTED_DATA_COLLECTION.Item(sender.Tag).Rows
+                collection.Add(New Dictionary(Of String, String) From {{"@id", item.Item("id")}})
+            Next
+            If DBOperations.Archive(ControlsMap.Item(sender.Tag).QUERY_TYPE, collection) Then
+                MessageBox.Show("Archived Successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Else
+                MessageBox.Show("Archiving failed.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            End If
+        End If
+        ControlsMap.Item(sender.Tag).DG.EndEdit()
+        SELECTED_DATA_COLLECTION.Item(sender.Tag) = Activator.CreateInstance(SELECTED_DATA_COLLECTION.Item(sender.Tag).GetType)
+        ' TODO UPDATE THE DATAGRID
     End Sub
 
-    Private Sub ArchiveSelectedToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ArchiveSelectedToolStripMenuItem.Click
-        'If SELECTED_FACULTY.Rows.Count = 0 Then
-        '    MessageBox.Show("Please select an item to continue.", "No Item Selected!", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        '    Exit Sub
-        'Else
-        '    If MessageBox.Show("Are you sure you want to archive the selected item(s)?", "Archive Selected?", MessageBoxButtons.YesNo, MessageBoxIcon.Information) <> DialogResult.Yes Then
-        '        Exit Sub
-        '    End If
+    Private Sub UnarchiveSelectedToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles UnarchiveSelectedToolStripMenuItem1.Click, UnarchiveSelectedToolStripMenuItem2.Click, UnarchiveSelectedToolStripMenuItem.Click
+        If SELECTED_DATA_COLLECTION.Item(sender.Tag).Rows.Count = 0 Then
+            MessageBox.Show("Please select an item to continue.", "No Item Selected!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Exit Sub
+        Else
 
-        '    Dim collection As New List(Of Dictionary(Of String, String))
-        '    For Each item As DataRow In SELECTED_FACULTY.Rows
-        '        collection.Add(New Dictionary(Of String, String) From {{"@id", item.Item("id")}})
-        '    Next
-        '    'If ExecTransactionNonQuery(ARCHIVE_FACULTY_QUERY, collection) Then
-        '    '    MessageBox.Show("Archived Successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        '    'Else
-        '    '    MessageBox.Show("Archiving failed.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-        '    'End If
-        'End If
-        'DGFACULTY.EndEdit()
-        'SELECTED_FACULTY = New SystemDataSets.DTFacultyDataTable
+            Dim collection As New List(Of Dictionary(Of String, String))
+            For Each item As DataRow In SELECTED_DATA_COLLECTION.Item(sender.Tag).Rows
+                collection.Add(New Dictionary(Of String, String) From {{"@id", item.Item("id")}})
+            Next
+            If DBOperations.Unarchive(ControlsMap.Item(sender.Tag).QUERY_TYPE, collection) Then
+                MessageBox.Show("Unarchived Successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Else
+                MessageBox.Show("Unarchive failed.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            End If
+        End If
+        SELECTED_DATA_COLLECTION.Item(sender.Tag) = Activator.CreateInstance(SELECTED_DATA_COLLECTION.Item(sender.Tag).GetType)
+        ' TODO UPDATE THE DATAGRID
     End Sub
 
-    Private Sub ArchiveSelectedToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ArchiveSelectedToolStripMenuItem1.Click
-        'If SELECTED_STUDENTS.Rows.Count = 0 Then
-        '    MessageBox.Show("Please select an item to continue.", "No Item Selected!", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        '    Exit Sub
-        'Else
-        '    If MessageBox.Show("Are you sure you want to archive the selected item(s)?", "Archive Selected?", MessageBoxButtons.YesNo, MessageBoxIcon.Information) <> DialogResult.Yes Then
-        '        Exit Sub
-        '    End If
+    Private Sub DeleteSelectedToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles DeleteSelectedToolStripMenuItem1.Click, DeleteSelectedToolStripMenuItem2.Click, DeleteSelectedToolStripMenuItem.Click
+        If SELECTED_DATA_COLLECTION.Item(sender.Tag).Rows.Count = 0 Then
+            MessageBox.Show("Please select an item to continue.", "No Item Selected!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Exit Sub
+        End If
 
-        '    Dim collection As New List(Of Dictionary(Of String, String))
-        '    For Each item As DataRow In SELECTED_STUDENTS.Rows
-        '        collection.Add(New Dictionary(Of String, String) From {{"@id", item.Item("id")}})
-        '    Next
-        '    'If ExecTransactionNonQuery(ARCHIVE_STUDENT_QUERY, collection) Then
-        '    '    MessageBox.Show("Archived Successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        '    'Else
-        '    '    MessageBox.Show("Archiving failed.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-        '    'End If
-        'End If
-        'DGSTUDENT.EndEdit()
-        'SELECTED_STUDENTS = New SystemDataSets.DTStudentDataTable
+        If MessageBox.Show("Deleting these items will also delete the existing book copies." & vbLf & "Are you sure you want to delete the selected item(s)?", "Delete Selected?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.No Then
+            Exit Sub
+        End If
+
+        Dim collection As New List(Of Dictionary(Of String, String))
+
+        For Each item As DataRow In SELECTED_DATA_COLLECTION.Item(sender.Tag).Rows
+            collection.Add(New Dictionary(Of String, String) From {{"@id", item.Item("id")}})
+        Next
+
+        If DBOperations.Delete(ControlsMap.Item(sender.Tag).QUERY_TYPE, collection) Then
+            MessageBox.Show("Deleted Successfully!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Else
+            MessageBox.Show("Cannot delete the selected items. Some items are being used to other resources. Please remove the them before deleting.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
+        SELECTED_DATA_COLLECTION.Item(sender.Tag) = Activator.CreateInstance(SELECTED_DATA_COLLECTION.Item(sender.Tag).GetType)
+        ' TODO UPDATE THE DATAGRID
     End Sub
-
 #End Region
 
 #Region "Student Menu Strip"
@@ -529,98 +519,9 @@ Public Class DashboardForm
         'DGSTUDENT.EndEdit()
         'SELECTED_STUDENTS = New SystemDataSets.DTStudentDataTable
     End Sub
-
-    Private Sub UnarchiveSelectedToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles UnarchiveSelectedToolStripMenuItem1.Click
-        'If SELECTED_STUDENTS.Rows.Count = 0 Then
-        '    MessageBox.Show("Please select an item to continue.", "No Item Selected!", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        '    Exit Sub
-        'Else
-
-        '    Dim collection As New List(Of Dictionary(Of String, String))
-        '    For Each item As DataRow In SELECTED_STUDENTS.Rows
-        '        collection.Add(New Dictionary(Of String, String) From {{"@id", item.Item("id")}})
-        '    Next
-        '    'If ExecTransactionNonQuery(UNARCHIVE_STUDENT_QUERY, collection) Then
-        '    '    MessageBox.Show("Unarchived Successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        '    'Else
-        '    '    MessageBox.Show("Unarchive failed.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-        '    'End If
-        'End If
-        ''CMBSTUDENTFILTER_SelectedIndexChanged(CMBSTUDENTFILTER, Nothing)
-        'SELECTED_STUDENTS = New SystemDataSets.DTStudentDataTable
-    End Sub
-
-    Private Sub DeleteSelectedToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles DeleteSelectedToolStripMenuItem1.Click
-        'If SELECTED_STUDENTS.Rows.Count = 0 Then
-        '    MessageBox.Show("Please select an item to continue.", "No Item Selected!", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        '    Exit Sub
-        'End If
-
-        'If MessageBox.Show("Deleting these items will also delete the existing book copies." & vbLf & "Are you sure you want to delete the selected item(s)?", "Delete Selected?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.No Then
-        '    Exit Sub
-        'End If
-
-        'Dim collection As New List(Of Dictionary(Of String, String))
-
-        'For Each item As DataRow In SELECTED_STUDENTS.Rows
-        '    collection.Add(New Dictionary(Of String, String) From {{"@id", item.Item("id")}})
-        'Next
-
-        ''If BaseMaintenance.Delete(QueryTableType.STUDENT_QUERY_TABLE, collection) Then
-        ''    MessageBox.Show("Deleted Successfully!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        ''Else
-        ''    MessageBox.Show("Cannot delete the selected items. Some items are being used to other resources. Please remove the them before deleting.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        ''End If
-        ''CMBSTUDENTFILTER_SelectedIndexChanged(CMBSTUDENTFILTER, Nothing)
-        'SELECTED_STUDENTS = New SystemDataSets.DTStudentDataTable
-    End Sub
 #End Region
 
 #Region "Faculty Menu Strip"
-
-    Private Sub DeleteSelectedToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles DeleteSelectedToolStripMenuItem2.Click
-        'If SELECTED_FACULTY.Rows.Count = 0 Then
-        '    MessageBox.Show("Please select an item to continue.", "No Item Selected!", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        '    Exit Sub
-        'End If
-
-        'If MessageBox.Show("Deleting these items will also delete the existing book copies." & vbLf & "Are you sure you want to delete the selected item(s)?", "Delete Selected?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.No Then
-        '    Exit Sub
-        'End If
-
-        'Dim collection As New List(Of Dictionary(Of String, String))
-
-        'For Each item As DataRow In SELECTED_FACULTY.Rows
-        '    collection.Add(New Dictionary(Of String, String) From {{"@id", item.Item("id")}})
-        'Next
-
-        ''If BaseMaintenance.Delete(QueryTableType.FACULTY_QUERY_TABLE, collection) Then
-        ''    MessageBox.Show("Deleted Successfully!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        ''Else
-        ''    MessageBox.Show("Cannot delete the selected items. Some items are being used to other resources. Please remove the them before deleting.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        ''End If
-        'SELECTED_FACULTY = New SystemDataSets.DTFacultyDataTable
-    End Sub
-
-    Private Sub UnarchiveSelectedToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UnarchiveSelectedToolStripMenuItem.Click
-        'If SELECTED_FACULTY.Rows.Count = 0 Then
-        '    MessageBox.Show("Please select an item to continue.", "No Item Selected!", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        '    Exit Sub
-        'Else
-
-        '    Dim collection As New List(Of Dictionary(Of String, String))
-        '    For Each item As DataRow In SELECTED_FACULTY.Rows
-        '        collection.Add(New Dictionary(Of String, String) From {{"@id", item.Item("id")}})
-        '    Next
-        '    'If ExecTransactionNonQuery(UNARCHIVE_FACULTY_QUERY, collection) Then
-        '    '    MessageBox.Show("Unarchived Successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        '    'Else
-        '    '    MessageBox.Show("Unarchive failed.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-        '    'End If
-        'End If
-        'SELECTED_FACULTY = New SystemDataSets.DTFacultyDataTable
-    End Sub
-
     Private Sub AssistLibrarianToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AssistLibrarianToolStripMenuItem.Click
         'If SELECTED_FACULTY.Rows.Count = 0 Then
         '    MessageBox.Show("Please select an item to continue.", "No Item Selected!", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -646,75 +547,6 @@ Public Class DashboardForm
 #End Region
 
 #Region "Book Copies Module"
-    'Private Sub ArchiveSelectedToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles ArchiveSelectedToolStripMenuItem2.Click
-    '    If SELECTED_BOOKS.Rows.Count = 0 Then
-    '        MessageBox.Show("Please select an item to continue.", "No Item Selected!", MessageBoxButtons.OK, MessageBoxIcon.Information)
-    '        Exit Sub
-    '    Else
-    '        If MessageBox.Show("Archiving the selected item(s) will make the copies unavailable to inventory." & vbLf & "Are you sure you want to archive the selected item(s)?", "Archive Selected?", MessageBoxButtons.YesNo, MessageBoxIcon.Information) <> DialogResult.Yes Then
-    '            Exit Sub
-    '        End If
-
-    '        Dim collection As New List(Of Dictionary(Of String, String))
-    '        For Each item As DataRow In SELECTED_BOOKS.Rows
-    '            collection.Add(New Dictionary(Of String, String) From {{"@id", item.Item("id")}})
-    '        Next
-    '        If ExecTransactionNonQuery(ARCHIVE_BOOKS_QUERY, collection) Then
-    '            MessageBox.Show("Archived Successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
-    '        Else
-    '            MessageBox.Show("Archiving failed.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-    '        End If
-    '    End If
-    '    DGBOOKS.EndEdit()
-    '    'CMBBOOKFILTER_SelectedIndexChanged(CMBBOOKFILTER, Nothing)
-    '    SELECTED_BOOKS = New SystemDataSets.DTBookDataTable
-    'End Sub
-
-    Private Sub UnarchiveSelectedToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles UnarchiveSelectedToolStripMenuItem2.Click
-        'If SELECTED_BOOKS.Rows.Count = 0 Then
-        '    MessageBox.Show("Please select an item to continue.", "No Item Selected!", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        '    Exit Sub
-        'Else
-
-        '    Dim collection As New List(Of Dictionary(Of String, String))
-        '    For Each item As DataRow In SELECTED_BOOKS.Rows
-        '        collection.Add(New Dictionary(Of String, String) From {{"@id", item.Item("id")}})
-        '    Next
-        '    'If ExecTransactionNonQuery(UNARCHIVE_BOOKS_QUERY, collection) Then
-        '    '    MessageBox.Show("Unarchived Successfully.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        '    'Else
-        '    '    MessageBox.Show("Unarchive failed.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-        '    'End If
-        'End If
-        'DGBOOKS.EndEdit()
-        'SELECTED_BOOKS = New SystemDataSets.DTBookDataTable
-    End Sub
-
-    Private Sub DeleteSelectedToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DeleteSelectedToolStripMenuItem.Click
-
-        'If SELECTED_BOOKS.Rows.Count = 0 Then
-        '    MessageBox.Show("Please select an item to continue.", "No Item Selected!", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        '    Exit Sub
-        'End If
-
-        'If MessageBox.Show("Deleting these items will also delete the existing book copies." & vbLf & "Are you sure you want to delete the selected item(s)?", "Delete Selected?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.No Then
-        '    Exit Sub
-        'End If
-
-        'Dim collection As New List(Of Dictionary(Of String, String))
-
-        'For Each item As DataRow In SELECTED_BOOKS.Rows
-        '    collection.Add(New Dictionary(Of String, String) From {{"@id", item.Item("id")}})
-        'Next
-
-        'If DBOperations.Delete(BOOK, collection) Then
-        '    MessageBox.Show("Deleted Successfully!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        'Else
-        '    MessageBox.Show("Cannot delete the selected items. Some items are being used to other resources. Please remove the them before deleting.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        'End If
-        'SELECTED_BOOKS = New SystemDataSets.DTBookDataTable
-    End Sub
-
     Private Sub BTNADDCOPIES_Click(sender As Object, e As EventArgs) Handles BTNADDCOPIES.Click
         ' TODO ADD SANITIZE THIS
         Dim price_copy As String = If(String.IsNullOrEmpty(TXTPRICECOPIES.Text), "0", TXTPRICECOPIES.Text)
@@ -841,16 +673,15 @@ Public Class DashboardForm
     End Sub
 
     Private Sub BTNSETSERVER_Click(sender As Object, e As EventArgs) Handles BTNSETSERVER.Click
-        MsgBox(My.Settings.server_password)
         If TestConnection(TXTSETIP.Text, TXTSETUSERNAME.Text, TXTSETPORT.Text, TXTSETSERPASS.Text) Then
             My.Settings.server_name = TXTSETIP.Text
             My.Settings.server_username = TXTSETUSERNAME.Text
             My.Settings.server_password = TXTSETSERPASS.Text
             My.Settings.server_port = TXTSETPORT.Text
             My.Settings.Save()
-            MessageBox.Show("Server Settings has been updated.", "Successs!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("Server Settings has been updated.", "Update Successs!", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Else
-            MessageBox.Show("Faild to update server settings.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            MessageBox.Show("Faild to update server settings.", "Update Failed!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         End If
     End Sub
 

@@ -60,10 +60,8 @@ Module TransactionUtils
                 cmd.CommandText = "SELECT COUNT(*) FROM tblborrowedcopies WHERE header_id = @tid AND returned_condition IS NULL"
                 cmd.Parameters.AddWithValue("@tid", header_id)
                 If cmd.ExecuteScalar() = 0 Then
-                    If ExecScalar("SELECT `status` FROM tblborrowheaders WHERE id = @tid") <> TRANSACTIONSTATE.OVERDUE Then
-                        cmd.CommandText = "UPDATE tblborrowheaders SET `status` = 0 WHERE id = @tid"
-                        cmd.ExecuteNonQuery()
-                    End If
+                    cmd.CommandText = "UPDATE tblborrowheaders SET `status` = 0 WHERE id = @tid"
+                    cmd.ExecuteNonQuery()
                 End If
                 transac.Commit()
                 Return True
@@ -246,3 +244,4 @@ Module Utilities
                             LEFT JOIN tblborrowedcopies bc ON bh.id = bc.header_id WHERE bh.faculty_id = @fid", New Dictionary(Of String, String) From {{"@fid", fid}})
     End Function
 End Module
+

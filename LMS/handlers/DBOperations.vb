@@ -112,6 +112,18 @@ Module DBOperations
         Return ExecNonQueryTrans(QueryTable.DELETE_QUERY, params)
     End Function
 
+    Public Function Archive(type As QueryType, params As List(Of Dictionary(Of String, String))) As Boolean
+        ' TODO HOW WILL YOU LOG THIS?
+        SetQueryType(type)
+        Return ExecNonQueryTrans(QueryTable.ARCHIVE_QUERY, params)
+    End Function
+
+    Public Function Unarchive(type As QueryType, params As List(Of Dictionary(Of String, String))) As Boolean
+        ' TODO HOW WILL YOU LOG THIS?
+        SetQueryType(type)
+        Return ExecNonQueryTrans(QueryTable.UNARCHIVE_QUERY, params)
+    End Function
+
     Public Function SearchArchive(type As QueryType) As DataTable
         SetQueryType(type)
         Dim searchQuery As New Dictionary(Of String, String) From {

@@ -28,10 +28,10 @@
     Public Sub NextPage(Optional filter As STATUSTYPE = STATUSTYPE.ACTIVE, Optional ByRef CallBack As Action(Of Guna.UI2.WinForms.Guna2DataGridView) = Nothing)
         If DBOperations.PREV_PAGE_NUMBER < DBOperations.NEXT_PAGE_NUMBER Then
             DBOperations.PREV_PAGE_NUMBER += 1
+            Me.Update(filter)
             If Not IsNothing(CallBack) Then
                 CallBack.Invoke(DG)
             End If
-            Me.Update(filter)
         End If
     End Sub
 

@@ -33,69 +33,80 @@ Public Class ReturnDialog
             .DataSource = bc
         }
 
+        ' GUSTO MAG KALAT DITO HAHAHAAH
+        Dim header As DataTable = ExecFetch("SELECT bt.id, CASE WHEN bt.student_id IS NULL THEN ft.full_name ELSE st.full_name END AS full_name, circulation_no, overdue_date, borrow_date,
+                                                CASE WHEN a.student_id IS NULL THEN af.full_name ELSE ad.full_name END AS issued_by,
+                                                CASE WHEN bt.is_overdue = 1 THEN DATEDIFF(now(),overdue_date) ELSE 0 END AS overdue_days,
+                                                bt.status,
+                                                CASE WHEN bt.is_overdue = 1 
+	                                                THEN DATEDIFF(now(), overdue_date) * (
+		                                                CASE WHEN (SELECT gpenalty FROM tblappsettings) = 1
+			                                                THEN (CASE WHEN bt.student_id IS NULL THEN (SELECT fpenalty FROM tblappsettings) ELSE (SELECT spenalty FROM tblappsettings) END)
+                                                            ELSE (CASE WHEN bt.student_id IS NULL 
+					                                                THEN (SELECT SUM(b.fpenalty) FROM tblbooks b JOIN tblbookcopies bc ON b.id = bc.book_id JOIN tblborrowedcopies bbc ON bc.id = bbc.copy_id WHERE bbc.header_id = bt.id) 
+                                                                    ELSE (SELECT SUM(b.spenalty) FROM tblbooks b JOIN tblbookcopies bc ON b.id = bc.book_id JOIN tblborrowedcopies bbc ON bc.id = bbc.copy_id WHERE bbc.header_id = bt.id) END)
+		                                                END)
+                                                    ELSE 0
+                                                END AS penalty
+                                                FROM tblborrowheaders bt
+                                                LEFT JOIN tblstudents st ON bt.student_id = st.id
+                                                LEFT JOIN tblfaculties ft ON bt.faculty_id = ft.id
+                                                LEFT JOIN tbladmins a ON bt.issued_by = a.id
+                                                LEFT JOIN tblstudents ad ON a.student_id = ad.id
+                                                LEFT JOIN tblfaculties af ON a.faculty_id = af.id
+                                                WHERE bt.id = @id", New Dictionary(Of String, String) From {{"@id", _data.Item("id")}})
 
-        'Dim header As DataTable = ExecFetch("SELECT bt.id, CASE WHEN bt.student_id IS NULL THEN ft.full_name ELSE st.full_name END AS full_name, circulation_no, overdue_date, borrow_date,
-        '                                        CASE WHEN a.student_id IS NULL THEN af.full_name ELSE ad.full_name END AS issued_by, CAST(now() AS DATE) - CAST(overdue_date AS DATE) overdue_days,
-        '                                        bt.status, CASE WHEN CAST(now() AS DATE) - CAST(overdue_date AS DATE) < 1 THEN 0 ELSE CAST(now() AS DATE) - CAST(overdue_date AS DATE) * (SELECT CASE WHEN bt.student_id IS NULL THEN fpenalty ELSE spenalty END AS penalty FROM tblappsettings) END AS penalty
-        '                                        FROM tblborrowheaders bt
-        '                                        LEFT JOIN tblstudents st ON bt.student_id = st.id
-        '                                        LEFT JOIN tblfaculties ft ON bt.faculty_id = ft.id
-        '                                        LEFT JOIN tbladmins a ON bt.issued_by = a.id
-        '                                        LEFT JOIN tblstudents ad ON a.student_id = ad.id
-        '                                        LEFT JOIN tblfaculties af ON a.faculty_id = af.id
-        '                                        WHERE bt.id = @id", New Dictionary(Of String, String) From {{"@id", _data.Item("id")}})
+        If header.Rows.Count > 0 Then
+            With header.Rows(0)
+                LBLCIRCULATION.Text = .Item("circulation_no")
+                LBLBORROWER.Text = .Item("full_name")
+                LBLBORROWDATE.Text = .Item("borrow_date")
+                LBLDUEDATE.Text = .Item("overdue_date")
+                LBLISSUEDBY.Text = .Item("issued_by")
 
-        'If header.Rows.Count > 0 Then
-        '    With header.Rows(0)
-        '        LBLCIRCULATION.Text = .Item("circulation_no")
-        '        LBLBORROWER.Text = .Item("full_name")
-        '        LBLBORROWDATE.Text = .Item("borrow_date")
-        '        LBLDUEDATE.Text = .Item("overdue_date")
-        '        LBLISSUEDBY.Text = .Item("issued_by")
+                Dim stat As Integer = .Item("status")
+                If stat = 1 Then
+                    LBLSTATUS.Text = "Active"
+                ElseIf stat = 2 Then
+                    LBLSTATUS.Text = "Overdue"
+                Else
+                    LBLSTATUS.Text = "Returned"
+                End If
 
-        '        Dim stat As Integer = .Item("status")
-        '        If stat = 1 Then
-        '            LBLSTATUS.Text = "Active"
-        '        ElseIf stat = 2 Then
-        '            LBLSTATUS.Text = "Overdue"
-        '        Else
-        '            LBLSTATUS.Text = "Returned"
-        '        End If
+                Dim overdue_days As Integer = .Item("overdue_days")
+                If overdue_days < 1 Then
+                    LBLOVERDUEDAYS.Text = "None"
+                Else
+                    LBLOVERDUEDAYS.Text = overdue_days & " Day(s)"
+                End If
 
-        '        Dim overdue_days As Integer = .Item("overdue_days")
-        '        If overdue_days < 1 Then
-        '            LBLOVERDUEDAYS.Text = "None"
-        '        Else
-        '            LBLOVERDUEDAYS.Text = overdue_days & " Day(s)"
-        '        End If
-
-        '        LBLPENALTY.Text = "₱ " & .Item("penalty")
-        '    End With
-        'End If
+                LBLPENALTY.Text = "₱ " & .Item("penalty")
+            End With
+        End If
 
 
-        'Dim dt As DataTable = ExecFetch("SELECT bi.id, bi.copy_id, bc.accession_no, b.title, b.isbn, bi.borrowed_condition, bi.returned_condition, bi.date_returned
-        '                                    FROM tblborrowheaders bh
-        '                                    LEFT JOIN tblborrowedcopies bi ON bh.id = bi.header_id
-        '                                    LEFT JOIN tblbookcopies bc ON bi.copy_id = bc.id
-        '                                    LEFT JOIN tblbooks b ON bc.book_id = b.id
-        '                                    WHERE bi.header_id = @id
-        '                                    ORDER BY bc.accession_no, b.title", New Dictionary(Of String, String) From {{"@id", _data.Item("id")}})
-        'DGBORROWEDCOPIES.DataSource = dt
-        'DGBORROWEDCOPIES.Columns.Add(cmb)
-        'DGBORROWEDCOPIES.Columns(NameOf(ColumnDateReturned)).DisplayIndex = DGBORROWEDCOPIES.Columns.Count - 2
-        'DGBORROWEDCOPIES.Columns(NameOf(ColumnBorrowedCondition)).DisplayIndex = DGBORROWEDCOPIES.Columns.Count - 3
-        'DGBORROWEDCOPIES.Columns(cmb.Name).DisplayIndex = DGBORROWEDCOPIES.Columns.Count - 1
+        Dim dt As DataTable = ExecFetch("SELECT bi.id, bi.copy_id, bc.accession_no, b.title, b.isbn, bi.borrowed_condition, bi.returned_condition, bi.date_returned
+                                            FROM tblborrowheaders bh
+                                            LEFT JOIN tblborrowedcopies bi ON bh.id = bi.header_id
+                                            LEFT JOIN tblbookcopies bc ON bi.copy_id = bc.id
+                                            LEFT JOIN tblbooks b ON bc.book_id = b.id
+                                            WHERE bi.header_id = @id
+                                            ORDER BY bc.accession_no, b.title", New Dictionary(Of String, String) From {{"@id", _data.Item("id")}})
+        DGBORROWEDCOPIES.DataSource = dt
+        DGBORROWEDCOPIES.Columns.Add(cmb)
+        DGBORROWEDCOPIES.Columns(NameOf(ColumnDateReturned)).DisplayIndex = DGBORROWEDCOPIES.Columns.Count - 2
+        DGBORROWEDCOPIES.Columns(NameOf(ColumnBorrowedCondition)).DisplayIndex = DGBORROWEDCOPIES.Columns.Count - 3
+        DGBORROWEDCOPIES.Columns(cmb.Name).DisplayIndex = DGBORROWEDCOPIES.Columns.Count - 1
 
-        'For Each row As DataGridViewRow In DGBORROWEDCOPIES.Rows
-        '    Dim bound As DataRowView = TryCast(row.DataBoundItem, DataRowView)
-        '    'row.Cells.Item("cmbCondition").Value = bound.Row.Item("return_condition")
-        '    If Not IsDBNull(bound.Item("returned_condition")) Then
-        '        row.Cells.Item(cmb.Name).Value = CInt(bound.Item("returned_condition"))
-        '        row.Cells.Item(cmb.Name).ReadOnly = True
-        '        row.Cells(NameOf(chckBoxBorrowCopies)).ReadOnly = True
-        '    End If
-        'Next
+        For Each row As DataGridViewRow In DGBORROWEDCOPIES.Rows
+            Dim bound As DataRowView = TryCast(row.DataBoundItem, DataRowView)
+            'row.Cells.Item("cmbCondition").Value = bound.Row.Item("return_condition")
+            If Not IsDBNull(bound.Item("returned_condition")) Then
+                row.Cells.Item(cmb.Name).Value = CInt(bound.Item("returned_condition"))
+                row.Cells.Item(cmb.Name).ReadOnly = True
+                row.Cells(NameOf(chckBoxBorrowCopies)).ReadOnly = True
+            End If
+        Next
 
         Dim saveEnable As Boolean = False
         For Each row As DataGridViewRow In DGBORROWEDCOPIES.Rows

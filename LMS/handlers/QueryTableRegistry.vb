@@ -89,7 +89,9 @@ Module QueryTableRegistry
                                                 b.classification_id, b.reserve_copy, g.name genre_name, concat(a.first_name, ' ', a.last_name) name
                                                 FROM tblbooks b
                                                 JOIN tblgenres g ON genre_id = g.id
-                                                JOIN tblauthors a ON author_id = a.id WHERE status = 0 AND (title LIKE @search OR isbn LIKE @search OR g.name LIKE @search OR a.first_name LIKE @search OR a.last_name LIKE @search) ORDER BY title ASC LIMIT @page, 30;"
+                                                JOIN tblauthors a ON author_id = a.id WHERE status = 0 AND (title LIKE @search OR isbn LIKE @search OR g.name LIKE @search OR a.first_name LIKE @search OR a.last_name LIKE @search) ORDER BY title ASC LIMIT @page, 30;",
+            .ARCHIVE_QUERY = "UPDATE tblbooks SET status = 0 WHERE id = @id",
+            .UNARCHIVE_QUERY = "UPDATE tblbooks SET status = 1 WHERE id = @id"
         }},
         {SECTION, New QueryTable With {
             .ADD_QUERY = "INSERT INTO tblsections (name, year_id) VALUES (@name, @yid)",
@@ -130,7 +132,9 @@ Module QueryTableRegistry
             .SEARCH_RESULT_QUERY = "SELECT st.id, lrn, full_name, gender, address, phone, email, section_id, s.name section, s.year_id, y.year_level FROM tblstudents st JOIN tblsections s ON st.section_id = s.id JOIN tblyearlevels y ON s.year_id = y.id WHERE status = 1 AND (lrn LIKE @search OR email LIKE @search OR full_name LIKE @search) ORDER BY full_name ASC LIMIT @page, 30",
             .ARCHIVE_SEARCH_COUNT_QUERY = "SELECT COUNT(*) FROM tblstudents WHERE status = 0 AND (lrn LIKE @search OR email LIKE @search OR full_name LIKE @search)",
             .ARCHIVE_SEARCH_RESULT_QUERY = "SELECT st.id, lrn, full_name, gender, address, phone, email, section_id, s.name section, s.year_id, y.year_level FROM tblstudents st JOIN tblsections s ON st.section_id = s.id JOIN tblyearlevels y ON s.year_id = y.id WHERE status = 0 AND (lrn LIKE @search OR email LIKE @search OR full_name LIKE @search) ORDER BY full_name ASC LIMIT @page, 30;",
-            .UPDATE_QUERY = "UPDATE tblstudents SET lrn = @lrn, full_name = @full_name, gender = @gender, address = @address, email = @email, section_id = @sid, status = 1 WHERE id = @id"
+            .UPDATE_QUERY = "UPDATE tblstudents SET lrn = @lrn, full_name = @full_name, gender = @gender, address = @address, email = @email, section_id = @sid, status = 1 WHERE id = @id",
+            .ARCHIVE_QUERY = "UPDATE tblstudents SET status = 0 WHERE id = @id",
+            .UNARCHIVE_QUERY = "UPDATE tblstudents SET status = 1 WHERE id = @id"
         }},
         {FACULTY, New QueryTable With {
             .ADD_QUERY = "INSERT INTO tblfaculties (full_name, gender, address, phone, email, department_id, password, username) VALUES (@full_name, @gender, @address, @phone, @email, @did, @passwd, @username)",
@@ -142,7 +146,9 @@ Module QueryTableRegistry
             .FETCH_ALL_QUERY = "SELECT id, department_name FROM tblfaculties ORDER BY department_name",
             .ARCHIVE_SEARCH_COUNT_QUERY = "SELECT COUNT(*) FROM tblfaculties WHERE status = 0 AND (email LIKE @search OR full_name LIKE @search)",
             .ARCHIVE_SEARCH_RESULT_QUERY = "SELECT st.id, st.username, full_name, gender, address, phone, email, department_id, d.department_name FROM tblfaculties st JOIN tbldepartments d ON st.department_id = d.id WHERE status = 0 AND (email LIKE @search OR full_name LIKE @search) ORDER BY full_name ASC LIMIT @page, 30",
-            .UPDATE_QUERY = "UPDATE tblfaculties SET full_name = @full_name, gender = @gender, address = @address, email = @email, department_id = @did, status = 1 WHERE id = @id"
+            .UPDATE_QUERY = "UPDATE tblfaculties SET full_name = @full_name, gender = @gender, address = @address, email = @email, department_id = @did, status = 1 WHERE id = @id",
+            .ARCHIVE_QUERY = "UPDATE tblfaculties SET status = 0 WHERE id = @id",
+            .UNARCHIVE_QUERY = "UPDATE tblfaculties SET status = 1 WHERE id = @id"
         }},
         {ADMIN, New QueryTable With {
             .ADD_QUERY = "INSERT INTO tbladmins (student_id, faculty_id) VALUES (@sid, @fid)",
@@ -285,7 +291,7 @@ Module QueryTableRegistry
                                     JOIN tblborrowedcopies bbc ON bh.id = bbc.header_id
                                     JOIN tblbookcopies bc ON bbc.copy_id = bc.id 
                                     JOIN tblbooks b ON bc.book_id = b.id
-                                    WHERE (f.full_name LIKE @search OR s.full_name LIKE @search) AND bh.status = 2
+                                    WHERE (f.full_name LIKE @search OR s.full_name LIKE @search) AND bh.is_overdue = 1
                                     HAVING DATEDIFF(NOW(), DATE_ADD(bh.overdue_date, INTERVAL 1 DAY)) > 0 LIMIT @page, 30;",
             .SEARCH_COUNT_QUERY = "SELECT COUNT(*)
                                     FROM tblborrowheaders bh
@@ -294,7 +300,7 @@ Module QueryTableRegistry
                                     JOIN tblborrowedcopies bbc ON bh.id = bbc.header_id
                                     JOIN tblbookcopies bc ON bbc.copy_id = bc.id 
                                     JOIN tblbooks b ON bc.book_id = b.id
-                                    WHERE (f.full_name LIKE @search OR s.full_name LIKE @search) AND bh.status = 2
+                                    WHERE (f.full_name LIKE @search OR s.full_name LIKE @search) AND bh.is_overdue = 1
                                     HAVING DATEDIFF(NOW(), DATE_ADD(bh.overdue_date, INTERVAL 1 DAY)) > 0"
         }},
         {CLSSIFICATIONREPORT, New QueryTable With {
