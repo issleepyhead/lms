@@ -3,46 +3,40 @@
 ''' </summary>
 Public Enum QueryType
     <SheetNameMapping("Genres")>
-    <ColumnMapping({"Name", "Description"}, {"@name", "@desc"})>
+    <ColumnMapping("Name", 45, AddressOf Example)>
+    <ColumnMapping("Description", 100)>
     GENRE
 
     <SheetNameMapping("Publishers")>
-    <ColumnMapping({"Publisher Name"}, {"@name"})>
+    <ColumnMapping("Name", 50)>
     PUBLISHER
 
     <SheetNameMapping("Authors")>
-    <ColumnMapping({"First Name", "Last Name", "Gender"}, {"@first_name", "@last_name", "@gender"})>
+    <ColumnMapping("First Name", 50)>
+    <ColumnMapping("Last Name", 50)>
+    <ColumnMapping("Gender", 6)>
     AUTHOR
 
     <SheetNameMapping("Classifications")>
-    <ColumnMapping({"Dewey Decimal", "Classification"}, {"@dewey_no", "@classification"})>
+    <ColumnMapping("Classification", 50)>
+    <ColumnMapping("Dewey Decimal", 12)>
     CLASSIFICATION
 
     <SheetNameMapping("Languages")>
-    <ColumnMapping({"Language", "Code"}, {"@language", "@code"})>
+    <ColumnMapping("Language", 50)>
+    <ColumnMapping("Code", 50)>
     LANGUAGES
 
     <SheetNameMapping("Books")>
-    <ColumnMapping(
-        {"Title",
-            "ISBN",
-            "Genre",
-            "Publisher",
-            "Language",
-            "Author",
-            "Classification",
-            "Book Cover",
-            "Reserve Copy"},
-        {"@title",
-            "@isbn",
-            "@gid",
-            "@pid",
-            "@lid",
-            "@aid",
-            "@cid",
-            "@cover",
-            "@rcopy"
-        })>
+    <ColumnMapping("Title", 50)>
+    <ColumnMapping("ISBN", 50)>
+    <ColumnMapping("Genre", 50)>
+    <ColumnMapping("Publisher", 50)>
+    <ColumnMapping("Language", 50)>
+    <ColumnMapping("Author", 50)>
+    <ColumnMapping("Classification", 50)>
+    <ColumnMapping("Cover", 50)>
+    <ColumnMapping("Reserve", 50)>
     BOOK
 
     DONATOR

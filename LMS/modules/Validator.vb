@@ -67,4 +67,8 @@ Module Validator
             Return input
         End If
     End Function
+
+    Public Function Example(x As String) As Boolean
+        Return True
+    End Function
 End Module
