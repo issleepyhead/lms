@@ -4,10 +4,16 @@ Public Class ColumnMapping
 
     Public ReadOnly Property ColumnName As String
     Public ReadOnly Property Length As String
-    Public ReadOnly Property CallBackValidator As Func(Of String)
-    Public Sub New(colName As String, length As Integer, ByRef Optional validator As Func(Of String) = Nothing)
+
+    Private ReadOnly CallBackValidator As Func(Of String, Boolean)
+
+    Public Sub New(colName As String, length As Integer, vtype As VALIDATORTYPE)
         Me.ColumnName = colName
         Me.Length = length
-        Me.CallBackValidator = validator
+        Me.CallBackValidator = GetValidatorType(vtype)
     End Sub
+
+    Public Function Validate(input As String) As Boolean
+        Return Not String.IsNullOrEmpty(input) AndAlso CallBackValidator.Invoke(input)
+    End Function
 End Class

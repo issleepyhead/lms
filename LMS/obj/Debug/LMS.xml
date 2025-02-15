@@ -313,20 +313,6 @@ Row event argument class
  Rollback if the transaction.
  </summary>
 </member>
-<member name="M:LMS.ExcelDataLoader.ReadData(System.String)">
- <summary>
- Loads all the data from the excel file.
- </summary>
- <param name="path">A file path of the excel file.</param>
- <returns>A dictionary containing all the data of the excel</returns>
-</member>
-<member name="M:LMS.ExcelDataLoader.IsValid(System.String)">
- <summary>
- Checks if the file is valid excel file.
- </summary>
- <param name="path">Path to the excel file.</param>
- <returns></returns>
-</member>
 <member name="T:LMS.QueryType">
  <summary>
  QueryType is an identifier for type of collection of query.

@@ -6,22 +6,21 @@ Public Class ImportDataDialog
     Private path As String
     Private data As Dictionary(Of String, DataTable)
     Private _isHiding = False
-    Private _importHandler As ExcelDataLoader
     Private _keyDialog As String
 
-    Sub New(excelLoader As ExcelDataLoader, keyDialog As String)
+    Sub New(keyDialog As String)
         InitializeComponent()
-        _importHandler = excelLoader
+        '_importHandler = excelLoader
         _keyDialog = keyDialog
 
         If keyDialog = NameOf(BookDialog) Then
-            _importHandler = New BookImport
+            '_importHandler = New BookImport
             Text &= " - Books"
         ElseIf keyDialog = NameOf(StudentDialog) Then
-            _importHandler = New AccountImport(QueryTableType.STUDENT_QUERY_TABLE)
+            '_importHandler = New AccountImport(QueryTableType.STUDENT_QUERY_TABLE)
             Text &= " - Students"
         Else
-            _importHandler = New AccountImport(QueryTableType.FACULTY_QUERY_TABLE)
+            '_importHandler = New AccountImport(QueryTableType.FACULTY_QUERY_TABLE)
             Text &= " - Teachers/Faculties"
         End If
     End Sub
@@ -29,8 +28,8 @@ Public Class ImportDataDialog
     Private Sub BTNSELECTFILE_Click(sender As Object, e As EventArgs) Handles BTNSELECTFILE.Click
         Using dialog As New OpenFileDialog
             If dialog.ShowDialog = DialogResult.OK Then
-                If Not _importHandler.IsValid(dialog.FileName) Then
-                    MessageBox.Show("Invalid excel file, this file doesn't contain the required sheets or columns.", "Invalid Excel File", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                If Not IsExtensionValid(dialog.FileName) Then
+                    MessageBox.Show("Invalid excel file extension.", "Invalid File", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     Exit Sub
                 End If
 
@@ -43,14 +42,16 @@ Public Class ImportDataDialog
 
     Private Async Sub BTNPREVIEW_Click(sender As Object, e As EventArgs) Handles BTNPREVIEW.Click
         ' Loads all the data from excel file.
-        data = Await ExcelDataLoader.ReadData(path)
+        data = Await ExcelFileHandler.ReadExcelFile(path)
 
         If data.ContainsKey("Books") Then
             DGDATA.DataSource = data.Item("Books")
         ElseIf data.ContainsKey("Faculties") Then
             DGDATA.DataSource = data.Item("Faculties")
-        Else
+        ElseIf data.ContainsKey("Students") Then
             DGDATA.DataSource = data.Item("Students")
+        Else
+            MessageBox.Show("Unable to read the data in the file, please check the column and sheet name and try again.", "Unable to read data.", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
     End Sub
 
@@ -60,7 +61,7 @@ Public Class ImportDataDialog
                 If MessageBox.Show("Are you sure you want to discard changes?", "Discard Changes?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
                     If Not ImportBackground.CancellationPending Then
                         ImportBackground.CancelAsync()
-                        _importHandler.DBHANDLER.RollbackTransaction()
+                        '_importHandler.DBHANDLER.RollbackTransaction()
                     End If
                     MyApplication.DialogInstances.Remove(_keyDialog)
                 Else
@@ -100,10 +101,10 @@ Public Class ImportDataDialog
     End Sub
 
     Private Sub BTNCANCEL_Click(sender As Object, e As EventArgs) Handles BTNCANCEL.Click
-        If Not IsNothing(_importHandler) Then
-            ImportBackground.CancelAsync()
-            _importHandler.DBHANDLER.RollbackTransaction()
-        End If
+        'If Not IsNothing(_importHandler) Then
+        '    ImportBackground.CancelAsync()
+        '    _importHandler.DBHANDLER.RollbackTransaction()
+        'End If
     End Sub
 
     Private Sub BTNHIDE_Click(sender As Object, e As EventArgs) Handles BTNHIDE.Click
@@ -131,42 +132,42 @@ Public Class ImportDataDialog
                           BTNIMPORT.Enabled = False
                       End Sub)
             Dim orderImport As String() = Nothing
-            Dim orderQuery As QueryTableType() = Nothing
+            'Dim orderQuery As QueryTableType() = Nothing
 
-            If data.ContainsKey("Books") Then
-                orderImport = {"Genres", "Authors", "Publishers", "Classifications", "Languages", "Books"}
-                orderQuery = {QueryTableType.GENRE_QUERY_TABLE, QueryTableType.AUTHOR_QUERY_TABLE, QueryTableType.PUBLISHER_QUERY_TABLE, QueryTableType.CLASSIFICATION_QUERY_TABLE,
-                                    QueryTableType.LANGUAGES_QUERY_TABLE, QueryTableType.BOOK_QUERY_TABLE}
+            'If data.ContainsKey("Books") Then
+            '    orderImport = {"Genres", "Authors", "Publishers", "Classifications", "Languages", "Books"}
+            '    orderQuery = {QueryTableType.GENRE_QUERY_TABLE, QueryTableType.AUTHOR_QUERY_TABLE, QueryTableType.PUBLISHER_QUERY_TABLE, QueryTableType.CLASSIFICATION_QUERY_TABLE,
+            '                        QueryTableType.LANGUAGES_QUERY_TABLE, QueryTableType.BOOK_QUERY_TABLE}
 
-            ElseIf data.ContainsKey("Students") Then
-                orderImport = {"Departments", "Year Levels", "Sections", "Students"}
-                orderQuery = {QueryTableType.DEPARTMENT_QUERY_TABLE, QueryTableType.YEARLEVEL_QUERY_TABLE, QueryTableType.SECTION_QUERY_TABLE, QueryTableType.STUDENT_QUERY_TABLE}
-            Else
-                orderImport = {"Departments", "Faculties"}
-                orderQuery = {QueryTableType.DEPARTMENT_QUERY_TABLE, QueryTableType.FACULTY_QUERY_TABLE}
-            End If
+            'ElseIf data.ContainsKey("Students") Then
+            '    orderImport = {"Departments", "Year Levels", "Sections", "Students"}
+            '    orderQuery = {QueryTableType.DEPARTMENT_QUERY_TABLE, QueryTableType.YEARLEVEL_QUERY_TABLE, QueryTableType.SECTION_QUERY_TABLE, QueryTableType.STUDENT_QUERY_TABLE}
+            'Else
+            '    orderImport = {"Departments", "Faculties"}
+            '    orderQuery = {QueryTableType.DEPARTMENT_QUERY_TABLE, QueryTableType.FACULTY_QUERY_TABLE}
+            'End If
 
-            For index As Integer = 0 To orderImport.Length - 1
-                If data.ContainsKey(orderImport(index)) Then
-                    Dim dt As DataTable = data.Item(orderImport(index))
+            'For index As Integer = 0 To orderImport.Length - 1
+            '    If data.ContainsKey(orderImport(index)) Then
+            '        Dim dt As DataTable = data.Item(orderImport(index))
 
 
-                    For Each drow As DataRow In dt.Rows
-                        Dim rdata As Dictionary(Of String, String) = _importHandler.DataFactory(orderQuery(index), drow)
-                        Dim query As QueryTable = Registry.Item(orderQuery(index))
-                        If _importHandler.DBHANDLER.ExistsData(query, rdata) Then
-                            drow.Item("Status") = "Duplicate"
-                        Else
-                            If _importHandler.DBHANDLER.AddData(query, rdata) Then
-                                drow.Item("Status") = "Success"
-                            Else
-                                drow.Item("Status") = "Failed"
-                            End If
-                        End If
-                        ImportBackground.ReportProgress(index)
-                    Next
-                End If
-            Next
+            '        For Each drow As DataRow In dt.Rows
+            '            Dim rdata As Dictionary(Of String, String) = _importHandler.DataFactory(orderQuery(index), drow)
+            '            Dim query As QueryTable = Registry.Item(orderQuery(index))
+            '            If _importHandler.DBHANDLER.ExistsData(query, rdata) Then
+            '                drow.Item("Status") = "Duplicate"
+            '            Else
+            '                If _importHandler.DBHANDLER.AddData(query, rdata) Then
+            '                    drow.Item("Status") = "Success"
+            '                Else
+            '                    drow.Item("Status") = "Failed"
+            '                End If
+            '            End If
+            '            ImportBackground.ReportProgress(index)
+            '        Next
+            '    End If
+            'Next
         End If
     End Sub
 
@@ -181,14 +182,14 @@ Public Class ImportDataDialog
     End Sub
 
     Private Sub ImportBackground_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles ImportBackground.RunWorkerCompleted
-        _importHandler.DBHANDLER.CommitTransaction()
-        If data.ContainsKey("Books") Then
-            DGDATA.DataSource = data.Item("Books")
-        ElseIf data.ContainsKey("Students") Then
-            DGDATA.DataSource = data.Item("Students")
-        Else
-            DGDATA.DataSource = data.Item("Faculties")
-        End If
+        '_importHandler.DBHANDLER.CommitTransaction()
+        'If data.ContainsKey("Books") Then
+        '    DGDATA.DataSource = data.Item("Books")
+        'ElseIf data.ContainsKey("Students") Then
+        '    DGDATA.DataSource = data.Item("Students")
+        'Else
+        '    DGDATA.DataSource = data.Item("Faculties")
+        'End If
         BTNIMPORT.Enabled = True
     End Sub
 End Class

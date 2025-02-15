@@ -3,40 +3,40 @@
 ''' </summary>
 Public Enum QueryType
     <SheetNameMapping("Genres")>
-    <ColumnMapping("Name", 45, AddressOf Example)>
-    <ColumnMapping("Description", 100)>
+    <ColumnMapping("Name", 45, VALIDATORTYPE.NAME)>
+    <ColumnMapping("Description", 100, VALIDATORTYPE.ALL)>
     GENRE
 
     <SheetNameMapping("Publishers")>
-    <ColumnMapping("Name", 50)>
+    <ColumnMapping("Name", 50, VALIDATORTYPE.OTHERNAME)>
     PUBLISHER
 
     <SheetNameMapping("Authors")>
-    <ColumnMapping("First Name", 50)>
-    <ColumnMapping("Last Name", 50)>
-    <ColumnMapping("Gender", 6)>
+    <ColumnMapping("First Name", 50, VALIDATORTYPE.NAME)>
+    <ColumnMapping("Last Name", 50, VALIDATORTYPE.NAME)>
+    <ColumnMapping("Gender", 6, VALIDATORTYPE.GENDER)>
     AUTHOR
 
     <SheetNameMapping("Classifications")>
-    <ColumnMapping("Classification", 50)>
-    <ColumnMapping("Dewey Decimal", 12)>
+    <ColumnMapping("Classification", 50, VALIDATORTYPE.ALL)>
+    <ColumnMapping("Dewey Decimal", 12, VALIDATORTYPE.DECIMALVALUE)>
     CLASSIFICATION
 
     <SheetNameMapping("Languages")>
-    <ColumnMapping("Language", 50)>
-    <ColumnMapping("Code", 50)>
+    <ColumnMapping("Language", 50, VALIDATORTYPE.ALL)>
+    <ColumnMapping("Code", 50, VALIDATORTYPE.INTEGERVALUE)>
     LANGUAGES
 
     <SheetNameMapping("Books")>
-    <ColumnMapping("Title", 50)>
-    <ColumnMapping("ISBN", 50)>
-    <ColumnMapping("Genre", 50)>
-    <ColumnMapping("Publisher", 50)>
-    <ColumnMapping("Language", 50)>
-    <ColumnMapping("Author", 50)>
-    <ColumnMapping("Classification", 50)>
-    <ColumnMapping("Cover", 50)>
-    <ColumnMapping("Reserve", 50)>
+    <ColumnMapping("Title", 50, VALIDATORTYPE.OTHERNAME)>
+    <ColumnMapping("ISBN", 50, VALIDATORTYPE.INTEGERVALUE)>
+    <ColumnMapping("Genre", 50, VALIDATORTYPE.OTHERNAME)>
+    <ColumnMapping("Publisher", 50, VALIDATORTYPE.OTHERNAME)>
+    <ColumnMapping("Language", 50, VALIDATORTYPE.OTHERNAME)>
+    <ColumnMapping("Author", 50, VALIDATORTYPE.NAME)>
+    <ColumnMapping("Classification", 50, VALIDATORTYPE.OTHERNAME)>
+    <ColumnMapping("Cover", 50, VALIDATORTYPE.NAME)>
+    <ColumnMapping("Reserve Copy", 50, VALIDATORTYPE.INTEGERVALUE)>
     BOOK
 
     DONATOR
@@ -130,4 +130,15 @@ End Enum
 Public Enum ROLETYPE
     SUPERADMIN = 0
     ASSISTANT = 1
+End Enum
+
+Public Enum VALIDATORTYPE
+    EMAIL
+    PHONE
+    NAME
+    ALL
+    OTHERNAME
+    GENDER
+    DECIMALVALUE
+    INTEGERVALUE
 End Enum

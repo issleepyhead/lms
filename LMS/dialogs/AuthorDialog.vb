@@ -42,7 +42,7 @@ Public Class AuthorDialog
             DBOperations.ACTION_PARAMS.Add("@type", LOGTYPE.UPDATE)
         End If
 
-        If DBOperations.Exists(QueryTableType.AUTHOR_QUERY_TABLE, data) Then
+        If DBOperations.Exists(AUTHOR, data) Then
             errProvider.SetError(TXTFIRSTNAME, "This author already exits.")
             errProvider.SetError(TXTLASTNAME, "This author already exits.")
             Exit Sub

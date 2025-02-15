@@ -1,4 +1,4 @@
-﻿Imports LMS.QueryTableType
+﻿
 
 Public Class BookImport
     'Inherits ExcelDataLoader

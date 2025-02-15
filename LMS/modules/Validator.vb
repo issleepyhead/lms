@@ -7,7 +7,8 @@ Module Validator
     Public Const PHONE_PATTERN As String = "^(09[0-9]{2}[- ]?[0-9]{{3}[- ]?[0-9]{4})$|^(\63[0-9]{3}[- ]?[0-9]{3}[- ]?[0-9]{4})$"
     Public Const EMAIL_PATTERN As String = "^[a-zA-Z0-9]._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
 
-    Public Const NAME_PATTERN As String = "^[a-zA-Z][a-zA-Z-'\s]*$"
+    Public Const NAME_PATTERN As String = "^[a-zA-Z][a-zA-Z-'\s\.]*$"
+    Public Const OTHER_NAME_PATTERN As String = "^[a-zA-Z0-9\p{P}\s]*$"
     Public Const CHARCTERS_PATTERN As String = "^[a-zA-Z\s]*$"
     Public Const ALPHANUMERIC_PATTERN As String = "^[a-zA-Z][a-zA-Z0-9\s]*$"
     Public Const CHARACTERS_AND_SYMBOLS_PATTERN As String = "^[a-zA-Z][a-zA-Z\p{P}\s]*$"
@@ -68,7 +69,35 @@ Module Validator
         End If
     End Function
 
-    Public Function Example(x As String) As Boolean
-        Return True
+    Public Function EmailValidator(input As String) As Boolean
+        Return Not String.IsNullOrEmpty(input) AndAlso Regex.IsMatch(input, EMAIL_PATTERN)
+    End Function
+
+    Public Function NameValidator(input As String) As Boolean
+        Return Regex.IsMatch(input, NAME_PATTERN)
+    End Function
+
+    Public Function AllValidator(input As String) As Boolean
+        Return Regex.IsMatch(input, ALL_CHARACTERS_PATTERN)
+    End Function
+
+    Public Function PhoneValidator(input As String) As Boolean
+        Return Regex.IsMatch(input, PHONE_PATTERN)
+    End Function
+
+    Public Function OtherNameValidator(input As String) As Boolean
+        Return Regex.IsMatch(input, OTHER_NAME_PATTERN)
+    End Function
+
+    Public Function GenderValidator(input As String) As Boolean
+        Return input.ToLower = "male" OrElse input.ToLower = "female"
+    End Function
+
+    Public Function DecimalValidator(input As String) As Boolean
+        Return Regex.IsMatch(input, DECI_NUMBER_PATTERN)
+    End Function
+
+    Public Function IntegerValidator(input As String) As Boolean
+        Return Regex.IsMatch(input, NUMBER_PATTERN)
     End Function
 End Module

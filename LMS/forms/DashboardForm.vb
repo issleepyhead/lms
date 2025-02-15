@@ -334,7 +334,7 @@ Public Class DashboardForm
     Private Sub BTNIMPORTS_Click(sender As Object, e As EventArgs) Handles BTNIMPORTBOOKS.Click, BTNIMPORTFACULTY.Click, BTNIMPORTSTUDENTS.Click
         Select Case True
             Case sender.Equals(BTNIMPORTBOOKS)
-                Dim dialog As New ImportDataDialog(New BookImport, NameOf(BookDialog))
+                Dim dialog As New ImportDataDialog(NameOf(BookDialog))
                 If Not MyApplication.DialogInstances.ContainsKey(NameOf(BookDialog)) Then
                     MyApplication.DialogInstances.Add(NameOf(BookDialog), dialog)
                     dialog.Show()
@@ -342,7 +342,7 @@ Public Class DashboardForm
                     MyApplication.DialogInstances.Item(NameOf(BookDialog)).Show()
                 End If
             Case sender.Equals(BTNIMPORTFACULTY)
-                Dim dialog As New ImportDataDialog(New AccountImport(QueryTableType.FACULTY_QUERY_TABLE), NameOf(FacultyDialog))
+                Dim dialog As New ImportDataDialog(NameOf(FacultyDialog))
                 If Not MyApplication.DialogInstances.ContainsKey(NameOf(FacultyDialog)) Then
                     MyApplication.DialogInstances.Add(NameOf(FacultyDialog), dialog)
                     dialog.Show()
@@ -350,7 +350,7 @@ Public Class DashboardForm
                     MyApplication.DialogInstances.Item(NameOf(FacultyDialog)).Show()
                 End If
             Case sender.Equals(BTNIMPORTSTUDENTS)
-                Dim dialog As New ImportDataDialog(New AccountImport(QueryTableType.STUDENT_QUERY_TABLE), NameOf(StudentDialog))
+                Dim dialog As New ImportDataDialog(NameOf(StudentDialog))
                 If Not MyApplication.DialogInstances.ContainsKey(NameOf(StudentDialog)) Then
                     MyApplication.DialogInstances.Add(NameOf(StudentDialog), dialog)
                     dialog.Show()
