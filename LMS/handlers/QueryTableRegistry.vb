@@ -44,8 +44,8 @@ Module QueryTableRegistry
         {DONATOR, New QueryTable With {
             .ADD_QUERY = "INSERT INTO tbldonators (name, address) VALUES (@name, @address)",
             .DELETE_QUERY = "DELETE FROM tbldonators WHERE id = @id",
-            .EXISTS_ADD_QUERY = "SELECT COUNT(*) FROM tbldonators WHERE LOWER(name) = LOWER(@name) AND LOWER(address) = LOWER(@address)",
-            .EXISTS_UPDATE_QUERY = "SELECT COUNT(*) FROM tbldonators WHERE LOWER(name) = LOWER(@name) AND LOWER(address) = LOWER(@address) AND id != @id",
+            .EXISTS_ADD_QUERY = "SELECT COUNT(*) FROM tbldonators WHERE LOWER(name) = LOWER(@name)",
+            .EXISTS_UPDATE_QUERY = "SELECT COUNT(*) FROM tbldonators WHERE LOWER(name) = LOWER(@name) AND id != @id",
             .SEARCH_COUNT_QUERY = "SELECT COUNT(*) FROM tbldonators WHERE name LIKE @search",
             .SEARCH_RESULT_QUERY = "SELECT id, name, address FROM tbldonators WHERE name LIKE @search ORDER BY name ASC LIMIT @page, 30",
             .FETCH_ALL_QUERY = "SELECT id, name, address FROM tbldonators ORDER BY name ASC",
@@ -54,8 +54,8 @@ Module QueryTableRegistry
         {SUPPLIER, New QueryTable With {
             .ADD_QUERY = "INSERT INTO tblsuppliers (name, address) VALUES (@name, @address)",
             .DELETE_QUERY = "DELETE FROM tblsuppliers WHERE id = @id",
-            .EXISTS_ADD_QUERY = "SELECT COUNT(*) FROM tblsuppliers WHERE LOWER(name) = LOWER(@name) AND LOWER(address) = LOWER(@address)",
-            .EXISTS_UPDATE_QUERY = "SELECT COUNT(*) FROM tblsuppliers WHERE LOWER(name) = LOWER(@name) OR LOWER(address) = LOWER(@address) AND id != @id",
+            .EXISTS_ADD_QUERY = "SELECT COUNT(*) FROM tblsuppliers WHERE LOWER(name) = LOWER(@name)",
+            .EXISTS_UPDATE_QUERY = "SELECT COUNT(*) FROM tblsuppliers WHERE LOWER(name) = LOWER(@name) AND id != @id",
             .SEARCH_COUNT_QUERY = "SELECT COUNT(*) FROM tblsuppliers WHERE name LIKE @search",
             .SEARCH_RESULT_QUERY = "SELECT id, name, address FROM tblsuppliers WHERE name LIKE @search ORDER BY name ASC LIMIT @page, 30",
             .FETCH_ALL_QUERY = "SELECT id, name, address FROM tblsuppliers ORDER BY name ASC",

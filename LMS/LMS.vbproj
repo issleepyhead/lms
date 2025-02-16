@@ -156,6 +156,12 @@
     <Compile Include="dialogs\ChangePasswordDialog.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="dialogs\LoginDialog.Designer.vb">
+      <DependentUpon>LoginDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="dialogs\LoginDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="dialogs\ReportDialog.Designer.vb">
       <DependentUpon>ReportDialog.vb</DependentUpon>
     </Compile>
@@ -316,9 +322,13 @@
     <Compile Include="handlers\ControlMapping.vb" />
     <Compile Include="handlers\DBOperations.vb" />
     <Compile Include="handlers\NotificationHandler.vb" />
+    <Compile Include="import\BaseImportHandler.vb" />
+    <Compile Include="import\BookImportHandler.vb" />
     <Compile Include="import\ExcelFileHandler.vb" />
     <Compile Include="import\ExcelSheetHandler.vb" />
+    <Compile Include="import\FacultyImportHandler.vb" />
     <Compile Include="import\ImportQueryTable.vb" />
+    <Compile Include="import\StudentImportHandler.vb" />
     <Compile Include="modules\import\AccountImport.vb" />
     <Compile Include="modules\ApplicationModule.vb" />
     <Compile Include="import\ColumnMapping.vb" />
@@ -333,7 +343,7 @@
     <Compile Include="modules\ReportHandler.vb" />
     <Compile Include="import\SheetNameMapping.vb" />
     <Compile Include="modules\Validator.vb" />
-    <Compile Include="modules\ValidatorRegistry.vb" />
+    <Compile Include="modules\RegistryCollectionModule.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
